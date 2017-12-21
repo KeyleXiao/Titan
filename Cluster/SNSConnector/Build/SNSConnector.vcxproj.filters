@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SNSConnector.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Win32Dll.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Resource File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ISNSConnector.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\netbuffer.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SNSConnector.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Win32Dll.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\SNSDef.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{d5553156-ea6e-4463-af5d-4d21dec77c5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{dd74f477-380d-4597-9a1f-92d33bce4fcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource File">
+      <UniqueIdentifier>{1e0b5e14-05a1-471b-b14c-4ec4e0f6eadb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File">
+      <UniqueIdentifier>{bd2fa364-37e4-444a-9536-4066e4ea7344}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\SNSConnector.rc">
+      <Filter>Resource File</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\ServerCapabilityTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Win32Dll.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GuardConnector.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RedisConnector.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\redis.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\pthread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\main.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestBase.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestClient.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestConcur.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestGeneric.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestHash.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestList.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestSet.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestString.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Test\TestZset.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SetOp.cpp">
+      <Filter>Op</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HashOp.cpp">
+      <Filter>Op</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ValueOp.cpp">
+      <Filter>Op\Value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PipelineValueOp.cpp">
+      <Filter>Op\Value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ListOp.cpp">
+      <Filter>Op\List</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PipelineListOp.cpp">
+      <Filter>Op\List</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PipelineExecuter.cpp">
+      <Filter>Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerOp.cpp">
+      <Filter>Op\Generic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KeysOp.cpp">
+      <Filter>Op\Generic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerCapabilityTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Win32Dll.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardConnector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGuardConnector.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\GuardDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IRedisConnector.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RedisConnector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\unistd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\hiredis.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\pthread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\redis.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestBase.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestClient.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestConcur.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestGeneric.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestHash.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestList.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestSet.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestString.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\TestZset.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Test\unistd.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SetOp.h">
+      <Filter>Op</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HashOp.h">
+      <Filter>Op</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Setting.h">
+      <Filter>Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPipeline.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IValueOp.h">
+      <Filter>接口\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ValueOp.h">
+      <Filter>Op\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PipelineValueOp.h">
+      <Filter>Op\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RedisDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ListOp.h">
+      <Filter>Op\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PipelineListOp.h">
+      <Filter>Op\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IListOp.h">
+      <Filter>接口\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PipelineExecuter.h">
+      <Filter>Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBaseListOp.h">
+      <Filter>接口\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPipelineListOp.h">
+      <Filter>接口\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBaseValueOp.h">
+      <Filter>接口\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPipelineValueOp.h">
+      <Filter>接口\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\TFunc.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IServerOp.h">
+      <Filter>接口\Generic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerOp.h">
+      <Filter>Op\Generic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IKeysOp.h">
+      <Filter>接口\Generic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KeysOp.h">
+      <Filter>Op\Generic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IHashOp.h">
+      <Filter>接口\Hash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ISetOp.h">
+      <Filter>接口\Set</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{3491fb2f-0795-47ba-9cc3-9e29a599d78e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口">
+      <UniqueIdentifier>{e51175c3-1430-4dc3-8d3c-2b846376ef9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{96941156-f7a7-48e0-845c-5f3d691a020d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{326f3714-33ee-491e-9a3c-43bc8763f62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{92c64c98-c043-4931-bd0a-849d78f38155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Op">
+      <UniqueIdentifier>{f7eaadbb-0059-46dc-8b42-b54ca6a64cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pipeline">
+      <UniqueIdentifier>{ce485c9e-841a-4da3-b0e8-3440e223388f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Setting">
+      <UniqueIdentifier>{127ab647-ea56-4109-a76a-9fa02e5a8c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口\Value">
+      <UniqueIdentifier>{4ee78188-2830-4ba3-88b3-da58ae4c0ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Op\Value">
+      <UniqueIdentifier>{4141cd00-3d2b-43ad-8845-cbcb52717858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Op\List">
+      <UniqueIdentifier>{6794e8fc-5041-4b7d-8e2c-4ccfdefc709f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口\List">
+      <UniqueIdentifier>{34b6639f-077a-49e1-a5b5-fd44ed7ddfb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{bf51d337-12dd-45af-8c9e-a7c9ffc745cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Op\Generic">
+      <UniqueIdentifier>{6d9c5e38-48b2-4f82-8cb4-7eb4aaf2ecb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口\Generic">
+      <UniqueIdentifier>{bef08718-4bc1-4562-a6f1-e857bf289dfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口\Hash">
+      <UniqueIdentifier>{86b770fb-6000-4fd2-9a33-63231bb6f9a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口\Set">
+      <UniqueIdentifier>{45bd517c-2f74-446f-9755-93b755955c23}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\GuardConnector.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

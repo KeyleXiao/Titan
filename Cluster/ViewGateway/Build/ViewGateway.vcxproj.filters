@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="VoiceGateway">
+      <UniqueIdentifier>{935f4ffa-e3c6-4574-a9e2-ef22dddf6f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{558f3234-f2ad-4017-b3dc-a351b6c00c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{b1225662-cae1-44d6-8086-6deaee40cbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{feabf95d-39f2-4108-8570-ec87c6b23c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Setting">
+      <UniqueIdentifier>{05ad5fb6-4745-49d0-adc2-809c71a7076d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{beaf06b9-94b6-4932-896a-2407802d2076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dlg">
+      <UniqueIdentifier>{a2579f0f-83c0-4445-866e-c269580c021e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File\Connector">
+      <UniqueIdentifier>{e355f8f2-fbb7-4504-9347-08c51db9724f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File\Handle">
+      <UniqueIdentifier>{635c0383-d913-47e2-b253-106c524ff6d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File\Msg">
+      <UniqueIdentifier>{7dda4f7c-bbbc-4031-9ae8-ae03acf8cc6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mng">
+      <UniqueIdentifier>{d5adbb50-de5c-4d2a-9cb3-abe31a4be4d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{86cab200-1722-4fe7-8e79-63aa1972ec8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mng\Handler">
+      <UniqueIdentifier>{1e8d0254-02c6-44d5-9c75-4a47d345dda5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View\Handler">
+      <UniqueIdentifier>{e1522265-eb6a-4b89-87ff-01ea6f4b2b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client">
+      <UniqueIdentifier>{2253aec7-f6c0-46c2-a204-13f4a0213180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client\Handler">
+      <UniqueIdentifier>{7fc72166-30ff-4af4-8d7c-1366deca713b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client\Auth">
+      <UniqueIdentifier>{95c1f13e-7c00-4b3f-988e-bf69cfa87d68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Resource.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewGateway.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GlobalViewGateway.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGlobalViewGateway.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Acceptor.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ResizingDialog.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Subclass.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TrayIcon.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewGatewayDlg.h">
+      <Filter>Dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OperationDlg.h">
+      <Filter>Dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ListInfoDlg.h">
+      <Filter>Dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Connector.h">
+      <Filter>Common File\Connector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ConnectorWithProcess.h">
+      <Filter>Common File\Connector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\IHandler.h">
+      <Filter>Common File\Handle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Processer.h">
+      <Filter>Common File\Handle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ViewMsgDef.h">
+      <Filter>Common File\Msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ViewMsgDef_Client.h">
+      <Filter>Common File\Msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ViewMsgDef_Server.h">
+      <Filter>Common File\Msg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ByteRecord.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ViewDef_.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MngConnector.h">
+      <Filter>Mng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MsgFactory.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MngMsgRegister.h">
+      <Filter>Mng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Setting.h">
+      <Filter>Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandshakeResponseHandler.h">
+      <Filter>Mng\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewSession.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewContainer.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandshakeHandler.h">
+      <Filter>View\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientSession.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientContainer.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\UserContainer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CG_HandshakeHandler.h">
+      <Filter>Client\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientMsgRegister.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Handler.h">
+      <Filter>Common File\Handle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MG_RequestAddPlayerHandler.h">
+      <Filter>Mng\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AuthMng.h">
+      <Filter>Client\Auth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AuthNode.h">
+      <Filter>Client\Auth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewMsgRegister.h">
+      <Filter>View</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewGateway.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GlobalViewGateway.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ResizingDialog.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Subclass.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TrayIcon.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewGatewayDlg.cpp">
+      <Filter>Dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OperationDlg.cpp">
+      <Filter>Dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ListInfoDlg.cpp">
+      <Filter>Dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MngConnector.cpp">
+      <Filter>Mng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MsgFactory.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MngMsgRegister.cpp">
+      <Filter>Mng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Setting.cpp">
+      <Filter>Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewSession.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewContainer.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandshakeHandler.cpp">
+      <Filter>View\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientSession.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientContainer.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientMsgRegister.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AuthMng.cpp">
+      <Filter>Client\Auth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AuthNode.cpp">
+      <Filter>Client\Auth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewMsgRegister.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\res\Computer.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\Computer0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\Server.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\Server0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\User.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\User0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\ViewGateway.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\ViewGateway0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\ViewGateway.rc2">
+      <Filter>Res</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\ViewGateway.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,318 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\ViewMng.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""afxres.rc""     // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\ViewMng.ico"
+IDI_ICON_GRAY           ICON                    "res\\ViewMng0.ico"
+IDI_ICON_SERVER         ICON                    "res\\Server.ico"
+IDI_ICON_USER           ICON                    "res\\User.ico"
+IDI_ICON_HARD           ICON                    "res\\Computer.ico"
+IDI_ICON_HARD0          ICON                    "res\\Computer0.ico"
+IDI_ICON_SERVER0        ICON                    "res\\Server0.ico"
+IDI_ICON_USER0          ICON                    "res\\User0.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 268, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 观战管理服"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "观战管理服 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "深圳冰川网络股份有限公司 Copyright (C) 2017",IDC_STATIC,40,27,187,8
+    DEFPUSHBUTTON   "确定",IDOK,211,7,50,16,WS_GROUP
+END
+
+IDD_SERVICE_DIALOG DIALOGEX 0, 0, 410, 310
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "观战管理服"
+MENU IDR_MENU1
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    RTEXT           "游戏世界:",IDC_STATIC1,8,11,64,10
+    CONTROL         "",IDC_OUTPUT,"RichEdit20W",ES_MULTILINE | ES_READONLY | ES_WANTRETURN | WS_VSCROLL | WS_TABSTOP,7,133,396,156,WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "启动服务",IDC_BUTTON_START,330,72,73,16
+    PUSHBUTTON      "停止服务",IDC_BUTTON_STOP,330,52,73,16
+    PUSHBUTTON      "退  出",IDC_BUTTON_EXIT,330,32,73,16
+    LTEXT           "",IDC_STATIC_LINE,7,124,396,8,SS_SUNKEN | NOT WS_VISIBLE | NOT WS_GROUP
+    RTEXT           "所属游戏:",IDC_STATIC3,8,26,64,10
+    RTEXT           "所属是否公共:",IDC_STATIC2,163,11,63,10
+    RTEXT           "游戏区域:",IDC_STATIC4,163,26,63,10
+    RTEXT           "软件服数:",IDC_STATIC6,9,59,63,10
+    EDITTEXT        IDC_EDIT_TOTAL,76,9,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_RIGHTRATE,76,25,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_ONLINE,230,9,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_OUTRATE,230,25,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_WRONG,76,57,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    RTEXT           "客户端数:",IDC_STATIC8,163,59,63,10
+    EDITTEXT        IDC_EDIT_STARTTIME,7,291,396,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_PASSRATE,230,57,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    RTEXT           "服务器监听端口:",IDC_STATIC11,8,42,64,10
+    RTEXT           "网关监听端口:",IDC_STATIC12,163,42,63,10
+    EDITTEXT        IDC_EDIT_IP,76,41,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_PORT,230,41,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    ICON            IDR_MAINFRAME,IDC_APP_ICONS,348,0,20,20,SS_REALSIZEIMAGE
+    RTEXT           "服务器收包:",IDC_STATIC13,8,75,64,10
+    RTEXT           "服务器发包:",IDC_STATIC14,164,75,63,10
+    EDITTEXT        IDC_EDIT_IP2,76,73,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_PORT2,230,74,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    RTEXT           "网关收包:",IDC_STATIC15,8,91,64,10
+    RTEXT           "网关发包:",IDC_STATIC16,164,91,63,10
+    EDITTEXT        IDC_EDIT_IP3,76,89,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_PORT3,230,90,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    RTEXT           "客户端收包:",IDC_STATIC17,8,107,64,10
+    RTEXT           "客户端发包:",IDC_STATIC18,164,107,63,10
+    EDITTEXT        IDC_EDIT_IP4,76,105,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_PORT4,230,105,82,13,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+END
+
+IDD_LIST_DLG DIALOGEX 0, 0, 503, 274
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "列表"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,377,7,55,17,NOT WS_VISIBLE
+    PUSHBUTTON      "关闭",IDCANCEL,441,7,55,17
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,30,489,237
+    PUSHBUTTON      "软件服列表",IDC_SERVER_BUTTON,75,7,53,17
+    PUSHBUTTON      "游戏世界列表",IDC_BUTTON_WORLD,7,7,58,17
+    PUSHBUTTON      "网关服列表",IDC_SERVER_BUTTON2,138,7,53,17
+END
+
+IDD_OPERATION_DIALOG DIALOGEX 0, 0, 280, 165
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "操作确认"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    LTEXT           "静态",IDC_STATIC_MSG,7,7,266,52,0,WS_EX_STATICEDGE
+    LTEXT           "操作备注：(必需输入备注,内容不少于10个字符)",IDC_STATIC_LABEL,7,81,177,11
+    EDITTEXT        IDC_EDIT_TXT,7,92,266,33,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    LTEXT           "验证码：",IDC_STATIC_DELAYS,8,128,70,12,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_DELAYS,7,142,76,15,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    DEFPUSHBUTTON   "确定",IDOK,168,144,50,14
+    PUSHBUTTON      "取消",IDCANCEL,223,144,50,14
+    COMBOBOX        IDC_COMBO_FLAG,7,64,266,86,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "备用1",IDC_STATIC_BAK1,90,129,44,10,0,WS_EX_RIGHT
+    LTEXT           "备用2",IDC_STATIC_BAK2,176,129,55,10,0,WS_EX_RIGHT
+    EDITTEXT        IDC_EDIT_BAK1,139,127,36,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BAK2,234,127,36,13,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,6,610,1852
+ PRODUCTVERSION 1,6,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "深圳冰川网络股份有限公司"
+            VALUE "FileDescription", "语音服务器"
+            VALUE "FileVersion", "1.6.610.1852"
+            VALUE "InternalName", "ViewMng.exe"
+            VALUE "LegalCopyright", " (C) 深圳冰川网络股份有限公司 2009 保留所有权利。"
+            VALUE "OriginalFilename", "ViewMng.exe"
+            VALUE "ProductName", "语音服务器"
+            VALUE "ProductVersion", "1.6"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 261
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SERVICE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 403
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 303
+    END
+
+    IDD_LIST_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 496
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 267
+    END
+
+    IDD_OPERATION_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_TRAYICON MENU
+BEGIN
+    POPUP "托盘(&T)"
+    BEGIN
+        MENUITEM "打开(&O)",                      ID_APP_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "关于 语音服务器(&A)...",             ID_APP_ABOUT
+        MENUITEM "退出(&X)",                      ID_APP_SUSPEND
+    END
+END
+
+IDR_MENU1 MENU
+BEGIN
+    POPUP "操作(&A)"
+    BEGIN
+        MENUITEM "启动服务(&S)\t",                  IDC_START
+        MENUITEM "停止服务(&T)\t",                  IDC_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "查看列表信息(&L)",                  32793
+        MENUITEM "控制管理操作(&C)",                  ID_MG_DLG
+        MENUITEM "修改Trace级别(&A)",               32798
+        MENUITEM "输出统计信息(&O)",                  ID_OUT_TOTAL
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)\t",                    ID_APP_SUSPEND
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于(&A)...",                   ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "关于 语音服务器(&A)..."
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\ViewMng.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "afxres.rc"     // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

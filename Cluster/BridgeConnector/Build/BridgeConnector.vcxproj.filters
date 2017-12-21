@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{ffe2ed77-d33c-4613-b4c3-c87a76fb00fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{e4bd72c5-c7b4-4fe8-a53b-3300e1749852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BridgeConnector">
+      <UniqueIdentifier>{75dad814-bd4f-47a2-807c-bd7b056e5618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ServerPart">
+      <UniqueIdentifier>{603ba7e4-120b-426e-ac58-744110a4f8cd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\BridgeServer\Include\BridgeFun.cpp">
+      <Filter>Common File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BridgeConnector.cpp">
+      <Filter>BridgeConnector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerCapabilityTest.cpp">
+      <Filter>BridgeConnector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>BridgeConnector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BridgCommonPart.cpp">
+      <Filter>ServerPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BridgeSocialPart.cpp">
+      <Filter>ServerPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BridgeZonePart.cpp">
+      <Filter>ServerPart</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\BridgeServer\Include\BridgeFun.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBridgeConnector.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BridgeConnector.h">
+      <Filter>BridgeConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>BridgeConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerCapabilityTest.h">
+      <Filter>BridgeConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>BridgeConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BridgCommonPart.h">
+      <Filter>ServerPart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BridgeSocialPart.h">
+      <Filter>ServerPart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BridgeZonePart.h">
+      <Filter>ServerPart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\BridgeModuleDef.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\BridgeConnector.rc">
+      <Filter>BridgeConnector</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

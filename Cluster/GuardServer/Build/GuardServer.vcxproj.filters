@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\ResizingDialog.cpp">
+      <Filter>Lib Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Subclass.cpp">
+      <Filter>Lib Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TrayIcon.cpp">
+      <Filter>Lib Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerUser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GuardAPI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GlobalGuardServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GuardServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GuardServerDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ImageDataBank.cpp">
+      <Filter>ImageData Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ImageDataBox.cpp">
+      <Filter>ImageData Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ImageDataUnit.cpp">
+      <Filter>ImageData Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ImageDataManager.cpp">
+      <Filter>ImageData Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\Acceptor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ResizingDialog.h">
+      <Filter>Lib Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TrayIcon.h">
+      <Filter>Lib Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Subclass.h">
+      <Filter>Lib Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerUser.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerList.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\GuardDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGuardServer.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardSetting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardAPI.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GlobalGuardServer.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardServer.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardServerDlg.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Resource.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ImageDataBank.h">
+      <Filter>ImageData Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ImageDataBox.h">
+      <Filter>ImageData Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ImageDataUnit.h">
+      <Filter>ImageData Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ImageDataManager.h">
+      <Filter>ImageData Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\res\Server.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\Server0.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\User.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\User0.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\Computer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\Computer0.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\GuardServer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\GuardServer.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Src\res\GuardServer1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Interface Files">
+      <UniqueIdentifier>{639f0678-ae56-4944-afd6-6ac47b66e1d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{80a83449-f53d-4200-8486-92c54618e27d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib Files">
+      <UniqueIdentifier>{1a34d5e8-f55f-42ff-9243-4ac74c20889d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{f86cc49b-d12e-4fbb-a536-9a232d6726cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{df6c32a2-8c79-4848-bf66-2ade91d6433b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageData Files">
+      <UniqueIdentifier>{a4ac1e3f-6d44-4a36-80c9-39b5e8b62844}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\GuardServer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

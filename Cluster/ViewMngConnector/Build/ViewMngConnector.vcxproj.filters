@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{f833145e-0312-407c-9721-cd643826dfea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{9759370a-50bd-4e2b-b7e2-87abe8c15569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ServerPart">
+      <UniqueIdentifier>{5cfc8f79-675c-4e3a-933a-48e817e10e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{5f66d41c-83d0-4f02-98a5-4011bad3913f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\VoiceModuleDef.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IViewConnector.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewConnector.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewCommonPart.h">
+      <Filter>ServerPart</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewConnector.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ViewCommonPart.cpp">
+      <Filter>ServerPart</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\ViewConnector.rc">
+      <Filter>Src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

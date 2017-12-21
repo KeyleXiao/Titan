@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{f833145e-0312-407c-9721-cd643826dfea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{9759370a-50bd-4e2b-b7e2-87abe8c15569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceConnector">
+      <UniqueIdentifier>{5f66d41c-83d0-4f02-98a5-4011bad3913f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ServerPart">
+      <UniqueIdentifier>{5cfc8f79-675c-4e3a-933a-48e817e10e9c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\IVoiceConnector.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>VoiceConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>VoiceConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceConnector.h">
+      <Filter>VoiceConnector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceCommonPart.h">
+      <Filter>ServerPart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\VoiceModuleDef.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>VoiceConnector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceConnector.cpp">
+      <Filter>VoiceConnector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceCommonPart.cpp">
+      <Filter>ServerPart</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\VoiceConnector.rc">
+      <Filter>VoiceConnector</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TimeSync", "TimeSync\TimeSync.vcxproj", "{A53F263D-C73A-46D2-8EBF-9078D422B8C1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Base", "E:\Rocket20100701\Base\Base\Build\Base.vcxproj", "{E9AAE810-DD1B-462F-98B2-5371F683C2A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		LibRelease|Win32 = LibRelease|Win32
+		LibReleaseMD|Win32 = LibReleaseMD|Win32
+		Release|Win32 = Release|Win32
+		UniLibRelease|Win32 = UniLibRelease|Win32
+		UniLibReleaseMD|Win32 = UniLibReleaseMD|Win32
+		UniRelease|Win32 = UniRelease|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.Debug|Win32.Build.0 = Debug|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.LibRelease|Win32.ActiveCfg = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.LibRelease|Win32.Build.0 = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.LibReleaseMD|Win32.ActiveCfg = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.LibReleaseMD|Win32.Build.0 = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.Release|Win32.ActiveCfg = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.Release|Win32.Build.0 = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.UniLibRelease|Win32.ActiveCfg = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.UniLibRelease|Win32.Build.0 = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.UniLibReleaseMD|Win32.ActiveCfg = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.UniLibReleaseMD|Win32.Build.0 = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.UniRelease|Win32.ActiveCfg = Release|Win32
+		{A53F263D-C73A-46D2-8EBF-9078D422B8C1}.UniRelease|Win32.Build.0 = Release|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Debug|Win32.ActiveCfg = UniRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Debug|Win32.Build.0 = UniRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.LibRelease|Win32.ActiveCfg = LibRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.LibRelease|Win32.Build.0 = LibRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.LibReleaseMD|Win32.ActiveCfg = LibReleaseMD|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.LibReleaseMD|Win32.Build.0 = LibReleaseMD|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Release|Win32.ActiveCfg = Release|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Release|Win32.Build.0 = Release|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniLibRelease|Win32.ActiveCfg = UniLibRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniLibRelease|Win32.Build.0 = UniLibRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniLibReleaseMD|Win32.ActiveCfg = UniLibReleaseMD|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniLibReleaseMD|Win32.Build.0 = UniLibReleaseMD|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniRelease|Win32.ActiveCfg = UniRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniRelease|Win32.Build.0 = UniRelease|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

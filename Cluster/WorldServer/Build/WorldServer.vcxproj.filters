@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{2a50c05b-e579-48ba-835c-5420b4505e57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Dialog File">
+      <UniqueIdentifier>{51a691b4-36b8-48b2-8fd6-b71f123ea5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{e4fd7cac-1b75-4936-a571-5387da552526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorldServer">
+      <UniqueIdentifier>{3a5456c5-b905-496e-8574-877ed3be08c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DateTriggerManager">
+      <UniqueIdentifier>{d702fbd5-ca66-458b-b512-af4bcdfb3e24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AntiAddcit">
+      <UniqueIdentifier>{01b1a4d5-9c31-4e0b-9087-cd4a869b2567}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\IDateTriggerManager.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\imessagedispatch.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWorldServer.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\WorldMessage.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WorldServer.h">
+      <Filter>Dialog File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WorldServerDlg.h">
+      <Filter>Dialog File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LogicThread.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MessageDispatch.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GlobalWorldSever.h">
+      <Filter>WorldServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerConnection.h">
+      <Filter>WorldServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerList.h">
+      <Filter>WorldServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DateTriggerManager.h">
+      <Filter>DateTriggerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAntiAddictGlobal.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AntiAddictGlobal.h">
+      <Filter>AntiAddcit</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\res\CenterServer.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\WorldServer.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\WorldServer.rc2">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\WorldServer.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\WorldServer.cpp">
+      <Filter>Dialog File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WorldServerDlg.cpp">
+      <Filter>Dialog File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LogicThread.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MessageDispatch.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GlobalWorldSever.cpp">
+      <Filter>WorldServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerConnection.cpp">
+      <Filter>WorldServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerList.cpp">
+      <Filter>WorldServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DateTriggerManager.cpp">
+      <Filter>DateTriggerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AntiAddictGlobal.cpp">
+      <Filter>AntiAddcit</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

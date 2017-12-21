@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="VoiceGateway">
+      <UniqueIdentifier>{935f4ffa-e3c6-4574-a9e2-ef22dddf6f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{558f3234-f2ad-4017-b3dc-a351b6c00c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{b1225662-cae1-44d6-8086-6deaee40cbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{feabf95d-39f2-4108-8570-ec87c6b23c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{4abbe03c-252a-4853-8900-be6895979d75}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\Acceptor.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AudioList.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AudioUser.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientList.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientUser.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GlobalVoiceGateway.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ListInfoDlg.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OperationDlg.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceConnector.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceGateway.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceGatewayDlg.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceGatewaySetting.h">
+      <Filter>VoiceGateway</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DVoiceModule.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGlobalVoiceGateway.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Resource.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ResizingDialog.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Subclass.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TrayIcon.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\AudioList.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AudioUser.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientList.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientUser.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GlobalVoiceGateway.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ListInfoDlg.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OperationDlg.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceConnector.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceGateway.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceGatewayDlg.cpp">
+      <Filter>VoiceGateway</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ResizingDialog.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Subclass.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TrayIcon.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\res\Computer.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\Computer0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\Server.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\Server0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\User.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\User0.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\VoiceGateway.ico">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\VoiceGateway.rc2">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Src\res\VoiceGateway0.ico">
+      <Filter>Res</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\VoiceGateway.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

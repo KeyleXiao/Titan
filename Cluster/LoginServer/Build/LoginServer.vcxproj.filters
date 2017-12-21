@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="源文件\头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="登陆状态">
+      <UniqueIdentifier>{4c1c2e2e-d1bb-4a2a-8f66-6b33da265077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="登陆排队">
+      <UniqueIdentifier>{0260fd72-5f06-48a5-aba9-9e446e80e5f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="加密">
+      <UniqueIdentifier>{79cad64e-433a-476d-9de2-8c24cd542167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DBHttp Files">
+      <UniqueIdentifier>{d45d29de-bdb0-4aa3-86d9-7729f5d3e587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LoginSTesterver">
+      <UniqueIdentifier>{8efea0d1-b2b9-42a9-87be-3f1416464dd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorldActors">
+      <UniqueIdentifier>{25dc3fd1-0357-4567-a131-5d39169b99a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\LuaBridge">
+      <UniqueIdentifier>{aeeadd1f-6cf8-4fd3-8ad9-c577ba99decd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\LuaBridge\detail">
+      <UniqueIdentifier>{49a4574c-ea82-4130-83d0-4cc1025901bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lua">
+      <UniqueIdentifier>{d0440100-8ef5-43ae-ad1d-727d1f941a88}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\ActionMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DisableAccountPolicy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\encode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameDatabaseAccessor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HackDetector.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\IPolicyAction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KuaiBoAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginServerCommand.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginServerDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginServerImp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\NewYYAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PActionDisableLogin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PActionPopVerifyCode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PolicyMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PPSAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Q1AccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SDOAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerCapability.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ServerStatReporter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VerifyCodePolicy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WebAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\XLAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ZYAccountVerify.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientState_Game.cpp">
+      <Filter>登陆状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientState_Login.cpp">
+      <Filter>登陆状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientState_Queue.cpp">
+      <Filter>登陆状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginClient_FromGateway.cpp">
+      <Filter>登陆状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginClientFactory.cpp">
+      <Filter>登陆状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginDiscardQueue.cpp">
+      <Filter>登陆排队</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginPendingQueue.cpp">
+      <Filter>登陆排队</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginQueueManager.cpp">
+      <Filter>登陆排队</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\encrypt_rc4.cpp">
+      <Filter>加密</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\sha1.cpp">
+      <Filter>加密</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DBHttpService.cpp">
+      <Filter>DBHttp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginServer_TestServer.cpp">
+      <Filter>LoginSTesterver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WorldActorCounts.cpp">
+      <Filter>WorldActors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientState_Actor_new.cpp">
+      <Filter>登陆状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CommonHelper.cpp">
+      <Filter>源文件\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AnalyseBornMap.cpp">
+      <Filter>源文件\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LuaAPI.cpp">
+      <Filter>源文件\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorRecommend.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WebApiMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\Q1AccountVerify.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ZYAccountVerify.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActionMgr.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\AntiHackerDef.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DisableAccountPolicy.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DStarTrekDef.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DStarTrekMsg.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\encode.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\FreezeLogin.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GameDatabaseAccessor.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HackDetector.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\IGameDatabaseDef.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ILoginServerProtocol.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IPolicy.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IPolicyAction.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ithirdaccountverify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KuaiBoAccountVerify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServer.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServer_Setting.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServerCommand.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServerDef.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServerDlg.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServerImp.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\netbuffer.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\NewYYAccountVerify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PActionDisableLogin.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PActionPopVerifyCode.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PartnerManager.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PolicyMgr.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PPSAccountVerify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\RegisterGameSPCmdID.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SDOAccountVerify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerCapability.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ServerStatReporter.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Statistic.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\UpdateVersionControler.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VerifyCodePolicy.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WebAccountVerify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\XLAccountVerify.h">
+      <Filter>源文件\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AverageCalculator.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientState_Actor.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientState_Game.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientState_Login.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientState_Queue.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ILoginClient.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginClient_FromGateway.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginClientFactory.h">
+      <Filter>登陆状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginDiscardQueue.h">
+      <Filter>登陆排队</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginPendingQueue.h">
+      <Filter>登陆排队</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginQueueManager.h">
+      <Filter>登陆排队</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\encrypt_rc4.h">
+      <Filter>加密</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\encryptor.h">
+      <Filter>加密</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\sha1.h">
+      <Filter>加密</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DBHttpService.h">
+      <Filter>DBHttp Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DTestModule.h">
+      <Filter>LoginSTesterver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServer_TestServer.h">
+      <Filter>LoginSTesterver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginServer_TestSetting.h">
+      <Filter>LoginSTesterver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WorldActorCounts.h">
+      <Filter>WorldActors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\LuaBridge.h">
+      <Filter>源文件\LuaBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\RefCountedObject.h">
+      <Filter>源文件\LuaBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\RefCountedPtr.h">
+      <Filter>源文件\LuaBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\CFunctions.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\ClassInfo.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\Constructor.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\dump.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\FuncTraits.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\Iterator.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\LuaException.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\LuaHelpers.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\LuaRef.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\Namespace.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\Stack.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\TypeList.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\TypeTraits.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaBridge\detail\Userdata.h">
+      <Filter>源文件\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonHelper.h">
+      <Filter>源文件\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\API_Wrapper.h">
+      <Filter>源文件\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AnalyseBornMap.h">
+      <Filter>源文件\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaAPI.h">
+      <Filter>源文件\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorRecommend.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WebApiMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IWebHandler.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\res\LoginServer.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Src\res\LoginServer.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\LoginServer.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

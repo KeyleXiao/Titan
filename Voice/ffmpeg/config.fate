@@ -1,0 +1,1 @@
+config:x86:x86_32:generic:mingw32:gcc 4.8.1 (GCC):--disable-avdevice --disable-avfilter --disable-network --disable-everything --enable-static --disable-debug --disable-stripping --disable-mmx --enable-shared --disable-pthreads --disable-w32threads --disable-os2threads --enable-decoder=h264

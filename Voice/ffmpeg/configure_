@@ -1,0 +1,2 @@
+#!/bin/sh
+./configure --disable-avdevice --disable-avfilter --disable-network --disable-everything --enable-static --disable-debug --disable-stripping --disable-mmx --enable-shared "--disable-pthreads" "--disable-w32threads" "--disable-os2threads" --enable-decoder=h264

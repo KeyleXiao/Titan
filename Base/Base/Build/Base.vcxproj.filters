@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\Trace.cpp" />
+    <ClCompile Include="..\Src\autostring.cpp" />
+    <ClCompile Include="..\Src\strconv.cpp" />
+    <ClCompile Include="..\Src\StringCommon.cpp" />
+    <ClCompile Include="..\Src\StringHash.cpp" />
+    <ClCompile Include="..\Src\Base.cpp" />
+    <ClCompile Include="..\Src\CRC.cpp" />
+    <ClCompile Include="..\Src\DES.cpp" />
+    <ClCompile Include="..\Src\Stat.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\Variant.cpp" />
+    <ClCompile Include="..\Src\Api.cpp" />
+    <ClCompile Include="..\Src\base64.cpp" />
+    <ClCompile Include="..\Src\diskid32.cpp" />
+    <ClCompile Include="..\Src\GetWinVersion.cpp" />
+    <ClCompile Include="..\Src\urlencode.cpp" />
+    <ClCompile Include="..\Src\Handle.cpp" />
+    <ClCompile Include="..\Src\Object.cpp" />
+    <ClCompile Include="..\Src\Thread.cpp" />
+    <ClCompile Include="..\Src\TPool.cpp" />
+    <ClCompile Include="..\Src\LoadLib.cpp" />
+    <ClCompile Include="..\Src\Alert.cpp" />
+    <ClCompile Include="..\Src\Intl.cpp" />
+    <ClCompile Include="..\Src\LocaleConfig.cpp" />
+    <ClCompile Include="..\Src\Timer.cpp" />
+    <ClCompile Include="..\Src\TimerAxis.cpp" />
+    <ClCompile Include="..\Src\Net\minilzo.c" />
+    <ClCompile Include="..\Src\Net\AsynFileDevice.cpp" />
+    <ClCompile Include="..\Src\Net\AsynFileWrapper.cpp" />
+    <ClCompile Include="..\Src\Net\AsynIoFrame.cpp" />
+    <ClCompile Include="..\Src\Net\AsynIoResult.cpp" />
+    <ClCompile Include="..\Src\Net\AsynStreamSocket.cpp" />
+    <ClCompile Include="..\Src\Net\Connection.cpp" />
+    <ClCompile Include="..\Src\Net\ConnectionWrapper.cpp" />
+    <ClCompile Include="..\Src\Net\DNS_Resolver.cpp" />
+    <ClCompile Include="..\Src\Net\encryption_rotate.cpp" />
+    <ClCompile Include="..\Src\Net\HTTP_Connection.cpp" />
+    <ClCompile Include="..\Src\Net\HTTP_Requester.cpp" />
+    <ClCompile Include="..\Src\Net\HTTP_W3C.cpp" />
+    <ClCompile Include="..\Src\Net\HTTP_Wininet.cpp" />
+    <ClCompile Include="..\Src\Net\MT_MemPool.cpp" />
+    <ClCompile Include="..\Src\Net\MyHuffmanEncoder.cpp" />
+    <ClCompile Include="..\Src\Net\post_complete_simulation.cpp" />
+    <ClCompile Include="..\Src\Net\Proactor_Win32.cpp" />
+    <ClCompile Include="..\Src\Net\Reactor_Win32.cpp" />
+    <ClCompile Include="..\Src\Net\Socks5_Connection.cpp" />
+    <ClCompile Include="..\Src\Net\socks5_proxy.cpp" />
+    <ClCompile Include="..\Src\Net\WorkerThreadPool.cpp" />
+    <ClCompile Include="..\Src\PerfProf.cpp" />
+    <ClCompile Include="..\Src\profile.cpp" />
+    <ClCompile Include="..\Src\variantdata.cpp" />
+    <ClCompile Include="..\Src\CSVReader.cpp" />
+    <ClCompile Include="..\Src\SchemeEngine.cpp" />
+    <ClCompile Include="..\Src\XlsValue.cpp" />
+    <ClCompile Include="..\Src\GetWinVer.cpp" />
+    <ClCompile Include="..\Src\MiniVersion.cpp" />
+    <ClCompile Include="..\Src\tinystr.cpp" />
+    <ClCompile Include="..\Src\tinyxml.cpp" />
+    <ClCompile Include="..\Src\tinyxmlerror.cpp" />
+    <ClCompile Include="..\Src\tinyxmlparser.cpp" />
+    <ClCompile Include="..\Src\Ime.cpp" />
+    <ClCompile Include="..\Src\CacheManager.cpp" />
+    <ClCompile Include="..\Src\decodethread.cpp" />
+    <ClCompile Include="..\Src\Utility.cpp" />
+    <ClCompile Include="..\Src\FileSystem\AsynStream.cpp" />
+    <ClCompile Include="..\Src\FileSystem\DataChunk.cpp" />
+    <ClCompile Include="..\Src\FileSystem\DataStream.cpp" />
+    <ClCompile Include="..\Src\FileSystem\EncodeFileStream.cpp" />
+    <ClCompile Include="..\Src\FileSystem\FileStream.cpp" />
+    <ClCompile Include="..\Src\IndexFileReader.cpp" />
+    <ClCompile Include="..\Src\FileSystem\Ini.cpp" />
+    <ClCompile Include="..\Src\FileSystem\MemStream.cpp" />
+    <ClCompile Include="..\Src\FileSystem\Path.cpp" />
+    <ClCompile Include="..\Src\FileSystem\PkgFileSystem.cpp" />
+    <ClCompile Include="..\Src\FileSystem\PkgOperation.cpp" />
+    <ClCompile Include="..\Src\FileSystem\PkgStream.cpp" />
+    <ClCompile Include="..\Src\FileSystem\StdFileSystem.cpp" />
+    <ClCompile Include="..\Src\FileSystem\Stream.cpp" />
+    <ClCompile Include="..\Src\FileSystem\VirtualFileSystem.cpp" />
+    <ClCompile Include="..\Src\compress.cpp" />
+    <ClCompile Include="..\Src\encrypt.cpp" />
+    <ClCompile Include="..\Src\lzma\Alloc.c" />
+    <ClCompile Include="..\Src\lzma\LzFind.c" />
+    <ClCompile Include="..\Src\lzma\LzmaDec.c" />
+    <ClCompile Include="..\Src\lzma\LzmaEnc.c" />
+    <ClCompile Include="..\Src\lzma\LzmaLib.c" />
+    <ClCompile Include="..\Src\bzip2\blocksort.c" />
+    <ClCompile Include="..\Src\bzip2\bzip2recover.c" />
+    <ClCompile Include="..\Src\bzip2\bzlib.c" />
+    <ClCompile Include="..\Src\bzip2\compress.c" />
+    <ClCompile Include="..\Src\bzip2\crctable.c" />
+    <ClCompile Include="..\Src\bzip2\decompress.c" />
+    <ClCompile Include="..\Src\bzip2\huffman.c" />
+    <ClCompile Include="..\Src\bzip2\randtable.c" />
+    <ClCompile Include="..\Src\EventEngine.cpp" />
+    <ClCompile Include="..\Src\Command.cpp" />
+    <ClCompile Include="..\Src\CommandFactory.cpp" />
+    <ClCompile Include="..\Src\App.cpp" />
+    <ClCompile Include="..\Src\CachedMemAlloc.cpp" />
+    <ClCompile Include="..\Src\Mem.cpp" />
+    <ClCompile Include="..\Src\MemAlloc.cpp" />
+    <ClCompile Include="..\Src\pcre\chartables.c" />
+    <ClCompile Include="..\Src\pcre\get.c" />
+    <ClCompile Include="..\Src\pcre\maketables.c" />
+    <ClCompile Include="..\Src\pcre\pcre.c" />
+    <ClCompile Include="..\Src\pcre\pcreposix.c" />
+    <ClCompile Include="..\Src\pcre\study.c" />
+    <ClCompile Include="..\Src\MyTime.cpp" />
+    <ClCompile Include="..\Src\StackWalk.cpp" />
+    <ClCompile Include="..\Src\LuaEngine.cpp" />
+    <ClCompile Include="..\Src\BinReader.cpp" />
+    <ClCompile Include="..\Src\Random.cpp" />
+    <ClCompile Include="..\Src\MemoryModule.cpp" />
+    <ClCompile Include="..\Src\Net\NetServiceProvider.cpp" />
+    <ClCompile Include="..\Src\Net\net.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Net\AsynDatagramSocket.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Net\UDPSocket.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Net\KCPConnection.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Net\KCPConnection_Server.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Net\KCPConnection_Client.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Net\ikcp.cpp">
+      <Filter>kcp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\Base.h" />
+    <ClInclude Include="..\Include\Common.h" />
+    <ClInclude Include="..\Include\Config.h" />
+    <ClInclude Include="..\Include\buffer.h" />
+    <ClInclude Include="..\Include\ostrbuf.h" />
+    <ClInclude Include="..\Include\Trace.h" />
+    <ClInclude Include="..\Include\autostring.h" />
+    <ClInclude Include="..\Include\char_traits_ex.h" />
+    <ClInclude Include="..\Include\strconv.h" />
+    <ClInclude Include="..\Include\StringCommon.h" />
+    <ClInclude Include="..\Include\StringHash.h" />
+    <ClInclude Include="..\Include\StringHelper.h" />
+    <ClInclude Include="..\Include\tostr.h" />
+    <ClInclude Include="..\Include\Singleton.h" />
+    <ClInclude Include="..\Include\CRC.h" />
+    <ClInclude Include="..\Include\DES.h" />
+    <ClInclude Include="..\Include\IntervalTree.h" />
+    <ClInclude Include="..\Include\safelist.h" />
+    <ClInclude Include="..\Include\Stat.h" />
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Include\Api.h" />
+    <ClInclude Include="..\Include\base64.h" />
+    <ClInclude Include="..\Include\urlencode.h" />
+    <ClInclude Include="..\Include\Handle.h" />
+    <ClInclude Include="..\Include\Object.h" />
+    <ClInclude Include="..\Include\IThreadPool.h" />
+    <ClInclude Include="..\Include\LockFree.h" />
+    <ClInclude Include="..\Include\Thread.h" />
+    <ClInclude Include="..\Include\TPool.h" />
+    <ClInclude Include="..\Include\LoadLib.h" />
+    <ClInclude Include="..\Include\Alert.h" />
+    <ClInclude Include="..\Include\Intl.h" />
+    <ClInclude Include="..\Include\LocaleConfig.h" />
+    <ClInclude Include="..\Include\Timer.h" />
+    <ClInclude Include="..\Include\TimerAxis.h" />
+    <ClInclude Include="..\Include\TimerHandler.h" />
+    <ClInclude Include="..\Include\Net\AsynIoDevice.h" />
+    <ClInclude Include="..\Include\Net\AsynIoFrame.h" />
+    <ClInclude Include="..\Include\Net\AsynIoOperation.h" />
+    <ClInclude Include="..\Include\Net\dns.h" />
+    <ClInclude Include="..\Include\Net\http.h" />
+    <ClInclude Include="..\Include\Net\IAsynfile.h" />
+    <ClInclude Include="..\Include\Net\IPacker.h" />
+    <ClInclude Include="..\Include\Net\netdef.h" />
+    <ClInclude Include="..\Include\Net\Proactor.h" />
+    <ClInclude Include="..\Include\Net\Reactor.h" />
+    <ClInclude Include="..\Include\socks5_proxy.h" />
+    <ClInclude Include="..\Src\Net\AsynFileDevice.h" />
+    <ClInclude Include="..\Src\Net\AsynFileWrapper.h" />
+    <ClInclude Include="..\Src\Net\AsynIoResult.h" />
+    <ClInclude Include="..\Src\Net\AsynIoResultImp.h" />
+    <ClInclude Include="..\Src\Net\AsynStreamSocket.h" />
+    <ClInclude Include="..\Src\Net\CallbackDispatcher.h" />
+    <ClInclude Include="..\Src\Net\CallbackObject.h" />
+    <ClInclude Include="..\Src\Net\Connection.h" />
+    <ClInclude Include="..\Src\Net\ConnectionWrapper.h" />
+    <ClInclude Include="..\Src\Net\DispatcherManage.h" />
+    <ClInclude Include="..\Src\Net\DNS_Resolver.h" />
+    <ClInclude Include="..\Include\Net\encryption_rotate.h" />
+    <ClInclude Include="..\Src\Net\HTTP_Connection.h" />
+    <ClInclude Include="..\Src\Net\HTTP_Requester.h" />
+    <ClInclude Include="..\Src\Net\HuffmanPacker.h" />
+    <ClInclude Include="..\Src\Net\lzoconf.h" />
+    <ClInclude Include="..\Src\Net\lzodefs.h" />
+    <ClInclude Include="..\Src\Net\LZOPacker.h" />
+    <ClInclude Include="..\Src\Net\macro_repeat.h" />
+    <ClInclude Include="..\Src\Net\minilzo.h" />
+    <ClInclude Include="..\Src\Net\MixEncryptPacker.h" />
+    <ClInclude Include="..\Src\Net\MT_MemPool.h" />
+    <ClInclude Include="..\Src\Net\MyHuffmanDictionary.h" />
+    <ClInclude Include="..\Src\Net\post_complete_simulation.h" />
+    <ClInclude Include="..\Src\Net\Proactor_Win32.h" />
+    <ClInclude Include="..\Include\Net\producer_consumer_queue.h" />
+    <ClInclude Include="..\Src\Net\Reactor_Win32.h" />
+    <ClInclude Include="..\Src\Net\safereleasehelper.h" />
+    <ClInclude Include="..\Src\Net\SimplePacker.h" />
+    <ClInclude Include="..\Src\Net\Socks5_Connection.h" />
+    <ClInclude Include="..\Src\Net\Socks5_Protocol.h" />
+    <ClInclude Include="..\Src\Net\stl_alloc.h" />
+    <ClInclude Include="..\Src\Net\SwappingList.h" />
+    <ClInclude Include="..\Src\Net\WorkerThreadPool.h" />
+    <ClInclude Include="..\Src\Net\HTTP_W3C.h" />
+    <ClInclude Include="..\Src\Net\HuffmanEncoder.h" />
+    <ClInclude Include="..\Src\Net\HuffmanTree.h" />
+    <ClInclude Include="..\Src\Net\MyHuffmanEncoder.h" />
+    <ClInclude Include="..\Include\IPerfProf.h" />
+    <ClInclude Include="..\Src\profile.h" />
+    <ClInclude Include="..\Include\MyRand.h" />
+    <ClInclude Include="..\Include\RPC\IGameRPC.h" />
+    <ClInclude Include="..\Include\share_ptr.h" />
+    <ClInclude Include="..\Include\RPC\VariantData.h" />
+    <ClInclude Include="..\Src\CSVReader.h" />
+    <ClInclude Include="..\Include\ISchemeEngine.h" />
+    <ClInclude Include="..\Src\SchemeEngine.h" />
+    <ClInclude Include="..\Include\XlsValue.h" />
+    <ClInclude Include="..\Src\GetWinVer.h" />
+    <ClInclude Include="..\Include\IStackWalk.h" />
+    <ClInclude Include="..\Src\MiniVersion.h" />
+    <ClInclude Include="..\Include\tinystr.h" />
+    <ClInclude Include="..\Include\tinyxml.h" />
+    <ClInclude Include="..\Include\ILuaEngine.h" />
+    <ClInclude Include="..\Include\Ime.h" />
+    <ClInclude Include="..\Include\PathFinder.h" />
+    <ClInclude Include="..\Include\PathFinderEx.h" />
+    <ClInclude Include="..\Src\CacheManager.h" />
+    <ClInclude Include="..\Include\decodethread.h" />
+    <ClInclude Include="..\Include\ICacheManager.h" />
+    <ClInclude Include="..\Include\Utility.h" />
+    <ClInclude Include="..\Include\FileSystem\AsynStream.h" />
+    <ClInclude Include="..\Include\FileSystem\DataChunk.h" />
+    <ClInclude Include="..\Include\FileSystem\DataStream.h" />
+    <ClInclude Include="..\Include\FileSystem\EncodeFileStream.h" />
+    <ClInclude Include="..\Include\FileSystem\FileStream.h" />
+    <ClInclude Include="..\Include\FileSystem\IFileSystem.h" />
+    <ClInclude Include="..\Include\IndexFileReader.h" />
+    <ClInclude Include="..\Include\FileSystem\Ini.h" />
+    <ClInclude Include="..\Include\FileSystem\MemStream.h" />
+    <ClInclude Include="..\Include\FileSystem\path.h" />
+    <ClInclude Include="..\Include\FileSystem\PkgStream.h" />
+    <ClInclude Include="..\Include\FileSystem\PkgStruct.h" />
+    <ClInclude Include="..\Include\FileSystem\Stream.h" />
+    <ClInclude Include="..\Include\FileSystem\VirtualFileSystem.h" />
+    <ClInclude Include="..\Src\FileSystem\IStreamSystem.h" />
+    <ClInclude Include="..\Src\FileSystem\PkgFileSystem.h" />
+    <ClInclude Include="..\Src\FileSystem\PkgOperation.h" />
+    <ClInclude Include="..\Src\FileSystem\StdFileSystem.h" />
+    <ClInclude Include="..\Include\compress.h" />
+    <ClInclude Include="..\Include\encrypt.h" />
+    <ClInclude Include="..\Include\rle.h" />
+    <ClInclude Include="..\Src\EventEngine.h" />
+    <ClInclude Include="..\Src\EventEngineT.h" />
+    <ClInclude Include="..\Include\IEventEngine.h" />
+    <ClInclude Include="..\Include\Command.h" />
+    <ClInclude Include="..\Src\CommandFactory.h" />
+    <ClInclude Include="..\Include\ICommand.h" />
+    <ClInclude Include="..\Include\App.h" />
+    <ClInclude Include="..\Src\CachedMemAlloc.h" />
+    <ClInclude Include="..\Include\Mem.h" />
+    <ClInclude Include="..\Src\MemAlloc.h" />
+    <ClInclude Include="..\Include\MemObj.h" />
+    <ClInclude Include="..\Src\pcre\internal.h" />
+    <ClInclude Include="..\Include\pcre.h" />
+    <ClInclude Include="..\Src\pcre\pcreposix.h" />
+    <ClInclude Include="..\Include\MyTime.h" />
+    <ClInclude Include="..\Src\resource.h" />
+    <ClInclude Include="..\Include\Random.h" />
+    <ClInclude Include="..\Include\NetServiceProvider.h" />
+    <ClInclude Include="..\Src\Net\ikcp.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Net\net.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Net\AsynDatagramSocket.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Net\UDPSocket.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Net\KCPConnection.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Net\KCPConnection_Client.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Net\KCPConnection_Server.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Net\LargeCombinPacker.h">
+      <Filter>kcp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\Base.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="kcp">
+      <UniqueIdentifier>{5908fc31-d225-40fb-a97a-bb32fd7fbb63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

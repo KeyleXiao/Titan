@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{c7d82b01-9ade-4bf9-8345-8174dcbd3dbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{066bde25-8d3c-411b-a164-308575335bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KeyWord Files">
+      <UniqueIdentifier>{dc0b8ab3-3074-474b-9eb0-cb36740b77f9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\KeyWord.rc">
+      <Filter>Misc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IKeyWord.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KeyFilter.h">
+      <Filter>KeyWord Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KeyWord.h">
+      <Filter>KeyWord Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KeyFilter.cpp">
+      <Filter>KeyWord Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KeyWord.cpp">
+      <Filter>KeyWord Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

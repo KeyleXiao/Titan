@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Base", "Base\Build\Base.vcxproj", "{E9AAE810-DD1B-462F-98B2-5371F683C2A1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "..\Framework\Framework\build\Framework.vcxproj", "{D6BDCC56-6300-414D-9442-D58D3545DF11}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DetourNavMesh", "..\Server\DetourNavMesh\Build\DetourNavMesh.vcxproj", "{DC96D53D-90E0-409A-9BC4-A6C94F883288}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NmgenRcn", "..\Server\NmgenRcn\Build\cai-nmgen-rcn.vcxproj", "{B783B817-8746-4D54-A6CC-664C0A73186F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		UniRelease|Win32 = UniRelease|Win32
+		UniRelease|x64 = UniRelease|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Debug|Win32.Build.0 = Debug|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Debug|x64.ActiveCfg = Debug|x64
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.Debug|x64.Build.0 = Debug|x64
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniRelease|Win32.ActiveCfg = UniRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniRelease|Win32.Build.0 = UniRelease|Win32
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniRelease|x64.ActiveCfg = UniRelease|x64
+		{E9AAE810-DD1B-462F-98B2-5371F683C2A1}.UniRelease|x64.Build.0 = UniRelease|x64
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.Debug|Win32.Build.0 = Debug|Win32
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.Debug|x64.ActiveCfg = Debug|x64
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.Debug|x64.Build.0 = Debug|x64
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.UniRelease|Win32.ActiveCfg = UniRelease|Win32
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.UniRelease|Win32.Build.0 = UniRelease|Win32
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.UniRelease|x64.ActiveCfg = UniRelease|x64
+		{D6BDCC56-6300-414D-9442-D58D3545DF11}.UniRelease|x64.Build.0 = UniRelease|x64
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.Debug|Win32.Build.0 = Debug|Win32
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.Debug|x64.ActiveCfg = Debug|x64
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.Debug|x64.Build.0 = Debug|x64
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.UniRelease|Win32.ActiveCfg = UniRelease|Win32
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.UniRelease|Win32.Build.0 = UniRelease|Win32
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.UniRelease|x64.ActiveCfg = UniRelease|x64
+		{DC96D53D-90E0-409A-9BC4-A6C94F883288}.UniRelease|x64.Build.0 = UniRelease|x64
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.Debug|Win32.Build.0 = Debug|Win32
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.Debug|x64.ActiveCfg = Debug|x64
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.Debug|x64.Build.0 = Debug|x64
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.UniRelease|Win32.ActiveCfg = UniRelease|Win32
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.UniRelease|Win32.Build.0 = UniRelease|Win32
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.UniRelease|x64.ActiveCfg = UniRelease|x64
+		{B783B817-8746-4D54-A6CC-664C0A73186F}.UniRelease|x64.Build.0 = UniRelease|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

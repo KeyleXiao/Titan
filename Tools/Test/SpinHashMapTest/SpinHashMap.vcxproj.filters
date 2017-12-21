@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="msvc">
+      <UniqueIdentifier>{5e05003e-a4a0-4917-a6b1-c7544145b60b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThreadTest">
+      <UniqueIdentifier>{037028b0-1420-4e1d-a4b6-c6d1671036bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lockfree">
+      <UniqueIdentifier>{5f5e33d9-e1d5-4e74-aca4-006a4b32bc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SpinHashMahp">
+      <UniqueIdentifier>{55acc48f-c8e8-4c7c-b615-35953a20e970}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Product.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LockfreeQueueProducer.h">
+      <Filter>ThreadTest</Filter>
+    </ClInclude>
+    <ClInclude Include="LockfreeQueueConsumer.h">
+      <Filter>ThreadTest</Filter>
+    </ClInclude>
+    <ClInclude Include="testQ3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RingQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pthread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="msvc\pthread.h">
+      <Filter>msvc</Filter>
+    </ClInclude>
+    <ClInclude Include="msvc\sched.h">
+      <Filter>msvc</Filter>
+    </ClInclude>
+    <ClInclude Include="msvc\stdint.h">
+      <Filter>msvc</Filter>
+    </ClInclude>
+    <ClInclude Include="HashMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\atomic.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\freelist.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\hashmap.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\hazard.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\if.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\nocopyable.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\queue.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\static_assert.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\lockfree\tagged_index.h">
+      <Filter>Lockfree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\arrayPool.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\atomic.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\hashMap.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\hashMapElemDef.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\hashMapInterator.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\ringQueue.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Framework\Framework\include\SpinLock\spinLock.h">
+      <Filter>SpinHashMahp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="example.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Product.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadManage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LockfreeQueueProducer.cpp">
+      <Filter>ThreadTest</Filter>
+    </ClCompile>
+    <ClCompile Include="LockfreeQueueConsumer.cpp">
+      <Filter>ThreadTest</Filter>
+    </ClCompile>
+    <ClCompile Include="pthread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Framework\Framework\include\lockfree\hazard.cpp">
+      <Filter>Lockfree</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

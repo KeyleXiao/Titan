@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="War">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="MonsterExec">
+      <UniqueIdentifier>{fa94aa8a-f28c-4b4b-9160-243213a8be10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{13e75df6-1ac9-4e29-a860-5f70364a245d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MobaGoodsProp">
+      <UniqueIdentifier>{58e77aa7-814a-4ea8-8c35-17394a359593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MobaGoods">
+      <UniqueIdentifier>{07a987b6-1ebf-4043-bccc-dc3bc7920c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="War\AllWarManager">
+      <UniqueIdentifier>{5839a559-ab49-4cce-a31a-63cab8e42172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MonsterExec\MonsterCreateOrDieEvent">
+      <UniqueIdentifier>{bef23d4c-9450-48c7-97ad-7ab58f8798e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{81917056-d9b4-4b86-ba2f-d65333f5df54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="War\AllWarManager\Moba">
+      <UniqueIdentifier>{9669b2fe-34c3-4a2e-8b52-a6967e67bc4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="War\AllWarManager\Battle">
+      <UniqueIdentifier>{64875dee-c82b-4bd7-8c81-e9dbde9cc3f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="War\AllWarManager\SubManager">
+      <UniqueIdentifier>{34126433-62ab-46a9-a80f-13c276c2d916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="War\AllWarManager\SubManager\Interface">
+      <UniqueIdentifier>{9d278f0d-1752-4c4e-a24c-6ef7f94af599}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\StdAfx.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarManager.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsBaseExec.cpp">
+      <Filter>MonsterExec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsSoliderExec.cpp">
+      <Filter>MonsterExec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsterExec.cpp">
+      <Filter>MonsterExec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsTowerExec.cpp">
+      <Filter>MonsterExec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\dllmain.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarPart.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarService.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoodsPart.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoodsProp.cpp">
+      <Filter>MobaGoodsProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoods.cpp">
+      <Filter>MobaGoods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaEquipment.cpp">
+      <Filter>MobaGoods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaLeechdom.cpp">
+      <Filter>MobaGoods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoodsBaseProp.cpp">
+      <Filter>MobaGoodsProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoodsGroupUniqueProp.cpp">
+      <Filter>MobaGoodsProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoodsIDUniqueProp.cpp">
+      <Filter>MobaGoodsProp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarMonsterEventMgr.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsterEventFactory.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsEventProtectTower.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsEventProtectBase.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsEventMutexProtectBase.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsEventUltimateSoldiers.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsEventCreateCampMonster.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsEventMonsterRefresh.cpp">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EquipSchemeMgr.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorBuffMgr.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MultiCDGoods.cpp">
+      <Filter>MobaGoods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaAltarWar.cpp">
+      <Filter>War\AllWarManager\Moba</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGuideWar.cpp">
+      <Filter>War\AllWarManager\Moba</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaWar.cpp">
+      <Filter>War\AllWarManager\Moba</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BattleWar.cpp">
+      <Filter>War\AllWarManager\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SafetyZoneHelper.cpp">
+      <Filter>War\AllWarManager\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarBase.cpp">
+      <Filter>War\AllWarManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\War.cpp">
+      <Filter>War\AllWarManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarAddBuff.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarDrop.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIEcmCtrl.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIExpCtrl.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EconomyControl.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ForceEnd.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LvExpControl.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SoliderVigour.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Support.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarCheckBadBehavior.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarLogRecord.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\XPSkill.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BattleWar_SafetyZone.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RandRefreshMonsMgr.cpp">
+      <Filter>War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsterDiedExecMgr.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarMonsterMgr.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DevilKingMgr.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HeroGenicMgr.cpp">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\StdAfx.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarManager.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsTowerExec.h">
+      <Filter>MonsterExec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsBaseExec.h">
+      <Filter>MonsterExec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsSoliderExec.h">
+      <Filter>MonsterExec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsterExec.h">
+      <Filter>MonsterExec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWarService.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPlayExec.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWarManager.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWar.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMonsterExec.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\WarMessageDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\WarDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWarPart.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\War_ManagedDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarPart.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarService_Stub.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarService.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoodsPart.h">
+      <Filter>War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoodsProp.h">
+      <Filter>MobaGoodsProp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoods.h">
+      <Filter>MobaGoods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MobaGoodsDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaEquipment.h">
+      <Filter>MobaGoods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaLeechdom.h">
+      <Filter>MobaGoods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoodsBaseProp.h">
+      <Filter>MobaGoodsProp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoodsGroupUniqueProp.h">
+      <Filter>MobaGoodsProp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoodsIDUniqueProp.h">
+      <Filter>MobaGoodsProp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\WarHelper.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SchemeCenter\Include\SchemeWarDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarMonsterEventMgr.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMonsterEvent.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsterEventFactory.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsEventProtectTower.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsEventProtectBase.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsEventMutexProtectBase.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsEventUltimateSoldiers.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsEventCreateCampMonster.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsEventMonsterRefresh.h">
+      <Filter>MonsterExec\MonsterCreateOrDieEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EquipSchemeMgr.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IEquipSchemeMgr.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorBuffMgr.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MultiCDGoods.h">
+      <Filter>MobaGoods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarDef_Internal.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaAltarWar.h">
+      <Filter>War\AllWarManager\Moba</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGuideWar.h">
+      <Filter>War\AllWarManager\Moba</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaWar.h">
+      <Filter>War\AllWarManager\Moba</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BattleWar.h">
+      <Filter>War\AllWarManager\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SafetyZoneHelper.h">
+      <Filter>War\AllWarManager\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SWPerson.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarBase.h">
+      <Filter>War\AllWarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\War.h">
+      <Filter>War\AllWarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarAddBuff.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarDrop.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIEcmCtrl.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIExpCtrl.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EconomyControl.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ForceEnd.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LvExpControl.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SoliderVigour.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Support.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarCheckBadBehavior.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarLogRecord.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\XPSkill.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BattleWar_SafetyZone.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IAIEcmCtrlMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IAIExpCtrlMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ICheckBadBehaviorMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IEcmCtrlMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IForceEndMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ILogRecordMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ILvExpCtrlMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ISafetyZoneMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ISoliderVigourMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ISupportMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IWarAddBuffMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IWarDropMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IWarMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IXPSkillMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IRandRefreshMonsMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RandRefreshMonsMgr.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IMonsterDiedExecMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsterDiedExecMgr.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IWarMonsterMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarMonsterMgr.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IDevilKingMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DevilKingMgr.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IHeroGenicMgr.h">
+      <Filter>War\AllWarManager\SubManager\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HeroGenicMgr.h">
+      <Filter>War\AllWarManager\SubManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

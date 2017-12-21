@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{e3b68b67-6934-4603-b10f-f36cf30a9097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{b38860bc-f94d-4e14-af60-65e961fea46b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口">
+      <UniqueIdentifier>{b44f0597-a3b6-4cfb-9bb0-126d16701961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Dialog Files">
+      <UniqueIdentifier>{aa255657-e0bd-45eb-a61e-cb649a482f85}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SceneServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ServerGlobal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\IServerGlobal.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\NetMessageHandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\IMessageHandler.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\LanguageVer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\LanguageDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Language_inl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ShareServerHelper.h" />
+    <ClInclude Include="..\src\DialogPageStart.h">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DialogPageMapinfo.h">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DialogPageSetting.h">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SceneServerControl.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SceneServerDlg.h">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\IMiscManager.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CheckDialog.h">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\SceneServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ServerGlobal.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\NetMessageHandler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ShareServerHelper.cpp" />
+    <ClCompile Include="..\src\DialogPageStart.cpp">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DialogPageMapinfo.cpp">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DialogPageSetting.cpp">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SceneServerControl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SceneServerDlg.cpp">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CheckDialog.cpp">
+      <Filter>源文件\Dialog Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\SceneServer.rc">
+      <Filter>源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\res\SceneServer.ico" />
+  </ItemGroup>
+</Project>

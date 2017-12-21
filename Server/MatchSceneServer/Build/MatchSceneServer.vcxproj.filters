@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="接口">
+      <UniqueIdentifier>{cd2df1cd-6784-4163-9bce-8a0b4bb02ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{6d238786-705c-49f2-8703-cc812cfa5cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{23744f88-f738-44a5-9306-654c7fde0319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Match">
+      <UniqueIdentifier>{c22fc926-0ca4-4b22-9b33-0894d6ae2d48}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\IMatchSceneService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Include\IMatchScene.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\MatchSceneHelper.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MatchDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchSceneService_Stub.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchSceneService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchSceneService_Proxy.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchScene.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchSceneRoom.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarMatch.h">
+      <Filter>Match</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\..\..\Common\MatchMsgDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\MatchSceneService.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchSceneService_Proxy.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchSceneService_Stub.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchScene.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchSceneRoom.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarMatch.cpp">
+      <Filter>Match</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+  </ItemGroup>
+</Project>

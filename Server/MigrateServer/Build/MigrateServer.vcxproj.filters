@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include File">
+      <UniqueIdentifier>{06651999-148b-400a-b2d7-699d26be37d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source File\迁入">
+      <UniqueIdentifier>{9e978f0a-2c6a-4e94-bb77-c4a0c7f6d349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File\迁出">
+      <UniqueIdentifier>{d14a78e4-34e0-4aad-8c8f-95ddda5f2367}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MigrateService.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\InDirHandler.cpp">
+      <Filter>Source File\迁入</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OutDirHandler.cpp">
+      <Filter>Source File\迁出</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMigrateService.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MigrateService.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MigrateService_Stub.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MigrateDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\InDirHandler.h">
+      <Filter>Source File\迁入</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OutDirHandler.h">
+      <Filter>Source File\迁出</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ActorDef.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

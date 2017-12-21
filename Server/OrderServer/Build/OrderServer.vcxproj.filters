@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\OrderPart.h">
+      <Filter>OrderPart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OrderSceneService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OrderSceneService_Proxy.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OrderSceneService_Stub.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IOrderPart.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IOrderSceneService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IOrderScene.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OrderScene.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OrderSceneHelper.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\OrderPart.cpp">
+      <Filter>OrderPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OrderSceneService.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OrderSceneService_Proxy.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OrderSceneService_Stub.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OrderScene.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Service">
+      <UniqueIdentifier>{f4a9a682-8540-4877-b858-4776bac63c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{51cd64c8-4710-4dd2-b9e0-d120e16d13a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口">
+      <UniqueIdentifier>{9a6e186d-7bf6-48cb-9f52-949dce48d2b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OrderPart">
+      <UniqueIdentifier>{87408ef6-6288-48dd-9604-1700987ff494}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

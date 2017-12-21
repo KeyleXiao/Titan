@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|Win32">
+      <Configuration>UniRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|x64">
+      <Configuration>UniRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2EDAB884-6CE7-498A-B3B3-38B7C01574B6}</ProjectGuid>
+    <RootNamespace>AIServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../Bin/Server</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>../../../Bin/Server</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Connector/Include;../../Condition/Include;../../EffectServer\Include;../../EnmityServer/Include;../../AOI/Include;../../Spell/Include;../../WarServer/Include;../../MapPathFind/Include</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AISERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Connector/Include;../../FreezeServer/Include;../../AOI/Include;../../Spell/Include;../../WarServer/Include;../../MapPathFind/Include;../../Condition/Include;../../EffectServer/Include;../../BuffServer/Include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AISERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Condition/Include;../../EffectServer/Include;../../EnmityServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Condition/Include;../../EffectServer/Include;../../EnmityServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Connector/Include;../../FreezeServer/Include;../../AOI/Include;../../Spell/Include;../../WarServer/Include;../../MapPathFind/Include;../../Condition/Include;../../EffectServer/Include;../../BuffServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AISERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Connector/Include;../../FreezeServer/Include;../../AOI/Include;../../Spell/Include;../../WarServer/Include;../../MapPathFind/Include;../../Condition/Include;../../EffectServer/Include;../../BuffServer/Include;../../../Server/SchemeCenter/Include;../../../base/lua</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Actions\AIActionActiveTalent.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionAddBuff.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionAllMid.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionAllotPath.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionBroadcastAttackSignal.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionBuyItem.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionBuyItems.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionCastSpell.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionChooseNearestPath.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionCloseTo.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionCreateNpc.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionDestroySelf.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionIdle.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionInnerAILogic.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionJump.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionKeepDistance.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionPatrol.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionPickUpEntity.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionRadarScan.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionRetrieve.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionSelectPath.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionSightCheck .cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionUpgradeSpell.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionUseItem.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionWatchOut.cpp" />
+    <ClCompile Include="..\Src\Actions\AIActionWatchOutEnemy.cpp" />
+    <ClCompile Include="..\Src\AIAction.cpp" />
+    <ClCompile Include="..\Src\AIDecision.cpp" />
+    <ClCompile Include="..\Src\AIFactory.cpp" />
+    <ClCompile Include="..\Src\AILuaBind.cpp" />
+    <ClCompile Include="..\Src\AIManager.cpp" />
+    <ClCompile Include="..\Src\AIPart.cpp" />
+    <ClCompile Include="..\Src\AIProxy.cpp" />
+    <ClCompile Include="..\Src\AIService.cpp" />
+    <ClCompile Include="..\Src\AITargetHelper.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionAroundEntityExist.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionBuffExist.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionCampRelationship.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionDistance2BornLoc.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionDistance2EventLoc.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionDistance2Target.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionEntityNumAroundTarget.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionEntityType.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionHeight.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionHpMp.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionLevel.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionMasterCastSpellSlot.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionMinDistance2SelfPath.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionNearbyEntityNumCompare.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionSpellCD.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionTowerLost.cpp" />
+    <ClCompile Include="..\Src\Conditions\AIConditionUseItem.cpp" />
+    <ClCompile Include="..\Src\DistanceCtrl.cpp" />
+    <ClCompile Include="..\Src\EntityAIMessageHelper.cpp" />
+    <ClCompile Include="..\Src\FightStateController.cpp" />
+    <ClCompile Include="..\Src\AITaskMgr.cpp" />
+    <ClCompile Include="..\Src\PlayerActionRecord.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\Tasks\Task.cpp" />
+    <ClCompile Include="..\Src\Tasks\TaskBack.cpp" />
+    <ClCompile Include="..\Src\Tasks\TaskForwardLine.cpp" />
+    <ClCompile Include="..\Src\Tasks\TaskFollow.cpp" />
+    <ClCompile Include="..\Src\Tasks\TaskHelpOtherLine.cpp" />
+    <ClCompile Include="..\Src\Tasks\TaskHunting.cpp" />
+    <ClCompile Include="..\Src\Tasks\TaskSim.cpp" />
+    <ClCompile Include="..\Src\Win32Dll.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\AIAction_ManagedDef.h" />
+    <ClInclude Include="..\Include\AICondition_ManagedDef.h" />
+    <ClInclude Include="..\Include\AI_ManagedDef.h" />
+    <ClInclude Include="..\Include\IAIFactory.h" />
+    <ClInclude Include="..\Include\IAIPart.h" />
+    <ClInclude Include="..\Include\IAIService.h" />
+    <ClInclude Include="..\Include\IAITask.h" />
+    <ClInclude Include="..\Src\Actions\AIActionActiveTalent.h" />
+    <ClInclude Include="..\Src\Actions\AIActionAddBuff.h" />
+    <ClInclude Include="..\Src\Actions\AIActionAllMid.h" />
+    <ClInclude Include="..\Src\Actions\AIActionAllotPath.h" />
+    <ClInclude Include="..\Src\Actions\AIActionBroadcastAttackSignal.h" />
+    <ClInclude Include="..\Src\Actions\AIActionBuyItem.h" />
+    <ClInclude Include="..\Src\Actions\AIActionBuyItems.h" />
+    <ClInclude Include="..\Src\Actions\AIActionCastSpell.h" />
+    <ClInclude Include="..\Src\Actions\AIActionChooseNearestPath.h" />
+    <ClInclude Include="..\Src\Actions\AIActionCloseTo.h" />
+    <ClInclude Include="..\Src\Actions\AIActionCreateNpc.h" />
+    <ClInclude Include="..\Src\Actions\AIActionDestroySelf.h" />
+    <ClInclude Include="..\Src\Actions\AIActionIdle.h" />
+    <ClInclude Include="..\Src\Actions\AIActionInnerAILogic.h" />
+    <ClInclude Include="..\Src\Actions\AIActionJump.h" />
+    <ClInclude Include="..\Src\Actions\AIActionKeepDistance.h" />
+    <ClInclude Include="..\Src\Actions\AIActionPatrol.h" />
+    <ClInclude Include="..\Src\Actions\AIActionPickUpEntity.h" />
+    <ClInclude Include="..\Src\Actions\AIActionRadarScan.h" />
+    <ClInclude Include="..\Src\Actions\AIActionRetrieve.h" />
+    <ClInclude Include="..\Src\Actions\AIActionSelectPath.h" />
+    <ClInclude Include="..\Src\Actions\AIActionSightCheck.h" />
+    <ClInclude Include="..\Src\Actions\AIActionUpgradeSpell.h" />
+    <ClInclude Include="..\Src\Actions\AIActionUseItem.h" />
+    <ClInclude Include="..\Src\Actions\AIActionWatchOut.h" />
+    <ClInclude Include="..\Src\Actions\AIActionWatchOutEnemy.h" />
+    <ClInclude Include="..\Src\AIAction.h" />
+    <ClInclude Include="..\Src\AICondition.h" />
+    <ClInclude Include="..\Src\AIDecision.h" />
+    <ClInclude Include="..\Src\AIFactory.h" />
+    <ClInclude Include="..\Src\AILuaBind.h" />
+    <ClInclude Include="..\Src\AIManager.h" />
+    <ClInclude Include="..\Src\AIPart.h" />
+    <ClInclude Include="..\Src\AIProxy.h" />
+    <ClInclude Include="..\Src\AIService.h" />
+    <ClInclude Include="..\Src\AIService_Stub.h" />
+    <ClInclude Include="..\Src\AITargetHelper.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionAroundEntityExist.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionBuffExist.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionCampRelationship.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionDistance2BornLoc.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionDistance2EventLoc.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionDistance2Target.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionEntityNumAroundTarget.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionEntityType.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionHeight.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionHpMp.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionLevel.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionMasterCastSpellSlot.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionMinDistance2SelfPath.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionNearbyEntityNumCompare.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionSpellCD.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionTowerLost.h" />
+    <ClInclude Include="..\Src\Conditions\AIConditionUseItem.h" />
+    <ClInclude Include="..\Src\DistanceCtrl.h" />
+    <ClInclude Include="..\Src\EntityAIMessageHelper.h" />
+    <ClInclude Include="..\Src\FightStateController.h" />
+    <ClInclude Include="..\Src\AITaskMgr.h" />
+    <ClInclude Include="..\Src\PlayerActionRecord.h" />
+    <ClInclude Include="..\Src\resource.h" />
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\Tasks\Task.h" />
+    <ClInclude Include="..\Src\Tasks\TaskBack.h" />
+    <ClInclude Include="..\Src\Tasks\TaskForwardLine.h" />
+    <ClInclude Include="..\Src\Tasks\TaskFollow.h" />
+    <ClInclude Include="..\Src\Tasks\TaskHelpOtherLine.h" />
+    <ClInclude Include="..\Src\Tasks\TaskHunting.h" />
+    <ClInclude Include="..\Src\Tasks\TaskSim.h" />
+    <ClInclude Include="..\Src\Win32Dll.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\AIServer.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

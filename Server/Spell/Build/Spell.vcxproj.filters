@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="interface">
+      <UniqueIdentifier>{553968e7-a1ac-402a-8395-f48b974ea9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="技能模版">
+      <UniqueIdentifier>{f7f30cf4-c2c8-4029-9df6-05755cfa76f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="攻击对象">
+      <UniqueIdentifier>{7f5f7c70-2283-4eeb-b2de-035b67983ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="伤害对象">
+      <UniqueIdentifier>{c63d3116-d661-4588-a705-e023774e3f42}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\Spell.cpp" />
+    <ClCompile Include="..\Src\Spell_Instant.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Passive.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Cast.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Channel.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SpellPart.cpp" />
+    <ClCompile Include="..\Src\SpellFactory.cpp" />
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\Damage.cpp">
+      <Filter>伤害对象</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DamageServer.cpp">
+      <Filter>伤害对象</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DamagePart.cpp">
+      <Filter>伤害对象</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Secondary.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Cure.cpp">
+      <Filter>伤害对象</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_FocoEnergia.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\StrafeRateCtrl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Include\ISpell.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell.h" />
+    <ClInclude Include="..\Src\Spell_Instant.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Passive.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Cast.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Channel.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SpellPart.h" />
+    <ClInclude Include="..\..\..\Common\SpellMessageDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SpellFactory.h" />
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\..\..\Common\SpellDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\SpellServerDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_InstantSingle.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\NetMessageDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_FlySingle.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_InstantAOE.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Damage.h">
+      <Filter>伤害对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DamageServer.h">
+      <Filter>伤害对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDamageServer.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DamagePart.h">
+      <Filter>伤害对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DamageDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_InstantLine.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_FlyLine.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_FlyBomb.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ICamp.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\SpellDef_ManagedDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Secondary.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_InstantSector.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAttackObject.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DamageDef_ManagedDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Cure.h">
+      <Filter>伤害对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_RoundTrip.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_RangeSelection.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_FocoEnergia.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_RandomSelection.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_Catapult.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_FlyLineRepulse.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_AOEDiffuse.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_AOETransmit.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_Barrier.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AttackObject_LockFlyBomb.h">
+      <Filter>攻击对象</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

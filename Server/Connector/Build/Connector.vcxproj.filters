@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Include\ICenterConnectorService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGatewayAcceptorService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CenterConnectorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CenterConnectorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GatewayAcceptorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GatewayAcceptorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\CommandDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBridgeConnectorService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BridgeConnectorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BridgeConnectorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IManagerConnectorService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ManagerConnectorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ManagerConnectorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGuardConnectorService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardConnectorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuardConnectorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceConnectorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceConnectorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IVoiceConnectorService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="stub">
+      <UniqueIdentifier>{e660ea2d-b25f-4a64-964f-2551a3a89d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口">
+      <UniqueIdentifier>{e09a2390-f5d3-4747-8fc8-f7de451fe27c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

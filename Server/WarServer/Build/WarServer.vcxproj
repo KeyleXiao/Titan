@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|Win32">
+      <Configuration>UniRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|x64">
+      <Configuration>UniRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CEB714B5-2B93-41F2-B2D2-540F03BBA537}</ProjectGuid>
+    <RootNamespace>WarServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir>../../../Bin/Server\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir>../../../Bin/Server\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir>../../../Bin/Server\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir>../../../Bin/Server\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../Bin/Server\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>../../../Bin/Server\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Dependence/Include;../../../Base/Base/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Server/BuffServer/Include;../../../Server/CampServer/Include;../../../Server/SkillServer/Include;../../Server/AIServer/Include;../../FreezeServer/Include;../../EffectServer/Include;../../../Server/Entity/Include;../../SchemeCenter/Include;../../Include;../../Connector/Include;../../../framework/framework/include;../../MatchSceneServer/Include;../../AOI/Include;../../Entity/Include;../../Condition/Include;../../MapPathFind/Include;../../Spell/Include;../../SceneServer/Include;../../MigrateServer/Include;../../Cluster/DBEngine/Include;../../ServerGlobal/Include;../../../Cluster/DBEngine/Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;WARSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Dependence/Include;../../../Base/Base/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Server/BuffServer/Include;../../../Server/CampServer/Include;../../../Server/SkillServer/Include;../../Server/AIServer/Include;../../FreezeServer/Include;../../EffectServer/Include;../../../Server/Entity/Include;../../SchemeCenter/Include;../../Include;../../Connector/Include;../../../framework/framework/include;../../MatchSceneServer/Include;../../AOI/Include;../../Entity/Include;../../Condition/Include;../../MapPathFind/Include;../../Spell/Include;../../SceneServer/Include;../../MigrateServer/Include;../../Cluster/DBEngine/Include;../../ServerGlobal/Include;../../ChatServer/Include;../../../Cluster/DBEngine/Include\;../../../Server/OSSLogServer/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;WARSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Dependence/Include;../../../Base/Base/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Server/BuffServer/Include;../../../Server/CampServer/Include;../../../Server/SkillServer/Include;../../Server/AIServer/Include;../../FreezeServer/Include;../../EffectServer/Include;../../../Server/Entity/Include;../../SchemeCenter/Include;../../Include;../../Connector/Include;../../../framework/framework/include;../../MatchSceneServer/Include;../../AOI/Include;../../Entity/Include;../../Condition/Include;../../MapPathFind/Include;../../Spell/Include;../../SceneServer/Include;../../MigrateServer/Include;../../Cluster/DBEngine/Include;../../ServerGlobal/Include;../../../Cluster/DBEngine/Include\;../../ChatServer/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Dependence/Include;../../../Base/Base/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Server/BuffServer/Include;../../../Server/CampServer/Include;../../../Server/SkillServer/Include;../../Server/AIServer/Include;../../FreezeServer/Include;../../EffectServer/Include;../../../Server/Entity/Include;../../SchemeCenter/Include;../../Include;../../Connector/Include;../../../framework/framework/include;../../MatchSceneServer/Include;../../AOI/Include;../../Entity/Include;../../Condition/Include;../../MapPathFind/Include;../../Spell/Include;../../SceneServer/Include;../../MigrateServer/Include;../../Cluster/DBEngine/Include;../../ServerGlobal/Include;../../../Cluster/DBEngine/Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../KinServer/Include;../../ClanServer/Include;../Include;../../Common;../../../Common;../../../Dependence/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Server/BuffServer/Include;../../../Server/CampServer/Include;../../../Server/SkillServer/Include;../../Server/AIServer/Include;../../FreezeServer/Include;../../EffectServer/Include;../../../Server/Entity/Include;../../SchemeCenter/Include;../../Include;../../Connector/Include;../../../framework/framework/include;../../MatchSceneServer/Include;../../AOI/Include;../../Entity/Include;../../Condition/Include;../../MapPathFind/Include;../../Spell/Include;../../SceneServer/Include;../../MigrateServer/Include;../../Cluster/DBEngine/Include;../../ServerGlobal/Include;../../ChatServer/Include;../../../Cluster/DBEngine/Include\;../../../Server/OSSLogServer/Include;../../MentorshipServer/Include;../../StaticWarServer/Include;../../../base/base/include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../AIServer/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WARSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>Framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../KinServer/Include;../../ClanServer/Include;../Include;../../Common;../../../Common;../../../Dependence/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Server/BuffServer/Include;../../../Server/CampServer/Include;../../../Server/SkillServer/Include;../../Server/AIServer/Include;../../FreezeServer/Include;../../EffectServer/Include;../../../Server/Entity/Include;../../SchemeCenter/Include;../../Include;../../Connector/Include;../../../framework/framework/include;../../MatchSceneServer/Include;../../AOI/Include;../../Entity/Include;../../Condition/Include;../../MapPathFind/Include;../../Spell/Include;../../SceneServer/Include;../../MigrateServer/Include;../../Cluster/DBEngine/Include;../../ServerGlobal/Include;../../ChatServer/Include;../../../Cluster/DBEngine/Include\;../../../Server/OSSLogServer/Include;../../MentorshipServer/Include;../../StaticWarServer/Include;../../../base/base/include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../AIServer/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WARSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\ActorBuffMgr.cpp" />
+    <ClCompile Include="..\Src\AIEcmCtrl.cpp" />
+    <ClCompile Include="..\Src\AIExpCtrl.cpp" />
+    <ClCompile Include="..\Src\BattleWar.cpp" />
+    <ClCompile Include="..\Src\BattleWar_SafetyZone.cpp" />
+    <ClCompile Include="..\Src\DevilKingMgr.cpp" />
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\EconomyControl.cpp" />
+    <ClCompile Include="..\Src\EquipSchemeMgr.cpp" />
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\ForceEnd.cpp" />
+    <ClCompile Include="..\Src\HeroGenicMgr.cpp" />
+    <ClCompile Include="..\Src\LvExpControl.cpp" />
+    <ClCompile Include="..\Src\MobaAltarWar.cpp" />
+    <ClCompile Include="..\Src\MobaEquipment.cpp" />
+    <ClCompile Include="..\Src\MobaGoods.cpp" />
+    <ClCompile Include="..\Src\MobaGoodsBaseProp.cpp" />
+    <ClCompile Include="..\Src\MobaGoodsGroupUniqueProp.cpp" />
+    <ClCompile Include="..\Src\MobaGoodsIDUniqueProp.cpp" />
+    <ClCompile Include="..\Src\MobaGoodsPart.cpp" />
+    <ClCompile Include="..\Src\MobaGoodsProp.cpp" />
+    <ClCompile Include="..\Src\MobaGuideWar.cpp" />
+    <ClCompile Include="..\Src\MobaLeechdom.cpp" />
+    <ClCompile Include="..\Src\MobaWar.cpp" />
+    <ClCompile Include="..\Src\MonsBaseExec.cpp" />
+    <ClCompile Include="..\Src\MonsEventCreateCampMonster.cpp" />
+    <ClCompile Include="..\Src\MonsEventMutexProtectBase.cpp" />
+    <ClCompile Include="..\Src\MonsEventProtectBase.cpp" />
+    <ClCompile Include="..\Src\MonsEventProtectTower.cpp" />
+    <ClCompile Include="..\Src\MonsEventMonsterRefresh.cpp" />
+    <ClCompile Include="..\Src\MonsEventUltimateSoldiers.cpp" />
+    <ClCompile Include="..\Src\MonsSoliderExec.cpp" />
+    <ClCompile Include="..\Src\MonsterDiedExecMgr.cpp" />
+    <ClCompile Include="..\Src\MonsterEventFactory.cpp" />
+    <ClCompile Include="..\Src\MonsterExec.cpp" />
+    <ClCompile Include="..\Src\MonsTowerExec.cpp" />
+    <ClCompile Include="..\Src\MultiCDGoods.cpp" />
+    <ClCompile Include="..\Src\RandRefreshMonsMgr.cpp" />
+    <ClCompile Include="..\Src\SafetyZoneHelper.cpp" />
+    <ClCompile Include="..\Src\SoliderVigour.cpp" />
+    <ClCompile Include="..\Src\StdAfx.cpp" />
+    <ClCompile Include="..\Src\Support.cpp" />
+    <ClCompile Include="..\Src\War.cpp" />
+    <ClCompile Include="..\Src\WarAddBuff.cpp" />
+    <ClCompile Include="..\Src\WarBase.cpp" />
+    <ClCompile Include="..\Src\WarCheckBadBehavior.cpp" />
+    <ClCompile Include="..\Src\WarDrop.cpp" />
+    <ClCompile Include="..\Src\WarLogRecord.cpp" />
+    <ClCompile Include="..\Src\WarManager.cpp" />
+    <ClCompile Include="..\Src\WarMonsterEventMgr.cpp" />
+    <ClCompile Include="..\Src\WarMonsterMgr.cpp" />
+    <ClCompile Include="..\Src\WarPart.cpp" />
+    <ClCompile Include="..\Src\WarService.cpp" />
+    <ClCompile Include="..\Src\XPSkill.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\MobaGoodsDef.h" />
+    <ClInclude Include="..\..\..\Common\WarDef.h" />
+    <ClInclude Include="..\..\..\Common\WarMessageDef.h" />
+    <ClInclude Include="..\..\..\Common\War_ManagedDef.h" />
+    <ClInclude Include="..\..\SchemeCenter\Include\SchemeWarDef.h" />
+    <ClInclude Include="..\Include\IEquipSchemeMgr.h" />
+    <ClInclude Include="..\Include\IMonsterEvent.h" />
+    <ClInclude Include="..\Include\IMonsterExec.h" />
+    <ClInclude Include="..\Include\IPlayExec.h" />
+    <ClInclude Include="..\Include\IWar.h" />
+    <ClInclude Include="..\Include\IWarManager.h" />
+    <ClInclude Include="..\Include\IWarPart.h" />
+    <ClInclude Include="..\Include\IWarService.h" />
+    <ClInclude Include="..\Include\WarHelper.h" />
+    <ClInclude Include="..\Src\ActorBuffMgr.h" />
+    <ClInclude Include="..\Src\AIEcmCtrl.h" />
+    <ClInclude Include="..\Src\AIExpCtrl.h" />
+    <ClInclude Include="..\Src\BattleWar.h" />
+    <ClInclude Include="..\Src\BattleWar_SafetyZone.h" />
+    <ClInclude Include="..\Src\DevilKingMgr.h" />
+    <ClInclude Include="..\Src\EconomyControl.h" />
+    <ClInclude Include="..\Src\EquipSchemeMgr.h" />
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\ForceEnd.h" />
+    <ClInclude Include="..\Src\HeroGenicMgr.h" />
+    <ClInclude Include="..\Src\IAIEcmCtrlMgr.h" />
+    <ClInclude Include="..\Src\IAIExpCtrlMgr.h" />
+    <ClInclude Include="..\Src\ICheckBadBehaviorMgr.h" />
+    <ClInclude Include="..\Src\IDevilKingMgr.h" />
+    <ClInclude Include="..\Src\IEcmCtrlMgr.h" />
+    <ClInclude Include="..\Src\IForceEndMgr.h" />
+    <ClInclude Include="..\Src\IHeroGenicMgr.h" />
+    <ClInclude Include="..\Src\ILogRecordMgr.h" />
+    <ClInclude Include="..\Src\ILvExpCtrlMgr.h" />
+    <ClInclude Include="..\Src\IMonsterDiedExecMgr.h" />
+    <ClInclude Include="..\Src\IRandRefreshMonsMgr.h" />
+    <ClInclude Include="..\Src\ISafetyZoneMgr.h" />
+    <ClInclude Include="..\Src\ISoliderVigourMgr.h" />
+    <ClInclude Include="..\Src\ISupportMgr.h" />
+    <ClInclude Include="..\Src\IWarAddBuffMgr.h" />
+    <ClInclude Include="..\Src\IWarDropMgr.h" />
+    <ClInclude Include="..\Src\IWarMgr.h" />
+    <ClInclude Include="..\Src\IWarMonsterMgr.h" />
+    <ClInclude Include="..\Src\IXPSkillMgr.h" />
+    <ClInclude Include="..\Src\LvExpControl.h" />
+    <ClInclude Include="..\Src\MobaAltarWar.h" />
+    <ClInclude Include="..\Src\MobaEquipment.h" />
+    <ClInclude Include="..\Src\MobaGoods.h" />
+    <ClInclude Include="..\Src\MobaGoodsBaseProp.h" />
+    <ClInclude Include="..\Src\MobaGoodsGroupUniqueProp.h" />
+    <ClInclude Include="..\Src\MobaGoodsIDUniqueProp.h" />
+    <ClInclude Include="..\Src\MobaGoodsPart.h" />
+    <ClInclude Include="..\Src\MobaGoodsProp.h" />
+    <ClInclude Include="..\Src\MobaGuideWar.h" />
+    <ClInclude Include="..\Src\MobaLeechdom.h" />
+    <ClInclude Include="..\Src\MobaWar.h" />
+    <ClInclude Include="..\Src\MonsBaseExec.h" />
+    <ClInclude Include="..\Src\MonsEventCreateCampMonster.h" />
+    <ClInclude Include="..\Src\MonsEventMutexProtectBase.h" />
+    <ClInclude Include="..\Src\MonsEventProtectBase.h" />
+    <ClInclude Include="..\Src\MonsEventProtectTower.h" />
+    <ClInclude Include="..\Src\MonsEventMonsterRefresh.h" />
+    <ClInclude Include="..\Src\MonsEventUltimateSoldiers.h" />
+    <ClInclude Include="..\Src\MonsSoliderExec.h" />
+    <ClInclude Include="..\Src\MonsterDiedExecMgr.h" />
+    <ClInclude Include="..\Src\MonsterEventFactory.h" />
+    <ClInclude Include="..\Src\MonsterExec.h" />
+    <ClInclude Include="..\Src\MonsTowerExec.h" />
+    <ClInclude Include="..\Src\MultiCDGoods.h" />
+    <ClInclude Include="..\Src\RandRefreshMonsMgr.h" />
+    <ClInclude Include="..\Src\SafetyZoneHelper.h" />
+    <ClInclude Include="..\Src\SoliderVigour.h" />
+    <ClInclude Include="..\Src\StdAfx.h" />
+    <ClInclude Include="..\Src\Support.h" />
+    <ClInclude Include="..\Src\SWPerson.h" />
+    <ClInclude Include="..\Src\War.h" />
+    <ClInclude Include="..\Src\WarAddBuff.h" />
+    <ClInclude Include="..\Src\WarBase.h" />
+    <ClInclude Include="..\Src\WarCheckBadBehavior.h" />
+    <ClInclude Include="..\Src\WarDef_Internal.h" />
+    <ClInclude Include="..\Src\WarDrop.h" />
+    <ClInclude Include="..\Src\WarLogRecord.h" />
+    <ClInclude Include="..\Src\WarManager.h" />
+    <ClInclude Include="..\Src\WarMonsterEventMgr.h" />
+    <ClInclude Include="..\Src\WarMonsterMgr.h" />
+    <ClInclude Include="..\Src\WarPart.h" />
+    <ClInclude Include="..\Src\WarService.h" />
+    <ClInclude Include="..\Src\WarService_Stub.h" />
+    <ClInclude Include="..\Src\XPSkill.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

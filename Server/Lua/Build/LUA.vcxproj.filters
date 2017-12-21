@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\CommonHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\NPCHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TriggerHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TaskHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorTaskTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DateTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoginTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\NPCFuncTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\NPCTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TimerTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WarPersonTaskTrigger.cpp">
+      <Filter>Trigger\Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TriggerManager.cpp">
+      <Filter>Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SceneServerAPI.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\API_Wrapper.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Include\ITrigger.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CsvReadHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\NPCHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TriggerHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TaskHelper.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WarPersonTaskTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorTaskTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DateTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoginTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\NPCFuncTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\NPCTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TimerTrigger.h">
+      <Filter>Trigger\Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TriggerManager.h">
+      <Filter>Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SceneServerAPI.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\API_Wrapper.h">
+      <Filter>API</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Trigger">
+      <UniqueIdentifier>{812a1f62-456d-47d4-852d-e4d97deaa8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{73bb88fd-a72f-466e-a95b-89cd900f06df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{ec32c28a-8f86-485a-86b4-2080abc2af4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Trigger\Trigger">
+      <UniqueIdentifier>{cd52fe21-46a1-4471-965b-460e971de943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API">
+      <UniqueIdentifier>{19d71b54-a052-49af-869f-2d7e30f2d225}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|Win32">
+      <Configuration>UniRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|x64">
+      <Configuration>UniRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\IMessageHandler.h" />
+    <ClInclude Include="..\..\..\Common\LanguageDef.h" />
+    <ClInclude Include="..\..\..\Common\LanguageVer.h" />
+    <ClInclude Include="..\..\..\Common\Language_inl.h" />
+    <ClInclude Include="..\..\include\IMiscManager.h" />
+    <ClInclude Include="..\..\include\IServerGlobal.h" />
+    <ClInclude Include="..\src\CheckDialog.h" />
+    <ClInclude Include="..\src\DialogPageMapinfo.h" />
+    <ClInclude Include="..\src\DialogPageSetting.h" />
+    <ClInclude Include="..\src\DialogPageStart.h" />
+    <ClInclude Include="..\src\NetMessageHandler.h" />
+    <ClInclude Include="..\src\resource.h" />
+    <ClInclude Include="..\src\SceneServer.h" />
+    <ClInclude Include="..\src\SceneServerControl.h" />
+    <ClInclude Include="..\src\SceneServerDlg.h" />
+    <ClInclude Include="..\src\ServerGlobal.h" />
+    <ClInclude Include="..\src\ShareServerHelper.h" />
+    <ClInclude Include="..\src\stdafx.h" />
+    <ClInclude Include="..\src\targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\CheckDialog.cpp" />
+    <ClCompile Include="..\src\DialogPageMapinfo.cpp" />
+    <ClCompile Include="..\src\DialogPageSetting.cpp" />
+    <ClCompile Include="..\src\DialogPageStart.cpp" />
+    <ClCompile Include="..\src\NetMessageHandler.cpp" />
+    <ClCompile Include="..\src\SceneServer.cpp" />
+    <ClCompile Include="..\src\SceneServerControl.cpp" />
+    <ClCompile Include="..\src\SceneServerDlg.cpp" />
+    <ClCompile Include="..\src\ServerGlobal.cpp" />
+    <ClCompile Include="..\src\ShareServerHelper.cpp" />
+    <ClCompile Include="..\src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\SceneServer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\res\SceneServer.ico" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C6BEAD3C-EF56-403B-9C04-11CE9CB2680F}</ProjectGuid>
+    <RootNamespace>SceneServer</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Server\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Server</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../AIServer/Include;../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../include;../include;../../Connector/include;../../../Server/AOI/include;../../../Server/Entity/Include;../../../Server/Condition/Include;../../../Server/EffectServer/Include;../../../Server/Spell/Include;../../../Server/FreezeServer/Include;../../../Server/BuffServer/Include;../../../Server/TankServer/Include;../../../Server/EnmityServer/Include;../../../Server/Lua/Include;../../../Server/MapPathFind/Include;../../../Server/MatchSceneServer/Include;../../../Server/WarServer/Include;../../../Server/MatchServer/Include;../../../Server/GameResServer/Include;../../../Server/ServerGlobal/Include;../../MigrateServer/Include;../../../Cluster/GuardConnector/Include;../../../Cluster/BridgeConnector/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../../Server/ShareServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../AIServer/Include;../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../include;../include;../../Connector/include;../../../Server/AOI/include;../../../Server/Entity/Include;../../../Server/Condition/Include;../../../Server/EffectServer/Include;../../../Server/Spell/Include;../../../Server/FreezeServer/Include;../../../Server/BuffServer/Include;../../../Server/TankServer/Include;../../../Server/EnmityServer/Include;../../../Server/Lua/Include;../../../Server/MapPathFind/Include;../../../Server/MatchSceneServer/Include;../../../Server/WarServer/Include;../../../Server/MatchServer/Include;../../../Server/GameResServer/Include;../../../Server/ServerGlobal/Include;../../MigrateServer/Include;../../../Cluster/GuardConnector/Include;../../../Cluster/BridgeConnector/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../../Server/ShareServer/Include;../../../Server/TestServer/Include;../../../Server/TeamServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <StackCommitSize>
+      </StackCommitSize>
+      <StackReserveSize>
+      </StackReserveSize>
+      <HeapReserveSize>
+      </HeapReserveSize>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../include;../include;../../Connector/include;../../../Server/AOI/include;../../../Server/Entity/Include;../../../Server/Condition/Include;../../../Server/EffectServer/Include;../../../Server/Spell/Include;../../../Server/FreezeServer/Include;../../../Server/BuffServer/Include;../../../Server/AIServer/Include;../../../Server/TankServer/Include;../../../Server/EnmityServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../AIServer/Include;../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../include;../include;../../Connector/include;../../../Server/AOI/include;../../../Server/Entity/Include;../../../Server/Condition/Include;../../../Server/EffectServer/Include;../../../Server/Spell/Include;../../../Server/FreezeServer/Include;../../../Server/BuffServer/Include;../../../Server/TankServer/Include;../../../Server/EnmityServer/Include;../../../Server/Lua/Include;../../../Server/MapPathFind/Include;../../../Server/MatchSceneServer/Include;../../../Server/WarServer/Include;../../../Server/MatchServer/Include;../../../Server/GameResServer/Include;../../../Server/ServerGlobal/Include;../../MigrateServer/Include;../../../Cluster/GuardConnector/Include;../../../Cluster/BridgeConnector/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../../Server/ShareServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../AIServer/Include;../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../include;../include;../../Connector/include;../../../Server/AOI/include;../../../Server/Entity/Include;../../../Server/Condition/Include;../../../Server/EffectServer/Include;../../../Server/Spell/Include;../../../Server/FreezeServer/Include;../../../Server/BuffServer/Include;../../../Server/TankServer/Include;../../../Server/EnmityServer/Include;../../../Server/Lua/Include;../../../Server/MapPathFind/Include;../../../Server/MatchSceneServer/Include;../../../Server/WarServer/Include;../../../Server/MatchServer/Include;../../../Server/GameResServer/Include;../../../Server/ServerGlobal/Include;../../MigrateServer/Include;../../../Cluster/GuardConnector/Include;../../../Cluster/BridgeConnector/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../../Server/ShareServer/Include;../../../Server/TestServer/Include;../../../Server/TeamServer/Include;../../../Cluster/VoiceConnector/Include;../../../Server/StaticWarServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../AIServer/Include;../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../include;../include;../../Connector/include;../../../Server/AOI/include;../../../Server/Entity/Include;../../../Server/Condition/Include;../../../Server/EffectServer/Include;../../../Server/Spell/Include;../../../Server/FreezeServer/Include;../../../Server/BuffServer/Include;../../../Server/TankServer/Include;../../../Server/EnmityServer/Include;../../../Server/Lua/Include;../../../Server/MapPathFind/Include;../../../Server/MatchSceneServer/Include;../../../Server/WarServer/Include;../../../Server/MatchServer/Include;../../../Server/GameResServer/Include;../../../Server/ServerGlobal/Include;../../MigrateServer/Include;../../../Cluster/GuardConnector/Include;../../../Cluster/BridgeConnector/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../../Server/ShareServer/Include;../../../Server/TestServer/Include;../../../Server/TeamServer/Include;../../../Cluster/VoiceConnector/Include;../../../Server/StaticWarServer/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <StackReserveSize>
+      </StackReserveSize>
+      <StackCommitSize>
+      </StackCommitSize>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\GameScene.cpp" />
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\SceneManager.cpp" />
+    <ClCompile Include="..\Src\TimeSyncService.cpp" />
+    <ClCompile Include="..\Src\GameScene_Dota.cpp" />
+    <ClCompile Include="..\Src\AOI_Forest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\GameScene.h" />
+    <ClInclude Include="..\Src\GameSceneService_Stub.h">
+      <Filter>Stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IGameSceneService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOI_Manager.h" />
+    <ClInclude Include="..\Src\SceneManager.h" />
+    <ClInclude Include="..\Src\GridTree.h" />
+    <ClInclude Include="..\Include\ISceneManager.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TimeSyncService_Stub.h">
+      <Filter>Stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITimeSyncService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TimeSyncService.h" />
+    <ClInclude Include="..\Src\GameScene_Dota.h" />
+    <ClInclude Include="..\..\..\Common\AOI_Define.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOI_Forest.h" />
+    <ClInclude Include="..\Src\AOI_Manager_Dota.h" />
+    <ClInclude Include="..\..\..\Common\Smart_ClassT.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="接口">
+      <UniqueIdentifier>{e5850159-a483-4649-98ea-e350011e7dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stub">
+      <UniqueIdentifier>{0b60b04b-bd82-41bf-a314-e09b835b6f43}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

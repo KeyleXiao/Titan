@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|Win32">
+      <Configuration>UniRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|x64">
+      <Configuration>UniRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{37EFF965-6DE9-4A3C-B1A9-44583EECDA2D}</ProjectGuid>
+    <RootNamespace>Win32Dll</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../../Bin/Server\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../../Bin/Server\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">../../../Bin/Server\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../Bin/Server\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">../../../Bin/Server\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../../Bin/Server\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../../Obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../EnmityServer/Include;../../AIServer/Include;../Include;../../../Base/Base/Include;../../../Base/LuaEngine/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Common;../../Common;../../Spell/Include;../../BuffServer/Include;../../FreezeServer/Include;../../Entity/Include;../../include;../../../Framework/Framework/include;../../AOI/Include;../../Connector/Include;../../Condition/Include;../../WarServer/Include;../../MapPathFind/Include;../../SceneServer/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;EFFECTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../Dependence/Lib;../../../Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../Include;../../../Base/Base/Include;../../../Base/LuaEngine/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Common;../../Common;../../Spell/Include;../../BuffServer/Include;../../FreezeServer/Include;../../Entity/Include;../../AIServer/Include;../../include;../../../Framework/Framework/include;../../AOI/Include;../../Connector/Include;../../EnmityServer/Include;../../Condition/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;EFFECTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../Dependence/Lib;../../../Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../EnmityServer/Include;../../AIServer/Include;../Include;../../../Base/Base/Include;../../../Base/LuaEngine/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Common;../../Common;../../Spell/Include;../../BuffServer/Include;../../FreezeServer/Include;../../Entity/Include;../../include;../../../Framework/Framework/include;../../AOI/Include;../../Connector/Include;../../Condition/Include;../../WarServer/Include;../../MapPathFind/Include;../../SceneServer/include;../../MigrateServer/Include;../../ChatServer/Include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;EFFECTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../Dependence/Lib;../../../Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>Framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../EnmityServer/Include;../../AIServer/Include;../Include;../../../Base/Base/Include;../../../Base/LuaEngine/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Common;../../Common;../../Spell/Include;../../BuffServer/Include;../../FreezeServer/Include;../../Entity/Include;../../include;../../../Framework/Framework/include;../../AOI/Include;../../Connector/Include;../../Condition/Include;../../WarServer/Include;../../MapPathFind/Include;../../SceneServer/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;EFFECTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>Framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../EnmityServer/Include;../../AIServer/Include;../Include;../../../Base/Base/Include;../../../Base/LuaEngine/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Common;../../Common;../../Spell/Include;../../BuffServer/Include;../../FreezeServer/Include;../../Entity/Include;../../include;../../../Framework/Framework/include;../../AOI/Include;../../Connector/Include;../../Condition/Include;../../WarServer/Include;../../MapPathFind/Include;../../SceneServer/include;../../MigrateServer/Include;../../ChatServer/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;EFFECTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../Lib</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../EnmityServer/Include;../../AIServer/Include;../Include;../../../Base/Base/Include;../../../Base/LuaEngine/Include;../../../Base/SchemeEngine/Include;../../../Base/EventEngine/Include;../../../Common;../../Common;../../Spell/Include;../../BuffServer/Include;../../FreezeServer/Include;../../Entity/Include;../../include;../../../Framework/Framework/include;../../AOI/Include;../../Connector/Include;../../Condition/Include;../../WarServer/Include;../../MapPathFind/Include;../../SceneServer/include;../../MigrateServer/Include;../../ChatServer/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;EFFECTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../Lib</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <StackCommitSize>
+      </StackCommitSize>
+      <LargeAddressAware>
+      </LargeAddressAware>
+      <StackReserveSize>
+      </StackReserveSize>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\EffectCommon_ManagedDef.h" />
+    <ClInclude Include="..\Include\EffectDef.h" />
+    <ClInclude Include="..\Include\IEffect.h" />
+    <ClInclude Include="..\Src\EffectAccumulateDamage.h" />
+    <ClInclude Include="..\Src\EffectAccumulateDamageAddBuff.h" />
+    <ClInclude Include="..\Src\EffectAccuracy.h" />
+    <ClInclude Include="..\Src\EffectActiveTalent.h" />
+    <ClInclude Include="..\Src\EffectAddBuff.h" />
+    <ClInclude Include="..\Src\EffectAddBuffOnDamage.h" />
+    <ClInclude Include="..\Src\EffectAddBuffOnRightButtonDown.h" />
+    <ClInclude Include="..\Src\EffectAddBuffRemoveOnTargetDie.h" />
+    <ClInclude Include="..\Src\EffectAddCureEffect.h" />
+    <ClInclude Include="..\Src\EffectAddEnmityValue.h" />
+    <ClInclude Include="..\Src\EffectAddGoods.h" />
+    <ClInclude Include="..\Src\EffectAddPropertyLimit.h" />
+    <ClInclude Include="..\Src\EffectAddRangeBuff.h" />
+    <ClInclude Include="..\Src\EffectAddSummonMonster.h" />
+    <ClInclude Include="..\Src\EffectAntiStealth.h" />
+    <ClInclude Include="..\Src\EffectApendDamage.h" />
+    <ClInclude Include="..\Src\EffectApparentDeath.h" />
+    <ClInclude Include="..\Src\EffectAssistAddBuff.h" />
+    <ClInclude Include="..\Src\EffectAttackAddBuff.h" />
+    <ClInclude Include="..\Src\EffectAttackAddCRD.h" />
+    <ClInclude Include="..\Src\EffectAttackCountAddBuff.h" />
+    <ClInclude Include="..\Src\EffectAttackEffectAddBuff.h" />
+    <ClInclude Include="..\Src\EffectAttackEntityAddBuff.h" />
+    <ClInclude Include="..\Src\EffectBeatBack.h" />
+    <ClInclude Include="..\Src\EffectBeatBackAddBuff.h" />
+    <ClInclude Include="..\Src\EffectBeLongsKillAddBuff.h" />
+    <ClInclude Include="..\Src\EffectBeSneered.h" />
+    <ClInclude Include="..\Src\EffectBLDDamage.h" />
+    <ClInclude Include="..\Src\EffectBLDSummon.h" />
+    <ClInclude Include="..\Src\EffectBreakSpell.h" />
+    <ClInclude Include="..\Src\EffectBuffEffectChange.h" />
+    <ClInclude Include="..\Src\EffectCaptureBuff.h" />
+    <ClInclude Include="..\Src\EffectCastSpellAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCastSpellCheckBuff.h" />
+    <ClInclude Include="..\Src\EffectCDOverlay.h" />
+    <ClInclude Include="..\Src\EffectChangeBuff.h" />
+    <ClInclude Include="..\Src\EffectChangeMaskFlag.h" />
+    <ClInclude Include="..\Src\EffectChangePropertyAddBuff.h" />
+    <ClInclude Include="..\Src\EffectChangePropertyChangeValue.h" />
+    <ClInclude Include="..\Src\EffectChangeReliveTime.h" />
+    <ClInclude Include="..\Src\EffectChangeStateAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCharge.h" />
+    <ClInclude Include="..\Src\EffectChargedStrike.h" />
+    <ClInclude Include="..\Src\EffectChargedTransformProperty.h" />
+    <ClInclude Include="..\Src\EffectCheckBuffAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCheckBuffDamageBonus.h" />
+    <ClInclude Include="..\Src\EffectCheckCDAddEffect.h" />
+    <ClInclude Include="..\Src\EffectCheckDistanceAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCheckPropertyAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCheckRangeBuffAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCheckTargetFilterAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCheckTargetRange.h" />
+    <ClInclude Include="..\Src\EffectChooseMonsterTransport.h" />
+    <ClInclude Include="..\Src\EffectChooseRangeAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCleanEnmity.h" />
+    <ClInclude Include="..\Src\EffectContinuedAddProperty.h" />
+    <ClInclude Include="..\Src\EffectContinuedAddTalentPoint.h" />
+    <ClInclude Include="..\Src\EffectContinuedChangeProperty.h" />
+    <ClInclude Include="..\Src\EffectContinuedDamagePropertyEffect.h" />
+    <ClInclude Include="..\Src\EffectContinuedSetProperty.h" />
+    <ClInclude Include="..\Src\EffectContinuedCureEffect.h" />
+    <ClInclude Include="..\Src\EffectContinuedDamage.h" />
+    <ClInclude Include="..\Src\EffectContinuedDamageEffect.h" />
+    <ClInclude Include="..\Src\EffectContinuePositionAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCheckMpOrDistanceAddBuff.h" />
+    <ClInclude Include="..\Src\EffectContinuousAttackBeHitAddBuff.h" />
+    <ClInclude Include="..\Src\EffectCoolDown.h" />
+    <ClInclude Include="..\Src\EffectCreateMonster.h" />
+    <ClInclude Include="..\Src\EffectCastSpell.h" />
+    <ClInclude Include="..\Src\EffectCreateMoveBarrier.h" />
+    <ClInclude Include="..\Src\EffectDamageCountAttackAddBuff.h" />
+    <ClInclude Include="..\Src\EffectDecBulletCount.h" />
+    <ClInclude Include="..\Src\EffectDelayUseSpell.h" />
+    <ClInclude Include="..\Src\EffectDieEventAddBuff.h" />
+    <ClInclude Include="..\Src\EffectDieSummonMonster.h" />
+    <ClInclude Include="..\Src\EffectDisableActiveTalent.h" />
+    <ClInclude Include="..\Src\EffectDisableSlotIndex.h" />
+    <ClInclude Include="..\Src\EffectDisableSpellUseCount.h" />
+    <ClInclude Include="..\Src\EffectDistanceAddBuff.h" />
+    <ClInclude Include="..\Src\EffectFakeDeadRelive.h" />
+    <ClInclude Include="..\Src\EffectGlobalVisible.h" />
+    <ClInclude Include="..\Src\EffectGoodBuyLimit.h" />
+    <ClInclude Include="..\Src\EffectGroupControl.h" />
+    <ClInclude Include="..\Src\EffectInsideOuterCircleAddBuff.h" />
+    <ClInclude Include="..\Src\EffectKillingControl.h" />
+    <ClInclude Include="..\Src\EffectMapFly.h" />
+    <ClInclude Include="..\Src\EffectNotifyClientData.h" />
+    <ClInclude Include="..\Src\EffectPerspectiveShow.h" />
+    <ClInclude Include="..\Src\EffectPrepareBullet.h" />
+    <ClInclude Include="..\Src\EffectRangeDamageTransmit.h" />
+    <ClInclude Include="..\Src\EffectRecordPointBack.h" />
+    <ClInclude Include="..\Src\EffectReplaceSlotSpellGroup.h" />
+    <ClInclude Include="..\Src\EffectReplicationMonster.h" />
+    <ClInclude Include="..\Src\EffectRepulse.h" />
+    <ClInclude Include="..\Src\EffectRoll.h" />
+    <ClInclude Include="..\Src\EffectSetCanPassBarrier.h" />
+    <ClInclude Include="..\Src\EffectSetSight.h" />
+    <ClInclude Include="..\Src\EffectSetSlotLevel.h" />
+    <ClInclude Include="..\Src\EffectSetTargetLoc.h" />
+    <ClInclude Include="..\Src\EffectSetWingProperty.h" />
+    <ClInclude Include="..\Src\EffectShareDamage.h" />
+    <ClInclude Include="..\Src\EffectSpecificDamageAddBuff.h" />
+    <ClInclude Include="..\Src\EffectDieAddBuff.h" />
+    <ClInclude Include="..\Src\EffectDieIncreaseMoneyExp.h" />
+    <ClInclude Include="..\Src\EffectDisableSpell.h" />
+    <ClInclude Include="..\Src\EffectDistanceDamage.h" />
+    <ClInclude Include="..\Src\EffectDragToMove.h" />
+    <ClInclude Include="..\Src\EffectDragToMoveEX.h" />
+    <ClInclude Include="..\Src\EffectDrinkingBlood.h" />
+    <ClInclude Include="..\Src\EffectEnterForestAddBuff.h" />
+    <ClInclude Include="..\Src\EffectEntityDieNearAddTalentPoint.h" />
+    <ClInclude Include="..\Src\EffectEntityKillAddTalentPoint.h" />
+    <ClInclude Include="..\Src\EffectEvade.h" />
+    <ClInclude Include="..\Src\EffectFeedback.h" />
+    <ClInclude Include="..\Src\EffectFindTarget.h" />
+    <ClInclude Include="..\Src\EffectGoodsRestartCharged.h" />
+    <ClInclude Include="..\Src\EffectImmuneBreakSpell.h" />
+    <ClInclude Include="..\Src\EffectImmuneBuff.h" />
+    <ClInclude Include="..\Src\EffectImmuneEffect.h" />
+    <ClInclude Include="..\Src\EffectImmuneDrains.h" />
+    <ClInclude Include="..\Src\EffectIncreaseMonneyExpCoefficient .h" />
+    <ClInclude Include="..\Src\EffectInvisible.h" />
+    <ClInclude Include="..\Src\EffectJump.h" />
+    <ClInclude Include="..\Src\EffectKeepInsight.h" />
+    <ClInclude Include="..\Src\EffectKillAddBuff.h" />
+    <ClInclude Include="..\Src\EffectKillMonsterAddBuff.h" />
+    <ClInclude Include="..\Src\EffectKillSelf.h" />
+    <ClInclude Include="..\Src\EffectFactory.h" />
+    <ClInclude Include="..\Src\EffectFreeze.h" />
+    <ClInclude Include="..\Src\EffectImmune.h" />
+    <ClInclude Include="..\Src\EffectKillSummonMonster.h" />
+    <ClInclude Include="..\Src\EffectLessSummonMonster.h" />
+    <ClInclude Include="..\Src\EffectMatchingSpellAddBuff.h" />
+    <ClInclude Include="..\Src\EffectMoveDamage.h" />
+    <ClInclude Include="..\Src\EffectNoSelect.h" />
+    <ClInclude Include="..\Src\EffectPromoteDamage.h" />
+    <ClInclude Include="..\Src\EffectPromoteShield.h" />
+    <ClInclude Include="..\Src\EffectPropertyTransform.h" />
+    <ClInclude Include="..\Src\EffectPropertyTransformLoop.h" />
+    <ClInclude Include="..\Src\EffectRandAddBuff.h" />
+    <ClInclude Include="..\Src\EffectRebound.h" />
+    <ClInclude Include="..\Src\EffectReduceDamage.h" />
+    <ClInclude Include="..\Src\EffectRemoveBuffType.h" />
+    <ClInclude Include="..\Src\EffectReplaceSlotSpell.h" />
+    <ClInclude Include="..\Src\EffectResistDamage.h" />
+    <ClInclude Include="..\Src\EffectRoot.h" />
+    <ClInclude Include="..\Src\EffectSetProperty.h" />
+    <ClInclude Include="..\Src\EffectSetSingleSpellData.h" />
+    <ClInclude Include="..\Src\EffectSetSingleStrSpellData.h" />
+    <ClInclude Include="..\Src\EffectSetSpellFlag.h" />
+    <ClInclude Include="..\Src\EffectSetShopBuy.h" />
+    <ClInclude Include="..\Src\EffectSetStealth.h" />
+    <ClInclude Include="..\Src\EffectSetWing.h" />
+    <ClInclude Include="..\Src\EffectSetWingFlyTime.h" />
+    <ClInclude Include="..\Src\EffectSetWingState.h" />
+    <ClInclude Include="..\Src\EffectShowFloatText.h" />
+    <ClInclude Include="..\Src\EffectSilence.h" />
+    <ClInclude Include="..\Src\EffectSpellCombo.h" />
+    <ClInclude Include="..\Src\EffectStaticAddBuff.h" />
+    <ClInclude Include="..\Src\EffectStealthAntiedAddBuff.h" />
+    <ClInclude Include="..\Src\EffectStopSpell.h" />
+    <ClInclude Include="..\Src\EffectStrike.h" />
+    <ClInclude Include="..\Src\EffectTargetPropertyTransform.h" />
+    <ClInclude Include="..\Src\EffectThrillingCure.h" />
+    <ClInclude Include="..\Src\EffectTimingAddBuff.h" />
+    <ClInclude Include="..\Src\EffectTimerSpellOverlay.h" />
+    <ClInclude Include="..\Src\EffectChangeProperty.h" />
+    <ClInclude Include="..\Src\EffectTraceAI.h" />
+    <ClInclude Include="..\Src\EffectTransLocation.h" />
+    <ClInclude Include="..\Src\EffectUpgrade.h" />
+    <ClInclude Include="..\Src\EffectUpgradeChangeProperty.h" />
+    <ClInclude Include="..\Src\EffectUseSpell.h" />
+    <ClInclude Include="..\Src\EffectUseSpellIfNoBullet.h" />
+    <ClInclude Include="..\Src\EffectWarAddBuff.h" />
+    <ClInclude Include="..\Src\EffectWarChangeVoc.h" />
+    <ClInclude Include="..\Src\EffectWarMonsterAddBuff.h" />
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\StdAfx.h" />
+    <ClInclude Include="EffectContinuedChangeProperty.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\EffectFactory.cpp" />
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

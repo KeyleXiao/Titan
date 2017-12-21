@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="stub">
+      <UniqueIdentifier>{a1f85ee1-ebf6-4fc2-8fa3-7a2197031520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\State">
+      <UniqueIdentifier>{7f064b8a-36fc-4611-8af1-4372427dc6d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Interface Files">
+      <UniqueIdentifier>{2db5f7fe-90fc-4248-9754-cc91cac6123b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Part Files">
+      <UniqueIdentifier>{3b7025a7-dc12-4ab0-96c2-f826cbcf2829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Part Files\SubManager">
+      <UniqueIdentifier>{5553f5be-7c47-422d-8feb-3662e951cda7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AntiAddict">
+      <UniqueIdentifier>{16de77d3-4d8c-45b6-a9bf-0b4f776e597a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Misc">
+      <UniqueIdentifier>{6a3f494e-70b0-4d5d-ae39-da42fb5f8ff7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Entity.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityProperty.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerRole.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerRoleProperty.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Monster.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsterProperty.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tank.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TankProperty.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityDieState.cpp">
+      <Filter>源文件\State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityStandState.cpp">
+      <Filter>源文件\State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityFightState.cpp">
+      <Filter>源文件\State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TalentEffectProxy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DiePart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityAOI.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DragonBallPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerBankPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonstorHoldPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ProgressBarPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WingPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TitlePart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MovePart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SlotPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LogoutPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerKillPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PointShopManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorPrizeManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Pupil.cpp">
+      <Filter>AntiAddict</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AntiAddictServer.cpp">
+      <Filter>AntiAddict</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorInOutLog.cpp">
+      <Filter>源文件\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CrownPageManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CommonPart.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BenefitCardManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CommonManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerMoneyManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GuideStep.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorServiceDBSink.cpp">
+      <Filter>源文件\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MobaGoodsEffect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BelongEntityMgr.cpp">
+      <Filter>源文件\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RuneManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TalentPageManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HeroManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ProgressBarObserver.cpp">
+      <Filter>源文件\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EncryptUtil.cpp">
+      <Filter>源文件\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WebUrlManager.cpp">
+      <Filter>源文件\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RankSeasonManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ValueGoodsHelper.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EmojiManager.cpp">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\EntityFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerRole.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOIProxy_PlayerRole.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\NetMessageDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IEntityAOI.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMovePart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IActorService.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IEntity.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Monster.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOIProxy_Monster.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\NPCService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\INPCService.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\NPCService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsterProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\IEntityProperty.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDiePart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IEntityEvent.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityEvent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IProgressBarPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tank.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TankProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOIProxy_Tank.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITankService.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TankService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TankService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDragonBallPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ILuaService.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LuaService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityDieState.h">
+      <Filter>源文件\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityStandState.h">
+      <Filter>源文件\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityState.h">
+      <Filter>源文件\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ISceneLogicService.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SceneLogicService_Stub.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SceneLogicService.h">
+      <Filter>stub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Property.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\TypeName.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ISerializable.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityFightState.h">
+      <Filter>源文件\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOIProxy_Base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EventDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Entity_ManagedDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\EntityHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\EntityLifeHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\PackagePtr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWingPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\TalentEffectProxy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HeroManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITitlePart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DiePart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityAOI.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MovePart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonstorHoldPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBankPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ILogoutPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IActorMgr.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ISlotPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DragonBallPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LogoutPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ProgressBarPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerBankPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WingPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TitlePart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SlotPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerRoleProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\TitleDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerKillPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPlayerKillPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PointShopManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorPrizeManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ReadWriteMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Pupil.h">
+      <Filter>AntiAddict</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AntiAddictServer.h">
+      <Filter>AntiAddict</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAntiAddictServer.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Event_ManagedDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorInOutLog.h">
+      <Filter>源文件\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Event_ManagedDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CrownPageManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ICommonPart.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonPart.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Barrier.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BenefitCardManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerMoneyManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GuideStep.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorServiceDBSink.h">
+      <Filter>源文件\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MobaGoodsEffect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BelongEntityMgr.h">
+      <Filter>源文件\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBelongEntityMgr.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RuneManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IRuneManager.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TalentPageManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITalentPageManager.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ProgressBarObserver.h">
+      <Filter>源文件\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EncryptUtil.h">
+      <Filter>源文件\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WebUrlManager.h">
+      <Filter>源文件\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RankSeasonManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ValueGoodsHelper.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EmojiManager.h">
+      <Filter>源文件\Part Files\SubManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

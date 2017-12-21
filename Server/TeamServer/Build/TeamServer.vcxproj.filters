@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\TeamSceneService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TeamSceneService_Proxy.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TeamSceneService_Stub.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITeamScene.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITeamSceneService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TeamScene.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Group.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GroupManager.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Team.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TeamManager.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalFacade.h" />
+    <ClInclude Include="..\Include\TeamHelper.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\TeamSceneService.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TeamSceneService_Proxy.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TeamSceneService_Stub.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TeamScene.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Group.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GroupManager.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Team.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TeamManager.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalFacade.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Service">
+      <UniqueIdentifier>{f4a9a682-8540-4877-b858-4776bac63c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{51cd64c8-4710-4dd2-b9e0-d120e16d13a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口">
+      <UniqueIdentifier>{9a6e186d-7bf6-48cb-9f52-949dce48d2b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

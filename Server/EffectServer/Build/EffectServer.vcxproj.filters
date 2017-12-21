@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\StdAfx.cpp" />
+    <ClCompile Include="..\Src\EffectFactory.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\StdAfx.h" />
+    <ClInclude Include="..\Src\EffectAccumulateDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChargedTransformProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAccumulateDamageAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAccuracy.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectActiveTalent.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddBuffOnDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddCureEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddEnmityValue.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddRangeBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddSummonMonster.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAntiStealth.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectApendDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectApparentDeath.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAssistAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAttackAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAttackEffectAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAttackEntityAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBeatBack.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBeatBackAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBreakSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBuffEffectChange.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCaptureBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCastSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCDOverlay.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangeBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangeProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangePropertyAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangeReliveTime.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangeStateAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChargedStrike.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCreateMonster.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckBuffAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckDistanceAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckMpOrDistanceAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckPropertyAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckRangeBuffAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckTargetRange.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCleanEnmity.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedAddTalentPoint.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedCureEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedDamageEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedDamagePropertyEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedSetProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuePositionAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCoolDown.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\EffectDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDieIncreaseMoneyExp.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDisableSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDistanceDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDragToMove.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDragToMoveEX.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDrinkingBlood.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectEnterForestAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectEntityDieNearAddTalentPoint.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectEntityKillAddTalentPoint.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectEvade.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectFeedback.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectFindTarget.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectFreeze.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectGoodsRestartCharged.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectImmune.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectImmuneBreakSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectImmuneBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectImmuneDrains.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectImmuneEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectIncreaseMonneyExpCoefficient .h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectInvisible.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectJump.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectKillAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectKillMonsterAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectKillSelf.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectKillSummonMonster.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectLessSummonMonster.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectMatchingSpellAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectMoveDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectNoSelect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectPropertyTransform.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectPropertyTransformLoop.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRandAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRebound.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectReduceDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRemoveBuffType.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectReplaceSlotSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectResistDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRoot.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetShopBuy.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetSingleSpellData.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetSingleStrSpellData.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetSpellFlag.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetStealth.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetWing.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetWingFlyTime.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetWingState.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectShowFloatText.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSilence.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSpellCombo.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectTimerSpellOverlay.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectTimingAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectTransLocation.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectUpgrade.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectUpgradeChangeProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectUseSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectWarAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IEffect.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectFactory.h" />
+    <ClInclude Include="..\Src\EffectChooseMonsterTransport.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EffectCommon_ManagedDef.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDieAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangePropertyChangeValue.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectPromoteDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectPromoteShield.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectKeepInsight.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChangeMaskFlag.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBLDSummon.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckTargetFilterAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBLDDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSpecificDamageAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectReplaceSlotSpellGroup.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectShareDamage.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddPropertyLimit.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedAddProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRecordPointBack.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetTargetLoc.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetSlotLevel.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddGoods.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCastSpellAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCastSpellCheckBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectReplicationMonster.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectStaticAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckBuffDamageBonus.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAttackCountAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBeLongsKillAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAttackAddCRD.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDisableSpellUseCount.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDelayUseSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectGlobalVisible.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectPerspectiveShow.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectGoodBuyLimit.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectThrillingCure.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectKillingControl.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectGroupControl.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDistanceAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectStrike.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetSight.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRoll.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRepulse.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCharge.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDieSummonMonster.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDamageCountAttackAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectInsideOuterCircleAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectRangeDamageTransmit.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectChooseRangeAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectWarMonsterAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetWingProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectMapFly.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDisableActiveTalent.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDieEventAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDisableSlotIndex.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuousAttackBeHitAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectBeSneered.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectNotifyClientData.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectTargetPropertyTransform.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddBuffOnRightButtonDown.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectStopSpell.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectTraceAI.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectDecBulletCount.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectPrepareBullet.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectUseSpellIfNoBullet.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectSetCanPassBarrier.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectAddBuffRemoveOnTargetDie.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCreateMoveBarrier.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectCheckCDAddEffect.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectContinuedChangeProperty.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectContinuedChangeProperty.h" />
+    <ClInclude Include="..\Src\EffectWarChangeVoc.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectFakeDeadRelive.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EffectStealthAntiedAddBuff.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{e4f597ca-698f-4551-ba87-ddacffa88ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{8fa430fb-476d-4699-ab81-b934a222498b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

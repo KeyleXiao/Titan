@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\接收器">
+      <UniqueIdentifier>{c2ec9f51-dea7-4af7-b4c3-ace9fc132872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\发生源">
+      <UniqueIdentifier>{80f85155-6c6a-441c-a121-a3d00dff21d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{71a70db4-5b55-4c2a-9eab-359ca100903d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{333eb81a-1dd6-44ea-baf3-7c7a8a259577}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\ShareMessage.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SharePerson.h">
+      <Filter>Source Files\接收器</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ShareReceiver.h">
+      <Filter>Source Files\接收器</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IShareServer.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SceneSvrSource.h">
+      <Filter>Source Files\发生源</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ShareScene.h">
+      <Filter>Source Files\接收器</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SceneSvrHelper.h">
+      <Filter>Source Files\发生源</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SharePerson.cpp">
+      <Filter>Source Files\接收器</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ShareReceiver.cpp">
+      <Filter>Source Files\接收器</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SceneSvrSource.cpp">
+      <Filter>Source Files\发生源</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ShareScene.cpp">
+      <Filter>Source Files\接收器</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SceneSvrHelper.cpp">
+      <Filter>Source Files\发生源</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\ShareServer.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Interface Files">
+      <UniqueIdentifier>{6663684a-5bc6-4649-b304-0217f7c0d78d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Data Center">
+      <UniqueIdentifier>{97c5c8f3-9b88-4f32-b467-397451e4432d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Player Data">
+      <UniqueIdentifier>{e19897e3-735a-42fa-b6e0-ff718448356e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Ticket Service">
+      <UniqueIdentifier>{f2450e55-7a57-4714-b848-08183a975d73}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DataBank.cpp">
+      <Filter>源文件\Data Center</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DataBox.cpp">
+      <Filter>源文件\Data Center</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DataUnit.cpp">
+      <Filter>源文件\Data Center</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TaskServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerTaskData.cpp">
+      <Filter>源文件\Player Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TicketServer.cpp">
+      <Filter>源文件\Ticket Service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DataUnit.h">
+      <Filter>源文件\Data Center</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DataBank.h">
+      <Filter>源文件\Data Center</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DataBox.h">
+      <Filter>源文件\Data Center</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TaskServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITaskServer.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\TaskStorageDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPlayerTaskData.h">
+      <Filter>Interface Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerTaskData.h">
+      <Filter>源文件\Player Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TicketServer.h">
+      <Filter>源文件\Ticket Service</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

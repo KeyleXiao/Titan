@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\Framework.cpp" />
+    <ClCompile Include="..\src\ServiceContainer.cpp" />
+    <ClCompile Include="..\src\stdafx.cpp" />
+    <ClCompile Include="..\src\WorkThread.cpp" />
+    <ClCompile Include="..\src\WorkThreadScheduler.cpp" />
+    <ClCompile Include="..\src\dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\IFramework.h" />
+    <ClInclude Include="..\include\IPerformanceService.h" />
+    <ClInclude Include="..\include\IServiceContainer.h" />
+    <ClInclude Include="..\include\IServiceMgr.h" />
+    <ClInclude Include="..\include\ITimerService.h" />
+    <ClInclude Include="..\include\ServiceHelper.h" />
+    <ClInclude Include="..\src\CloudConnector.h" />
+    <ClInclude Include="..\src\CloudService.h" />
+    <ClInclude Include="..\src\Coroutine.h" />
+    <ClInclude Include="..\src\CoroutineWin.h" />
+    <ClInclude Include="..\src\Framework.h" />
+    <ClInclude Include="..\src\PerformanceService.h" />
+    <ClInclude Include="..\src\PerformanceService_Stub.h" />
+    <ClInclude Include="..\src\ServiceContainer.h" />
+    <ClInclude Include="..\src\ServiceMgr.h" />
+    <ClInclude Include="..\src\stdafx.h" />
+    <ClInclude Include="..\src\targetver.h" />
+    <ClInclude Include="..\src\ThreadSpecialData.h" />
+    <ClInclude Include="..\src\TimerService.h" />
+    <ClInclude Include="..\src\TimerService_Stub.h" />
+    <ClInclude Include="..\src\WorkThread.h" />
+    <ClInclude Include="..\src\WorkThreadScheduler.h" />
+    <ClInclude Include="..\src\EventService_Stub.h" />
+    <ClInclude Include="..\src\TimerHandlerProxy.h" />
+    <ClInclude Include="..\include\Simple_Atom_Lock.h" />
+  </ItemGroup>
+</Project>

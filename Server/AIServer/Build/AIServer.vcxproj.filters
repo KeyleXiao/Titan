@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="行为">
+      <UniqueIdentifier>{8cdf623a-17a9-4f52-b0f3-344742cbfa2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="条件">
+      <UniqueIdentifier>{17f81859-9565-4f6e-bff6-bd8c49e221b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="任务">
+      <UniqueIdentifier>{0ee4752e-b79f-4022-b142-9936d4ac0a71}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Conditions\AIConditionDistance2BornLoc.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionDistance2Target.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionEntityType.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionHpMp.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionNearbyEntityNumCompare.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionSpellCD.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionUseItem.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionBuyItem.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionCastSpell.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionCloseTo.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionCreateNpc.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionDestroySelf.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionPatrol.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionRetrieve.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionUpgradeSpell.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionUseItem.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIDecision.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIPart.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIService.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AITargetHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityAIMessageHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Win32Dll.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionAddBuff.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionAroundEntityExist.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionIdle.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionCampRelationship.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionMinDistance2SelfPath.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionDistance2EventLoc.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIAction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionKeepDistance.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionEntityNumAroundTarget.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionBuffExist.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionMasterCastSpellSlot.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionActiveTalent.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionInnerAILogic.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionWatchOut.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionChooseNearestPath.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionBuyItems.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionJump.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionPickUpEntity.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionWatchOutEnemy.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionSightCheck .cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionBroadcastAttackSignal.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionSelectPath.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionAllotPath.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionHeight.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionRadarScan.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionTowerLost.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Actions\AIActionAllMid.cpp">
+      <Filter>行为</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Conditions\AIConditionLevel.cpp">
+      <Filter>条件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerActionRecord.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\FightStateController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AITaskMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\TaskBack.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\TaskForwardLine.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\TaskHelpOtherLine.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\TaskHunting.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\TaskSim.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\Task.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DistanceCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tasks\TaskFollow.cpp">
+      <Filter>任务</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AIProxy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AILuaBind.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\Conditions\AIConditionDistance2BornLoc.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionDistance2Target.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionEntityType.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionHpMp.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionNearbyEntityNumCompare.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionSpellCD.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionUseItem.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionBuyItem.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionCastSpell.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionCloseTo.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionCreateNpc.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionDestroySelf.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionPatrol.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionRetrieve.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionUpgradeSpell.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionUseItem.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAIPart.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAIService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIAction.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AICondition.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIDecision.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIFactory.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIManager.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIPart.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIService.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIService_Stub.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AITargetHelper.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityAIMessageHelper.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\targetver.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Win32Dll.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionAddBuff.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAIFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionAroundEntityExist.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\AI_ManagedDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\AIAction_ManagedDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\AICondition_ManagedDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionIdle.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionCampRelationship.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionMinDistance2SelfPath.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionDistance2EventLoc.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionKeepDistance.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionEntityNumAroundTarget.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionBuffExist.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionMasterCastSpellSlot.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionActiveTalent.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionInnerAILogic.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionWatchOut.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionChooseNearestPath.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionBuyItems.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionJump.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionPickUpEntity.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionWatchOutEnemy.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionSightCheck.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionBroadcastAttackSignal.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionSelectPath.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionAllotPath.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionHeight.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionRadarScan.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionTowerLost.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Actions\AIActionAllMid.h">
+      <Filter>行为</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Conditions\AIConditionLevel.h">
+      <Filter>条件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerActionRecord.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\FightStateController.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AITaskMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAITask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\TaskBack.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\TaskForwardLine.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\TaskHelpOtherLine.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\TaskHunting.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\TaskSim.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\Task.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DistanceCtrl.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tasks\TaskFollow.h">
+      <Filter>任务</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AILuaBind.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AIProxy.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\AIServer.rc">
+      <Filter>源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include File">
+      <UniqueIdentifier>{06651999-148b-400a-b2d7-699d26be37d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\NavBroadcaster.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PathFindManager.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PathFindServiceEx.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\PathFindService.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QueryFilter.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\IPathFindManager.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\NavBroadcaster.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\PathFindManager.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\PathFindServiceEx.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\stdafx.h" />
+    <ClInclude Include="..\Include\IPathFindService.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\PathFindService.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\QueryFilter.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\PathHelper.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

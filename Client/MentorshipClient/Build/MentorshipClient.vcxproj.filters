@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\Mentorship.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MentorshipClient.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\stdafx.h" />
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\..\..\Common\MentorshipDef.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MentorshipMsgDef.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMentorshipClient.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Mentorship.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MentorshipClient.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{eac0beb8-58d3-48ec-a8cd-d3e6dce356eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="接口">
+      <UniqueIdentifier>{85ad4e45-c643-4494-9d42-5655922a0757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{d29aa46c-22a4-456b-abeb-d7f0b8705ebe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

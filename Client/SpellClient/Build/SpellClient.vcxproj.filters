@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="interface">
+      <UniqueIdentifier>{553968e7-a1ac-402a-8395-f48b974ea9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="技能模版">
+      <UniqueIdentifier>{f7f30cf4-c2c8-4029-9df6-05755cfa76f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\Spell.cpp" />
+    <ClCompile Include="..\Src\Spell_Instant.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Passive.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Cast.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_Channel.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SpellPart.cpp" />
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\SpellFactory.cpp" />
+    <ClCompile Include="..\Src\Spell_Secondary.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Spell_FocoEnergia.cpp">
+      <Filter>技能模版</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SpellPrepareMate.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Include\ISpell.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell.h" />
+    <ClInclude Include="..\Src\Spell_Instant.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Passive.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Cast.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Channel.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SpellPart.h" />
+    <ClInclude Include="..\..\..\Common\SpellMessageDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\SpellDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\SpellFactory.h" />
+    <ClInclude Include="..\..\..\Common\SpellDef_ManagedDef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_Secondary.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Spell_FocoEnergia.h">
+      <Filter>技能模版</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SpellPrepareMate.h" />
+  </ItemGroup>
+</Project>

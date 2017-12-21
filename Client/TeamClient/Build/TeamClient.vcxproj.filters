@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include File">
+      <UniqueIdentifier>{5a62a218-2226-4ac7-8364-f6618bdbe314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{4eb1691a-b0ff-4608-9a3a-fbddf830faa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{8bbba4e2-06a2-41c3-82be-578675b6aa1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{685d2ca0-ee39-4d51-91e0-259d569ee0ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\ITeamClient.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalFacade.h" />
+    <ClInclude Include="..\Src\StdAfx.h" />
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Group.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Team.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TeamClient.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\ExternalFacade.cpp" />
+    <ClCompile Include="..\Src\StdAfx.cpp" />
+    <ClCompile Include="..\Src\Group.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Team.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TeamClient.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\TeamClient.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

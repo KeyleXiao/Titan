@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\encode.cpp" />
+    <ClCompile Include="..\Src\encrypt_rc4.cpp" />
+    <ClCompile Include="..\Src\ActorClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientGlobal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeAOI.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeCenter.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeDieLighting.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeEntity.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeLevelUpgrade.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMagicType.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMapArea.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMapInfo.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMatchRoom.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMinimap.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMonster.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemePathFindService.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemePersonModel.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSkinInfo.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSlotMapedShortcut.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSpellSlot.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSpellUpgrade.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeTalent.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeTankInfo.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeTextInfo.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Stage_Base.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Stage_Game.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Stage_Login.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Stage_MatchBattle.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\SchemeWarBroadCastInfo.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSummoner.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeMatchRankConfig.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemePreloadMonsterRes.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeWarPersonConfig.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSystemMessage.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemePlayerGloryInfo.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeHeroStarData.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemePersonBaseProp.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeClanDataCenter.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeKinDataCenter.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeHeroCard.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeHeroAchievementLv.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeHeroCardGradeColor.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeOutputRestriction.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemePlayerKill.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeHeroFreeWeekly.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeComputerRankConfig.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSceneMatron.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Migrate.cpp" />
+    <ClCompile Include="..\Src\Stage_LoadScene.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Stage_MatchRoom.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameVoiceClient.cpp" />
+    <ClCompile Include="..\Src\SchemeMentorshipDataCenter.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CrashReport\CrashReport.cpp">
+      <Filter>CrashReport</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CrashReport\SendMailThread.cpp">
+      <Filter>CrashReport</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\FileReader.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeSkinSpell.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeAIIDTable.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DistrictList.cpp">
+      <Filter>DistrictList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Stage_Choose_new.cpp">
+      <Filter>Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandleCommand.cpp">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandleCommandAttack.cpp">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandleCommandClose.cpp">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandleCommandManager.cpp">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandleCommandPursuit.cpp">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HandleCommandQueue.cpp">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LogicTask.cpp">
+      <Filter>Source Files\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RenderTaskMgr.cpp">
+      <Filter>Source Files\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RenderViewTask.cpp">
+      <Filter>Source Files\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Task.cpp">
+      <Filter>Source Files\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MiscManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SchemeWing.cpp">
+      <Filter>Shceme</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientConnection.cpp">
+      <Filter>Source Files\Connect</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\platform.h" />
+    <ClInclude Include="..\Src\encode.h" />
+    <ClInclude Include="..\Src\encryptor.h" />
+    <ClInclude Include="..\Src\encrypt_rc4.h" />
+    <ClInclude Include="..\Src\gatewayclient.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\ActorClient.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientGlobal.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\EntityViewDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\GameAPI.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\GameViewDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IClientGlobal.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IHandleCommand.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ILoginServerProtocol.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMessageDispatch.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ISchemeCenter.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\NetworkHandler.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\MessageDispatch.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Minimap_ManageDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\NetMessageDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PingReplyer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeTextInfo.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeAOI.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeCenter.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeDieLighting.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeEntity.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeLevelUpgrade.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMagicType.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMapArea.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMapInfo.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMatchRoom.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMinimap.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMonster.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemePathFindService.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemePersonModel.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSkinInfo.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSlotMapedShortcut.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSpellSlot.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSpellUpgrade.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeTalent.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\SchemeTalentDef.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeTankInfo.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_Base.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_Choose.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_Game.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_Login.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Stage_ManagedDef.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_Manager.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_MatchBattle.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Include\PerformanceMonitor.h">
+      <Filter>Performace Stat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\PerformanceStat.h">
+      <Filter>Performace Stat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeWarBroadCastInfo.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSummoner.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeMatchRankConfig.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ConfigIni.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemePreloadMonsterRes.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeWarPersonConfig.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSystemMessage.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemePlayerGloryInfo.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeHeroStarData.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemePersonBaseProp.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeClanDataCenter.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeKinDataCenter.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeHeroCard.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeHeroAchievementLv.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeHeroCardGradeColor.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeOutputRestriction.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemePlayerKill.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Base\Base\Include\ManagedCode.h" />
+    <ClInclude Include="..\Src\SchemeHeroFreeWeekly.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeComputerRankConfig.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSceneMatron.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Migrate.h" />
+    <ClInclude Include="..\Src\Stage_LoadScene.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IStage_Manager.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Stage_MatchRoom.h">
+      <Filter>Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GameVoiceClient.h" />
+    <ClInclude Include="..\Src\SchemeMentorshipDataCenter.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CrashReport\CrashReport.h">
+      <Filter>CrashReport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CrashReport\SendMailThread.h">
+      <Filter>CrashReport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CrashReport\Resource.h">
+      <Filter>CrashReport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\FileReader.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeSkinSpell.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeAIIDTable.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDistrictListClient.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DistrictList.h">
+      <Filter>DistrictList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\GameIni.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandleCommandQueue.h">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandleCommand.h">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandleCommandAttack.h">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandleCommandClose.h">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandleCommandManager.h">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HandleCommandPursuit.h">
+      <Filter>Source Files\Handle Command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LogicTask.h">
+      <Filter>Source Files\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RenderTaskMgr.h">
+      <Filter>Source Files\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RenderViewTask.h">
+      <Filter>Source Files\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Task.h">
+      <Filter>Source Files\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SwappingList.h">
+      <Filter>Source Files\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TaskCommand.h">
+      <Filter>Source Files\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WindowsShotcutHelper.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MiscManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMiscManager.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SchemeWing.h">
+      <Filter>Shceme</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IClientConnection.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientConnection.h">
+      <Filter>Source Files\Connect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Game_ManagedDef.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include File">
+      <UniqueIdentifier>{e5531d16-5012-402c-a46e-b581fd458007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{dd700e46-d731-4e2e-afe4-2dba5cec52e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{24531a91-2d7a-4fb6-8f47-9d60038020a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shceme">
+      <UniqueIdentifier>{6ffc4209-0939-414f-b2ba-f12cc7b833d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stage">
+      <UniqueIdentifier>{89bcf862-4e96-4802-93e9-3261025d02ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Performace Stat">
+      <UniqueIdentifier>{52eff327-052c-422c-88c5-bd36129cd62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CrashReport">
+      <UniqueIdentifier>{ae1af825-938d-497c-bb4f-6075e7d42d9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DistrictList">
+      <UniqueIdentifier>{3b0399ec-7dcf-40f0-b17d-d839fe9746a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Handle Command">
+      <UniqueIdentifier>{81e91eaa-3f0b-4a95-b48f-62464f6e7656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Task">
+      <UniqueIdentifier>{8cd90d64-8a95-4da6-b306-a1b520c9a470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Connect">
+      <UniqueIdentifier>{da3bde13-c548-44aa-90e9-b63264015c25}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

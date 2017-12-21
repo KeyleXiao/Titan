@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="VoiceDevice">
+      <UniqueIdentifier>{46b3a8f7-7151-4f22-b02b-639ab25dfa16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{62950c20-70d0-4ede-9eec-51d1f18851ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceClient">
+      <UniqueIdentifier>{99c2dd83-d3f0-4b13-8ccb-a8c4d541f8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VoiceEngine">
+      <UniqueIdentifier>{47717ff5-bd91-4fbf-b0e1-dcc27cad4d58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile">
+      <UniqueIdentifier>{e8ca60db-baa1-4bea-8b61-60adaa5eb3b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFile\Res">
+      <UniqueIdentifier>{61ce6c23-8913-43fa-a655-f4d2ff875914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{2b8477fb-82cf-4c26-9da9-8a10a58ab25d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VideoDevice">
+      <UniqueIdentifier>{e07daf19-d8f7-438c-bd9d-c9ef03c981d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\AudioDevice.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AudioRecorder.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Channel.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Codec.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CodecCELT.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CodecSpeex.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Voice.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceControl.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceDevice.cpp">
+      <Filter>VoiceDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AudioConnector.cpp">
+      <Filter>VoiceClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ChannelClient.cpp">
+      <Filter>VoiceClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Chat.cpp">
+      <Filter>VoiceClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Room.cpp">
+      <Filter>VoiceClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceClient.cpp">
+      <Filter>VoiceClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceConnector.cpp">
+      <Filter>VoiceClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VoiceEngine.cpp">
+      <Filter>VoiceEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CommonFun.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\FfmpegDecoder.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\X264Encoder.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\YuvRGB.cpp">
+      <Filter>SourceFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CameraInput.cpp">
+      <Filter>VideoDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ScreenInput.cpp">
+      <Filter>VideoDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VideoCodec.cpp">
+      <Filter>VideoDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VideoDevice.cpp">
+      <Filter>VideoDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VideoShow.cpp">
+      <Filter>VideoDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\VideoSpeed.cpp">
+      <Filter>VideoDevice</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\AudioDevice.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AudioRecorder.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Channel.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Codec.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CodecCELT.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CodecSpeex.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Voice.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceControl.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceDevice.h">
+      <Filter>VoiceDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DVoice.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DVoiceDevice.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DVoiceModule.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AudioConnector.h">
+      <Filter>VoiceClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ChannelClient.h">
+      <Filter>VoiceClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Chat.h">
+      <Filter>VoiceClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Room.h">
+      <Filter>VoiceClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceClient.h">
+      <Filter>VoiceClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceConnector.h">
+      <Filter>VoiceClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VoiceEngine.h">
+      <Filter>VoiceEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonDef.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonFun.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\FfmpegDecoder.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\X264Encoder.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\YuvRGB.h">
+      <Filter>SourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>SourceFile\Res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IVoiceEngine.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CameraInput.h">
+      <Filter>VideoDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ScreenInput.h">
+      <Filter>VideoDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VideoCodec.h">
+      <Filter>VideoDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VideoDevice.h">
+      <Filter>VideoDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VideoShow.h">
+      <Filter>VideoDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\VideoSpeed.h">
+      <Filter>VideoDevice</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\VoiceEngine.rc">
+      <Filter>SourceFile\Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{918A783D-B0C9-4289-A89B-9F7659608BA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>U3D_SceneRender</RootNamespace>
+    <AssemblyName>U3D_SceneRender</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITY_5_0_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UniRelease|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;UNITY_5_0_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\UnityDlls\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\U3D_Common\U3D_Common.csproj">
+      <Project>{fbf2ac44-c287-464d-8abb-0ee0ba197704}</Project>
+      <Name>U3D_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\U3D_ImageEffect\Src\U3D_ImageEffect.csproj">
+      <Project>{12cf3e61-8eba-461a-be52-a3501de6dd23}</Project>
+      <Name>U3D_ImageEffect</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CharacterShadow\CharacterShadowSun.cs" />
+    <Compile Include="ResManager\Res\SceneColliderInfo.cs" />
+    <Compile Include="ResManager\Res\SceneEffectInfo.cs" />
+    <Compile Include="ResManager\Res\SceneInfo.cs" />
+    <Compile Include="ResManager\Res\SceneLightInfo_Fade.cs" />
+    <Compile Include="ResManager\Res\SceneLightInfo_Main.cs" />
+    <Compile Include="ResManager\Res\SceneMaterialConfig.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_Load.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_Main.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_Memory.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_OcclusCulling.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_Other.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_Rendering.cs" />
+    <Compile Include="ResManager\Res\SceneResInfo_UnityMessage.cs" />
+    <Compile Include="ResManager\Res\SceneShareCollider.cs" />
+    <Compile Include="ResManager\Res\SceneSkyBoxMaterialConfig.cs" />
+    <Compile Include="ResManager\Res\SceneTerrainConfigData.cs" />
+    <Compile Include="ResManager\Res\SceneTextureConfigData.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_NormalRes.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_SkyBox.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_GrassRes.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_Light.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_Collider.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_Effect.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_Terrain.cs" />
+    <Compile Include="ResManager\SceneResInfoManager.cs" />
+    <Compile Include="ResManager\ResManager\Core\SceneResInfoManager_Batches.cs" />
+    <Compile Include="ResManager\ResManager\Core\SceneResInfoManager_Collider.cs" />
+    <Compile Include="ResManager\SceneResInfoManager_API.cs" />
+    <Compile Include="ResManager\ResManager\Core\SceneResInfoManager_Debug.cs" />
+    <Compile Include="ResManager\ResManager\Core\SceneResInfoManager_ImageSetting.cs" />
+    <Compile Include="ResManager\ResManager\Core\SceneResInfoManager_OcclusCulling.cs" />
+    <Compile Include="ResManager\ResManager\Core\SceneResInfoManager_QuadTree.cs" />
+    <Compile Include="RoateSceneObj.cs" />
+    <Compile Include="SceneFadeInOut\SceneFadeInOutEvent.cs" />
+    <Compile Include="SceneFadeInOut\SceneFadeInOutLightIntensity.cs" />
+    <Compile Include="SceneFadeInOut\SceneFadeInOutLightIntensity_Constant.cs" />
+    <Compile Include="SceneFadeInOut\SceneFadeInOutMaterialFloat.cs" />
+    <Compile Include="SceneFadeInOut\SceneFadeInOutMaterialFloat_Constant.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).pdb" "..\Game\Assets\Scripts"/y
+copy "$(TargetDir)$(TargetName).dll" "..\Game\Assets\Scripts"/y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{5ce8c991-e2b6-4036-b3fa-248ba9d58118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{922d283b-8d24-4aa2-9770-eacf9f90d7f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TankClient">
+      <UniqueIdentifier>{72ce0340-4b63-4e83-b550-08c245db15aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{7f0b6d7f-d307-4241-ac76-76d91d2d8570}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\ExternalFacade.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameTankAPI.cpp">
+      <Filter>TankClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PersonTankPart.cpp">
+      <Filter>TankClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TankBoxPart.cpp">
+      <Filter>TankClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TankClient.cpp">
+      <Filter>TankClient</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\ExternalFacade.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DGlobalMessage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\DTankModule.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITankClient.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\GameTankAPI.h">
+      <Filter>TankClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PersonTankPart.h">
+      <Filter>TankClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TankBoxPart.h">
+      <Filter>TankClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TankClient.h">
+      <Filter>TankClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\TankClient.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

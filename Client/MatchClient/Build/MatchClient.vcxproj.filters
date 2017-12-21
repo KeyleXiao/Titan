@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\MatchClient.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CurrentMatchRoomInfo.cpp">
+      <Filter>Resource\CurrentRoomInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\RoomState_Fighting.cpp">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_ReadyGo.cpp">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_SelectHero.cpp">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_Wait.cpp">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BaseRoomState.cpp">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\stdafx.h" />
+    <ClInclude Include="..\Src\MatchClient.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMatchClient.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CurrentMatchRoomInfo.h">
+      <Filter>Resource\CurrentRoomInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\RoomState_Wait.h">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_Fighting.h">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_ReadyGo.h">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_SelectHero.h">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BaseRoomState.h">
+      <Filter>Resource\CurrentRoomInfo\房间状态</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include File">
+      <UniqueIdentifier>{e088f227-2a29-4c90-9283-f51c40b3f4fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{4eefe234-dbaa-40b8-885b-c555d95fcc12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{b9b5c0ce-4f9a-46ea-a9a7-b27f8653a084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\CurrentRoomInfo">
+      <UniqueIdentifier>{a93e8cf4-b130-48f0-be27-2727e940b300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\CurrentRoomInfo\房间状态">
+      <UniqueIdentifier>{04f2b7da-0b9a-4148-9b58-69520db54cc4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

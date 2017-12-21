@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|Win32">
+      <Configuration>UniRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UniRelease|x64">
+      <Configuration>UniRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9041B158-E0F9-4FAB-BD13-AE96CD525B37}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>EntityClient</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Client/Bin\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Client/Bin\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Client/Bin\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Client/Bin\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Client/Bin\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../../Bin/Client/Bin\</OutDir>
+    <IntDir>../../../Obj/$(ProjectName)/$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ENTITYCLIENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Base/Base/Include;../../SpellClient/Include;../../Game/Include;../../WarClient/Include;../../GameAPI_Wrapper/Include;../../MapPathFind/Include;../../ChatClient/Include;../../FreezeClient/Include;../../ConditionClient/Include;../../EffectClient/Include;../../BuffClient/Include;../../TankClient/Include;../../WarClient/Include;../../../framework/framework/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ENTITYCLIENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Base/Base/Include;../../SpellClient/Include;../../Game/Include;../../WarClient/Include;../../GameAPI_Wrapper/Include;../../MapPathFind/Include;../../ChatClient/Include;../../FreezeClient/Include;../../ConditionClient/Include;../../EffectClient/Include;../../BuffClient/Include;../../TankClient/Include;../../WarClient/Include;../../../framework/framework/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../lib</AdditionalLibraryDirectories>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ENTITYCLIENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Base/Base/Include;../../SpellClient/Include;../../Game/Include;../../WarClient/Include;../../GameAPI_Wrapper/Include;../../FreezeClient/Include;../../ConditionClient/Include;../../EffectClient/Include;../../BuffClient/Include;../../TankClient/Include;../../WarClient/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>../../../Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetDir)$(TargetName).dll" "../../../Bin/Client/Game" /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ENTITYCLIENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Base/Base/Include;../../SpellClient/Include;../../Game/Include;../../WarClient/Include;../../GameAPI_Wrapper/Include;../../FreezeClient/Include;../../ConditionClient/Include;../../EffectClient/Include;../../BuffClient/Include;../../TankClient/Include;../../WarClient/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>../../../Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetDir)$(TargetName).dll" "../../../Bin/Client/Game" /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ENTITYCLIENT_EXPORTS;ENTITY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Base/Base/Include;../../SpellClient/Include;../../Game/Include;../../WarClient/Include;../../GameAPI_Wrapper/Include;../../FreezeClient/Include;../../ConditionClient/Include;../../EffectClient/Include;../../BuffClient/Include;../../TankClient/Include;../../WarClient/Src;../../../framework/framework/include;../../ChatClient/Include;../../MapPathFind/Include;../../KinClient/Include;../../ClanClient/Include;../../MentorshipClient/Include;../../MatchClient/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>../../../Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetDir)$(TargetName).dll" "../../../Bin/Client/Game" /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ENTITYCLIENT_EXPORTS;ENTITY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Include;../../Common;../../../Common;../../../Base/Base/Include;../../SpellClient/Include;../../Game/Include;../../WarClient/Include;../../GameAPI_Wrapper/Include;../../FreezeClient/Include;../../ConditionClient/Include;../../EffectClient/Include;../../BuffClient/Include;../../TankClient/Include;../../WarClient/Src;../../../framework/framework/include;../../ChatClient/Include;../../MapPathFind/Include;../../KinClient/Include;../../ClanClient/Include;../../MentorshipClient/Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>../../../lib/$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>../../../Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetDir)$(TargetName).dll" "../../../Bin/Client/Game" /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\AntiAddictClient.cpp" />
+    <ClCompile Include="..\Src\AOIPart.cpp" />
+    <ClCompile Include="..\Src\CommonManager.cpp" />
+    <ClCompile Include="..\Src\CommonPart.cpp" />
+    <ClCompile Include="..\Src\CrownPageManager.cpp" />
+    <ClCompile Include="..\Src\DiePart.cpp" />
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\EntityBase.cpp" />
+    <ClCompile Include="..\Src\EntityClient.cpp" />
+    <ClCompile Include="..\Src\EntityDieState.cpp" />
+    <ClCompile Include="..\Src\EntityFightState.cpp" />
+    <ClCompile Include="..\Src\EntityMessageCache.cpp" />
+    <ClCompile Include="..\Src\EntityProperty.cpp" />
+    <ClCompile Include="..\Src\EntityStandState.cpp" />
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\GameView.cpp" />
+    <ClCompile Include="..\Src\HeroManager.cpp" />
+    <ClCompile Include="..\Src\Monster.cpp" />
+    <ClCompile Include="..\Src\MonsterProperty.cpp" />
+    <ClCompile Include="..\Src\MovePart.cpp" />
+    <ClCompile Include="..\Src\PlayerBankPart.cpp" />
+    <ClCompile Include="..\Src\PlayerKillPart.cpp" />
+    <ClCompile Include="..\Src\PlayerRole.cpp" />
+    <ClCompile Include="..\Src\PlayerRoleProperty.cpp" />
+    <ClCompile Include="..\Src\SlotLogicPart.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tank.cpp" />
+    <ClCompile Include="..\Src\TankProperty.cpp" />
+    <ClCompile Include="..\Src\DragonBallPart.cpp" />
+    <ClCompile Include="..\Src\TaskClient.cpp" />
+    <ClCompile Include="..\Src\TitlePart.cpp" />
+    <ClCompile Include="..\Src\WingPart.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\EntityDef.h" />
+    <ClInclude Include="..\..\..\Common\ICamp.h" />
+    <ClInclude Include="..\..\..\Common\Property.h" />
+    <ClInclude Include="..\..\..\Common\TypeName.h" />
+    <ClInclude Include="..\..\..\Common\WingMessageDef.h" />
+    <ClInclude Include="..\..\Common\Entity_inl.h" />
+    <ClInclude Include="..\Include\DataChunk.h" />
+    <ClInclude Include="..\Include\IAntiAddictClient.h" />
+    <ClInclude Include="..\Include\IAOIPart.h" />
+    <ClInclude Include="..\Include\IBankPart.h" />
+    <ClInclude Include="..\Include\IClientEntity.h" />
+    <ClInclude Include="..\Include\ICommonPart.h" />
+    <ClInclude Include="..\Include\IDataChunk.h" />
+    <ClInclude Include="..\Include\IDiePart.h" />
+    <ClInclude Include="..\Include\IEntity.h" />
+    <ClInclude Include="..\Include\IEntityClient.h" />
+    <ClInclude Include="..\Include\IMovePart.h" />
+    <ClInclude Include="..\Include\IPlayerKillPart.h" />
+    <ClInclude Include="..\Include\ITank.h" />
+    <ClInclude Include="..\Include\IDragonBallPart.h" />
+    <ClInclude Include="..\Include\ITaskClient.h" />
+    <ClInclude Include="..\Include\ITitlePart.h" />
+    <ClInclude Include="..\Include\IWingPart.h" />
+    <ClInclude Include="..\Src\AntiAddictClient.h" />
+    <ClInclude Include="..\Src\AOIPart.h" />
+    <ClInclude Include="..\Src\CommonManager.h" />
+    <ClInclude Include="..\Src\CommonPart.h" />
+    <ClInclude Include="..\Src\CrownPageManager.h" />
+    <ClInclude Include="..\Src\DiePart.h" />
+    <ClInclude Include="..\Src\EntityBase.h" />
+    <ClInclude Include="..\Src\EntityClient.h" />
+    <ClInclude Include="..\Src\EntityDieState.h" />
+    <ClInclude Include="..\Src\EntityFactory.h" />
+    <ClInclude Include="..\Src\EntityFightState.h" />
+    <ClInclude Include="..\Src\EntityMessageCache.h" />
+    <ClInclude Include="..\Src\EntityProperty.h" />
+    <ClInclude Include="..\Src\EntityStandState.h" />
+    <ClInclude Include="..\Src\EntityState.h" />
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\HeroManager.h" />
+    <ClInclude Include="..\Src\Monster.h" />
+    <ClInclude Include="..\Src\MonsterProperty.h" />
+    <ClInclude Include="..\Src\MovePart.h" />
+    <ClInclude Include="..\Src\PlayerBankPart.h" />
+    <ClInclude Include="..\Src\PlayerKillPart.h" />
+    <ClInclude Include="..\Src\PlayerRole.h" />
+    <ClInclude Include="..\Src\PlayerRoleProperty.h" />
+    <ClInclude Include="..\Src\SlotLogicPart.h" />
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\Tank.h" />
+    <ClInclude Include="..\Src\TankProperty.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\DragonBallPart.h" />
+    <ClInclude Include="..\Src\TaskClient.h" />
+    <ClInclude Include="..\Src\TitlePart.h" />
+    <ClInclude Include="..\Src\WingPart.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

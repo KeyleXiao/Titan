@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{a6eddea0-cdf1-400e-8626-e3f263a96af8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{0eb632ed-7a26-42b1-ab39-df47f5d27b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KeyWord Files">
+      <UniqueIdentifier>{488f3f9a-ad6b-42eb-9ea5-ba8060293600}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\KeyWordClient.rc">
+      <Filter>Misc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Base\KeyWord\Include\IKeyWord.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IKeyWordClient.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KeyFilter.h">
+      <Filter>KeyWord Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KeyWordClient.h">
+      <Filter>KeyWord Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KeyFilter.cpp">
+      <Filter>KeyWord Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KeyWordClient.cpp">
+      <Filter>KeyWord Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

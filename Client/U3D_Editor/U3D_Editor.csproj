@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5846EA7D-A41C-44A2-B491-2639F882F5E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>U3D_Editor</RootNamespace>
+    <AssemblyName>U3D_Editor</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITY_5_4_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UniRelease|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;UNITY_5_3_2;UNITY_5_3;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="U3D_UIFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\Client\Bin\U3D_UIFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>..\UnityDlls\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UnityDlls\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\UnityDlls\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UnityDlls\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adorning\AdorningExporter.cs" />
+    <Compile Include="Adorning\AdorningExporterEx.cs" />
+    <Compile Include="Adorning\AdorningInspector.cs" />
+    <Compile Include="Adorning\CollisionShapeCreator.cs" />
+    <Compile Include="Adorning\DynamicTerrainLoader.cs" />
+    <Compile Include="Adorning\GrassExporter.cs" />
+    <Compile Include="Adorning\GrassInspector.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_AnimatorClip.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_AnimatorController.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Audio.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporterFixedEditor.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Mesh.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Build.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_BuildFlow.cs" />
+    <Compile Include="AssetBundle\AssetDebugEditor.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Other.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Paths.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Security.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Thread.cs" />
+    <Compile Include="AssetBundle\EditorRunTypeWindow.cs" />
+    <Compile Include="AssetBundle\Scheme\AssetBundleImporter_Scheme.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_FBX.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Font.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Material.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Prefab.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Scene.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Shader.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter_Texture.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Check.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_Extract.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor_GUI.cs" />
+    <Compile Include="AssetBundle\EditorLog.cs" />
+    <Compile Include="AssetBundle\Export\Export_PrefabScheme.cs" />
+    <Compile Include="AssetBundle\Scheme\AssetBundleImporter_Scheme_LightingEffect.cs" />
+    <Compile Include="AssetEditor.cs" />
+    <Compile Include="AVProVideo\DisplayUGUIEditor.cs" />
+    <Compile Include="AVProVideo\MediaPlayerEditor.cs" />
+    <Compile Include="AVProVideo\PostProcessBuild.cs" />
+    <Compile Include="BaseStateMachineEditor.cs" />
+    <Compile Include="CameraPropertyInspector.cs" />
+    <Compile Include="CustomImport.cs" />
+    <Compile Include="DOTweenEditor\Core\DelayedCall.cs" />
+    <Compile Include="DOTweenEditor\Core\EditorGUIUtils.cs" />
+    <Compile Include="DOTweenEditor\Core\EditorUtils.cs" />
+    <Compile Include="DOTweenEditor\DOTweenInspector.cs" />
+    <Compile Include="DOTweenEditor\DOTweenSettingsInspector.cs" />
+    <Compile Include="DOTweenEditor\DOTweenSetupMenuItem.cs" />
+    <Compile Include="DOTweenEditor\DOTweenUtilityWindow.cs" />
+    <Compile Include="HeroPrefabEditor\HeroPrefabInfoExportEditor.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\CurveEditor.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\EditorGUIHelper.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\FxStyles.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\GetSetAttribute.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\ReflectionUtils.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\TrackballGroupDrawer.cs" />
+    <Compile Include="ImageEffect\GlobalFog\GlobalFogEditor.cs" />
+    <Compile Include="USpeedUI\Debug\Window\UIDebugWindow.cs" />
+    <Compile Include="EffectTextureImport.cs" />
+    <Compile Include="Effect\CharacterShadow\CharacterShadowEditor.cs" />
+    <Compile Include="Effect\DecalSystem\DecalEditor.cs" />
+    <Compile Include="Effect\DecalSystem\DecalEditorUtil.cs" />
+    <Compile Include="Effect\Effect_AddMaterialEditor.cs" />
+    <Compile Include="Effect\Effect_CameraAnimationEditor.cs" />
+    <Compile Include="Effect\Effect_FullScreenEditor.cs" />
+    <Compile Include="Effect\Effect_LineRenderEditor.cs" />
+    <Compile Include="Effect\Effect_LocalMoveEditor.cs" />
+    <Compile Include="Effect\Effect_PlayEditor.cs" />
+    <Compile Include="Effect\Effect_PlayEntityStaticEffectEditor.cs" />
+    <Compile Include="Effect\Effect_ProjectorModifyEditor.cs" />
+    <Compile Include="Effect\Effect_Random3DEditor.cs" />
+    <Compile Include="Effect\Effect_ReplaceMaterialEditor.cs" />
+    <Compile Include="Effect\Effect_ScaleEditor.cs" />
+    <Compile Include="Effect\Effect_TransformModifyEditor.cs" />
+    <Compile Include="Effect\Effect_UVScrollEditor.cs" />
+    <Compile Include="Effect\Effect_UVTextureAnimatorEditor.cs" />
+    <Compile Include="Effect\FadeInOut\Effect_FadeInOutLightIntensityEditor.cs" />
+    <Compile Include="Effect\FadeInOut\Effect_FadeInOutMaterialColorEditor.cs" />
+    <Compile Include="Effect\FadeInOut\Effect_FadeInOutMaterialFloatEditor.cs" />
+    <Compile Include="Effect\FadeInOut\Effect_MaterialGradientColorEditor.cs" />
+    <Compile Include="Effect\FadeInOut\Effect_ModifSceneBrightnessEditor.cs" />
+    <Compile Include="Effect\Shield\ForceShieldEditor.cs" />
+    <Compile Include="Effect\Shield\SpreadShieldEditor.cs" />
+    <Compile Include="Effect\SwitchEffectWithHeroDistanceEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\Effect_WeaponTrailEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\ExecutionOrderSetter.cs" />
+    <Compile Include="Effect\TrialsSystem\RangePropertyDrawer.cs" />
+    <Compile Include="Effect\TrialsSystem\Effect_RandomSmoothTrailEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\SmokePlumeEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\SmokeTrailEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\SmoothTrailEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\TrailEditor.cs" />
+    <Compile Include="Effect\TrialsSystem\TrailEditor_Base.cs" />
+    <Compile Include="Effect\TrialsSystem\TrailPreviewUtillity.cs" />
+    <Compile Include="Effect\UV\UVMeshInspector.cs" />
+    <Compile Include="Effect\UV\UVParticleInspector.cs" />
+    <Compile Include="Effect\UV\UVProjectorInspector.cs" />
+    <Compile Include="Effect\VerticesModify\Effect_VerticesModifyEditor.cs" />
+    <Compile Include="Effect\VerticesModify\VerticesModifyDataEditor.cs" />
+    <Compile Include="Effect\WaterEditor.cs" />
+    <Compile Include="EntityView\AnimatorCheckEditor.cs" />
+    <Compile Include="EntityView\SkinConfig\EntitySkinConfigEditor.cs" />
+    <Compile Include="EntityView\SkinConfig\MonsterSkinConfigEditor.cs" />
+    <Compile Include="EntityView\SkinConfig\PersonSkinConfigEditor.cs" />
+    <Compile Include="EntityView\SkinConfig\TankSkinConfigEditor.cs" />
+    <Compile Include="FindMissingScriptsRecursively.cs" />
+    <Compile Include="GemEditor\GemConfigEditor.cs" />
+    <Compile Include="GemEditor\GemStoneEditor.cs" />
+    <Compile Include="HeroSelectConfigEditor.cs" />
+    <Compile Include="ImageEffect\BloomAndFlare\BloomAndFlaresEditor.cs" />
+    <Compile Include="ImageEffect\CandelaSSRR\CandelaSSRREditor.cs" />
+    <Compile Include="ImageEffect\ColorCorrection\ColorCorrectionCurvesEditor.cs" />
+    <Compile Include="ImageEffect\Dissolve\DissolveGlowManagerEditor.cs" />
+    <Compile Include="ImageEffect\GlowOutLine\GlowOutLineManagerEditor.cs" />
+    <Compile Include="ImageEffect\Glow\GlowManagerEditor.cs" />
+    <Compile Include="ImageEffect\SceneEffect\SkySystem\SkyLightEditor.cs" />
+    <Compile Include="ImageEffect\SceneEffect\SkySystem\SkySystemManagerEditor.cs" />
+    <Compile Include="ImageEffect\SSAO\SSAOProEditor.cs" />
+    <Compile Include="ImageEffect\SunShaft\SunShaftsEditor.cs" />
+    <Compile Include="ImageEffect\VignetteAndChromaticAberration\VignetteAndChromaticAberrationEditor.cs" />
+    <Compile Include="InitializeEditor.cs" />
+    <Compile Include="LightingEffect\LightEffectExportEditor.cs" />
+    <Compile Include="MaterialEditor\CharacterStandardMaterialEditor.cs" />
+    <Compile Include="MaterialEditor\DissloveStandardMaterialEditor.cs" />
+    <Compile Include="MaterialEditor\EffectStandardMaterialEditor.cs" />
+    <Compile Include="MaterialEditor\FlowLight\FlowLight_Self-Illumin-Bumped_SpecularShaderGUI.cs" />
+    <Compile Include="MaterialEditor\FlowLight\FlowLight_StandardShaderGUI.cs" />
+    <Compile Include="ImageEffect\Glow\GlowMatInspector.cs" />
+    <Compile Include="MaterialEditor\WingsStandardMaterialEditor.cs" />
+    <Compile Include="MaterialEditor\XRayStandardMaterialEditor.cs" />
+    <Compile Include="MaterialEditor\TerrainSurfaceEditor.cs" />
+    <Compile Include="ImageEffect\SceneEffect\SkySystem\SkyCloudEditor.cs" />
+    <Compile Include="OptimitzedControlPlaneEditor.cs" />
+    <Compile Include="MaterialEditor\ParticleDepthMaterialEditor.cs" />
+    <Compile Include="PerformanceCheck\PerformanceCheckManagerEditor.cs" />
+    <Compile Include="ResourceExEditor.cs" />
+    <Compile Include="ScpReaderEditor.cs" />
+    <Compile Include="skillEditor\AnimationEffectEditor.cs" />
+    <Compile Include="skillEditor\CustomEditorWindow.cs" />
+    <Compile Include="skillEditor\EditorCamera.cs" />
+    <Compile Include="skillEditor\LightingEffectEditor.cs" />
+    <Compile Include="skillEditor\OrderDataEditor.cs" />
+    <Compile Include="skillEditor\SkillWindow.cs" />
+    <Compile Include="SoldierCameraInspector.cs" />
+    <Compile Include="ClothEditor.cs" />
+    <Compile Include="ComponentUtily.cs" />
+    <Compile Include="IKAnim\CombinedBoneInspector.cs" />
+    <Compile Include="IKAnim\CombinedSkinAnimatorInspector.cs" />
+    <Compile Include="Export\CustomExport.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\AimIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\BipedIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\BipedIKSolversInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\CCDIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\ConstraintsInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\FABRIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\FABRIKRootInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\FullBodyBipedIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKEffectorInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverAimInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverFABRIKRootInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverFullBodyBipedInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverFullBodyInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverHeuristicInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverLimbInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverLookAtInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\IKSolverTrigonometricInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\InteractionTargetInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\InteractionTriggerInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\LimbIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\LookAtIKInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\RotationLimitAngleInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\RotationLimitHingeInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\RotationLimitInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\RotationLimitPolygonalInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\RotationLimitSplineInspector.cs" />
+    <Compile Include="FinalIK\FinalIK\Editor\TrigonometricIKInspector.cs" />
+    <Compile Include="FinalIK\Scripts\Editor\BipedReferencesInspector.cs" />
+    <Compile Include="FinalIK\Scripts\Editor\CommentsInspector.cs" />
+    <Compile Include="FinalIK\Scripts\Editor\Inspector.cs" />
+    <Compile Include="FinalIK\Scripts\Editor\SerializedContent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SKMeshSocketEditor\ScriptableObjectUtility.cs" />
+    <Compile Include="SKMeshSocketEditor\SKMeshSocketListEditorWin.cs" />
+    <Compile Include="AssetBundle\AssetBundleImporter.cs" />
+    <Compile Include="Sound\SoundConfigDataEditor.cs" />
+    <Compile Include="Sound\SoundIDAllocator.cs" />
+    <Compile Include="AssetBundle\AssetBundleManagerEditor.cs" />
+    <Compile Include="Sound\SoundSystemWindow\SoundSystemEditorWindow.cs" />
+    <Compile Include="Sound\SoundSystemWindow\SoundSystemEditorWindowHelpWindow.cs" />
+    <Compile Include="Sound\SoundSystemWindow\SoundSystemEditorWindow_GUI.cs" />
+    <Compile Include="Sound\SoundSystemWindow\SoundSystemEditorWindow_Data.cs" />
+    <Compile Include="Sound\SoundSystemWindow\SoundSystemEditorWindow_Resource.cs" />
+    <Compile Include="Spline\SplineComponentEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\CursorsEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\DragSupportEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewPaginatorEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ResizableEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ResizableHeaderEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ScrollRectPaginator.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\SpinnerEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\SpinnerFloatEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\UTooltipTriggerEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\WarFloatFontAnimEditor.cs" />
+    <Compile Include="USpeedUI\UnityEditorEx\UInputFieldEditor.cs" />
+    <Compile Include="USpeedUI\UnityEditorEx\UTextEditor.cs" />
+    <Compile Include="USpeedUI\UTools\UArtistFontEditor.cs" />
+    <Compile Include="USpeedUI\UTools\UAtlasMaker.cs" />
+    <Compile Include="USpeedUI\UTools\UEffectTools\UEffectNodeEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\EasyLayoutEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewBaseEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewCustomBaseEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewCustomEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewCustomHeightEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\ListViewItemEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\Sample\TabSampleButtonEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\TabButtonEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\TileViewEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\TreeViewCustomEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\TreeViewDataSourceEditor.cs" />
+    <Compile Include="USpeedUI\UGUIWidgets\TreeViewDataSourceWindow.cs" />
+    <Compile Include="USpeedUI\UTools\UEventTriggerEditor.cs" />
+    <Compile Include="USpeedUI\UTools\UImageInformationEditor.cs" />
+    <Compile Include="USpeedUI\UTools\ULocalizedTextEditor.cs" />
+    <Compile Include="USpeedUI\UTools\UPosTools\UPosEffectLayoutEditor.cs" />
+    <Compile Include="USpeedUI\UTools\UPostprocessTexture.cs" />
+    <Compile Include="USpeedUI\UTools\URendererDepthEditor.cs" />
+    <Compile Include="USpeedUI\UTools\USpeedUILayer\USpeedUILayerElementEditor.cs" />
+    <Compile Include="USpeedUI\UnityEditorEx\UDropdownEditor.cs" />
+    <Compile Include="USpeedUI\UTools\UViewAnimEditor.cs" />
+    <Compile Include="USpeedUI\UWidgets\UButtonAdvancedEditor.cs" />
+    <Compile Include="USpeedUI\UWidgets\UButtonItemEditor.cs" />
+    <Compile Include="USpeedUI\UWidgets\URichText\URichTextEditor.cs" />
+    <Compile Include="USpeedUI\UWidgets\UViewLoadingBarEditor.cs" />
+    <Compile Include="USpeedUI\UWidgets\UWarGoodsStoreRecommendComponentEditor.cs" />
+    <Compile Include="USpeedUI\UWidgets\UWebBrowserToolbarWidgetEditor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameAPI_Wrapper\Build\GameAPI_Wrapper.vcxproj">
+      <Project>{58605197-407e-4b6d-90d5-d07277cc887e}</Project>
+      <Name>GameAPI_Wrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\U3D_Common\U3D_Common.csproj">
+      <Project>{fbf2ac44-c287-464d-8abb-0ee0ba197704}</Project>
+      <Name>U3D_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\U3D_ImageEffect\Src\U3D_ImageEffect.csproj">
+      <Project>{12CF3E61-8EBA-461A-BE52-A3501DE6DD23}</Project>
+      <Name>U3D_ImageEffect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\U3D_Render\Src\U3D_Render.csproj">
+      <Project>{13791C52-01F6-49EA-A9A9-3A02FE617C58}</Project>
+      <Name>U3D_Render</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\U3D_SceneRender\U3D_SceneRender.csproj">
+      <Project>{918a783d-b0c9-4289-a89b-9f7659608ba3}</Project>
+      <Name>U3D_SceneRender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\U3D_StandardAssets\U3D_StandardAssets.csproj">
+      <Project>{4DA50D5E-9E14-47AF-981B-C8AA677177E6}</Project>
+      <Name>U3D_StandardAssets</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FinalIK\FinalIK\Editor\AimIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\BipedIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\BipedIKSolversInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\CCDIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\ConstraintsInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\FABRIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\FABRIKRootInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\FullBodyBipedIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKEffectorInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverAimInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverFABRIKRootInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverFullBodyBipedInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverFullBodyInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverHeuristicInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverLimbInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverLookAtInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\IKSolverTrigonometricInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\InteractionTargetInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\InteractionTriggerInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\LimbIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\LookAtIKInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\RotationLimitAngleInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\RotationLimitHingeInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\RotationLimitInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\RotationLimitPolygonalInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\RotationLimitSplineInspector.cs.meta" />
+    <None Include="FinalIK\FinalIK\Editor\TrigonometricIKInspector.cs.meta" />
+    <None Include="FinalIK\Scripts\Editor\BipedReferencesInspector.cs.meta" />
+    <None Include="FinalIK\Scripts\Editor\CommentsInspector.cs.meta" />
+    <None Include="FinalIK\Scripts\Editor\Inspector.cs.meta" />
+    <None Include="FinalIK\Scripts\Editor\SerializedContent.cs.meta" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).pdb" "..\Game\Assets\Editor\"/y
+copy "$(TargetDir)$(TargetName).dll" "..\Game\Assets\Editor\"/y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

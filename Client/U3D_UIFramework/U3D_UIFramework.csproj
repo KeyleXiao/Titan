@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F466A4A0-AE42-4322-A939-A649DCA69F3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>U3D_UIFramework</RootNamespace>
+    <AssemblyName>U3D_UIFramework</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITY_5_0_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;UNITY_5_3_2;UNITY_5_3;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UniRelease|AnyCPU'">
+    <OutputPath>..\..\Bin\Client\Bin\</OutputPath>
+    <DefineConstants>TRACE;USE_TIMMER_BEHAVIOUR;UNITY_5_3_2;UNITY_5_3;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT;</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MessageLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\Client\Bin\MessageLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedMemory_unity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\Client\Bin\SharedMemory_unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\UnityDlls\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\UnityDlls\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Src\DOTween\AutoPlay.cs" />
+    <Compile Include="Src\DOTween\AxisConstraint.cs" />
+    <Compile Include="Src\DOTween\Color2.cs" />
+    <Compile Include="Src\DOTween\Core\ABSSequentiable.cs" />
+    <Compile Include="Src\DOTween\Core\Debugger.cs" />
+    <Compile Include="Src\DOTween\Core\Delegates.cs" />
+    <Compile Include="Src\DOTween\Core\DOTweenComponent.cs" />
+    <Compile Include="Src\DOTween\Core\DOTweenSettings.cs" />
+    <Compile Include="Src\DOTween\Core\Easing\Bounce.cs" />
+    <Compile Include="Src\DOTween\Core\Easing\EaseCurve.cs" />
+    <Compile Include="Src\DOTween\Core\Easing\EaseManager.cs" />
+    <Compile Include="Src\DOTween\Core\Easing\Flash.cs" />
+    <Compile Include="Src\DOTween\Core\Enums\FilterType.cs" />
+    <Compile Include="Src\DOTween\Core\Enums\OperationType.cs" />
+    <Compile Include="Src\DOTween\Core\Enums\SpecialStartupMode.cs" />
+    <Compile Include="Src\DOTween\Core\Enums\UpdateMode.cs" />
+    <Compile Include="Src\DOTween\Core\Enums\UpdateNotice.cs" />
+    <Compile Include="Src\DOTween\Core\Extensions.cs" />
+    <Compile Include="Src\DOTween\Core\SequenceCallback.cs" />
+    <Compile Include="Src\DOTween\Core\Surrogates\ColorWrapper.cs" />
+    <Compile Include="Src\DOTween\Core\Surrogates\QuaternionWrapper.cs" />
+    <Compile Include="Src\DOTween\Core\Surrogates\Vector2Wrapper.cs" />
+    <Compile Include="Src\DOTween\Core\Surrogates\Vector3Wrapper.cs" />
+    <Compile Include="Src\DOTween\Core\Surrogates\Vector4Wrapper.cs" />
+    <Compile Include="Src\DOTween\Core\TweenerCore.cs" />
+    <Compile Include="Src\DOTween\Core\TweenManager.cs" />
+    <Compile Include="Src\DOTween\Core\Utils.cs" />
+    <Compile Include="Src\DOTween\CustomPlugins\PureQuaternionPlugin.cs" />
+    <Compile Include="Src\DOTween\DOTween.cs" />
+    <Compile Include="Src\DOTween\DOVirtual.cs" />
+    <Compile Include="Src\DOTween\Ease.cs" />
+    <Compile Include="Src\DOTween\EaseFactory.cs" />
+    <Compile Include="Src\DOTween\IDOTweenInit.cs" />
+    <Compile Include="Src\DOTween\LogBehaviour.cs" />
+    <Compile Include="Src\DOTween\LoopType.cs" />
+    <Compile Include="Src\DOTween\PathMode.cs" />
+    <Compile Include="Src\DOTween\PathType.cs" />
+    <Compile Include="Src\DOTween\Plugins\Color2Plugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\ColorPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\ColorWrapperPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\ABSTweenPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\IPlugSetter.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\ITPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\ITweenPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\PathCore\ABSPathDecoder.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\PathCore\CatmullRomDecoder.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\PathCore\ControlPoint.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\PathCore\LinearDecoder.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\PathCore\Path.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\PluginsManager.cs" />
+    <Compile Include="Src\DOTween\Plugins\Core\SpecialPluginsUtils.cs" />
+    <Compile Include="Src\DOTween\Plugins\DoublePlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\FloatPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\IntPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\LongPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\ColorOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\FloatOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\NoOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\PathOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\QuaternionOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\RectOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\StringOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\UintOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\Vector3ArrayOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\Options\VectorOptions.cs" />
+    <Compile Include="Src\DOTween\Plugins\PathPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\QuaternionPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\QuaternionWrapperPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\RectOffsetPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\RectPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\StringPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\UintPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\UlongPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector2Plugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector2WrapperPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector3ArrayPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector3Plugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector3WrapperPlugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector4Plugin.cs" />
+    <Compile Include="Src\DOTween\Plugins\Vector4WrapperPlugin.cs" />
+    <Compile Include="Src\DOTween\RotateMode.cs" />
+    <Compile Include="Src\DOTween\ScrambleMode.cs" />
+    <Compile Include="Src\DOTween\Sequence.cs" />
+    <Compile Include="Src\DOTween\ShortcutExtensions.cs" />
+    <Compile Include="Src\DOTween\ShortcutExtensions_43.cs" />
+    <Compile Include="Src\DOTween\ShortcutExtensions_46.cs" />
+    <Compile Include="Src\DOTween\ShortcutExtensions_50.cs" />
+    <Compile Include="Src\DOTween\Tween.cs" />
+    <Compile Include="Src\DOTween\Tweener.cs" />
+    <Compile Include="Src\DOTween\TweenExtensions.cs" />
+    <Compile Include="Src\DOTween\TweenParams.cs" />
+    <Compile Include="Src\DOTween\TweenSettingsExtensions.cs" />
+    <Compile Include="Src\DOTween\TweenType.cs" />
+    <Compile Include="Src\DOTween\UpdateType.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTAction.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionLeaf.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionLoop.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionNonPrioritizedSelector.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionParallel.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionPrioritizedSelector.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionSequence.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTActionTimer.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTConst.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTPrecondition.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTTreeNode.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\BehaviorTree\TBTWorkingData.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\Blackboard\TBlackBoard.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\Core\TAny.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\Core\TLogger.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\Core\TSingleton.cs" />
+    <Compile Include="Src\SimpleBehaviorTree\Core\TStaticHelperBase.cs" />
+    <Compile Include="Src\Spline\SplineComponent.cs" />
+    <Compile Include="Src\Spline\SplineMesh.cs" />
+    <Compile Include="Src\Spline\SplineStructure.cs" />
+    <Compile Include="Src\strange\extensions\command\api\CommandExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\command\api\CommandKeys.cs" />
+    <Compile Include="Src\strange\extensions\command\api\ICommand.cs" />
+    <Compile Include="Src\strange\extensions\command\api\ICommandBinder.cs" />
+    <Compile Include="Src\strange\extensions\command\api\ICommandBinding.cs" />
+    <Compile Include="Src\strange\extensions\command\api\IPooledCommandBinder.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\Command.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\CommandBinder.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\CommandBinding.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\CommandException.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\EventCommand.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\EventCommandBinder.cs" />
+    <Compile Include="Src\strange\extensions\command\impl\SignalCommandBinder.cs" />
+    <Compile Include="Src\strange\extensions\context\api\ContextEvent.cs" />
+    <Compile Include="Src\strange\extensions\context\api\ContextExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\context\api\ContextKeys.cs" />
+    <Compile Include="Src\strange\extensions\context\api\ContextStartupFlags.cs" />
+    <Compile Include="Src\strange\extensions\context\api\IContext.cs" />
+    <Compile Include="Src\strange\extensions\context\api\IContextView.cs" />
+    <Compile Include="Src\strange\extensions\context\api\ICrossContextCapable.cs" />
+    <Compile Include="Src\strange\extensions\context\impl\Context.cs" />
+    <Compile Include="Src\strange\extensions\context\impl\ContextException.cs" />
+    <Compile Include="Src\strange\extensions\context\impl\ContextView.cs" />
+    <Compile Include="Src\strange\extensions\context\impl\CrossContext.cs" />
+    <Compile Include="Src\strange\extensions\context\impl\CrossContextBridge.cs" />
+    <Compile Include="Src\strange\extensions\context\impl\MVCSContext.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\api\DispatcherExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\api\IDispatcher.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\api\ITriggerable.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\api\ITriggerProvider.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\api\IEvent.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
+    <Compile Include="Src\strange\extensions\dispatcher\impl\DispatcherException.cs" />
+    <Compile Include="Src\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
+    <Compile Include="Src\strange\extensions\implicitBind\ImplementorAttribute.cs" />
+    <Compile Include="Src\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\ICrossContextInjectionBinder.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\IInjectionBinder.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\IInjectionBinding.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\IInjector.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\IInjectorFactory.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\InjectionBindingScope.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\InjectionBindingType.cs" />
+    <Compile Include="Src\strange\extensions\injector\api\InjectionExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\injector\impl\CrossContextInjectionBinder.cs" />
+    <Compile Include="Src\strange\extensions\injector\impl\InjectionBinder.cs" />
+    <Compile Include="Src\strange\extensions\injector\impl\InjectionBinding.cs" />
+    <Compile Include="Src\strange\extensions\injector\impl\InjectionException.cs" />
+    <Compile Include="Src\strange\extensions\injector\impl\Injector.cs" />
+    <Compile Include="Src\strange\extensions\injector\impl\InjectorFactory.cs" />
+    <Compile Include="Src\strange\extensions\injector\InjectAttribute.cs" />
+    <Compile Include="Src\strange\extensions\mediation\api\IMediationBinder.cs" />
+    <Compile Include="Src\strange\extensions\mediation\api\IMediationBinding.cs" />
+    <Compile Include="Src\strange\extensions\mediation\api\IMediator.cs" />
+    <Compile Include="Src\strange\extensions\mediation\api\IView.cs" />
+    <Compile Include="Src\strange\extensions\mediation\api\MediationEvent.cs" />
+    <Compile Include="Src\strange\extensions\mediation\api\MediationExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\EventMediator.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\EventView.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\MediationBinder.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\MediationBinding.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\MediationException.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\Mediator.cs" />
+    <Compile Include="Src\strange\extensions\mediation\impl\View.cs" />
+    <Compile Include="Src\strange\extensions\pool\api\IPool.cs" />
+    <Compile Include="Src\strange\extensions\pool\api\IPoolable.cs" />
+    <Compile Include="Src\strange\extensions\pool\api\PoolExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\pool\api\PoolInflationType.cs" />
+    <Compile Include="Src\strange\extensions\pool\api\PoolOverflowBehavior.cs" />
+    <Compile Include="Src\strange\extensions\pool\impl\Pool.cs" />
+    <Compile Include="Src\strange\extensions\pool\impl\PoolException.cs" />
+    <Compile Include="Src\strange\extensions\reflector\api\IReflectedClass.cs" />
+    <Compile Include="Src\strange\extensions\reflector\api\IReflectionBinder.cs" />
+    <Compile Include="Src\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\reflector\impl\ReflectedClass.cs" />
+    <Compile Include="Src\strange\extensions\reflector\impl\ReflectionBinder.cs" />
+    <Compile Include="Src\strange\extensions\reflector\impl\ReflectionException.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\api\ISequenceBinding.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\api\ISequenceCommand.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\api\ISequencer.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\api\SequencerExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\impl\EventSequenceCommand.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\impl\EventSequencer.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\impl\SequenceBinding.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\impl\SequenceCommand.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\impl\Sequencer.cs" />
+    <Compile Include="Src\strange\extensions\sequencer\impl\SequencerException.cs" />
+    <Compile Include="Src\strange\extensions\signal\api\IBaseSignal.cs" />
+    <Compile Include="Src\strange\extensions\signal\api\SignalExceptionType.cs" />
+    <Compile Include="Src\strange\extensions\signal\impl\BaseSignal.cs" />
+    <Compile Include="Src\strange\extensions\signal\impl\Signal.cs" />
+    <Compile Include="Src\strange\extensions\signal\impl\SignalException.cs" />
+    <Compile Include="Src\strange\framework\api\BinderExceptionType.cs" />
+    <Compile Include="Src\strange\framework\api\BindingConst.cs" />
+    <Compile Include="Src\strange\framework\api\BindingConstraintType.cs" />
+    <Compile Include="Src\strange\framework\api\IBinder.cs" />
+    <Compile Include="Src\strange\framework\api\IBinding.cs" />
+    <Compile Include="Src\strange\framework\api\IInstanceProvider.cs" />
+    <Compile Include="Src\strange\framework\api\IManagedList.cs" />
+    <Compile Include="Src\strange\framework\api\ISemiBinding.cs" />
+    <Compile Include="Src\strange\framework\impl\Binder.cs" />
+    <Compile Include="Src\strange\framework\impl\BinderException.cs" />
+    <Compile Include="Src\strange\framework\impl\Binding.cs" />
+    <Compile Include="Src\strange\framework\impl\SemiBinding.cs" />
+    <Compile Include="Src\strange\ReadMe.cs" />
+    <Compile Include="Src\UGUIWidgets\Combobox\ComboboxCustom.cs" />
+    <Compile Include="Src\UGUIWidgets\Combobox\ComboboxSample.cs" />
+    <Compile Include="Src\UGUIWidgets\Dialog\BringToFront.cs" />
+    <Compile Include="Src\UGUIWidgets\Dialog\Dialog.cs" />
+    <Compile Include="Src\UGUIWidgets\Dialog\DialogActions.cs" />
+    <Compile Include="Src\UGUIWidgets\Dialog\DialogButtonComponent.cs" />
+    <Compile Include="Src\UGUIWidgets\Dialog\DialogInfo.cs" />
+    <Compile Include="Src\UGUIWidgets\Dialog\DialogInfoBase.cs" />
+    <Compile Include="Src\UGUIWidgets\Drag-and-Drop\BaseDragSupport.cs" />
+    <Compile Include="Src\UGUIWidgets\Drag-and-Drop\Draggable.cs" />
+    <Compile Include="Src\UGUIWidgets\Drag-and-Drop\DraggableHandle.cs" />
+    <Compile Include="Src\UGUIWidgets\Drag-and-Drop\DragSupport.cs" />
+    <Compile Include="Src\UGUIWidgets\Drag-and-Drop\IDropSupport.cs" />
+    <Compile Include="Src\UGUIWidgets\Drag-and-Drop\OnDragListener.cs" />
+    <Compile Include="Src\UGUIWidgets\EasyLayout\URadialLayout.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewHeight\Chat\ChatLine.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewHeight\Chat\ChatLineComponent.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewHeight\Chat\ChatView.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewHeight\Chat\ChatViewTest.cs" />
+    <Compile Include="Src\UGUIWidgets\EasyLayout\EasyLayout.cs" />
+    <Compile Include="Src\UGUIWidgets\EasyLayout\EasyLayoutCompact.cs" />
+    <Compile Include="Src\UGUIWidgets\EasyLayout\EasyLayoutExtensions.cs" />
+    <Compile Include="Src\UGUIWidgets\EasyLayout\EasyLayoutGrid.cs" />
+    <Compile Include="Src\UGUIWidgets\EasyLayout\EasyLayoutUtilites.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\EasyLayoutBridge.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\IItemHeight.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ILayoutBridge.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewHeight\IListViewItemHeight.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\TitleView\TileViewComponentSample.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\TitleView\TileViewItemSample.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\TitleView\TileViewSample.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListView\ListView.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewBase.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewCustom.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\ListViewHeight\ListViewCustomHeight.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewItem.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewItemEventData.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListView\ListViewStringComponent.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\StandardLayoutBridge.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\TitleView\TileView.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\ListViewCustom\TitleView\TileViewScrollRectFitter.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\ListNode.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeNode.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeNodeToggle.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeView.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeViewComponent.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeViewComponentBase.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeViewCustom.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeViewDataSource.cs" />
+    <Compile Include="Src\UGUIWidgets\ListViewBase\TreeView\TreeViewItem.cs" />
+    <Compile Include="Src\UGUIWidgets\Notify\Notify.cs" />
+    <Compile Include="Src\UGUIWidgets\Notify\NotifySequenceManager.cs" />
+    <Compile Include="Src\UGUIWidgets\Resizable\Resizable.cs" />
+    <Compile Include="Src\UGUIWidgets\Resizable\ResizableHeader.cs" />
+    <Compile Include="Src\UGUIWidgets\Resizable\ResizableHeaderCell.cs" />
+    <Compile Include="Src\UGUIWidgets\Resizable\ResizableHeaderDragCell.cs" />
+    <Compile Include="Src\UGUIWidgets\Resizable\Splitter.cs" />
+    <Compile Include="Src\UGUIWidgets\ScrollRectUtilites\ListViewPaginator.cs" />
+    <Compile Include="Src\UGUIWidgets\ScrollRectUtilites\ScrollRectEvents.cs" />
+    <Compile Include="Src\UGUIWidgets\ScrollRectUtilites\ScrollRectPage.cs" />
+    <Compile Include="Src\UGUIWidgets\ScrollRectUtilites\ScrollRectPageWithNumber.cs" />
+    <Compile Include="Src\UGUIWidgets\ScrollRectUtilites\ScrollRectPaginator.cs" />
+    <Compile Include="Src\UGUIWidgets\Spinner\Spinner.cs" />
+    <Compile Include="Src\UGUIWidgets\Spinner\SpinnerBase.cs" />
+    <Compile Include="Src\UGUIWidgets\Spinner\SpinnerFloat.cs" />
+    <Compile Include="Src\UGUIWidgets\Tabs\Tab.cs" />
+    <Compile Include="Src\UGUIWidgets\Tabs\TabButton.cs" />
+    <Compile Include="Src\UGUIWidgets\Tabs\TabsCustom.cs" />
+    <Compile Include="Src\UGUIWidgets\Tabs\TabsSample.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltip.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltipDefines.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltipExtensionMethods.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltipFields.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltipManager.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltipOverflow.cs" />
+    <Compile Include="Src\UGUIWidgets\Tooltips\UTooltipTrigger.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\Animations.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\BezierPath.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ButtonAdvanced.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ComparisonCompare.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\EventTriggerEx.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\Extensions.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ICollectionChanged.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ICollectionItemChanged.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ImageAdvanced.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\IObservable.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\IObservableList.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ITemplatable.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ModalHelper.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ObservableList.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\ResizeListener.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\SelectListener.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\SlideUp.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\Templates.cs" />
+    <Compile Include="Src\UGUIWidgets\Utilites\Utilites.cs" />
+    <Compile Include="Src\WebBroswer\BrowserEngine.cs" />
+    <Compile Include="Src\WebBroswer\Interprocess\SharedCommServer.cs" />
+    <Compile Include="Src\WebBroswer\Interprocess\SharedMemServer.cs" />
+    <Compile Include="Src\WebBroswer\WebBrowser.cs" />
+    <Compile Include="Src\WebBroswer\WebBrowser2D.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Src\strange\.gitignore" />
+    <None Include="Src\strange\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Src\strange\extensions\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)$(TargetName).pdb" "..\Game\Assets\Scripts\" /y
+copy "$(TargetDir)$(TargetName).dll" "..\Game\Assets\Scripts\" /y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

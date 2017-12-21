@@ -1,0 +1,142 @@
+// !$*UTF8*$!
+{
+	089C1669FE841209C02AAC07 /* Project object */ = {
+		activeArchitecturePreference = i386;
+		activeBuildConfigurationName = Release;
+		activeTarget = 8D57630D048677EA00EA77CD /* RenderingPlugin */;
+		addToTargets = (
+			8D57630D048677EA00EA77CD /* RenderingPlugin */,
+		);
+		codeSenseManager = 2BC2A8B7144C3B2800D5EF79 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					662,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					622,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 340619605;
+			PBXWorkspaceStateSaveDate = 340619605;
+		};
+		perUserProjectItems = {
+			2BB5EEF1144D6F6900C65AD3 /* PBXTextBookmark */ = 2BB5EEF1144D6F6900C65AD3 /* PBXTextBookmark */;
+			2BB5EFB9144D83A300C65AD3 /* PlistBookmark */ = 2BB5EFB9144D83A300C65AD3 /* PlistBookmark */;
+			2BB5EFBA144D83A300C65AD3 /* PBXTextBookmark */ = 2BB5EFBA144D83A300C65AD3 /* PBXTextBookmark */;
+			2BB5EFBB144D83A300C65AD3 /* PBXTextBookmark */ = 2BB5EFBB144D83A300C65AD3 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 2BC2A8B6144C3B2800D5EF79 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2BB5EE81144C912A00C65AD3 /* UnityPluginInterface.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {840, 910}}";
+			sepNavSelRange = "{1380, 0}";
+			sepNavVisRange = "{1172, 305}";
+		};
+	};
+	2BB5EEF1144D6F6900C65AD3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2BB5EE81144C912A00C65AD3 /* UnityPluginInterface.h */;
+		name = "UnityPluginInterface.h: 57";
+		rLen = 0;
+		rLoc = 1380;
+		rType = 0;
+		vrLen = 305;
+		vrLoc = 1172;
+	};
+	2BB5EFB9144D83A300C65AD3 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D576317048677EA00EA77CD /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/aras/unity/graphics/External/ExampleProjects/Plugins/NativeRenderingPlugin/RenderingPlugin/Xcode3/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	2BB5EFBA144D83A300C65AD3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2BC2A8C7144C3B6500D5EF79 /* RenderingPlugin.cpp */;
+		name = "RenderingPlugin.cpp: 74";
+		rLen = 0;
+		rLoc = 1818;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 1695;
+	};
+	2BB5EFBB144D83A300C65AD3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2BC2A8C7144C3B6500D5EF79 /* RenderingPlugin.cpp */;
+		name = "RenderingPlugin.cpp: 74";
+		rLen = 0;
+		rLoc = 1818;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 1695;
+	};
+	2BC2A8B6144C3B2800D5EF79 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	2BC2A8B7144C3B2800D5EF79 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	2BC2A8C7144C3B6500D5EF79 /* RenderingPlugin.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {985, 3666}}";
+			sepNavSelRange = "{1818, 0}";
+			sepNavVisRange = "{1695, 782}";
+			sepNavWindowFrame = "{{65, 150}, {747, 723}}";
+		};
+	};
+	8D57630D048677EA00EA77CD /* RenderingPlugin */ = {
+		activeExec = 0;
+	};
+}

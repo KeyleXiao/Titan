@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include File">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source File">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource File">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{eba48e91-016c-4f1b-8a8b-2f875b80c671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File\State">
+      <UniqueIdentifier>{b4c66687-3290-4338-9d6b-7764389bec12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File\Part Files">
+      <UniqueIdentifier>{794f561b-d5af-46d9-9826-f2c0680e77cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AntiAddict">
+      <UniqueIdentifier>{75c7e368-736a-4174-a9e7-168620b6489a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Task">
+      <UniqueIdentifier>{c7e6aa9a-70cc-496b-af20-9bbe167c7961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File\SubManager">
+      <UniqueIdentifier>{dca4a8c6-ad63-4f67-a790-dc7dcdbacbfe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\dllmain.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityProperty.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerRole.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerRoleProperty.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityClient.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameView.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Monster.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MonsterProperty.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SlotLogicPart.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Tank.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TankProperty.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityStandState.cpp">
+      <Filter>Source File\State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityDieState.cpp">
+      <Filter>Source File\State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityBase.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityFightState.cpp">
+      <Filter>Source File\State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HeroManager.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AOIPart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DiePart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\DragonBallPart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerBankPart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MovePart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WingPart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TitlePart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerKillPart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AntiAddictClient.cpp">
+      <Filter>AntiAddict</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TaskClient.cpp">
+      <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CommonPart.cpp">
+      <Filter>Source File\Part Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CrownPageManager.cpp">
+      <Filter>Source File\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CommonManager.cpp">
+      <Filter>Source File\SubManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\EntityMessageCache.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\IEntityClient.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerRoleProperty.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityProperty.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityClient.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\DataChunk.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\EntityDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityStandState.h">
+      <Filter>Source File\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityState.h">
+      <Filter>Source File\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityDieState.h">
+      <Filter>Source File\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MonsterProperty.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SlotLogicPart.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Tank.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TankProperty.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\targetver.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Monster.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerRole.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityBase.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityFactory.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\TypeName.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Property.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityFightState.h">
+      <Filter>Source File\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAOIPart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITank.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ICamp.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IClientEntity.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDataChunk.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDiePart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IDragonBallPart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IEntity.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMovePart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IBankPart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Entity_inl.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IWingPart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\WingMessageDef.h">
+      <Filter>Include File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HeroManager.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AOIPart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DiePart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\DragonBallPart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerBankPart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MovePart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\WingPart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TitlePart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITitlePart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerKillPart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IPlayerKillPart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IAntiAddictClient.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AntiAddictClient.h">
+      <Filter>AntiAddict</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TaskClient.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ITaskClient.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonPart.h">
+      <Filter>Source File\Part Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ICommonPart.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CrownPageManager.h">
+      <Filter>Source File\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CommonManager.h">
+      <Filter>Source File\SubManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\EntityMessageCache.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

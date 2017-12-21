@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="接口">
+      <UniqueIdentifier>{804ea5df-9a75-4dd1-9b30-8da04609af92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{d65e7697-036d-404a-a343-70d3a2e0febf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{05a08c63-cc5c-4080-b40e-35b3ba103952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Kin">
+      <UniqueIdentifier>{618cf17a-e5ef-4eb8-a996-37751cc105c7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\KinManager.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KinService.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KinService_Proxy.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KinService_Stub.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KinMember.cpp">
+      <Filter>Src\Kin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KinInviteManager.cpp">
+      <Filter>Src\Kin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalHelper.cpp" />
+    <ClCompile Include="..\Src\Kin.cpp">
+      <Filter>Src\Kin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\KinManager.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KinService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KinService_Proxy.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KinService_Stub.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IKinManager.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IKinService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KinMember.h">
+      <Filter>Src\Kin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KinInviteManager.h">
+      <Filter>Src\Kin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalHelper.h" />
+    <ClInclude Include="..\Src\Kin.h">
+      <Filter>Src\Kin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IKin.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\KinHelper.h" />
+  </ItemGroup>
+</Project>

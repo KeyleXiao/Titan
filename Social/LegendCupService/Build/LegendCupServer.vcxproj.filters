@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="接口">
+      <UniqueIdentifier>{804ea5df-9a75-4dd1-9b30-8da04609af92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{05a08c63-cc5c-4080-b40e-35b3ba103952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LegendCup">
+      <UniqueIdentifier>{5cb20a1f-d2bb-4b34-86d7-85bb396bbb2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LegendCup\Competition">
+      <UniqueIdentifier>{434590b5-f76f-4dd0-83cc-83cf766cf7dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LegendCupMgr">
+      <UniqueIdentifier>{e682717c-6f86-497c-9985-857c75feb7c9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\LegendCupManager.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LegendCupService.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LegendCupService_Proxy.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LegendCupService_Stub.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\LegendCup.cpp">
+      <Filter>LegendCup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KnockoutCompetitionRound.cpp">
+      <Filter>LegendCup\Competition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\CompetitionRoundBase.cpp">
+      <Filter>LegendCup\Competition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GroupCompetitionRound.cpp">
+      <Filter>LegendCup\Competition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LegendCupInfoMgr.cpp">
+      <Filter>LegendCupMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalFacade.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\LegendCupManager.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LegendCupService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LegendCupService_Proxy.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LegendCupService_Stub.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\targetver.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Include\ILegendCupManager.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ILegendCupService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\LegendCupHelper.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LegendCup.h">
+      <Filter>LegendCup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\KnockoutCompetitionRound.h">
+      <Filter>LegendCup\Competition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\CompetitionRoundBase.h">
+      <Filter>LegendCup\Competition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GroupCompetitionRound.h">
+      <Filter>LegendCup\Competition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LegendCupInfoMgr.h">
+      <Filter>LegendCupMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalFacade.h" />
+    <ClInclude Include="..\Include\ICompetitionRoundBase.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

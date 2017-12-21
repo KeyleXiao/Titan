@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="接口">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{6008094b-5383-4a62-8bee-e41367617c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{cd703721-49eb-494f-b222-cf64e698f807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RoomState">
+      <UniqueIdentifier>{0fb7bf5d-de33-4b34-bcc4-8ac5ecc70a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Match">
+      <UniqueIdentifier>{1fa7d806-3451-4fab-b359-910d0e347c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Match\PlayerMatchClass">
+      <UniqueIdentifier>{ee1fec89-c2b4-4481-bd00-e44a671ecb55}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\dllmain.cpp" />
+    <ClCompile Include="..\Src\stdafx.cpp" />
+    <ClCompile Include="..\Src\MatchService.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchManager.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchService_Stub.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchService_Proxy.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomIDAlloter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomPlayer.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_Wait.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_Fighting.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_SelectHero.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RoomState_ReadyGo.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchNodeIDAlloter.cpp">
+      <Filter>Match</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchFactory.cpp">
+      <Filter>Match</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HallRoom.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ComputerPDBIDAlloter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BaseRoomState.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ExternalFacade.cpp" />
+    <ClCompile Include="..\Src\WarMatch.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchMachine.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BaseWarMatch.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchAcceptCheck.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchAcceptCheckIDAlloter.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ActorPunishment.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HallPlayer.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchRecommendRank.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchMultiCamp.cpp">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\OBManager.cpp">
+      <Filter>RoomState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MatchSeasonMgr.cpp">
+      <Filter>Match</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\targetver.h" />
+    <ClInclude Include="..\Src\stdafx.h" />
+    <ClInclude Include="..\Include\IMatchManager.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMatchService.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Match_Define.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchService.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchManager.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchService_Proxy.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchService_Stub.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MatchDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\MatchHelper.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomIDAlloter.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomPlayer.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_Wait.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_Fighting.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_SelectHero.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RoomState_ReadyGo.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MatchMsgDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchNodeIDAlloter.h">
+      <Filter>Match</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchFactory.h">
+      <Filter>Match</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HallRoom.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ComputerPDBIDAlloter.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BaseRoomState.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MatchSchemeDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ExternalFacade.h" />
+    <ClInclude Include="..\Src\WarMatch.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchMachine.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BaseWarMatch.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchAcceptCheck.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchAcceptCheckIDAlloter.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ActorPunishment.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HallPlayer.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchRecommendRank.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchMultiCamp.h">
+      <Filter>Match\PlayerMatchClass</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\OBManager.h">
+      <Filter>RoomState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MatchSeasonMgr.h">
+      <Filter>Match</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

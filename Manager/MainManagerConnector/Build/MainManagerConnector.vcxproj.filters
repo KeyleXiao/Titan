@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\Common\GetDiskSN.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\MainManagerConnection.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\stdafx.cpp">
+      <Filter>Source File</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\DManagerModule.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\IMainManagerConnector.h">
+      <Filter>Interface File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\resource.h">
+      <Filter>ResourceFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\stdafx.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\GetDiskSN.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\MainManagerConnection.h">
+      <Filter>Source File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common File">
+      <UniqueIdentifier>{14acef9f-cc47-422a-ac4e-c19a099e64f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface File">
+      <UniqueIdentifier>{be99ffa2-e460-40d4-b598-1bcf653b3795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source File">
+      <UniqueIdentifier>{f8909042-90de-479b-9123-ddaa0307bffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceFile">
+      <UniqueIdentifier>{572522e3-325e-4521-bc66-97479616b1f7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Src\MainManagerConnector.rc">
+      <Filter>ResourceFile</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

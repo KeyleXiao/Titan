@@ -1,0 +1,110 @@
+效果类型
+0--新增技能[参数1:新增技能ID] 
+1--影响技能字段[参数1:技能ID。  参数2:技能字段。 参数3:add(0) or set(1)。 参数4:天赋数值] 
+2--影响技能条件效果[参数1:技能ID。 参数2:技能事件。 参数3:子类型(0--增加条件 1--减少条件 2--增加效果 3--减少效果)。 参数4--条件效果ID] 
+3--开启效果列表[参数1:效果列表 如 1;2 ] 
+4--替换技能[参数1:旧技能ID。 参数2:新技能ID])
+
+
+// 技能事件
+	ENUM SPELL_EVENT
+	{
+		DESC("准备施法")  		1
+		
+		DESC("技能丢出去") 		2
+
+		DESC("吟唱")			3
+
+		DESC("打中了人")		4
+
+		DESC("收招结束")		5
+
+		DESC("定时事件")		6
+
+		DESC("被打断事件")		7
+
+		DESC("二次激活技能事件") 	8
+
+		DESC("被动定时器事件")		9
+	};
+
+
+技能字段
+ENUM SPELL_DATA_ID
+	{
+		DESC("技能ID")
+		SPDATA_ID    = 0,
+		DESC("技能职业")
+		SPDATA_VOCATION,
+		DESC("技能类型")
+		SPDATA_TYPE,
+		DESC("技能名字")
+		SPDATA_NAME,
+		DESC("技能描述")
+		SPDATA_DESC,
+		DESC("技能图标")
+		SPDATA_ICON,
+		DESC("预备光效")
+		SPDATA_PREPARE_LIGHTING,
+		DESC("施法光效")
+		SPDATA_CAST_LIGHTING,
+		DESC("轨迹光效")
+		SPDATA_TRACKER_LIGHTING,
+		DESC("被击光效")
+		SPDATA_DAMAGE_LIGHTING,
+		DESC("预备动画名字")
+		SPDATA_PREPARE_ANIMATION,
+		DESC("施法动画名字")
+		SPDATA_CAST_ANIMATION,
+		DESC("轨迹动画名字")
+		SPDATA_TRACKER_ANIMATION,
+		DESC("被击动画名字")
+		SPDATA_DAMAGE_ANIMATION,
+		DESC("准备时间")
+		SPDATA_PREPARE_TIME,
+		DESC("打断标志")
+		SPDATA_BREAK_FLAG,
+		DESC("持续时间")
+		SPDATA_DURATION,
+		DESC("僵持时间")
+		SPDATA_RIGIDITY,
+		DESC("冷却ID")
+		SPDATA_COOLID,
+		DESC("消耗法力")
+		SPDATA_NEED_MP,
+		DESC("技能威力")
+		SPDATA_POWER,
+		DESC("攻击百分比(float)")
+		SPDATA_ATTACK_PCT,
+		DESC("穿透百分比(float)")
+		SPDATA_PENETRATION_PCT,
+		DESC("目标类型")
+		SPDATA_TARGET,
+		DESC("伤害类型(魔法or物理)")
+		SPDATA_DAMAGE_TYPE,
+		DESC("命中时间")
+		SPDATA_HIT_TIME,
+		DESC("攻击方式")
+		SPDATA_ATTACK_TYPE,
+		DESC("攻击次数")
+		SPDATA_ATTACK_COUNT,
+		DESC("攻击时间")
+		SPDATA_ATTACK_TIME,
+		DESC("最大攻击目标数量")
+		SPDATA_TARGET_COUNT,
+		// 此处约定(float)值默认扩大SPELL_FLOAT_VALUE倍
+		DESC("攻击范围(float)")
+		SPDATA_ATTACK_RANGE,
+		DESC("攻击衰减")
+		SPDATA_ATTACK_DECLINE,
+		DESC("技能距离(float)")
+		SPDATA_DISTANCE,
+		DESC("飞行速度(float)")
+		SPDATA_FLYING_SPEED,
+		DESC("技能选择类型")
+		SPDATA_SELECT_TYPE,
+		DESC("技能使用类型")
+		SPDATA_CAST_TYPE,
+		DESC("技能被动事件")
+		SPDATA_PASSIVE_EVENT,
+	};

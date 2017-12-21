@@ -1,0 +1,27 @@
+// BUFFFlag类型定义
+enum BUFF_FLAG_TYPE
+{
+	tBuff_TypeFlag_Client			= 0x0001,				// 客户端创建
+	tBuff_TypeFlag_Bcast			= 0x0002,				// 需要广播
+	tBuff_TypeFlag_Save				= 0x0004,				// 保存数据库
+	tBuff_TypeFlag_OffTime			= 0x0008,				// 下线计时
+
+	tBuff_TypeFlag_System			= 0x0010,				// 系统BUFF
+	tBuff_TypeFlag_Magic			= 0x0020,				// 魔法BUFF
+	tBuff_TypeFlag_Toxic			= 0x0040,				// 中毒BUFF
+	tBuff_TypeFlag_SpeedDown		= 0x0080,				// 减速BUFF
+
+	tBuff_TypeFlag_Morbid			= 0x0100,				// 疾病BUFF
+	tBuff_TypeFlag_HealDispel		= 0x0200,				// 有益驱散被技能驱散
+	tBuff_TypeFlag_HurtDispel		= 0x0400,				// 有害驱散被技能驱散
+	tBuff_TypeFlag_HurtDispelWd		= 0x0800,				// 有害驱散被无敌驱散
+
+	tBuff_TypeFlag_Faint			= 0x1000,				// 眩晕BUFF
+	tBuff_TypeFlag_Affright			= 0x2000,				// 惊吓BUFF
+	tBuff_TypeFlag_Durance			= 0x4000,				// 禁锢BUFF
+	tBuff_TypeFlag_Freeze			= 0x8000,				// 冻结BUFF
+
+	tBuff_TypeFlag_Apotheosize		= 0x10000,				// 封魔BUFF
+	tBuff_TypeFlag_Back				= 0x20000,				// 击退BUFF
+	tBuff_TypeFlag_Fly				= 0x40000,				// 击飞BUFF
+};

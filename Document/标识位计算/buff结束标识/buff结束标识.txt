@@ -1,0 +1,11 @@
+enum BUFF_END_TYPE
+{
+    BUFF_END_DIE = 1,                   // 死亡结束  =1
+    BUFF_END_INJURED,                   // 受伤结束   =2
+    BUFF_END_MOVE,                      // 移动结束   =3
+    BUFF_END_ATTACK,                    // 攻击结束   =4
+    BUFF_END_ATTACK_READY,              // 蓄气时取消  =5
+    BUFF_END_INJURED_BY_ACTOR,          // 被英雄攻击取消  =6
+                                        // 左键或ESC取消 =  7
+};
+配置格式   endflag0="1" endflag1="2"    

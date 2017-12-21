@@ -1,0 +1,78 @@
+Navitgation Roles
+
+The design of navigation is based around three roles, the AI, mover, and
+planner.  While this document often assumes that roles will normally be
+handled by dedicated components, that is not a design requirement. There are 
+cases where it is appropriate for a single component to handle multiple roles,
+or multiple components to handle different parts of the same role.
+
+The documentation of the navigation classes will often refer to these roles,
+indicating which role the class fills, or which role owns resposibility.
+
+The 'AI' role includes the component responsible for high level decision making 
+such as setting goals and deciding what navigation mode should be in use.
+
+The 'planner' role includes the component responsible for handling path 
+planning, local steering, etc.
+
+The 'mover' role includes the component responsible for implementing movement
+in the world, based on the direction of the planner.
+
+The High Level AI
+
+The AI, not too surprisingly, needs to be aware of the behavior and limitations
+of the components performing the other roles.  Some of the main examples:
+
+- The mover may not always exactly follow the directions of the planner.
+- The planner may adjust the navigation position and goal to meet its
+  restrictions. (E.g. Constraining points to the navigation mesh.)
+- Planners, depending on type, may interpret the 'new goal' flag
+  slightly differently and with significant performance impact.
+
+Navigation Planners
+
+Responsible for path planning and local steering.  Planners receive instructions
+from the AI and may get feedback from the mover.
+
+Most planners are tyrants that don't trust the mover.  They believe their 
+instructions are being carried out and depend on navigation flags to 
+tell them when a position override needs to be be fed back into the planner.
+
+The efficiency of some planners are based around minimal position feedback from
+the mover.  Forcing freqent feedback will result in a large negative 
+performance impact for these types of planners.
+
+Planners tend to be categorized as two general types:  'Static path' and 
+'follow-style'.  Static path planners will only check the agent goal when
+the 'new goal' flag is set.  Follow-style planners check the goal
+frequenctly and interpret the 'new goal' flag to mean a large change in the
+location of the goal has occurred.  (I.e. More likely to need full replanning.)
+
+Navigation planners are expected to fail on initialization if input data
+is bad.  (E.g. Position and or goal can't be constrained to the navigation
+mesh.)
+
+During Update() a planner will do the best it can, even if it can't do exactly 
+what is requested.  It will fail only when critical resources have problems.  
+Bad input data is generally ignored or fixed. (E.g. A new position will be 
+auto-constrained to the navigation mesh.  If that fails, the new value will be 
+ignored rather than causing a failure.)
+
+The above behavior means that the AI is responsible for detecting when
+the planner can't meet the AI's goals.  The AI can do this by monitoring
+the fields owned by the planner, such as desiredPosition and plannerGoal, to
+see if they differ from the expected values.
+
+In general, planners will leave navigation assets such as corridor, 
+path helper, and crowd agent objects in place when they exit.  They will 
+clear the appropriate 'in-use' flags in order to indicate the objects are not 
+being maintained. The reason for this is that the assets may be needed by the 
+next planner.
+
+Planners are expected to ensure that all needed navigation assets are either
+available or created when they startup.  They are also responsible for
+cleaning up unused assets at startup, especially crowd agents.
+
+It is expected that there will be a master planner that switches between
+normal planners.  The master planner is responsible for managing the planner 
+failure flag.  So normal planners ignore the flag.

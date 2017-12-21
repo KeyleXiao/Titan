@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{0E413705-B0EA-20EC-BA5E-B50692F5A425}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_2;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\CAI\cai-nav-u3d-extras\AgentGroupSettings.cs" />
+     <Compile Include="Assets\CAI\cai-nav-u3d-extras\CrowdAvoidanceSet.cs" />
+     <Compile Include="Assets\CAI\cai-nav-u3d-extras\NavManager.cs" />
+     <Compile Include="Assets\CAI\cai-nav-u3d-extras\NavManagerProvider.cs" />
+     <Compile Include="Assets\Common\BufferHandler.cs" />
+     <Compile Include="Assets\Common\FreeMove.cs" />
+     <Compile Include="Assets\Common\IState.cs" />
+     <Compile Include="Assets\Common\LabelRegion.cs" />
+     <Compile Include="Assets\Common\MouseLooker.cs" />
+     <Compile Include="Assets\Common\NullState.cs" />
+     <Compile Include="Assets\Common\SimGUIUtil.cs" />
+     <Compile Include="Assets\Common\SimStandard.cs" />
+     <Compile Include="Assets\Common\StdButtons.cs" />
+     <Compile Include="Assets\Common\StringList.cs" />
+     <Compile Include="Assets\CrowdDemo\CrowdDemoAgent.cs" />
+     <Compile Include="Assets\CrowdDemo\CrowdDemoSim.cs" />
+     <Compile Include="Assets\DemoCommon\Agent.cs" />
+     <Compile Include="Assets\DemoCommon\AgentContext.cs" />
+     <Compile Include="Assets\DemoCommon\IsUserControlled.cs" />
+     <Compile Include="Assets\DemoCommon\MoveToRandom.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\FollowGoalCrowd.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\MoveToCrowd.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\MoveToLocal.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\MoveToSimple.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavAgent.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavAgentData.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavAgentGroup.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavController.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavDebugView.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavEvents.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavFlag.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavMode.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavPath.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\NavPlanner.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\RangeType.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\SimpleMover.cs" />
+     <Compile Include="Assets\DemoCommon\Nav\SuspendInCrowd.cs" />
+     <Compile Include="Assets\DemoCommon\SetUseCrowd.cs" />
+     <Compile Include="Assets\DemoCommon\Task\BaseTask.cs" />
+     <Compile Include="Assets\DemoCommon\Task\CompletionPolicy.cs" />
+     <Compile Include="Assets\DemoCommon\Task\ICondition.cs" />
+     <Compile Include="Assets\DemoCommon\Task\ITask.cs" />
+     <Compile Include="Assets\DemoCommon\Task\KeepActive.cs" />
+     <Compile Include="Assets\DemoCommon\Task\ParallelNode.cs" />
+     <Compile Include="Assets\DemoCommon\Task\PrioritySelector.cs" />
+     <Compile Include="Assets\DemoCommon\Task\SequentialNode.cs" />
+     <Compile Include="Assets\DemoCommon\Task\TaskState.cs" />
+     <Compile Include="Assets\DemoCommon\Task\TaskUtil.cs" />
+     <Compile Include="Assets\DemoCommon\Task\TrueCondition.cs" />
+     <Compile Include="Assets\DemoCommon\UntilUserControlled.cs" />
+     <Compile Include="Assets\DemoCommon\WaitForNavStrict.cs" />
+     <Compile Include="Assets\Main\MainSim.cs" />
+     <Compile Include="Assets\PathCorridorExplorer\CorridorExplorerSim.cs" />
+     <Compile Include="Assets\QueryExplorer\FindDistanceToWall.cs" />
+     <Compile Include="Assets\QueryExplorer\FindPath.cs" />
+     <Compile Include="Assets\QueryExplorer\FindPolysByConvex.cs" />
+     <Compile Include="Assets\QueryExplorer\FindPolysByRadius.cs" />
+     <Compile Include="Assets\QueryExplorer\GetNearestPointF.cs" />
+     <Compile Include="Assets\QueryExplorer\GetNearestPointG.cs" />
+     <Compile Include="Assets\QueryExplorer\GetNearestPointL.cs" />
+     <Compile Include="Assets\QueryExplorer\GetPolyHeight.cs" />
+     <Compile Include="Assets\QueryExplorer\GetPolys.cs" />
+     <Compile Include="Assets\QueryExplorer\GetPolysLocal.cs" />
+     <Compile Include="Assets\QueryExplorer\GetSegments.cs" />
+     <Compile Include="Assets\QueryExplorer\GetWallSegments.cs" />
+     <Compile Include="Assets\QueryExplorer\IQueryExplorerState.cs" />
+     <Compile Include="Assets\QueryExplorer\MoveAlongSurface.cs" />
+     <Compile Include="Assets\QueryExplorer\QEStateType.cs" />
+     <Compile Include="Assets\QueryExplorer\QEUtil.cs" />
+     <Compile Include="Assets\QueryExplorer\QueryExplorerSim.cs" />
+     <Compile Include="Assets\QueryExplorer\RaycastQE.cs" />
+     <Compile Include="Assets\QueryExplorer\StaightPath.cs" />
+     <None Include="Assets\ReadMe.txt" />
+     <None Include="Assets\CAI\GlobalAssets\ReadMe.txt" />
+     <None Include="Assets\QueryExplorer\ReadMe.txt" />
+     <None Include="Assets\DemoCommon\Nav\DesignNotes.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="cai-nav-u3d">
+ <HintPath>D:/unity_project/CAINav-SamplePack-0.4a_origin/SamplePack/Assets/CAI/cai-nav-u3d.dll</HintPath>
+ </Reference>
+ <Reference Include="cai-nav">
+ <HintPath>D:/unity_project/CAINav-SamplePack-0.4a_origin/SamplePack/Assets/CAI/cai-nav.dll</HintPath>
+ </Reference>
+ <Reference Include="cai-nmbuild-extras-u3d">
+ <HintPath>D:/unity_project/CAINav-SamplePack-0.4a_origin/SamplePack/Assets/CAI/cai-nmbuild-extras-u3d.dll</HintPath>
+ </Reference>
+ <Reference Include="cai-util-u3d">
+ <HintPath>D:/unity_project/CAINav-SamplePack-0.4a_origin/SamplePack/Assets/CAI/cai-util-u3d.dll</HintPath>
+ </Reference>
+ <Reference Include="cai-util">
+ <HintPath>D:/unity_project/CAINav-SamplePack-0.4a_origin/SamplePack/Assets/CAI/cai-util.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

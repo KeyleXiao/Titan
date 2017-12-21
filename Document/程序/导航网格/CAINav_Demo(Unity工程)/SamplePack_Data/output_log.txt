@@ -1,0 +1,50 @@
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.4788]
+    Renderer: NVIDIA GeForce GTX 750
+    Vendor:   NVIDIA
+    VRAM:     1974 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+desktop: 1440x900 59Hz; virtual: 1440x900 at 0,0
+<I> Initializing (RawInput).
+<RI> Input initialized.
+Initialize engine version: 3.5.1f2
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nav-u3d.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nav-u3d.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nav.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nav.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nmbuild-extras-u3d.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nmbuild-extras-u3d.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-util-u3d.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-util-u3d.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-util.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-util.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nav-rcn.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nav-rcn.dll into Unity Child Domain
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nmgen-rcn.dll (this message is harmless)
+Loading E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\cai-nmgen-rcn.dll into Unity Child Domain
+- Completed reload, in  0.072 seconds
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1082. Operation took 2.517056 ms.
+Platform assembly: E:\xl\CAINav-SamplePack-0.4a\SamplePack_Data\Managed\System.dll (this message is harmless)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 196. Operation took 7.369226 ms.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 4362. Operation took 11.186954 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 195. Operation took 9.394565 ms.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 4370. Operation took 11.517875 ms.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 196. Operation took 6.553429 ms.

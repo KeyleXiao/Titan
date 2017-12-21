@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>动态障碍配置使用问题 V1.0</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="fnb9" id="动态障碍配置使用问题-v10">动态障碍配置使用问题 V1.0</h1><p data-anchor-id="iuic"><code class="">冰川工作</code></p><hr><div class="md-section-divider"></div><h1 data-anchor-id="xs24" id="概要update-to-2016223">概要(update to 2016.2.23)</h1><div class="md-section-divider"></div><h2 data-anchor-id="bnqt" id="功能v10">功能(V1.0)</h2><ul data-anchor-id="0mai">
+<li>添加动态障碍物,</li>
+<li>删除动态障碍物</li>
+<li>实时寻路</li>
+</ul><div class="md-section-divider"></div><h1 data-anchor-id="c87w" id="策划相关">策划相关</h1><div class="md-section-divider"></div><h2 data-anchor-id="nlo1" id="配置脚本相关">配置脚本相关</h2><ul data-anchor-id="ke5a">
+<li><p><strong>Bin\Server\Scp\DynamicObstacle.csv</strong>(动态障碍物实体配置，包括动态障碍怪ID，形状，形状大小，旋转角度，有效标志位,这里需要<strong>说明的是下面有长度和宽度以及外接圆半径，当为四边形时填长度以及宽度，当形状为六边形时填外接圆半径</strong>) <br>
+<strong>DynamicObstacle.csv基本描述</strong>,下面假设以<strong>眼</strong>作为示例说明</p>
+
+<table class="table table-striped-white table-bordered">
+<thead>
+<tr>
+ <th style="text-align:right;">动态障碍怪ID(即怪物ID)</th>
+ <th style="text-align:right;">形状类型(1:四边形，3:六边形)</th>
+ <th style="text-align:right;">长度/外接圆半径</th>
+ <th style="text-align:right;">宽度/外接圆半径</th>
+ <th style="text-align:right;">旋转</th>
+ <th style="text-align:right;">标志位</th>
+</tr>
+</thead>
+<tbody><tr>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">int</td>
+</tr>
+<tr>
+ <td style="text-align:right;">2003</td>
+ <td style="text-align:right;">1</td>
+ <td style="text-align:right;">4</td>
+ <td style="text-align:right;">4</td>
+ <td style="text-align:right;">0</td>
+ <td style="text-align:right;">1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Bin\Server\Scp\Monster.csv</strong>(配置对应的动态障碍怪，注意这里动态障碍怪有专属类型,这里动态障碍怪类型为4，<strong>怪物ID</strong>与<strong>DynamicObstacle.csv</strong>中的<strong>动态障碍怪ID</strong>是一样的，也就说这个值的作用是关联这2张表) <br>
+<strong>Monster.csv动态障碍相关部分描述</strong>,同样下面假设以<strong>眼</strong>作为示例说明</p>
+
+<table class="table table-striped-white table-bordered">
+<thead>
+<tr>
+ <th style="text-align:right;">怪物ID</th>
+ <th style="text-align:right;">怪物类型</th>
+ <th style="text-align:right;">怪物名</th>
+</tr>
+</thead>
+<tbody><tr>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">int</td>
+ <td style="text-align:right;">string</td>
+</tr>
+<tr>
+ <td style="text-align:right;">2003</td>
+ <td style="text-align:right;">4</td>
+ <td style="text-align:right;">$眼</td>
+</tr>
+</tbody></table>
+</li>
+<li>技能相关配置脚本(具体使用方法需要咨询技能相关策划以及程序) <br>
+技能中使用的动态障碍的思想是通过技能配置召唤怪物功能，释放技能时候同时召唤出一个动态障碍怪，达到技能实现动态障碍效果来</li>
+</ul><div class="md-section-divider"></div><h1 data-anchor-id="e0ai" id="美术相关">美术相关</h1><div class="md-section-divider"></div><h2 data-anchor-id="zyby" id="问题">问题</h2><ul data-anchor-id="ainy">
+<li><p>现在的流程中，动态障碍绕路可能会比较远，取决于网格的大小,为了减少绕路距离，需要<code class="">精度</code>更加高的<code class="">导航网格</code></p></li>
+<li><p>需要在Unity生成网格配置中将下图中的选项数值减小,目前建议是<code class="">16 ~ 20</code>之间的数值，然后根据策划测试反馈的结果继续调整 <br>
+<img src="http://static.zybuluo.com/wuxinwei/y1x4zzv065uzaj6e7phhq6mt/%7BF4E3B0D5-F8D5-4B5A-B636-2B74D405C7F9%7D.png" alt="{F4E3B0D5-F8D5-4B5A-B636-2B74D405C7F9}.png-49.6kB" title=""></p></li>
+</ul></div>
+</body>
+</html>

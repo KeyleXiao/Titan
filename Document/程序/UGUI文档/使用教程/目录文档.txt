@@ -1,0 +1,100 @@
+一、资源导入
+1、UI的所有图素都放到 Assets/Artist/UI
+2、共享资源放Common目录下、非共享的放View下、动态改变的资源放Dynamic目录下
+3、结束...
+
+二、划分九宫格区域
+1、选中图片，在属性栏打开 Sprite Editor
+2、可以通过拖拽绿色线条设置九宫格区域或者下发Border属性设置
+3、结束...
+
+三、View布局
+1、在Canvas下创建空的GameObject命名为TestView，并设置对齐模式和调整大小
+2、往TestView上添加控件
+3、将TestView弄成预制体并拖拽到配置表里
+4、结束...
+
+四、View脚本
+1、在符合的代码文件夹内创建View控制脚本
+2、添加View所需的方法
+3、一些控件事件都写在View上面，事件拖拽时都从View上获取所需的事件
+4、预制体有改变的时候记得要保存下
+5、结束...
+
+五、独立测试
+1、在Canvas里面添加要测试View所在的ContextView脚本
+2、勾选IsTestAlone
+3、把要测试的View拖拽到Canvas下
+4、结束...
+
+六、Mediator脚本
+1、在符合的代码文件夹内创建Mediator控制脚本
+2、在Context里绑定View和Mediator
+3、Mediator初始化时注入绑定的View
+4、执行View的初始化方法
+5、结束...
+
+七、Signal脚本
+1、在UCommonSignal.cs里创建所需的Signal和所需要传递的参数
+2、Mediator订阅View的Signal
+3、View默认是绑定之后隐藏的，所以有需要显示View时调用UViewVisible=true
+4、结束...
+
+八、Command脚本
+1、在符合的代码文件夹内创建Command脚本
+2、重载Excuse方法
+3、Signal绑定Command
+   commandBinder的标记：
+   1）标记CrossContext：
+	对于可以跨Context获取的实例，在CommonContext绑定并标记为CrossContext之后也需在其他		Context里进行绑定并不标记为CrossContext。
+	（避免在单独使用Context时引起Inject失败。）
+
+   2）标记Pooled：
+	对于一些经常调用的Command，可以在绑定Signal时标记为Pooled。可以可以提升一些效率。
+
+   3）标记Once：
+	对应一些只调用一次的Command,可以标记为Once。
+
+   4）标记InSequence：
+	信号执行命令时默认是并行的执行顺序，如果需要以序列的方式执行一连串命令的话可以标记为		InSequence。
+   injectionBinder的标记：
+   1）CrossContext：
+	对于可以跨Context获取的实例，在CommonContext绑定并标记为CrossContext之后也需在其他		Context里进行绑定并不标记为CrossContext。
+	（避免在单独使用Context时引起Inject失败。）
+   2）ToSingleton：
+	注入的引用是该类的一个单例。
+	
+4、Mediator注入Context的Signal
+5、分发Context的Signal
+6、Command解析Signal携带的参数
+   参数的序号与Signal的参数顺序有关。
+7、结束...
+
+九、UI本地化设置
+1、在需要本地化设置且带有Text组件的对象下添加ULocalizedText脚本
+2、拖拽Text组件
+3、设置本地化的key
+   File：key所在的File名字
+   Filter：Key所在那个view
+   key：key名字
+4、结束...
+
+十、Service脚本
+1、Service脚本基本上都创建好了，就不演示了
+2、详情看同一目录下的 十、Service脚本使用.docs
+
+十一、扩展控件之ListView
+1、一个只有字符串的列表控件
+2、详情看同一目录下的 十一、扩展控件之ListView
+
+十二、扩展控件之ResizeHeader
+1、一个用于管理列表表头的控件。
+2、详情看同一目录下的 十二、扩展控件之ResizeHeader
+
+十三、扩展控件之Tooltips
+1、UI提示控件
+2、详情请看同一目录下的 十三、扩展控件之Tooltips
+
+十四、扩展控件之Dialog
+1、UI弹窗口控件
+2、详情请看同一目录下 十四、扩展控件之Dialog

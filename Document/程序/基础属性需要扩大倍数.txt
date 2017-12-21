@@ -1,0 +1,72 @@
+#define BASE_IN_MULTIPLE	100.0f	// 基础值放大倍数
+#define ZOOM_IN_MULTIPLE	10000.0f	// 放大倍数(百分比扩大的倍数)
+
+PROPERTY_PA,			        // 物理攻击(放大BASE_IN_MULTIPLE倍)
+PROPERTY_MA,			        // 法术攻击(放大BASE_IN_MULTIPLE倍)
+PROPERTY_PD,			        // 物理防御(放大BASE_IN_MULTIPLE倍)
+PROPERTY_MD,			        // 法术防御(放大BASE_IN_MULTIPLE倍)
+PROPERTY_SD,			        // 移动速度(放大BASE_IN_MULTIPLE倍)
+PROPERTY_PASD,			        // 攻击速度(放大ZOOM_IN_MULTIPLE倍)
+PROPERTY_AF,			        // 普攻系数(放大ZOOM_IN_MULTIPLE倍)
+PROPERTY_CRC,			        // 暴击概率(放大ZOOM_IN_MULTIPLE倍)
+PROPERTY_HP_REPLY,		        // 血量回复(放大BASE_IN_MULTIPLE倍)
+PROPERTY_MP_REPLY,		        // 魔法回复(放大BASE_IN_MULTIPLE倍)
+PROPERTY_ENERGY_REPLY,          // 能量回复(放大BASE_IN_MULTIPLE倍)
+
+
+
+PROPERTY_BASE_HP = PROPERTY_CLIENT_MAX,				
+PROPERTY_APPEND_HP,				// 附加血量
+PROPERTY_APPEND_PCT_HP,			// 附加百分比血量
+
+PROPERTY_BASE_MP,				// 基础魔法
+PROPERTY_APPEND_MP,				// 附加魔法
+PROPERTY_APPEND_PCT_MP,			// 附加百分比魔法
+
+PROPERTY_BASE_ENERGY,		    // 基础能量
+PROPERTY_APPEND_ENERGY,		    // 附加能量
+PROPERTY_APPEND_PCT_ENERGY,		// 附加百分比能量
+
+PROPERTY_BASE_PA,				// 基础物理攻击
+PROPERTY_APPEND_PA,				// 附加物理攻击
+PROPERTY_APPEND_PCT_PA,			// 附加百分比物理攻击
+
+PROPERTY_BASE_MA,				// 基础法术攻击
+PROPERTY_APPEND_MA,				// 附加法术攻击
+PROPERTY_APPEND_PCT_MA,			// 附加百分比法术攻击
+
+PROPERTY_BASE_PD,				// 基础物理防御
+PROPERTY_APPEND_PD,				// 附加物理防御
+PROPERTY_APPEND_PCT_PD,			// 附加百分比物理防御
+
+PROPERTY_BASE_MD,				// 基础法术防御
+PROPERTY_APPEND_MD,				// 附加法术防御
+PROPERTY_APPEND_PCT_MD,			// 附加百分比法术防御
+
+PROPERTY_BASE_SD,				// 基础移动速度
+PROPERTY_APPEND_SD,				// 附加移动速度
+PROPERTY_APPEND_PCT_SD,			// 附加百分比移动速度
+
+PROPERTY_BASE_PASD,				// 基础攻击速度
+PROPERTY_APPEND_PASD,			// 附加攻击速度
+PROPERTY_APPEND_PCT_PASD,		// 附加百分比攻击速度
+
+PROPERTY_BASE_AF,				// 基础普攻系数
+PROPERTY_APPEND_AF,			    // 附加普攻系数
+PROPERTY_APPEND_PCT_AF,		    // 附加百分比普攻系数
+
+PROPERTY_BASE_CRC,				// 基础暴击概率
+PROPERTY_APPEND_CRC,			// 附加暴击概率
+PROPERTY_APPEND_PCT_CRC,		// 附加百分比暴击概率
+
+PROPERTY_BASE_HP_REPLY,			// 基础血量回复
+PROPERTY_APPEND_HP_REPLY,		// 附加血量回复
+PROPERTY_APPEND_PCT_HP_REPLY,	// 附加百分比血量回复
+
+PROPERTY_BASE_MP_REPLY,			// 基础魔法回复
+PROPERTY_APPEND_MP_REPLY,		// 附加魔法回复
+PROPERTY_APPEND_PCT_MP_REPLY,	// 附加百分比魔法回复
+
+PROPERTY_BASE_ENERGY_REPLY,         // 基础能量回复
+PROPERTY_APPEND_ENERGY_REPLY,       // 附加能量回复
+PROPERTY_APPEND_PCT_ENERGY_REPLY,   // 附加百分比能量回复

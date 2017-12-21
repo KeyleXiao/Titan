@@ -1,0 +1,10 @@
+﻿ID,名称,客户端导航显示,功能类型(客户端函数channel；0上发到逻辑层),是否自动登录,前置URL,结尾URL
+int,string,int,int,int,string,string
+1,测试页面1,1,0,0,tt.q1.com,
+2,测试页面2,1,0,0,bbs.tt.q1.com/forum.php?mod=forumdisplay&fid=38,
+3,推广员,1,1,0,,
+1000,充值,0,0,0,http://pay.tt.q1.com,
+1001,充值1,0,0,0,http://m.pay.q1.com/index.html,
+1002,充值2,0,0,0,http://m.q1.com/qr.aspx?data=,
+1003,推广链接,0,0,0,http://tt.q1.com,
+1004,泰坦落地页,0,0,0,http://tg.q1.com,

@@ -1,0 +1,2684 @@
+﻿<scheme>
+	<freezeclass classid = "1" classname = "技能冷却">
+		<group groupid = "101" groupname = "剑魔技能"  id0 = "1001"  id1 = "1002"  id2 = "1003"  id3 = "1004"  id4 = "1005"  id5 = "1006"  id6 = "1007"  id7 = "1008"  id8 = "1009"></group>
+		<group groupid = "102" groupname = "弓箭手"  id0 = "1010"  id1 = "1011"  id2 = "1012"  id3 = "1012"  id4 = "1014"  id5 = "1015"  id6 = "1016"  id7 = "1017"  id8 = "1025"></group>
+		<group groupid = "103" groupname = "冰霜女神"  id0 = "1018"  id1 = "1019"  id2 = "1020"  id3 = "1021"  id4 = "1022"  id5 = "1023" id6 = "1024"></group>
+		<group groupid = "104" groupname = "剑魔普攻"  id0 = "1001"  id1 = "1002"  id2 = "1003"  id3 = "1005" id4 = "1037" id5 = "1038" id6 = "1039" id7 = "1040" ></group>
+		<group groupid = "105" groupname = "自然之灵普攻"  id0 = "1001"  id1 = "1002"  id2 = "1003"  id3 = "1005"></group>
+		<group groupid = "106" groupname = "钢铁之心普攻"  id0 = "1028"  id1 = "1029"  id2 = "1030"  id3 = "1033" id4 ="1034"></group>
+		<group groupid = "107" groupname = "冰霜女神普攻"  id0 = "1018"  id1 = "1019"  id2 = "1020" ></group>
+		<group groupid = "108" groupname = "怪物普攻"  id0 = "1091"  id1 = "1092"  id2 = "1093" id3 ="1094" id4 ="1095" id5 ="1096"></group>
+		<group groupid = "109" groupname = "耶哥蕊特普攻"  id0 = "1047"  id1 = "1048"  id2 = "1049"  id3 = "1050"  id4 = "1051"  ></group>
+		<group groupid = "110" groupname = "魔山"  id0 = "1052"  id1 = "1053"  id2 = "1054" id3 = "1055" id4 = "1056" id5 = "1057"  id6 = "1058"  id7 = "1059"  id8 = "1060" id9 = "1061" id10 = "1062" id11 = "1063" id12 = "1064" id13 = "1065" id14 = "1066" id15 = "1067" ></group>
+                <group groupid = "111" groupname = "召唤师技能"  id0 = "1100"  id1 = "1101"  id2 = "1102"  id3 = "1103"  id4 = "1104" id5 = "1105" id6 = "1106" id7 = "1107" id8 = "1108"  id9 = "1109" id10 = "1110" id11 = "1111" id12 = "1112"  id13 = "1113" id14 = "1114" id15 = "1115" id16 = "1116" id17 = "1117" id18 = "1118" id19 = "1119" id20 = "1120" id21 = "1121"></group>
+		<group groupid = "300" groupname = "耶哥蕊特"  id0 = "4000"  id1 = "4001"  id2 = "4002"  id3 = "4003"  id4 = "4004" id5 = "4005" id6 = "4006" id7 = "4007" id8 = "4008" id9 = "4009" id10 = "4010" id11 = "4011" id12 = "4012" id13 = "4013" id14 = "4014" id15 = "4015" id16 = "4016" id17 = "4017" id18 = "4018" id19 = "4019" id20 = "4020"  id21 = "4024"  ></group>
+                <group groupid = "301" groupname = "梅里珊卓"  id0 = "4100"  id1 = "4101"  id2 = "4102"  id3 = "4103"  id4 = "4104" id5 = "4105" id6 = "4106" id7 = "4107" id8 = "4108" id9 = "4109" id10 = "4110" id11 = "4111" id12 = "4112" id13 = "4113" id14 = "4114" id15 = "4115" id16 = "4116" id17 = "4117" id18 = "4118" id19 = "4119" id20 = "4120" id21 = "4121" id22 = "4122" id23 = "4123"  ></group>
+                <group groupid = "302" groupname = "魔山"  id0 = "4200"  id1 = "4201"  id2 = "4202"  id3 = "4203"  id4 = "4204" id5 = "4205" id6 = "4206" id7 = "4207" id8 = "4208" id9 = "4209" id10 = "4210" id11 = "4211" id12 = "4212" id13 = "4213" id14 = "4214" id15 = "4215" id16 = "4216" id17 = "4217" id18 = "4218" id19 = "4219" id20 = "4220" id21 = "4221" id22 = "4222" id23 = "4223"  ></group>	
+		<group groupid = "303" groupname = "耶哥蕊特普攻"  id0 = "4021"  id1 = "4022"  id2 = "4023" id3 = "4025" id4 = "4026"></group>
+		<group groupid = "304" groupname = "梅里珊普攻"  id0 = "4199"  id1 = "4198"  id2 = "4197"  id3 = "4196"></group>
+		<group groupid = "305" groupname = "魔山普攻"  id0 = "4299"  id1 = "4298"  id2 = "4297"  id3 = "4296"></group>	
+                <group groupid = "306" groupname = "小恶魔"  id0 = "4300"  id1 = "4301"  id2 = "4302"  id3 = "4303"  id4 = "4304" id5 = "4305" id6 = "4306" id7 = "4307" id8 = "4308" id9 = "4309" id10 = "4310" id11 = "4311" id12 = "4312" id13 = "4313" id14 = "4314" id15 = "4315" id16 = "4316" id17 = "4317" id18 = "4318" id19 = "4319" id20 = "4320" id21 = "4321" id22 = "4322" id23 = "4323"  id24 = "4324"></group>
+                <group groupid = "307" groupname = "小恶魔普通攻击"  id0 = "4300"  id1 = "4301"  id2 = "4302"  id3 = "4303"></group>
+                <group groupid = "308" groupname = "卓格普攻"  id0 = "4499"  id1 = "4498"  id2 = "4497"  id3 = "4496"></group>
+                <group groupid = "309" groupname = "卓格" id0 = "4400"  id1 = "4401"  id2 = "4402"  id3 = "4403"  id4 = "4404" id5 = "4405" id6 = "4406" id7 = "4407" id8 = "4408" id9 = "4409" id10 = "4410" id11 = "4411" id12 = "4412" id13 = "4413" id14 = "4414" id15 = "4415" id16 = "4416" id17 = "4417" id18 = "4418" id19 = "4419" id20 = "4420" id21 = "4421" id22 = "4422" id23 = "4423"  ></group>	
+                <group groupid = "310" groupname = "红毒蛇普攻"  id0 = "4699"  id1 = "4698"  id2 = "4697"  id3 = "4696"></group>
+                <group groupid = "311" groupname = "红毒蛇" id0 = "4600"  id1 = "4601"  id2 = "4602"  id3 = "4603"  id4 = "4604" id5 = "4605" id6 = "4606" id7 = "4607" id8 = "4608" id9 = "4609" id10 = "4610" id11 = "4611" id12 = "4612" id13 = "4613" id14 = "4614" id15 = "4615" id16 = "4616" id17 = "4617" id18 = "4618" id19 = "4619" id20 = "4620" id21 = "4621" id22 = "4622" id23 = "4623"  ></group>
+                <group groupid = "312" groupname = "劳勃普攻"  id0 = "4599"  id1 = "4598"  id2 = "4597"  id3 = "4596"></group>
+                <group groupid = "313" groupname = "劳勃" id0 = "4500"  id1 = "4501"  id2 = "4502"  id3 = "4503"  id4 = "4504" id5 = "4505" id6 = "4506" id7 = "4507" id8 = "4508" id9 = "4509" id10 = "4510" id11 = "4511" id12 = "4512" id13 = "4513" id14 = "4514" id15 = "4515" id16 = "4516" id17 = "4517" id18 = "4518" id19 = "4519" id20 = "4520" id21 = "4521" id22 = "4522" id23 = "4523"  ></group>	
+		<group groupid = "314" groupname = "索罗斯普攻"  id0 = "4799"  id1 = "4798"  id2 = "4797"  id3 = "4796"></group>
+                <group groupid = "315" groupname = "索罗斯" id0 = "4700"  id1 = "4701"  id2 = "4702"  id3 = "4703"  id4 = "4704" id5 = "4705" id6 = "4706" id7 = "4707" id8 = "4708" id9 = "4709" id10 = "4710" id11 = "4711" id12 = "4712" id13 = "4713" id14 = "4714" id15 = "4715" id16 = "4716" id17 = "4717" id18 = "4718"   ></group>	
+		<group groupid = "316" groupname = "索罗斯复活效果冷却"  id0 = "4719" ></group>
+                <group groupid = "317" groupname = "耶哥蕊特大招"  id0 = "4016"  id1 = "4017"  id2 = "4018"></group>
+		<group groupid = "318" groupname = "梅丽珊卓大招"  id0 = "4119"  id1 = "4120"  id2 = "4121"></group>
+		<group groupid = "319" groupname = "魔山大招"  id0 = "4219"  id1 = "4220"  id2 = "4221"></group>
+		<group groupid = "320" groupname = "小恶魔大招"  id0 = "4319"  id1 = "4320"  id2 = "4321"></group>
+		<group groupid = "321" groupname = "卓戈大招"  id0 = "4415"  id1 = "4416"  id2 = "4417"></group>
+		<group groupid = "322" groupname = "劳勃大招"  id0 = "4515"  id1 = "4516"  id2 = "4517"></group>
+		<group groupid = "323" groupname = "红毒蛇大招"  id0 = "4615"  id1 = "4616"  id2 = "4617"></group>
+		<group groupid = "324" groupname = "索罗斯大招"  id0 = "4716"  id1 = "4717"  id2 = "4718"></group>
+                <group groupid = "325" groupname = "男巫大招"  id0 = "4815"  id1 = "4816"  id2 = "4817"></group>
+                <group groupid = "326" groupname = "男巫" id0 = "4800"  id1 = "4801"  id2 = "4802"  id3 = "4803"  id4 = "4804" id5 = "4805" id6 = "4806" id7 = "4807" id8 = "4808" id9 = "4809" id10 = "4810" id11 = "4811" id12 = "4812" id13 = "4813" id14 = "4814" id15 = "4815" id16 = "4816" id17 = "4817"   ></group>	
+                <group groupid = "327" groupname = "男巫普攻"  id0 = "4899"  id1 = "4898"  id2 = "4897" ></group>
+                <group groupid = "328" groupname = "艾丽娅大招"  id0 = "4915"  id1 = "4916"  id2 = "4917"></group>  
+                <group groupid = "329" groupname = "艾丽娅普攻"  id0 = "4999"  id1 = "4998"  id2 = "4997"  id3 = "4996"></group>
+                <group groupid = "330" groupname = "艾丽娅技能" id0 = "4900"  id1 = "4901" ></group>	 
+                <group groupid = "331" groupname = "尸鬼普攻"  id0 = "5099"  id1 = "5098"  id2 = "5097"  id3 = "5096"  id4 = "5095"></group>
+                <group groupid = "332" groupname = "尸鬼技能" id0 = "5000"  id1 = "5001"  id2 = "5002"  id3 = "5003"  id4 = "5004" id5 = "5005" id6 = "5006" id7 = "5007" id8 = "5008" id9 = "5009" id10 = "5010" id11 = "5011" id12 = "5012" id13 = "5013" id14 = "5014" id15 = "5015" id16 = "5016" id17 = "5017" id18 = "5018" id19 = "5019" id20 = "5020" id21 = "5021" id22 = "5022" id23 = "5023"  ></group>	
+                <group groupid = "333" groupname = "阿莎普攻"  id0 = "5199"  id1 = "5198"  id2 = "5197"  id3 = "5196"></group>
+                <group groupid = "334" groupname = "阿莎技能" id0 = "5100"  id1 = "5101"  id2 = "5102"  id3 = "5103"  id4 = "5104" id5 = "5105" id6 = "5106" id7 = "5107" id8 = "5108" id9 = "5109" id10 = "5110" id11 = "5111" id12 = "5112" id13 = "5113" id14 = "5114" id15 = "5115" id16 = "5116" id17 = "5117" id18 = "5118" id19 = "5119" id20 = "5120" id21 = "5121" id22 = "5122" id23 = "5123"  ></group>	
+                <group groupid = "335" groupname = "绿先知普攻"  id0 = "5299"  id1 = "5298"  id2 = "5297"  id3 = "5296"></group>
+                <group groupid = "336" groupname = "绿先知技能" id0 = "5200"  id1 = "5201"  id2 = "5202"  id3 = "5203"  id4 = "5204" id5 = "5205" id6 = "5206" id7 = "5207" id8 = "5208" id9 = "5209" id10 = "5210" id11 = "5211" id12 = "5212" id13 = "5213" id14 = "5214" id15 = "5215" id16 = "5216" id17 = "5217" id18 = "5218" id19 = "5219" id20 = "5220" id21 = "5221" id22 = "5222" id23 = "5223"  ></group>	
+                <group groupid = "337" groupname = "布兰登普攻"  id0 = "5399"  id1 = "5398"  id2 = "5397" id3 = "5396"  id4 = "5395"></group>
+                <group groupid = "338" groupname = "布兰登技能" id0 = "5300"  id1 = "5301"  id2 = "5302"  id3 = "5303"  id4 = "5304" id5 = "5305" id6 = "5306" id7 = "5307" id8 = "5308" id9 = "5309" id10 = "5310" id11 = "5311" id12 = "5312" id13 = "5313" id14 = "5314" id15 = "5315" id16 = "5316" id17 = "5317" id18 = "5318" id19 = "5319" id20 = "5320" id21 = "5321" id22 = "5322" id23 = "5323"  ></group>
+                <group groupid = "339" groupname = "龙母普攻"  id0 = "5499"  id1 = "5498"  id2 = "5497"></group> 
+                <group groupid = "340" groupname = "龙母技能" id0 = "5400"  id1 = "5401"  id2 = "5402"  id3 = "5403"  id4 = "5404" id5 = "5405" id6 = "5406" id7 = "5407" id8 = "5408" id9 = "5409" id10 = "5410" id11 = "5411" id12 = "5412" id13 = "5413" id14 = "5414" id15 = "5415" id16 = "5416" id17 = "5417" id18 = "5418" id19 = "5419" id20 = "5420" id21 = "5421" id22 = "5422" id23 = "5423"  ></group>      
+                <group groupid = "341" groupname = "机器人普攻"  id0 = "5599"  id1 = "5598"  id2 = "5597"  id3 = "5596" id4 = "5595" ></group> 
+                <group groupid = "342" groupname = "机器人技能" id0 = "5500"  id1 = "5501"  id2 = "5502"  id3 = "5503"  id4 = "5504" id5 = "5505" id6 = "5506" id7 = "5507" id8 = "5508" id9 = "5509" id10 = "5510" id11 = "5511" id12 = "5512" id13 = "5513" id14 = "5514" id15 = "5515" id16 = "5516" id17 = "5517" id18 = "5518"  ></group>   
+                <group groupid = "343" groupname = "巴格（虫子）普攻"  id0 = "5699"  id1 = "5698"  id2 = "5697"  id3 = "5696" id4 = "5695" ></group> 
+                <group groupid = "344" groupname = "巴格（虫子）技能" id0 = "5600"  id1 = "5601"  id2 = "5602"  id3 = "5603"  id4 = "5604" id5 = "5605" id6 = "5606" id7 = "5607" id8 = "5608" id9 = "5609" id10 = "5610" id11 = "5611" id12 = "5612" id13 = "5613" id14 = "5614" id15 = "5615" id16 = "5616" id17 = "5617" id18 = "5618"  ></group>  
+                <group groupid = "345" groupname = "小鱼人普攻"  id0 = "5799"  id1 = "5798"  id2 = "5797"  id3 = "5796" id4 = "5795" ></group> 
+                <group groupid = "346" groupname = "小鱼人技能" id0 = "5700"  id1 = "5701"  id2 = "5702"  id3 = "5703"  id4 = "5704" id5 = "5705" id6 = "5706" id7 = "5707" id8 = "5708" id9 = "5709" id10 = "5710" id11 = "5711" id12 = "5712" id13 = "5713" id14 = "5714" id15 = "5715" id16 = "5716" id17 = "5717" id18 = "5718"  ></group>  
+                <group groupid = "347" groupname = "东洋剑客普攻"  id0 = "5899"  id1 = "5898"  id2 = "5897"  id3 = "5896" id4 = "5895" id5 = "5894" id6 = "5893" ></group> 
+                <group groupid = "348" groupname = "东洋剑客技能" id0 = "5800"  id1 = "5801"  id2 = "5802"  id3 = "5803"  id4 = "5804" id5 = "5805" id6 = "5806" id7 = "5807" id8 = "5808" id9 = "5809" id10 = "5810" id11 = "5811" id12 = "5812" id13 = "5813" id14 = "5814" id15 = "5815" id16 = "5816" id17 = "5817" id18 = "5818"  ></group>   
+                <group groupid = "349" groupname = "李寻欢普攻"  id0 = "5999"  id1 = "5998"  id2 = "5997"  id3 = "5996" id4 = "5995" id5 = "5994" id6 = "5993" ></group> 
+                <group groupid = "350" groupname = "李寻欢技能" id0 = "5900"  id1 = "5901"  id2 = "5902"  id3 = "5903"  id4 = "5904" id5 = "5905" id6 = "5906" id7 = "5907" id8 = "5908" id9 = "5909" id10 = "5910" id11 = "5911" id12 = "5912" id13 = "5913" id14 = "5914" id15 = "5915" id16 = "5916" id17 = "5917" id18 = "5918"  ></group>   
+                <group groupid = "351" groupname = "巨盾勇士普攻"  id0 = "6099"  id1 = "6098"  id2 = "6097"  id3 = "6096" id4 = "6095" id5 = "6094" id6 = "6093" ></group> 
+                <group groupid = "352" groupname = "巨盾勇士技能" id0 = "6000"  id1 = "6001"  id2 = "6002"  id3 = "6003"  id4 = "6004" id5 = "6005" id6 = "6006" id7 = "6007" id8 = "6008" id9 = "6009" id10 = "6010" id11 = "6011" id12 = "6012" id13 = "6013" id14 = "6014" id15 = "6015" id16 = "6016" id17 = "6017" id18 = "6018" id19 = "6019" id20 = "6020"  ></group>   
+                <group groupid = "353" groupname = "青蛙普攻"  id0 = "6199"  id1 = "6198"  id2 = "6197"  id3 = "6196" id4 = "6195" id5 = "6194" id6 = "6193" ></group> 
+                <group groupid = "354" groupname = "青蛙技能" id0 = "6100"  id1 = "6101"  id2 = "6102"  id3 = "6103"  id4 = "6104" id5 = "6105" id6 = "6106" id7 = "6107" id8 = "6108" id9 = "6109" id10 = "6110" id11 = "6111" id12 = "6112" id13 = "6113" id14 = "6114" id15 = "6115" id16 = "6116" id17 = "6117" id18 = "6118"  ></group>    
+                <group groupid = "355" groupname = "巨龙技能" id0 = "6200"  id1 = "6201"  id2 = "6202"  id3 = "6203" id4 ="6204"></group>    
+                <group groupid = "356" groupname = "无面者普攻"  id0 = "6399"  id1 = "6398"  id2 = "6397"  id3 = "6396" id4 = "" id5 = "6394" id6 = "6393" ></group> 
+                <group groupid = "357" groupname = "无面者技能" id0 = "6300"  id1 = "6301"  id2 = "6302"  id3 = "6303"  id4 = "6304" id5 = "6305" id6 = "6306" id7 = "6307" id8 = "6308" id9 = "6309" id10 = "6310" id11 = "6311" id12 = "6312" id13 = "6313" id14 = "6314" id15 = "6315" id16 = "6316" id17 = "6317" id18 = "6318"  ></group>    
+                <group groupid = "358" groupname = "时光旅行者普攻"  id0 = "6499"  id1 = "6498"  id2 = "6497"  id3 = "6496" id4 = "6495" id5 = "6494" id6 = "6493" ></group> 
+                <group groupid = "359" groupname = "时光旅行者技能" id0 = "6400"  id1 = "6401"  id2 = "6402"  id3 = "6403"  id4 = "6404" id5 = "6405" id6 = "6406" id7 = "6407" id8 = "6408" id9 = "6409" id10 = "6410" id11 = "6411" id12 = "6412" id13 = "6413" id14 = "6414" id15 = "6415" id16 = "6416" id17 = "6417" id18 = "6418"  ></group> 
+                <group groupid = "360" groupname = "炸弹人普攻"  id0 = "6599"  id1 = "6598"  id2 = "6597"  id3 = "6596" id4 = "6595" id5 = "6594" id6 = "6593" ></group> 
+                <group groupid = "361" groupname = "炸弹人技能" id0 = "6500"  id1 = "6501"  id2 = "6502"  id3 = "6503"  id4 = "6504" id5 = "6505" id6 = "6506" id7 = "6507" id8 = "6508" id9 = "6509" id10 = "6510" id11 = "6511" id12 = "6512" id13 = "6513" id14 = "6514" id15 = "6515" id16 = "6516" id17 = "6517" id18 = "6518"  ></group> 
+                <group groupid = "362" groupname = "异鬼普攻"  id0 = "6699"  id1 = "6698"  id2 = "6697"  id3 = "6696" id4 = "6695" id5 = "6694" id6 = "6693" ></group> 
+                <group groupid = "363" groupname = "异鬼技能" id0 = "6600"  id1 = "6601"  id2 = "6602"  id3 = "6603"  id4 = "6604" id5 = "6605" id6 = "6606" id7 = "6707" id8 = "6708" id9 = "6609" id10 = "6610" id11 = "6611" id12 = "6612" id13 = "6613" id14 = "6614" id15 = "6615" id16 = "6616" id17 = "6617" id18 = "6618"  ></group>    
+                <group groupid = "364" groupname = "乌妮普攻"  id0 = "6799"  id1 = "6798"  id2 = "6797"  id3 = "6796" id4 = "6795" id5 = "6794" id6 = "6793" ></group> 
+                <group groupid = "365" groupname = "乌妮技能" id0 = "6700"  id1 = "6701"  id2 = "6702"  id3 = "6703"  id4 = "6704" id5 = "6705" id6 = "6706" id7 = "6707" id8 = "6708" id9 = "6709" id10 = "6710" id11 = "6711" id12 = "6712" id13 = "6713" id14 = "6714" id15 = "6715" id16 = "6716" id17 = "6717" id18 = "6718"  ></group>  
+                <group groupid = "366" groupname = "炮手普攻"  id0 = "6899"  id1 = "6898"  id2 = "6897"  id3 = "6896" id4 = "6895" id5 = "6894" id6 = "6893" ></group> 
+                <group groupid = "367" groupname = "炮手技能" id0 = "6800"  id1 = "6801"  id2 = "6802"  id3 = "6803"  id4 = "6804" id5 = "6805" id6 = "6806" id7 = "6807" id8 = "6808" id9 = "6809" id10 = "6810" id11 = "6811" id12 = "6812" id13 = "6813" id14 = "6814" id15 = "6815" id16 = "6816" id17 = "6817" id18 = "6818"  ></group>  
+                <group groupid = "368" groupname = "李小龙普攻" id0 = "6999"  id1 = "6998"  id2 = "6997"  id3 = "6996" id4 = "6995" id5 = "6994" ></group>  
+                <group groupid = "369" groupname = "李小龙Q技能" id0 = "6900"  id1 = "6901"  id2 = "6902" ></group> 
+                <group groupid = "370" groupname = "李小龙技能" id0 = "6903"  id1 = "6904"  id2 = "6905"  id3 = "6906"  id4 = "6907" id5 = "6908" id6 = "6909" id7 = "6910" id8 = "6908" id9 = "6909" ></group> 
+                <group groupid = "371" groupname = "野鹿普攻"  id0 = "7099"  id1 = "7098"  id2 = "7097"  id3 = "7096" id4 = "7095" id5 = "7094" id6 = "7093" ></group> 
+                <group groupid = "372" groupname = "野鹿技能" id0 = "7000"  id1 = "7001"  id2 = "7002"  id3 = "7003"  id4 = "7004" id5 = "7005" id6 = "7006" id7 = "7007" id8 = "7008" id9 = "7009" id10 = "7010" id11 = "7011" id12 = "7012" id13 = "7013" id14 = "7014" id15 = "7015" id16 = "7016" id17 = "7017" id18 = "7018"  ></group> 
+		<group groupid = "373" groupname = "银河战警普攻"  id0 = ""  id1 = "7198"  id2 = "7197" ></group> 
+                <group groupid = "374" groupname = "银河战警技能" id0 = "7100"  id1 = "7101"  id2 = "7102"  id3 = "7103" id4 = "7104"></group> 
+                <group groupid = "375" groupname = "收割者普攻"  id0 = "7299"  id1 = "7298"  id2 = "7297"  id3 = "7296" id4 = "7295" id5 = "7294" id6 = "7293" ></group> 
+                <group groupid = "376" groupname = "收割者技能" id0 = "7200"  id1 = "7201"  id2 = "7202"  id3 = "7203"  id4 = "7204" id5 = "7205" id6 = "7206" id7 = "7207" id8 = "7208" id9 = "7209" id10 = "7210" id11 = "7211" id12 = "7212" id13 = "7213" id14 = "7214" id15 = "7215" id16 = "7216" id17 = "7217" id18 = "7218"  ></group> 
+		<group groupid = "377" groupname = "北海鱼姬普攻"  id0 = "7399"  id1 = "7398"  id2 = "73297" ></group> 
+                <group groupid = "378" groupname = "北海鱼姬技能" id0 = "7300"  id1 = "7301"  id2 = "7302"  id3 = "7303" id4 = "7304"></group> 
+                <group groupid = "379" groupname = "铁拳兽宝普攻"  id0 = "7400"  id1 = "7401"  id2 = "7402" id3 = "7415" id4 = "7416" id5 = "7417"></group> 
+                <group groupid = "380" groupname = "铁拳兽宝技能" id0 = "7403"  id1 = "7404"  id2 = "7405"  id3 = "7406" id4 = "7407" id5 = "7408" id6 = "7409" id7 = "7410" id8 = "7411" id9 = "7412" id10 = "7413" id11 = "7414" id12 = "7418" ></group> 
+                <group groupid = "381" groupname = "测试异鬼技能" id0 = "7500"  id1 = "7501"  id2 = "7502"  id3 = "7503" id4 = "7504" id5 = "7505" id6 = "7506" id7 = "7507" id8 = "7508" id9 = "7509" id10 = "7510" id11 = "7511" ></group> 
+		<group groupid = "382" groupname = "照明弹" id0 = "7600"></group> 
+                <group groupid = "383" groupname = "龙猫萌骑普攻" id0 = "7700"  id1 = "7701"  id2 = "7702" ></group> 
+                <group groupid = "384" groupname = "龙猫萌骑技能" id0 = "7703"  id1 = "7704"  id2 = "7705" id3 = "7706" id4 = "7707" id5 = "7708" id6 = "7709" ></group>  
+                <group groupid = "385" groupname = "摩托普攻"  id0 = "7699"  id1 = "7698"  id2 = "7697"  id3 = "7696" id4 = "7695" id5 = "7694" id6 = "7693" ></group> 
+                <group groupid = "386" groupname = "摩托技能" id0 = "7601"  id1 = "7602"  id2 = "7603"  id3 = "7604"  id4 = "7605" id5 = "7606" id6 = "7607" id7 = "7608" id8 = "7609" id9 = "7610" id10 = "7611" id11 = "7612" id12 = "7613" id13 = "7614" id14 = "7615" id15 = "7616" id16 = "7617" id17 = "7618" id18 = "7619"  ></group> 
+		<group groupid = "387" groupname = "黑夜女王普攻"  id0 = "7899"  id1 = "7898"  id2 = "7897"  id3 = "7896" id4 = "7895" id5 = "7894" id6 = "7893" ></group> 
+                <group groupid = "388" groupname = "黑夜女王技能" id0 = "7801"  id1 = "7802"  id2 = "7803"  id3 = "7804"  id4 = "7805" id5 = "7806" id6 = "7807" id7 = "7808" id8 = "7809" id9 = "7810" id10 = "7811" id11 = "7812" id12 = "7813" id13 = "7814" id14 = "7815" id15 = "7816" id16 = "7817" id17 = "7818" id18 = "7819"  ></group>   
+		<group groupid = "389" groupname = "吃鸡地图" id0 = "7900"  id1 = "7901"  id2 = "7902" id3 = "7903" id4 = "7904" id5 = "7905" id6 = "7906" id7 = "7907" id8 = "7908" id9 = "7909" id10 = "7910" id11 = "7911" id12 = "7912" ></group> 
+		<group groupid = "390" groupname = "末日战甲" id0 = "7913"  id1 = "7914"  id2 = "7915" id3 = "7916" id4 = "7917" id5 = "7918" id6 = "7919" id7 = "7920" id8 = "7921" id9 = "7922" id10 = "7923" id11 = "7924" id12 = "7925" ></group> 
+                <group groupid = "400" groupname = "卓哥普攻" id0 = "8000"  id1 = "8001"  id2 = "8002" id3 = "8003" id4 = "8004" id5 = "8005" id6 = "8006" id7 = "8007" id8 = "8008" id9 = "8009" id10 = "8010" id11 = "8011" id12 = "8012" ></group> 
+                <group groupid = "401" groupname = "卓哥技能" id0 = "8099"  id1 = "8098"  id2 = "8097"  id3 = "8096"  id4 = "8097" id5 = "8096" id6 = "8095" id7 = "8094" id8 = "8093" id9 = "8092" id10 = "8091" id11 = "8090" id12 = "8089" id13 = "8088" id14 = "8087" id15 = "8086" id16 = "8085" id17 = "8084" id18 = "8083"  ></group>   
+
+
+
+
+		<freeze id = "1001" time = "500" savedb = "0" name = "普攻1" time1 = "500">
+			<together groupid = "104" time = "0"></together>
+		</freeze>
+		<freeze id = "1002" time = "700" savedb = "0" name = "普攻2" time1 = "700">
+			<together groupid = "104" time = "0"></together>
+		</freeze>
+		<freeze id = "1003" time = "1000" savedb = "0" name = "普攻3" time1 = "1000">
+			<together groupid = "104" time = "0"></together>
+		</freeze>
+		<freeze id = "1004" time = "10000" savedb = "0" name = "技能1" time1 = "10000">
+			<together groupid = "101" time = "0"></together>
+		</freeze>
+		<freeze id = "1005" time = "3000" savedb = "0" name = "炸弹冷却" time1 = "3000">
+			<together groupid = "104" time = "0"></together>
+		</freeze>
+		<freeze id = "1006" time = "30000" savedb = "0" name = "技能3" time1 = "30000">
+			<together groupid = "101" time = "0"></together>
+		</freeze>
+		<freeze id = "1007" time = "90000" savedb = "0" name = "技能4" time1 = "90000">
+			<together groupid = "101" time = "200"></together>
+		</freeze>
+		<freeze id = "1008" time = "10000" savedb = "0" name = "躲闪" time1 = "10000">
+			<together groupid = "101" time = "200"></together>
+		</freeze>
+				<freeze id = "1009" time = "5000" savedb = "0" name = "重击" time1 = "5000">
+			<together groupid = "101" time = "200"></together>
+		</freeze>
+		<freeze id = "1010" time = "1000" savedb = "0" name = "自然之灵普攻1" time1 = "1000">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1011" time = "700" savedb = "0" name = "普攻2" time1 = "700">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1012" time = "700" savedb = "0" name = "普攻3" time1 = "700">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1013" time = "5000" savedb = "0" name = "技能1" time1 = "5000">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1014" time = "15000" savedb = "0" name = "技能2" time1 = "15000">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1015" time = "10000" savedb = "0" name = "技能3" time1 = "10000">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1016" time = "90000" savedb = "0" name = "技能4" time1 = "90000">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+		<freeze id = "1017" time = "10000" savedb = "0" name = "跳跃" time1 = "10000">
+			<together groupid = "102" time = "0"></together>
+		</freeze>
+    <freeze id = "1018" time = "1000" savedb = "0" name = "冰霜女神普攻1" time1 = "1000">
+			<together groupid = "107" time = "1000"></together>
+		</freeze>
+		<freeze id = "1019" time = "1000" savedb = "0" name = "冰霜女神普攻2" time1 = "1000">
+			<together groupid = "107" time = "1000"></together>
+		</freeze>
+		<freeze id = "1020" time = "1000" savedb = "0" name = "冰霜女神普攻3" time1 = "1000">
+			<together groupid = "107" time = "1000"></together>
+		</freeze>
+		<freeze id = "1021" time = "4000" savedb = "0" name = "技能1" time1 = "4000">
+			<together groupid = "103" time = "0"></together>
+		</freeze>
+		<freeze id = "1022" time = "15000" savedb = "0" name = "技能2" time1 = "15000">
+			<together groupid = "103" time = "0"></together>
+		</freeze>
+		<freeze id = "1023" time = "30000" savedb = "0" name = "技能3" time1 = "30000">
+			<together groupid = "103" time = "0"></together>
+		</freeze>
+		<freeze id = "1024" time = "90000" savedb = "0" name = "技能4" time1 = "90000">
+			<together groupid = "103" time = "0"></together>
+		</freeze>
+		<freeze id = "1025" time = "1000" savedb = "0" name = "弓箭手翻滚" time1 = "1000">
+		<together groupid = "102" time = "0"></together>
+		</freeze>
+    <freeze id = "1026" time = "14000" savedb = "0" name = "钢铁之心技能1" time1 = "14000">
+      <together groupid = "102" time = "0"></together>
+    </freeze>
+    <freeze id = "1027" time = "10000" savedb = "0" name = "钢铁之心技能2" time1 = "10000">
+      <together groupid = "102" time = "0"></together>
+    </freeze>
+    <freeze id = "1028" time = "300" savedb = "0" name = "钢铁之心普攻1" time1 = "300">
+      <together groupid = "106" time = "300"></together>
+    </freeze>
+    <freeze id = "1029" time = "300" savedb = "0" name = "钢铁之心普攻2" time1 = "300">
+      <together groupid = "106" time = "300"></together>
+    </freeze>
+    <freeze id = "1030" time = "500" savedb = "0" name = "钢铁之心普攻3" time1 = "500">
+      <together groupid = "106" time = "500"></together>
+    </freeze>
+    <freeze id = "1031" time = "1000" savedb = "0" name = "钢铁之心变身普攻" time1 = "1000">
+      <together groupid = "106" time = "0"></together>
+    </freeze>
+        <freeze id = "1032" time = "20000" savedb = "0" name = "弓箭手状态技能" time1 = "20000">
+      <together groupid = "102" time = "0"></together>
+    </freeze>
+    <freeze id = "1033" time = "1000" savedb = "0" name = "钢铁之心普攻4" time1 = "1000">
+      <together groupid = "106" time = "1000"></together>
+    </freeze>
+    <freeze id = "1034" time = "90000" savedb = "0" name = "钢铁之心变身" time1 = "90000">
+      <together groupid = "106" time = "0"></together>
+    </freeze>
+        <freeze id = "1035" time = "1000" savedb = "0" name = "跳跃攻击" time1 = "1000">
+      <together groupid = "102" time = "0"></together>
+    </freeze>
+            <freeze id = "1036" time = "1000" savedb = "0" name = "跳跃攻击" time1 = "1000">
+      <together groupid = "102" time = "0"></together>
+    </freeze>
+    <freeze id = "1037" time = "300" savedb = "0" name = "剑魔2普攻1" time1 = "300">
+			<together groupid = "104" time = "300"></together>
+		</freeze>
+		<freeze id = "1038" time = "300" savedb = "0" name = "剑魔2普攻2" time1 = "300">
+			<together groupid = "104" time = "300"></together>
+		</freeze>
+		<freeze id = "1039" time = "500" savedb = "0" name = "剑魔2普攻3" time1 = "500">
+			<together groupid = "104" time = "500"></together>
+		</freeze>		
+		<freeze id = "1040" time = "120000" savedb = "0" name = "眩晕炸弹" time1 = "120000">
+			<together groupid = "104" time = "500"></together>
+		</freeze>
+		<freeze id = "1041" time = "100" savedb = "0" name = "忍龙普攻4" time1 = "100">
+			<together groupid = "104" time = "100"></together>
+		</freeze>
+		<freeze id = "1042" time = "180000" savedb = "0" name = "飞行卷轴" time1 = "180000">
+		</freeze>
+		<freeze id = "1043" time = "40000" savedb = "0" name = "飞升" time1 = "40000">
+		</freeze>
+		<freeze id = "1044" time = "90000" savedb = "0" name = "金身" time1 = "90000">
+		</freeze>
+		<freeze id = "1045" time = "45000" savedb = "0" name = "红杖" time1 = "45000">
+		</freeze>
+		<freeze id = "1046" time = "45000" savedb = "0" name = "幽梦" time1 = "45000">
+		</freeze>
+
+		<freeze id = "1047" time = "1000" savedb = "0" name = "耶哥蕊特普攻1" time1 = "1000">
+			<together groupid = "109" time = "0"></together>
+		</freeze>
+		<freeze id = "1048" time = "6000" savedb = "0" name = "耶哥蕊特技能1" time1 = "6000">
+			<together groupid = "109" time = "0"></together>
+		</freeze>
+		<freeze id = "1049" time = "10000" savedb = "0" name = "耶哥蕊特技能2" time1 = "10000">
+			<together groupid = "109" time = "0"></together>
+		</freeze>
+		<freeze id = "1050" time = "25000" savedb = "0" name = "耶哥蕊特技能3" time1 = "25000">
+			<together groupid = "109" time = "0"></together>
+		</freeze>
+		<freeze id = "1051" time = "90000" savedb = "0" name = "耶哥蕊特技能4" time1 = "90000">
+			<together groupid = "109" time = "0"></together>
+		</freeze>
+
+
+		<freeze id = "1052" time = "1000" savedb = "0" name = "魔山普攻1" time1 = "1000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1053" time = "15000" savedb = "0" name = "魔山技能1LV1" time1 = "15000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1054" time = "14000" savedb = "0" name = "魔山技能1LV2" time1 = "14000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1055" time = "13000" savedb = "0" name = "魔山技能1LV3" time1 = "13000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1056" time = "12000" savedb = "0" name = "魔山技能1LV4" time1 = "12000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1057" time = "10000" savedb = "0" name = "魔山技能1LV5" time1 = "10000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+
+		<freeze id = "1058" time = "5000" savedb = "0" name = "魔山技能2" time1 = "11000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1059" time = "16000" savedb = "0" name = "魔山技能3LV1" time1 = "16000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1060" time = "15000" savedb = "0" name = "魔山技能3LV2" time1 = "15000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1061" time = "14000" savedb = "0" name = "魔山技能3LV3" time1 = "14000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1062" time = "13000" savedb = "0" name = "魔山技能3LV4" time1 = "13000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1063" time = "12000" savedb = "0" name = "魔山技能3LV5" time1 = "12000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1064" time = "120000" savedb = "0" name = "魔山技能4LV1" time1 = "120000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1065" time = "95000" savedb = "0" name = "魔山技能4LV1" time1 = "95000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1066" time = "70000" savedb = "0" name = "魔山技能4LV1" time1 = "70000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1067" time = "5000" savedb = "0" name = "魔山跳跃攻击" time1 = "5000">
+			<together groupid = "110" time = "0"></together>
+		</freeze>
+		<freeze id = "1068" time = "60000" savedb = "0" name = "疾跑" time1 = "60000">
+		</freeze>
+		<freeze id = "1069" time = "60000" savedb = "0" name = "冻结" time1 = "60000">
+		</freeze>
+
+ <freeze id = "1091" time = "0" savedb = "0" name = "怪物普攻1" time1 = "0">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+        <freeze id = "1092" time = "0" savedb = "0" name = "怪物普攻2" time1 = "0">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+         <freeze id = "1093" time = "0" savedb = "0" name = "怪物普攻3" time1 = "0">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+         <freeze id = "1094" time = "0" savedb = "0" name = "怪物普攻4" time1 = "0">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+         <freeze id = "1095" time = "0" savedb = "0" name = "怪物普攻5" time1 = "0">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+         <freeze id = "1096" time = "0" savedb = "0" name = "怪物普攻6" time1 = "0">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+         <freeze id = "1097" time = "1000" savedb = "0" name = "炮车普攻" time1 = "1000">
+      <together groupid = "108" time = "0"></together>
+    </freeze>
+    <freeze id = "1100" time = "500" savedb = "0" name = "闪现" time1 = "500">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1101" time = "90000" savedb = "0" name = "传送" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1103" time = "90000" savedb = "0" name = "引燃" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1104" time = "90000" savedb = "0" name = "虚弱" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1105" time = "90000" savedb = "0" name = "治疗" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1106" time = "90000" savedb = "0" name = "屏障" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1107" time = "90000" savedb = "0" name = "幽灵疾步" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1108" time = "90000" savedb = "0" name = "净化" time1 = "90000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1109" time = "15000" savedb = "0" name = "惩戒" time1 = "15000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1110" time = "300000" savedb = "0" name = "守护天使" time1 = "300000">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+		<freeze id = "1111" time = "60000" savedb = "0" name = "钢铁烈阳" time1 = "60000">
+			<together groupid = "111" time = "0"></together>
+		</freeze> 
+		<freeze id = "1112" time = "60000" savedb = "0" name = "激昂" time1 = "60000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1113" time = "60000" savedb = "0" name = "猛击" time1 = "60000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1114" time = "60000" savedb = "0" name = "腐蚀" time1 = "60000">
+			<together groupid = "111" time = "300"></together>
+		</freeze>
+		<freeze id = "1115" time = "60000" savedb = "0" name = "摄魂" time1 = "60000">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+		<freeze id = "1116" time = "60000" savedb = "0" name = "标记" time1 = "60000">
+			<together groupid = "111" time = "0"></together>
+		</freeze> 
+		<freeze id = "1117" time = "60000" savedb = "0" name = "毁墙" time1 = "60000">
+			<together groupid = "111" time = "0"></together>
+		</freeze> 
+		<freeze id = "1118" time = "200000" savedb = "0" name = "塔防" time1 = "200000">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+		<freeze id = "1119" time = "60000" savedb = "0" name = "真视" time1 = "60000">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+		<freeze id = "1120" time = "90000" savedb = "0" name = "导弹显示" time1 = "90000">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+		<freeze id = "1121" time = "80000" savedb = "0" name = "导弹发射" time1 = "80000">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+		<freeze id = "1122" time = "2500" savedb = "0" name = "徽章" time1 = "2500">
+			<together groupid = "111" time = "0"></together>
+		</freeze>
+
+	<freeze id = "1300" time = "800" savedb = "0" name = "跳跃" time1 = "0">
+    </freeze>
+    <freeze id = "1301" time = "0" savedb = "0" name = "九头蛇" time1 = "0">
+    </freeze>
+    <freeze id = "1302" time = "10000" savedb = "0" name = "电刃" time1 = "10000">
+    </freeze>
+    <freeze id = "1303" time = "0" savedb = "0" name = "卢安娜" time1 = "0">
+    </freeze>
+    <freeze id = "1304" time = "1000" savedb = "0" name = "刺客飞刀" time1 = "1000">
+    </freeze>
+    <freeze id = "1305" time = "1000" savedb = "0" name = "灵能飞刀" time1 = "1000">
+    </freeze>
+    <freeze id = "1306" time = "10000" savedb = "0" name = "九头蛇主动" time1 = "10000">
+    </freeze>
+    <freeze id = "1307" time = "1500" savedb = "0" name = "巫妖之祸" time1 = "1500">
+    </freeze>
+	<freeze id = "1308" time = "8000" savedb = "0" name = "小龙终极技" time1 = "15000">
+    </freeze>
+	<freeze id = "1309" time = "8000" savedb = "0" name = "大龙终极技" time1 = "15000">
+    </freeze>
+    
+    <freeze id = "3001" time = "300000" savedb = "0" name = "复活甲" time1 = "300000">
+    </freeze>
+
+		<freeze id = "4000" time = "1000" savedb = "0" name = "耶哥蕊特跳射" time1 = "500">
+			<together groupid = "300" time = "0"></together>
+		</freeze>		
+		<freeze id = "4001" time = "7000" savedb = "0" name = "耶哥蕊特技能1lv1" time1 = "7000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4002" time = "4200" savedb = "0" name = "耶哥蕊特技能1lv2" time1 = "4200">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4003" time = "14000" savedb = "0" name = "耶哥蕊特技能1lv3" time1 = "14000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4004" time = "14000" savedb = "0" name = "耶哥蕊特技能1lv4" time1 = "14000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4005" time = "14000" savedb = "0" name = "耶哥蕊特技能1lv5" time1 = "14000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4006" time = "12000" savedb = "0" name = "耶哥蕊特技能2lv1" time1 = "12000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4007" time = "7200" savedb = "0" name = "耶哥蕊特技能2lv2" time1 = "7200">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4008" time = "16000" savedb = "0" name = "耶哥蕊特技能2lv3" time1 = "16000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4009" time = "16000" savedb = "0" name = "耶哥蕊特技能2lv4" time1 = "16000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4010" time = "16000" savedb = "0" name = "耶哥蕊特技能2lv5" time1 = "16000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4011" time = "5000" savedb = "0" name = "耶哥蕊特技能3lv1" time1 = "5000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4012" time = "5000" savedb = "0" name = "耶哥蕊特技能3lv2" time1 = "5000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4013" time = "12000" savedb = "0" name = "耶哥蕊特技能3lv3" time1 = "12000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4014" time = "19000" savedb = "0" name = "耶哥蕊特技能3lv4" time1 = "19000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4015" time = "17000" savedb = "0" name = "耶哥蕊特技能3lv5" time1 = "17000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4016" time = "80000" savedb = "0" name = "耶哥蕊特技能4lv1" time1 = "80000">
+			<together groupid = "317" time = "120000"></together>
+		</freeze>
+		<freeze id = "4017" time = "100000" savedb = "0" name = "耶哥蕊特技能4lv2" time1 = "100000">
+			<together groupid = "317" time = "100000"></together>
+		</freeze>
+		<freeze id = "4018" time = "80000" savedb = "0" name = "耶哥蕊特技能4lv3" time1 = "80000">
+			<together groupid = "317" time = "80000"></together>
+		</freeze>
+		<freeze id = "4019" time = "90000" savedb = "0" name = "耶哥蕊特技能4lv4" time1 = "90000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4020" time = "90000" savedb = "0" name = "耶哥蕊特技能5lv1" time1 = "90000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4021" time = "266" savedb = "0" name = "耶哥蕊特普攻1" time1 = "266">
+			<together groupid = "303" time = "0"></together>
+		</freeze>
+		<freeze id = "4022" time = "300" savedb = "0" name = "耶哥蕊特普攻2" time1 = "300">
+			<together groupid = "303" time = "0"></together>
+		</freeze>
+		<freeze id = "4023" time = "700" savedb = "0" name = "耶哥蕊特普攻3" time1 = "700">
+			<together groupid = "303" time = "0"></together>
+		</freeze>
+		<freeze id = "4024" time = "80000" savedb = "0" name = "耶哥蕊特技能5lv2" time1 = "80000">
+			<together groupid = "300" time = "0"></together>
+		</freeze>
+		<freeze id = "4025" time = "167" savedb = "0" name = "耶哥蕊特开大普攻" time1 = "167">
+			<together groupid = "303" time = "0"></together>
+		</freeze>
+		<freeze id = "4026" time = "167" savedb = "0" name = "耶哥蕊特开大普攻" time1 = "167">
+			<together groupid = "303" time = "0"></together>
+		</freeze>
+
+
+
+                <freeze id = "4199" time = "326" savedb = "0" name = "梅丽姗卓普攻1" time1 = "326">
+			<together groupid = "304" time = "1000"></together>
+		</freeze>
+                <freeze id = "4198" time = "500" savedb = "0" name = "梅丽姗卓普攻2" time1 = "500">
+			<together groupid = "304" time = "1000"></together>
+		</freeze>
+                <freeze id = "4197" time = "1000" savedb = "0" name = "梅丽姗卓普攻3" time1 = "1000">
+			<together groupid = "304" time = "500"></together>
+		</freeze>
+                <freeze id = "4196" time = "1000" savedb = "0" name = "梅丽姗卓普攻4" time1 = "1000">
+			<together groupid = "304" time = "1000"></together>
+		</freeze>
+		<freeze id = "4101" time = "3000" savedb = "0" name = "梅丽姗卓技能1lv1" time1 = "3000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4102" time = "5000" savedb = "0" name = "梅丽姗卓技能1lv1" time1 = "5000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4103" time = "10000" savedb = "0" name = "梅丽姗卓技能1lv1" time1 = "10000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4104" time = "1000" savedb = "0" name = "梅丽姗卓技能1lv1" time1 = "1000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4105" time = "9000" savedb = "0" name = "梅丽姗卓技能1lv2" time1 = "9000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4106" time = "8000" savedb = "0" name = "梅丽姗卓技能1lv3" time1 = "8000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4107" time = "7000" savedb = "0" name = "梅丽姗卓技能1lv4" time1 = "7000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4108" time = "6000" savedb = "0" name = "梅丽姗卓技能1lv5" time1 = "6000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4109" time = "7000" savedb = "0" name = "梅丽姗卓技能2lv1" time1 = "7000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4110" time = "12000" savedb = "0" name = "梅丽姗卓技能2lv2" time1 = "12000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4111" time = "14000" savedb = "0" name = "梅丽姗卓技能2lv3" time1 = "14000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4112" time = "14000" savedb = "0" name = "梅丽姗卓技能2lv4" time1 = "14000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4113" time = "14000" savedb = "0" name = "梅丽姗卓技能2lv5" time1 = "14000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4114" time = "15000" savedb = "0" name = "梅丽姗卓技能3lv1" time1 = "15000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4115" time = "9000" savedb = "0" name = "梅丽姗卓技能3lv2" time1 = "9000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4116" time = "16000" savedb = "0" name = "梅丽姗卓技能3lv3" time1 = "16000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4117" time = "15000" savedb = "0" name = "梅丽姗卓技能3lv4" time1 = "15000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4118" time = "14000" savedb = "0" name = "梅丽姗卓技能3lv5" time1 = "14000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4119" time = "90000" savedb = "0" name = "梅丽姗卓技能4lv1" time1 = "90000">
+			<together groupid = "318" time = "140000"></together>
+		</freeze>
+		<freeze id = "4120" time = "60000" savedb = "0" name = "梅丽姗卓技能4lv2" time1 = "60000">
+			<together groupid = "318" time = "130000"></together>
+		</freeze>
+		<freeze id = "4121" time = "80000" savedb = "0" name = "梅丽姗卓技能4lv3" time1 = "80000">
+			<together groupid = "318" time = "120000"></together>
+		</freeze>
+		<freeze id = "4122" time = "10000" savedb = "0" name = "梅丽姗卓技能4lv4" time1 = "10000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4123" time = "90000" savedb = "0" name = "梅丽姗卓技能4lv5" time1 = "90000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4124" time = "120000" savedb = "0" name = "梅丽姗卓技能5lv1" time1 = "120000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4125" time = "90000" savedb = "0" name = "梅丽姗卓技能5lv2" time1 = "90000">
+			<together groupid = "301" time = "0"></together>
+		</freeze>
+		<freeze id = "4299" time = "430" savedb = "0" name = "魔山普攻1" time1 = "430">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+                <freeze id = "4298" time = "600" savedb = "0" name = "魔山普攻2" time1 = "600">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+                <freeze id = "4297" time = "1200" savedb = "0" name = "魔山普攻3" time1 = "1200">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+                <freeze id = "4296" time = "700" savedb = "0" name = "魔山普攻4" time1 = "700">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+		<freeze id = "4204" time = "15000" savedb = "0" name = "魔山技能1lv1" time1 = "15000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4205" time = "9000" savedb = "0" name = "魔山技能1lv2" time1 = "9000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4206" time = "18000" savedb = "0" name = "魔山技能1lv3" time1 = "18000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4207" time = "17000" savedb = "0" name = "魔山技能1lv4" time1 = "17000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4208" time = "15000" savedb = "0" name = "魔山技能1lv5" time1 = "15000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4209" time = "10000" savedb = "0" name = "魔山技能2lv1" time1 = "10000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4210" time = "6000" savedb = "0" name = "魔山技能2lv2" time1 = "6000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4211" time = "10000" savedb = "0" name = "魔山技能2lv3" time1 = "10000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4212" time = "10000" savedb = "0" name = "魔山技能2lv4" time1 = "10000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4213" time = "10000" savedb = "0" name = "魔山技能2lv5" time1 = "10000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4214" time = "15000" savedb = "0" name = "魔山技能3lv1" time1 = "10000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4215" time = "14000" savedb = "0" name = "魔山技能3lv2" time1 = "9500">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4216" time = "13000" savedb = "0" name = "魔山技能3lv3" time1 = "9000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4217" time = "12000" savedb = "0" name = "魔山技能3lv4" time1 = "8500">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4218" time = "11000" savedb = "0" name = "魔山技能3lv5" time1 = "8000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4219" time = "60000" savedb = "0" name = "魔山技能4lv1" time1 = "60000">
+			<together groupid = "319" time = "120000"></together>
+		</freeze>
+		<freeze id = "4220" time = "90000" savedb = "0" name = "魔山技能4lv2" time1 = "90000">
+			<together groupid = "319" time = "95000"></together>
+		</freeze>
+		<freeze id = "4221" time = "70000" savedb = "0" name = "魔山技能4lv3" time1 = "70000">
+			<together groupid = "319" time = "70000"></together>
+		</freeze>
+		<freeze id = "4222" time = "90000" savedb = "0" name = "魔山技能4lv4" time1 = "90000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+		<freeze id = "4223" time = "90000" savedb = "0" name = "魔山技能4lv5" time1 = "90000">
+			<together groupid = "302" time = "0"></together>
+		</freeze>
+                <freeze id = "4300" time = "500" savedb = "0" name = "小恶魔普攻1" time1 = "500">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+                <freeze id = "4301" time = "430" savedb = "0" name = "小恶魔普攻2" time1 = "430">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+                <freeze id = "4302" time = "230" savedb = "0" name = "小恶魔普攻3" time1 = "230">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+                <freeze id = "4303" time = "1000" savedb = "0" name = "小恶魔普攻4" time1 = "1000">
+			<together groupid = "305" time = "0"></together>
+		</freeze>
+		<freeze id = "4304" time = "10000" savedb = "0" name = "小恶魔技能1lv1" time1 = "10000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4305" time = "6000" savedb = "0" name = "小恶魔技能1lv2" time1 = "6000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4306" time = "10000" savedb = "0" name = "小恶魔技能1lv3" time1 = "10000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4307" time = "10000" savedb = "0" name = "小恶魔技能1lv4" time1 = "10000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4308" time = "10000" savedb = "0" name = "小恶魔技能1lv5" time1 = "10000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4309" time = "90000" savedb = "0" name = "小恶魔停战协议lv1" time1 = "90000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4310" time = "8400" savedb = "0" name = "小恶魔技能2lv2" time1 = "8400">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4311" time = "12000" savedb = "0" name = "小恶魔技能2lv3" time1 = "12000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4312" time = "11000" savedb = "0" name = "小恶魔技能2lv4" time1 = "11000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4313" time = "10000" savedb = "0" name = "小恶魔技能2lv5" time1 = "10000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4314" time = "14000" savedb = "0" name = "小恶魔技能3lv1" time1 = "14000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4315" time = "13000" savedb = "0" name = "小恶魔技能3lv2" time1 = "13000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4316" time = "12000" savedb = "0" name = "小恶魔技能3lv3" time1 = "12000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4317" time = "11000" savedb = "0" name = "小恶魔技能3lv4" time1 = "11000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4318" time = "10000" savedb = "0" name = "小恶魔技能3lv5" time1 = "10000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4319" time = "90000" savedb = "0" name = "小恶魔技能4lv1" time1 = "90000">
+			<together groupid = "320" time = "120000"></together>
+		</freeze>
+		<freeze id = "4320" time = "110000" savedb = "0" name = "小恶魔技能4lv2" time1 = "110000">
+			<together groupid = "320" time = "110000"></together>
+		</freeze>
+		<freeze id = "4321" time = "100000" savedb = "0" name = "小恶魔技能4lv3" time1 = "100000">
+			<together groupid = "320" time = "100000"></together>
+		</freeze>
+		<freeze id = "4322" time = "90000" savedb = "0" name = "小恶魔技能4lv4" time1 = "90000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4323" time = "90000" savedb = "0" name = "小恶魔技能4lv5" time1 = "90000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		<freeze id = "4324" time = "90000" savedb = "0" name = "小恶魔天赋" time1 = "90000">
+			<together groupid = "306" time = "0"></together>
+		</freeze>
+		                <freeze id = "4499" time = "100" savedb = "0" name = "卓格普攻1" time1 = "100">
+			<together groupid = "308" time = "0"></together>
+		</freeze>
+                <freeze id = "4498" time = "200" savedb = "0" name = "卓格普攻2" time1 = "200">
+			<together groupid = "308" time = "0"></together>
+		</freeze>
+                <freeze id = "4497" time = "200" savedb = "0" name = "卓格普攻3" time1 = "200">
+			<together groupid = "308" time = "0"></together>
+		</freeze>
+                <freeze id = "4496" time = "500" savedb = "0" name = "卓格普攻4" time1 = "500">
+			<together groupid = "308" time = "0"></together>
+		</freeze>
+		<freeze id = "4400" time = "10000" savedb = "0" name = "卓格技能1lv1" time1 = "10000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4401" time = "6000" savedb = "0" name = "卓格技能1lv2" time1 = "6000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4402" time = "11000" savedb = "0" name = "卓格技能1lv3" time1 = "11000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4403" time = "10000" savedb = "0" name = "卓格技能1lv4" time1 = "10000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4404" time = "9000" savedb = "0" name = "卓格技能1lv5" time1 = "9000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4405" time = "15000" savedb = "0" name = "卓格技能2lv1" time1 = "15000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4406" time = "14000" savedb = "0" name = "卓格技能2lv2" time1 = "14000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4407" time = "13000" savedb = "0" name = "卓格技能2lv3" time1 = "13000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4408" time = "12000" savedb = "0" name = "卓格技能2lv4" time1 = "12000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4409" time = "11000" savedb = "0" name = "卓格技能2lv5" time1 = "11000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4410" time = "10000" savedb = "0" name = "卓格技能3lv1" time1 = "10000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4411" time = "6000" savedb = "0" name = "卓格技能3lv2" time1 = "6000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4412" time = "10000" savedb = "0" name = "卓格技能3lv3" time1 = "10000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4413" time = "9000" savedb = "0" name = "卓格技能3lv4" time1 = "9000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4414" time = "8000" savedb = "0" name = "卓格技能3lv5" time1 = "8000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4415" time = "60000" savedb = "0" name = "卓格技能4lv1" time1 = "60000">
+			<together groupid = "321" time = "50000"></together>
+		</freeze>
+		<freeze id = "4416" time = "100000" savedb = "0" name = "卓格技能4lv2" time1 = "100000">
+			<together groupid = "321" time = "35000"></together>
+		</freeze>
+		<freeze id = "4417" time = "80000" savedb = "0" name = "卓格技能4lv3" time1 = "80000">
+			<together groupid = "321" time = "20000"></together>
+		</freeze>
+		<freeze id = "4418" time = "120000" savedb = "0" name = "卓格技能5lv1" time1 = "120000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4419" time = "100000" savedb = "0" name = "卓格技能5lv2" time1 = "100000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4420" time = "5000" savedb = "0" name = "新手卓格1技能" time1 = "5000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4421" time = "5000" savedb = "0" name = "新手卓格2技能" time1 = "5000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+		<freeze id = "4422" time = "5000" savedb = "0" name = "新手卓格3技能" time1 = "5000">
+			<together groupid = "309" time = "0"></together>
+		</freeze>
+
+
+
+
+
+ 		<freeze id = "4599" time = "500" savedb = "0" name = "劳勃普攻1" time1 = "500">
+	                <together groupid = "312" time = "0"></together>
+		</freeze>
+                <freeze id = "4598" time = "600" savedb = "0" name = "劳勃普攻2" time1 = "600">
+			<together groupid = "312" time = "0"></together>
+		</freeze>
+                <freeze id = "4597" time = "1000" savedb = "0" name = "劳勃普攻3" time1 = "1000">
+			<together groupid = "312" time = "0"></together>
+		</freeze>
+                <freeze id = "4596" time = "800" savedb = "0" name = "劳勃普攻4" time1 = "800">
+			<together groupid = "312" time = "0"></together>
+		</freeze>
+		<freeze id = "4500" time = "8000" savedb = "0" name = "劳勃技能1lv1" time1 = "8000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4501" time = "6000" savedb = "0" name = "劳勃技能1lv2" time1 = "6000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4502" time = "9000" savedb = "0" name = "劳勃技能1lv3" time1 = "9000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4503" time = "8500" savedb = "0" name = "劳勃技能1lv4" time1 = "8500">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4504" time = "8000" savedb = "0" name = "劳勃技能1lv5" time1 = "8000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4505" time = "8000" savedb = "0" name = "劳勃技能2lv1" time1 = "8000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4506" time = "6000" savedb = "0" name = "劳勃技能2lv2" time1 = "6000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4507" time = "7000" savedb = "0" name = "劳勃技能2lv3" time1 = "7000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4508" time = "6500" savedb = "0" name = "劳勃技能2lv4" time1 = "6500">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4509" time = "6000" savedb = "0" name = "劳勃技能2lv5" time1 = "6000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4510" time = "12000" savedb = "0" name = "劳勃技能3lv1" time1 = "12000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4511" time = "8400" savedb = "0" name = "劳勃技能3lv2" time1 = "8400">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4512" time = "15000" savedb = "0" name = "劳勃技能3lv3" time1 = "15000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4513" time = "15000" savedb = "0" name = "劳勃技能3lv4" time1 = "15000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4514" time = "15000" savedb = "0" name = "劳勃技能3lv5" time1 = "15000">
+			<together groupid = "313" time = "0"></together>
+		</freeze>
+		<freeze id = "4515" time = "90000" savedb = "0" name = "劳勃技能4lv1" time1 = "90000">
+			<together groupid = "322" time = "130000"></together>
+		</freeze>
+		<freeze id = "4516" time = "115000" savedb = "0" name = "劳勃技能4lv2" time1 = "115000">
+			<together groupid = "322" time = "115000"></together>
+		</freeze>
+		<freeze id = "4517" time = "100000" savedb = "0" name = "劳勃技能4lv3" time1 = "100000">
+			<together groupid = "322" time = "100000"></together>
+		</freeze>
+
+ 		<freeze id = "4699" time = "200" savedb = "0" name = "红毒蛇普攻1" time1 = "200">
+	                <together groupid = "310" time = "0"></together>
+		</freeze>
+                <freeze id = "4698" time = "400" savedb = "0" name = "红毒蛇普攻2" time1 = "400">
+			<together groupid = "310" time = "0"></together>
+		</freeze>
+                <freeze id = "4697" time = "470" savedb = "0" name = "红毒蛇普攻3" time1 = "470">
+			<together groupid = "310" time = "0"></together>
+		</freeze>
+                <freeze id = "4696" time = "600" savedb = "0" name = "红毒蛇普攻4" time1 = "600">
+			<together groupid = "310" time = "0"></together>
+		</freeze>
+		<freeze id = "4600" time = "8000" savedb = "0" name = "红毒蛇技能1lv1" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4601" time = "500" savedb = "0" name = "红毒蛇技能1lv2" time1 = "500">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4602" time = "6000" savedb = "0" name = "红毒蛇技能1lv3" time1 = "6000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4603" time = "10000" savedb = "0" name = "红毒蛇技能1lv4" time1 = "10000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4604" time = "9000" savedb = "0" name = "红毒蛇技能1lv5" time1 = "9000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4605" time = "10000" savedb = "0" name = "红毒蛇技能2lv1" time1 = "10000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4606" time = "6000" savedb = "0" name = "红毒蛇技能2lv2" time1 = "6000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4607" time = "10000" savedb = "0" name = "红毒蛇技能2lv3" time1 = "10000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4608" time = "9000" savedb = "0" name = "红毒蛇技能2lv4" time1 = "9000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4609" time = "8000" savedb = "0" name = "红毒蛇技能2lv5" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4610" time = "8000" savedb = "0" name = "红毒蛇技能3lv1" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4611" time = "8000" savedb = "0" name = "红毒蛇技能3lv2" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4612" time = "8000" savedb = "0" name = "红毒蛇技能3lv3" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4613" time = "8000" savedb = "0" name = "红毒蛇技能3lv4" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4614" time = "8000" savedb = "0" name = "红毒蛇技能3lv5" time1 = "8000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4615" time = "60000" savedb = "0" name = "红毒蛇技能4lv1" time1 = "60000">
+			<together groupid = "311" time = "180000"></together>
+		</freeze>
+		<freeze id = "4616" time = "150000" savedb = "0" name = "红毒蛇技能4lv2" time1 = "150000">
+			<together groupid = "323" time = "150000"></together>
+		</freeze>
+		<freeze id = "4617" time = "120000" savedb = "0" name = "红毒蛇技能4lv3" time1 = "120000">
+			<together groupid = "323" time = "120000"></together>
+		</freeze>
+		<freeze id = "4618" time = "3000" savedb = "0" name = "红毒蛇技能4lv4" time1 = "3000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4619" time = "1000" savedb = "0" name = "红毒蛇技能4lv5" time1 = "1000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4620" time = "10000" savedb = "0" name = "红毒蛇天赋" time1 = "10000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+                <freeze id = "4621" time = "300" savedb = "0" name = "红毒蛇技能1lv1" time1 = "300">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4622" time = "300" savedb = "0" name = "红毒蛇技能1lv2" time1 = "300">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4623" time = "5000" savedb = "0" name = "红毒蛇技能1lv3" time1 = "5000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+		<freeze id = "4624" time = "5000" savedb = "0" name = "红毒蛇技能1lv3" time1 = "5000">
+			<together groupid = "311" time = "0"></together>
+		</freeze>
+ 		<freeze id = "4799" time = "200" savedb = "0" name = "索罗斯普攻1" time1 = "200">
+	                <together groupid = "312" time = "0"></together>
+		</freeze>
+                <freeze id = "4798" time = "400" savedb = "0" name = "索罗斯普攻2" time1 = "400">
+			<together groupid = "314" time = "0"></together>
+		</freeze>
+                <freeze id = "4797" time = "800" savedb = "0" name = "索罗斯普攻3" time1 = "800">
+			<together groupid = "314" time = "0"></together>
+		</freeze>
+                <freeze id = "4796" time = "1200" savedb = "0" name = "索罗斯普攻4" time1 = "1200">
+			<together groupid = "314" time = "0"></together>
+		</freeze>
+		<freeze id = "4701" time = "10000" savedb = "0" name = "索罗斯技能1lv1" time1 = "10000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4702" time = "8400" savedb = "0" name = "索罗斯技能1lv2" time1 = "8400">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4703" time = "12000" savedb = "0" name = "索罗斯技能1lv3" time1 = "12000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4704" time = "11000" savedb = "0" name = "索罗斯技能1lv4" time1 = "11000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4705" time = "10000" savedb = "0" name = "索罗斯技能1lv5" time1 = "10000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4706" time = "7000" savedb = "0" name = "索罗斯技能2lv1" time1 = "7000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4707" time = "6000" savedb = "0" name = "索罗斯技能2lv2" time1 = "6000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4708" time = "12000" savedb = "0" name = "索罗斯技能2lv3" time1 = "12000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4709" time = "11000" savedb = "0" name = "索罗斯技能2lv4" time1 = "11000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4710" time = "10000" savedb = "0" name = "索罗斯技能2lv5" time1 = "10000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4711" time = "16000" savedb = "0" name = "索罗斯技能3lv1" time1 = "16000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4712" time = "15000" savedb = "0" name = "索罗斯技能3lv2" time1 = "15000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4713" time = "14000" savedb = "0" name = "索罗斯技能3lv3" time1 = "14000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4714" time = "13000" savedb = "0" name = "索罗斯技能3lv4" time1 = "13000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4715" time = "12000" savedb = "0" name = "索罗斯技能3lv5" time1 = "12000">
+			<together groupid = "315" time = "0"></together>
+		</freeze>
+		<freeze id = "4716" time = "90000" savedb = "0" name = "索罗斯技能4lv1" time1 = "90000">
+			<together groupid = "324" time = "50000"></together>
+		</freeze>
+		<freeze id = "4717" time = "70000" savedb = "0" name = "索罗斯技能4lv2" time1 = "70000">
+			<together groupid = "324" time = "50000"></together>
+		</freeze>
+		<freeze id = "4718" time = "100000" savedb = "0" name = "索罗斯技能4lv3" time1 = "100000">
+			<together groupid = "324" time = "50000"></together>
+		</freeze>
+		<freeze id = "4719" time = "20000" savedb = "0" name = "索罗斯技能4假死效果判断冷却" time1 = "20000">
+			<together groupid = "316" time = "0"></together>
+		</freeze>
+
+                        
+               
+                <freeze id = "4899" time = "600" savedb = "0" name = "男巫普攻1" time1 = "600">
+	                <together groupid = "327" time = "0"></together>
+		</freeze>
+                <freeze id = "4898" time = "300" savedb = "0" name = "男巫普攻2" time1 = "300">
+			<together groupid = "327" time = "0"></together>
+		</freeze>
+                <freeze id = "4897" time = "1300" savedb = "0" name = "男巫普攻3" time1 = "1300">
+			<together groupid = "327" time = "0"></together>
+		</freeze>
+		<freeze id = "4800" time = "6000" savedb = "0" name = "男巫技能1lv1" time1 = "6000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4801" time = "6000" savedb = "0" name = "男巫技能1lv2" time1 = "6000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4802" time = "12000" savedb = "0" name = "男巫技能1lv3" time1 = "12000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4803" time = "11000" savedb = "0" name = "男巫技能1lv4" time1 = "11000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4804" time = "10000" savedb = "0" name = "男巫技能1lv5" time1 = "10000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4805" time = "12000" savedb = "0" name = "男巫技能2lv1" time1 = "12000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4806" time = "9000" savedb = "0" name = "男巫技能2lv2" time1 = "9000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4807" time = "1000" savedb = "0" name = "男巫技能2lv3" time1 = "1000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4808" time = "10000" savedb = "0" name = "男巫技能2lv4" time1 = "10000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4809" time = "10000" savedb = "0" name = "男巫技能2lv5" time1 = "10000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4810" time = "60000" savedb = "0" name = "男巫技能被动" time1 = "60000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4811" time = "20000" savedb = "0" name = "男巫技能3lv2" time1 = "20000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4812" time = "20000" savedb = "0" name = "男巫技能3lv3" time1 = "20000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4813" time = "20000" savedb = "0" name = "男巫技能3lv4" time1 = "20000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4814" time = "8000" savedb = "0" name = "男巫技能3lv5" time1 = "8000">
+			<together groupid = "326" time = "0"></together>
+		</freeze>
+		<freeze id = "4815" time = "120000" savedb = "0" name = "男巫技能4lv1" time1 = "120000">
+			<together groupid = "325" time = "130000"></together>
+		</freeze>
+		<freeze id = "4816" time = "100000" savedb = "0" name = "男巫技能4lv2" time1 = "100000">
+			<together groupid = "325" time = "115000"></together>
+		</freeze>
+		<freeze id = "4817" time = "80000" savedb = "0" name = "男巫技能4lv3" time1 = "80000">
+			<together groupid = "325" time = "100000"></together>
+		</freeze>
+                <freeze id = "4999" time = "200" savedb = "0" name = "艾丽娅普攻1" time1 = "200">
+	                <together groupid = "329" time = "0"></together>
+		</freeze>
+                <freeze id = "4998" time = "233" savedb = "0" name = "艾丽娅普攻2" time1 = "233">
+			<together groupid = "329" time = "0"></together>
+		</freeze>
+                <freeze id = "4997" time = "200" savedb = "0" name = "艾丽娅普攻3" time1 = "200">
+			<together groupid = "329" time = "0"></together>
+		</freeze>
+                <freeze id = "4996" time = "766" savedb = "0" name = "艾丽娅普攻4" time1 = "766">
+			<together groupid = "329" time = "0"></together>
+		</freeze>
+		<freeze id = "4900" time = "9000" savedb = "0" name = "艾丽娅技能1lv1" time1 = "9000">
+			<together groupid = "330" time = "500"></together>
+		</freeze>
+		<freeze id = "4901" time = "2000" savedb = "0" name = "艾丽娅技能1lv2" time1 = "2000">
+			<together groupid = "330" time = "500"></together>
+		</freeze>
+		<freeze id = "4902" time = "5400" savedb = "0" name = "艾丽娅技能1lv3" time1 = "5400">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4903" time = "300" savedb = "0" name = "艾丽娅技能1lv4" time1 = "300">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4904" time = "300" savedb = "0" name = "艾丽娅技能1lv5" time1 = "300">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4905" time = "15000" savedb = "0" name = "艾丽娅技能2lv1" time1 = "15000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4906" time = "9000" savedb = "0" name = "艾丽娅技能2lv2" time1 = "9000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4907" time = "14000" savedb = "0" name = "艾丽娅技能2lv3" time1 = "16000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4908" time = "12000" savedb = "0" name = "艾丽娅技能2lv4" time1 = "14000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4909" time = "10000" savedb = "0" name = "艾丽娅技能2lv5" time1 = "12000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4910" time = "3000" savedb = "0" name = "艾丽娅2号大招lv1" time1 = "3000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4911" time = "14000" savedb = "0" name = "艾丽娅技能3lv2" time1 = "13000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4912" time = "12000" savedb = "0" name = "艾丽娅技能3lv3" time1 = "11000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4913" time = "10000" savedb = "0" name = "艾丽娅技能3lv4" time1 = "9000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4914" time = "8000" savedb = "0" name = "艾丽娅技能3lv5" time1 = "7000">
+			<together groupid = "330" time = "0"></together>
+		</freeze>
+		<freeze id = "4915" time = "90000" savedb = "0" name = "艾丽娅技能4lv1" time1 = "90000">
+			<together groupid = "328" time = "130000"></together>
+		</freeze>
+		<freeze id = "4916" time = "115000" savedb = "0" name = "艾丽娅技能4lv2" time1 = "90000">
+			<together groupid = "328" time = "115000"></together>
+		</freeze>
+		<freeze id = "4917" time = "100000" savedb = "0" name = "艾丽娅技能4lv3" time1 = "70000">
+			<together groupid = "38" time = "100000"></together>
+		</freeze>
+
+
+                <freeze id = "5099" time = "500" savedb = "0" name = "尸鬼普攻1" time1 = "500">
+	                <together groupid = "331" time = "0"></together>
+		</freeze>
+                <freeze id = "5098" time = "500" savedb = "0" name = "尸鬼普攻2" time1 = "500">
+			<together groupid = "331" time = "0"></together>
+		</freeze>
+                <freeze id = "5097" time = "800" savedb = "0" name = "尸鬼普攻3" time1 = "800">
+			<together groupid = "331" time = "0"></together>
+		</freeze>
+                <freeze id = "5096" time = "200" savedb = "0" name = "尸鬼普攻4" time1 = "200">
+			<together groupid = "331" time = "0"></together>
+		</freeze>
+                <freeze id = "5095" time = "800" savedb = "0" name = "尸鬼普攻4" time1 = "800">
+			<together groupid = "331" time = "0"></together>
+		</freeze>
+		<freeze id = "5000" time = "9000" savedb = "0" name = "尸鬼技能1lv1" time1 = "9000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5001" time = "8400" savedb = "0" name = "尸鬼技能1lv2" time1 = "8400">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5002" time = "12000" savedb = "0" name = "尸鬼技能1lv3" time1 = "12000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5003" time = "11000" savedb = "0" name = "尸鬼技能1lv4" time1 = "11000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5004" time = "10000" savedb = "0" name = "尸鬼技能1lv5" time1 = "10000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5005" time = "30000" savedb = "0" name = "尸鬼技能2lv1" time1 = "30000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5006" time = "19200" savedb = "0" name = "尸鬼技能2lv2" time1 = "19200">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5007" time = "36000" savedb = "0" name = "尸鬼技能2lv3" time1 = "36000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5008" time = "34000" savedb = "0" name = "尸鬼技能2lv4" time1 = "34000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5009" time = "32000" savedb = "0" name = "尸鬼技能2lv5" time1 = "32000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5010" time = "90000" savedb = "0" name = "尸鬼技能3lv1" time1 = "90000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5011" time = "110000" savedb = "0" name = "尸鬼技能3lv2" time1 = "110000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5012" time = "100000" savedb = "0" name = "尸鬼技能3lv3" time1 = "100000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5013" time = "5000" savedb = "0" name = "尸鬼技能3二段lv1" time1 = "5000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5014" time = "5000" savedb = "0" name = "尸鬼技能3二段lv2" time1 = "5000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5015" time = "5000" savedb = "0" name = "尸鬼技能3二段lv3" time1 = "5000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5016" time = "120000" savedb = "0" name = "尸鬼技能5lv1" time1 = "120000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+		<freeze id = "5017" time = "100000" savedb = "0" name = "尸鬼技能5lv2" time1 = "100000">
+			<together groupid = "332" time = "0"></together>
+		</freeze>
+    <freeze id = "5199" time = "210" savedb = "0" name = "阿莎普攻1" time1 = "150">
+	    <together groupid = "333" time = "0"></together>
+		</freeze>
+                <freeze id = "5198" time = "100" savedb = "0" name = "阿莎普攻2" time1 = "100">
+			<together groupid = "333" time = "0"></together>
+		</freeze>
+                <freeze id = "5197" time = "1000" savedb = "0" name = "阿莎普攻3" time1 = "1000">
+			<together groupid = "333" time = "0"></together>
+		</freeze>
+                <freeze id = "5196" time = "300" savedb = "0" name = "阿莎普攻4" time1 = "300">
+			<together groupid = "333" time = "0"></together>
+		</freeze>
+		<freeze id = "5100" time = "6000" savedb = "0" name = "阿莎技能1lv1" time1 = "6000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5101" time = "1000" savedb = "0" name = "阿莎技能1lv2" time1 = "1000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5102" time = "4000" savedb = "0" name = "阿莎技能1lv3" time1 = "4000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5103" time = "4000" savedb = "0" name = "阿莎技能1lv4" time1 = "4000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5104" time = "4000" savedb = "0" name = "阿莎技能1lv5" time1 = "4000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5105" time = "10000" savedb = "0" name = "阿莎技能2lv1" time1 = "10000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5106" time = "8400" savedb = "0" name = "阿莎技能2lv2" time1 = "8400">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5107" time = "10000" savedb = "0" name = "阿莎技能2lv3" time1 = "10000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5108" time = "10000" savedb = "0" name = "阿莎技能2lv4" time1 = "10000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5109" time = "10000" savedb = "0" name = "阿莎技能2lv5" time1 = "10000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5110" time = "60000" savedb = "0" name = "阿莎技能3lv1" time1 = "60000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5111" time = "60000" savedb = "0" name = "阿莎技能3lv2" time1 = "60000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+		<freeze id = "5112" time = "60000" savedb = "0" name = "阿莎技能3lv3" time1 = "60000">
+			<together groupid = "334" time = "0"></together>
+		</freeze>
+
+
+                <freeze id = "5299" time = "200" savedb = "0" name = "绿先知普攻1" time1 = "200">
+	                <together groupid = "335" time = "0"></together>
+		</freeze>
+                <freeze id = "5298" time = "300" savedb = "0" name = "绿先知普攻2" time1 = "300">
+			<together groupid = "335" time = "0"></together>
+		</freeze>
+                <freeze id = "5297" time = "1000" savedb = "0" name = "绿先知普攻3" time1 = "1000">
+			<together groupid = "335" time = "0"></together>
+		</freeze>
+                <freeze id = "5296" time = "1800" savedb = "0" name = "绿先知普攻4" time1 = "1800">
+			<together groupid = "335" time = "0"></together>
+		</freeze>
+		<freeze id = "5200" time = "12000" savedb = "0" name = "绿先知技能1lv1" time1 = "12000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5201" time = "8400" savedb = "0" name = "绿先知技能1lv2" time1 = "8400">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5202" time = "12000" savedb = "0" name = "绿先知技能1lv3" time1 = "12000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5203" time = "11000" savedb = "0" name = "绿先知技能1lv4" time1 = "11000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5204" time = "10000" savedb = "0" name = "绿先知技能1lv5" time1 = "10000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5205" time = "14000" savedb = "0" name = "绿先知技能2lv1" time1 = "14000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5206" time = "7000" savedb = "0" name = "绿先知技能2lv2" time1 = "7000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5207" time = "14000" savedb = "0" name = "绿先知技能2lv3" time1 = "14000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5208" time = "12000" savedb = "0" name = "绿先知技能2lv4" time1 = "12000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5209" time = "10000" savedb = "0" name = "绿先知技能2lv5" time1 = "10000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5210" time = "300" savedb = "0" name = "绿先知技能3lv1" time1 = "300">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5211" time = "300" savedb = "0" name = "绿先知技能3lv2" time1 = "300">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5212" time = "0" savedb = "0" name = "绿先知技能3lv3" time1 = "0">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5213" time = "10000" savedb = "0" name = "绿先知技能3lv4" time1 = "10000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5214" time = "70000" savedb = "0" name = "绿先知技能3lv5" time1 = "70000">
+			<together groupid = "336" time = "0"></together>
+		</freeze>
+		<freeze id = "5215" time = "120000" savedb = "0" name = "绿先知技能4lv1" time1 = "120000">
+			<together groupid = "322" time = "130000"></together>
+		</freeze>
+		<freeze id = "5216" time = "100000" savedb = "0" name = "绿先知技能4lv2" time1 = "100000">
+			<together groupid = "322" time = "115000"></together>
+		</freeze>
+		<freeze id = "5217" time = "80000" savedb = "0" name = "绿先知技能4lv3" time1 = "80000">
+			<together groupid = "322" time = "100000"></together>
+		</freeze>
+
+
+                <freeze id = "5399" time = "800" savedb = "0" name = "布兰登人普攻1" time1 = "800">
+	                <together groupid = "337" time = "0"></together>
+		</freeze>
+                <freeze id = "5398" time = "400" savedb = "0" name = "布兰登普攻1" time1 = "400">
+			<together groupid = "337" time = "0"></together>
+		</freeze>
+                <freeze id = "5397" time = "400" savedb = "0" name = "布兰登普攻2" time1 = "400">
+			<together groupid = "337" time = "0"></together>
+		</freeze>
+                <freeze id = "5396" time = "1000" savedb = "0" name = "布兰登普攻3" time1 = "1000">
+			<together groupid = "337" time = "0"></together>
+		</freeze>
+                <freeze id = "5395" time = "1000" savedb = "0" name = "布兰登扑人" time1 = "1000">
+			<together groupid = "337" time = "0"></together>
+		</freeze>
+		<freeze id = "5300" time = "9000" savedb = "0" name = "布兰登技能1lv1" time1 = "9000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5301" time = "6000" savedb = "0" name = "布兰登技能1lv2" time1 = "6000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5302" time = "14000" savedb = "0" name = "布兰登技能1lv3" time1 = "14000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5303" time = "13000" savedb = "0" name = "布兰登技能1lv4" time1 = "13000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5304" time = "12000" savedb = "0" name = "布兰登技能1lv5" time1 = "12000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5305" time = "5000" savedb = "0" name = "布兰登技能2lv1" time1 = "5000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5306" time = "3000" savedb = "0" name = "布兰登技能2lv2" time1 = "3000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5307" time = "5000" savedb = "0" name = "布兰登技能2lv3" time1 = "5000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5308" time = "5000" savedb = "0" name = "布兰登技能2lv4" time1 = "5000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5309" time = "5000" savedb = "0" name = "布兰登技能2lv5" time1 = "5000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5310" time = "8000" savedb = "0" name = "布兰登技能3lv1" time1 = "8000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5311" time = "0" savedb = "0" name = "布兰登技能3lv2" time1 = "0">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5312" time = "8000" savedb = "0" name = "布兰登技能3lv3" time1 = "8000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5313" time = "10000" savedb = "0" name = "布兰登技能3lv3" time1 = "10000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5314" time = "20000" savedb = "0" name = "布兰登技能3lv3" time1 = "20000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5315" time = "10000" savedb = "0" name = "布兰登技能3lv3" time1 = "10000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5316" time = "15000" savedb = "0" name = "布兰登技能3lv3" time1 = "15000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5317" time = "35000" savedb = "0" name = "布兰登技能3lv3" time1 = "35000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+
+
+
+
+                <freeze id = "5499" time = "600" savedb = "0" name = "龙母普攻1" time1 = "600">
+	                <together groupid = "339" time = "0"></together>
+		</freeze>
+                <freeze id = "5498" time = "600" savedb = "0" name = "龙母普攻2" time1 = "600">
+			<together groupid = "339" time = "0"></together>
+		</freeze>
+                <freeze id = "5497" time = "1000" savedb = "0" name = "龙母普攻3" time1 = "1000">
+			<together groupid = "339" time = "0"></together>
+		</freeze>
+		<freeze id = "5400" time = "5000" savedb = "0" name = "龙母技能1lv1" time1 = "5000">
+			<together groupid = "338" time = "0"></together>
+		</freeze>
+		<freeze id = "5401" time = "6000" savedb = "0" name = "龙母技能1lv2" time1 = "6000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5402" time = "10000" savedb = "0" name = "龙母技能1lv3" time1 = "10000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5403" time = "10000" savedb = "0" name = "龙母技能1lv4" time1 = "10000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5404" time = "10000" savedb = "0" name = "龙母技能1lv5" time1 = "10000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5405" time = "15000" savedb = "0" name = "龙母技能2lv1" time1 = "15000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5406" time = "9000" savedb = "0" name = "龙母技能2lv2" time1 = "9000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5407" time = "9000" savedb = "0" name = "龙母技能2lv3" time1 = "9000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5408" time = "12000" savedb = "0" name = "龙母技能2lv4" time1 = "12000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5409" time = "10000" savedb = "0" name = "龙母技能2lv5" time1 = "10000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5410" time = "120000" savedb = "0" name = "龙母技能3lv1" time1 = "120000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5411" time = "90000" savedb = "0" name = "龙母技能3lv2" time1 = "90000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		<freeze id = "5412" time = "110000" savedb = "0" name = "龙母技能3lv3" time1 = "110000">
+			<together groupid = "340" time = "0"></together>
+		</freeze>
+		              
+		              
+		  <freeze id = "5599" time = "200" savedb = "0" name = "机器人普攻1" time1 = "200">
+	    <together groupid = "341" time = "0"></together>
+		</freeze>
+      <freeze id = "5598" time = "300" savedb = "0" name = "机器人普攻2" time1 = "300">
+			<together groupid = "341" time = "0"></together>
+		</freeze>
+      <freeze id = "5597" time = "800" savedb = "0" name = "机器人普攻3" time1 = "800">
+			<together groupid = "341" time = "0"></together>
+		</freeze>
+      <freeze id = "5596" time = "10000" savedb = "0" name = "机器人天赋" time1 = "10000">
+			<together groupid = "341" time = "0"></together>
+		</freeze>
+		  <freeze id = "5595" time = "300" savedb = "0" name = "机器人替换普攻" time1 = "300">
+			<together groupid = "341" time = "0"></together>
+		</freeze>
+		<freeze id = "5500" time = "5000" savedb = "0" name = "机器人技能1lv1" time1 = "5000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5501" time = "5000" savedb = "0" name = "机器人技能1lv2" time1 = "5000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5502" time = "10000" savedb = "0" name = "机器人技能1lv3" time1 = "10000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5503" time = "120000" savedb = "0" name = "机器人技能5lv1" time1 = "120000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5504" time = "110000" savedb = "0" name = "机器人技能5lv2" time1 = "110000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5505" time = "15000" savedb = "0" name = "机器人技能2lv1" time1 = "15000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5506" time = "9000" savedb = "0" name = "机器人技能2lv2" time1 = "9000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5507" time = "14000" savedb = "0" name = "机器人技能2lv3" time1 = "14000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5508" time = "12000" savedb = "0" name = "机器人技能2lv4" time1 = "12000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5509" time = "10000" savedb = "0" name = "机器人技能2lv5" time1 = "10000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5510" time = "60000" savedb = "0" name = "机器人技能3lv1" time1 = "60000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5511" time = "90000" savedb = "0" name = "机器人技能3lv2" time1 = "90000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5512" time = "80000" savedb = "0" name = "机器人技能3lv3" time1 = "80000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5513" time = "16000" savedb = "0" name = "机器人1技能1lv1" time1 = "16000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5514" time = "14000" savedb = "0" name = "机器人2技能1lv1" time1 = "14000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5515" time = "12000" savedb = "0" name = "机器人3技能1lv1" time1 = "12000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5516" time = "14000" savedb = "0" name = "机器人1技能1lv2" time1 = "14000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5517" time = "12000" savedb = "0" name = "机器人2技能1lv2" time1 = "12000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5518" time = "10000" savedb = "0" name = "机器人3技能1lv2" time1 = "10000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5519" time = "12000" savedb = "0" name = "机器人1技能1lv3" time1 = "12000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5520" time = "10000" savedb = "0" name = "机器人2技能1lv3" time1 = "10000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5521" time = "8000" savedb = "0" name = "机器人3技能1lv3" time1 = "8000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5522" time = "10000" savedb = "0" name = "机器人1技能1lv4" time1 = "10000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5523" time = "8000" savedb = "0" name = "机器人2技能1lv4" time1 = "8000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5524" time = "6000" savedb = "0" name = "机器人3技能1lv4" time1 = "6000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5525" time = "8000" savedb = "0" name = "机器人1技能1lv5" time1 = "8000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5526" time = "6000" savedb = "0" name = "机器人2技能1lv5" time1 = "6000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5527" time = "2000" savedb = "0" name = "机器人3技能1lv5" time1 = "2000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+
+
+	        <freeze id = "5699" time = "800" savedb = "0" name = "巴格（虫子）普攻1" time1 = "800">
+	        <together groupid = "343" time = "0"></together>
+		</freeze>
+                <freeze id = "5698" time = "700" savedb = "0" name = "巴格（虫子）普攻2" time1 = "700">
+			<together groupid = "343" time = "0"></together>
+		</freeze>
+                <freeze id = "5697" time = "1500" savedb = "0" name = "巴格（虫子）普攻3" time1 = "1500">
+			<together groupid = "343" time = "0"></together>
+		</freeze>
+                <freeze id = "5696" time = "2000" savedb = "0" name = "巴格（虫子）出土一击" time1 = "2000">
+			<together groupid = "343" time = "0"></together>
+		</freeze>
+		  <freeze id = "5695" time = "1000" savedb = "0" name = "巴格（虫子）换普攻" time1 = "1000">
+			<together groupid = "343" time = "0"></together>
+		</freeze>
+		<freeze id = "5600" time = "10000" savedb = "0" name = "巴格（虫子）技能1lv1" time1 = "10000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5601" time = "500" savedb = "0" name = "巴格（虫子）技能1lv2" time1 = "500">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5602" time = "10000" savedb = "0" name = "巴格（虫子）技能1冷却显示lv3" time1 = "10000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5603" time = "500" savedb = "0" name = "巴格（虫子）技能1lv4" time1 = "500">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5604" time = "500" savedb = "0" name = "巴格（虫子）技能1lv5" time1 = "500">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5605" time = "14000" savedb = "0" name = "巴格（虫子）技能2lv1" time1 = "14000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5606" time = "8400" savedb = "0" name = "巴格（虫子）技能2lv2" time1 = "8400">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5607" time = "12000" savedb = "0" name = "巴格（虫子）技能2lv3" time1 = "12000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5608" time = "11000" savedb = "0" name = "巴格（虫子）技能2lv4" time1 = "11000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5609" time = "10000" savedb = "0" name = "巴格（虫子）技能2lv5" time1 = "10000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5610" time = "90000" savedb = "0" name = "巴格（虫子）技能3lv1" time1 = "90000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+		<freeze id = "5611" time = "90000" savedb = "0" name = "巴格（虫子）技能3lv2" time1 = "90000">
+			<together groupid = "342" time = "0"></together>
+		</freeze>
+		<freeze id = "5612" time = "90000" savedb = "0" name = "巴格（虫子）技能3lv3" time1 = "90000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+                <freeze id = "5613" time = "10000" savedb = "0" name = "巴格（虫子）技能1lv1" time1 = "10000">
+			<together groupid = "344" time = "0"></together>
+		</freeze>
+
+
+
+	        <freeze id = "5799" time = "200" savedb = "0" name = "小鱼人普攻1" time1 = "200">
+	        <together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5798" time = "700" savedb = "0" name = "小鱼人普攻2" time1 = "700">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5797" time = "200" savedb = "0" name = "小鱼人普攻3" time1 = "200">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5796" time = "2000" savedb = "0" name = "小鱼人一击" time1 = "2000">
+			<together groupid = "345" time = "0"></together>
+		</freeze>
+		  <freeze id = "5795" time = "300" savedb = "0" name = "小鱼人换普攻" time1 = "300">
+			<together groupid = "345" time = "0"></together>
+		</freeze>
+		<freeze id = "5700" time = "10000" savedb = "0" name = "小鱼人技能1lv1" time1 = "10000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5701" time = "6000" savedb = "0" name = "小鱼人技能1lv2" time1 = "6000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5702" time = "12000" savedb = "0" name = "小鱼人技能1lv3" time1 = "12000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5703" time = "11000" savedb = "0" name = "小鱼人技能1lv4" time1 = "11000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5704" time = "10000" savedb = "0" name = "小鱼人技能1lv5" time1 = "10000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5705" time = "14000" savedb = "0" name = "小鱼人技能2lv1" time1 = "14000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5706" time = "8400" savedb = "0" name = "小鱼人技能2lv2" time1 = "8400">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5707" time = "10000" savedb = "0" name = "小鱼人技能2lv3" time1 = "16000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5708" time = "10000" savedb = "0" name = "小鱼人技能2lv4" time1 = "16000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5709" time = "10000" savedb = "0" name = "小鱼人技能2lv5" time1 = "16000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5710" time = "60000" savedb = "0" name = "小鱼人技能3lv1" time1 = "60000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5711" time = "110000" savedb = "0" name = "小鱼人技能3lv2" time1 = "110000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+		<freeze id = "5712" time = "100000" savedb = "0" name = "小鱼人技能3lv3" time1 = "100000">
+			<together groupid = "346" time = "0"></together>
+		</freeze>
+
+
+
+	        <freeze id = "5899" time = "300" savedb = "0" name = "东洋剑客普攻1" time1 = "300">
+	        <together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5898" time = "330" savedb = "0" name = "东洋剑客普攻2" time1 = "330">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5897" time = "1000" savedb = "0" name = "东洋剑客普攻3" time1 = "1000">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5896" time = "300" savedb = "0" name = "东洋剑客剑气普攻1" time1 = "300">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+		  <freeze id = "5895" time = "400" savedb = "0" name = "东洋剑客剑气普攻2" time1 = "400">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+                <freeze id = "5894" time = "400" savedb = "0" name = "东洋剑客剑气普攻3" time1 = "400">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+		  <freeze id = "5893" time = "1000" savedb = "0" name = "东洋剑客剑气普攻4" time1 = "1000">
+			<together groupid = "347" time = "0"></together>
+		</freeze>
+		<freeze id = "5800" time = "15000" savedb = "0" name = "东洋剑客技能1lv1" time1 = "15000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5801" time = "6000" savedb = "0" name = "东洋剑客技能1lv2" time1 = "6000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5802" time = "10000" savedb = "0" name = "东洋剑客技能1lv3" time1 = "10000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5803" time = "10000" savedb = "0" name = "东洋剑客技能1lv4" time1 = "10000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5804" time = "10000" savedb = "0" name = "东洋剑客技能1lv5" time1 = "10000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5805" time = "9000" savedb = "0" name = "东洋剑客技能2lv1" time1 = "9000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5806" time = "10000" savedb = "0" name = "东洋剑客技能2lv2" time1 = "10000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5807" time = "14000" savedb = "0" name = "东洋剑客技能2lv3" time1 = "14000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5808" time = "10000" savedb = "0" name = "东洋剑客技能2lv4" time1 = "10000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5809" time = "10000" savedb = "0" name = "东洋剑客技能2lv5" time1 = "10000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5810" time = "60000" savedb = "0" name = "东洋剑客技能3lv1" time1 = "60000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5811" time = "100000" savedb = "0" name = "东洋剑客技能3lv2" time1 = "100000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+		<freeze id = "5812" time = "90000" savedb = "0" name = "东洋剑客技能3lv3" time1 = "90000">
+			<together groupid = "348" time = "0"></together>
+		</freeze>
+
+
+		<freeze id = "5999" time = "260" savedb = "0" name = "李寻欢普攻l" time1 = "260">
+			<together groupid = "349" time = "0"></together>
+		</freeze>
+		<freeze id = "5998" time = "260" savedb = "0" name = "李寻欢普攻2" time1 = "260">
+			<together groupid = "349" time = "0"></together>
+		</freeze>
+
+		<freeze id = "5997" time = "466" savedb = "0" name = "李寻欢普攻3" time1 = "466">
+			<together groupid = "349" time = "0"></together>
+		</freeze>
+		<freeze id = "5900" time = "5000" savedb = "0" name = "李寻欢飞刀累积1" time1 = "5000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+
+		<freeze id = "5901" time = "3000" savedb = "0" name = "李寻欢飞刀累积2" time1 = "3000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5902" time = "500" savedb = "0" name = "李寻欢技能lCD" time1 = "500">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+
+		<freeze id = "5903" time = "5000" savedb = "0" name = "李寻欢技能lLV4" time1 = "5000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5904" time = "5000" savedb = "0" name = "李寻欢技能lLV5" time1 = "5000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+
+		<freeze id = "5905" time = "7000" savedb = "0" name = "李寻欢技能2LV1" time1 = "7000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5906" time = "8400" savedb = "0" name = "李寻欢2LV2" time1 = "8400">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5907" time = "12000" savedb = "0" name = "李寻欢2LV3" time1 = "12000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5908" time = "11000" savedb = "0" name = "李寻欢2LV4" time1 = "11000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5909" time = "10000" savedb = "0" name = "李寻欢2LV5" time1 = "10000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5910" time = "40000" savedb = "0" name = "李寻欢3LV1" time1 = "40000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5911" time = "110000" savedb = "0" name = "李寻欢3LV2" time1 = "110000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5912" time = "100000" savedb = "0" name = "李寻欢3LV3" time1 = "100000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+		<freeze id = "5913" time = "60000" savedb = "0" name = "李寻欢轻功" time1 = "60000">
+			<together groupid = "350" time = "0"></together>
+		</freeze>
+
+
+		<freeze id = "6099" time = "400" savedb = "0" name = "巨盾勇士普攻1" time1 = "400">
+			<together groupid = "351" time = "0"></together>
+		</freeze>
+		<freeze id = "6098" time = "600" savedb = "0" name = "巨盾勇士普攻2" time1 = "600">
+			<together groupid = "351" time = "0"></together>
+		</freeze>
+		<freeze id = "6097" time = "600" savedb = "0" name = "巨盾勇士普攻3" time1 = "600">
+			<together groupid = "351" time = "0"></together>
+		</freeze>
+		<freeze id = "6096" time = "300" savedb = "0" name = "巨盾勇士被动" time1 = "300">
+			<together groupid = "351" time = "0"></together>
+		</freeze>
+		<freeze id = "6000" time = "15000" savedb = "0" name = "巨盾勇士1技LV1" time1 = "15000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6001" time = "6000" savedb = "0" name = "巨盾勇士1技LV2" time1 = "6000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6002" time = "12000" savedb = "0" name = "巨盾勇士1技LV3" time1 = "12000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6003" time = "11000" savedb = "0" name = "巨盾勇士1技LV4" time1 = "11000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6004" time = "10000" savedb = "0" name = "巨盾勇士1技LV5" time1 = "10000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6005" time = "22000" savedb = "0" name = "巨盾勇士2技LV1" time1 = "22000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6006" time = "9000" savedb = "0" name = "巨盾勇士2技LV2" time1 = "9000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6007" time = "12000" savedb = "0" name = "巨盾勇士2技LV3" time1 = "12000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6008" time = "11000" savedb = "0" name = "巨盾勇士2技LV4" time1 = "11000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6009" time = "10000" savedb = "0" name = "巨盾勇士2技LV5" time1 = "10000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6010" time = "120000" savedb = "0" name = "巨盾勇士3技LV1" time1 = "120000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6011" time = "110000" savedb = "0" name = "巨盾勇士3技LV2" time1 = "110000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6012" time = "100000" savedb = "0" name = "巨盾勇士3技LV3" time1 = "100000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+		<freeze id = "6013" time = "0" savedb = "0" name = "巨盾勇士4LV1" time1 = "90000">
+			<together groupid = "352" time = "0"></together>
+		</freeze>
+
+
+		<freeze id = "6199" time = "500" savedb = "0" name = "青蛙普攻1" time1 = "500">
+			<together groupid = "353" time = "0"></together>
+		</freeze>
+		<freeze id = "6198" time = "100" savedb = "0" name = "青蛙普攻2" time1 = "100">
+			<together groupid = "353" time = "0"></together>
+		</freeze>
+		<freeze id = "6197" time = "1000" savedb = "0" name = "青蛙普攻3" time1 = "1000">
+			<together groupid = "353" time = "0"></together>
+		</freeze>
+		<freeze id = "6196" time = "1200" savedb = "0" name = "青蛙普攻4" time1 = "1200">
+			<together groupid = "353" time = "0"></together>
+		</freeze>
+		<freeze id = "6100" time = "7000" savedb = "0" name = "青蛙1技LV1" time1 = "7000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6101" time = "4200" savedb = "0" name = "青蛙1技LV2" time1 = "4200">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6102" time = "10000" savedb = "0" name = "青蛙1技LV3" time1 = "10000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6103" time = "10000" savedb = "0" name = "青蛙1技LV4" time1 = "11000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6104" time = "10000" savedb = "0" name = "青蛙1技LV5" time1 = "10000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6105" time = "14000" savedb = "0" name = "青蛙2技LV1" time1 = "14000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6106" time = "9000" savedb = "0" name = "青蛙2技LV2" time1 = "9000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6107" time = "15000" savedb = "0" name = "青蛙2技LV3" time1 = "12000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6108" time = "15000" savedb = "0" name = "青蛙2技LV4" time1 = "11000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6109" time = "15000" savedb = "0" name = "青蛙2技LV5" time1 = "10000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6110" time = "80000" savedb = "0" name = "青蛙3技LV1" time1 = "80000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6111" time = "90000" savedb = "0" name = "青蛙3技LV2" time1 = "90000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6112" time = "100000" savedb = "0" name = "青蛙3技LV3" time1 = "100000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6113" time = "3000" savedb = "0" name = "青蛙2技LV2" time1 = "3000">
+			<together groupid = "354" time = "0"></together>
+		</freeze>
+		<freeze id = "6200" time = "1500" savedb = "0" name = "大龙普攻" time1 = "1500">
+			<together groupid = "355" time = "0"></together>
+		</freeze>
+		<freeze id = "6201" time = "10000" savedb = "0" name = "巨龙技能" time1 = "10000">
+			<together groupid = "355" time = "0"></together>
+		</freeze>
+		<freeze id = "6202" time = "10000" savedb = "0" name = "巨龙技能" time1 = "10000">
+			<together groupid = "355" time = "0"></together>
+		</freeze>
+                <freeze id = "6203" time = "10000" savedb = "0" name = "巨龙技能" time1 = "10000">
+			<together groupid = "355" time = "0"></together>
+		</freeze>
+                <freeze id = "6204" time = "1500" savedb = "0" name = "巨龙技能" time1 = "1500">
+			<together groupid = "355" time = "0"></together>
+		</freeze>
+		
+		<freeze id = "6399" time = "290" savedb = "0" name = "无面者普攻1" time1 = "290">
+			<together groupid = "356" time = "0"></together>
+		</freeze>
+		<freeze id = "6398" time = "650" savedb = "0" name = "无面者普攻2" time1 = "650">
+			<together groupid = "356" time = "0"></together>
+		</freeze>
+		<freeze id = "6397" time = "750" savedb = "0" name = "无面者普攻3" time1 = "750">
+			<together groupid = "356" time = "0"></together>
+		</freeze>
+		<freeze id = "6396" time = "1200" savedb = "0" name = "无面者普攻4" time1 = "1200">
+			<together groupid = "356" time = "0"></together>
+		</freeze>
+		<freeze id = "6395" time = "500" savedb = "0" name = "无面者天赋技能" time1 = "500">
+			<together groupid = "356" time = "0"></together>
+		</freeze>
+		<freeze id = "6300" time = "9000" savedb = "0" name = "无面者1技LV1" time1 = "9000">
+			<together groupid = "357" time = "0"></together>
+		</freeze>
+		<freeze id = "6301" time = "6000" savedb = "0" name = "无面者1技LV2" time1 = "6000">
+			<together groupid = "357" time = "0"></together>
+		</freeze>
+		<freeze id = "6302" time = "0" savedb = "0" name = "无面者2技LV1" time1 = "8000">
+			<together groupid = "357" time = "0"></together>
+		</freeze>
+		<freeze id = "6303" time = "6000" savedb = "0" name = "无面者2技LV2" time1 = "6000">
+			<together groupid = "357" time = "0"></together>
+		</freeze>
+		<freeze id = "6304" time = "60000" savedb = "0" name = "无面者3技LV1" time1 = "60000">
+			<together groupid = "357" time = "0"></together>
+		</freeze>
+		<freeze id = "6305" time = "90000" savedb = "0" name = "无面者3技LV2" time1 = "90000">
+			<together groupid = "357" time = "0"></together>
+		</freeze>
+
+
+		<freeze id = "6499" time = "500" savedb = "0" name = "时光旅行者普攻1" time1 = "500">
+			<together groupid = "358" time = "0"></together>
+		</freeze>
+		<freeze id = "6498" time = "700" savedb = "0" name = "时光旅行者普攻2" time1 = "700">
+			<together groupid = "358" time = "0"></together>
+		</freeze>
+		<freeze id = "6497" time = "1000" savedb = "0" name = "时光旅行者普攻3" time1 = "1000">
+			<together groupid = "358" time = "0"></together>
+		</freeze>
+		<freeze id = "6496" time = "1200" savedb = "0" name = "时光旅行者普攻4" time1 = "1200">
+			<together groupid = "358" time = "0"></together>
+		</freeze>
+		<freeze id = "6400" time = "5000" savedb = "0" name = "时光旅行者1技LV1" time1 = "5000">
+			<together groupid = "359" time = "0"></together>
+		</freeze>
+		<freeze id = "6401" time = "0" savedb = "0" name = "时光旅行者1技LV2" time1 = "15000">
+			<together groupid = "359" time = "0"></together>
+		</freeze>
+		<freeze id = "6402" time = "7000" savedb = "0" name = "时光旅行者2技LV1" time1 = "7000">
+			<together groupid = "359" time = "0"></together>
+		</freeze>
+		<freeze id = "6403" time = "7000" savedb = "0" name = "时光旅行者2技LV2" time1 = "7000">
+			<together groupid = "359" time = "0"></together>
+		</freeze>
+		<freeze id = "6404" time = "60000" savedb = "0" name = "时光旅行者3技LV1" time1 = "60000">
+			<together groupid = "359" time = "0"></together>
+		</freeze>
+		<freeze id = "6405" time = "90000" savedb = "0" name = "时光旅行者3技LV2" time1 = "90000">
+			<together groupid = "359" time = "0"></together>
+		</freeze>
+
+
+
+		<freeze id = "6599" time = "200" savedb = "0" name = "炸弹人普攻1" time1 = "200">
+			<together groupid = "360" time = "0"></together>
+		</freeze>
+		<freeze id = "6598" time = "250" savedb = "0" name = "炸弹人普攻2" time1 = "250">
+			<together groupid = "360" time = "0"></together>
+		</freeze>
+		<freeze id = "6597" time = "1200" savedb = "0" name = "炸弹人普攻3" time1 = "1200">
+			<together groupid = "360" time = "0"></together>
+		</freeze>
+		<freeze id = "6596" time = "1200" savedb = "0" name = "炸弹人普攻4" time1 = "1200">
+			<together groupid = "360" time = "0"></together>
+		</freeze>
+		<freeze id = "6500" time = "5000" savedb = "0" name = "炸弹人1技LV1" time1 = "5000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6501" time = "1000" savedb = "0" name = "炸弹人1技LV2" time1 = "1000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6502" time = "7000" savedb = "0" name = "炸弹人2技LV1" time1 = "7000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6503" time = "7000" savedb = "0" name = "炸弹人2技LV2" time1 = "7000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6504" time = "30000" savedb = "0" name = "炸弹人3技LV1" time1 = "30000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6505" time = "2000" savedb = "0" name = "炸弹人3技LV2" time1 = "2000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6506" time = "1000" savedb = "0" name = "炸弹人1技lv1" time1 = "1000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6507" time = "1000" savedb = "0" name = "炸弹人1技lv1扔出" time1 = "1000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6508" time = "10000" savedb = "0" name = "炸弹人被动冷却" time1 = "10000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+		<freeze id = "6509" time = "1000" savedb = "0" name = "炸弹人3技释放冷却" time1 = "1000">
+			<together groupid = "361" time = "0"></together>
+		</freeze>
+
+
+
+		<freeze id = "6699" time = "650" savedb = "0" name = "异鬼普攻1" time1 = "650">
+			<together groupid = "362" time = "0"></together>
+		</freeze>
+		<freeze id = "6698" time = "470" savedb = "0" name = "异鬼普攻2" time1 = "470">
+			<together groupid = "362" time = "0"></together>
+		</freeze>
+		<freeze id = "6697" time = "650" savedb = "0" name = "异鬼普攻3" time1 = "650">
+			<together groupid = "362" time = "0"></together>
+		</freeze>
+		<freeze id = "6696" time = "1200" savedb = "0" name = "异鬼普攻4" time1 = "1200">
+			<together groupid = "362" time = "0"></together>
+		</freeze>
+		<freeze id = "6600" time = "6000" savedb = "0" name = "异鬼1技LV1" time1 = "6000">
+			<together groupid = "363" time = "0"></together>
+		</freeze>
+		<freeze id = "6601" time = "6000" savedb = "0" name = "异鬼1技LV2" time1 = "6000">
+			<together groupid = "363" time = "0"></together>
+		</freeze>
+		<freeze id = "6602" time = "12000" savedb = "0" name = "异鬼2技LV1" time1 = "12000">
+			<together groupid = "363" time = "0"></together>
+		</freeze>
+		<freeze id = "6603" time = "4200" savedb = "0" name = "异鬼2技LV2" time1 = "4200">
+			<together groupid = "363" time = "0"></together>
+		</freeze>
+		<freeze id = "6604" time = "80000" savedb = "0" name = "异鬼3技LV1" time1 = "80000">
+			<together groupid = "363" time = "0"></together>
+		</freeze>
+		<freeze id = "6605" time = "120000" savedb = "0" name = "异鬼3技LV2" time1 = "120000">
+			<together groupid = "363" time = "0"></together>
+                </freeze>
+
+
+
+
+		<freeze id = "6799" time = "500" savedb = "0" name = "乌妮普攻1" time1 = "500">
+			<together groupid = "364" time = "0"></together>
+		</freeze>
+		<freeze id = "6798" time = "2500" savedb = "0" name = "乌妮普攻2" time1 = "2500">
+			<together groupid = "364" time = "0"></together>
+		</freeze>
+		<freeze id = "6797" time = "1200" savedb = "0" name = "乌妮普攻3" time1 = "1200">
+			<together groupid = "364" time = "0"></together>
+		</freeze>
+		<freeze id = "6796" time = "1200" savedb = "0" name = "乌妮普攻4" time1 = "1200">
+			<together groupid = "364" time = "0"></together>
+		</freeze>
+		<freeze id = "6700" time = "10000" savedb = "0" name = "乌妮1技LV1" time1 = "10000">
+			<together groupid = "365" time = "0"></together>
+		</freeze>
+		<freeze id = "6701" time = "6000" savedb = "0" name = "乌妮1技LV2" time1 = "6000">
+			<together groupid = "365" time = "0"></together>
+		</freeze>
+		<freeze id = "6702" time = "14000" savedb = "0" name = "乌妮2技LV1" time1 = "14000">
+			<together groupid = "365" time = "0"></together>
+		</freeze>
+		<freeze id = "6703" time = "4200" savedb = "0" name = "乌妮2技LV2" time1 = "4200">
+			<together groupid = "365" time = "0"></together>
+		</freeze>
+		<freeze id = "6704" time = "80000" savedb = "0" name = "乌妮3技LV1" time1 = "80000">
+			<together groupid = "365" time = "0"></together>
+		</freeze>
+		<freeze id = "6705" time = "20000" savedb = "0" name = "乌妮3技LV2" time1 = "20000">
+			<together groupid = "365" time = "0"></together>
+                </freeze>
+                <freeze id = "6706" time = "500" savedb = "0" name = "乌妮1技ATK1" time1 = "500">
+			<together groupid = "365" time = "0"></together>
+                </freeze>
+                <freeze id = "6707" time = "300" savedb = "0" name = "乌妮1技ATK2" time1 = "300">
+			<together groupid = "365" time = "0"></together>
+                </freeze>
+                <freeze id = "6708" time = "300" savedb = "0" name = "乌妮1技ATK3" time1 = "300">
+			<together groupid = "365" time = "0"></together>
+                </freeze>
+
+
+
+
+		<freeze id = "6899" time = "750" savedb = "0" name = "炮手普攻1" time1 = "750">
+			<together groupid = "366" time = "0"></together>
+		</freeze>
+		<freeze id = "6898" time = "750" savedb = "0" name = "炮手普攻2" time1 = "750">
+			<together groupid = "366" time = "0"></together>
+		</freeze>
+		<freeze id = "6897" time = "100" savedb = "0" name = "炮手普攻3" time1 = "100">
+			<together groupid = "366" time = "0"></together>
+		</freeze>
+		<freeze id = "6896" time = "50" savedb = "0" name = "炮手普攻4" time1 = "50">
+			<together groupid = "366" time = "0"></together>
+		</freeze>
+		<freeze id = "6800" time = "14000" savedb = "0" name = "炮手1技LV1" time1 = "14000">
+			<together groupid = "367" time = "0"></together>
+		</freeze>
+		<freeze id = "6801" time = "6000" savedb = "0" name = "炮手1技LV2" time1 = "6000">
+			<together groupid = "367" time = "0"></together>
+		</freeze>
+		<freeze id = "6802" time = "12000" savedb = "0" name = "炮手2技LV1" time1 = "12000">
+			<together groupid = "367" time = "0"></together>
+		</freeze>
+		<freeze id = "6803" time = "4200" savedb = "0" name = "炮手2技LV2" time1 = "4200">
+			<together groupid = "367" time = "0"></together>
+		</freeze>
+		<freeze id = "6804" time = "60000" savedb = "0" name = "炮手3技LV1" time1 = "60000">
+			<together groupid = "367" time = "0"></together>
+		</freeze>
+		<freeze id = "6805" time = "60000" savedb = "0" name = "炮手3技LV2" time1 = "60000">
+			<together groupid = "367" time = "0"></together>
+                </freeze>
+
+
+
+
+		<freeze id = "6999" time = "600" savedb = "0" name = "李小龙普攻1" time1 = "600">
+			<together groupid = "368" time = "0"></together>
+                </freeze>
+		<freeze id = "6998" time = "290" savedb = "0" name = "李小龙普攻2" time1 = "290">
+			<together groupid = "368" time = "0"></together>
+                </freeze>
+		<freeze id = "6997" time = "800" savedb = "0" name = "李小龙普攻3" time1 = "800">
+			<together groupid = "368" time = "0"></together>
+                </freeze>
+		<freeze id = "6996" time = "500" savedb = "0" name = "李小龙狂暴普攻1" time1 = "500">
+			<together groupid = "368" time = "0"></together>
+                </freeze>
+		<freeze id = "6995" time = "290" savedb = "0" name = "李小龙狂暴普攻2" time1 = "290">
+			<together groupid = "368" time = "0"></together>
+                </freeze>
+		<freeze id = "6994" time = "1000" savedb = "0" name = "李小龙狂暴普攻3" time1 = "1000">
+			<together groupid = "368" time = "0"></together>
+                </freeze>
+		<freeze id = "6900" time = "12000" savedb = "0" name = "李小龙1技1" time1 = "12000">
+			<together groupid = "369" time = ""></together>
+                </freeze>
+		<freeze id = "6901" time = "12000" savedb = "0" name = "李小龙1技2" time1 = "12000">
+			<together groupid = "369" time = ""></together>
+                </freeze>
+		<freeze id = "6902" time = "2000" savedb = "0" name = "李小龙1技3" time1 = "2000">
+			<together groupid = "369" time = ""></together>
+                </freeze>
+		<freeze id = "6903" time = "10000" savedb = "0" name = "李小龙2技" time1 = "10000">
+			<together groupid = "370" time = "0"></together>
+                </freeze>
+		<freeze id = "6904" time = "60000" savedb = "0" name = "李小龙3技" time1 = "60000">
+			<together groupid = "370" time = "0"></together>
+                </freeze>
+		<freeze id = "6905" time = "0" savedb = "0" name = "李小龙被动" time1 = "0">
+			<together groupid = "370" time = "0"></together>
+                </freeze>
+
+
+
+		<freeze id = "7099" time = "500" savedb = "0" name = "野鹿普攻1" time1 = "500">
+			<together groupid = "371" time = "0"></together>
+                </freeze>
+		<freeze id = "7098" time = "1000" savedb = "0" name = "野鹿普攻2" time1 = "1000">
+			<together groupid = "371" time = "0"></together>
+                </freeze>
+		<freeze id = "7001" time = "1000" savedb = "0" name = "野鹿技能1" time1 = "1000">
+			<together groupid = "372" time = "0"></together>
+                </freeze>
+		<freeze id = "7002" time = "20000" savedb = "0" name = "野鹿种子" time1 = "20000">
+			<together groupid = "372" time = "0"></together>
+                </freeze>
+		<freeze id = "7003" time = "15000" savedb = "0" name = "野鹿技能2" time1 = "15000">
+			<together groupid = "372" time = "0"></together>
+                </freeze>
+		<freeze id = "7004" time = "70000" savedb = "0" name = "野鹿大招1" time1 = "70000">
+			<together groupid = "372" time = "0"></together>
+                </freeze>
+		<freeze id = "7005" time = "70000" savedb = "0" name = "野鹿大招2" time1 = "70000">
+			<together groupid = "372" time = ""></together>
+                </freeze>
+		<freeze id = "7006" time = "2000" savedb = "0" name = "野鹿技能" time1 = "2000">
+			<together groupid = "372" time = ""></together>
+                </freeze>
+		<freeze id = "7007" time = "2000" savedb = "0" name = "野鹿技能" time1 = "2000">
+			<together groupid = "372" time = ""></together>
+                </freeze>
+		<freeze id = "7008" time = "8000" savedb = "0" name = "野鹿技能" time1 = "8000">
+			<together groupid = "372" time = "0"></together>
+                </freeze>
+		<freeze id = "7009" time = "60000" savedb = "0" name = "野鹿技能" time1 = "60000">
+			<together groupid = "372" time = "0"></together>
+                </freeze>
+
+
+		<freeze id = "7199" time = "120" savedb = "0" name = "银河战警普攻1" time1 = "120">
+			<together groupid = "373" time = "0"></together>
+                </freeze>
+		<freeze id = "7198" time = "150" savedb = "0" name = "银河战警普攻2" time1 = "150">
+			<together groupid = "373" time = "0"></together>
+                </freeze>
+		<freeze id = "7101" time = "5000" savedb = "0" name = "银河战警Q技能" time1 = "5000">
+			<together groupid = "374" time = "0"></together>
+                </freeze>
+		<freeze id = "7102" time = "25000" savedb = "0" name = "银河战警E技能" time1 = "25000">
+			<together groupid = "374" time = "0"></together>
+                </freeze>
+		<freeze id = "7103" time = "70000" savedb = "0" name = "银河战警R技能" time1 = "70000">
+			<together groupid = "374" time = "0"></together>
+                </freeze>
+		<freeze id = "7104" time = "300" savedb = "0" name = "银河战警翻滚" time1 = "100">
+			<together groupid = "374" time = "0"></together>
+                </freeze>
+		<freeze id = "7105" time = "1000" savedb = "0" name = "银河战警翻滚" time1 = "1000">
+			<together groupid = "374" time = "0"></together>
+                </freeze>
+
+
+                <freeze id = "7299" time = "200" savedb = "0" name = "收割者普攻1" time1 = "200">
+			<together groupid = "375" time = "0"></together>
+                </freeze>
+		<freeze id = "7298" time = "266" savedb = "0" name = "收割者普攻2" time1 = "266">
+			<together groupid = "375" time = "0"></together>
+                </freeze>
+                <freeze id = "7297" time = "400" savedb = "0" name = "收割者普攻3" time1 = "400">
+			<together groupid = "375" time = "0"></together>
+                </freeze>
+		<freeze id = "7201" time = "8000" savedb = "0" name = "收割者Q技能" time1 = "8000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7202" time = "14000" savedb = "0" name = "收割者E技能" time1 = "14000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7203" time = "90000" savedb = "0" name = "收割者R技能" time1 = "90000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7204" time = "1000" savedb = "0" name = "收割者R技能" time1 = "1000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7205" time = "0" savedb = "0" name = "收割者R技能" time1 = "1000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7206" time = "3000" savedb = "0" name = "收割者R技能" time1 = "3000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7207" time = "5000" savedb = "0" name = "收割者R技能" time1 = "5000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+		<freeze id = "7208" time = "10000" savedb = "0" name = "收割者R技能" time1 = "10000">
+			<together groupid = "376" time = "0"></together>
+                </freeze>
+
+
+		<freeze id = "7399" time = "700" savedb = "0" name = "北海鱼姬普攻1" time1 = "700">
+			<together groupid = "377" time = "0"></together>
+                </freeze>
+		<freeze id = "7398" time = "1500" savedb = "0" name = "北海鱼姬普攻2" time1 = "1500">
+			<together groupid = "377" time = "0"></together>
+                </freeze>
+		<freeze id = "7301" time = "12000" savedb = "0" name = "北海鱼姬Q技能" time1 = "12000">
+			<together groupid = "378" time = "0"></together>
+                </freeze>
+		<freeze id = "7302" time = "15000" savedb = "0" name = "北海鱼姬E技能" time1 = "15000">
+			<together groupid = "378" time = "0"></together>
+                </freeze>
+		<freeze id = "7303" time = "90000" savedb = "0" name = "北海鱼姬R技能" time1 = "90000">
+			<together groupid = "378" time = "0"></together>
+                </freeze>
+		<freeze id = "7304" time = "100" savedb = "0" name = "北海鱼姬翻滚" time1 = "100">
+			<together groupid = "378" time = "0"></together>
+                </freeze>
+		<freeze id = "7305" time = "7000" savedb = "0" name = "北海鱼姬Q技能" time1 = "7000">
+			<together groupid = "378" time = "0"></together>
+                </freeze>
+
+
+
+                <freeze id = "7400" time = "300" savedb = "0" name = "铁拳兽宝普攻1" time1 = "300">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+		<freeze id = "7401" time = "300" savedb = "0" name = "铁拳兽宝普攻2" time1 = "300">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+		<freeze id = "7402" time = "700" savedb = "0" name = "铁拳兽宝普攻3" time1 = "700">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+		<freeze id = "7403" time = "8000" savedb = "0" name = "小铁拳兽宝Q技能" time1 = "8000">
+			<together groupid = "380" time = "0"></together>
+                </freeze>
+		<freeze id = "7404" time = "3000" savedb = "0" name = "大铁拳兽宝Q技能" time1 = "3000">
+			<together groupid = "380" time = "0"></together>
+                </freeze>
+		<freeze id = "7405" time = "15000" savedb = "0" name = "小铁拳兽宝E技能" time1 = "15000">
+			<together groupid = "380" time = "0"></together>
+                </freeze>
+		<freeze id = "7406" time = "15000" savedb = "0" name = "大铁拳兽宝E技能" time1 = "15000">
+			<together groupid = "380" time = "0"></together>
+                </freeze>
+		<freeze id = "7407" time = "60000" savedb = "0" name = "大铁拳兽宝R技能" time1 = "60000">
+			<together groupid = "380" time = "0"></together>
+                </freeze>
+                <freeze id = "7415" time = "200" savedb = "0" name = "铁拳兽王普攻1" time1 = "200">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+                <freeze id = "7416" time = "348" savedb = "0" name = "铁拳兽王普攻2" time1 = "348">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+                <freeze id = "7417" time = "700" savedb = "0" name = "铁拳兽王普攻3" time1 = "700">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+                <freeze id = "7418" time = "600" savedb = "0" name = "铁拳兽王翻滚" time1 = "600">
+			<together groupid = "379" time = "0"></together>
+                </freeze>
+
+
+		<freeze id = "7500" time = "1000" savedb = "0" name = "测试异鬼一技能" time1 = "1000">
+			<together groupid = "381" time = "0"></together>
+                </freeze>
+		<freeze id = "7501" time = "2000" savedb = "0" name = "测试异鬼二技能" time1 = "2000">
+			<together groupid = "381" time = "0"></together>
+                </freeze>
+		<freeze id = "7502" time = "3000" savedb = "0" name = "测试异鬼三技能" time1 = "3000">
+			<together groupid = "381" time = "0"></together>
+                </freeze>
+		<freeze id = "7503" time = "300" savedb = "0" name = "测试异鬼普通攻击一" time1 = "300">
+			<together groupid = "381" time = "0"></together>
+                </freeze>
+		<freeze id = "7504" time = "300" savedb = "0" name = "测试异鬼普通攻击二" time1 = "300">
+			<together groupid = "381" time = "0"></together>
+                </freeze>
+
+
+		<freeze id = "7600" time = "60000" savedb = "0" name = "照明弹" time1 = "60000">
+			<together groupid = "382" time = "60000"></together>
+                </freeze>
+
+
+		<freeze id = "7700" time = "450" savedb = "0" name = "龙猫萌骑普攻1" time1 = "450">
+			<together groupid = "383" time = "0"></together>
+                </freeze>
+		<freeze id = "7701" time = "500" savedb = "0" name = "龙猫萌骑普攻2" time1 = "500">
+			<together groupid = "383" time = "0"></together>
+                </freeze>
+		<freeze id = "7703" time = "0" savedb = "0" name = "龙猫萌骑Q技能" time1 = "0">
+			<together groupid = "384" time = "0"></together>
+                </freeze>
+		<freeze id = "7704" time = "0" savedb = "0" name = "龙猫萌骑E技能" time1 = "0">
+			<together groupid = "384" time = "0"></together>
+                </freeze>
+		<freeze id = "7705" time = "60000" savedb = "0" name = "龙猫萌骑R技能" time1 = "60000">
+			<together groupid = "384" time = "0"></together>
+                </freeze>
+
+                <freeze id = "7699" time = "100" savedb = "0" name = "摩托普攻1" time1 = "100">
+			<together groupid = "385" time = "0"></together>
+                </freeze>
+		<freeze id = "7698" time = "200" savedb = "0" name = "摩托普攻2" time1 = "300">
+			<together groupid = "385" time = "0"></together>
+                </freeze>
+                <freeze id = "7697" time = "500" savedb = "0" name = "摩托普攻3" time1 = "500">
+			<together groupid = "385" time = "0"></together>
+                </freeze>
+		<freeze id = "7601" time = "10000" savedb = "0" name = "摩托（人）Q技能1" time1 = "10000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+		<freeze id = "7602" time = "9000" savedb = "0" name = "摩托（人）E技能" time1 = "9000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+		<freeze id = "7603" time = "60000" savedb = "0" name = "摩托（人）R技能" time1 = "60000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+		<freeze id = "7604" time = "10000" savedb = "0" name = "摩托（车）Q技能" time1 = "10000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+		<freeze id = "7605" time = "14000" savedb = "0" name = "摩托（车）E技能" time1 = "14000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+		<freeze id = "7606" time = "5000" savedb = "0" name = "摩托（车）R技能" time1 = "5000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+		<freeze id = "7607" time = "1000" savedb = "0" name = "摩托（车）Q技能2" time1 = "1000">
+			<together groupid = "386" time = "0"></together>
+                </freeze>
+
+		<freeze id = "7899" time = "200" savedb = "0" name = "黑夜女王普攻1" time1 = "300">
+			<together groupid = "387" time = "0"></together>
+                </freeze>
+		<freeze id = "7898" time = "200" savedb = "0" name = "黑夜女王普攻2" time1 = "300">
+			<together groupid = "387" time = "0"></together>
+                </freeze>
+                <freeze id = "7897" time = "300" savedb = "0" name = "黑夜女王普攻3" time1 = "700">
+			<together groupid = "387" time = "0"></together>
+                </freeze>
+		<freeze id = "7801" time = "0" savedb = "0" name = "黑夜女王Q技能" time1 = "0">
+			<together groupid = "388" time = "0"></together>
+                </freeze>
+		<freeze id = "7802" time = "5000" savedb = "0" name = "黑夜女王E技能" time1 = "5000">
+			<together groupid = "388" time = "0"></together>
+                </freeze>
+		<freeze id = "7804" time = "60000" savedb = "0" name = "黑夜女王R技能" time1 = "6000">
+			<together groupid = "388" time = "0"></together>
+                </freeze>
+		<freeze id = "7901" time = "30000" savedb = "0" name = "隐身神符" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7903" time = "120000" savedb = "0" name = "隐身" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7904" time = "180000" savedb = "0" name = "魔躯" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7905" time = "120000" savedb = "0" name = "狩猎" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7906" time = "120000" savedb = "0" name = "双刃" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7907" time = "90000" savedb = "0" name = "治愈" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7908" time = "120000" savedb = "0" name = "金身" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7909" time = "180000" savedb = "0" name = "冻结" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7910" time = "180000" savedb = "0" name = "点燃" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7911" time = "180000" savedb = "0" name = "瞬移" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7913" time = "10000" savedb = "0" name = "末日战甲Q技能" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7914" time = "10000" savedb = "0" name = "末日战甲E技能" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7915" time = "60000" savedb = "0" name = "末日战甲R技能" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7916" time = "200" savedb = "0" name = "末日战甲普攻1" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+		<freeze id = "7917" time = "300" savedb = "0" name = "末日战甲普攻2" time1 = "6000">
+			<together groupid = "389" time = "0"></together>
+                </freeze>
+
+
+                <freeze id = "8001" time = "100" savedb = "0" name = "卓哥普攻1" time1 = "100">
+			<together groupid = "400" time = "0"></together>
+		</freeze>
+                <freeze id = "8002" time = "200" savedb = "0" name = "卓格普攻2" time1 = "200">
+			<together groupid = "400" time = "0"></together>
+		</freeze>
+                <freeze id = "8003" time = "200" savedb = "0" name = "卓格普攻3" time1 = "200">
+			<together groupid = "400" time = "0"></together>
+		</freeze>
+                <freeze id = "8004" time = "500" savedb = "0" name = "卓格普攻4" time1 = "500">
+			<together groupid = "400" time = "0"></together>
+		</freeze>
+		<freeze id = "8099" time = "10000" savedb = "0" name = "卓格Q技能" time1 = "10000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8098" time = "15000" savedb = "0" name = "卓格E技能" time1 = "15000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8097" time = "80000" savedb = "0" name = "卓格R1技能" time1 = "80000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8096" time = "80000" savedb = "0" name = "卓格R2技能" time1 = "80000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8095" time = "70000" savedb = "0" name = "卓格R1技能2级" time1 = "70000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8094" time = "70000" savedb = "0" name = "卓格R2技能2级" time1 = "70000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8093" time = "100000" savedb = "0" name = "卓格XP技能" time1 = "100000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+		<freeze id = "8092" time = "6000" savedb = "0" name = "卓格回城" time1 = "6000">
+			<together groupid = "401" time = "0"></together>
+		</freeze>
+	</freezeclass>
+	<freezeclass classid = "2" classname = "物品冷却">
+		<group groupid = "201" groupname = "持续补血"  id0 = "2001"></group>
+		<freeze id = "2001" time = "15000" savedb = "0" name = "生命药水" time1 = "15000">
+		</freeze>
+		<freeze id = "2002" time = "15000" savedb = "0" name = "法力药水" time1 = "15000">
+		</freeze>
+		<freeze id = "2003" time = "0" savedb = "0" name = "净化" time1 = "0">
+		</freeze>
+		<freeze id = "2004" time = "45000" savedb = "0" name = "飞升" time1 = "45000">
+		</freeze>
+		<freeze id = "2005" time = "120000" savedb = "0" name = "金身" time1 = "120000">
+		</freeze>
+		<freeze id = "2006" time = "30000" savedb = "0" name = "雷霆法典" time1 = "30000">
+		</freeze>
+		<freeze id = "2007" time = "0" savedb = "0" name = "幽灵疾步" time1 = "0">
+		</freeze>
+		<freeze id = "2008" time = "90000" savedb = "0" name = "救赎者斗篷" time1 = "90000">
+		</freeze>
+		<freeze id = "2009" time = "60000" savedb = "0" name = "钢铁烈阳" time1 = "60000">
+		</freeze>
+		<freeze id = "2010" time = "30000" savedb = "0" name = "风行利刃" time1 = "30000">
+		</freeze>
+		<freeze id = "2011" time = "90000" savedb = "0" name = "水银弯刀" time1 = "90000">
+		</freeze>
+		<freeze id = "2012" time = "0" savedb = "0" name = "治疗术" time1 = "0">
+		</freeze>
+		<freeze id = "2013" time = "2000" savedb = "0" name = "刺客飞刀" time1 = "2000">
+		</freeze>
+		<freeze id = "2014" time = "60000" savedb = "0" name = "血饮狂刀" time1 = "60000">
+		</freeze>
+		<freeze id = "2015" time = "0" savedb = "0" name = "引燃" time1 = "0">
+    </freeze>
+    <freeze id = "2016" time = "10000" savedb = "0" name = "电刃" time1 = "10000">
+    </freeze>
+    <freeze id = "2017" time = "55000" savedb = "0" name = "鬼索" time1 = "55000">
+    </freeze>
+    <freeze id = "2018" time = "1500" savedb = "0" name = "耀光" time1 = "1500">
+    </freeze>
+    <freeze id = "2019" time = "2000" savedb = "0" name = "灵能飞刀" time1 = "2000">
+    </freeze>
+    <freeze id = "2020" time = "5000" savedb = "0" name = "虚弱" time1 = "5000">
+    </freeze>
+    <freeze id = "2021" time = "60000" savedb = "0" name = "山岳之容" time1 = "60000">
+    </freeze>
+    <freeze id = "2022" time = "60000" savedb = "0" name = "行刑黑棺" time1 = "60000">
+    </freeze>
+    <freeze id = "2023" time = "60000" savedb = "0" name = "血契魔锤" time1 = "60000">
+    </freeze>
+    <freeze id = "2024" time = "60000" savedb = "0" name = "冰霜女皇指令" time1 = "60000">
+    </freeze>
+    <freeze id = "2025" time = "1000" savedb = "0" name = "冰龙的叹息" time1 = "1000">
+    </freeze>
+    <freeze id = "2026" time = "15000" savedb = "0" name = "征服者·野蛮" time1 = "15000">
+    </freeze>
+    <freeze id = "2027" time = "90000" savedb = "0" name = "契约之锤" time1 = "90000">
+    </freeze>
+    <freeze id = "2028" time = "300000" savedb = "0" name = "复活甲" time1 = "300000">
+    </freeze>
+    <freeze id = "2029" time = "1500" savedb = "0" name = "冰脉护手" time1 = "1500">
+    </freeze>
+    <freeze id = "2030" time = "6000" savedb = "0" name = "玛莫提乌斯之噬" time1 = "6000">
+    </freeze>
+    <freeze id = "2031" time = "60000" savedb = "0" name = "圣物之盾" time1 = "60000">
+    </freeze>
+    <freeze id = "2032" time = "30000" savedb = "0" name = "飞行卷轴" time1 = "30000">
+    </freeze>
+    <freeze id = "2033" time = "1500" savedb = "0" name = "巫妖之祸" time1 = "1500">
+    </freeze>
+    <freeze id = "2034" time = "20000" savedb = "0" name = "寒冰连枷" time1 = "20000">
+    </freeze>
+    <freeze id = "2035" time = "40000" savedb = "0" name = "御法之剑" time1 = "40000">
+    </freeze>
+    <freeze id = "2036" time = "240000" savedb = "0" name = "传送鞋" time1 = "240000">
+    </freeze>
+    <freeze id = "2037" time = "90000" savedb = "0" name = "洞察之石" time1 = "90000">
+    </freeze>
+    <freeze id = "2038" time = "60000" savedb = "0" name = "猎人的宽刃刀" time1 = "60000">
+    </freeze>
+    <freeze id = "2039" time = "40000" savedb = "0" name = "巡林者利器" time1 = "40000">
+    </freeze>
+    <freeze id = "2040" time = "120000" savedb = "0" name = "眼（免费）" time1 = "120000">
+    </freeze>
+    <freeze id = "2041" time = "45000" savedb = "0" name = "斯塔提克的挑战护手" time1 = "45000">
+    </freeze>
+    <freeze id = "2042" time = "60000" savedb = "0" name = "生命巨像" time1 = "60000">
+    </freeze>
+    <freeze id = "2043" time = "7000" savedb = "0" name = "回音战刃" time1 = "7000">
+    </freeze>
+    <freeze id = "2044" time = "30000" savedb = "0" name = "碎骨" time1 = "30000">
+    </freeze>
+    <freeze id = "2045" time = "30000" savedb = "0" name = "勋章" time1 = "30000">
+    </freeze>
+    <freeze id = "2046" time = "10000" savedb = "0" name = "卢登" time1 = "10000">
+    </freeze>
+    <freeze id = "2047" time = "60000" savedb = "0" name = "飞鞋" time1 = "60000">
+    </freeze>
+    <freeze id = "2048" time = "0" savedb = "0" name = "翅膀飞行" time1 = "0">
+    </freeze>
+    <freeze id = "2049" time = "10000" savedb = "0" name = "无畏指环" time1 = "10000">
+    </freeze>
+    <freeze id = "2050" time = "10000" savedb = "0" name = "无畏战刃" time1 = "10000">
+    </freeze>
+    <freeze id = "2051" time = "10000" savedb = "0" name = "无畏护臂" time1 = "10000">
+    </freeze>
+	<freeze id = "2052" time = "120000" savedb = "0" name = "隐身" time1 = "120000">
+    </freeze>
+	<freeze id = "2053" time = "180000" savedb = "0" name = "魔躯" time1 = "180000">
+    </freeze>
+	<freeze id = "2054" time = "120000" savedb = "0" name = "狩猎" time1 = "120000">
+	</freeze>
+	<freeze id = "2055" time = "120000" savedb = "0" name = "双刃" time1 = "120000">
+	</freeze>
+	<freeze id = "2056" time = "90000" savedb = "0" name = "治愈" time1 = "90000">
+	 </freeze>
+	<freeze id = "2057" time = "120000" savedb = "0" name = "金身" time1 = "120000">
+	</freeze>
+	<freeze id = "2058" time = "180000" savedb = "0" name = "冻结" time1 = "180000">
+	</freeze>
+	<freeze id = "2059" time = "180000" savedb = "0" name = "点燃" time1 = "180000">
+	 </freeze>
+	<freeze id = "2060" time = "180000" savedb = "0" name = "瞬移" time1 = "180000">
+	</freeze>
+	</freezeclass>
+	<freezeclass classid = "3" classname = "聊天冷却">
+		<freeze id = "10001" time = "30000" savedb = "0" name = "世界频道聊天" time1 = "30000"></freeze>
+	</freezeclass>
+	<freezeclass classid = "5" classname = "打坐冷却">
+		<freeze id = "5001" time = "3000" savedb = "0" name = "打坐" time1 = "3000"></freeze>
+		<freeze id = "5002" time = "600000" savedb = "0" name = "求救" time1 = "600000"></freeze>
+	</freezeclass>
+</scheme>

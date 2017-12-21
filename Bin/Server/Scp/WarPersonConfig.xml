@@ -1,0 +1,876 @@
+﻿<!-- 
+	war_id: 战场ID
+		FirstAutoAddExpInterval 第一次加经验的时间	
+		InitialExp;			战场初始化经验
+		AutoAddExp;			战场自动添加经验
+		AutoAddExpInterval;	战场自动添加经验时间间隔(单位秒)
+		InitialTalentPoint			初始化天赋点
+		FirstAutoAddTalentInterval	第一次添加天赋点间隔
+		AutoAddTalentPoint			自动添加天赋点增量
+		AutoAddTalentInterval		自动添加天赋点间隔（单位：秒）
+		DieExpRate					人物死亡经验掉落系数	
+		DieTalentPoint				人物死亡掉落天赋点
+		AssistTalentRate			人物助攻天赋点分配系数
+		ReliveRatio					人物复活系数
+		ReliveBaseTime				复活系数基数
+		CrystalDamageIntervalTime	水晶被攻击后小地图信息时间间隔
+		PersonFightIntervalTime		人物战斗小地图信息时间间隔 
+		DropDumpingEXPRate			掉落经验衰减系数
+		DropDumpingTalentRate		掉落天赋点衰减系数
+		DropGainEXPRate				掉落经验增益系数 
+		DropGainTalentRate			掉落天赋增益系数
+		AddAroundEXPDistance		未造成伤害击杀经验分享范围
+		KillPersonDropEXPRate		多人击杀经验加成
+		MonsterDistance				怪物血条变色距离
+		TowerDistance				塔附近不分钱距离
+		AddGemstoneExp              战场获得宝石灵气
+		IncreaseMonster				低一级野怪经验加成
+		IncreaseMonsterMax			野怪经验加成上限
+		DecreaseMonster				高一级野怪经验衰减
+		DecreaseMonsterMin			野怪经验衰减下限
+		IncreaseSolider				低一级小兵经验加成
+		IncreaseSoliderMax			小兵经验加成上限
+		ControlLv					经验控制起控等级
+		IncreaseHero				低一级英雄经验加成
+		IncreaseHeroMax				英雄经验加成上限
+		DecreaseHero				高一级英雄经验衰减
+		DecreaseHeroMin				英雄经验衰减下限
+		EconomyControlRate			经济控制系数
+		MaxMultiKill				最大连杀次数
+		TimeCountKillInterval		连杀间隔
+		GoldShareBase				小兵金币分享基数
+		TowerKillDecrease			塔兵削减系数
+		SoliderHPVigourLevel_1		战场气势1级：小兵生命增加
+		SoliderHPVigourLevel_2		战场气势2级：小兵生命增加
+		SoliderHPVigourLevel_3		战场气势3级：小兵生命增加
+		SoliderHPVigourLevel_4		战场气势4级：小兵生命增加
+		SoliderPAVigourLevel_1		战场气势1级：小兵攻击增加
+		SoliderPAVigourLevel_2		战场气势2级：小兵攻击增加
+		SoliderPAVigourLevel_3		战场气势3级：小兵攻击增加
+		SoliderPAVigourLevel_4		战场气势4级：小兵攻击增加
+	 -->
+
+<scheme>
+  <war war_id = "1">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+    AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "2">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+
+      AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "3">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "1300"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+
+  SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+
+      AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "4">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+
+      AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "5">
+   <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "10"
+	  AutoAddTalentInterval = "4"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "360"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "22"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "460"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "6">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "1300"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "8">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "80"
+	  AutoAddExp = "6"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "10"
+	  AutoAddTalentInterval = "4"
+	  DieExpRate = "0.36"
+	  DieTalentPoint = "360"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "22"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "480"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "9">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "1500"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "30"
+	  AutoAddTalentInterval = "4"
+	  DieExpRate = "0.55"
+	  DieTalentPoint = "100"
+	  AssistTalentRate = "0.5"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "10">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "1300"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "0"
+	  ReliveBaseTime = "20"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "11">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "0"
+	  ReliveBaseTime = "5"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "12">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "5"
+	  AutoAddTalentInterval = "3"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "300"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "13">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "1500"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "30"
+	  AutoAddTalentInterval = "4"
+	  DieExpRate = "0.55"
+	  DieTalentPoint = "100"
+	  AssistTalentRate = "0.5"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "7"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "400"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+   <war war_id = "14">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "30"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "700"
+	  FirstAutoAddTalentInterval = "30"
+	  AutoAddTalentPoint = "10"
+	  AutoAddTalentInterval = "4"
+	  DieExpRate = "0.45"
+	  DieTalentPoint = "360"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "22"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "480"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "3"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "0"
+    SoliderPAVigourLevel_2 = "0"
+    SoliderPAVigourLevel_3 = "0"
+    SoliderPAVigourLevel_4 = "0"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+  <war war_id = "15">
+    <config
+	  InitialExp = "0"
+	  FirstAutoAddExpInterval = "20"
+	  AutoAddExp = "0"
+	  AutoAddExpInterval = "4"
+
+	  InitialTalentPoint = "0"
+	  FirstAutoAddTalentInterval = "20"
+	  AutoAddTalentPoint = "16"
+	  AutoAddTalentInterval = "4"
+	  DieExpRate = "0"
+	  DieTalentPoint = "500"
+	  AssistTalentRate = "0.3"
+	  ReliveRatio = "3"
+	  ReliveBaseTime = "22"
+	  CrystalDamageIntervalTime = "10"
+	  PersonFightIntervalTime = "10"
+		DropDumpingEXPRate = "0"
+		DropDumpingTalentRate = "0.08"
+		DropGainEXPRate = "0.13"
+		DropGainTalentRate = "0.05"
+		AddAroundEXPDistance = "20"
+		KillPersonDropEXPRate = "0.3"
+		FirstKillGetMoney = "480"
+		IncreaseMonster = "45"
+		IncreaseMonsterMax = "190"
+		DecreaseMonster = "5"
+		DecreaseMonsterMin = "80"
+		
+		IncreaseSolider = "45"
+		IncreaseSoliderMax = "240"
+		ControlLv = "1"
+		
+		IncreaseHero = "25"
+		IncreaseHeroMax = "175"
+		DecreaseHero = "25"
+		DecreaseHeroMin = "50"
+    
+		EconomyControlRate = "0.05"
+		MaxMultiKill = "8"
+		TimeCountKillInterval = "15000"
+		
+		GoldShareBase = "1.4"
+		TowerKillDecrease = "0.7"
+		
+    SoliderHPVigourLevel_1 = "0"
+    SoliderHPVigourLevel_2 = "0"
+    SoliderHPVigourLevel_3 = "0"
+    SoliderHPVigourLevel_4 = "0"
+    SoliderPAVigourLevel_1 = "50"
+    SoliderPAVigourLevel_2 = "50"
+    SoliderPAVigourLevel_3 = "50"
+    SoliderPAVigourLevel_4 = "50"
+    
+        AddGemstoneExp = "2">
+    </config>
+  </war>
+</scheme>
+<DistanceConfig>
+  <config
+	MonsterDistance = "15"
+	TowerDistance = "0"
+	MonsterDeadEffect = "294"
+        MoneyEffect =  "212" >
+
+  </config>
+</DistanceConfig>

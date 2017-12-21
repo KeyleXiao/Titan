@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\Framework.cpp" />
+    <ClCompile Include="..\src\ServiceContainer.cpp" />
+    <ClCompile Include="..\src\stdafx.cpp" />
+    <ClCompile Include="..\src\WorkThread.cpp" />
+    <ClCompile Include="..\src\WorkThreadScheduler.cpp" />
+    <ClCompile Include="..\src\dllmain.cpp" />
+    <ClCompile Include="..\src\SimpleDateTriggerAxis.cpp">
+      <Filter>DateTriggerService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SimpleTimerAxis.cpp">
+      <Filter>TimerService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TimerHandlerProxy.cpp">
+      <Filter>TimerService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DateTriggerHandlerProxy.cpp">
+      <Filter>DateTriggerService</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\IFramework.h" />
+    <ClInclude Include="..\include\IPerformanceService.h" />
+    <ClInclude Include="..\include\IServiceContainer.h" />
+    <ClInclude Include="..\include\IServiceMgr.h" />
+    <ClInclude Include="..\include\ServiceHelper.h" />
+    <ClInclude Include="..\src\CloudConnector.h" />
+    <ClInclude Include="..\src\CloudService.h" />
+    <ClInclude Include="..\src\Coroutine.h" />
+    <ClInclude Include="..\src\CoroutineWin.h" />
+    <ClInclude Include="..\src\Framework.h" />
+    <ClInclude Include="..\src\PerformanceService.h" />
+    <ClInclude Include="..\src\PerformanceService_Stub.h" />
+    <ClInclude Include="..\src\ServiceContainer.h" />
+    <ClInclude Include="..\src\ServiceMgr.h" />
+    <ClInclude Include="..\src\stdafx.h" />
+    <ClInclude Include="..\src\targetver.h" />
+    <ClInclude Include="..\src\ThreadSpecialData.h" />
+    <ClInclude Include="..\src\WorkThread.h" />
+    <ClInclude Include="..\src\WorkThreadScheduler.h" />
+    <ClInclude Include="..\include\Simple_Atom_Lock.h" />
+    <ClInclude Include="..\src\EventService.h" />
+    <ClInclude Include="..\src\CallbackProxy.h" />
+    <ClInclude Include="..\src\EventHandlerProxy.h" />
+    <ClInclude Include="..\include\ObjectLifeControl.h" />
+    <ClInclude Include="..\include\EventRefBase.h" />
+    <ClInclude Include="..\src\DBEngineProxy.h" />
+    <ClInclude Include="..\include\IPropertySet.h" />
+    <ClInclude Include="..\src\PropertySet.h" />
+    <ClInclude Include="..\..\..\Common\StubMacroDef.h" />
+    <ClInclude Include="..\src\DateTriggerService.h">
+      <Filter>DateTriggerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\IDateTriggerService.h">
+      <Filter>DateTriggerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TimerService_Stub.h">
+      <Filter>TimerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TimerService.h">
+      <Filter>TimerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ITimerService.h">
+      <Filter>TimerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DateTriggerService_Stub.h">
+      <Filter>DateTriggerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SimpleDateTriggerAxis.h">
+      <Filter>DateTriggerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SimpleTimerAxis.h">
+      <Filter>TimerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TimerHandlerProxy.h">
+      <Filter>TimerService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DateTriggerHandlerProxy.h">
+      <Filter>DateTriggerService</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="DateTriggerService">
+      <UniqueIdentifier>{2f7a0b6a-cb4b-451b-a960-678814f4cb8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TimerService">
+      <UniqueIdentifier>{52719576-ed6d-491d-846b-e2f16ab491f4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

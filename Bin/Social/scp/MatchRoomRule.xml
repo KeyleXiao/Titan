@@ -1,0 +1,46 @@
+﻿<!--
+selectherorule 规则ID
+	StepId			注意！！！！从0开始
+	TypeID			1 禁用英雄控制  2 选择英雄控制
+	TimeInterval	时间间隔
+	PosCount		启用索引数量 控制PosID个数
+	End				规则结束标志
+
+-->  
+
+<scheme>
+	 <selectherorule RuleID = "1">
+		<step StepId = "0" TypeID= "1" TimeInterval = "30" PosCount = "1" End = "0">
+			<pos PosId = "0"></pos>
+		</step>
+
+		<step StepId = "1"  TypeID= "1"  TimeInterval = "30" PosCount = "1" End = "0">
+			<pos PosId = "5"></pos>
+		</step>
+
+		<step StepId = "2" TypeID= "2" TimeInterval = "30" PosCount = "1" End = "0">
+			<pos PosId = "0"></pos>
+		</step>
+
+		<step StepId = "3" TypeID= "2" TimeInterval = "30" PosCount = "1" End = "1">
+			<pos PosId = "5"></pos>
+		</step>
+	</selectherorule>
+
+	<selectherorule RuleID = "2">
+		<step StepId = "0" TypeID= "1" TimeInterval = "30" PosCount = "1" End = "0">
+			<pos PosId = "1"></pos>
+		</step>
+
+		<step StepId = "1"  TypeID= "1"  TimeInterval = "30" PosCount = "1" End = "0">
+			<pos PosId = "2"></pos>
+		</step>
+
+		<step StepId = "2" TypeID= "2" TimeInterval = "30" PosCount = "2" End = "1">
+			<pos PosId = "1"></pos>
+			<pos PosId = "2"></pos>
+		</step>
+
+	</selectherorule>
+
+</scheme>

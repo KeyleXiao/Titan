@@ -40,7 +40,7 @@ namespace SocialSharing
     public class SocialShare : MonoBehaviour
     {
         private bool bUploadFinish = true;
-        private const string webUrl = "http://tt.q1.com";
+        private const string defaultWebUrl = "http://tt.q1.com";
 
         private uint checkPoint;
 
@@ -151,7 +151,7 @@ namespace SocialSharing
                     {
                         string sourceUrl = "http://service.weibo.com/share/share.php?url={0}&title={1}  {2}&pic={3}";
 
-                        string url = string.Format(sourceUrl, webUrl, System.Web.HttpUtility.UrlEncode(data.szTitle, Encoding.UTF8), System.Web.HttpUtility.UrlEncode(data.szDesc, Encoding.UTF8), data.imgUrl);
+                        string url = string.Format(sourceUrl, GetWebUrl(), System.Web.HttpUtility.UrlEncode(data.szTitle, Encoding.UTF8), System.Web.HttpUtility.UrlEncode(data.szDesc, Encoding.UTF8), data.imgUrl);
 
                         Application.OpenURL(url);
                     }
@@ -160,21 +160,21 @@ namespace SocialSharing
                     {
                         string sourceUrl = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={0}&title={1}&desc={2}&pics={3}";
 
-                        string url = string.Format(sourceUrl, webUrl, System.Web.HttpUtility.UrlEncode(data.szTitle, Encoding.UTF8), System.Web.HttpUtility.UrlEncode(data.szDesc, Encoding.UTF8), data.imgUrl);
+                        string url = string.Format(sourceUrl, GetWebUrl(), System.Web.HttpUtility.UrlEncode(data.szTitle, Encoding.UTF8), System.Web.HttpUtility.UrlEncode(data.szDesc, Encoding.UTF8), data.imgUrl);
 
                         Application.OpenURL(url);
                     }
                     break;
                 case EMSocialSharePlatform.EMSSP_QQ:
                     {
-                        string sourceUrl = "http://connect.qq.com/widget/shareqq/index.html?url={0}&desc={1}&pics={2}";
+                        //string sourceUrl = "http://connect.qq.com/widget/shareqq/index.html?url={0}&desc={1}&pics={2}";
 
-                        string url = string.Format(sourceUrl, webUrl, System.Web.HttpUtility.UrlEncode(data.szDesc, Encoding.UTF8), data.imgUrl);
+                        //string url = string.Format(sourceUrl, GetWebUrl(), System.Web.HttpUtility.UrlEncode(data.szDesc, Encoding.UTF8), data.imgUrl);
 
                         //string url = string.Format(sourceUrl, webUrl, System.Web.HttpUtility.UrlEncode(data.szDesc), data.imgUrl);
 
-                        //string sourceUrl = "http://share.v.t.qq.com/index.php?c=share&a=index&title={0} {1}&url={2}&pic={3}";
-                        //string url = string.Format(sourceUrl, Uri.EscapeDataString(data.szTitle), Uri.EscapeDataString(data.szDesc), webUrl, data.imgUrl);
+                        string sourceUrl = "http://share.v.t.qq.com/index.php?c=share&a=index&title={0} {1}&url={2}&pic={3}";
+                        string url = string.Format(sourceUrl, Uri.EscapeDataString(data.szTitle), Uri.EscapeDataString(data.szDesc), GetWebUrl(), data.imgUrl);
 
 
                         Application.OpenURL(url);
@@ -185,6 +185,26 @@ namespace SocialSharing
                 default:
                     break;
             }
+        }
+
+        private static string GetWebUrl()
+        {
+            string szWebUrl = "";
+
+            szWebUrl = DataCenter.LogicDataCenter.gamePromotionDataManager.ShareURL;
+
+            if (szWebUrl == "")
+                szWebUrl = defaultWebUrl;
+
+            uint promotionID = GameLogicAPI.getPlayerUserID(EntityFactory.MainHeroID);
+
+            if(promotionID > 0)
+            {
+                szWebUrl += "/";
+                szWebUrl += promotionID;
+            }
+
+            return szWebUrl;
         }
     }
 }

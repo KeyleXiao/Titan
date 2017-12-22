@@ -64,7 +64,7 @@ void RedisMng::RunTests()
 void RedisMng::Init()
 {
 	// RedisConnector内部的单元测试
-	StartUnitTest();
+	//StartUnitTest();
 
 
 	string str = "127.0.0.1";

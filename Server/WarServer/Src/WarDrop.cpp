@@ -253,7 +253,8 @@ void CWarDrop::dealWithAssistsInfo(SWPerson *EntiyDie, SWPerson *EntiyMurder, UI
 			{
 				// 助攻者连死记录清空
 				itPerson->nDeadCount = 0;
-				itPerson->deadContKillList.push_back(itPerson->nDeadCount);//压入
+				
+				//itPerson->deadContKillList.push_back(itPerson->nDeadCount);//压入
 
 																		   //记录助攻数量
 				itPerson->nBaseRecord[EDT_AssistCount]++;
@@ -1720,7 +1721,7 @@ void CWarDrop::dealPersonDie(sEntityDieInfo entityDieInfo,bool bBcastTips)
 		pMurderPerson->nBaseRecord[EDT_KillCount]++;
 
 		pMurderPerson->nDeadCount = 0;	// 连死清空
-		pMurderPerson->deadContKillList.push_back(pMurderPerson->nDeadCount);//压入
+		//pMurderPerson->deadContKillList.push_back(pMurderPerson->nDeadCount);//压入
 
 		pMurderPerson->nDeadContKill++;	// 连杀数量				
 		pMurderPerson->nTimeContKill++;	// 战斗连杀

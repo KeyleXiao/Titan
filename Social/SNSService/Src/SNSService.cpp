@@ -117,15 +117,15 @@ void SNSService::invitePlayGame(DWORD dwInviterActorID, DWORD dwTargetActorID, D
 	}
 
 	SSharePersonProperty targetSharePerson = gSocialGlobal->getShareReceiver()->GetSharePerson(dwTargetActorID);
-    if(targetSharePerson.dwPDBID != dwTargetActorID)
-    {
-        ErrorLn(__FUNCTION__":targetSharePerson.clientID == INVALID_CLIENT");
+	if (targetSharePerson.dwPDBID != dwTargetActorID)
+	{
+		ErrorLn(__FUNCTION__":targetSharePerson.clientID == INVALID_CLIENT");
 		return;
-    }
+	}
 
 	SMsgSNSInvitePlayGame_Notify notify;
 	notify.nRoomID = dwRoomID;
-    notify.dwInviteActorID = dwInviterActorID;
+	notify.dwInviteActorID = dwInviterActorID;
 	sstrcpyn(notify.szInviterName, inviterharePerson.szName, sizeof(notify.szInviterName));
 
 	obuf ob;
@@ -146,7 +146,7 @@ void SNSService::OnLogin(ISharePerson *pSharePerson, ELoginMode nLineType)
 	if (pSharePerson == NULL)
 		return;
 
-	switch(nLineType)
+	switch (nLineType)
 	{
 	case elogin_online:// 登录
 		{
@@ -189,15 +189,15 @@ void SNSService::OnLogout(ISharePerson *pSharePerson, ELogoutMode nLineType)
 	ob << head;
 
 	SONMsgSNSLogout msg;
-	fillActorInfo(&msg.actorInfo, shareProperty); 
+	fillActorInfo(&msg.actorInfo, shareProperty);
 
-	ob<<msg;
+	ob << msg;
 
 	ISNSConnectorService* pService = gSocialGlobal->getSNSConnectorService();
 	if (NULL != pService)
 	{
 		pService->sendMessage(MSG_SNS_USER_LOGOUT, ob.data(), ob.size());
-	}	
+	}
 }
 
 void SNSService::OnPre_Update(ISharePerson * pSharePerson, SHAREUPDATE_REASON nUpdateReason)
@@ -213,6 +213,11 @@ void SNSService::OnPost_Update(ISharePerson * pSharePerson, SHAREUPDATE_REASON n
 	obuf ob;
 	switch (nUpdateReason)
 	{
+	case SHAREUPDATE_REASON_CONTINUE_PLAY:
+		{
+			onReqLogin(pSharePerson->GetProperty());
+		}
+	break;
 	case SHAREUPDATE_REASON_CHANGE_ACTORNAME:
 		{
 			msg.nUpdateReson = ESNSActorInfoUpdateType_Name;
@@ -594,6 +599,43 @@ void SNSService::addBuddy(UDBID dwUserID, PDBID dwPdbid, BYTE bySex, char* szNam
 	gSocialGlobal->getCenterConnectorService()->sendDataToZoneSvr(ob.data(), ob.size(), person.serverID);
 }
 
+void SNSService::addBuddyByName(SSharePersonProperty & shareProperty, const char* szActorName)
+{
+	IShareReceiver *pShareReceiver = gSocialGlobal->getShareReceiver();
+	if (pShareReceiver == NULL)
+		return;
+
+	if (strlen(szActorName) == 0)
+		return;
+
+	// 对方在线
+	SSharePersonProperty otherProperty = pShareReceiver->GetSharePerson(szActorName);
+	if (otherProperty.dwPDBID != INVALID_PDBID)
+	{
+		addBuddy(otherProperty.dwUDBID, otherProperty.dwPDBID, otherProperty.bySex, otherProperty.szName, shareProperty.dwUDBID, shareProperty.dwPDBID);
+	}
+	else  // 对方不在线
+	{
+		DBREQ_PARAM_SNS_READ_PLAYINFO_BY_NAME dbParam;
+		dbParam.byOptType = EMSNS_DB_OPT_TYPE_READ_PLAYERINFO_ADDBUDDY;
+		dbParam.dwOptUserID = shareProperty.dwUDBID;
+		dbParam.dwOptPdbid = shareProperty.dwPDBID;
+		sstrcpyn(dbParam.szName, szActorName, sizeof(dbParam.szName));
+
+		IDBEngineService* pDBEngine = (IDBEngineService*)gSocialGlobal->getDBEngineService();
+		if (pDBEngine == NULL)
+		{
+			ErrorLn(__FUNCTION__": failed pDBEngine == NULL");
+			return;
+		}
+		if (!pDBEngine->executeSP(GAMEDB_REQUEST_SNS_READ_PLAYERINFO_BY_NAME, shareProperty.clientID, (LPCSTR)&dbParam, sizeof(dbParam), static_cast<IDBRetSink *>(this)))
+		{
+			ErrorLn(__FUNCTION__" : pDBEngine->executeSP() GAMEDB_REQUEST_SNS_READ_PLAYERINFO_BY_NAME failed");
+			return;
+		}
+	}
+}
+
 void SNSService::OnReturn(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBRetCode, char * pszDBRetDesc, int nQueueIndex, char * pOutData, int nOutLen)
 {
 	if (nDBRetCode != DBRET_CODE_SUCCEED)
@@ -743,14 +785,14 @@ void SNSService::onReqUpdateBuddy(SSharePersonProperty & shareProperty, SNetMsgH
 	SMsgSNSUpdateBuddy* pMsg = (SMsgSNSUpdateBuddy*)data;
 	BYTE nOptType = pMsg->nOptType;
 
+	if (pMsg->dwOtherAccountID == INVALID_UDBID)
+	{
+		addBuddyByName(shareProperty, pMsg->szActorName);
+		return;
+	}
+
 	if (nOptType == EMSNS_BUDDY_UPDATE_TYPE_ADD)
 	{
-		if (pMsg->dwOtherAccountID == INVALID_UDBID)
-		{
-			ErrorLn(__FUNCTION__": pMsg->dwOtherAccountID == INVALID_UDBID");
-			return;
-		}
-
 		// 对方在线
 		SSharePersonProperty otherProperty = pShareReceiver->GetSharePersonByUDBID(pMsg->dwOtherAccountID);
 		if (otherProperty.dwPDBID != INVALID_PDBID)

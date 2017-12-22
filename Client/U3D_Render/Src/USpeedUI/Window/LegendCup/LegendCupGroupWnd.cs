@@ -268,7 +268,7 @@ namespace USpeedUI.LegendCup
 
             foreach (var item in competitionInfo.nodeInfo)
             {
-                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(item.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(item.nKin2ID))
+                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item.nKin2ID))
                 {
                     if (item.byCompetitionNodeState <= (int)ECompetitionNodeState.emNodeState_Competition)//进行中
                     {

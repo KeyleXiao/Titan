@@ -30,6 +30,19 @@ using System.Linq;
 public partial class AssetBundleManagerEditor : EditorWindow
 {
 
+    public static void CheckComplineError()
+    {
+        UnityEditor.SceneManagement.EditorSceneManager.NewScene(UnityEditor.SceneManagement.NewSceneSetup.EmptyScene);
+        EditorApplication.isPlaying = true;
+        
+        EditorApplication.update += CheckComplineErrorUpdate;
+    }
+
+    private static void CheckComplineErrorUpdate()
+    {
+        EditorApplication.Exit(0);
+    }
+
     #region 发布EXE
 
     public static void BuildProject_Release()

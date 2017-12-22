@@ -74,6 +74,8 @@ namespace USpeedUI.ChatBox
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_UPDATE_MAIN_HERO_VOCATION, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_POPUPWND_VISIBLE, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_FULLWND_VISIBLE, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_CHATBOX_TOGGLE, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER, this);
 
             // 订阅按键消息
             UISystem.Instance.RegisterKeyMessage(FuntionShortCutSlotIndex.ChatBoxActiveKey1, KeyStatus.Down, this);
@@ -108,6 +110,8 @@ namespace USpeedUI.ChatBox
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_UPDATE_MAIN_HERO_VOCATION, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_POPUPWND_VISIBLE, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_FULLWND_VISIBLE, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_CHATBOX_TOGGLE, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER, this);
 
             // 退订按键消息
             UISystem.Instance.UnregisterKeyMessage(FuntionShortCutSlotIndex.ChatBoxActiveKey1, KeyStatus.Down, this);
@@ -156,14 +160,17 @@ namespace USpeedUI.ChatBox
                     {
                         if (m_wndView != null)
                         {
-                            m_wndView.OnLeave(ChatBoxState.RoomState);
-
-                            if(isEnterWarLoading)
+                            //if(isEnterWarLoading == false)
                             {
-                                m_wndView.OnEnter(ChatBoxState.WarLoadingState);
-
-                                isEnterWarLoading = false;
+                                m_wndView.OnLeave(ChatBoxState.RoomState);
                             }
+
+                            //if(isEnterWarLoading)
+                            //{
+                            //    m_wndView.OnEnter(ChatBoxState.WarLoadingState);
+
+                            //    isEnterWarLoading = false;
+                            //}
                         }
                     }
                     break;
@@ -172,8 +179,8 @@ namespace USpeedUI.ChatBox
                         // 因为WND_MSG_COMMON_LOGINMOBA比WND_MSG_COMMOM_MATCHROOMSTATE_LEAVE更早，所以用这种方式
                         isEnterWarLoading = true;
 
-                        //if (m_wndView != null)
-                        //m_wndView.OnEnter(ChatBoxState.WarLoadingState);
+                        if (m_wndView != null)
+                            m_wndView.OnEnter(ChatBoxState.WarLoadingState);
                     }
                     break;
                 case WndMsgID.WND_MSG_COMMON_BATTLESTATE_ENTER:
@@ -268,6 +275,17 @@ namespace USpeedUI.ChatBox
                     {
                         if (m_wndView != null)
                             m_wndView.onFullWndVisible(msgData as UCommonFullWndVisible);
+                    }
+                    break;
+                case WndMsgID.WND_MSG_CHATBOX_TOGGLE:
+                    {
+                        if (m_wndView != null)
+                            m_wndView.ToggleHideWindow();
+                    }
+                    break;
+                case WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER:
+                    {
+                        resetAllSortingOrder();
                     }
                     break;
                 default:

@@ -1216,7 +1216,13 @@ void CClan::clanCheckLegendCupInfoPublic(DWORD dwActorID)
     else
     {
         // 非盟主
-        pChatService->broadcastSystemMessageToChatBox(CHAT_BROADCASTTYPE_SINGLE, shareProperty.dwPDBID, CHAT_TIP_CLAN_MEMBER_REQ_SHAIKH_PUBLIC_CUP, CHAT_CHANNEL_CLAN);
+        string strParam = "";
+        strParam += CHAT_MSG_ITEM_FLAG;
+
+        char szText[256] = {0};
+        ssprintf_s(szText, sizeof(szText), "%d;%s;", CHAT_CHANNEL_CLAN,strParam.c_str());
+        pChatService->broadcastSystemMessage(CHAT_BROADCASTTYPE_SINGLE, shareProperty.dwPDBID, CHAT_TIP_CLAN_MEMBER_REQ_SHAIKH_PUBLIC_CUP, szText);
+
     }
 }
 

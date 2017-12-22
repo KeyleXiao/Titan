@@ -155,6 +155,9 @@ namespace DataCenter
         // 玩家表情包数据管理
         static public EmojiDataManager emojiDataManager = new EmojiDataManager();
 
+        //// 头像数据管理
+        //static public ChangeHeadIconManager changeHeadIconManager = new ChangeHeadIconManager();
+
         // 初始化
         static public void Init()
         {
@@ -297,6 +300,9 @@ namespace DataCenter
 
             emojiDataManager.Init();
             Initialize.PrintTickCheck("emojiDataManager.Init");
+
+            //changeHeadIconManager.Init();
+            //Initialize.PrintTickCheck("changeHeadIconManager.Init");
         }
 
         static public void Clear()
@@ -338,6 +344,7 @@ namespace DataCenter
             warOBDataManager.Clear();
             warOBUIDataManager.Clear();
             emojiDataManager.Clear();
+            //changeHeadIconManager.Clear();
         }
 
         static public void ClearInEnterStaticGameState()

@@ -14,8 +14,12 @@ public:
 
 	void	BuildGatesInfo(SMsgView_MV_GatesInfo& gatesInfo);
 
-	// 查找负载最轻的Gate，返回其ID；如果找不到，则返回0 (按照“剩余承载能力”来比较)
-	GateID	GetIdleGate();
+	//************************************
+	// Returns:   GateID
+	// Qualifier: 查找负载最轻的Gate，返回其ID；如果找不到，则返回0 (按照“剩余承载能力”来比较)
+	// Parameter: GateID wExceptID	要排除的GateID
+	//************************************
+	GateID	GetIdleGate(GateID wExceptID = 0);
 
 protected:
 	virtual void onDelUser(ISessionUser* pUser) {};

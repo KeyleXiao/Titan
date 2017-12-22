@@ -619,6 +619,8 @@ void CWingPart::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR ps
     {
     case EVENT_ENTITY_CHANGE_WING:
         {
+            COST_TIME_TRACE_START
+
             if (m_pEntity == NULL)
             {
                 break;
@@ -646,6 +648,8 @@ void CWingPart::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR ps
                 break;
             }
 
+            COST_TIME_TRACE(__LINE__);
+
             // 移除旧翅膀起飞技能
             do 
             {
@@ -665,6 +669,8 @@ void CWingPart::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR ps
                 // 移除技能
                 pSpellPart->removeSpell(nStartFlySpellID);
             } while (false);
+
+            COST_TIME_TRACE(__LINE__)
 
             // 学会新翅膀起飞技能
             do 
@@ -686,8 +692,12 @@ void CWingPart::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR ps
                 pSpellPart->addSpell(nStartFlySpellID);
             } while (false);
 
+            COST_TIME_TRACE(__LINE__)
+
             // 设置翅膀信息
             SetWingInfo();
+
+            COST_TIME_TRACE(__LINE__)
         }
         break;
     case EVENT_ENTITY_DAMAGE:

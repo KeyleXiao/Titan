@@ -328,6 +328,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\SNSDef.h" />
+    <ClInclude Include="..\..\..\Common\SNS_ManagedDef.h" />
     <ClInclude Include="..\Include\ILogicThread.h" />
     <ClInclude Include="..\Src\Acceptor.h" />
     <ClInclude Include="..\Src\DatabaseAccessor.h" />

@@ -46,6 +46,8 @@ enum SPELL_NET_MESSAGE
 	SPELL_MSG_PREPARE_RECALC_TARGETINFO,   // 预施法后重计算目标点
 
     SPELL_MSG_TARGET_TOO_FAR_INFO,
+
+    SPELL_MSG_KILL_ENTITY,              // 杀死了一个单位
 };
 
 

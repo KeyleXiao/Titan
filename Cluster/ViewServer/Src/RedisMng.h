@@ -8,12 +8,12 @@ class RedisMng : public Singleton<RedisMng>
 public:
 	RedisMng();
 
-	void	Init();
+	bool	Init();
+
+	Redis::IRedisConnector*	GetRedis() { return m_pRedis; }
 
 private:
-	void	StartUnitTest();
 
-	void	TempTest();
 
 private:
 	Redis::IRedisConnector*		m_pRedis;

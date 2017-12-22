@@ -112,8 +112,8 @@ namespace Data.ChatEmoticonConfig
                 SSchemeChatEmoticonData emotionData = data.Value;
                 if (emotionData.szCharInput != "")
                 {
-                    // 大表情不需要替换（只能通过点击大表情发送，不能通过输入快捷缩写发送）
-                    if(emotionData.eEmoticonType == EMChatEmoticonType.Emoticon_Large)
+                    // 只有小表情才能通过输入快捷缩写发送）
+                    if(emotionData.eEmoticonType != EMChatEmoticonType.Emoticon_Default)
                     {
                         continue;
                     }

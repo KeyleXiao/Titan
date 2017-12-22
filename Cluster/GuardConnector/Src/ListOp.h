@@ -52,7 +52,7 @@ public:
 	virtual bool	lSet(const string& strKey, long nIndex, const string& strValue);
 
 	// 获取（区间元素）
-	virtual bool	lRange(const string& strKey, long nStart, long nStop, vector<string>* pvecValue);
+	virtual bool	lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue);
 
 	// 获取（index元素）
 	virtual bool	lIndex(const string& strKey, long nIndex, string* pstrValue);

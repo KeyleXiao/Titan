@@ -2034,22 +2034,7 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
         if (pHideSchemeInfo != NULL)
         {
             int nHideNewRank = nHideRank + nHideRankScore;
-
-            if (pHideSchemeInfo->bIsBaseGrade)
-            {
-                if (nHideNewRank <= pHideSchemeInfo->nHideGradeScore)
-                {
-                    sNode.nHideRankScore    = pHideSchemeInfo->nHideGradeScore;
-                }
-                else
-                {
-                    sNode.nHideRankScore    = nHideNewRank;
-                }
-            }
-            else
-            {
-                sNode.nHideRankScore = nHideNewRank;
-            }
+            sNode.nHideRankScore = nHideNewRank;
         }
 
         // 保底分数来算初始段位
@@ -2179,23 +2164,7 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
             {
                 
                 int nNewHideRank = nOldHideRank + nHideRankScore;
-                // 保底段位
-                if (pHideSchemeInfo->bIsBaseGrade)
-                {
-                    if (nNewHideRank <= pHideSchemeInfo->nHideGradeScore)
-                    {
-                        // 低于保底段位置为隐藏保底段位分
-                        iter->second.nHideRankScore    = pHideSchemeInfo->nHideGradeScore;
-                    }
-                    else
-                    {
-                        iter->second.nHideRankScore = nNewHideRank;
-                    }
-                }
-                else
-                {
-                    iter->second.nHideRankScore = nNewHideRank;
-                }
+                iter->second.nHideRankScore = nNewHideRank;
             }
         }
 

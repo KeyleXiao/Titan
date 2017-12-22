@@ -137,7 +137,7 @@ namespace DataCenter
             if (m_WarEndLegendCupInfo.bIsLastRound == 1)
             {
                 // 给出提示
-                if (m_WarEndLegendCupInfo.bRoundLastNode == 1)
+                if (m_WarEndLegendCupInfo.bNodeEnd == 1)
                 {
                     // 节点比赛打完
                     if (m_WarEndLegendCupInfo.bWin == 1)
@@ -234,7 +234,7 @@ namespace DataCenter
             }
             else
             {
-                // 给出提示
+                // 节点比赛打完
                 if (m_WarEndLegendCupInfo.bNodeEnd == 1)
                 {
                     // 节点比赛打完 提示下一场时间
@@ -242,13 +242,29 @@ namespace DataCenter
                     beginTime = beginTime.ToLocalTime();
                     string szParam = "";
                     szParam += beginTime.Month + ";" + beginTime.Day + ";" + beginTime.Hour + ";" + beginTime.Minute;
-                    if (m_WarEndLegendCupInfo.bWin == 1)
+
+                    if (m_WarEndLegendCupInfo.bRoundLastNode == 1)
                     {
-                        UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_LEGENDCUP_NODE_END_WIN_MSGBOX_INFO, szParam);
+                        if (m_WarEndLegendCupInfo.bWin == 1)
+                        {
+                            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_LEGENDCUP_GROUP_NODE_END_WIN_MSGBOX_INFO, szParam);
+                        }
+                        else
+                        {
+                            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_LEGENDCUP_GROUP_NODE_END_FAIL_MSGBOX_INFO, szParam);
+                        }
                     }
                     else
                     {
-                        UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_LEGENDCUP_NODE_END_FAIL_MSGBOX_INFO, szParam);
+                        
+                        if (m_WarEndLegendCupInfo.bWin == 1)
+                        {
+                            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_LEGENDCUP_NODE_END_WIN_MSGBOX_INFO, szParam);
+                        }
+                        else
+                        {
+                            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_LEGENDCUP_NODE_END_FAIL_MSGBOX_INFO, szParam);
+                        }
                     }
                 }
                 else

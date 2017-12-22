@@ -103,9 +103,6 @@ namespace Redis
 			return lSet(strKey, nIndex, TToString(tValue));
 		}
 
-		// 获取（区间元素）
-		virtual bool	lRange(const string& strKey, long nStart, long nStop, vector<string>* pvecValue) = 0;
-
 		// 获取（index元素）
 		virtual bool	lIndex(const string& strKey, long nIndex, string* pstrValue) = 0;
 
@@ -132,5 +129,8 @@ namespace Redis
 
 		// 删除（右弹出）
 		virtual bool	rPopString(const string& strKey, string* pstrValue) = 0;
+
+		// 获取（区间元素）
+		virtual bool	lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue) = 0;
 	};
 };

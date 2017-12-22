@@ -23,14 +23,13 @@ bool MngConnector::SendHandshake()
 	}
 
 	// 观战服与管理服握手
-	const SGameMsgHead& header = gMsg.BuildHead_GM(ENUM_MSG_VIEW_HANDSHAKE);
 	SMsgView_GM_Handshake sendData;
-	sendData.dwServerID = m_dwServerID;
-	sendData.wPort = gSetting.m_dwViewPort;
+	sendData.wClientPort = gSetting.m_dwClientPort;
+	sendData.wViewPort = gSetting.m_dwViewPort;
 	sendData.dwMaxCount = gSetting.m_dwMaxConnection;	// 最多人数
 	sendData.dwCurrCount = 0;	// TODO 以后赋值
 
-	TSendMsg(this, header, sendData);
+	this->SendMsg(sendData);
 
 	TraceLn(_GT("发送握手信息! ") << a2utf8(ToString().data()));
 

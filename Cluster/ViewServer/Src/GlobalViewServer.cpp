@@ -103,14 +103,18 @@ bool GlobalViewServer::InitEnvironment(void)
 	GetAsynIoReactor()->AddEvent(m_hTimer);
 	GetAsynIoReactor()->RegisterEventHandler(m_hTimer,this);
 
+	// Redis连接初始化
+	if (!gRedisMng.Init())
+	{
+		ErrorLn(_GT("Redis init fail! 请检查配置"));
+		return false;
+	}
+
 	// 是否初始化
 	m_bInit = true;
 
 	// 启动管理连接器
 	CreateManagerConnector();
-
-
-	gRedisMng.Init();
 
 	return true;
 }

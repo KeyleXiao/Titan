@@ -19,7 +19,7 @@ public:
 	virtual bool lSet(const string& strKey, long nIndex, const string& strValue) override;
 
 
-	virtual bool lRange(const string& strKey, long nStart, long nStop, vector<string>* pvecValue) override;
+	virtual bool lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue) override;
 
 
 	virtual bool lIndex(const string& strKey, long nIndex, string* pstrValue) override;

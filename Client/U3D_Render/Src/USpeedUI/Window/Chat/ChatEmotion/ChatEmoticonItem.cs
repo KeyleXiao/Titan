@@ -144,7 +144,7 @@ namespace USpeedUI.Chat
             ChatBoxAddInputFieldItemData uiData = new ChatBoxAddInputFieldItemData();
             uiData.msgID = (int)WndMsgID.WND_MSG_CHATBOX_INPUTFIELDADDITEM;
             uiData.objInfo = emotionObj;
-            uiData.bActiveInputField = true;
+            uiData.bActiveInputField = false;
             uiData.bAutoSend = true;
             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBOX_INPUTFIELDADDITEM, uiData);
         }

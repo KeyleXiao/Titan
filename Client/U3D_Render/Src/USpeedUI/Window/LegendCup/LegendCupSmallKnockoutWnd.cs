@@ -241,7 +241,7 @@ namespace USpeedUI.LegendCup
             m_searchID = kindata.nSearchID;
             m_kinID = kindata.nKinID;
 
-            bool bInThisPos = LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(kindata.nKinID);
+            bool bInThisPos = LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(kindata.nKinID);
             //m_bCanJoinMatch = bInThisPos && (kindata.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter);
 
             // 队名，（自己， 别人输，别人赢）
@@ -281,7 +281,7 @@ namespace USpeedUI.LegendCup
         {
             m_sCreateNode = createNode;
 
-            bool bInCreateNode = LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(m_kinID);
+            bool bInCreateNode = LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(m_kinID);
             m_bCanJoinMatch = bInCreateNode && (createNode.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter);
 
             // 比分
@@ -990,7 +990,7 @@ namespace USpeedUI.LegendCup
                 if (item.nRoundID != competitionInfo.headInfo.nRoundID)
                     continue;
 
-                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(item.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(item.nKin2ID))
+                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item.nKin2ID))
                 {
                     selfCurRoundNode = item;
                     m_nCurRoundSelfNodeSearchID = selfCurRoundNode.nSearchID;

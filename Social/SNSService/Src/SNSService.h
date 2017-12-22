@@ -91,4 +91,6 @@ private:
 	// 添加好友
 	void addBuddy(UDBID dwUserID, PDBID dwPdbid, BYTE bySex, char* szName, UDBID dwOptUserID, PDBID dwOptPdbid);
 
+	// 添加好友
+	void addBuddyByName(SSharePersonProperty & shareProperty, const char* szActorName);
 };

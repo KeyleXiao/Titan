@@ -516,6 +516,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text score;
 
         public Sprite[] borderList;
@@ -531,6 +532,7 @@ namespace USpeedUI.Chart
             indexIcon.gameObject.SetActive(false);
             playerName.text = "";
             score.text = "";
+            sexIcon.gameObject.SetActive(false);
             borderImg.sprite = borderList[0];
             bSelfItem = false;
         }

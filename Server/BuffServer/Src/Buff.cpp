@@ -388,7 +388,7 @@ bool CBuff::Create(DWORD dwIndex, CBuffPart *pBuffPart, UID uidAdd, DWORD dwBuff
                     m_EndConditionAttack.Create(m_pBuffPart, this);
                 }
                 break;
-			case BUFF_END_ATTACK_READY:
+			case BUFF_END_ATTACK_READY:	//暂未实现
                 {				
                     m_EndConditionAttackReady.Create(m_pBuffPart, this);
                 }

@@ -34,7 +34,7 @@ struct IFixMsg
 ********************************************************************/
 // 将消息打包
 template<class TMsg>
-void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, TMsg &data)
+void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, const TMsg &data)
 {
 	obufData.push_back(&header, sizeof(SGameMsgHead));
 
@@ -47,18 +47,5 @@ void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, TMsg &data)
 		obufData.push_back(&data, sizeof(TMsg));
 }
 
-// 发送消息
-template<class TConn, class TMsg>
-void TSendMsg(TConn* pConnection, const SGameMsgHead& header, TMsg& data)
-{
-	if (pConnection == NULL) return;
-
-	obuf obufData;
-	TBuildObufMsg(obufData, header, data);
-
-	const DWORD dwLen = (DWORD)obufData.size();
-	Assert(dwLen == obufData.size());
-	pConnection->SendData(obufData.data(), dwLen);
-}
 
 #pragma pack()

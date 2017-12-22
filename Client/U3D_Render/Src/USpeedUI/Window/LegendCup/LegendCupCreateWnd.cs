@@ -178,15 +178,48 @@ namespace USpeedUI.LegendCup
             {
                 cupConfig = LegendCupConfig.Instance.GetCupConfig(m_nCupIDList[i]);
                 if (cupConfig == null)
-                    return;
+                    continue;
 
                 CupConfigNameDd.options.Add(new Dropdown.OptionData(cupConfig.sCupConfigViewName));
             }
-            CupConfigNameDd.captionText.text = CupConfigNameDd.options.First().text;
-            m_curCupConfig = LegendCupConfig.Instance.GetCupConfig(m_nCupIDList[0]);
             CupConfigNameDd.onValueChanged.AddListener(OnChangedCupConfigDd);
 
-            // 默认选第一组第一个
+            // 默认选择要求：战队杯赛第一组第一个，联盟杯赛选符合人数限制(都不符合选最后一个)
+            int nSelectIndex = 0;
+            if (typeInfo.byLegendCupType == (int)ELegendCupType.emCupType_Clan)
+            {
+                int nClanMemberCount = LogicDataCenter.clanDataManager.ClanBaseData.nMemberCount;
+
+                nSelectIndex = -1;
+                for (int i = 0; i < m_nCupIDList.Length; i++)
+                {
+                    cupConfig = LegendCupConfig.Instance.GetCupConfig(m_nCupIDList[i]);
+                    if (cupConfig == null)
+                        continue;
+                    SSchemeLegendCupLimitConfig limitConfig = LegendCupConfig.Instance.GetCupLimitConfig(cupConfig.nConfigID);
+                    if (limitConfig == null)
+                        continue;
+
+                    if (nClanMemberCount >= limitConfig.nCountLimit)
+                    {
+                        nSelectIndex = i;
+                        break;
+                    }
+                }
+                if (nSelectIndex < 0)
+                {
+                    nSelectIndex = m_nCupIDList.Length - 1;
+                }
+            }
+
+            // 设置下拉框默认选中项
+            if (nSelectIndex < 0 || nSelectIndex >= CupConfigNameDd.options.Count)
+            {
+                return;                
+            }
+            CupConfigNameDd.captionText.text = CupConfigNameDd.options.ElementAt(nSelectIndex).text;
+            m_curCupConfig = LegendCupConfig.Instance.GetCupConfig(m_nCupIDList[nSelectIndex]);
+            
             DeadlineDd.options.Clear();
             for (int i = 0; i < m_curCupConfig.nDeadline.Length; i++)
             {

@@ -35,21 +35,17 @@ int ViewList::GetReadyCount()
 	return nCount;
 }
 
-void ViewList::BroadcastGatesInfoToView()
+void ViewList::BroadcastGatesInfoToViews()
 {
-	const SGameMsgHead& header = gMsg.BuildHead_MV(ENUM_MSG_VIEW_GATES_INFO);
 	SMsgView_MV_GatesInfo sendData;
 	gGateList.BuildGatesInfo(sendData);
-
-	obuf obufData;
-	TBuildObufMsg(obufData, header, sendData);
 
 	for each (auto tmpPair in m_UserMap)
 	{
 		ViewUser*& pUser = tmpPair.second;
 		if (pUser->IsReady())
 		{
-			pUser->SendData(obufData.data(), obufData.size());
+			pUser->SendMsg(sendData);
 		}
 	}
 	TraceLn(_GT("发送GatesInfo给所有View! ") );

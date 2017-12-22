@@ -941,6 +941,7 @@ namespace USpeedUI
 	{
 		public uint uid;	// 发送消息者uid
 		public Chat.SChatMessageInfo info;
+        public bool isShowBg; // 是否显示气泡背景
 	}
 
 	// WND_MSG_CHATBUBBLE_TEAM_CHAT_MESSAGE

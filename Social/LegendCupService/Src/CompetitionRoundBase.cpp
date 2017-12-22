@@ -2848,6 +2848,9 @@ SNextWarTimeInfo CCompetitionRoundBase::getGroupTypeNextWarTime(int nCurSerchID,
 {
     // 找战队所有比赛节点
     SNextWarTimeInfo sNextInfo;
+    sNextInfo.bRoundLastNode = true;
+    sNextInfo.dwNextWarTime = 0;
+
     map<int, SCompetitionNode>::iterator iter = m_CompetitionNodeList.begin();
     for (; iter != m_CompetitionNodeList.end(); ++iter)
     {
@@ -2864,14 +2867,11 @@ SNextWarTimeInfo CCompetitionRoundBase::getGroupTypeNextWarTime(int nCurSerchID,
     }
 
     // 没找到就取下一轮比赛的进入时间
-    sNextInfo.bRoundLastNode = true;
-    sNextInfo.dwNextWarTime = 0;
     SRoundTimeInfo* pRoundTimeInfo = m_pLegendCup->getRoundTimeInfo(m_nRoundID + 1);
     if (pRoundTimeInfo == NULL)
     {
         return  sNextInfo;
     }
-
     sNextInfo.dwNextWarTime = pRoundTimeInfo->dwRoundCreateRoomTime;
     return  sNextInfo;
 }

@@ -81,12 +81,31 @@ public class UIBillboardQueryResult
     public int angle;
 }
 
+public class AdvInfo
+{
+    /// <summary>
+    /// 广告站点ID
+    /// </summary>
+    public string radid = string.Empty;
+
+    /// <summary>
+    /// 广告子站点ID
+    /// </summary>
+    public string rsid = string.Empty;
+
+    /// <summary>
+    /// PartnerID
+    /// </summary>
+    public string PartnerID = "0";
+};
+
 public enum EStage_SubState
 {
     ESSS_NONE,          // 空
     ESSS_WAR,           // 战场中
     ESSS_WAREND,        // 战场结束
 }
+
 
 public enum EStage_PermissionState
 {

@@ -71,6 +71,10 @@ namespace USpeedUI.ChatBox
 
             override public void OnEnter(ChatBoxState oldState)
             {
+                // 清空消息
+                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_MATCHROOM);
+                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_CAMP);
+
                 View.SetActive(true);
                 View.SetHide(false);
                 SetActiveState();
@@ -236,6 +240,10 @@ namespace USpeedUI.ChatBox
 
             override public void OnEnter(ChatBoxState oldState)
             {
+                // 清空消息
+                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_MATCHROOM);
+                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_CAMP);
+
                 View.SetMinState(true);
             }
 
@@ -268,6 +276,10 @@ namespace USpeedUI.ChatBox
 
             override public void OnEnter(ChatBoxState oldState)
             {
+                // 清空消息
+                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_MATCHROOM);
+                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_CAMP);
+
                 // 缩小聊天框
                 View.SetSize(new Vector2(View.m_UnActiveWidth, View.m_UnActiveHeight));
 
@@ -424,10 +436,6 @@ namespace USpeedUI.ChatBox
 
             override public void OnLeave()
             {
-                // 清空消息
-                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_MATCHROOM);
-                LogicDataCenter.chatMessageManager.RemoveChannelChatMessage(EMChatChannelType.CHAT_CHANNEL_CAMP);
-
                 View.contentView.Clear();
             }
 
@@ -506,7 +514,30 @@ namespace USpeedUI.ChatBox
                 View.SetActive(true);
                 View.SetHide(false);
 
+                // 设置需要显示的频道选项对应的频道
+                View.m_dropDownIndexToChannel = new EMChatChannelType[]{
+                EMChatChannelType.CHAT_CHANNEL_WORLD,
+                EMChatChannelType.CHAT_CHANNEL_CLAN,
+                EMChatChannelType.CHAT_CHANNEL_KIN,
+                EMChatChannelType.CHAT_CHANNEL_MATCHROOM,
+                EMChatChannelType.CHAT_CHANNEL_CAMP,
+                EMChatChannelType.CHAT_CHANNEL_PRIVATE,
+                };
+                View.refreshChannelDropDown();
+
                 View.ChangeChannel((int)EMChatChannelType.CHAT_CHANNEL_CAMP);
+
+
+                View.ClearChannelMaskItem();
+                View.AddChannelMaskItem(ChatChannelGroupType.ChatChannel_All);
+                View.AddChannelMaskItem(ChatChannelGroupType.ChatChannel_Personal);
+                View.AddChannelMaskItem(ChatChannelGroupType.ChatChannel_Public);
+                View.AddChannelMaskItem(ChatChannelGroupType.ChatChannel_Room);
+                View.m_DiyChannelGroupItem = View.AddChannelMaskItem(ChatChannelGroupType.ChatChannel_Diy);
+                View.m_DiyChannelGroupItem.setChannelMask(View.m_DiyChannelMask);
+
+                // 默认选择房间
+                View.channelMaskButtonGroup.SetItemSelectedItem(3, true);
 
                 // 放大聊听框
                 View.SetSize(View.m_InitSize);
@@ -527,6 +558,8 @@ namespace USpeedUI.ChatBox
                 View.SetChatWndViewPositionChange(ChatPositionChangeType.CPCY_MOVEDOWN);
 
                 m_HideTime = Time.time;
+
+                View.DelayChatMessageUpdate();
             }
 
             override public void OnLeave()

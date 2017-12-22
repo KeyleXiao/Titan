@@ -127,7 +127,7 @@ void MatchSceneRoom::initalOBPlayer(SRoomRoleBase* pFirstRole)
 
 void MatchSceneRoom::inital( MatchSceneService* pMatchSceneService, SMsgCreateRoom_OC* pCreateRoom, int nWarID )
 {
-	MATCH_TRACELN( __FUNCTION__ ": nWarID="<< nWarID);
+	EmphasisLn( __FUNCTION__ ": roomid="<< pCreateRoom->dwRoomID<<" nWarID="<< nWarID);
 	
 	m_pService	    = pMatchSceneService;
 	m_nWarID	    = nWarID;
@@ -1518,9 +1518,10 @@ void MatchSceneRoom::accordLeaveWar(PDBID idActor)
         ErrorLn(__FUNCTION__": can't find SchemeInfo dwMatchTypeID ="<<m_msg.dwMatchTypeID);
         return;
     }
-    if (!pMatchRoom->m_bCanLogOutInWar)
+
+    if (!m_bWarProcessEnd && !pMatchRoom->m_bCanLogOutInWar)
     {
-        WarningLn(__FUNCTION__": bCanLogOutInWar == false dwMatchTypeID ="<<m_msg.dwMatchTypeID);
+        ErrorLn(__FUNCTION__": bCanLogOutInWar == false dwMatchTypeID ="<<m_msg.dwMatchTypeID);
         return;
     }
 

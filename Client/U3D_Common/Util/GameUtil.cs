@@ -209,6 +209,47 @@ public class GameUtil
 	}
 
 
+    /// <summary>
+    /// 获取广告信息,在编辑器下无效
+    /// </summary>
+    /// <param name="info"></param>
+    public static AdvInfo GetAdvInfo()
+    {
+        AdvInfo info = new AdvInfo();
 
+        //编辑器下的信息
+        if (Application.isEditor)
+        {
+            info.radid = string.Empty;
+            info.rsid = string.Empty;
+            info.PartnerID = "0";
+
+            return info;
+        }
+
+        string RadidKey = "radid:";
+        string rsidKey = "rsid:";
+        string PartnerKey = "Partner:";
+
+        System.Collections.Generic.List<string> argList = new System.Collections.Generic.List<string>();
+        argList.AddRange(System.Environment.GetCommandLineArgs());
+
+        foreach (string arg in argList)
+        {
+            if (arg.Contains(RadidKey))
+            {
+                info.radid = arg.Replace(RadidKey, string.Empty);
+            }
+            if (arg.Contains(rsidKey))
+            {
+                info.rsid = arg.Replace(rsidKey, string.Empty);
+            }
+            if (arg.Contains(PartnerKey))
+            {
+                info.PartnerID = arg.Replace(PartnerKey, string.Empty);
+            }
+        }
+        return info;
+    }
 
 }

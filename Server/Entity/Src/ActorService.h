@@ -2032,13 +2032,19 @@ private:
 		int nMapID = gServerGlobal->getSceneManager()->sceneIDToMapID(nSceneID);
 		pPlayerRole->setMapID(nMapID);
 
-        // 随机一下位置
-        crowdResolve();
+		// 随机一下位置
+		crowdResolve();
 
 		// 通知创建完成
-		if(!pPlayerRole->onCreated(mode))
+		if (!pPlayerRole->onCreated(mode))
 		{
 			return false;
+		}
+
+		// 主城创建角色,则更新BankPart中playerinfo中的mapid,当玩家在主城下线时，才会保存当前地图id到数据库
+		if (IsMainMap(nMapID))
+		{
+			setActorBaseInfo(nMapID, ENPLAYERINFOTYPE_MAPID, ENCHANGEDATAMODE_SET, 0, 0, 0, 0, 0, 0);
 		}
 
         // 发出登进事件

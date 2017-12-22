@@ -9,6 +9,24 @@ namespace Redis
 	// List操作器
 	struct IListOp : public IBaseListOp
 	{
+		// 获取（区间元素）
+		template<typename T>
+		bool	lRange(const string& strKey, long nStart, long nStop, vector<T>* pvecValue)
+		{
+			vector<string> vecStr;
+			if (!lRangeString(strKey, nStart, nStop, &vecStr))
+				return false;
+
+			pvecValue->clear();
+			for (size_t i = 0; i < vecStr.size(); i++)
+			{
+				const string& strValue = vecStr.at(i);
+				pvecValue->push_back(T());
+				TFromString(strValue, pvecValue->at(i));
+			}
+			return true;
+		}
+
 		//************************************
 		// Returns:   bool	是否成功
 		// Qualifier: 从List左侧弹出一个元素并删除

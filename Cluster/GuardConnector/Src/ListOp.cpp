@@ -102,7 +102,7 @@ bool CListOp::lSet(const string& strKey, long nIndex, const string& strValue)
 	return m_redis.Lset(strKey, nIndex, strValue) == RC_SUCCESS;
 }
 
-bool CListOp::lRange(const string& strKey, long nStart, long nStop, vector<string>* pvecValue)
+bool CListOp::lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue)
 {
 	if (pvecValue == nullptr)
 		return false;

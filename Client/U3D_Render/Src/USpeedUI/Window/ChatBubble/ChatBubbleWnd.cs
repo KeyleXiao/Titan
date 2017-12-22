@@ -136,6 +136,8 @@ namespace USpeedUI.ChatBubble
 
 				tmpItem.transform.SetParent(this.transform, false);
 
+                tmpItem.bg.gameObject.SetActive(data.isShowBg);
+
 				m_ItemList.Add(uid, tmpItem);
 			}
 
@@ -167,6 +169,8 @@ namespace USpeedUI.ChatBubble
 
 	public class ChatBubbleItemBase : MonoBehaviour
 	{
+        public Image bg;
+
 		// 气泡显示时间
 		public float ShowTime = 5f;
 

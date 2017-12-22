@@ -171,7 +171,8 @@ bool CRankSeasonManager::init(CPlayerBankPart * pBankPart, __IEntity * pMaster, 
 
 	gServerGlobal->getDBEngineService()->registerHandler(this, __FUNCTION__);
 
-	if (nLoginMode == elogin_online)
+	DWORD nActorID = m_pMaster->getIntProperty(PROPERTY_ID);
+	if (nLoginMode == elogin_online && !IsComputerPDBID(nActorID))
 	{
 		readSeasonInfoFromDB();
 	}
@@ -333,11 +334,12 @@ void CRankSeasonManager::checkSeasonTime()
 
 	// 检测上次赛季结束
 	SSchemeMatchSeasonTime * pSchemeLastSeasonByEndTime = pSchemeSeasonTime->getSchemeMatchSeasonTimeByLastEndTime();
-	if (pSchemeLastSeasonByEndTime == NULL)
-		return;
-	if (m_seasonDetail.dwEndTime > 0 && m_seasonDetail.dwEndTime < pSchemeLastSeasonByEndTime->tEndTime)
+	if (pSchemeLastSeasonByEndTime != NULL)
 	{
-		dealSeasonEnd(pSchemeLastSeasonByEndTime->nIndex);
+		if (m_seasonDetail.dwEndTime > 0 && m_seasonDetail.dwEndTime < pSchemeLastSeasonByEndTime->tEndTime)
+		{
+			dealSeasonEnd(pSchemeLastSeasonByEndTime->nIndex);
+		}
 	}
 
 	// 检测本次赛季开始
@@ -524,8 +526,8 @@ void CRankSeasonManager::sendSeasonPrizeMail(SSchemeMatchSeasonPrize * pPrize)
 
 bool CRankSeasonManager::checkHavePlayRank()
 {
-	int nRankGrade = m_pBankPart->getMatchTypeRankGrade(MatchType_Rank);
-	if (nRankGrade <= 0)
+	int nHideRankGrade = m_pBankPart->getMatchTypeHideRank(MatchType_Rank);
+	if (nHideRankGrade <= 0)
 		return false;
 	else
 		return true;
@@ -600,14 +602,7 @@ void CRankSeasonManager::readSeasonInfoFromDB()
 	
 	DWORD dwActorID = m_pMaster->getIntProperty(PROPERTY_ID);
 
-	// 当前赛季数据
-	DBREQ_PARAM_GET_RANK_SEASON_DETAIL paramDetail;
-	paramDetail.dwActorID = dwActorID;
-	if (pDBEngine->executeSP(GAMEDB_REQUEST_GET_RANK_SEASON_DETAIL, dwActorID, (LPCSTR)&paramDetail, sizeof(paramDetail), static_cast<IDBRetSink *>(this)) == false)
-	{
-		ErrorLn(__FUNCTION__": pDBEngine->executeSP() GAMEDB_REQUEST_GET_RANK_SEASON_DETAIL failed");
-		return;
-	}
+	// 先取历史赛季数据，否则当前赛季新添加的记录会被历史赛季清除时擦掉
 
 	// 历史赛季数据
 	DBREQ_PARAM_GET_RANK_SEASON_RECORD paramRecord;
@@ -615,6 +610,15 @@ void CRankSeasonManager::readSeasonInfoFromDB()
 	if (pDBEngine->executeSP(GAMEDB_REQUEST_GET_RANK_SEASON_RECORD, dwActorID, (LPCSTR)&paramRecord, sizeof(paramRecord), static_cast<IDBRetSink *>(this)) == false)
 	{
 		ErrorLn(__FUNCTION__": pDBEngine->executeSP() GAMEDB_REQUEST_GET_RANK_SEASON_RECORD failed");
+		return;
+	}
+
+	// 当前赛季数据
+	DBREQ_PARAM_GET_RANK_SEASON_DETAIL paramDetail;
+	paramDetail.dwActorID = dwActorID;
+	if (pDBEngine->executeSP(GAMEDB_REQUEST_GET_RANK_SEASON_DETAIL, dwActorID, (LPCSTR)&paramDetail, sizeof(paramDetail), static_cast<IDBRetSink *>(this)) == false)
+	{
+		ErrorLn(__FUNCTION__": pDBEngine->executeSP() GAMEDB_REQUEST_GET_RANK_SEASON_DETAIL failed");
 		return;
 	}
 }

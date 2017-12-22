@@ -12,7 +12,7 @@ public:
 	// 取所有已准备好对外开放的View数量
 	int		GetReadyCount();
 	// 将所有已握手的Gate信息推送给所有View
-	void	BroadcastGatesInfoToView();
+	void	BroadcastGatesInfoToViews();
 
 protected:
 	virtual void onDelUser(ISessionUser* pUser) {};

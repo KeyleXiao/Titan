@@ -170,6 +170,7 @@ namespace USpeedUI.LoginAndCreate
             ViewEventHelper.Instance.SendCommand<gameview_select_server>(GameLogicDef.GVIEWCMD_REQUEST_SELECT_SERVER, ref info);
         }
     }
+
     public class UViewLogin : UIBaseWndView
     {
         protected UMediatorLogin mediator;
@@ -230,7 +231,16 @@ namespace USpeedUI.LoginAndCreate
             UpdateServerInfo();
 
             if (!Debug.isDebugBuild)
+            {
                 InitForRelease();
+                //发布版走外网注册网址
+                m_strRegisterURL = "http://passport.q1.com/zhuce.html";
+            }
+               
+            AdvInfo info = GameUtil.GetAdvInfo();
+            m_strRegisterURL += "?" + "radid=" + info.radid + "&" +
+                                "rsid=" + info.rsid + "&gameid=7";
+
             return base.Init(wnd);
         }
 
@@ -663,9 +673,6 @@ namespace USpeedUI.LoginAndCreate
                 IPText.gameObject.SetActive(false);
             if (UserAgreement != null)
                 UserAgreement.gameObject.SetActive(false);
-
-            //发布版走外网注册网址
-            m_strRegisterURL = "http://tt.q1.com/?radid=xy_tt_cl";
         }
     
         private void UpdateServerList(List<gamelogic_district_info> groupList)

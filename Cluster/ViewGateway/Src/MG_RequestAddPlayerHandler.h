@@ -18,7 +18,6 @@ protected:
 		msg.eResult = eResult;
 		msg.dwPlayerID = pMsg->reqMsg.dwPlayerID;
 
-		const SGameMsgHead& header = gMsg.BuildHead_GM(ENUM_MSG_VIEW_REQUEST_ADD_PLAYER_REPLY);
-		TSendMsg(pSession, header, msg);
+		pSession->SendMsg(msg);
 	}
 };

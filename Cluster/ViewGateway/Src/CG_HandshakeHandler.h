@@ -53,18 +53,13 @@ protected:
 		pClient->SetMacAddress(pMsg->szMacAddress);// 保存mac地址
 
 		// 3.0 回复握手消息
-		{
-			const SGameMsgHead& header = gMsg.BuildHead_GC(ENUM_MSG_VIEW_HANDSHAKE_RESPONSE);
-			SMsgView_GC_HandshakeResponse sendData;
-			TSendMsg(pClient, header, sendData);
-		}
+		pClient->SendMsg(SMsgView_GC_HandshakeResponse());
 
 		// 4.0 通知View，某Client要观看某战报，以某种权限
 		{
-			const SGameMsgHead& header = gMsg.BuildHead_GC(ENUM_MSG_VIEW_C_REQUEST_REPLAY);
 			SMsgView_GV_CRequestReplay msg;
 			msg.reqMsg = pNode->m_info.reqMsg;
-			TSendMsg(pView, header, msg);
+			pView->SendMsg(msg);
 		}
 
 		// 5.0 通知Mng，玩家登陆成功（此时需要将玩家从Auth列表中移除，加入到登陆成功列表中）
@@ -77,8 +72,7 @@ private:
 	{
 		SMsgView_GC_HandshakeFail msg;
 		msg.eFailReason = eFailReason;
-		const SGameMsgHead& header = gMsg.BuildHead_GC(ENUM_MSG_VIEW_HANDSHAKE_FAIL);
-		TSendMsg(pSession, header, msg);
+		pSession->SendMsg(msg);
 
 		// 断开连接
 		pSession->Disconnect();

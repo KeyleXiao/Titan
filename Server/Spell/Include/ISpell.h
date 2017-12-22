@@ -25,7 +25,7 @@ struct SPELL_CONTEXT;
    1.单个技能接口，负责维护技能施放逻辑,及技能相关的天赋数据
 */
 // ================================================================================//
-struct ISpell
+struct ISpell : public IEventExecuteSink
 {
 	// 载入技能
 	// @param pEntity: 技能实体指针(属于某实体,同步方便)

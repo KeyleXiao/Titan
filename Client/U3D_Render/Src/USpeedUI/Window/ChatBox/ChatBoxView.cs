@@ -601,7 +601,8 @@ namespace USpeedUI.ChatBox
                 case EMChatChannelType.CHAT_CHANNEL_CAMP:
                     {
                         if (StageManager.Instance.getCurrentState() != EStage_State.ESS_BATTLE &&
-                            StageManager.Instance.getCurrentState() != EStage_State.ESS_MATCHROOM)
+                            StageManager.Instance.getCurrentState() != EStage_State.ESS_MATCHROOM &&
+                            StageManager.Instance.getCurrentState() != EStage_State.ESS_LOADSCENE)
                         {
                             bBan = true;
                             UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_CHAT_BAN_CAMP_CHANNEL);
@@ -677,6 +678,9 @@ namespace USpeedUI.ChatBox
         public void OnSendBtnClick()
         {
             string strInput = inputField.GetCharString(0, -1);
+
+            if (strInput == "")
+                return;
 
 			//替换表情字符
 			ChatEmoticonConfig.Instance.ReplaceChatEmoticonChar(ref strInput);

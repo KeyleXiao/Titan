@@ -117,6 +117,15 @@ namespace ASpeedGame.Data.LegendCupConfig
         ECTC_COL_TYPE_MAX,         // 最大
     }
 
+    // 与LegendCupLimit.csv表里面的列对应
+    public enum ECupLimitCol
+    {
+        ECLC_COL_LIMIT_CONFIGID,        // 配置ID
+        ECLC_COL_LIMIT_COUNT,           // 人数限制
+
+        ECLC_COL_LIMIT_MAX,             // 最大
+    }
+
     public class SSchemeLegendCupConfig
     {
         public int nConfigID;               // 配置ID
@@ -179,6 +188,12 @@ namespace ASpeedGame.Data.LegendCupConfig
         public int nIsShow;
     }
 
+    public class SSchemeLegendCupLimitConfig
+    {
+        public int nConfigID;
+        public int nCountLimit;
+    }
+
     class LegendCupConfig
     {
         private static LegendCupConfig singleton = new LegendCupConfig();
@@ -199,6 +214,7 @@ namespace ASpeedGame.Data.LegendCupConfig
         private Dictionary<int, SSchemeLegendCupTipConfig> m_cupTipConfig;
         private Dictionary<int, List<SSchemeLegendCupPrizeConfig>> m_cupPrizeConfig;
         private List<SSchemeLegendCupTypeConfig> m_cupTypeConfig;
+        private Dictionary<int, SSchemeLegendCupLimitConfig> m_cupLimitConfig;
         
         public void Load(string stPath)
         {
@@ -207,6 +223,7 @@ namespace ASpeedGame.Data.LegendCupConfig
             LoadLegendCupTipConfig(stPath + "LegendCupTipConfig.csv");
             LoadLegendCupPrizeConfig(stPath + "LegendCupPrizeConfig.csv");
             LoadLegendCupTypeConfig(stPath + "LegendCupTypeInfo.csv");
+            LoadLegendCupLimitConfig(stPath + "LegendCupLimit.csv");
         }
 
         public void Unload()
@@ -216,11 +233,13 @@ namespace ASpeedGame.Data.LegendCupConfig
             m_cupTipConfig.Clear();
             m_cupPrizeConfig.Clear();
             m_cupTypeConfig.Clear();
+            m_cupLimitConfig.Clear();
             m_cupConfig = null;
             m_cupDetailConfig = null;
             m_cupTipConfig = null;
             m_cupPrizeConfig = null;
             m_cupTypeConfig = null;
+            m_cupLimitConfig = null;
         }
 
         // 比赛脚本
@@ -250,8 +269,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                 cupInfo.nRegistNeedMoney = reader.GetInt(i, (int)ECupConfigCol.ECCL_COL_CUP_REGISTNEEDMONEY, 0);
                 cupInfo.nRegistHighestMoney = reader.GetInt(i, (int)ECupConfigCol.ECCL_COL_CUP_REGISTHIGHESTMONEY, 0);
                 cupInfo.nPrizeConfigID = reader.GetInt(i, (int)ECupConfigCol.ECCC_COL_CUP_PRIZECONFIGID, 0);
-                cupInfo.nPrizeConfigID = reader.GetInt(i, (int)ECupConfigCol.ECCC_COL_CUP_ISFREE, 0);
-                cupInfo.nPrizeConfigID = reader.GetInt(i, (int)ECupConfigCol.ECCC_COL_CUP_MINI_START_KINNUM, 0);
+                cupInfo.bIsFree = reader.GetInt(i, (int)ECupConfigCol.ECCC_COL_CUP_ISFREE, 0) > 0;
+                cupInfo.nMiniStartCount = reader.GetInt(i, (int)ECupConfigCol.ECCC_COL_CUP_MINI_START_KINNUM, 0);
                 cupInfo.sCupConfigViewName = reader.GetString(i, (int)ECupConfigCol.ECCC_COL_CUP_VIEW_NAME, "");
 
                 m_cupConfig[cupInfo.nConfigID] = cupInfo;
@@ -414,10 +433,22 @@ namespace ASpeedGame.Data.LegendCupConfig
             }
         }
 
-        //public int GetCupConfigCount()
-        //{
-        //    return m_cupConfig.Count;
-        //}
+        // 比赛限制脚本
+        private void LoadLegendCupLimitConfig(string stPath)
+        {
+            ScpReader reader = new ScpReader(stPath, true, 2);
+
+            m_cupLimitConfig = new Dictionary<int, SSchemeLegendCupLimitConfig>();
+            for (int i = 0; i < reader.GetRecordCount(); i++)
+            {
+                SSchemeLegendCupLimitConfig limitInfo = new SSchemeLegendCupLimitConfig();
+                limitInfo.nConfigID = reader.GetInt(i, (int)ECupLimitCol.ECLC_COL_LIMIT_CONFIGID, 0);
+                limitInfo.nCountLimit = reader.GetInt(i, (int)ECupLimitCol.ECLC_COL_LIMIT_COUNT, 0);
+
+                m_cupLimitConfig.Add(limitInfo.nConfigID, limitInfo);
+            }
+        }
+
 
         public SSchemeLegendCupConfig GetCupConfig(int nConfigID)
         {
@@ -490,6 +521,16 @@ namespace ASpeedGame.Data.LegendCupConfig
                 {
                     return item;
                 }
+            }
+
+            return null;
+        }
+
+        public SSchemeLegendCupLimitConfig GetCupLimitConfig(int nConfigID)
+        {
+            if (m_cupLimitConfig.ContainsKey(nConfigID))
+            {
+                return m_cupLimitConfig[nConfigID];
             }
 
             return null;

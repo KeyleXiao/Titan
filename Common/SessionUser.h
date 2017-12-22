@@ -16,6 +16,7 @@
 #include "ISessionUser.h"
 #include "IByteRecord.h"
 #include "IUserList.h"
+#include "IMsg.h"
 
 
 // 用于监听到的连接
@@ -71,7 +72,32 @@ public:
 	void			Disconnect();
 
 	void			Release();
-	bool			SendData(const char * pData, size_t dwDataLen);
+
+	// 发送消息，简化版
+	template<typename TMsg>
+	bool			SendMsg(TMsg& msg)
+	{
+		if (m_pConnection == NULL)
+			return false;
+
+		SGameMsgHead header;
+		header.SrcEndPoint = msg.GetSrcEndPoint();
+		header.DestEndPoint = msg.GetDestEndPoint();
+		header.byKeyModule = msg.GetModuleId();
+		header.byKeyAction = msg.GetActionId();
+
+		obuf obufData;
+		TBuildObufMsg(obufData, header, msg);
+
+		const DWORD dwLen = (DWORD)obufData.size();
+		Assert(dwLen == obufData.size());
+		if (!m_pConnection->SendData(obufData.data(), dwLen))
+			return false;
+
+		OnSendData(dwLen);
+
+		return true;
+	}
 
 	const char*		GetRemoteIP() { return m_szRemoteIP.c_str(); }
 	DWORD			GetRemotePort() { return m_dwRemotePort; }
@@ -95,6 +121,7 @@ protected:
 private:
 	void OnSendData(DWORD dwDataLen) { if (m_pByteRecord)	m_pByteRecord->OnSendData(dwDataLen); }
 	void OnRecvData(DWORD dwDataLen) { if (m_pByteRecord)	m_pByteRecord->OnRecvData(dwDataLen); }
+	bool SendData(const char * pData, size_t dwDataLen);
 
 protected:
 	IConnection	*		m_pConnection;		// 服务器与网关之间的连接

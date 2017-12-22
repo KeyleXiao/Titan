@@ -35,6 +35,8 @@
 // 客户端与网关握手
 struct SMsgView_CG_Handshake : public IFixMsg<SMsgView_CG_Handshake>
 {
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_CLIENT; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
 	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_HANDSHAKE; }
 
@@ -48,6 +50,8 @@ struct SMsgView_CG_Handshake : public IFixMsg<SMsgView_CG_Handshake>
 // 管理服回复观战服
 struct SMsgView_GC_HandshakeResponse : public IFixMsg<SMsgView_GC_HandshakeResponse>
 {
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_CLIENT; };
 	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_HANDSHAKE_RESPONSE; }
 
@@ -67,6 +71,8 @@ enum EnumHandshakeFail
 };
 FixMsgStruct(SMsgView_GC_HandshakeFail)
 {
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_CLIENT; };
 	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_HANDSHAKE_FAIL; }
 
@@ -79,6 +85,8 @@ FixMsgStruct(SMsgView_GC_HandshakeFail)
 // 心跳检查	ENUM_MSG_VIEW_KEEPALIVE
 FixMsgStruct(SMsgView_CG_KeepAlive)
 {
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_CLIENT; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
 	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_KEEPALIVE; }
 	// 空消息
@@ -89,6 +97,8 @@ FixMsgStruct(SMsgView_CG_KeepAlive)
 // 回应心跳检查	ENUM_MSG_VIEW_ANSWER_KEEPALIVE
 FixMsgStruct(SMsgView_GC_Answer_KeepAlive)
 {
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_CLIENT; };
 	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_ANSWER_KEEPALIVE; }
 	// 空消息

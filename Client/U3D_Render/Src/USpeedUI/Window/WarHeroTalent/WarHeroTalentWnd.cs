@@ -47,7 +47,7 @@ namespace USpeedUI.WarHeroTalent
 
         public override int GetPermissionMask()
         {
-            return (int)WndPermissionMaskDef.WND_PM_All;
+            return (int)WndPermissionMaskDef.WND_PM_Normal;
         }
 
         // 初始化

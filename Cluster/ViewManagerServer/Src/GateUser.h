@@ -30,6 +30,9 @@ public:
 	inline	WORD	GetPortForView() const { return m_wPortForView; }
 	inline	void	SetPortForView(WORD val) { m_wPortForView = val; }
 
+	inline	WORD	GetPortForClient() { return m_wClientPort; }
+	inline	void	SetPortForClient(WORD wClientPort) { m_wClientPort = wClientPort; }
+
 	// 是否准备好对外服务了
 	inline	bool	IsReady() { return GetMaxCount() > 0; }
 
@@ -44,4 +47,6 @@ private:
 	DWORD	m_dwMaxCount;	// 能承载的最大人数
 	DWORD	m_dwCurrCount;	// 当前人数
 	WORD	m_wPortForView;	// 该Gate监听ViewServer的端口
+	WORD	m_wClientPort;	// 该Gate监听Client的端口
+
 };

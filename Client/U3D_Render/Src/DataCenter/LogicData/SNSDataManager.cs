@@ -252,7 +252,9 @@ namespace DataCenter
 
 			updateBuddyStatus(status);
 
-			UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_UPDATE_BUDDYGROUP, null);
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_BUDDY_STATUS_UPDATE, null);
+
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_UPDATE_BUDDYGROUP, null);
 		}
 
 		// 收到好友列表

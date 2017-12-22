@@ -891,6 +891,8 @@ namespace USpeedUI.LegendCup
                 channelType = EMChatChannelType.CHAT_CHANNEL_CLAN;
             }
             UIUtil.SendChatMessage(channelType, strContent);
+
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBOX_TOGGLE, null);
         }
 
     }

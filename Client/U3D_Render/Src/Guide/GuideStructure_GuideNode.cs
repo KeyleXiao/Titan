@@ -1046,7 +1046,7 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
         protected override void Init()
         {
             SSchemeGuideNodeData guideNodeData = GuideManager.Instance.getNodeConfigData(GuideNodeID());
-            int m_nEffectID = (int)USpeedUI.UEffect.UEffectPrefabType.UEPT_GuideWidget_GameModeButton;
+            int m_nEffectID = (int)USpeedUI.UEffect.UEffectPrefabType.UEPT_GuideWidget_LifeHero_Button;
             int m_nHideDelayTime = guideNodeData.GuideIntParams[(int)EGuideNodeConfigParamID.GuideParamID_0];
             int nSoundID_0 = guideNodeData.GuideIntParams[(int)EGuideNodeConfigParamID.GuideParamID_1];
             //int m_nEffectID2 = (int)USpeedUI.UEffect.UEffectPrefabType.UEPT_GuideWidget_LifeHero_jiantou01;
@@ -1395,12 +1395,12 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
         protected override void Init()
         {
             SSchemeGuideNodeData guideNodeData = GuideManager.Instance.getNodeConfigData(GuideNodeID());
-            m_nEffectID = (int)USpeedUI.UEffect.UEffectPrefabType.UEPT_GuideWidget_GameModeButton;
+            m_nEffectID = (int)USpeedUI.UEffect.UEffectPrefabType.UEPT_GuideWidget_GameModeButton_Small;
 
             int m_nSound_4 = guideNodeData.GuideIntParams[(int)EGuideNodeConfigParamID.GuideParamID_0];//317
             string m_strDes_0 = guideNodeData.GuideStringParams[(int)EGuideNodeConfigParamID.GuideParamID_0];
 
-            UGuideWidgetMsgData msgData = new UGuideWidgetMsgData((int)GuideNodeID(), 0, m_nEffectID, _oUserData:2,_bForceGuide: true);
+            UGuideWidgetMsgData msgData = new UGuideWidgetMsgData((int)GuideNodeID(), 0, m_nEffectID, _oUserData: (int)War.EWarModeDef.MODE_MachineVS, _bForceGuide: true);
 
             //初始化游戏模式指引
             SetPrecondition(new CON_IsCurrentGuideNode(GuideNodeID()));

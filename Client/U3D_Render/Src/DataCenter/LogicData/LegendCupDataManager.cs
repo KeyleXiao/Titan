@@ -343,6 +343,11 @@ namespace DataCenter
 
         public void RecvCupCreaterPublicSuccess()
         {
+            if (!UISystem.Instance.IsWndVisible(WndID.WND_ID_LEGENDCUP_REGIST))
+            {
+                return;   
+            }
+
             // 关闭注册界面  打开相应的杯赛阶段界面
             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_CLOSE, null);
 
@@ -350,6 +355,24 @@ namespace DataCenter
             {
                 cmd_legendcup_view_single_cup cupdata = new cmd_legendcup_view_single_cup();
                 cupdata.nLegendCupID = m_legendCupSelfCreateNodeDic.ElementAt(0).Value.nLegendCupID;
+                ViewEventHelper.Instance.SendCommand<cmd_legendcup_view_single_cup>(GameLogicDef.GVIEWCMD_LEGENDCUP_VIEW_SINGLE_CUP, ref cupdata);
+            }
+        }
+
+        public void RecvCupPublicSuccess()
+        {
+            if (!UISystem.Instance.IsWndVisible(WndID.WND_ID_LEGENDCUP_REGIST))
+            {
+                return;
+            }
+
+            // 关闭注册界面  打开相应的杯赛阶段界面
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_CLOSE, null);
+
+            if (m_legendCupSelfInNodeDic.Count == 1)
+            {
+                cmd_legendcup_view_single_cup cupdata = new cmd_legendcup_view_single_cup();
+                cupdata.nLegendCupID = m_legendCupSelfInNodeDic.ElementAt(0).Value.nLegendCupID;
                 ViewEventHelper.Instance.SendCommand<cmd_legendcup_view_single_cup>(GameLogicDef.GVIEWCMD_LEGENDCUP_VIEW_SINGLE_CUP, ref cupdata);
             }
         }
@@ -460,7 +483,7 @@ namespace DataCenter
             cmd_legendcup_recv_competition_node node = helper.get<cmd_legendcup_recv_competition_node>();
 
             // 自己战队dida相关
-            if (!(CheckIsSelfInKinRegistMember(node.nKin1ID) == false && CheckIsSelfInKinRegistMember(node.nKin2ID) == false))
+            if (!(CheckIsSelfInCompetitionMember(node.nKin1ID) == false && CheckIsSelfInCompetitionMember(node.nKin2ID) == false))
             {
                 bool bDida = (node.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter);
                 SetLegendCupDIDA(bDida, llegendCupId, node.nRoundID, node.nSearchID);
@@ -590,8 +613,23 @@ namespace DataCenter
             return result;
         }
 
-        // 检测自身是否在某战队报名列表内
-        public bool CheckIsSelfInKinRegistMember(int nKinID)
+        //// 检测自身是否在某战队报名列表内
+        //public bool CheckIsSelfInKinRegistMember(int nKinID)
+        //{
+        //    int nSelfID = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_ID);
+        //    SingleRegistKinMemberInfo memberInfo = GetSingleRegistKinMemberInfo(nKinID);
+        //    if (memberInfo == null)
+        //        return false;
+
+        //    int nHit = memberInfo.nodeInfo.FindIndex(item => item.nPDBID == nSelfID);
+        //    if (nHit >= 0)
+        //        return true;
+
+        //    return false;
+        //}
+
+        // 检测自身是否在某战队比赛列表内
+        public bool CheckIsSelfInCompetitionMember(int nKinID)
         {
             int nSelfID = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_ID);
             List<cmd_legendcup_competition_kinmembernode> memberInfo = GetKinMemberInfo(nKinID);

@@ -14,6 +14,7 @@ using USpeedUI.UWidgets.UAnimator;
 using UnityEngine.EventSystems;
 using USpeedUI.UEffect;
 using DG.Tweening;
+using USpeedUI.UExtensions;
 
 namespace USpeedUI.WarMain
 {
@@ -123,7 +124,7 @@ namespace USpeedUI.WarMain
                         UGuideWidgetMsgData cmdData = (UGuideWidgetMsgData)msgData;
                         if (cmdData != null)
                         {
-                            //m_wndView.AddGuideUIWidget(cmdData);
+                            m_wndView.AddGuideUIWidget(cmdData);
                         }
                     }
                     break;
@@ -134,7 +135,7 @@ namespace USpeedUI.WarMain
                             UGuideWidgetMsgData cmdData = (UGuideWidgetMsgData)msgData;
                             if (cmdData != null)
                             {
-                                //m_wndView.RemoveGuideUIWidget(cmdData);
+                                m_wndView.RemoveGuideUIWidget(cmdData);
                             }
                         }
                     }
@@ -143,7 +144,7 @@ namespace USpeedUI.WarMain
                     {
                         if(m_wndView != null)
                         {
-                            //m_wndView.GuideActionBegin();
+                            m_wndView.GuideActionBegin();
                         }
                     }
                     break;
@@ -151,7 +152,7 @@ namespace USpeedUI.WarMain
                     {
                         if(m_wndView != null)
                         {
-                            //m_wndView.GuideActionEnd();
+                            m_wndView.GuideActionEnd();
                         }
                     }
                     break;
@@ -179,10 +180,17 @@ namespace USpeedUI.WarMain
         public Image ModeIcon;
         public Text ModeDesText;
         public Image SelectIcon;
+        public RectTransform GuideModalTrans;
 
         public float JumpDuration;
         public Vector2 StartJumpPos;
         public Vector2 EndJumpPos;
+
+        /// <summary>
+        /// 新手引导添加控件标示
+        /// </summary>
+        public bool bUseGuideWidget;
+        public UGuideWidgetMsgData GuideWidgetData;
 
         private int m_nModeID;
         private UWarMainWndView m_wndView;
@@ -257,6 +265,30 @@ namespace USpeedUI.WarMain
             ModeDesText.gameObject.SetActive(false);
             SelectIcon.gameObject.SetActive(false);
         }
+
+        #region 新手引导部分
+        public void SetGuideWidgetData(bool openGuide, UGuideWidgetMsgData widgetMsg)
+        {
+            bUseGuideWidget = openGuide;
+            GuideWidgetData = widgetMsg;
+
+            if (!bUseGuideWidget)
+            {
+                gameObject.RemoveComponent<Guide.UGuideWidget>();
+            }
+            else
+            {
+                Guide.UGuideWidget guideWidget = gameObject.GetComponent<Guide.UGuideWidget>();
+                if (guideWidget == null)
+                    guideWidget = gameObject.AddComponent<Guide.UGuideWidget>();
+                guideWidget.GuideID = (GUIDE.EGuideNodeID)GuideWidgetData.nGuideID;
+                guideWidget.GuideStepID = GuideWidgetData.nGuideStepID;
+                guideWidget.GuideEffectID = GuideWidgetData.nGuideEffectID;
+                guideWidget.IsForceGuide = GuideWidgetData.bForeceGuide;
+                guideWidget.ModalTrans = guideWidget.IsForceGuide ? GuideModalTrans : null;
+            }
+        }
+        #endregion
 
         protected override void OnDisable()
         {
@@ -458,54 +490,47 @@ namespace USpeedUI.WarMain
             m_wnd.SetVisible(false);
         }
 
-        //#region 新手引导部分
-        //internal void AddGuideUIWidget(UGuideWidgetMsgData _msgData)
-        //{
-        //    ListMode.DataSource.BeginUpdate();
-        //    for (int i = 0; i < ListMode.DataSource.Count; ++i)
-        //    {
-        //        if(ListMode.DataSource[i].nModeID == (int)_msgData.oUserData)
-        //        {
-        //            ListMode.DataSource[i].bUseGuideWidget = true;
-        //            ListMode.DataSource[i].GuideWidgetData = new UGuideWidgetMsgData(_msgData);
-                    
-        //            break;
-        //        }
-        //    }
-        //    ListMode.DataSource.EndUpdate();
-        //    ListMode.UpdateItems();
-        //}
-        //internal void RemoveGuideUIWidget(UGuideWidgetMsgData _msgData)
-        //{
-        //    for (int i = 0; i < ListMode.DataSource.Count; ++i)
-        //    {
-        //        if (ListMode.DataSource[i].nModeID == (int)_msgData.oUserData)
-        //        {
-        //            ListMode.DataSource[i].bUseGuideWidget = false;
-        //            ListMode.DataSource[i].GuideWidgetData = new UGuideWidgetMsgData(_msgData);
-                    
-        //            break;
-        //        }
-        //    }
-        //}
+        #region 新手引导部分
+        internal void AddGuideUIWidget(UGuideWidgetMsgData _msgData)
+        {
+            if (_msgData == null || (int)_msgData.oUserData < 1)
+                return;
 
-        //internal void GuideActionBegin()
-        //{
-        //    Transform backBtnTF = GetTransform().FindChild("BackBtn");
-        //    if(backBtnTF != null)
-        //    {
-        //        backBtnTF.gameObject.SetActive(false);
-        //    }
-        //}
+            if(WarMainModeItems.Length >= (int)_msgData.oUserData && WarMainModeItems[(int)_msgData.oUserData - 1] != null)
+            {
+                WarMainModeItems[(int)_msgData.oUserData - 1].SetGuideWidgetData(true, new UGuideWidgetMsgData(_msgData));
+            }
+        }
+        internal void RemoveGuideUIWidget(UGuideWidgetMsgData _msgData)
+        {
+            {
+                if (_msgData == null || (int)_msgData.oUserData < 1)
+                    return;
 
-        //internal void GuideActionEnd()
-        //{
-        //    Transform backBtnTF = GetTransform().FindChild("BackBtn");
-        //    if (backBtnTF != null)
-        //    {
-        //        backBtnTF.gameObject.SetActive(true);
-        //    }
-        //}
-        //#endregion
+                if (WarMainModeItems.Length >= (int)_msgData.oUserData && WarMainModeItems[(int)_msgData.oUserData - 1] != null)
+                {
+                    WarMainModeItems[(int)_msgData.oUserData - 1].SetGuideWidgetData(false, new UGuideWidgetMsgData(_msgData));
+                }
+            }
+        }
+
+        internal void GuideActionBegin()
+        {
+            Transform backBtnTF = GetTransform().FindChild("BackBtn");
+            if (backBtnTF != null)
+            {
+                backBtnTF.gameObject.SetActive(false);
+            }
+        }
+
+        internal void GuideActionEnd()
+        {
+            Transform backBtnTF = GetTransform().FindChild("BackBtn");
+            if (backBtnTF != null)
+            {
+                backBtnTF.gameObject.SetActive(true);
+            }
+        }
+        #endregion
     }
 }

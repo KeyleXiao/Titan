@@ -503,6 +503,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text winRate;
         public Image rankIcon;
         public Text rank;
@@ -519,6 +520,7 @@ namespace USpeedUI.Chart
             indexIcon.gameObject.SetActive(false);
             playerName.text = "";
             winRate.text = "";
+            sexIcon.gameObject.SetActive(false);
             rankIcon.gameObject.SetActive(false);
             rank.text = "";
             detailData.text = "";
@@ -602,6 +604,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text heroName;
         public Image starIcon;
         public Text starName;
@@ -630,6 +633,7 @@ namespace USpeedUI.Chart
             score.text = "";
             chanceOfWin.text = "";
             clanName.text = "";
+            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();

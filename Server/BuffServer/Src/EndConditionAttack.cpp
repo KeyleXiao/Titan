@@ -77,7 +77,7 @@ bool CEndConditionAttack::Create(CBuffPart * pBuffPart, CBuff * pBuff)
 	m_pBuff = pBuff;
 
 	// 订阅主动攻击事件
-	pMaster->getEntityEvent()->Subscibe(this, EVENT_ENTITY_ATTACK, "Buff");
+	pMaster->getEntityEvent()->Subscibe(this, EVENT_ENTITY_CAST_SPELL, "Buff");
 
 	return true;
 }
@@ -95,7 +95,7 @@ void CEndConditionAttack::Close(void)
 		if (pMaster != NULL)
 		{
 			// 注销主动攻击事件
-			pMaster->getEntityEvent()->UnSubscibe(this, EVENT_ENTITY_ATTACK);
+			pMaster->getEntityEvent()->UnSubscibe(this, EVENT_ENTITY_CAST_SPELL);
 		}
 	}
 
@@ -122,7 +122,7 @@ void CEndConditionAttack::Close(void)
 */
 void CEndConditionAttack::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR pszContext, int nLen)
 {
-	if(wEventID != EVENT_ENTITY_ATTACK)
+	if(wEventID != EVENT_ENTITY_CAST_SPELL)
 	{
 		return;
 	}

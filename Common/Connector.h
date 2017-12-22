@@ -15,6 +15,7 @@
 #include "net.h"
 #include <string>
 #include "TimerHandler.h"
+#include "IMsg.h"
 #include <strstream>
 
 using namespace rkt;
@@ -190,14 +191,31 @@ public:
 		delete this;
 	}
 
-	// 发给语音服务器数据
-	void SendData(const char * pData, DWORD dwLen)
+	// 发送消息，简化版
+	template<typename TMsg>
+	bool SendMsg(TMsg& msg)
 	{
-		if (m_pConnection)
-		{
-			m_pConnection->SendData(pData, dwLen);
-			OnSendData(dwLen);
-		}
+		if (m_pConnection == NULL)
+			return false;
+
+		SGameMsgHead header;
+		header.SrcEndPoint = msg.GetSrcEndPoint();
+		header.DestEndPoint = msg.GetDestEndPoint();
+		header.byKeyModule = msg.GetModuleId();
+		header.byKeyAction = msg.GetActionId();
+
+		obuf obufData;
+		TBuildObufMsg(obufData, header, msg);
+
+		const DWORD dwLen = (DWORD)obufData.size();
+		Assert(dwLen == obufData.size());
+
+		if (!m_pConnection->SendData(obufData.data(), dwLen))
+			return false;
+
+		OnSendData(dwLen);
+
+		return true;
 	}
 
 	virtual std::string ToString() = 0;
@@ -230,9 +248,19 @@ protected:
 	// 重连的时间间隔，单位：毫秒
 	virtual	DWORD			GetReconnectInterval() = 0;
 
+private:
+	// 发送消息
+	void SendData(const char * pData, DWORD dwLen)
+	{
+		if (m_pConnection)
+		{
+			m_pConnection->SendData(pData, dwLen);
+			OnSendData(dwLen);
+		}
+	}
+
 protected:
 	TimerAxis&			m_TimerAxis;	// 时间轴（由外部传入）
-	//TimerAxis*			m_pTimerAxis;	// 时间轴（由外部传入，不需要释放）
 
 	IConnection*		m_pConnection;
 	std::string			m_szRemoteIP;

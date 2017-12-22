@@ -339,6 +339,7 @@ namespace DataCenter
             if (rootPath == "")
             {
                 Trace.LogWarning("rootPath文件夹路径为空!");
+                return;
             }
 
             if (!System.IO.Directory.Exists(rootPath))

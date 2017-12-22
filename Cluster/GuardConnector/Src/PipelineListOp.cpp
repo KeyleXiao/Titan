@@ -71,7 +71,7 @@ bool CPipelineListOp::lSet(const string& strKey, long nIndex, const string& strV
 	return m_redis.Lset(strKey, nIndex, strValue, m_pPipeline) == RC_SUCCESS;
 }
 
-bool CPipelineListOp::lRange(const string& strKey, long nStart, long nStop, vector<string>* pvecValue)
+bool CPipelineListOp::lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue)
 {
 	if (pvecValue == nullptr)
 		return false;

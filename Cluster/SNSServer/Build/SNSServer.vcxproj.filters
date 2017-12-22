@@ -151,6 +151,9 @@
     <ClInclude Include="..\Src\SNSServerImp.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\SNS_ManagedDef.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Src\SNSServer.rc">

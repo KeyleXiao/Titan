@@ -9,6 +9,8 @@ using ASpeedGame.Data.Scheme;
 using GameLogic;
 using DG.Tweening;
 using USpeedUI.UWidgets;
+using Data.ActorPrizeConfig;
+using ASpeedGame.Data.RecommendPrize;
 
 namespace USpeedUI.GamePromotion
 {
@@ -391,6 +393,88 @@ namespace USpeedUI.GamePromotion
             }
         }
     }
+    
+    public class DefaultPromotionPrizeItem : MonoBehaviour
+    {
+        public Text targetText;
+        public Button obtainBtn;
+        public Text obtainBtnDesc;
+        [HideInInspector]
+        public List<DefaultPrizeItem> m_prizeIDList = new List<DefaultPrizeItem>();
+        private int m_targetID; // 奖励目标ID 
+
+        public bool Init(TaiTanSaySayFrame saysayFrame)
+        {
+            targetText.text = "";
+            obtainBtn.onClick.AddListener(OnObtainBtnClick);
+
+            for (int i = 0; i < saysayFrame.PRIZE_ID_COUNT; ++i)
+            {
+                GameObject go = Instantiate(saysayFrame.defaultSubPrizeItem.gameObject);
+                if (go == null)
+                {
+                    Trace.LogError("DefaultPrizeItem Instantiate failed");
+                    return false;
+                }
+
+                go.transform.SetParent(saysayFrame.defaultSubPrizeItem.parent, false);
+                go.SetActive(false);
+                DefaultPrizeItem item = go.GetComponent<DefaultPrizeItem>();
+                if (!item.Init())
+                    return false;
+                
+                m_prizeIDList.Add(item);
+            }
+
+            return true;
+        }
+
+        public void OnObtainBtnClick()
+        {
+
+        }
+
+        public void SetData(int targetID, int totalNumber, List<int> prizeIDList)
+        {
+            m_targetID = targetID;
+            targetText.text = totalNumber.ToString();
+            int count = 0;
+            if (prizeIDList != null)
+            {
+                count = prizeIDList.Count < m_prizeIDList.Count ? prizeIDList.Count : m_prizeIDList.Count;
+            }
+
+            for (int i = 0; i < count; ++i)
+            {
+                m_prizeIDList[i].SetData(prizeIDList[i]);
+            }
+        }
+    }
+
+    public class DefaultPrizeItem : MonoBehaviour
+    {
+        public Text prizeNameText;
+        public Image prizeImage;
+
+        public bool Init()
+        {
+            prizeNameText.text = "";
+            prizeImage.gameObject.SetActive(false);
+
+            return true;
+        }
+
+        public void SetData(int prizeID)
+        {
+            SSchemeActorPrizeConfig actorPrizeConfig = ActorPrizeConfig.Instance.GetActorPrizeConfig(prizeID);
+            if (actorPrizeConfig != null)
+            {
+                prizeImage.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_ActorPrize, WndID.WND_ID_GAME_PROMOTION, actorPrizeConfig.nPrizeType, actorPrizeConfig.nPrizeIcon);
+                prizeNameText.text = actorPrizeConfig.strPrizeName;
+             // this.GetComponent<UTooltipTrigger>().SetText(UTooltipParamName.BodyText, actorPrizeConfig.strPrizeDesc);
+            }
+        }
+    }
 
     public class TaiTanSaySayFrame : UISubFrameView
     {
@@ -414,6 +498,24 @@ namespace USpeedUI.GamePromotion
         public Text createDatetimeText;
 
         public UListMyUser myUserList;
+
+        #region 总局数
+        public Text totalNumGamesLabel;
+        public InputField totalNumGamesIF;
+        public Button giftBtn;
+        public Image redPointImage;
+        public Text targetHeaderLabel;
+        public Text prizeHeaderLabel;
+        public GameObject totalNumberGamesObj;
+        public Transform defaultPromotionPrizeItem;
+        public Transform defaultSubPrizeItem;
+        private GameObject m_prizeFrameObj;
+
+        public readonly int PRIZE_LEVEL_COUNT = 5; // 推广奖励列表最大数量
+        public readonly int PRIZE_ID_COUNT = 3;    // 每一个等级下的最大奖励ID数
+        private List<DefaultPromotionPrizeItem> m_prizeList = new List<DefaultPromotionPrizeItem>();
+
+        #endregion
 
         #region recordShare
         public UShareBar ShareBar;
@@ -450,11 +552,76 @@ namespace USpeedUI.GamePromotion
             TaiTanLinkBtn.GetComponentInChildren<Text>().text = ULocalizationService.Instance.Get("UIView", "GamePromotion", "TaiTanLinkBtnDesc");
             TaiTanLinkBtn.onClick.AddListener(OnTaiTanLinkBtnClick);
 
+            if (!InitTotalNumGamesFrame())
+                return false;
+
             InitShareRecordData();
 
             SetMyUserListData();
 
             return true;
+        }
+
+        private bool InitTotalNumGamesFrame()
+        {
+            totalNumberGamesObj.SetActive(false);
+            m_prizeFrameObj = totalNumberGamesObj.transform.FindChild("PrizeFrame").gameObject;
+            totalNumGamesIF.text = LogicDataCenter.gamePromotionDataManager.TotalNumGames.ToString();
+            giftBtn.onClick.AddListener(OnGiftBtnClick);
+
+            if (!InitPrizeFrame())
+                return false;
+
+            return true;
+        }
+
+        private bool InitPrizeFrame()
+        {
+            for (int i = 0; i < PRIZE_LEVEL_COUNT; ++i)
+            {
+                GameObject go = Instantiate(defaultPromotionPrizeItem.gameObject);
+                if (go == null)
+                {
+                    Trace.LogError("DefaultPromotionPrizeItem Instantiate failed");
+                    return false;
+                }
+
+                go.transform.SetParent(defaultPromotionPrizeItem.parent, false);
+                DefaultPromotionPrizeItem item = go.GetComponent<DefaultPromotionPrizeItem>();
+                if (!item.Init(this))
+                    return false;
+
+                m_prizeList.Add(item);
+            }
+
+            defaultPromotionPrizeItem.gameObject.SetActive(false);
+            defaultSubPrizeItem.gameObject.SetActive(false);
+
+            return true;
+        }
+
+        private void SetPrizeFrameData()
+        {
+            List<SSchemeRecommendPrize> list = RecommendPrizeConfig.Instance.ConfigList;
+            int count = list.Count < m_prizeList.Count ? list.Count : m_prizeList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                m_prizeList[i].SetData(list[i].targetID, list[i].totalNumGames, list[i].prizeList);
+                m_prizeList[i].gameObject.SetActive(true);
+            }
+
+            for (int i = count; i < m_prizeList.Count; ++i)
+            {
+                m_prizeList[i].gameObject.SetActive(false);
+            }
+        }
+
+        public void OnGiftBtnClick()
+        {
+            if (m_prizeFrameObj != null)
+                m_prizeFrameObj.SetActive(!m_prizeFrameObj.activeSelf);
+
+            SetPrizeFrameData();
         }
 
         public void InitShareRecordData()

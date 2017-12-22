@@ -193,6 +193,7 @@ void MatchSceneService::onMsgCreateMoba( void* pData, size_t nLen )
 	}
 
     // 记录起来 所有玩家数据到来之后再创建其他相关
+    EmphasisLn(__FUNCTION__": ServerID="<<gServerGlobal->getServerID()<<" roomID="<<pMsg->dwRoomID);
     m_mapCreateRoomContext.insert(pair<DWORD, SMsgCreateRoom_OC>(dwRoomID, *pMsg));
 }
 
@@ -708,7 +709,7 @@ void MatchSceneService::sendToSocial(BYTE byKeyAction, BYTE nMsgID, void * data,
 // 发送创建结果
 void MatchSceneService::sendCreateMobaResult(DWORD dwRoomID, int nWarID, int nSceneID, bool bResult)
 {
-	TraceLn(__FUNCTION__ ": dwRoomID="<<dwRoomID);
+	EmphasisLn(__FUNCTION__ ": dwRoomID="<<dwRoomID<<" nSceneID="<<nSceneID<<" nWarID="<<nWarID);
 
 	SMsgCreateMobaResult_SO msg;
 	msg.dwRoomID = dwRoomID;					// 房间ID 
@@ -2756,6 +2757,12 @@ void MatchSceneService::accordLeaveWar(PDBID idActor)
         msg.destScene.nSceneID = mainScene.nSceneID;
         msg.destScene.nSceneSN = mainScene.nSceneSN;
         msg.eReason = eswitchscene_out_battlefield;
+
+#ifdef __SWITCH_SCENE_PRINT__
+
+        TraceLn(__FUNCTION__":switchScene, not int room ,idActor=" << idActor << ",nDestWorldID=" 
+            << mainScene.nWorldID << ",nDestServerID="  << mainScene.nZoneServerID << ",nDestSceneID=" << mainScene.nSceneID);
+#endif
 
         obuf256 buf;
         buf << head << msg; 

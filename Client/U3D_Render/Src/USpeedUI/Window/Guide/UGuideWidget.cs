@@ -71,6 +71,12 @@ namespace USpeedUI.Guide
         public Color? ModalColor = null;
 
         /// <summary>
+        /// 模态的节点
+        /// </summary>
+        [SerializeField]
+        public RectTransform ModalTrans = null;
+
+        /// <summary>
         /// 原始的父节点
         /// </summary>
         private Transform m_tOriginalParent;
@@ -156,7 +162,7 @@ namespace USpeedUI.Guide
         /// <param name="_nParam"></param>
         protected void AddModalHelper()
         {
-                m_nModalKey = UIWidgets.ModalHelper.Open(this, null, ModalColor, null, GetRectTransform);
+                m_nModalKey = UIWidgets.ModalHelper.Open(this, null, ModalColor, null, ModalTrans == null ? GetRectTransform : ModalTrans);
 
             //GetTransform.SetParent(Utilites.FindTopmostCanvas(GetTransform), true);
             //GetTransform.SetAsLastSibling();

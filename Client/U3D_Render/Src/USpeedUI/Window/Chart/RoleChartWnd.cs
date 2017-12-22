@@ -469,6 +469,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Image rankIcon;
         public Text rankDesc;
         public RectTransform StarImgFrame;
@@ -492,7 +493,8 @@ namespace USpeedUI.Chart
             rankDesc.text = "";
             StarScore.text = "";
             clanName.text = "";
-            for(int i = 0; i < StarImgFrame.childCount - 1; i++)
+            sexIcon.gameObject.SetActive(false);
+            for (int i = 0; i < StarImgFrame.childCount - 1; i++)
             {
                 StarImgFrame.GetChild(i).gameObject.SetActive(false);
             }
@@ -606,6 +608,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text fiveKillCount;
         public Image rankIcon;
         public Text rankDesc;
@@ -628,6 +631,7 @@ namespace USpeedUI.Chart
             rankIcon.gameObject.SetActive(false);
             rankDesc.text = "";
             clanName.text = "";
+            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();

@@ -13,6 +13,8 @@ AuthMng& gAuthMng = AuthMng::getInstance();
 EnumResultRequestAddPlayer AuthMng::Insert(SMsgView_MG_RequestAddPlayer* pMsg, AuthNode*& pAuthNode)
 {
 	// 1.0 检验
+	PlayerID dwPlayerID = pMsg->reqMsg.dwPlayerID;
+
 	// 1.1 检验ViewServer连接状况
 	ViewSession* pView = gViewContainer.Get(pMsg->wViewID);
 	if (pView==nullptr)
@@ -20,16 +22,10 @@ EnumResultRequestAddPlayer AuthMng::Insert(SMsgView_MG_RequestAddPlayer* pMsg, A
 
 	// 1.2 检验该玩家是否已经连上来了
 	ClientSession* pClientSession = gClientContainer.GetByPlayerID(pMsg->reqMsg.dwPlayerID);
-	if (pClientSession==nullptr)
+	if (pClientSession)
 		return E_RESULT_RAP_ERR_PLAYER_EXIST;
 
-	// 1.3 检验本验证管理器
-	PlayerID dwPlayerID = pMsg->reqMsg.dwPlayerID;
-	auto it = m_MapAuth.find(dwPlayerID);
-	if (it!= m_MapAuth.end())
-		return E_RESULT_RAP_ERR_AUTH_EXIST;
-
-	// 2.0 生成新的登陆验证结点
+	// 2.0 生成新的登陆验证结点(如果之前有数据，就覆盖之)
 	m_MapAuth[dwPlayerID].m_info = *pMsg;
 	m_MapAuth[dwPlayerID].m_tExpiry = time(NULL) + m_MapAuth[dwPlayerID].m_info.dwTimeOut;
 
@@ -84,7 +80,6 @@ void AuthMng::OnTimer(unsigned long dwTimerID)
 	default:
 		break;
 	}
-	throw std::logic_error("The method or operation is not implemented.");
 }
 
 void AuthMng::SetMng(MngConnector* pSession)
@@ -110,8 +105,7 @@ void AuthMng::Remove(const PlayerID& dwPlayerID, EnumAuthDelReason eReason)
 		SMsgView_GM_AuthDel msg;
 		msg.dwPlayerID = dwPlayerID;
 		msg.eReason = eReason;
-		const SGameMsgHead& header = gMsg.BuildHead_GM(ENUM_MSG_VIEW_AUTH_DEL);
-		TSendMsg(m_pMng, header, msg);
+		m_pMng->SendMsg(msg);
 
 		// 删除该节点
 		m_MapAuth.erase(dwPlayerID);

@@ -46,6 +46,12 @@
     <Filter Include="Redis">
       <UniqueIdentifier>{47deaf56-375f-43be-b35a-ff7e3ca0ce4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Replay">
+      <UniqueIdentifier>{7a31df51-366f-4607-aaf3-da0656467831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common File\Redis">
+      <UniqueIdentifier>{14394876-5324-4b35-a784-5a38efcd3beb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\ClientList.h">
@@ -159,6 +165,15 @@
     <ClInclude Include="..\Src\GV_CRequestReplayHandler.h">
       <Filter>Gate\Handler</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\ReplayContainer.h">
+      <Filter>Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Replay.h">
+      <Filter>Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ViewRedisKey.h">
+      <Filter>Common File\Redis</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\ClientList.cpp">
@@ -217,6 +232,12 @@
     </ClCompile>
     <ClCompile Include="..\Src\RedisMng.cpp">
       <Filter>Redis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ReplayContainer.cpp">
+      <Filter>Replay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Replay.cpp">
+      <Filter>Replay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

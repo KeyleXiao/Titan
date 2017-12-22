@@ -539,6 +539,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text number;
         public UPopupMenuHandle popupMenuHandle;
 
@@ -555,6 +556,7 @@ namespace USpeedUI.Chart
             indexIcon.gameObject.SetActive(false);
             playerName.text = "";
             number.text = "";
+            sexIcon.gameObject.SetActive(false);
 
             if (popupMenuHandle.HandlePopupAction != null)
             {
@@ -635,6 +637,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text skinNums;
         public RectTransform assetInfoFrame;
         public Text[] assetNums;
@@ -653,6 +656,7 @@ namespace USpeedUI.Chart
             indexIcon.gameObject.SetActive(false);
             playerName.text = "";
             skinNums.text = "";
+            sexIcon.gameObject.SetActive(false);
             foreach (Text txt in assetNums)
             {
                 txt.text = "";
@@ -676,7 +680,6 @@ namespace USpeedUI.Chart
             assetNums[0].text = info.dwLegendSkinCount.ToString();
             assetNums[1].text = info.dwEpicSkinCount.ToString();
             assetNums[2].text = info.dwLimitedSkinCount.ToString();
-            assetNums[3].text = info.dwNormalSkinCount.ToString();
 
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();
@@ -745,8 +748,8 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text score;
-        public Text power;
         public UPopupMenuHandle popupMenuHandle;
 
         public Sprite[] borderList;
@@ -762,7 +765,7 @@ namespace USpeedUI.Chart
             indexIcon.gameObject.SetActive(false);
             playerName.text = "";
             score.text = "";
-            power.text = "";
+            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();
@@ -778,7 +781,6 @@ namespace USpeedUI.Chart
 
             playerName.text = info.szName;
             score.text = info.dwFaceScore.ToString();
-            power.text = info.dwPropVal.ToString();
 
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();
@@ -813,7 +815,6 @@ namespace USpeedUI.Chart
             index.color = txtColor;
             playerName.color = txtColor;
             score.color = txtColor;
-            power.color = txtColor;
         }
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)

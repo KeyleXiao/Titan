@@ -14,6 +14,7 @@
 #pragma once
 #include "buffer.h"
 #include "Common.h"
+#include "net.h"
 #include "NetMessageDef.h"
 
 #pragma pack(1)
@@ -32,6 +33,17 @@
 #define	VIEW_RECONNECT_INTERVAL			(10*1000)		// 重连周期10秒
 
 
+typedef	WORD	ViewID;		// ViewServerID
+typedef	WORD	GateID;		// 网关ID
+typedef	WORD	GameID;		// 游戏服ID
+
+typedef	DWORD	ReplayID;	// 战报ID
+typedef DWORD	PlayerID;	// 用来标识观战客户端的唯一ID（目前由请求观战的服务器发来，现在可以用玩家DBID）
+
+
+//////////////////////////////////////////////////////////////////////////
+/* 通用宏*/
+//////////////////////////////////////////////////////////////////////////
 // 检查val，如果是false，则返回false
 #define D_IF_FALSE_RETURN(val)	\
 if (!val)						\
@@ -40,9 +52,19 @@ if (!val)						\
 }
 
 
-typedef	DWORD	ReplayID;	// 战报ID
-typedef	WORD	ViewID;		// ViewServerID
-typedef	WORD	GateID;		// 网关ID
-typedef DWORD	PlayerID;	// 用来标识观战客户端的唯一ID（目前由请求观战的服务器发来，现在可以用玩家DBID）
+//////////////////////////////////////////////////////////////////////////
+/* 通用方法*/
+//////////////////////////////////////////////////////////////////////////
+// ULONG的ip地址转为char*
+inline char* Net_nToAddr(ULONG nIP)
+{
+	SOCKADDR_IN sock;
+	//将字符串转换为in_addr类型  
+	sock.sin_addr.S_un.S_addr = nIP;
+
+	return inet_ntoa(sock.sin_addr);
+}
+//ULONG nIP = inet_addr("192.168.1.111");
+
 
 #pragma pack()

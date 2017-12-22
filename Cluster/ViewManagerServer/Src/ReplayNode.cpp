@@ -36,6 +36,5 @@ void ReplayNode::NotifyView()
 	// 通知该ViewServer，做好准备，开始读取战报
 	SMsgView_MV_StartView msg;
 	msg.rID = m_ReplayID;
-	const SGameMsgHead& header = gMsg.BuildHead_MV(ENUM_MSG_VIEW_START_VIEW);
-	TSendMsg(pView, header, msg);
+	pView->SendMsg(msg);
 }

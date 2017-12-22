@@ -73,7 +73,8 @@ bool CActorPrizeManager::init(CPlayerBankPart *pBankPart, __IEntity *pMaster, in
 	m_pBankPart = pBankPart;
 	m_pMaster = pMaster;
 
-	if (nLoginMode == elogin_online)
+	DWORD nActorID = m_pMaster->getIntProperty(PROPERTY_ID);
+	if (nLoginMode == elogin_online && !IsComputerPDBID(nActorID))
 	{
 		m_pBankPart->readValueGoodsInfoFromDB(ENVALUEGOODSTYPE_CHEST);
 	}

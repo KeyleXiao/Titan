@@ -65,6 +65,7 @@ using ASpeedGame.Data.ChatDefaultChannel;
 using ASpeedGame.Data.MatchRankLimitConfig;
 using ASpeedGame.Data.Scheme;
 using ASpeedGame.Data.MatchSeasonPrizeConfig;
+using ASpeedGame.Data.RecommendPrize;
 
 /// <summary>
 /// 加载只有显示层才会用到的配置文件
@@ -216,6 +217,8 @@ public sealed class ViewConfigManager
         PreloadMonsterRes.Instance.UnLoad();
         MatchRankLimitConfig.Instance.Unload();
         MatchSeasonPrizeConfig.Instance.Unload();
+        LifeHeroConfig.Instance.UnLoad();
+        RecommendPrizeConfig.Instance.UnLoad();
 
         // 卸载预加载光效配置
         SchemePreLoadLight.Instance.UnLoad();
@@ -311,6 +314,7 @@ public sealed class ViewConfigManager
         LoadingWarTipConfig.Instance.Load(GetConfigFullPath(""));
         PlayerLocalHeroConfig.Instance.Load(GetConfigFullPath(""));
         LifeHeroConfig.Instance.Load(GetConfigFullPath(""));
+        RecommendPrizeConfig.Instance.Load(GetConfigFullPath(""));
         TaskConfig.Instance.Load(GetConfigFullPath(""));
 
         PreLoadSkinLayout.Instance.Load(GetConfigFullPath("PreLoadSkinLayout.csv"));

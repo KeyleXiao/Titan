@@ -48,6 +48,9 @@ public:
 	string			m_strMngIp;				// 观战管理服IP
 	WORD			m_dwMngPort;			// 观战管理服端口
 
+	string			m_strRedisIp;			// RedisIP
+	WORD			m_wRedisPort;			// Redis端口
+
 	DWORD			m_dwTraceLevel;			// trace日志级别
 	BOOL			m_bAutoStart;			// 自动启动
 	BOOL			m_bAutoHide;			// 自动隐藏窗口

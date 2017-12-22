@@ -171,7 +171,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
                 popupAction.Add(UPopupItemDataTeamInvite.GetDescString(), new UPopupItemDataTeamInvite(m_nMemberID));
                 popupAction.Add(UPopupItemDataTeamRequest.GetDescString(), new UPopupItemDataTeamRequest(m_nMemberID));
                 popupAction.Add(UPopupItemDataGetPlayerDetail.GetDescString(), new UPopupItemDataGetPlayerDetail(m_nMemberID));
-                popupAction.Add(UPopupItemDataAddFriend.GetDescString(), new UPopupItemDataAddFriend(m_nMemberID, actorName.text));
+                popupAction.Add(UPopupItemDataAddFriend.GetDescString(), new UPopupItemDataAddFriend(0, actorName.text));
                 popupAction.Add(UPopupItemDataCopyName.GetDescString(), new UPopupItemDataCopyName(item.data.szName));
                 if(item.data.nIsOnline > 0 && GameLogicAPI.isMainMap((int)item.data.dwSceneID))
                     popupAction.Add(UPopupItemDataTransmitTo.GetDescString(), new UPopupItemDataTransmitTo((int)item.data.dwWorldID, (int)item.data.serverID, (int)item.data.dwSceneID));

@@ -10,12 +10,12 @@ namespace ASpeedGame.Data.SelectArrayTipPage
 {
     public enum HeroType
     {
-        HEROTYPE_SOLDIER = 0,
+        HEROTYPE_ASSASSIN = 0,
+        HEROTYPE_SOLDIER,
         HEROTYPE_MAGIC,
-        HEROTYPE_ASSASSIN,
-        HEROTYPE_SUPPORT,
         HEROTYPE_ADC,
-        HEROTYPE_ALL,
+        HEROTYPE_SUPPORT,
+        HEROTYPE_ALL
     };
 
     public enum LimitType
@@ -147,34 +147,26 @@ namespace ASpeedGame.Data.SelectArrayTipPage
             string DownWord = "";
             int nUpCount = 0;
             int nDownCount = 0;
-            for (int nTipTypeIndex = (int)HeroType.HEROTYPE_SOLDIER; nTipTypeIndex < (int)HeroType.HEROTYPE_ALL; nTipTypeIndex++)
+            for (int nTipTypeIndex = (int)HeroType.HEROTYPE_ASSASSIN; nTipTypeIndex < (int)HeroType.HEROTYPE_ALL; nTipTypeIndex++)
             {
                 SelectTeamLimitInfo LimitInfo = new SelectTeamLimitInfo();
                 HeroType nHeroType = (HeroType)nTipTypeIndex;
                 switch (nHeroType)
                 {
-                    case HeroType.HEROTYPE_ADC:
-                        {
-                            DownWord = "输出英雄不足";
-                            UpWord = "输出英雄过多";
-                            nUpCount = sConfig.nAdcUp;
-                            nDownCount = sConfig.nAdcDown;
-                        }
-                        break;
                     case HeroType.HEROTYPE_ASSASSIN:
                         {
-                            DownWord = "刺客英雄不足";
-                            UpWord = "刺客英雄过多";
+                            DownWord = "坦克英雄不足";
+                            UpWord = "坦克英雄过多";
                             nUpCount = sConfig.nAssassinUp;
                             nDownCount = sConfig.nAssassinDown;
                         }
                         break;
-                    case HeroType.HEROTYPE_SUPPORT:
+                    case HeroType.HEROTYPE_SOLDIER:
                         {
-                            DownWord = "辅助英雄不足";
-                            UpWord = "辅助英雄过多";
-                            nUpCount = sConfig.nSupportUp;
-                            nDownCount = sConfig.nSupportDown;
+                            DownWord = "战士英雄不足";
+                            UpWord = "战士英雄过多";
+                            nUpCount = sConfig.nSoldier_limitUp;
+                            nDownCount = sConfig.nSoldier_limitDown;
                         }
                         break;
                     case HeroType.HEROTYPE_MAGIC:
@@ -185,14 +177,24 @@ namespace ASpeedGame.Data.SelectArrayTipPage
                             nDownCount = sConfig.nMagicDown;
                         }
                         break; break;
-                    case HeroType.HEROTYPE_SOLDIER:
+                    case HeroType.HEROTYPE_ADC:
                         {
-                            DownWord = "战士英雄不足";
-                            UpWord = "战士英雄过多";
-                            nUpCount = sConfig.nSoldier_limitUp;
-                            nDownCount = sConfig.nSoldier_limitDown;
+                            DownWord = "射手英雄不足";
+                            UpWord = "射手英雄过多";
+                            nUpCount = sConfig.nAdcUp;
+                            nDownCount = sConfig.nAdcDown;
                         }
                         break;
+
+                    case HeroType.HEROTYPE_SUPPORT:
+                        {
+                            DownWord = "辅助英雄不足";
+                            UpWord = "辅助英雄过多";
+                            nUpCount = sConfig.nSupportUp;
+                            nDownCount = sConfig.nSupportDown;
+                        }
+                        break;
+
                     default:
                         break;
                 }
@@ -238,7 +240,7 @@ namespace ASpeedGame.Data.SelectArrayTipPage
             foreach (int nHeroType in dicCampTeamHeroTip.Values)
             {
                 HeroType heroType = (HeroType)nHeroType;
-                if (heroType < HeroType.HEROTYPE_SOLDIER || heroType>HeroType.HEROTYPE_ALL-1)
+                if (heroType < HeroType.HEROTYPE_ASSASSIN || heroType > HeroType.HEROTYPE_ALL - 1)
                 {
                     continue;
                 }

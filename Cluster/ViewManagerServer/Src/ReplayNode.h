@@ -19,10 +19,11 @@ public:
 	DWORD	RemainCount();
 	// 通知该ViewServer，做好播放某战报的准备
 	void	NotifyView();
-private:
-	typedef	std::set<DWORD>	DBIDSet;
 
-	const ViewID	m_ViewID;	// ViewServerID
-	const ReplayID	m_ReplayID;	// 战报ID
-	DBIDSet			m_SetDBID;	// 在这里观战战报的玩家DBID集合
+private:
+	typedef	std::set<PlayerID>	PlayerIDSet;
+
+	const ViewID	m_ViewID;		// ViewServerID
+	const ReplayID	m_ReplayID;		// 战报ID
+	PlayerIDSet		m_SetPlayerID;	// 在这里观战战报的玩家ID集合
 };

@@ -307,11 +307,13 @@ namespace DataCenter
 			// 加入聊天内容
 			addChatContent(ref info, normalColor);
 
+            bool isHasLargeEmo = isHasLargeEmotion(info);
+
             // 默认显示在聊天框
             int showPos = (int)ChatMessageShowPos.CMS_ChatBox;
 
             // 大表情不显示在聊天框
-            if(isHasLargeEmotion(info))
+            if(isHasLargeEmo)
             {
                 showPos &= ~(int)ChatMessageShowPos.CMS_ChatBox;
             }
@@ -328,7 +330,7 @@ namespace DataCenter
             }
             if((showPos & (int)ChatMessageShowPos.CMS_Bubble) > 0)
             {
-                showChatBubble(msgInfo);
+                showChatBubble(msgInfo, isHasLargeEmo ? false : true);
             }
          
         }
@@ -643,7 +645,7 @@ namespace DataCenter
 			return false;
 		}
 
-		private void showChatBubble(gamelogic_show_chat_message msgInfo)
+		private void showChatBubble(gamelogic_show_chat_message msgInfo, bool isShowBg = true)
 		{
 			string normalColor = CreateColorParam(UDefines.ChatChannelColor((int)msgInfo.channel));
 			SChatMessageInfo chatMsgInfo = new SChatMessageInfo();
@@ -681,8 +683,9 @@ namespace DataCenter
 				msgData.msgID = (int)WndMsgID.WND_MSG_CHATBUBBLE_NEW_MESSAGE;
 				msgData.uid = msgInfo.senderUID;
 				msgData.info = chatMsgInfo;
+                msgData.isShowBg = isShowBg;
 
-				UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBUBBLE_NEW_MESSAGE, msgData);
+                UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBUBBLE_NEW_MESSAGE, msgData);
 			}
 			else if (msgInfo.channel == (int)EMChatChannelType.CHAT_CHANNEL_TEAMMATE)	// 队伍聊天气泡
 			{

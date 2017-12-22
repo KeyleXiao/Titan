@@ -25,6 +25,30 @@ namespace DataCenter
                 return m_dicWebUrl;
             }
         }
+
+        public string ShareURL
+        {
+            get
+            {
+                string shareURL;
+                if (m_dicWebUrl.TryGetValue(GameWebUrl.TAITAN_MAINHOME, out shareURL))
+                {
+                    return shareURL;
+                }
+
+                return null;
+            }
+        }
+
+        private int m_totalNumberGames;
+        public int TotalNumGames
+        {
+            get
+            {
+                return m_totalNumberGames;
+            }
+        }
+
         public class MyUser
         {
             // 通行证名
@@ -134,33 +158,39 @@ namespace DataCenter
 
         public void Init()
         {
+            GetTotalGameNumber();
+        }
+
+        // 获取总局数
+        private void GetTotalGameNumber()
+        {
 
         }
 
-        public System.Collections.IEnumerator GetInfoAndUserList()
+        private string GetURL()
         {
             if (EntityFactory.MainHeroView == null)
-                yield break;
+                return null;
 
             uint nUserID = GameLogicAPI.getPlayerUserID(EntityFactory.MainHeroView.ID);
             if (nUserID == 0)
-                yield break;
+                return null;
 
             IntPtr account = GameLogicAPI.getActorClientAccount();
             if (account == null || account == IntPtr.Zero)
             {
-                yield break;
+                return null;
             }
 
             string username = Marshal.PtrToStringAnsi(account);
             if (string.IsNullOrEmpty(username))
             {
-                yield break;
+                return null;
             }
 
             int gameid = GameLogicAPI.getMasterFromGameWorldID();
             if (gameid == 0)
-                yield break;
+                return null;
 
             string time = DateTime.Now.ToString("yyyyMMddHHmm");
             string sign = Md5Sum(string.Format("{0}{1}{2}{3}", nUserID, username, time, KEY));
@@ -169,9 +199,9 @@ namespace DataCenter
             if (!WebUrl.TryGetValue(GameWebUrl.PROMOTION_LINK, out host))
             {
                 Trace.Log("not have host in WebUrl.");
-                yield break;
+                return null;
             }
-            
+
             if (string.IsNullOrEmpty(host))
             {
                 host = HOST;
@@ -183,6 +213,15 @@ namespace DataCenter
 
             string get_info_and_user_list = host + GET_INFO_AND_USER_LIST;
             string url = string.Format(get_info_and_user_list, nUserID, username, gameid, time, sign);
+
+            return url;
+        }
+
+        public System.Collections.IEnumerator GetInfoAndUserList()
+        {
+            string url = GetURL();
+            if (url == null)
+                yield break;
 
             WWW www = new WWW(url);
 

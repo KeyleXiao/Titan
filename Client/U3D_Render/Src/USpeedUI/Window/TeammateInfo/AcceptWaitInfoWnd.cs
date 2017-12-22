@@ -209,7 +209,7 @@ namespace USpeedUI.AcceptWaitInfo
             UBB.toHtml(ref strDes);
             WaitOtherSec.text = strDes;
             WaitOtherSec.gameObject.SetActive(false);
-            CloseBtn.gameObject.SetActive(true);
+            CloseBtn.gameObject.SetActive(nMatchType != (int)EMMatchType.MatchType_NewPlayerGuide2);
             TimerManager.SetTimer(this, nTimerID, 1.0f);
 			SoundManager.CreateUISound(ACCEPT_WAIT_SHOW_SOUNDID);
         }

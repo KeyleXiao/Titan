@@ -187,6 +187,7 @@
     <Compile Include="Data\PreloadMonsterRes.cs" />
     <Compile Include="Data\PreLoadSkinLayout.cs" />
     <Compile Include="Data\PropertyPanelConfig.cs" />
+    <Compile Include="Data\RecommendPrize.cs" />
     <Compile Include="Data\SceneEffectNodeData.cs" />
     <Compile Include="Data\SchemeHeroSound.cs" />
     <Compile Include="Data\SchemeLightingEffect.cs" />

@@ -23,12 +23,11 @@ bool GateConnector::SendHandshake()
 	}
 
 	// 握手
-	const SGameMsgHead& header = gMsg.BuildHead_VG(ENUM_MSG_VIEW_HANDSHAKE);
 	SMsgView_VG_Handshake sendData;
 	sendData.dwServerID = gSetting.getServerID();
 	sendData.dwID = gSetting.GetID();
 
-	TSendMsg(this, header, sendData);
+	this->SendMsg(sendData);
 
 	TraceLn(_GT("发送握手信息! ") << a2utf8(ToString().data()));
 

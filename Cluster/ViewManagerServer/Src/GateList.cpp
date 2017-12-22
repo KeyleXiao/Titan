@@ -34,7 +34,7 @@ void GateList::BuildGatesInfo(SMsgView_MV_GatesInfo& gatesInfo)
 	}
 }
 
-GateID GateList::GetIdleGate()
+GateID GateList::GetIdleGate(GateID wExceptID)
 {
 	GateID wRet = 0;
 	DWORD remainCountMax = 0;
@@ -42,11 +42,13 @@ GateID GateList::GetIdleGate()
 	{
 		GateUser*& pUser = it->second;
 		DWORD remainCount = pUser->GetMaxCount() - pUser->GetCurrCount();
-		if (remainCount > remainCountMax)
+		const DWORD& wGateID = it->first;
+
+		if (wGateID != wExceptID && remainCount > remainCountMax)
 		{
 			remainCountMax = remainCount;
-			wRet = (GateID)it->first;
-			Assert(it->first == wRet);
+			wRet = (GateID)wGateID;
+			Assert(wGateID == wRet);
 		}
 	}
 

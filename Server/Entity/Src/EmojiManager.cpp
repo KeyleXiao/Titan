@@ -59,7 +59,8 @@ bool CEmojiManager::init(CPlayerBankPart * pBankPart, __IEntity * pMaster, int n
 	m_pBankPart = pBankPart;
 	m_pMaster = pMaster;
 
-	if (nLoginMode == elogin_online)
+	DWORD nActorID = m_pMaster->getIntProperty(PROPERTY_ID);
+	if (nLoginMode == elogin_online && !IsComputerPDBID(nActorID))
 	{
 		m_pBankPart->readValueGoodsInfoFromDB(ENVALUEGOODSTYPE_EMOJI);
 	}

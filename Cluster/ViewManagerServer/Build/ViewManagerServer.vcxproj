@@ -273,6 +273,8 @@
     <ClInclude Include="..\..\..\Common\ViewMsgDef_Client.h" />
     <ClInclude Include="..\..\..\Common\ViewMsgDef_Server.h" />
     <ClInclude Include="..\Src\Acceptor.h" />
+    <ClInclude Include="..\Src\AuthMng.h" />
+    <ClInclude Include="..\Src\AuthNode.h" />
     <ClInclude Include="..\Src\GameList.h" />
     <ClInclude Include="..\Src\GameMsgRegister.h" />
     <ClInclude Include="..\Src\GameUser.h" />
@@ -305,6 +307,7 @@
     <ClInclude Include="..\Src\ViewUser.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\AuthMng.cpp" />
     <ClCompile Include="..\Src\GameList.cpp" />
     <ClCompile Include="..\Src\GameMsgRegister.cpp" />
     <ClCompile Include="..\Src\GameUser.cpp" />

@@ -54,6 +54,7 @@ namespace USpeedUI.SNS
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_ADD_CHAT_MESSAGE, this);
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_BLACKLIST_BY_OTHER, this);
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_SELECT_SESSION, this);
+			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_BUDDY_STATUS_UPDATE, this);
 
 			return base.Init();
 		}
@@ -67,6 +68,7 @@ namespace USpeedUI.SNS
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_ADD_CHAT_MESSAGE, this);
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_BLACKLIST_BY_OTHER, this);
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_SELECT_SESSION, this);
+			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_BUDDY_STATUS_UPDATE, this);
 		}
 
 		public override void OnMessage(WndMsgID msgID, UIMsgData data)
@@ -119,6 +121,14 @@ namespace USpeedUI.SNS
                         if(m_wndView != null)
                         {
                             m_wndView.onSelectSession(data as SNSSelectSessionMsgData);
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_SNS_BUDDY_STATUS_UPDATE:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.onBuddyStatusUpdate();
                         }
                     }
                     break;
@@ -210,17 +220,13 @@ namespace USpeedUI.SNS
             onUpdateView();
         }
 
-        private void onUpdateView()
+        public void onBuddyStatusUpdate()
         {
-            // 显示窗口，没有就创建窗口
-            onUpdateChatMessage();
+            onUpdateSessionList();
+        }
 
-            // 更新聊听框的好友信息
-            onUpdateBuddyInfo();
-
-            // 移除DIDA提示消息
-            removeNewMsgDIDA();
-
+        private void onUpdateSessionList()
+        {
             // 更新Session列表UI
             SessionListView.DataSource.BeginUpdate();
             SessionListView.DataSource.Clear();
@@ -233,9 +239,24 @@ namespace USpeedUI.SNS
             }
 
             SessionListView.DataSource.EndUpdate();
+        }
+
+        private void onUpdateView()
+        {
+            // 显示窗口，没有就创建窗口
+            onUpdateChatMessage();
+
+            // 更新聊听框的好友信息
+            onUpdateBuddyInfo();
+
+            // 移除DIDA提示消息
+            removeNewMsgDIDA();
+
+            // 更新Session列表UI
+            onUpdateSessionList();
 
             // 更新历史记录
-            if(ChatHistroyView.isActiveAndEnabled)
+            if (ChatHistroyView.isActiveAndEnabled)
             {
                 initHistoryMsg(CurSession.nCurHistoryPage);
             }

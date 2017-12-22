@@ -37,7 +37,7 @@ modifyied by ljw at 2015.8.18
 #include "IWarPart.h"
 
 // 是否打开客户端移动地形检测
-// #define OPEN_CLIENT_TERRIAN_CHECK  
+//#define OPEN_CLIENT_TERRIAN_CHECK  
 
 #define MONSTER_SPEED_TIMES             100     // 移动速度配置放大倍数
 
@@ -1006,10 +1006,9 @@ void CMovePart::update()
     // 检测路点结果
     CheckResult eResult = CHECK_RESULT_OK;
 
-    // AI自动跳的时候 没规划好轨迹 容易碰到地形障碍 所以暂时先不检测AI跳的地形障碍
-    // 假人、怪物走路是寻路出来的 也不需要用高度场检测地形碰撞
+    // 假人、怪物走路是寻路出来的 不需要用高度场检测地形碰撞
     int nCheckMask = CHECK_MASK_DYNAMIC_BARRIER;
-    if(m_eBehaviour != BEHAVIOUR_TYPE_JUMP && m_eBehaviour != BEHAVIOUR_TYPE_WALK)
+    if(m_eBehaviour != BEHAVIOUR_TYPE_WALK)
     {
         nCheckMask |= CHECK_MASK_TERRAIN;
     }

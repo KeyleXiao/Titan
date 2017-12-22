@@ -7,7 +7,7 @@ class GateUser;
 class GM_AuthDelHandler : public Handler<GateUser, SMsgView_GM_AuthDel>
 {
 protected:
-	virtual void Handle(GateUser* pSession, SGameMsgHead* head, SMsgView_GM_AuthDel* pMsg)
+	virtual void Handle(GateUser* pGate, SGameMsgHead* head, SMsgView_GM_AuthDel* pMsg)
 	{
 		// TODO
 		const PlayerID& dwPlayerID = pMsg->dwPlayerID;

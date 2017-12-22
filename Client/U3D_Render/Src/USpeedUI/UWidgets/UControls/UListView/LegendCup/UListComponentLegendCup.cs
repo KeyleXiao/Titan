@@ -144,6 +144,16 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             KinLevel.text = item.data.nKinLevel.ToString();
             KinCupResult.text = item.data.nKinWinNum + "/" + item.data.nKinMaxNum;
 
+            // 颜色设置
+            //bool bInThisKin = LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(item.data.nKinID);
+            int nSlefKinID = LogicDataCenter.kinDataManager.KinBaseData.nKinID;
+            bool bInThisKin = nSlefKinID == item.data.nKinID;
+            Color clrState = bInThisKin ? UDefines.CommomColor(ECommonColor.ECC_Gold1) : UDefines.CommomColor(ECommonColor.ECC_White);
+            ItemIndex.color = clrState;
+            KinName.color = clrState;
+            KinLevel.color = clrState;
+            KinCupResult.color = clrState;
+
             // 添加右键弹窗
             this.gameObject.RemoveComponent<UPopupMenuHandle>();
             UPopupMenuHandle popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();
@@ -216,7 +226,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
         {
             KinName.text = kinInfo.szKinName;
             KinName.color = UDefines.CommomColor(ECommonColor.ECC_White);
-            if (LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(kinInfo.nKinID))
+            if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(kinInfo.nKinID))
             {
                 KinName.color = UDefines.CommomColor(ECommonColor.ECC_Gold1);
             }
@@ -330,7 +340,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             m_searchID = nodeInfo.nSearchID;
             m_nodeInfo = nodeInfo;
 
-            bool bInThisNode = LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(nodeInfo.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(nodeInfo.nKin2ID);
+            bInThisNode = LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(nodeInfo.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(nodeInfo.nKin2ID);
             
             cmd_legendcup_recv_cuplist_node cupBaseData = LogicDataCenter.legendCupDataManager.GetSingleLegendCupNode(m_legendCupID);
             if (cupBaseData.nLegendCupID == 0)
@@ -349,8 +359,12 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             VSDes.text = "VS";
             Kin2Name.text = nodeInfo.szKin2Name;
             //GotoBtnDes.text = strGotoBtn;
-            Kin1WinIcon.gameObject.SetActive(nodeInfo.nKin1ID == nodeInfo.nWinnerKinID);
-            Kin2WinIcon.gameObject.SetActive(nodeInfo.nKin2ID == nodeInfo.nWinnerKinID);
+
+            // 考虑到排版，只改变透明度不隐藏，弃权的不现实比分
+            bool bKin1Win = nodeInfo.nKin1ID == nodeInfo.nWinnerKinID && nodeInfo.nKin1Score > nodeInfo.nKin2Score;
+            bool bKin2Win = nodeInfo.nKin2ID == nodeInfo.nWinnerKinID && nodeInfo.nKin2Score > nodeInfo.nKin1Score;
+            Kin1WinIcon.color = bKin1Win ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+            Kin2WinIcon.color = bKin2Win ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
 
             // 设置GotoBtn
             //bool bCanJoin = bInThisNode && (nodeInfo.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter);
@@ -514,7 +528,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             GroupIndex.color = UDefines.CommomColor(ECommonColor.ECC_White);
             foreach (var itemKin in item.kinInfoList)
             {
-                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInKinRegistMember(itemKin.nKinID))
+                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(itemKin.nKinID))
                 {
                     GroupIndex.color = UDefines.CommomColor(ECommonColor.ECC_Gold1);
                     break;

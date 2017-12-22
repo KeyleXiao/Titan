@@ -243,6 +243,7 @@ namespace USpeedUI.Chart
         public Text index;
         public Image indexIcon;
         public Text playerName;
+        public Image sexIcon;
         public Text DonateNum;
         public Text DonationNum;
         public Text totalNum;
@@ -264,7 +265,7 @@ namespace USpeedUI.Chart
             DonationNum.text = "";
             totalNum.text = "";
             clanName.text = "";
-
+            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();

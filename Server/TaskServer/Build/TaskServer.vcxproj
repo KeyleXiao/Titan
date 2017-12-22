@@ -218,7 +218,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TaskService_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FunctionLevelLinking>
       </FunctionLevelLinking>
-      <AdditionalIncludeDirectories>../../../common;../Include;../../include;../../../base/base/include;../../../framework/framework/include;../../../Cluster/DBEngine/Include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Server/Entity/Include;../../../Server/ServerGlobal/Include;../../../Server/AOI/Include;../../../Server/Connector/Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common;../Include;../../include;../../../base/base/include;../../../framework/framework/include;../../../Cluster/DBEngine/Include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Server/ServerGlobal/Include;../../../Server/AOI/Include;../../../Server/Connector/Include;../../../Server/TestServer/Include;../../../Server/Entity/Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

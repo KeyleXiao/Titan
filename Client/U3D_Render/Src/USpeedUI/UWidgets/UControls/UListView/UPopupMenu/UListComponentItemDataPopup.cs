@@ -701,7 +701,7 @@ namespace USpeedUI.UWidgets
               message: String.Format(ULocalizationService.Instance.Get("UIView", "SNS", "AddBlackListWndContent"), m_ActorName),
               buttons: new UIWidgets.DialogActions() {
                          {ULocalizationService.Instance.Get("UIView", "Common", "ConfirmBtn"),() => {LogicDataCenter.snsDataManager.reqAddBlackList(m_dwUserID, m_ActorName); return true; } },
-                          {ULocalizationService.Instance.Get("UIView", "Common", "CancelBtn"),() => {return false; } }
+                          {ULocalizationService.Instance.Get("UIView", "Common", "CancelBtn"),() => {return true; } }
               });
 
             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_COMMON_DIALOG, toolTipData);

@@ -64,6 +64,9 @@
     <ClCompile Include="..\Src\GateMsgRegister.cpp">
       <Filter>Gate</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\AuthMng.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\stdafx.h" />
@@ -187,6 +190,12 @@
     <ClInclude Include="..\Src\GM_AuthDelHandler.h">
       <Filter>Gate\Handler</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\AuthMng.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AuthNode.h">
+      <Filter>Client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Src\res\Computer.ico">
@@ -268,6 +277,9 @@
     </Filter>
     <Filter Include="Common File\Redis">
       <UniqueIdentifier>{d5b43b0d-a6d0-4892-a5f6-3cdcbd027f5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client">
+      <UniqueIdentifier>{7a778b13-c29c-44dc-88bc-2e04e2322f7e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -433,6 +433,8 @@ private:
     // 释放OB外部监视实体
     void releaseOBViewerEntity();
 
+	// 计算连杀
+	void calcContKill();
 protected:
 	int                     m_nBroadcastProcessCount;                           // 阶段性提示广播列表
 	SBroadcastProcess       m_BroadCastTimeList[MAX_WAR_BROADCAST_PROCESS];

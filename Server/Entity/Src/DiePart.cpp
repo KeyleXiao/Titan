@@ -30,6 +30,7 @@
 #include "ObjectLifeControl.h"
 #include "IPlayerKillPart.h"
 #include "PlayerKillMessageDef.h"
+#include "SpellMessageDef.h"
 
 #ifndef OBSTACLE_RADIO
 #define OBSTACLE_RADIO				1.2f		// 障碍距离阀值
@@ -395,6 +396,28 @@ void DiePart::onEventDamageResult(BYTE bSrcType, DWORD dwSrcID, LPCSTR pszContex
         {
             pEntityEvent->FireVoteExecute(EVENT_ENTITY_DIE, (char *)&die, sizeof(die));
             pEntityEvent->FireExecute(EVENT_GAME_ENTITY_DIE, (char *)&die, sizeof(die));
+        }
+
+        // 直接通知凶手的技能部件
+        {
+            obuf256 data;
+
+            SNetMsgHead head;
+            head.bySrcEndPoint  = MSG_ENDPOINT_SCENE;
+            head.byDestEndPoint = MSG_ENDPOINT_SCENE;
+            head.byKeyModule = MSG_MODULEID_ENTITY;
+            head.byKeyAction = SPELL_MSG_KILL_ENTITY;
+
+            // 消息头
+            SMsgEntityHead entityHead;
+            entityHead.uidMaster = pevent->uidOperator;
+            entityHead.byPartID = PART_SPELL;
+
+            data << head << entityHead;
+            data.push_back(&die, sizeof(event_entity_die));
+
+            // 发送消息
+            handleMessage(pevent->uidOperator, data.data(), (int)data.size());
         }
 
         // 其他模块都处理完了 再发给客户端死亡。

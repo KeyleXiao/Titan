@@ -119,7 +119,7 @@ namespace rkt
 		GAMEDB_REQUEST_READ_VALUE_GOODS,					// 请求读取价值物品信息
 
         GAMEDB_REQUEST_UPDATEACTORINFO,                     // 更新中心数据库, 角色信息
-        GAMEDB_RQEUEST_QUERYRECOMWARRECORD,                 // 查询推广下家战绩信息
+        GAMEDB_REQUEST_QUERYRECOMWARRECORD,                 // 查询推广下家战绩信息
 	};
     /***********************************  英雄相关 **********************************************************/
     enum {
@@ -1131,7 +1131,7 @@ namespace rkt
     };
     // 返回结构
     // 无
-    
+      
     //GAMEDB_REQUEST_QUERYRECOMWARRECORD      
     // 查询推广下家战绩信息
     // 输入结构

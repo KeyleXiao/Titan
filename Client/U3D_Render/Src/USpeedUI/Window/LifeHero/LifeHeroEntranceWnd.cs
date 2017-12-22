@@ -99,7 +99,7 @@ namespace USpeedUI.LifeHero
                     {
                         if (!m_isVisible)
                         {
-                            if (GuideManager.Instance.IsCurrentGuideGreaterEqual(ENNOVICEGUIDE_TYPE.ENNOVICEGUIDE_TYPE_GUIDE_TWOSTEP)
+                            if (GuideManager.Instance.IsCurrentGuideGreaterEqual(ENNOVICEGUIDE_TYPE.ENNOVICEGUIDE_TYPE_GUIDE_LIFEHEROENTRY)
                                 || (LogicDataCenter.playerSystemDataManager.GetActorPlayerInfo().playerInfo.nLv > 3))
                             {
                                 SetVisible(true);
@@ -154,7 +154,8 @@ namespace USpeedUI.LifeHero
             }
 
             if (!LogicDataCenter.lifeHeroDataManager.HasCollectedAllLifeHero()
-                && LogicDataCenter.lifeHeroDataManager.AllLifeHero.Count >= 1)
+                && (GuideManager.Instance.IsCurrentGuideGreaterEqual(ENNOVICEGUIDE_TYPE.ENNOVICEGUIDE_TYPE_GUIDE_LIFEHEROCULTURE)
+                || (LogicDataCenter.playerSystemDataManager.GetActorPlayerInfo().playerInfo.nLv > 3)))
             {
                 List<cmd_warstatistic_history_record> recordList = LogicDataCenter.lifeHeroDataManager.HistoryRecord;
                 if (recordList == null || recordList.Count < 1)

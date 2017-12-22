@@ -15,6 +15,7 @@
 #include "buffer.h"
 #include "Common.h"
 #include "NetMessageDef.h"
+#include "DManagerModule.h"
 
 #pragma pack(1)
 /*****************************************************************/
@@ -47,13 +48,14 @@ enum EMMsgView
 	ENUM_MSG_VIEW_REQUEST_ADD_PLAYER,		// ID为XX的玩家将要来看某局比赛，在某台View上，请你接待，这是秘钥...。超时时间为T
 	// GATE——MNG
 	ENUM_MSG_VIEW_REQUEST_ADD_PLAYER_REPLY,	// Gate回复Mng，添加玩家结果
-	ENUM_MSG_VIEW_AUTH_DEL,					// Gate通知Mng，某玩家的验证信息删除
+	// MNG——GATE、GATE——MNG
+	ENUM_MSG_VIEW_AUTH_DEL,					// 某玩家的验证信息删除
 
 	// GAME——MNG
 	ENUM_MSG_VIEW_REQUEST_REPLAY,			// 请求观看某场战报
 	// MNG——GAME
 	ENUM_MSG_VIEW_REQUEST_REPLAY_FAIL,		// 请求观看某场战报 的回复——失败
-	ENUM_MSG_VIEW_REQUEST_REPLAY_SUCCESS,	// 请求观看某场战报 的回复——失败
+	ENUM_MSG_VIEW_REQUEST_REPLAY_SUCCESS,	// 请求观看某场战报 的回复——成功
 
 
 	// GATE——CLIENT

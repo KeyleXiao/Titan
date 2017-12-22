@@ -62,6 +62,7 @@ namespace USpeedUI.Chat
         ObjSubType_Text_CreateClanCupWnd, // 显示创建联盟杯赛窗体
         ObjSubType_Text_ClickInviteLegendCup,   // 点击邀请杯赛
         ObjSubType_Text_CreateInviteLegendCup,  // 创建邀请杯赛
+        ObjSubType_Text_ClanMemberCupWnd, // 显示联盟杯赛窗体
 	}
 
 	public interface IChatItem
@@ -151,6 +152,8 @@ namespace USpeedUI.Chat
                     return "inviteplaygame";
                 case ChatItemSubType.ObjSubType_Text_CreateClanCupWnd:
                     return "createclancupwnd";
+                case ChatItemSubType.ObjSubType_Text_ClanMemberCupWnd:
+                    return "clanmembercupwnd";
                 case ChatItemSubType.ObjSubType_Text_ClickInviteLegendCup:
                     return "clickinvitelegendcup";
                 case ChatItemSubType.ObjSubType_Text_CreateInviteLegendCup:
@@ -283,6 +286,13 @@ namespace USpeedUI.Chat
                         subType = ChatItemSubType.ObjSubType_Text_CreateClanCupWnd;
                     }
                     break;
+                case "clanmembercupwnd":
+                    {
+                        objType = ChatItemType.ObjType_Text;
+                        subType = ChatItemSubType.ObjSubType_Text_ClanMemberCupWnd;
+                    }
+                    break;
+                    
                 case "clickinvitelegendcup":
                     {
                         objType = ChatItemType.ObjType_Text;
@@ -1565,6 +1575,10 @@ namespace USpeedUI.Chat
                 case ChatItemSubType.ObjSubType_Text_CreateClanCupWnd:
                     m_subItem = new ChatSubItemText_ShowCreateClanCupWnd();
                     break;
+                case ChatItemSubType.ObjSubType_Text_ClanMemberCupWnd:
+                    m_subItem = new ChatSubItemText_ShowClanWnd();
+                    break;
+                    
                 case ChatItemSubType.ObjSubType_Text_ClickInviteLegendCup:
                     m_subItem = new ChatSubItemText_ClickInviteLegendCup();
                     break;

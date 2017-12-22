@@ -856,3 +856,22 @@ static bool EntitySelect(UID uid)
 
 	return true;
 }
+
+//#define OPEN_COST_TRACE
+
+#ifdef OPEN_COST_TRACE
+    #define COST_TIME_TRACE_START  \
+        DWORD dwStart = getTickCountEx(); \
+        DWORD dwCost;
+
+    #define COST_TIME_TRACE(x) \
+        dwCost = getTickCountEx() - dwStart; \
+        if(dwCost > 0) \
+        {              \
+            TraceLn("function:" << __FUNCTION__ << ", line:" << __LINE__ << ", cost:" << dwCost <<", info:" << x); \
+        } \
+        dwStart = getTickCountEx();
+#else
+    #define COST_TIME_TRACE_START ;
+    #define COST_TIME_TRACE(x) ;
+#endif

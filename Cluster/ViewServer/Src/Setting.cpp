@@ -16,6 +16,8 @@ bool Setting::LoadSetting(void)
 	m_strMngIp = ini.getString("Setting", "ViewManagerIP", "127.0.0.1");
 	m_dwMngPort = ini.getInt("Setting", "PortForViewServer", DefaultPort::MNG_FOR_VIEW);
 	m_dwBasePortForView = ini.getInt("Setting", "GatewayPortForView", DefaultPort::GATE_FOR_VIEW);
+	m_strRedisIp = ini.getString("Setting", "RedisIp", "127.0.0.1");;
+	m_wRedisPort = ini.getInt("Setting", "RedisPort", 6379);
 
 	ErrorLn(_GT("Setting::LoadSetting 最大连接数：") << m_dwMaxConnection);
 

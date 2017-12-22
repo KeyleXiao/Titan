@@ -1202,37 +1202,38 @@ void CWar::onActorEnterWar(const SActorEnterWarBaseInfo& sActorEnterWarBaseInfo)
 	// 英雄属性相关
 	addHeroStarPro(sActorEnterWarBaseInfo.uidActor);
 
+    ISchemeCenter * pSchemeCenter = gServerGlobal->getSchemeCenter();
+    ISchemeWarManager * pSchemeWarManager = pSchemeCenter->getSchemeWarManager();
+    if (pSchemeWarManager == NULL)
+    {
+        ErrorLn(__FUNCTION__": pSchemeWarManager == NULL");
+        return;
+    }
+
+    SWarScheme tempScheme = pSchemeWarManager->GetWarScheme(m_context.nConfigWarID);
+    if (tempScheme.nStaticID <= 0)
+    {
+        ErrorLn(__FUNCTION__": nStaticID <= 0 nStaticID =" << tempScheme.nStaticID);
+        return;
+    }
+
 	if (m_lMutex == 0 && InterlockedCompareExchange(&m_lMutex, 1, 0) == 0)
 	{
 		// 有玩家进入战场 则设置为战场切换状态
-		//if (m_WarPhase == EWP_Ready)
-		//{
-		ISchemeCenter * pSchemeCenter = gServerGlobal->getSchemeCenter();
-		ISchemeWarManager * pSchemeWarManager = pSchemeCenter->getSchemeWarManager();
-		if (pSchemeWarManager == NULL)
+		if (getWarPhase() == EWP_Ready)
 		{
-			ErrorLn(__FUNCTION__": pSchemeWarManager == NULL");
-			return;
-		}
+            // 战场正式开始时间,该时间必须这样获取,因为客户端战场的进行时间是根据这个值计算
+            m_ConfigAddExpTime = m_TempAddTalentTime = m_WarInfo.nStartTimeTick = gServerGlobal->getTimeSyncService()->GetTick();
 
-		SWarScheme tempScheme = pSchemeWarManager->GetWarScheme(m_context.nConfigWarID);
-		if (tempScheme.nStaticID <= 0)
-		{
-			ErrorLn(__FUNCTION__": nStaticID <= 0 nStaticID =" << tempScheme.nStaticID);
-			return;
-		}
+            // 开启流程定时器
+            setBcastProcessTimer();
 
-		// 战场正式开始时间,该时间必须这样获取,因为客户端战场的进行时间是根据这个值计算
-		m_ConfigAddExpTime = m_TempAddTalentTime = m_WarInfo.nStartTimeTick = gServerGlobal->getTimeSyncService()->GetTick();
+            //有人物创建并进入战场之后才设置战场开始
+            setWarPhase(EWP_Start);
 
-		// 开启流程定时器
-		setBcastProcessTimer();
-
-		//有人物创建并进入战场之后才设置战场开始
-		setWarPhase(EWP_Start);
-
-		// 战场正式开始
-		onWarRealStart();
+            // 战场正式开始
+            onWarRealStart();
+        }
 	}
 	m_WarInfo.nCurEnterWarCount++;
 
@@ -1529,8 +1530,12 @@ void CWar::End()
 	{
 		return;
 	}
+
 	m_WarInfo.EndTime = time(NULL);
 
+	m_WarInfo.dwContinueTime = m_WarInfo.EndTime - m_WarInfo.BeginTime;
+
+	// 计算每个玩家的连杀、时间杀
 	SceneLogicEventHelper helper(getWarSceneID());
 	if (helper.m_ptr)
 	{
@@ -1546,6 +1551,9 @@ void CWar::End()
 	ILogRecordMgr* pLogRecordMgr = (ILogRecordMgr*)getWarMgr(Mgr_LogRecord);
 	ISupportMgr* pSupportMgr = (ISupportMgr*)getWarMgr(Mgr_Support);
 	IWarMonsterMgr* pWarMonsterMgr = (IWarMonsterMgr*)getWarMgr(Mgr_Monster);
+
+	// 计算连杀
+	calcContKill();
 
 	// 减少记录的玩家惩罚信息社会服的观察期
 	warEndPunishSubObserveCount();
@@ -1572,7 +1580,6 @@ void CWar::End()
 	//	m_bReleaseAllMonster = true;
 	//}
 
-	m_WarInfo.dwContinueTime = (DWORD)time(NULL) - m_WarInfo.BeginTime;
 
 	// 角色战绩相关记录
 	statisticsPlayerGraded();
@@ -1588,7 +1595,6 @@ void CWar::End()
 
     // 每个比赛类型胜场处理
     updatePlayerMatchTypeInfo();
-
 
 	// 排位赛季数据统计
 	setMatchRankSeasonInfo();
@@ -1789,30 +1795,33 @@ void CWar::setMatchTypeRankScoreAndGrade()
             {
                 if(itCamp->first == iter->first)
                 {
+                    // 我方
                     A = iter->second;
                 }
                 else
                 {
+                    // 敌方
                     B = iter->second;
                 }
             }
 
             // 隐藏分数
             int nHideScore = 0;
-            SMatchRankConfigSchemeInfo* pHideScheme = pSchemeRankInfo->getShemeHideInfoByTypeAndScore(getMatchTypeID(), pActorService->getMatchTypeHideRank((EMMatchType)getMatchTypeID()));
+            int nCureHideScore = pActorService->getMatchTypeHideRank((EMMatchType)getMatchTypeID());
+            SMatchRankConfigSchemeInfo* pHideScheme = pSchemeRankInfo->getShemeHideInfoByTypeAndScore(getMatchTypeID(), nCureHideScore);
             if (pHideScheme != NULL)
             {
                 if (getWinCamp() == itCamp->first)
                 {
                     // 胜利得分= K*(0-1/(1+10^((B-A)/M)))
                    nHideScore += (int)((float)(pHideScheme->nKRatio)*((float)1.0-(float)(1.0/(1.0+pow((float)10,(float)((B-A)/pHideScheme->nHideKRatio))))));
-                   TraceLn("name =("<<itPerson->szName<<") K = "<<pHideScheme->nKRatio<<" M ="<<pHideScheme->nHideKRatio<<" nHideScore= "<<nHideScore);
+                   TraceLn("A ="<<A<<" B ="<<B<<" name =("<<itPerson->szName<<") K = "<<pHideScheme->nKRatio<<" M ="<<pHideScheme->nHideKRatio<<" nHideScore= "<<nHideScore<<" nCureHideScore="<<nCureHideScore);
                 }
                 else
                 {
                     // 失败得分= K*(0-1/(1+10^((B-A)/M)))
                     nHideScore += (int)((float)(pHideScheme->nKRatio)*((float)0.0-(float)(1.0/(1.0+pow((float)10,(float)((B-A)/pHideScheme->nHideKRatio))))));
-                    TraceLn("name =("<<itPerson->szName<<") K = "<<pHideScheme->nKRatio<<" M ="<<pHideScheme->nHideKRatio<<" nHideScore= "<<nHideScore);
+                    TraceLn("A ="<<A<<" B ="<<B<<" name =("<<itPerson->szName<<") K = "<<pHideScheme->nKRatio<<" M ="<<pHideScheme->nHideKRatio<<" nHideScore= "<<nHideScore<<" nCureHideScore="<<nCureHideScore);
                 }
             }
 
@@ -5115,4 +5124,26 @@ void CWar::releaseOBViewerEntity()
     {
         helper.m_ptr->destroyActor(m_OBViewerUID, elogout_offline);
     }
+}
+
+void CWar::calcContKill()
+{
+	WarCampMap::iterator it = m_mapWarCamp.begin();
+	for (; it != m_mapWarCamp.end(); ++it)
+	{
+		WarPersonVector::iterator itBegin = it->second.warPersVect.begin();
+		for (; itBegin != it->second.warPersVect.end(); ++itBegin)
+		{
+			// 清空连杀
+			setKillMaxInfo(&(*itBegin));
+
+			itBegin->deadContKillList.push_back(itBegin->nDeadContKill);  // 记录不死连杀
+			itBegin->timeContKillList.push_back(itBegin->nTimeContKill);  // 记录时间连杀
+
+			itBegin->nDeadContKill = 0;
+			itBegin->nTimeContKill = 0;
+			itBegin->nAliveContAssist = 0;
+
+		}
+	}
 }

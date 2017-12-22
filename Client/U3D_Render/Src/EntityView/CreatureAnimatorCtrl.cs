@@ -81,7 +81,7 @@ public class CreatureAnimatorCtrl
 
 
 
-#region 播放动作
+    #region 播放动作
     private string m_crossfadeName = "";
     private float m_crossfadeDuratioTime = 0.0f;
     private bool m_crossfadeReact = false;
@@ -100,11 +100,11 @@ public class CreatureAnimatorCtrl
     private float m_oldAttackSpeed = 1.0f;
     private bool m_usingUniSpeed = false;
     //是否假死状态
-    public bool Dying { get { return m_dying; } set { m_dying = value;} }
+    public bool Dying { get { return m_dying; } set { m_dying = value; } }
     private bool m_dying = false;
     public void setAnimatorSpeed(bool revert, float speed)
     {
-        if(!ana || !anb)
+        if (!ana || !anb)
         {
             return;
         }
@@ -133,8 +133,7 @@ public class CreatureAnimatorCtrl
         //{
         //    return;
         //}
-
-        if (anb==null || anb.speed < 0.01f)
+        if (anb == null || anb.speed < 0.01f)
         {
             return;
         }
@@ -166,7 +165,7 @@ public class CreatureAnimatorCtrl
     {
         durationTime = 0.0f; //暂时关掉动作融合
 
-        if (anb != null && anb.runtimeAnimatorController!=null)
+        if (anb != null && anb.runtimeAnimatorController != null)
         {
             if (ContainState(anb, name) == false)
             {
@@ -213,7 +212,7 @@ public class CreatureAnimatorCtrl
         }
     }
 
-    public void PlayWeaponAnim(string name,  int targetID, float speed = 1.0f)
+    public void PlayWeaponAnim(string name, int targetID, float speed = 1.0f)
     {
         if (name == "IDLE")
         {
@@ -242,7 +241,7 @@ public class CreatureAnimatorCtrl
             if (targetView != null && targetView.StateMachine)
             {
                 m_weaponTarget = targetView.StateMachine.FindTransformEx("Wound");
-                if (m_weaponTarget == null && targetView.gameObject!=null)
+                if (m_weaponTarget == null && targetView.gameObject != null)
                 {
                     m_weaponTarget = targetView.gameObject.transform;
                 }
@@ -257,7 +256,7 @@ public class CreatureAnimatorCtrl
             return;
         }
 
-        if (weaponAnimator != null && weaponAnimator.runtimeAnimatorController!=null)
+        if (weaponAnimator != null && weaponAnimator.runtimeAnimatorController != null)
         {
             if (m_weaponAnimatorCtrl == null)
             {
@@ -306,9 +305,8 @@ public class CreatureAnimatorCtrl
         if (m_dying)
         {
             Debug.Log("Dying!! AnimatorCtrl Filter Break:" + animName);
-                return;
+            return;
         }
-
         //if (animName == "" || m_attackAnimatorStateInfo.IsName(animName))
         {
             m_crossfadeName = "IDLE";
@@ -333,7 +331,7 @@ public class CreatureAnimatorCtrl
             {
                 ana.speed = speed;
             }
-            
+
         }
         //Debug.Log("ana speed=" + ana.speed);
     }
@@ -360,7 +358,7 @@ public class CreatureAnimatorCtrl
         public float speed;
     }
     private List<speedPair> anbSpeedDict;
-    public void changeAnbSpeed(int effectID,float speed,bool enable)
+    public void changeAnbSpeed(int effectID, float speed, bool enable)
     {
         if (anb == null)
         {
@@ -377,7 +375,7 @@ public class CreatureAnimatorCtrl
                 }
             }
 
-            speedPair newpair=new speedPair();
+            speedPair newpair = new speedPair();
             newpair.effectID = effectID;
             newpair.speed = speed;
             anbSpeedDict.Add(newpair);
@@ -440,9 +438,10 @@ public class CreatureAnimatorCtrl
         //return statedic.ContainsKey(name);
         #endregion
     }
-#endregion
+    #endregion
 
-#region 转向
+
+    #region 转向
     private bool m_bDelayFaceTo = false;
     private Vector3 m_delayFaceToTargetPos = Vector3.zero;
     public bool FaceTo(Vector3 targetPos)
@@ -480,11 +479,11 @@ public class CreatureAnimatorCtrl
             return FaceTo(m_delayFaceToTargetPos);
         }
         return false;
-    }    
+    }
 
-#endregion
+    #endregion
 
-#region 动作替换
+    #region 动作替换
 
     private Effect.AnimationReplacePair[] m_clipPairsA;
     private bool m_recoverPairsA;
@@ -508,7 +507,7 @@ public class CreatureAnimatorCtrl
 
     private void replaceAnimA()
     {
-        if (m_clipPairsA==null)
+        if (m_clipPairsA == null)
         {
             return;
         }
@@ -567,10 +566,20 @@ public class CreatureAnimatorCtrl
         ResetBones();
     }
 
-    private int m_lastAnAClipHash = 0;
-    private float m_lastAnAClipTime = 0;
+    //--记录Animator运行状态--
+    private int m_lastAnAClipHash = 0;          //替换时state
+    private int m_lastAnANextClipHash = 0;      //替换时处于过渡,目标state
+    private float m_lastAnAClipTime = 0;        //归一化时间
+
     private int m_lastAnBClipHash = 0;
+    private int m_lastAnBNextClipHash = 0;
     private float m_lastAnBClipTime = 0;
+    //-------------------------
+
+    /// <summary>
+    /// AnimatorOverrideController替换动画片段 实现控制器重用
+    /// </summary>
+    /// <returns>是否有动画替换</returns>
     private bool updateAnimaiontReplace()
     {
         //in the frame of replacing the animation clip in override controller, the animator will restart from the default state
@@ -580,13 +589,28 @@ public class CreatureAnimatorCtrl
         {
             return false;
         }
-
         //bool a_isStateDefault = ana.GetCurrentAnimatorStateInfo(m_pFSM.moveAnimatorLayer).IsTag("MoveTree");
         m_lastAnAClipHash = ana.GetCurrentAnimatorStateInfo(m_pFSM.moveAnimatorLayer).fullPathHash;
         m_lastAnAClipTime = (int)ana.GetCurrentAnimatorStateInfo(m_pFSM.moveAnimatorLayer).normalizedTime;
+        bool AnaIsInTransition = ana.IsInTransition(m_pFSM.moveAnimatorLayer);
+
         //bool b_isStateDefault = anb.GetCurrentAnimatorStateInfo(m_pFSM.attackAnimatorLayer).IsTag("IDLE");
         m_lastAnBClipHash = anb.GetCurrentAnimatorStateInfo(m_pFSM.attackAnimatorLayer).fullPathHash;
         m_lastAnBClipTime = (int)anb.GetCurrentAnimatorStateInfo(m_pFSM.attackAnimatorLayer).normalizedTime;
+        bool AnbIsInTransition = anb.IsInTransition(m_pFSM.attackAnimatorLayer);
+
+        if (AnaIsInTransition)//AnA处在过渡中
+        {
+            m_lastAnANextClipHash = ana.GetNextAnimatorStateInfo(m_pFSM.moveAnimatorLayer).fullPathHash;
+            m_lastAnAClipTime = (int)ana.GetNextAnimatorStateInfo(m_pFSM.moveAnimatorLayer).normalizedTime;
+        }
+        if (AnbIsInTransition)//AnB处在过渡中
+        {
+            m_lastAnBNextClipHash = anb.GetNextAnimatorStateInfo(m_pFSM.attackAnimatorLayer).fullPathHash;
+            m_lastAnAClipTime = (int)anb.GetNextAnimatorStateInfo(m_pFSM.attackAnimatorLayer).normalizedTime;
+        }
+
+
 
         if (goBBackAMTransform && goBBackAMTransform.parent != goBRootMTransform)
         {
@@ -595,7 +619,7 @@ public class CreatureAnimatorCtrl
             m_DesireBackAMParent = goBRootMTransform;
             m_DesireBackAMParentProp = 1.0f;
         }
-
+        //替换动画
         if (m_clipPairsA != null)
         {
             replaceAnimA();
@@ -608,24 +632,59 @@ public class CreatureAnimatorCtrl
 
         return true;
     }
+    /// <summary>
+    ///  AnimatorOverrideController替换动画片段后 控制器进入默认State 根据记录恢复控制器运行状态
+    /// </summary>
+    private void AfterAnimationReplaceBack()
+    {
+        if (m_lastAnAClipHash != 0)
+        {
+            if (m_lastAnANextClipHash == 0)//未处于过渡
+            {
+                ana.CrossFade(m_lastAnAClipHash, 0.0f, m_pFSM.moveAnimatorLayer, m_lastAnAClipTime);
+            }
+            else                            //处于过渡
+            {
+                ana.CrossFade(m_lastAnAClipHash, 0.0f, m_pFSM.moveAnimatorLayer, 1);
+                ana.CrossFade(m_lastAnANextClipHash, 0.0f, m_pFSM.moveAnimatorLayer, m_lastAnAClipTime);
+            }
+            m_lastAnAClipHash = 0;
+            m_lastAnANextClipHash = 0;
+        }
 
-#endregion
+        if (m_lastAnBClipHash != 0)
+        {
+            if (m_lastAnBNextClipHash == 0)
+            {
+                anb.CrossFade(m_lastAnBClipHash, 0.0f, m_pFSM.attackAnimatorLayer, m_lastAnBClipTime);
+            }
+            else
+            {
+                anb.CrossFade(m_lastAnBClipHash, 0.0f, m_pFSM.attackAnimatorLayer, 1);
+                anb.CrossFade(m_lastAnBNextClipHash, 0.0f, m_pFSM.attackAnimatorLayer, m_lastAnBClipTime);
+            }
 
-#region 骨骼和动作初始化
+            m_lastAnBClipHash = 0;
+            m_lastAnBNextClipHash = 0;
+        }
+    }
+    #endregion
+
+    #region 骨骼和动作初始化
     public void OnSkinChanged(SkinInstance sk)
     {
         if (!m_pFSM.SkinControl)
         {
             return;
         }
-        if(null == sk || !sk.isValid)
+        if (null == sk || !sk.isValid)
         {
             return;
         }
         if (m_pFSM.attackAnimatorLayer > 0)
         {
             overControllerA = sk.overrideController;
-            if(!overControllerA)
+            if (!overControllerA)
             {
                 return;
             }
@@ -677,7 +736,7 @@ public class CreatureAnimatorCtrl
 
     public void OnSkinCull()
     {
-        
+
     }
 
     public void OnSkinNotCull()
@@ -753,7 +812,7 @@ public class CreatureAnimatorCtrl
     public void UpdateAnimatorScript(bool force = false)
     {
         //在动作上绑定光效，目前主要为跑步和跳跃增加烟雾，a状态机加光效，b状态机处理函数为空不加光效
-        if(!NeedToUpDateAnimatorSript && !force)
+        if (!NeedToUpDateAnimatorSript && !force)
         {
             return;
         }
@@ -783,7 +842,7 @@ public class CreatureAnimatorCtrl
 
     }
 
-    
+
     public void ResetBones()
     {
         //还原层次结构，避免节点动画丢失
@@ -803,20 +862,20 @@ public class CreatureAnimatorCtrl
         }
     }
 
-#endregion
+    #endregion
 
     bool m_skillLeft = false;
     bool m_skillRight = false;
     bool m_animatorASkillLeft = false;
     bool m_animatorASkillRight = false;
 
-    
+
     //为两个攻击层做一个过渡，如果全身攻击到一半，突然行走，变成上下半身融合，则利用这个过渡解决动作突变
     float m_DesireAttackLayerWeight = 0.0f;
-    float m_DesireAttackUpLayerWeight = 0.0f;    
+    float m_DesireAttackUpLayerWeight = 0.0f;
     private void updateLayerWeight()
     {
-        if (m_pFSM.attackAnimatorLayer<=0) return;
+        if (m_pFSM.attackAnimatorLayer <= 0) return;
         float deta = m_pFSM.creaturePropety.animatorCrossSpeed * Time.deltaTime;
         float layerWeight = anb.GetLayerWeight(m_pFSM.attackAnimatorLayer);
         float layerStep = m_DesireAttackLayerWeight - layerWeight;
@@ -836,7 +895,7 @@ public class CreatureAnimatorCtrl
             {
                 layerUpStep = Mathf.Sign(layerUpStep) * deta;
             }
-            anb.SetLayerWeight(m_pFSM.attackAnimatorLayer+1, layerUpWeight + layerUpStep);
+            anb.SetLayerWeight(m_pFSM.attackAnimatorLayer + 1, layerUpWeight + layerUpStep);
         }
     }
 
@@ -848,7 +907,7 @@ public class CreatureAnimatorCtrl
 
     public void update()
     {
-        if ((ana == null || anb == null) || ((m_pFSM.attackAnimatorLayer==0) && (anc == null)))
+        if ((ana == null || anb == null) || ((m_pFSM.attackAnimatorLayer == 0) && (anc == null)))
         {
             return;
         }
@@ -870,10 +929,9 @@ public class CreatureAnimatorCtrl
 
         if (m_rePlayAnimB != 0)
         {
-            anb.Play(m_rePlayAnimB,-1);
+            anb.Play(m_rePlayAnimB, -1);
             m_rePlayAnimB = 0;
         }
-
         #region 如果需要切换动作，在这里切换，每帧一次避免冲突
         if (m_crossfadeName != "")
         {
@@ -927,6 +985,8 @@ public class CreatureAnimatorCtrl
         m_weaponCrossfadeSpeed2 = 1.0f;
         #endregion
 
+    
+
         #region 查看动作状态知否改变，包括AttackUp，AttackMove, BlendAttack,以及跑步/静止的切换
 
         m_attackAnimatorClipInfo = anb.GetCurrentAnimatorClipInfo(m_pFSM.attackAnimatorLayer);
@@ -939,7 +999,6 @@ public class CreatureAnimatorCtrl
         {
             anb.SetBool(id_bIsAttackAnim, !m_animatorUpStateIdle);
         }
-
         int currentAnbHash = m_lastAnbHash;
         bAnimatorAttack = !m_animatorUpStateIdle;
         currentAnbHash = m_attackAnimatorStateInfo.fullPathHash;
@@ -966,18 +1025,6 @@ public class CreatureAnimatorCtrl
         }
         #endregion
 
-        if (m_lastAnAClipHash != 0)
-        {
-            ana.CrossFade(m_lastAnAClipHash, 0.0f, m_pFSM.moveAnimatorLayer, m_lastAnAClipTime);
-            m_lastAnAClipHash = 0;
-        }
-
-        if (m_lastAnBClipHash != 0)
-        {
-            anb.CrossFade(m_lastAnBClipHash, 0.0f, m_pFSM.attackAnimatorLayer, m_lastAnBClipTime);
-            m_lastAnBClipHash = 0;
-        }
-        
         if (updateAnimaiontReplace())
         {
             return;
@@ -1037,7 +1084,7 @@ public class CreatureAnimatorCtrl
             }
             bDoingAttackMove = false;
             bAttackMoveBlending = false;
-            if (delayFaceTo()&&m_pFSM.isHero)
+            if (delayFaceTo() && m_pFSM.isHero)
             {
                 //=delayFaceTo(); //在b_doingAttackMove情况下转向滞后，到此时才转。
                 m_pFSM.syncPos();
@@ -1049,7 +1096,7 @@ public class CreatureAnimatorCtrl
                 m_animatorUpStateAttackUp1 = m_attackAnimatorStateInfo.IsTag("AttackUp1"); //AttackUp1的时候，RootM生切到RootA，避免正面跑步和侧身攻击之间的腰部过渡（因为这样会向左扭曲）
                 bool animatorUpStateAttackUp = (m_attackAnimatorStateInfo.IsTag("AttackUp") || m_animatorUpStateAttackUp1);
                 m_animatorUpStateForceAttackMove = m_attackAnimatorStateInfo.IsTag("ForceAttackMove");
-                m_animatorUpStateAttackMove = (m_attackAnimatorStateInfo.IsTag("AttackMove") || m_animatorUpStateForceAttackMove);                
+                m_animatorUpStateAttackMove = (m_attackAnimatorStateInfo.IsTag("AttackMove") || m_animatorUpStateForceAttackMove);
                 m_animatorUpSatateBlendAttack = m_attackAnimatorStateInfo.IsTag("BlendAttack");
 
                 //blendAttack支持attackMove
@@ -1060,7 +1107,7 @@ public class CreatureAnimatorCtrl
                         //恢复成默认值
                         anb.SetFloat(id_nMoveForward, 1.0f);
                         anb.SetFloat(id_nMoveRight, 0.0f);
-						bAttackMoveZero = true; //如果没有强制位移的话，就原地滚了
+                        bAttackMoveZero = true; //如果没有强制位移的话，就原地滚了
                     }
                 }
 
@@ -1084,8 +1131,8 @@ public class CreatureAnimatorCtrl
                             {
                                 m_DesireBackAMParentProp = 0.99f;
                             }
-                     }
-                        
+                        }
+
                     }
                     else if (anc)
                     {
@@ -1110,7 +1157,7 @@ public class CreatureAnimatorCtrl
                     bool animatorUpStateMovingUp = m_attackAnimatorStateInfo.IsTag("MovingUp");
                     if ((isMovingChange) && (m_bAnimatorMoving == true) && (animatorUpStateMovingUp))//移动动作覆盖攻击动作
                     {
-                        BreakAttackAnim("",0.0f);
+                        BreakAttackAnim("", 0.0f);
                     }
                     else
                     {
@@ -1187,7 +1234,7 @@ public class CreatureAnimatorCtrl
                 faceRight.Normalize();
                 Vector3 turnTo = faceDir;
                 float forward = Vector3.Dot(faceDir, m_pFSM.transform.forward);
-                float right = Vector3.Dot(faceDir,m_pFSM.transform.right);
+                float right = Vector3.Dot(faceDir, m_pFSM.transform.right);
 
                 //开始翻滚的话，就把强制位移停掉
                 m_pFSM.moveCtrl.StopForceMove();
@@ -1236,7 +1283,7 @@ public class CreatureAnimatorCtrl
                 bAttackMoveZero = false;
 
             }
-		}
+        }
         #endregion
         return;
         #region 废弃代码，分层设置动画
@@ -1311,7 +1358,7 @@ public class CreatureAnimatorCtrl
         #endregion
     }
 
- #region 废弃代码，保存骨骼信息
+    #region 废弃代码，保存骨骼信息
     ////保存旧的骨骼信息
     //public void ReserveBoneTransformSelf(Transform t, Transform animroot, ref Dictionary<string, BoneTransform> bones)
     //{
@@ -1366,10 +1413,10 @@ public class CreatureAnimatorCtrl
     //        }
     //    }
     //}
-#endregion
+    #endregion
 
-    private ScreenRaycast raycast=null;
-    public float lookAngle=0.0f;
+    private ScreenRaycast raycast = null;
+    public float lookAngle = 0.0f;
 
     public void LateUpdate()
     {
@@ -1387,6 +1434,8 @@ public class CreatureAnimatorCtrl
         UpdateAnimatorScript();
 
         UpdateBones();
+
+        AfterAnimationReplaceBack();
 
         #region 上半身反扭（废弃）
         ////动作分离用代码。将spine点进行一定的反向旋转。
@@ -1453,7 +1502,7 @@ public class CreatureAnimatorCtrl
         //        //}
         //    }
         //}
-#endregion
+        #endregion
 
         #region 上下半身分离时，腰部使用RootA的动作，去除多余的位移和旋转
         if (m_pFSM.SkinConfig.RootAReplace)
@@ -1482,7 +1531,7 @@ public class CreatureAnimatorCtrl
             Quaternion currentRotation = goBBackAMTransform.parent.localRotation;
             Quaternion desireRotation = m_DesireBackAMParent.localRotation;
             float angle = Quaternion.Angle(currentRotation, desireRotation);
-            if (angle < 10.0f || m_DesireBackAMParentProp > 0.9f)            
+            if (angle < 10.0f || m_DesireBackAMParentProp > 0.9f)
             {
                 Vector3 position = goBBackAMTransform.localPosition;
                 Quaternion localRotation = goBBackAMTransform.localRotation;
@@ -1541,7 +1590,7 @@ public class CreatureAnimatorCtrl
             }
 
 
-            if (raycast != null && raycast.targetPos.sqrMagnitude>0.01f)
+            if (raycast != null && raycast.targetPos.sqrMagnitude > 0.01f)
             {
                 //float cameraAngle = cameraTarget.rotation.eulerAngles.x;
                 //if (cameraAngle > 180.0f)
@@ -1549,7 +1598,7 @@ public class CreatureAnimatorCtrl
                 //    cameraAngle = cameraAngle - 360.0f;
                 //}
 
-                if (!goBBackAMTransform || raycast.targetPos.sqrMagnitude<0.01f)//正常情况下，这玩意不会为null，但是不知道为什么，又来null
+                if (!goBBackAMTransform || raycast.targetPos.sqrMagnitude < 0.01f)//正常情况下，这玩意不会为null，但是不知道为什么，又来null
                 {
                     return;
                 }
@@ -1561,7 +1610,7 @@ public class CreatureAnimatorCtrl
                 }
 
                 //此处约定，如果某动作不需要弯腰瞄准，则lookRefTransform.localPosition设置为0
-                if (m_pFSM.SkinConfig.lookRefTransform && m_pFSM.SkinConfig.lookRefTransform.localPosition.sqrMagnitude>0.00001f)
+                if (m_pFSM.SkinConfig.lookRefTransform && m_pFSM.SkinConfig.lookRefTransform.localPosition.sqrMagnitude > 0.00001f)
                 {
                     if (Mathf.Abs(lookAngle) > 0.1f)
                     {
@@ -1588,12 +1637,12 @@ public class CreatureAnimatorCtrl
                         offsetAngle.x += lookAngle;
                         Quaternion Q1 = Quaternion.Euler(m_pFSM.SkinConfig.lookRefTransform.eulerAngles);
                         Quaternion Q2 = Quaternion.Euler(offsetAngle + m_pFSM.SkinConfig.lookRefTransform.eulerAngles);
-                        Quaternion RaRb = goBBackAMTransform.rotation;                        
+                        Quaternion RaRb = goBBackAMTransform.rotation;
                         Quaternion RaRb_1 = RaRb;
                         RaRb_1.w *= -1.0f;
                         Quaternion RcRn = RaRb_1 * Q1;
                         Quaternion RcRn_1 = RcRn;
-                        RcRn_1.w *= -1.0f;          
+                        RcRn_1.w *= -1.0f;
                         Quaternion Rt = Q2 * RcRn_1;
                         goBBackAMTransform.rotation = Rt;
                     }
@@ -1610,8 +1659,8 @@ public class CreatureAnimatorCtrl
 
         //进行了层融合后，在LateUpdate阶段，才根据动作移动controller
         if ((m_animatorUpStateAttackMove || m_animatorUpSatateBlendAttack) && !m_animatorUpStateIdle && goBMainTransform != null)
-        {            
-            if ((anb.GetCurrentAnimatorStateInfo(m_pFSM.attackAnimatorLayer).fullPathHash == m_attackAnimatorStateInfo.fullPathHash) && m_attackAnimatorClipInfo.Length > 0 && m_attackAnimatorClipInfo[0].weight > 0.99f && m_attackAnimatorStateInfo.normalizedTime<0.99f)
+        {
+            if ((anb.GetCurrentAnimatorStateInfo(m_pFSM.attackAnimatorLayer).fullPathHash == m_attackAnimatorStateInfo.fullPathHash) && m_attackAnimatorClipInfo.Length > 0 && m_attackAnimatorClipInfo[0].weight > 0.99f && m_attackAnimatorStateInfo.normalizedTime < 0.99f)
             {
                 //如果进行了动作切换，LateUpdate阶段和Update阶段的动作可以不一样，所以当fullPathHash不一致时，不移动controller
                 //带有位移的攻击动作，把位移转移到controller上
@@ -1651,7 +1700,7 @@ public class CreatureAnimatorCtrl
                     Vector3 animatorOffset = (goBMainTransform.localPosition - lastAnimatorBOffset) * m_attackMoveDistanceScale;
                     //Debug.Log("time" + m_attackAnimatorStateInfo.normalizedTime + "main" + goBMainTransform.localPosition + "last" + lastAnimatorBOffset);
                     //Debug.Log("length" + m_attackAnimatorStateInfo.length);
-                    lastAnimatorBOffset = goBMainTransform.localPosition;                    
+                    lastAnimatorBOffset = goBMainTransform.localPosition;
                     if (goBMainTransform.parent != null)
                     {
                         animatorOffset = goBMainTransform.parent.rotation * animatorOffset;
@@ -1673,7 +1722,7 @@ public class CreatureAnimatorCtrl
                     }
                     if ((!m_pFSM.gameObject.activeInHierarchy) || (!m_pFSM.controller.enabled))//预防CharacterController.Move called in inactive controller
                     {
-                        bAttackMoveZero=true;
+                        bAttackMoveZero = true;
                     }
 
                     if (!bAttackMoveZero)

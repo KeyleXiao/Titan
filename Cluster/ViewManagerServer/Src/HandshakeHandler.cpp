@@ -14,16 +14,15 @@ void HandshakeHandler::Handle(ViewUser* pSession, SGameMsgHead* head, SMsgView_V
 
 	// 回复握手
 	{
-		const SGameMsgHead& header = gMsg.BuildHead_MV(ENUM_MSG_VIEW_HANDSHAKE_RESPONSE);
-		SMsgView_MV_HandshakeResponse sendData;
-		sendData.dwID = pSession->GetID();
-		TSendMsg(pSession, header, sendData);
+		SMsgView_MV_HandshakeResponse msg;
+		msg.dwID = pSession->GetID();
+		pSession->SendMsg(msg);
 	}
 
 	// 检测是否可以对外服务了
 	if (gSetting.CheckReady())
 	{
 		// 将所有Gate的信息推送给所有View
-		gViewList.BroadcastGatesInfoToView();
+		gViewList.BroadcastGatesInfoToViews();
 	}
 }

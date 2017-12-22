@@ -268,6 +268,7 @@
     <ClInclude Include="..\..\..\Common\ViewMsgDef.h" />
     <ClInclude Include="..\..\..\Common\ViewMsgDef_Client.h" />
     <ClInclude Include="..\..\..\Common\ViewMsgDef_Server.h" />
+    <ClInclude Include="..\..\..\Common\ViewRedisKey.h" />
     <ClInclude Include="..\Src\Acceptor.h" />
     <ClInclude Include="..\Src\ClientList.h" />
     <ClInclude Include="..\Src\ClientUser.h" />
@@ -285,6 +286,8 @@
     <ClInclude Include="..\Src\MsgFactory.h" />
     <ClInclude Include="..\Src\OperationDlg.h" />
     <ClInclude Include="..\Src\RedisMng.h" />
+    <ClInclude Include="..\Src\Replay.h" />
+    <ClInclude Include="..\Src\ReplayContainer.h" />
     <ClInclude Include="..\Src\StartViewHandler.h" />
     <ClInclude Include="..\Src\stdafx.h" />
     <ClInclude Include="..\Src\Setting.h" />
@@ -309,6 +312,8 @@
     <ClCompile Include="..\Src\MsgFactory.cpp" />
     <ClCompile Include="..\Src\OperationDlg.cpp" />
     <ClCompile Include="..\Src\RedisMng.cpp" />
+    <ClCompile Include="..\Src\Replay.cpp" />
+    <ClCompile Include="..\Src\ReplayContainer.cpp" />
     <ClCompile Include="..\Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

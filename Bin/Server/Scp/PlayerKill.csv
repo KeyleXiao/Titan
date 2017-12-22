@@ -1,3 +1,0 @@
-﻿请求切磋冷却时间(毫秒),请求切磋距离范围,请求切磋有效时间(毫秒),请求切磋有效数量,切磋范围,准备时间(毫秒),切磋时间(毫秒),创建怪物ID,开始PK增加BuffID,开始PK增加BuffLevel,结束PK增加BuffID,结束PK增加BuffLevel
-int,int,int,int,int,int,int,int,int,int,int,int
-5000,20,60000,3,50,6000,306000,3,2186,1,4080,1

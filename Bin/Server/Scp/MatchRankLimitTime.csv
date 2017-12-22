@@ -1,2 +1,0 @@
-﻿撮合类型ID,时间段（-1非时间段0周日1周一2周二以此类推）,开始时间触发器ID唯一,Rank开放时间,结束时间触发器ID唯一（不要和开始触发器ID重复）,Rank结束时间,点击失败描述,开始跑马灯ID,结束跑马灯ID
-int,int,int,string,,string,int,int,int

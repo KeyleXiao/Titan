@@ -1,3 +1,0 @@
-﻿载具ID,载具名称,预制体路径,生命值,移动速度,攻击力,视野,阵营
-int,string,string,int,int,int,int,int
-1,测试怪,Monster/Spider,50,10000,10,5,1

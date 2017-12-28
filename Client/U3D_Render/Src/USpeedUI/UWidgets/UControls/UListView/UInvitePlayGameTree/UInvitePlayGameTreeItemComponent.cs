@@ -37,9 +37,6 @@ namespace USpeedUI.UWidgets
         // 游戏状态描述
         private string[] GameStateDesc = null;
 
-        // 是否可以邀请
-        private bool IsCanInvite = false;
-
         protected override void Start()
         {
             base.Start();
@@ -156,15 +153,9 @@ namespace USpeedUI.UWidgets
                     StateDesc.text = String.Format("<color=#{0}>{1}</color>", GameStateColor, ULocalizationService.Instance.Get("UIView", "Common", GameStateDesc));
                 }
 
-                // 是否可以邀请
-                if (!item.isInvited && item.nGameState == (int)ACTOR_GAME_STATE.GAME_STATE_IDLE)
-                    IsCanInvite = true;
-                else
-                    IsCanInvite = false;
-
                 CheckMarkImage.SetActive(item.isSelected);
 
-                if (IsCanInvite)
+                if (item.isCanInvite)
                     CheckMarkBg.SetActive(true);
                 else
                     CheckMarkBg.SetActive(false);
@@ -222,7 +213,7 @@ namespace USpeedUI.UWidgets
 
 			remark = remark == null ? "" : remark;
 
-			if (remark.Length == 0)
+			if (String.IsNullOrEmpty(remark) || remark == buddyInfo.Info.szName)
 			{
 				return buddyInfo.Info.szName;
 			}
@@ -234,7 +225,7 @@ namespace USpeedUI.UWidgets
 
         public void onClickPlayer()
         {
-            if (!IsCanInvite)
+            if (item.isCanInvite == false)
                 return;
 
             if(CheckMarkImage.activeSelf)

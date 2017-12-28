@@ -276,6 +276,7 @@ namespace DataCenter
             }
         }
 
+
         // LegendCupRegistWnd
         public void RecvCreateCupTypeInfo(IntPtr ptrParam, int nPtrLen)
         {
@@ -653,6 +654,46 @@ namespace DataCenter
                 return true;
 
             return false;
+        }
+
+
+        public void SystemCancelCup(IntPtr ptrParam, int nPtrLen)
+        {
+            IntPtrVaArgParseHelper helper = new IntPtrVaArgParseHelper(ptrParam, nPtrLen);
+            long llLegendCupID = helper.get<long>();
+
+            // 清理数据
+            if (m_legendCupNodeList != null)
+            {
+                int nIndex = m_legendCupNodeList.FindIndex(item => item.nLegendCupID == llLegendCupID);
+                if (nIndex >= 0 )
+                {
+                    m_legendCupNodeList.RemoveAt(nIndex);
+                }
+            }
+            if (m_legendCupSelfInNodeDic.ContainsKey(llLegendCupID))
+            {
+                m_legendCupSelfInNodeDic.Remove(llLegendCupID);
+            }
+            if (m_legendCupSelfCreateNodeDic.ContainsKey(llLegendCupID))
+            {
+                m_legendCupSelfCreateNodeDic.Remove(llLegendCupID);
+            }
+            if (m_legendCupRegistKinDic.ContainsKey(llLegendCupID))
+            {
+                m_legendCupRegistKinDic.Remove(llLegendCupID);
+            }
+            if (m_legendCupRegistBlacklistDic.ContainsKey(llLegendCupID))
+            {
+                m_legendCupRegistBlacklistDic.Remove(llLegendCupID);
+            }
+            if (m_legendCupCompetitionDic.ContainsKey(llLegendCupID))
+            {
+                m_legendCupCompetitionDic.Remove(llLegendCupID);
+            }
+
+            // 清空View
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL, null);
         }
 
     }

@@ -391,6 +391,7 @@ public class GameViewCommandHandler : MonoBehaviour
         setHandler((int)GameLogicDef.GVIEWCMD_LEGENDCUP_CREATER_PUBLIC_SUCCESS, onCommand_LegendcupCreaterPublicSuccess, null); //通知创建者发布杯赛成功
         setHandler((int)GameLogicDef.GVIEWCMD_LEGENDCUP_ROUNDTIME_RECV, onCommand_LegendcupRecvRoundTime, null); //接收某杯赛轮次时间信息
         setHandler((int)GameLogicDef.GVIEWCMD_LEGENDCUP_PUBLIC_SUCCESS, onCommand_LegendcupPublicSuccess, null); //通知所有人发布杯赛成功
+        setHandler((int)GameLogicDef.GVIEWCMD_LEGENDCUP_SYSTEM_CANCEL_CUP, onCommand_LegendcupSyytemCancel, null); //通知取消杯赛
 
         setHandler((int)GameLogicDef.GLOGICCMD_SNS_MSG_DATA, onCommand_SNS_MsgData, null);
         setHandler((int)GameLogicDef.GLOGICCMD_SNS_UPDATE_RELATIONSHIP, onCommand_SNS_RelationshipStatus, null);
@@ -3220,6 +3221,20 @@ public class GameViewCommandHandler : MonoBehaviour
     public bool onCommand_LegendcupPublicSuccess(int cmdID, int nParam, string strParam, IntPtr ptrParam, int nPtrLen)
     {
         LogicDataCenter.legendCupDataManager.RecvCupPublicSuccess();
+
+        return true;
+    }
+
+    public bool onCommand_LegendcupSyytemCancel(int cmdID, int nParam, string strParam, IntPtr ptrParam, int nPtrLen)
+    {
+        if (null == ptrParam || IntPtr.Zero == ptrParam)
+        {
+            Trace.Log(string.Format("==================onCommand_LegendcupSyytemCancel=================== : {0}", nParam));
+        }
+        else
+        {
+            LogicDataCenter.legendCupDataManager.SystemCancelCup(ptrParam, nPtrLen);
+        }
 
         return true;
     }

@@ -43,6 +43,7 @@ namespace USpeedUI.LegendCup
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SHOW, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_RECVLIST, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_UPDATELIST, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_LOGINMOBA, this);
             return base.Init();
         }
@@ -53,6 +54,7 @@ namespace USpeedUI.LegendCup
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SHOW, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_RECVLIST, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_UPDATELIST, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_LOGINMOBA, this);
         }
 
@@ -73,6 +75,7 @@ namespace USpeedUI.LegendCup
                     break;
                 case WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_RECVLIST:
                 case WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_UPDATELIST:
+                case WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL:
                     {
                         if (m_wndView != null)
                             m_wndView.OnRecvCupList();
@@ -231,6 +234,15 @@ namespace USpeedUI.LegendCup
             // 有自身参加的杯赛才显示
             MyCupBtn.gameObject.SetActive(LogicDataCenter.legendCupDataManager.LegendCupSelfInNodeDic.Count > 0);
 
+            int nSelfClanID = 0;
+            int nSelfPDBID = 0;
+            if (EntityFactory.MainHeroView != null)
+            {
+                nSelfClanID = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_CLAN);
+                nSelfPDBID = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_ID);
+            }
+            bool bGMer = GameLogicAPI.bIsGM(nSelfPDBID);
+
             LegendCupList.OnSelect.RemoveListener(OnSelectCupItem);
             LegendCupList.onDoubleClick.RemoveListener(OnDoubleClickCupItem);
             LegendCupList.DataSource.Clear();
@@ -239,6 +251,14 @@ namespace USpeedUI.LegendCup
             int nIndex = 1;
             foreach (cmd_legendcup_recv_cuplist_node node in nodeList)
             {
+                if (!bGMer && node.nClanID > 0)         // 非GM玩家排除其他联盟数据
+                {
+                    if (nSelfClanID <= 0 || (nSelfClanID > 0 && nSelfClanID != node.nClanID))
+                    {
+                        continue;
+                    }
+                }
+
                 UListItemLegendCup item = new UListItemLegendCup();
                 item.nIndex = nIndex;
                 item.data = node;

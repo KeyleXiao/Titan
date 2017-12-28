@@ -57,13 +57,13 @@ namespace ASpeedGame.Data.ShieldWorld
 			return GameLogicAPI.ExistKeyWordOfName(stInfo);
         }
 
-		/// <summary>
-		/// 是否含有屏蔽词
-		/// </summary>
-		/// <param name="stInfo"></param>
-		/// <returns></returns>
-		/// 适用于名称信息,比如角色名,房间名,联盟名称等等
-		public bool IsHaveShieldWord(string stInfo)
+        /// <summary>
+        /// 是否含有屏蔽词,适用于名称信息,比如角色名,房间名,联盟名称等等
+        /// </summary>
+        /// <param name="stInfo"></param>
+        /// <returns></returns>
+        /// 适用于名称信息,比如角色名,房间名,联盟名称等等
+        public bool IsHaveShieldWord(string stInfo)
         {
 			return GameLogicAPI.ExistKeyWordOfName(stInfo);
         }
@@ -191,14 +191,13 @@ namespace ASpeedGame.Data.ShieldWorld
 			}
 		}
 
-		/// <summary>
-		/// 判断是否含有屏蔽词,且返回屏蔽词
-		/// </summary>
-		/// <param name="content"></param>
-		/// <param name="shieldWordArray">屏蔽词列表</param>
-		/// <returns>是否含有屏蔽词</returns>
-		/// 适用于名称的过滤,比如角色名,房间名,联盟名称等等
-		public bool IsHaveShieldWordEx(string content, out List<string> shieldWordList)
+        /// <summary>
+        /// 判断是否含有屏蔽词,且返回屏蔽词,适用于名称的过滤,比如角色名,房间名,联盟名称等等
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="shieldWordArray">屏蔽词列表</param>
+        /// <returns>是否含有屏蔽词</returns>
+        public bool IsHaveShieldWordEx(string content, out List<string> shieldWordList)
 		{
 			string tmpStr = content;
 			shieldWordList = new List<string>();
@@ -237,6 +236,5 @@ namespace ASpeedGame.Data.ShieldWorld
 
 			return true;
 		}
-
 	}
 }

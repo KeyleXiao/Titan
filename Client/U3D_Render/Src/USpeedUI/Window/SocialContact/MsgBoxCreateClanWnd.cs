@@ -10,7 +10,7 @@ using ASpeedGame.Data.ShieldWorld;
 
 namespace USpeedUI.MsgBoxCreateClan
 {
-    public class MsgBoxCreateClanWnd : UIBaseWnd<MsgBoxCreateClanWndView>
+    public class MsgBoxCreateClanWnd : UIPopupWnd<MsgBoxCreateClanWndView>
     {
         // 获取ID
         public override WndID GetID()
@@ -27,7 +27,7 @@ namespace USpeedUI.MsgBoxCreateClan
         // 获取所在层次
         public override WndLayerDef GetLayer()
         {
-            return WndLayerDef.WND_LAYER_FILL;
+            return WndLayerDef.WND_LAYER_POPUP02;
         }
 
         // 初始化

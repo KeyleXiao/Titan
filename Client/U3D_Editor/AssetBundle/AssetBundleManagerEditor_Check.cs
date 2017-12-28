@@ -29,6 +29,20 @@ using UnityEditor.Callbacks;
 public partial class AssetBundleManagerEditor : EditorWindow
 {
 
+    public static void CheckCompileError()
+    {
+        UnityEditor.SceneManagement.EditorSceneManager.NewScene(UnityEditor.SceneManagement.NewSceneSetup.EmptyScene);
+        EditorApplication.isPlaying = true;
+
+        EditorApplication.update += CheckCompileErrorUpdate;
+    }
+
+    private static void CheckCompileErrorUpdate()
+    {
+        EditorApplication.Exit(0);
+    }
+
+
     public static void CheckAssetName(string path)
     {
         if(AssetBundleImporter.isInValidMaterial(path))

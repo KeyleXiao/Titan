@@ -58,8 +58,7 @@ function RequestBuyWings(npc, actor, npc_id)
 	
 	-- Ìì¸³µã²»¹»
 	if totalTP < cost then
-		local strRes = "<npc uid=\""..npc.."\" name=\""..NPC_info.name.."\" dialog=\""..WINGS_CONFIG.no_enough_gold.."\"></npc>"
-		trace(strRes)
+		local strRes = "<npc uid=\""..npc.."\" npc_view_type=\""..NPC_info.npc_view_type.."\" name=\""..NPC_info.name.."\" dialog=\""..WINGS_CONFIG.no_enough_gold.."\"></npc>" 
 		ResponseNPC(actor, npc, strRes)
 		return
 	end

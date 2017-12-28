@@ -1083,6 +1083,7 @@ namespace USpeedUI
 
         public void ResetView()
         {
+            CountDownCompleteCallBack();
             if (skilImage)
                 skilImage.gameObject.SetActive(false);
         }

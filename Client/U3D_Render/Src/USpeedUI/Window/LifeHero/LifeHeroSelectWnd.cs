@@ -330,6 +330,7 @@ namespace USpeedUI.LifeHero
                         {
                             UConsumptionMsgData cmdData = new UConsumptionMsgData((int)EConsumptionRequestType.Request_Upstar, (int)EConsumptionGuideType.Guide_HeroCard);
                             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CONSUMPTIONGUIDE_SHOW, cmdData);
+                            CloseView();
                             return;
                         }
 
@@ -337,6 +338,7 @@ namespace USpeedUI.LifeHero
                         {
                             UConsumptionMsgData cmdData = new UConsumptionMsgData((int)EConsumptionRequestType.Request_Upstar, (int)EConsumptionGuideType.Guide_Gold);
                             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CONSUMPTIONGUIDE_SHOW, cmdData);
+                            CloseView();
                             return;
                         }
 

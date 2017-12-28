@@ -268,7 +268,8 @@ namespace USpeedUI.UWidgets
         {
             protected UBuddyGroupTreeItemComponent m_Component;
 
-			protected string  getBuddyName(SNSDataManager.BuddyInfo buddyInfo)
+            private Color BuddyNameColor = new Color(72f / 255f, 183f / 255f, 254f / 255f);
+            protected string  getBuddyName(SNSDataManager.BuddyInfo buddyInfo)
 			{
 				string remark = LogicDataCenter.snsDataManager.getBuddyRemark(buddyInfo.Info.nUserID);
 
@@ -321,7 +322,7 @@ namespace USpeedUI.UWidgets
 					m_Component.Icon.ResetToDefaultMaterial();
 					m_Component.RankIcon.ResetToDefaultMaterial();
 					m_Component.SexIcon.ResetToDefaultMaterial();
-                    m_Component.BuddyName.color = Color.white;
+                    m_Component.BuddyName.color = BuddyNameColor;
                     m_Component.RankName.color = Color.white;
 
                     m_Component.GameStateIcon.gameObject.SetActive(true);

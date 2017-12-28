@@ -41,6 +41,7 @@ namespace USpeedUI.LegendCup
         {
             m_isKeyClose = true;
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_KINLIST, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL, this);
             //UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_MEMBERLIST, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_CLOSE, this);
             return base.Init();
@@ -50,6 +51,7 @@ namespace USpeedUI.LegendCup
         {
             base.Destroy();
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_KINLIST, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL, this);
             //UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_MEMBERLIST, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_LEGENDCUP_REGIST_CLOSE, this);
         }
@@ -79,6 +81,7 @@ namespace USpeedUI.LegendCup
                 //    }
                 //    break;
                 case WndMsgID.WND_MSG_LEGENDCUP_REGIST_CLOSE:
+                case WndMsgID.WND_MSG_LEGENDCUP_CUPLIST_SYSTEM_CANCEL:
                     {
                         m_wndView.OnClickCloseBtn();
                     }

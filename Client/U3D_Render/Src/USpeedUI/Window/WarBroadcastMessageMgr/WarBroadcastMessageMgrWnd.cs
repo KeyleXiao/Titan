@@ -957,17 +957,22 @@ namespace USpeedUI.WarBroadcastMessageMgr
                 {
                     // 设置聊天广播
                     strKillInfo1 = ULocalizationService.Instance.Get("UIView", "BroadcastMessageMgr", "KillNum_2");
-                    str1 = data.MurdererName + "(" + data.MurdererVocation + ")";
+
+                    str1 = string.IsNullOrEmpty(data.MurdererVocation) ? data.MurdererName : data.MurdererName + "(" + data.MurdererVocation + ")";
+                    //str1 = data.MurdererName + "(" + data.MurdererVocation + ")";
                     str2 = strKillInfo1;
-                    str3 = data.MasterName + "(" + data.MasterVocation + ")";
+                    //str3 = data.MasterName + "(" + data.MasterVocation + ")";
+                    str3 = string.IsNullOrEmpty(data.MasterVocation) ? data.MasterName : data.MasterName + "(" + data.MasterVocation + ")";
                     str = String.Format("{0}[text color={1}]{2}[/text]{3}{4}[text color={5}]{6}[/text]",
                         ChatMessageManager.ChatItemFlag, strColorMur, str1, str2, ChatMessageManager.ChatItemFlag, strColorMas, str3);
 
                     if (data.nMasterEntityType == 2 && data.nAddTalentPoint > 0)
                     {
-                        str1 = data.MurdererName + "(" + data.MurdererVocation + ")";
+                        str1 = string.IsNullOrEmpty(data.MurdererVocation) ? data.MurdererName : data.MurdererName + "(" + data.MurdererVocation + ")";
+                        //str1 = data.MurdererName + "(" + data.MurdererVocation + ")";
                         str2 = strKillInfo1;
-                        str3 = data.MasterName + "(" + data.MasterVocation + ")";
+                        //str3 = data.MasterName + "(" + data.MasterVocation + ")";
+                        str3 = string.IsNullOrEmpty(data.MasterVocation) ? data.MasterName : data.MasterName + "(" + data.MasterVocation + ")";
                         str4 = "(" + ULocalizationService.Instance.Get("UIView", "BroadcastMessageMgr", "TeamBounty");
                         str5 = data.nAddTalentPoint.ToString();
                         str = String.Format("{0}[text color={1}]{2}[/text]{3}{4}[text color={5}]{6}[/text]{7}{8}[text color={9}]{10}[/text]{11}",

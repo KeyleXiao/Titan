@@ -41,6 +41,8 @@ namespace USpeedUI.UWidgets
         public bool isSelected;
         // 是否已经发送邀请
         public bool isInvited;
+        // 是否能邀请
+        public bool isCanInvite;
 
         public UInvitePlayGameTreeItemData(string strItemName, UnityEngine.Sprite sprIcon)
             : base(strItemName, sprIcon)

@@ -248,6 +248,8 @@ namespace USpeedUI.UWidgets
             link.Append(Uri.EscapeDataString(DataCenter.LogicDataCenter.playerSystemDataManager.GetActorPlayerInfo().playerInfo.chPlayerName));
             link.Append("&picurl=");
             link.Append(szShareImgUrl);
+            link.Append("&u=");
+            link.Append(GameLogicAPI.getPlayerUserID(EntityFactory.MainHeroID).ToString());
 
             StringBuilder sb = new StringBuilder("http://m.q1.com/qr.aspx?data=");
             sb.Append(System.Web.HttpUtility.UrlEncode(link.ToString(), Encoding.UTF8));

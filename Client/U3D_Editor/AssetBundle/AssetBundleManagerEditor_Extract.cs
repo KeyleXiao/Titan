@@ -460,7 +460,7 @@ public partial class AssetBundleManagerEditor : EditorWindow
         {
             EncodeFile_Addtive(ResModifList, ResDeleteList, OtherModifList, OtherDeleteList,debugvision);
         }
-
+        
     }
 
     /// <summary>

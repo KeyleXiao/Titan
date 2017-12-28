@@ -1235,6 +1235,9 @@ namespace GameLogic
 		GVIEWCMD_MATCH_ENTER_ROOM_SELF_OB,
 		// 比赛大厅 c++2view Ob位置改变
 		GVIEWCMD_MATCH_ROOM_HERO_POS_CHANGE_OB,
+
+		// 系统取消杯赛
+		GVIEWCMD_LEGENDCUP_SYSTEM_CANCEL_CUP,
 	};
 
     /*****************************************************************************
@@ -3147,6 +3150,7 @@ namespace GameLogic
 		int nCompetitionBonus;									// 比赛奖金
 		int nRegistGold;										// 报名金币
 		int nIsSelfCreate;										// 是否自己创建
+		int nClanID;											// 联盟ID
 
 		STRUCT_INIT(cmd_legendcup_recv_cuplist_node)
 	};
@@ -3495,6 +3499,14 @@ namespace GameLogic
 
         STRUCT_INIT(cmd_legendcup_offline_pre_end_register);
     };
+
+	// 系统取消杯赛  GVIEWCMD_LEGENDCUP_SYSTEM_CANCEL_CUP,
+	STRUCT cmd_legendcup_system_cancel_cup
+	{
+		__int64		nLegendCupID;									// 杯赛ID
+
+		STRUCT_INIT(cmd_legendcup_system_cancel_cup);
+	};
     
 	////////////////////////////////////杯赛//////end/////////////
 	

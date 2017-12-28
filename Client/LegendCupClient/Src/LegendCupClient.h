@@ -69,6 +69,9 @@ private:
     // 参赛者响应发布杯赛成功
     void onMsgPublicSuccess(SNetMsgHead* head, void* data, size_t len);
 
+	// 取消杯赛
+	void onMsgSystemCancelCup(SNetMsgHead* head, void* data, size_t len);
+
     // 举办者响应发布杯赛成功
     void onMsgCreaterPublicSuccess(SNetMsgHead* head, void* data, size_t len);
 

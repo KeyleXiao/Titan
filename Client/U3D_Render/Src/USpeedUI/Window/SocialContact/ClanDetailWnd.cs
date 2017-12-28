@@ -361,9 +361,17 @@ namespace USpeedUI.Social
             else
             {
                 ClearLegendCupBtnEffect();
+                ClearTimer();
             }
 
             OnUpdateRequestcardTip();
+        }
+
+        private void ClearTimer()
+        {
+            TimerManager.KillTimer(this, (int)TimerID.DISMISS_COUNTDOWN_HOUR);
+            TimerManager.KillTimer(this, (int)TimerID.DISMISS_COUNTDOWN_MIN);
+            TimerManager.KillTimer(this, (int)TimerID.DISMISS_COUNTDOWN_SEC);
         }
 
         public void OnUpdateClanBaseData()

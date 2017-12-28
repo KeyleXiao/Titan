@@ -1075,8 +1075,7 @@ namespace USpeedUI.PlayerFrame
 			heroIcon.sprite = PlayerWarStatisticWndView.GetHeroIcon(data.nHeroID);
 
             // 默认为男性
-            int bySex = data.bySex > 0 ? data.bySex : 1;
-            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_SOCIALCONTACT, bySex);
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_SOCIALCONTACT, data.bySex + 1);
             sexIcon.gameObject.SetActive(true);
 
             actorName.text = data.szActorName;

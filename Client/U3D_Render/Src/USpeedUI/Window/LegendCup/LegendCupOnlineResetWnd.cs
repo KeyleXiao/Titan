@@ -118,7 +118,7 @@ namespace USpeedUI.LegendCup
             // 设置为最后可重置比赛的时间点
             DateTime resetEndTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(dataInfo.nResetEndTime);
             resetEndTime = resetEndTime.ToLocalTime();
-            ResetEndTimeDes.text = ULocalizationService.Instance.Get("UIView", "LegendCupOnlineReset", "CancelBtnDes")+ resetEndTime.ToString(" MM-dd HH:mm");
+            ResetEndTimeDes.text = ULocalizationService.Instance.Get("UIView", "LegendCupOnlineReset", "OnlineResetEndTime") + resetEndTime.ToString(" MM-dd HH:mm");
             MonthInputField.placeholder.GetComponent<Text>().text = resetEndTime.Month.ToString();
             DayInputField.placeholder.GetComponent<Text>().text = resetEndTime.Day.ToString();
             HourInputField.placeholder.GetComponent<Text>().text = resetEndTime.Hour.ToString();

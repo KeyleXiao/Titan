@@ -637,20 +637,24 @@ public class BaseStateMachine : MonoBehaviour
                 //    UnityEngine.Debug.LogWarning("跟踪无法选中BUG专用LOGzccccc。" + this.name + " pickableCount=" + value);
                 //}
                 U3D_Render.EntityView ev = EntityFactory.getEntityViewByID(this.entityID);
-                if(ev != null && ev.Flag != (int)MONSTER_SUB_TYPE.MONSTER_SUB_TYPE_HP_SUPPLIES)
+                if (ev != null &&
+                    ev.Flag != (int)MONSTER_SUB_TYPE.MONSTER_SUB_TYPE_HP_SUPPLIES &&
+                    ev.Flag != (int)MONSTER_SUB_TYPE.MONSTER_SUB_TYPE_DEFENSIVE_TOWER &&
+                    ev.Flag != (int)MONSTER_SUB_TYPE.MONSTER_SUB_TYPE_BASE && 
+                    ev.Flag != (int)MONSTER_SUB_TYPE.MONSTER_SUB_TYPE_CRYSTAL_TOWER)
                 {
-                    GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerIngoreRayCast), transform.gameObject, true, excludeParentList);
+                    GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerIngoreRayCast), transform.gameObject, true);
                 }
             }
             else if (m_pickableCount <= 0 && value > 0)
             {
                 if (m_isPK)
                 {
-                    GameUtil.SetLayer(m_PKLayer, transform.gameObject, true, excludeParentList);
+                    GameUtil.SetLayer(m_PKLayer, transform.gameObject, true);
                 }
                 else
                 {
-                    GameUtil.SetLayer(baseLayer, transform.gameObject, true, excludeParentList);
+                    GameUtil.SetLayer(baseLayer, transform.gameObject, true);
                     //关于ward结界类型的特殊处理
                     //结界类型的物理盒子放在LayerWard层，用于阻挡指定类型的玩家
                     //但是结界有可以选中和不可以选中，

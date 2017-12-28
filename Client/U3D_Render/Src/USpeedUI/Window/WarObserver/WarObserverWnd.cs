@@ -823,8 +823,14 @@ namespace USpeedUI.WarObserver
             {
                 foreach (OB_PersonSpellData slot in dicSlot.Values)
                 {
-                    if (slot.changeSlot.slotview.nMaxData > GameLogicAPI.getSyncTickCount())
+                    int currentTime = (int)GameLogicAPI.getTickCount();
+                    int elapsTime = currentTime - slot.initCDTime;
+                    Trace.Log("warobserverwnd:" + currentTime + "," + slot.changeSlot.slotview.nMaxData + "," + slot.changeSlot.slotview.nCurData + "," + slot.initCDTime);
+                    if (elapsTime < slot.changeSlot.slotview.nMaxData)
+                    {
+                        slot.changeSlot.slotview.nCurData = slot.changeSlot.slotview.nMaxData - elapsTime;
                         SetSpellCD(slot.changeSlot);
+                    }
                 }
             }
         }

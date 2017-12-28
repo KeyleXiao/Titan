@@ -59,6 +59,10 @@ namespace USpeedUI.InvitePlayGame
 
         public string RankName;
 
+        public bool isInvited;
+
+        public bool isCanInvite;
+
         // 显示排序(空闲、已邀请、游戏中)
         public int CompareTo(object o)
         {
@@ -132,6 +136,8 @@ namespace USpeedUI.InvitePlayGame
         public string RankName;
 
         public bool bIsInvited;
+
+        public bool isCanInvite;
     }
 
 	public class InvitePlayGameWnd : UIPopupWnd<InvitePlayGameWndView>
@@ -438,6 +444,8 @@ namespace USpeedUI.InvitePlayGame
             m_SendInviteTime = Time.time;
             m_bCanSendInvite = false;
             TimerManager.SetTimer(this, (int)ETimerID.ETimerID_SendInviteTimer, 30);
+
+            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_TEAM_HAVE_SEND_INVITE_DIDA);
         }
         public void onInviteClanMemberClick()
         {
@@ -532,6 +540,7 @@ namespace USpeedUI.InvitePlayGame
             nodeItem.RankName = item.RankName;
             nodeItem.nSex = item.nSex;
             nodeItem.isInvited = item.bIsInvited;
+            nodeItem.isCanInvite = item.isCanInvite;
 
             return new TreeNode<UInvitePlayGameTreeItemData>(nodeItem, new ObservableList<TreeNode<UInvitePlayGameTreeItemData>>(), item.IsExpanded, item.IsVisible);
         }
@@ -559,26 +568,38 @@ namespace USpeedUI.InvitePlayGame
 			Dictionary<string, List<InvitePlayGamePlayerInfo>> groups = new Dictionary<string, List<InvitePlayGamePlayerInfo>>();
 
             // 在线好友
+            int nTotal = 0, nCanInvite = 0;
             List<InvitePlayGamePlayerInfo> group1 = new List<InvitePlayGamePlayerInfo>();
             foreach (var item in LogicDataCenter.snsDataManager.getOnlineBuddy())
             {
+                string actorName = getBuddyName(item);
+
+                if (isMatchSearchName(actorName) == false)
+                    continue;
+
                 InvitePlayGamePlayerInfo info = new InvitePlayGamePlayerInfo();
                 info.nGroupID = (int)InvitePlayGameGroup.emBuddyGroup;
                 info.nUserID = item.Info.nUserID;
                 info.nGameState = item.Info.nStatus;
-                info.ActorName = getBuddyName(item);
+                info.ActorName = actorName;
                 info.nHeadIconID = item.Info.dwHeadID;
                 info.nRankIconID = item.Info.nRankIconID;
                 info.RankName = item.Info.szRankName;
                 info.nSex = item.Info.nSex;
+                info.isInvited = isInvitedPlayer(info.nUserID);
+                info.isCanInvite = isCanInvite(info);
+
+                if (info.isCanInvite) nCanInvite++;
+                nTotal++;
 
                 group1.Add(info);
             }
-            string groupName1 = ULocalizationService.Instance.Get("UIView", "Common", "OnlineBuddy");
+            string groupName1 = String.Format("{0} {1}/{2}", ULocalizationService.Instance.Get("UIView", "Common", "OnlineBuddy"), nCanInvite, nTotal);
             group1.Sort();
             groups.Add(groupName1, group1);
 
             // 战队
+            nTotal = nCanInvite = 0;
             List<InvitePlayGamePlayerInfo> group2 = new List<InvitePlayGamePlayerInfo>();
             foreach (var item in LogicDataCenter.kinDataManager.KinMemberList)
             {
@@ -593,26 +614,42 @@ namespace USpeedUI.InvitePlayGame
                 if (item.bIsOnline == 0)
                     continue;
 
+                string actorName = item.szName;
+
+                if (isMatchSearchName(actorName) == false)
+                    continue;
+
                 InvitePlayGamePlayerInfo info = new InvitePlayGamePlayerInfo();
                 info.nUserID = item.dwUDBID;
                 info.nGroupID = (int)InvitePlayGameGroup.emKinGroup;
                 info.nGameState = item.byGameState;
-                info.ActorName = item.szName;
+                info.ActorName = actorName;
                 info.nHeadIconID = item.nFaceID;
                 info.nRankIconID = 0;
                 info.RankName = item.szGradeName;
                 info.nSex = item.nSex;
+                info.isInvited = isInvitedPlayer(info.nUserID);
+                info.isCanInvite = isCanInvite(info);
+
+                if (info.isCanInvite) nCanInvite++;
+                nTotal++;
 
                 group2.Add(info);
             }
-            string groupName2 = ULocalizationService.Instance.Get("UIView", "Common", "Team");
+            string groupName2 = String.Format("{0} {1}/{2}", ULocalizationService.Instance.Get("UIView", "Common", "Team"), nCanInvite, nTotal);
             group2.Sort();
             groups.Add(groupName2, group2);
 
             // 附近的人
-            List< InvitePlayGamePlayerInfo > group3 = new List<InvitePlayGamePlayerInfo>();
+            nTotal = nCanInvite = 0;
+            List<InvitePlayGamePlayerInfo> group3 = new List<InvitePlayGamePlayerInfo>();
             foreach (var item in LogicDataCenter.snsDataManager.getNearbyPlayer())
             {
+                string actorName = item.Info.szName;
+
+                if (isMatchSearchName(actorName) == false)
+                    continue;
+
                 InvitePlayGamePlayerInfo info = new InvitePlayGamePlayerInfo();
                 info.nGroupID = (int)InvitePlayGameGroup.emNearbyGroup;
                 info.nUserID = item.Info.nUserID;
@@ -622,10 +659,15 @@ namespace USpeedUI.InvitePlayGame
                 info.nRankIconID = item.Info.nRankIconID;
                 info.RankName = item.Info.szRankName;
                 info.nSex = item.Info.nSex;
+                info.isInvited = isInvitedPlayer(info.nUserID);
+                info.isCanInvite = isCanInvite(info);
+
+                if (info.isCanInvite) nCanInvite++;
+                nTotal++;
 
                 group3.Add(info);
             }
-            string groupName3 = ULocalizationService.Instance.Get("UIView", "Common", "NearbyPeople");
+            string groupName3 = String.Format("{0} {1}/{2}", ULocalizationService.Instance.Get("UIView", "Common", "NearbyPeople"), nCanInvite, nTotal);
             group3.Sort();
             groups.Add(groupName3, group3);
 
@@ -642,9 +684,6 @@ namespace USpeedUI.InvitePlayGame
                 // 添加该分组的玩家
                 foreach (var player in group.Value)
                 {
-                    if (!isMatchSearchName(player.ActorName))
-                        continue;
-
                     data = new UInvitePlayGameTreeViewDataSource();
                     data.Depth = 1;
                     data.nGroupID = player.nGroupID;
@@ -655,7 +694,8 @@ namespace USpeedUI.InvitePlayGame
                     data.nRank = player.nRankIconID;
                     data.RankName = player.RankName;
                     data.nSex = player.nSex;
-                    data.bIsInvited = isInvitedPlayer(player.nUserID);
+                    data.bIsInvited = player.isInvited;
+                    data.isCanInvite = player.isCanInvite;
 
                     Data.Add(data);
                 }
@@ -670,6 +710,10 @@ namespace USpeedUI.InvitePlayGame
             return m_InvitedRecord.ContainsKey(nUserID);
         }
 
+        private bool isCanInvite(InvitePlayGamePlayerInfo item)
+        {
+            return (!item.isInvited && item.nGameState == (int)ACTOR_GAME_STATE.GAME_STATE_IDLE);
+        }
         private string getBuddyName(SNSDataManager.BuddyInfo buddyInfo)
         {
             string remark = LogicDataCenter.snsDataManager.getBuddyRemark(buddyInfo.Info.nUserID);

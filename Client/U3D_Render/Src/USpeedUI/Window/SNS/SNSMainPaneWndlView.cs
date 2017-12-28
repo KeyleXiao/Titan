@@ -207,6 +207,7 @@ namespace USpeedUI.SNS
 		private List<UBuddyGroupTreeViewDataSource> Data = new List<UBuddyGroupTreeViewDataSource>();
 
         private Image MoodBg = null;
+        private UTooltipTrigger MoodTips = null;
 
         public override bool Init(IUIWnd wnd)
         {
@@ -228,6 +229,8 @@ namespace USpeedUI.SNS
 
             MyMoodInputField.onEndEdit.AddListener(onMoodChange);
             MoodBg = MyMoodInputField.GetComponent<Image>();
+            MoodTips = MyMoodInputField.GetComponent<UTooltipTrigger>();
+            MoodTips.enabled = false;
 
             return true;
         }
@@ -374,6 +377,12 @@ namespace USpeedUI.SNS
             if(String.IsNullOrEmpty(myInfo.Info.szMood) == false)
             {
                 MyMoodInputField.text = myInfo.Info.szMood;
+                if(MoodTips != null)
+                {
+                    MoodTips.SetText(UTooltipParamName.BodyText, myInfo.Info.szMood);
+                    MoodTips.tipPosition = TipPosition.MouseTopRightCorner;
+                    MoodTips.enabled = true;
+                }
             }
         }
         
@@ -453,13 +462,16 @@ namespace USpeedUI.SNS
         // 修改心情
         private void onMoodChange(string strText)
         {
-            if(String.IsNullOrEmpty(strText))
+            if(LogicDataCenter.snsDataManager.MyBuddyInfo.Info.szMood == strText)
             {
                 return;
             }
 
-            if(LogicDataCenter.snsDataManager.MyBuddyInfo.Info.szMood == strText)
+            // 判断屏蔽词
+            if(ShieldWord.Instance.filterShieldWord(ref strText))
             {
+                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_CUSTOMER_TIP, "输入内容含有屏蔽词");
+                MyMoodInputField.text = LogicDataCenter.snsDataManager.MyBuddyInfo.Info.szMood;
                 return;
             }
 

@@ -2059,6 +2059,10 @@ namespace USpeedUI
                             uiData.nSellID = nSellID;
                             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_POINTSHOPBUYGOODS_OPEN, uiData);
                         }
+                        else
+                        {
+                            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_POINTSHOP_NOT_IN_SELL_LIST);
+                        }
                     }
                 }
             }

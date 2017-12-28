@@ -267,10 +267,15 @@ namespace USpeedUI.XPSkillWnd
 
 		public override void Awake()
         {
-            xpSkillButton = transform.FindChild("Skill").GetComponent<Button>();
-            slotTooltipTrigger = transform.FindChild("Skill").GetComponent<UTooltipTrigger>();
-            skillImage.AddNewMaterial(EUIShaderType.EST_Gray);
             base.Awake();           
+
+            xpSkillButton = transform.FindChild("Skill").GetComponent<Button>();
+
+            slotTooltipTrigger = transform.FindChild("Skill").GetComponent<UTooltipTrigger>();
+            slotTooltipTrigger.enabled = false;
+
+            skillImage.AddNewMaterial(EUIShaderType.EST_Gray);
+            skillImage.gameObject.SetActive(false);
         }
 
         public void setXpSkill(cmd_creature_ShowPromptUI cmdData)
@@ -368,24 +373,32 @@ namespace USpeedUI.XPSkillWnd
         public void SetXPSkillInfo(int nSpellID)
         {
             if (nSpellID <= 0)
-                return;
-
-            if (slotTooltipTrigger == null)
             {
-                slotTooltipTrigger = transform.FindChild("Skill").GetComponent<UTooltipTrigger>();
+
+                Debug.LogWarning("XPSKill," + nSpellID);
+                return;
             }
 
             IntPtr Ptr = GameLogicAPI.getSpellData(nSpellID);
             if (Ptr == IntPtr.Zero)
+            {
+                Debug.LogWarning("XPSKill,Ptr == IntPtr.Zero," + nSpellID);
                 return;
+            }
 
             SPELL.SPELL_DATA spellData = IntPtrHelper.toData<SPELL.SPELL_DATA>(Ptr);
             IntPtr strPtr = GameLogicAPI.getSpellStrData(nSpellID, (int)SPELL_DATA_ID.SPDATA_DESC);
             String szDesc = IntPtrHelper.Ptr2Str(strPtr);
 
+            Debug.Log("XPSKill," + spellData.nID + "," + szDesc + "," + nSpellID);
+
             UBB.toHtml(ref szDesc, UBB_FORMAT_TYPE.UGUI);
+
             slotTooltipTrigger.SetText(UTooltipParamName.BodyText, szDesc);
+            slotTooltipTrigger.enabled = true;
+
             skillImage.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_Skill, WndID.WND_ID_WAR_XPSKILL, 1, spellData.nIcon);
+            skillImage.gameObject.SetActive(true);
 
 			xpSkillName = spellData.szName;
         }

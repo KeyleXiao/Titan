@@ -199,7 +199,8 @@ void CSlotLogicPart::release(void)
 
 	IEventEngine * pEventEngine = gClientGlobal->getEventEngine();
 
-	if (pEventEngine && (((IClientEntity*)m_pMaster)->isHero() || isOBClient()) )
+    // TODO : 由于此时OB的属性被释放了，导致没有反注册，后续看看流程怎么优化
+	if (pEventEngine && (((IClientEntity*)m_pMaster)->isHero() || true) )
 	{
 		gClientGlobal->getMessageDispatch()->unregisterMessageHandler(MSG_MODULEID_WAR_GOOD, this);
 		pEventEngine->UnSubscibe(static_cast<IEventExecuteSink*>(this), EVENT_FREEZE_START, type, uid);

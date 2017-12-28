@@ -45,6 +45,9 @@ namespace USpeedUI.ChatBox
 		{
 			// 重复SetData的问题先这么写，以后再看
 			RectTransform selfTrans = this.RectTransform;
+            if (selfTrans == null)
+                return;
+
 			if (m_curSequenceID == data.info.sequenceID && m_curWidth == selfTrans.rect.width)
 				return;
 			m_curSequenceID = data.info.sequenceID;

@@ -504,8 +504,6 @@ namespace DataCenter
 
 			    // 通知UI层,刷新右键菜单中的场景数据
 			    UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_UPDATE_BUDDYGROUP, null);
-
-                Debug.Log("Buddy switch scene. nWorldID=" + notify.nWroldID + ",nSceneID=" + notify.nSceneID);
             }
         }
 		#endregion 客户端收到消息
@@ -1239,9 +1237,12 @@ namespace DataCenter
 			cmd.szMood = newMood;
 
 			ViewEventHelper.Instance.SendCommand(GameLogicDef.GVIEWCMD_SNS_REQ_CHANGE_MOOD, ref cmd);
-		}
-		// 移动好友分组
-		public void reqChangeBuddyGroup(int dwUserID, int dwBuddyGroupID)
+
+            MyBuddyInfo.Info.szMood = newMood;
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_UPDATE_BUDDYGROUP, null);
+        }
+        // 移动好友分组
+        public void reqChangeBuddyGroup(int dwUserID, int dwBuddyGroupID)
 		{
 			gameview_sns_req_change_buddygroup cmd = new gameview_sns_req_change_buddygroup();
 			cmd.dwUserID = dwUserID;

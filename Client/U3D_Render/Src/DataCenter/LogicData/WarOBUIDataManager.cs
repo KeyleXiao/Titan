@@ -24,6 +24,7 @@ namespace DataCenter
         public cmd_creature_set_slot slotSpell;
         public cmd_set_spell_overlay spellOverlay;
         public cmd_creature_set_slot changeSlot;
+        public int initCDTime;
     }
     public class WarOBUIDataManager
     {
@@ -68,6 +69,7 @@ namespace DataCenter
             cmd_creature_set_slot data = IntPtrHelper.toData<cmd_creature_set_slot>(ptrParam);
             OB_PersonSpellData spellData = GetPersonSpellData(ev.createinfo.EntityID, data.nSlotIndex);
             spellData.changeSlot = data;
+            spellData.initCDTime = (int)GameLogicAPI.getTickCount() - (data.slotview.nMaxData - data.slotview.nCurData);
         }
 
         public void SetSpellOverlay(EntityView ev, IntPtr ptrParam)

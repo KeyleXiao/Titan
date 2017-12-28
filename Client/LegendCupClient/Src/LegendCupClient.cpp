@@ -435,6 +435,11 @@ void LegendCupClient::onMessage(SNetMsgHead* head, void* data, size_t len)
             onMsgPublicSuccess(head, data, len);
         }
         break;
+	case OC_CUP_SEND_SYSTEM_CANCEL_CUP:                      // 申请加入比赛成功
+		{
+			onMsgSystemCancelCup(head, data, len);
+		}
+		break;
 
 	case OC_CUP_SEND_CREATER_PUBLIC_SUCCESS:			// 创建比赛发布成功
 		{
@@ -606,6 +611,7 @@ void LegendCupClient::onMsgSendAllLegendcup(SNetMsgHead* head, void* data, size_
         nodeData.nCompetitionBonus = pData->dwTotalCompetitionBonus;                // 比赛总奖金
         nodeData.nRegistGold = pData->dwRegistGold;                                 // 报名需要的金币
 		nodeData.nIsSelfCreate = pData->dwCreataActorID == dwSelfID;				// 是否自身创建
+		nodeData.nClanID = pData->dwClanID;
         
         sstrcpyn(nodeData.szCupName, pData->szCupName, sizeof(nodeData.szCupName));						// 杯赛名称
         sstrcpyn(nodeData.szCreateActorName, pData->szCreaterName, sizeof(nodeData.szCreateActorName));	// 发起人名称
@@ -978,6 +984,7 @@ void LegendCupClient::onMsgSendUpdateSingelCupInfo(SNetMsgHead* head, void* data
     nodeData.nCompetitionBonus = pData->dwTotalCompetitionBonus;                // 比赛总奖金
     nodeData.nRegistGold = pData->dwRegistGold;                                 // 报名需要的金币
 	nodeData.nIsSelfCreate = pData->dwCreataActorID == dwSelfID;				// 是否自身创建
+	nodeData.nClanID = pData->dwClanID;
 	sstrcpyn(nodeData.szCupName, pData->szCupName, sizeof(nodeData.szCupName));						// 杯赛名称
 	sstrcpyn(nodeData.szCreateActorName, pData->szCreaterName, sizeof(nodeData.szCreateActorName));	// 发起人名称
 	obViewdata.push_back(&nodeData, sizeof(cmd_legendcup_recv_cuplist_node));
@@ -1041,6 +1048,20 @@ void LegendCupClient::onMsgPublicSuccess(SNetMsgHead* head, void* data, size_t l
     gClientGlobal->getRenderView()->sendControllerCommand( GVIEWCMD_LEGENDCUP_PUBLIC_SUCCESS, 0, 0, 0, 0);
 }
 
+void LegendCupClient::onMsgSystemCancelCup(SNetMsgHead* head, void* data, size_t len)
+{
+	if (sizeof(LONGLONG) != len)
+	{
+		ErrorLn(__FUNCTION__ << "sizeof(SMsgClientCreateCupType) > len");
+		return;
+	}
+
+	LONGLONG* pLegendCupID = (LONGLONG*)data;
+
+	cmd_legendcup_system_cancel_cup cmd;
+	cmd.nLegendCupID = *pLegendCupID;
+	gClientGlobal->getRenderView()->sendControllerCommand(GVIEWCMD_LEGENDCUP_SYSTEM_CANCEL_CUP, 0, 0, &cmd, sizeof(cmd));
+}
 
 void LegendCupClient::onMsgCreaterPublicSuccess(SNetMsgHead* head, void* data, size_t len)
 {

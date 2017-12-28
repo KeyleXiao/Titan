@@ -1,0 +1,32 @@
+﻿<Scheme>
+	<PathFindService id = "1">	
+		<NavMeshFile filename = "MapPath\CAIBakedNavmesh.navmesh.byte"></NavMeshFile>
+	</PathFindService>
+	<PathFindService id = "2">	
+		<NavMeshFile filename = "MapPath\Moba101.navmesh.byte"></NavMeshFile>
+	</PathFindService>	
+	<PathFindService id = "3">	
+		<NavMeshFile filename = "MapPath\Cest01.navmesh.byte"></NavMeshFile>
+	</PathFindService>	
+	<PathFindService id = "4">	
+		<NavMeshFile filename = "MapPath\Moba01.navmesh.byte"></NavMeshFile>
+	</PathFindService>			
+	<PathFindService id = "5">	
+		<NavMeshFile filename = "MapPath\01_cb.navmesh.byte"></NavMeshFile>
+	</PathFindService>	
+	<PathFindService id = "6">	
+		<NavMeshFile filename = "MapPath\Moba_003.navmesh.byte"></NavMeshFile>
+	</PathFindService>	
+	<PathFindService id = "7">	
+		<NavMeshFile filename = "MapPath\Village_001.navmesh.byte"></NavMeshFile>
+	</PathFindService>
+	<PathFindService id = "8">	
+		<NavMeshFile filename = "MapPath\Moba_003.navmesh.byte"></NavMeshFile>
+	</PathFindService>
+	<PathFindService id = "9">	
+		<NavMeshFile filename = "MapPath\Moba_002.navmesh.byte"></NavMeshFile>
+	</PathFindService>
+	<PathFindService id = "10">	
+		<NavMeshFile filename = "MapPath\Moba_004.navmesh.byte"></NavMeshFile>
+	</PathFindService>
+</Scheme>

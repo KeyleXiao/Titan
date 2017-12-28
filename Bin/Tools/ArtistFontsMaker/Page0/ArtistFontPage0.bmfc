@@ -1,0 +1,80 @@
+# AngelCode Bitmap Font Generator configuration file
+fileVersion=1
+
+# font settings
+fontName=微软雅黑
+fontFile=
+charSet=0
+fontSize=32
+aa=1
+scaleH=100
+useSmoothing=1
+isBold=0
+isItalic=0
+useUnicode=1
+disableBoxChars=1
+outputInvalidCharGlyph=0
+dontIncludeKerningPairs=0
+useHinting=1
+renderFromOutline=0
+useClearType=1
+
+# character alignment
+paddingDown=0
+paddingUp=0
+paddingRight=0
+paddingLeft=0
+spacingHoriz=1
+spacingVert=1
+useFixedHeight=0
+forceZero=0
+
+# output file
+outWidth=1024
+outHeight=1024
+outBitDepth=32
+fontDescFormat=0
+fourChnlPacked=0
+textureFormat=png
+textureCompression=0
+alphaChnl=1
+redChnl=0
+greenChnl=0
+blueChnl=0
+invA=0
+invR=0
+invG=0
+invB=0
+
+# outline
+outlineThickness=0
+
+# selected chars
+chars=43,45-46,48-57,256-257
+
+# imported icon images
+icon="num0/+.png",43,0,0,0
+icon="num0/-.png",45,0,0,0
+icon="num0/..png",46,0,0,0
+icon="num0/0.png",48,0,0,0
+icon="num0/1.png",49,0,0,0
+icon="num0/2.png",50,0,0,0
+icon="num0/3.png",51,0,0,0
+icon="num0/4.png",52,0,0,0
+icon="num0/5.png",53,0,0,0
+icon="num0/6.png",54,0,0,0
+icon="num0/7.png",55,0,0,0
+icon="num0/8.png",56,0,0,0
+icon="num0/9.png",57,0,0,0
+icon="num1/0.png",128,0,0,0
+icon="num1/1.png",129,0,0,0
+icon="num1/2.png",130,0,0,0
+icon="num1/3.png",131,0,0,0
+icon="num1/4.png",132,0,0,0
+icon="num1/5.png",133,0,0,0
+icon="num1/6.png",134,0,0,0
+icon="num1/7.png",135,0,0,0
+icon="num1/8.png",136,0,0,0
+icon="num1/9.png",137,0,0,0
+icon="special/Crit.png",256,0,0,0
+icon="special/LevelUp.png",257,0,0,0

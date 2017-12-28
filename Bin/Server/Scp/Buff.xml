@@ -3,7 +3,7 @@
 		<base replacerule="1" pileqty="1" flag ="1" endflag0="1" iconid=""></base>
 		<sub level="1" desc="光效">
 			<flasheffect id="" idex=""></flasheffect>
-			<time long="20000" longex=""></time>
+			<time long="10000" longex=""></time>
 			<effectServer id0="5722"></effectServer>
 			<effectClient id=""></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
@@ -6650,7 +6650,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1229" buffname="躲起来吃天赋检测">
+	<buff buffid="1229" buffname="君子兰天赋检测">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -6665,7 +6665,7 @@
 	</buff>
 	<buff buffid="1230" buffname="彼岸仙境">
 		<base replacerule="3" pileqty="1" flag ="3" endflag0="1" iconid="331"></base>
-		<sub level="1" desc="使周围所有友军单位持续恢复生命值">
+		<sub level="1" desc="周身围绕花海。你正在为花海内的所有己方英雄回复生命">
 			<flasheffect id="3722" idex=""></flasheffect>
 			<time long="5500" longex=""></time>
 			<effectServer id=""></effectServer>
@@ -6675,7 +6675,7 @@
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
 		</sub>
-		<sub level="2" desc="使周围所有友军单位持续恢复生命值">
+		<sub level="2" desc="周身围绕花海。你正在为花海内的所有己方英雄回复生命">
 			<flasheffect id="3722" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="1475"></effectServer>
@@ -6685,7 +6685,7 @@
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
 		</sub>
-		<sub level="3" desc="宝宝祝福">
+		<sub level="3" desc="周身围绕花海。你正在为花海内的所有己方英雄回复生命">
 			<flasheffect id="3722" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="1476"></effectServer>
@@ -6698,7 +6698,7 @@
 	</buff>
 	<buff buffid="1231" buffname="彼岸仙境">
 		<base replacerule="0" pileqty="1" flag ="19" endflag0="1" iconid="331"></base>
-		<sub level="1" desc="来自花仙子的祝福，你正在接受生命回复。">
+		<sub level="1" desc="身处花海之中，你正在受到生命回复">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="500" longex=""></time>
 			<effectServer id0="1477" id1="5594"></effectServer>
@@ -6708,7 +6708,7 @@
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
 		</sub>
-		<sub level="2" desc="你正受到来自友方英雄提利昂的鼓舞，每秒恢复150点生命值">
+		<sub level="2" desc="身处花海之中，你正在受到生命回复">
 			<flasheffect id="2321" idex=""></flasheffect>
 			<time long="500" longex=""></time>
 			<effectServer id0="1478" id1="5594"></effectServer>
@@ -6718,7 +6718,7 @@
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
 		</sub>
-		<sub level="3" desc="宝宝祝福">
+		<sub level="3" desc="身处花海之中，你正在受到生命回复">
 			<flasheffect id="2321" idex=""></flasheffect>
 			<time long="500" longex=""></time>
 			<effectServer id0="1479" id1="5594"></effectServer>
@@ -7546,7 +7546,7 @@
 			<time long="1500" longex=""></time>
 			<effectServer id0="1598"></effectServer>
 			<effectClient id=""></effectClient>
-			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
+			<startrule hascheck="" hasbuffid="" nobuffid0="1742" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
@@ -17782,10 +17782,10 @@
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id0="1795" id1="3700" le0="2" le1="2" per="10000"></endarose>
 		</sub>
-		<sub level="2" desc="更改皮肤，替换4槽位，免疫增益状态，禁用技能，免疫治疗，生命，攻击力，护甲，魔抗，免疫吸血，免疫暴击">
+		<sub level="2" desc="更改皮肤，替换4槽位，免疫增益状态，禁用技能，免疫治疗，生命，攻击力，护甲，魔抗，免疫吸血">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="180000" longex=""></time>
-			<effectServer id0="4472" id1="4493" id2="4494" id3="4495" id4="4496" id5="1568" id6="4497" id7="1837" id8="5900" id9="5901" id10="5943" id11="5944" id12="6813" id13="6900" id14="6901" id15="6902" id16="1299" id17="20323" id18="20329" id19="20328" id20="20330" id21="20327" id22="20326" id23="20325" id24="20324" id25="7022" id26="7023" id27="7024"></effectServer>
+			<effectServer id0="4472" id1="4493" id2="4494" id3="4495" id4="4496" id5="1568" id6="4497" id7="1837" id8="5900" id9="5901" id10="5943" id11="5944" id12="6813" id13="6900" id14="6901" id15="1299" id16="20323" id17="20329" id18="20328" id19="20330" id20="20327" id21="20326" id22="20325" id23="20324" id24="7022" id25="7023" id26="7024"></effectServer>
 			<effectClient id0="4498" id1="5985"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid0="3102" buffid1="3113" per="10000"></dispelbuff>
@@ -17977,9 +17977,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1804" buffname="提款机可使用标识">
+	<buff buffid="1804" buffname="绽放的郁金香">
 		<base replacerule="3" pileqty="1" flag ="3" endflag0="0" iconid="329"></base>
-		<sub level="1" desc="">
+		<sub level="1" desc="对队友使用“花灵庇护”可为其增加500金币">
 			<flasheffect id="2332" idex=""></flasheffect>
 			<time long="" longex=""></time>
 			<effectServer id=""></effectServer>
@@ -17990,7 +17990,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1805" buffname="提款机充能加增益状态">
+	<buff buffid="1805" buffname="双色郁金香">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -18003,7 +18003,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1806" buffname="点赞力量计数增益状态">
+	<buff buffid="1806" buffname="勿忘草计数增益状态">
 		<base replacerule="0" pileqty="1" flag ="3" endflag0="1" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="2331" idex=""></flasheffect>
@@ -18079,9 +18079,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1808" buffname="点赞">
-		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+	<buff buffid="1808" buffname="勿忘草">
+		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid="329"></base>
+		<sub level="1" desc="花仙子为你提升了移动速度">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="2458"></effectServer>
@@ -18092,7 +18092,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1809" buffname="迷魂天赋检测">
+	<buff buffid="1809" buffname="含羞草天赋检测">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="1" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -18105,7 +18105,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1810" buffname="点赞力量天赋检测">
+	<buff buffid="1810" buffname="勿忘草天赋检测">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -18118,9 +18118,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1811" buffname="贿赂">
-		<base replacerule="3" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+	<buff buffid="1811" buffname="含羞草的悸动">
+		<base replacerule="3" pileqty="1" flag ="3" endflag0="0" iconid="330"></base>
+		<sub level="1" desc="受到敌方花仙子的迷惑，持续期间内所有输出降低30%">
 			<flasheffect id="5" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="4529"></effectServer>
@@ -21372,7 +21372,7 @@
 		<sub level="1" desc="">
 			<flasheffect id="5063" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
-			<effectServer id0="19" id1="17" id2="84" id3="5421" id4="5962"></effectServer>
+			<effectServer id0="19" id1="17" id2="84" id3="5421" id4="5962" id5="5593" id6="5598"></effectServer>
 			<effectClient id0="16" id1="3490" id2="6569" id3="6310"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -22886,7 +22886,7 @@
 	<buff buffid="2116" buffname="异鬼领主加持效果">
 		<base replacerule="0" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
 		<sub level="1" desc="给幽冥召唤物增加攻击力">
-			<flasheffect id="" idex=""></flasheffect>
+			<flasheffect id="4315" idex=""></flasheffect>
 			<time long="" longex=""></time>
 			<effectServer id0="5765"></effectServer>
 			<effectClient id=""></effectClient>
@@ -29622,6 +29622,19 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
+	<buff buffid="2542" buffname="狼学习大招天赋打断技能">
+		<base replacerule="1" pileqty="1" flag ="1" endflag0="1" iconid=""></base>
+		<sub level="1" desc="狼学习大招天赋打断技能">
+			<flasheffect id="" idex=""></flasheffect>
+			<time long="500" longex=""></time>
+			<effectServer id0="7056"></effectServer>
+			<effectClient id=""></effectClient>
+			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
+			<dispelbuff buffid="" per=""></dispelbuff>
+			<rand effectid="" per="" flasheffectid="" desc=""></rand>
+			<endarose id="" le="" per=""></endarose>
+		</sub>
+	</buff>
 	<buff buffid="2600" buffname="回收傀儡技能">
 		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
 		<sub level="1" desc="回收傀儡技能">
@@ -31689,7 +31702,7 @@
 			<flasheffect id="310" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
 			<effectServer id0="4389"></effectServer>
-			<effectClient id0="6575"></effectClient>
+			<effectClient id0="6575" id1="6591"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
@@ -31792,8 +31805,8 @@
 		<sub level="1" desc="">
 			<flasheffect id="0" idex=""></flasheffect>
 			<time long="2100" longex=""></time>
-			<effectServer id0="5722"></effectServer>
-			<effectClient id=""></effectClient>
+			<effectServer id0="5722" id1="1069" id2="21"></effectServer>
+			<effectClient id0="2314"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
@@ -35286,7 +35299,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3396" buffname="躲起来吃">
+	<buff buffid="3396" buffname="君子兰">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -35299,7 +35312,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3397" buffname="真钞掉了检测">
+	<buff buffid="3397" buffname="紫罗兰检测">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -35312,7 +35325,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3398" buffname="真钞掉了">
+	<buff buffid="3398" buffname="紫罗兰">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
@@ -35325,9 +35338,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3399" buffname="真钞掉了">
-		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+	<buff buffid="3399" buffname="紫罗兰">
+		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid="330"></base>
+		<sub level="1" desc="敌方花仙子偷走了你50金币">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
 			<effectServer id0="4526"></effectServer>
@@ -37240,9 +37253,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3651" buffname="真钞掉了">
-		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+	<buff buffid="3651" buffname="花仙子的紫罗兰">
+		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid="330"></base>
+		<sub level="1" desc="成功窃取1次敌方英雄的金币">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
 			<effectServer id0="6609"></effectServer>
@@ -37279,9 +37292,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3654" buffname="真秒掉了">
+	<buff buffid="3654" buffname="待绽放的郁金香">
 		<base replacerule="0" pileqty="1" flag ="3" endflag0="0" iconid="329"></base>
-		<sub level="1" desc="">
+		<sub level="1" desc="倒计时结束后。对队友使用“花灵庇护”可为其增加500金币">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="180000" longex=""></time>
 			<effectServer id=""></effectServer>
@@ -37495,7 +37508,7 @@
 	<buff buffid="3665" buffname="小鬼">
 		<base replacerule="0" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
-			<flasheffect id="" idex=""></flasheffect>
+			<flasheffect id="4315" idex=""></flasheffect>
 			<time long="" longex=""></time>
 			<effectServer id0="6747"></effectServer>
 			<effectClient id=""></effectClient>

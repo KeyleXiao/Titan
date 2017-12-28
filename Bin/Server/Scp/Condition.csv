@@ -55,7 +55,7 @@ ConditionServer_Target,67,768
 ConditionServer_Target,79,2719824
 ConditionServer_Target,92,3
 ConditionServer_Target,111,40
-ConditionServer_Target,112,98376
+ConditionServer_Target,112,98392
 ConditionServer_Target,113,2
 ConditionServer_Target,135,256
 ConditionServer_Target,216,3
@@ -576,7 +576,7 @@ ConditionServer_CheckChangeWingState,59,WING_STATE_START_FLY
 ConditionServer_CheckChangeWingState,60,WING_STATE_FLOOR
 ConditionServer_CheckBuffChangeTarget,68,20,2719864,1476,1,MA_TRUE,MA_TAGET_TO_SELF,MA_FALSE
 ConditionServer_CheckBuffChangeTarget,77,20,2719864,1491,1,MA_TRUE,MA_TAGET_TO_SELF,MA_FALSE
-ConditionServer_CheckBuffChangeTarget,78,7,40,1274,1,MA_TRUE,MA_TAGET_TO_SELF,MA_FALSE
+ConditionServer_CheckBuffChangeTarget,78,10,40,1274,1,MA_TRUE,MA_TAGET_TO_SELF,MA_FALSE
 ConditionServer_CheckBuffChangeTarget,94,20,40,1681,1,MA_TRUE,MA_TAGET_TO_OPERATOR,MA_FALSE
 ConditionServer_CheckBuffChangeTarget,110,20,2719866,108,1,MA_TRUE,MA_TAGET_TO_SELF,MA_TRUE
 ConditionServer_CheckBuffChangeTarget,228,7,128,126,0,MA_TRUE,MA_TAGET_TO_SELF,MA_TRUE

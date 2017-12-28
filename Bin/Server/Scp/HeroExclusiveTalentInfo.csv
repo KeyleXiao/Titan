@@ -1,0 +1,5 @@
+﻿专属天赋ID,名称,描述,图标,效果组,激活条件
+int,string,string,int,string,string
+1,技能1,helloooo,1,0,1_2;2_2;3_2
+2,技能2,helllooo,2,0,1_2;2_2;3_2
+3,技能3,hellddii,3,0,1_2;2_2;3_2

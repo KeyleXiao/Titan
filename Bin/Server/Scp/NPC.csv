@@ -1,0 +1,4 @@
+ID,名字,对话内容，使用分号分隔填写多句话，系统随机发送一条,对话处理函数,NPC功能，可以使用分号分隔填写多个功能
+int,string,string,string,string
+10001,战场商店,仙丹灵药，日用百货，无奇不有，包你满意,DefaultNPCDialogHandler,NPC_WAR_SHOP
+10000,小明,我叫小明，你叫什么呀;你猜我叫什么名字呀,DefaultNPCDialogHandler,

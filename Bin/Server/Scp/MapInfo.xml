@@ -1,0 +1,547 @@
+﻿<!-- open : 表示在何个场景服上开放，只有场景服ID相同，才会开放。
+ZoneServerIDForJustLaunch : 刚开服开在哪个场景服上
+ZoneServerIDForLongLaunch : 开服一个星期后，开在哪个场景服上
+ZoneServerIDForCivilization : 精简模式
+ZoneServerIDForPublicWorld: 在公共区上，开哪个场景服上，如果不为0，那表示普通区不开
+ startload ：场景服启动时，是否会载入此地图，如果此时载入的地图，则为固定地图。 1：载入。2：不载入
+ flagForJustLaunch : 刚开服时启动时是否载入
+flagForLongLaunch : 开服一个星期后启动时是否载入
+flagForCivilization：精简服模式是否载入
+ flagForPublicWorld: 在公共区场景服启动时，是否会载入此地图 1：载入。2：不载入
+ dynamic : 客户端使用, 地图资源是否会动态载入。 1：动态。2：不动态
+ mapfile ：地图文件集合，包括mai,寻路文件，小地图文件，等等，场景加载内部会处理。
+ monsterbuildfile ：怪物生成配置文件
+ chunnelbuildfile : 传送门生成配置文件
+ boxbuildfile : 草药，矿等等的生成配置文件
+ backmusicid ：背景音乐id
+ mappixelsize : 地图像素大小，用来算tile坐标转化为世界坐标的参数
+ recover : 是否需要光复 1为需要，其它为不需要
+ recovermonsterbuildfile ：光复前怪物生成配置文件
+ recoverboxbuildfile : 光复前草药，矿等等的生成配置文件
+ dynamic：是否根据视野动态刷新物件（为1时服务器九宫格预读范围，为0时会客户端计算范围）
+ broadgrid：广播宫格数n（可以不填，默认为1），广播面积为：(2*n+1)*(2*n+1)
+ useskilllog：玩家使用技能日志
+ skillscipttype：玩家使用技能脚本类型（默认0）0：普通版本类型；1：平衡版本类型
+pkmode flag：PK模式（0：普通，1：限制PK本国玩家…限制攻击本国玩家）
+ mapoffset: 地图偏移位置 xyz
+ mappathfind: 无障碍，亮点直达 serviceid
+-->
+<scheme>
+<!--国家一地图相关-->
+<map mapid = "001" mapname = "主城1一">	
+	<open ZoneServerIDForJustLaunch = "0" ZoneServerIDForLongLaunch = "0"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "002" mapname = "主城2一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "0" ZoneServerIDForLongLaunch = "0"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "003" mapname = "主城3一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "0" ZoneServerIDForLongLaunch = "0"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "004" mapname = "主城4一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "005" mapname = "主城5一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "006" mapname = "主城6一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "007" mapname = "主城7一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "2" ZoneServerIDForLongLaunch = "2"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "008" mapname = "主城8一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "2" ZoneServerIDForLongLaunch = "2"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "009" mapname = "主城9一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "2" ZoneServerIDForLongLaunch = "2"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "010" mapname = "主城10一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "3" ZoneServerIDForLongLaunch = "3"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "011" mapname = "主城11一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "3" ZoneServerIDForLongLaunch = "3"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "012" mapname = "主城12一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "3" ZoneServerIDForLongLaunch = "3"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "013" mapname = "主城13一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "4" ZoneServerIDForLongLaunch = "4"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>	
+<map mapid = "014" mapname = "主城14一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "4" ZoneServerIDForLongLaunch = "4"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>
+<map mapid = "015" mapname = "主城15一">	<!-- （分线主城、切勿删除） -->
+	<open ZoneServerIDForJustLaunch = "4" ZoneServerIDForLongLaunch = "4"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "1" flagForLongLaunch = "1"   flagForCivilization = "1"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Cest01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "5"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "170" y = "0" z = "170"></mapoffset>
+	<mappathfind serviceid = "3"></mappathfind>
+    <map_size xaixs_len = "340" zaixs_len = "340"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Cest01.chf"></height_field>
+</map>
+<map mapid = "171" mapname = "悬空岛">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba101"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "6"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "0" y = "0" z = "0"></mapoffset>
+	<mappathfind serviceid = "2"></mappathfind>
+    <map_size xaixs_len = "460" zaixs_len = "360"></map_size>
+	<max_depth depth = "100"></max_depth>
+</map>	
+<map mapid = "172" mapname = "长城不刷兵">	
+	<open ZoneServerIDForJustLaunch = "0" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_001"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "7"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "130.7" y = "3.85" z = "128.2"></mapoffset>
+	<mappathfind serviceid = "6"></mappathfind>
+    <map_size xaixs_len = "257.3" zaixs_len = "257.1"></map_size>
+	<max_depth depth = "100"></max_depth>
+</map>	
+<map mapid = "173" mapname = "程序开发">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba01"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "6"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "0" y = "0" z = "0"></mapoffset>
+	<mappathfind serviceid = "4"></mappathfind>
+    <map_size xaixs_len = "300" zaixs_len = "300"></map_size>
+	<max_depth depth = "100"></max_depth>
+</map>	
+<map mapid = "174" mapname = "长城内外">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_001"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "8"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "130.7" y = "3.85" z = "128.2"></mapoffset>
+	<mappathfind serviceid = "6"></mappathfind>
+    <map_size xaixs_len = "257.3" zaixs_len = "257.1"></map_size>
+	<max_depth depth = "100"></max_depth>
+</map>	
+<map mapid = "175" mapname = "城镇">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Village_001"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "Village_001.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = ""></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "92" y = "3.85" z = "98"></mapoffset>
+	<mappathfind serviceid = "7"></mappathfind>
+    <map_size xaixs_len = "190" zaixs_len = "191.1"></map_size>
+	<max_depth depth = "100"></max_depth>
+</map>
+<map mapid = "176" mapname = "探索者峡谷">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_003"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "1"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "160" y = "3.85" z = "160"></mapoffset>
+	<mappathfind serviceid = "8"></mappathfind>
+    <map_size xaixs_len = "320" zaixs_len = "320"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Moba_003.chf"></height_field>
+</map>	
+<map mapid = "177" mapname = "单人线地图">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_002"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "3"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "145" y = "3.85" z = "145"></mapoffset>
+	<mappathfind serviceid = "9"></mappathfind>
+    <map_size xaixs_len = "300" zaixs_len = "300"></map_size>
+	<max_depth depth = "40"></max_depth>
+	<height_field filename="MapPath\Moba_002.chf"></height_field>
+</map>
+<map mapid = "178" mapname = "不刷兵测试地图">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_003"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "1"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "160" y = "3.85" z = "160"></mapoffset>
+	<mappathfind serviceid = "8"></mappathfind>
+    <map_size xaixs_len = "320" zaixs_len = "320"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Moba_003.chf"></height_field>
+</map>	
+<map mapid = "179" mapname = "新手入门地图">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_002"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "3"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "145" y = "3.85" z = "145"></mapoffset>
+	<mappathfind serviceid = "9"></mappathfind>
+    <map_size xaixs_len = "300" zaixs_len = "300"></map_size>
+	<max_depth depth = "40"></max_depth>
+	<height_field filename="MapPath\Moba_002.chf"></height_field>
+</map>
+<map mapid = "180" mapname = "探索者峡谷">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_003"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "1"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "160" y = "3.85" z = "160"></mapoffset>
+	<mappathfind serviceid = "8"></mappathfind>
+    <map_size xaixs_len = "320" zaixs_len = "320"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename="MapPath\Moba_003.chf"></height_field>
+</map>
+<map mapid = "181" mapname = "测试">	
+	<open ZoneServerIDForJustLaunch = "1" ZoneServerIDForLongLaunch = "1"  ZoneServerIDForCivilization = "1"></open>
+	<startload flagForJustLaunch = "2" flagForLongLaunch = "2"   flagForCivilization = "2"></startload>
+	<dynamic flag = "1"></dynamic>
+	<mapfile filename = "Moba_004"></mapfile>
+	<cagefile filename = "EmptyCage.xml"></cagefile>
+	<monsterbuildfile filename = "EmptyBorn.xml"></monsterbuildfile>
+	<chunnelbuildfile filename = "001_cs.xml"></chunnelbuildfile>
+	<boxbuildfile filename = "100_box.xml"></boxbuildfile>
+	<backmusicid sid = "1"></backmusicid>
+	<mappixelsize width = "1024" height = "1024"></mappixelsize>
+	<recover flag = "0"></recover>
+	<recovermonsterbuildfile filename = "001.xml"></recovermonsterbuildfile>
+	<recoverboxbuildfile filename = "001_box.xml"></recoverboxbuildfile>
+	<mapoffset x = "512" y = "3.85" z = "512"></mapoffset>
+	<mappathfind serviceid = "10"></mappathfind>
+    <map_size xaixs_len = "1024" zaixs_len = "1024"></map_size>
+	<max_depth depth = "30"></max_depth>
+	<height_field filename=""></height_field>
+</map>	
+</scheme>
+

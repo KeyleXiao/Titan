@@ -1,0 +1,55 @@
+﻿<!-- 
+	land_buff: 着陆
+	TurnCamera: 新手引导转镜头加1级BUFF,用分号隔开，可以应用在多个场景上
+	spellheight：技能起点高度
+	hero_backward_speed_factor：往后走移速衰减
+	hero_sideway_speed_factor：往左右走移速衰减
+	show_damage：打印伤害
+	show_changematchrank：打印战绩天梯分
+	firstWin_Award：首胜奖励
+	xp_skill_time：XP时间
+	mobaAddExpOrTalentLog：战场过程中经验金钱LOG
+	TimeInterval 打印金币金钱log的间隔时间
+	MaxDayActivity 人物每天活跃度上限
+    Penetration min 穿透下限
+	WarEndWndDelayTime 战场结束后结束界面延迟显示时间(秒)
+	KillBaseBuff 杀死基地
+	KillFakeDeadPlayerBuff  杀死假死玩家
+	CureFakeDeadPlayerBuff 救治假死队友
+	MatchBaseScore 比赛类型基础分数
+	ChangeVocSpell 进化技能（改变职业）
+	MoveMsgOptimize 是否打开移动消息优化
+	 -->  
+
+<scheme>
+  <land_buff BuffID = "1007"></land_buff>
+  <TurnCamera BuffIDList="46;42"></TurnCamera>
+  <spell SpellHeight = "2.0"></spell>
+  <foco_energia MinFocoEnergiaPCT = "0.01" MaxFocoEnergiaPCT = "1.0"></foco_energia>
+  <hero_backward_speed_factor factor="0.9"></hero_backward_speed_factor>
+  <hero_sideway_speed_factor factor="1"></hero_sideway_speed_factor>
+  <show_damage DamageInfo="0"></show_damage>
+  <show_changematchrank ChangeRankInfo="0"></show_changematchrank>
+  <updated_info RecordInfo = "1" Time = "300000"></updated_info>
+  <damage_Lighting LightingID="0" ContinueDamageLightingFactor = "50.0" ContinueDamageLightingID = "0"></damage_Lighting>
+  <show_warinfo WarShowAddEXPAndMoney="1" ></show_warinfo>
+  <firstWin_Award AwardPlayerExp = "200" AwardPlayerGold = "0" AwardHeroExp = "0" AwardCardCount = "0" AwardPrizeID = "1505" ></firstWin_Award>
+  <talent_Info Talent_MaxUseCount="100" ></talent_Info>
+  <xp_skill CD_Time = "120000" dead_is_disappear = "0" BuffID="1669" SkillID="298"></xp_skill>
+  <spell_out_time SpellAlertOut = "0" SpellAlertOutTime = "200" SpellOutTime = "3000"></spell_out_time>
+  <mobaAddExpOrTalentLog TimeInterval = "120000" PlanLogIsShow = "0"></mobaAddExpOrTalentLog>
+  <ai_military_exploits AIMilitaryExploitsFlag="1" ></ai_military_exploits>
+  <activity MaxDayActivity="50" ></activity>
+  <Penetration min="-50"></Penetration>
+  <WarEndWndDelayTime DelayTime="5"> </WarEndWndDelayTime>
+  <ContactTask Switch="1"></ContactTask>
+  <MatchBaseScore MatchTypeBaseScore="1050"></MatchBaseScore>
+  <specificactor_hide_buff buffid = "2494" level = "1"></specificactor_hide_buff>
+  <WarSpeedBuff BuffIDList = "2991;2994"></WarSpeedBuff>
+  <KillBaseBuff BuffID = "3706"></KillBaseBuff>
+  <KillFakeDeadPlayerBuff BuffID = "3072"></KillFakeDeadPlayerBuff>
+  <CureFakeDeadPlayerBuff BuffID = "3071"></CureFakeDeadPlayerBuff>
+  <ChangeVocSpell SpellID = "1437"></ChangeVocSpell>
+  <MoveMsgOptimize open = "1"></MoveMsgOptimize>
+  <FreeEmojiID FreeEmojiIDList = "1;3"></FreeEmojiID>
+</scheme>

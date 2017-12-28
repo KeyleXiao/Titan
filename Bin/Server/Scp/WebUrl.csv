@@ -1,0 +1,17 @@
+﻿ID,名称,客户端导航显示,功能类型(客户端函数channel；0上发到逻辑层),是否自动登录,前置URL,结尾URL
+int,string,int,int,int,string,string
+1,推广送豪礼,1,1,0,,
+2,来玩送现金,1,0,1,http://app.tt.q1.com/applogin?,&r=http://tt.q1.com/hd/hd201801/client/flps_c.html
+3,连续七天乐,1,0,1,http://app.tt.q1.com/applogin?,&r=http://tt.q1.com/hd/hd201801/client/dllb_c.html
+4,签到有好礼,1,0,1,http://app.tt.q1.com/applogin?,&r=http://tt.q1.com/hd/hd201801/client/qdhd_c.html
+5,在线送不停,1,0,1,http://app.tt.q1.com/applogin?,&r=http://tt.q1.com/hd/hd201801/client/pftwo.html
+6,排名送现金,1,0,1,http://app.tt.q1.com/applogin?,&r=http://tt.q1.com/hd/hd201801/client/pmzb_c.html
+7,皮肤准点送,1,0,1,http://app.tt.q1.com/applogin?,&r=http://tt.q1.com/hd/hd201801/client/pfone.html
+1000,充值,0,0,0,http://pay.tt.q1.com,
+1001,充值1,0,0,0,http://m.pay.q1.com/index.html,
+1002,充值2,0,0,0,http://m.q1.com/qr.aspx?data=,
+1003,泰坦推广活动链接,0,0,0,http://tg.q1.com/UserManage/ttTg,
+1004,二维码链接,0,0,0,http://tt.q1.com/t/,
+1005,提现链接,0,0,0,http://tg.q1.com/Fund/Withdraw,
+1006,推广员WEB接口,0,0,0,http://tg.q1.com/,
+1007,个人专属推广链接（分享按钮链接）,0,0,0,http://tg.q1.com/tt/,

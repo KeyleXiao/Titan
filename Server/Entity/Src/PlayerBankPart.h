@@ -355,6 +355,15 @@ private:
 
 	void onClientRequestActorNameChange( void * data, size_t len );
 
+    // 客户端请求推广员数据
+    void onMessageRequestRecommendData(void * data, size_t nLen);
+
+    // 推广员请求获取推广奖励
+    void onMessageRequestGainRecommendPrize(void * data, size_t nLen);
+
+    // 数据库返回推广员数据
+    void OnDBReturnRecommendRecord(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBRetCode, char * pszDBRetDesc, int nQueueIndex, char * pOutData, int nOutLen);
+
 private:
 	////////////////////////////////////玩家信息//////////////////////////////////////
 	// 处理玩家请求玩家基本信息
@@ -561,7 +570,7 @@ protected:
 	int										m_nByteTaskDataLen;
 	BYTE									*m_pByteTaskData;
 	bool									m_bWaitForLoadTaskData;
-
+    DWORD                                   m_dwMatchNum;                // 推广员总局数
 	// 是否正在增加金币给DB，DB返回后自动设置false
 	bool                                    m_isAddingTicketToDB;
 

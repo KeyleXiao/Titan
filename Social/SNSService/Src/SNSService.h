@@ -70,6 +70,7 @@ public:
 	virtual void OnReturn(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBRetCode, char * pszDBRetDesc, int nQueueIndex, char * pOutData, int nOutLen);
 
 private:
+	void onViewMessage(SSharePersonProperty& shareProperty, SNetMsgHead* head, void* data, size_t len);
 	void onReqLogin(SSharePersonProperty& shareProperty);
 	void onReqUpdateRemark(SSharePersonProperty& shareProperty, SNetMsgHead* head, void* data, size_t len);
 	void onReqUpdateBuddy(SSharePersonProperty& shareProperty, SNetMsgHead* head, void* data, size_t len);

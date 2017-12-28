@@ -140,22 +140,7 @@ bool CSchemeLegendCup::OnSchemeLoad(SCRIPT_READER reader,const char* szFileName)
 */
 bool CSchemeLegendCup::OnSchemeUpdate(SCRIPT_READER reader, const char* szFileName)
 {
-    CSchemeLegendCup* pNewInstance = NewInstance();
-    if(pNewInstance == NULL)
-    {
-        return false;
-    }
-
-    if(pNewInstance->OnSchemeLoad(reader, szFileName))
-    {
-        return true;
-    }
-    else
-    {
-        safeDelete(pNewInstance);
-        return false;
-    }
-    return true;
+    return OnSchemeLoad(reader, szFileName);
 }
 
 

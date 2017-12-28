@@ -2,32 +2,17 @@
 #include "MailSceneService_Proxy.h"
 #include "MailDef.h"
 
-void MailSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
-{
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IMailSceneService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
-
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
-}
-
-//void MailSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+//void MailSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len)
 //{
-//    PACKAGE_PTR::T_BAG bag(msg);
-//    BUILD_MSG_CONTEXT_3( IMailSceneService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+//    obuf256 t_data;
+//    t_data << serverID << head << len;
+//    t_data.push_back(data, len);
 //
-//    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+//    BUILD_MSG_BUFFER(IMailSceneService::handleServerMsg, t_data);
+//
+//    m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 //}
-//
-//// 删除邮件
-//bool MailSceneService_Proxy::delMail(DWORD dwPDBID, LONGLONG llMailID)
-//{
-//	BUILD_MSG_CONTEXT_2( IMailSceneService::delMail,DWORD, dwPDBID,LONGLONG, llMailID );
-//
-//	rkt::obuf resultBuf;
-//	m_pContainer->post_message(pMsg,nMsgLen,&resultBuf);
-//	RETURN_FROM_MSG_BUF(bool);
-//	return 0;
-//}
+
 
 // 发送邮件
 bool MailSceneService_Proxy::sendMail(SMailSendData sMailSendData, int nMailFillID, LPCSTR szParam)

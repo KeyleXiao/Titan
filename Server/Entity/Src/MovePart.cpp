@@ -382,7 +382,7 @@ bool CMovePart::moveTo(Vector3 &loc, bool bInitiatively)
     }
     else
     {
-        TraceLn("npc path not found, from(" << currentMove.vPosition.x << "," << currentMove.vPosition.y << "," << currentMove.vPosition.z << "), to(" << loc.x << "," << loc.y << "," << loc.z << ")");
+        //TraceLn("npc path not found, from(" << currentMove.vPosition.x << "," << currentMove.vPosition.y << "," << currentMove.vPosition.z << "), to(" << loc.x << "," << loc.y << "," << loc.z << ")");
     }
 
 	return execMove(path);
@@ -450,7 +450,7 @@ bool CMovePart::canMove(bool bInitiatively)
 
 	if (m_bForbitMoveInitiatively && bInitiatively)
 	{
-		WarningLn(__FUNCTION__ << "entity can't move initiatively..., [" << m_pMaster->getName() << "]");
+		//WarningLn(__FUNCTION__ << "entity can't move initiatively..., [" << m_pMaster->getName() << "]");
 		return false;
 	}
 
@@ -804,34 +804,45 @@ bool CMovePart::stopAt(Move3& move, int nSceneID, int nReason)
 
     Vector3 oldLoc = m_pMaster->getLocation();
 
-    if(nReason != TRANSPORT_REASON_BACKCITY 
-        && nReason != TRANSPORT_REASON_REBORN
-        && nReason != TRANSPORT_REASON_SET_POS)
+    if(nReason == TRANSPORT_REASON_BACKCITY 
+        || nReason == TRANSPORT_REASON_REBORN
+        || nReason == TRANSPORT_REASON_SET_POS)
     {
-        // 闪现校验障碍
-        Vector3 flash = move.vPosition - oldLoc;
-        int nFlashDistance = (move.vPosition - oldLoc).getLength();
-        Vector3 ptPrevCheck = oldLoc;   
-        for(int i = 0; i < nFlashDistance; ++i)
-        {
-            Vector3 ptCheck = oldLoc + flash * ((float)i / (float)nFlashDistance);  
-            CheckResult eResult = checkPos(ptCheck);
-
-            if(eResult != CHECK_RESULT_OK)
-            {
-                move.vPosition = ptPrevCheck;
-                break;
-            }
-            else
-            {
-                ptPrevCheck = ptCheck;
-            }
-        }
+        // 贴地
+        gServerGlobal->getHeightFieldMgr()->correctPosFromPhysic(m_pMaster->getMapID(), move.vPosition, 50, 50);
     }
     else
     {
-        // 普通传送贴地
-        gServerGlobal->getHeightFieldMgr()->correctPosFromPhysic(m_pMaster->getMapID(), move.vPosition, 50, 50);
+        // 闪现
+        Vector3 flash = move.vPosition - oldLoc;
+        float fDistance = (move.vPosition - oldLoc).getLength();
+        
+        int nStep = fDistance;
+        Vector3 vStopPos = oldLoc;
+        for(int i = 0; i < nStep; ++i)
+        {
+            Vector3 ptCheck = oldLoc + flash * ((float)i / (float)nStep);  
+            CheckResult eResult = checkPos(ptCheck);
+
+            if(eResult == CHECK_RESULT_OK)
+            {
+                vStopPos = ptCheck;
+            }
+            else 
+            {
+                // 闪现应该允许穿墙
+                if(eResult != CHECK_RESULT_HIT_TERRAIN_OBSTACLE)
+                {
+                    break;
+                }
+            }
+        }
+
+        // 中途停下来
+        if((vStopPos - oldLoc).getLength() < fDistance)
+        {
+            move.vPosition = vStopPos;
+        }
     }
 
     event_entity_transport transport;
@@ -1515,7 +1526,7 @@ bool CMovePart::handleClientMove(void* data, int len)
         // 这个期间的包要加强一点校验 不然位置会被设置成传送之前的位置。这个期间收到这种包 也不应该再拉（传送）客户端，不然连着传送客户端可能会抖动。
         if(m_bEnterStrictMoveCheck && getTickCountEx() < m_dwStrictCheckTimeOut)
         {
-            WarningLn("actor=" << m_pMaster->getName() << ", old loc sync msg recvd");
+            //WarningLn("actor=" << m_pMaster->getName() << ", old loc sync msg recvd");
             return false;
         }
 
@@ -1549,7 +1560,7 @@ bool CMovePart::handleClientMove(void* data, int len)
         break;
     case CHECK_RESULT_HIT_TERRAIN_OBSTACLE:
         {
-            WarningLn("client pos(" << move.vPosition.x << "," << move.vPosition.y << "," << move.vPosition.z << "), hit terrain obstacle, name=" << m_pMaster->getName());   
+            //WarningLn("client pos(" << move.vPosition.x << "," << move.vPosition.y << "," << move.vPosition.z << "), hit terrain obstacle, name=" << m_pMaster->getName());   
              
             gotoBehaviour(BEHAVIOUR_TYPE_NONE, false);
             correctClientPos(true, 2);
@@ -2153,7 +2164,7 @@ void CMovePart::correctClientPos(bool bBroadcast, int nRaiseHeight)
     }
     else
     {
-        WarningLn(__FUNCTION__ << __LINE__ << ", raise up will hit obstacle, actor=" << m_pMaster->getName() << ", pos(" << move.vPosition.x << "," << move.vPosition.y << "," << move.vPosition.z << ")");
+        //WarningLn(__FUNCTION__ << __LINE__ << ", raise up will hit obstacle, actor=" << m_pMaster->getName() << ", pos(" << move.vPosition.x << "," << move.vPosition.y << "," << move.vPosition.z << ")");
     }
 
     SNetMsgHead head;
@@ -2235,7 +2246,7 @@ void CMovePart::correctClientPos(bool bBroadcast, int nRaiseHeight)
         ErrorLn(__FUNCTION__ << ",actor=" << m_pMaster->getName());
     }
 
-    TraceLn("crorrect client=" << m_pMaster->getName() << " to loc(" << move.vPosition.x << "," << move.vPosition.y << "," << move.vPosition.z << "), mapid=" << m_pMaster->getMapID());
+    //TraceLn("crorrect client=" << m_pMaster->getName() << " to loc(" << move.vPosition.x << "," << move.vPosition.y << "," << move.vPosition.z << "), mapid=" << m_pMaster->getMapID());
 }
 
 // 摔死
@@ -2247,6 +2258,7 @@ void CMovePart::fall2Death()
     damage.nDamageType = DAMAGE_TYPE_EFFECT;
     damage.nDeadType = DeadEffect_Normal;
     damage.nDamageHP = m_pMaster->getIntProperty(PROPERTY_MAX_HP) * 1.5;
+    damage.nUseFlag = m_pMaster->getUseFlag()->getAll();    // 用途标识
 
     // 通知客户端
     obuf256 obufData;

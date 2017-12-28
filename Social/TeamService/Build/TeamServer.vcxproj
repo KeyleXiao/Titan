@@ -165,7 +165,7 @@
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../framework/framework/include;../../../base/base/include;../../../common;../../include;../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../../Cluster/BridgeConnector/Include;../../../Social/SocialGlobal/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../SocialGlobal/Include;../../Connector/Include;../../../Server/ShareServer/Include;../../ChatService/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../framework/framework/include;../../../base/base/include;../../../common;../../include;../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../../Cluster/BridgeConnector/Include;../../../Social/SocialGlobal/Include;../../../Manager/ManagerConnector/Include;../../../Cluster/DBEngine/Include;../../SocialGlobal/Include;../../Connector/Include;../../../Server/ShareServer/Include;../../ChatService/Include;../../SNSService/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ORDERSERVICE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>

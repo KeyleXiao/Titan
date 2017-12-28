@@ -54,7 +54,8 @@ public:
 	virtual int getLimitLevel(int nChannel);
 	// 获取CD时间
 	virtual int getCDTime(int nChannel);
-
+	// 获取频道配置
+	virtual SSchemeChatCD* getSchemeChatCD(int nChannel);
 private:
     std::map<int, SSchemeChatCD>     m_mapScheme;
 };

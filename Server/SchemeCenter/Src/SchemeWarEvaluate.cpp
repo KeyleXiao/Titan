@@ -73,7 +73,7 @@ bool CSchemeWarEvaluate::OnSchemeLoad(SCRIPT_READER reader,const char* szFileNam
 		itemInfo.fThrillSaveWR= pCSVReader->GetFloat(nRow, nIndex++, 0);
 		itemInfo.fDeadlyControlWR= pCSVReader->GetFloat(nRow, nIndex++, 0);
 		itemInfo.fTeamBattleControlWR= pCSVReader->GetFloat(nRow, nIndex++, 0);
-		itemInfo.fCureRateHonorT= pCSVReader->GetFloat(nRow, nIndex++, 0);
+		itemInfo.fCureHonorT = pCSVReader->GetInt(nRow, nIndex++, 0);
 		itemInfo.nThrillSaveHonorT= pCSVReader->GetInt(nRow, nIndex++, 0);
 		itemInfo.nDeadlyControlHonorT= pCSVReader->GetInt(nRow, nIndex++, 0);
 		itemInfo.fTeamBattleControlHonorT= pCSVReader->GetFloat(nRow, nIndex++, 0);
@@ -83,6 +83,7 @@ bool CSchemeWarEvaluate::OnSchemeLoad(SCRIPT_READER reader,const char* szFileNam
 		itemInfo.fTeamContributionMax = pCSVReader->GetFloat(nRow, nIndex++, 0);
 		itemInfo.fSpecialContributionMin = pCSVReader->GetFloat(nRow, nIndex++, 0);
 		itemInfo.fSpecialContributionMax = pCSVReader->GetFloat(nRow, nIndex++, 0);
+		itemInfo.nKillDragonHonorT = pCSVReader->GetFloat(nRow, nIndex++, 0);
 
 		m_warEvaluateMap[itemInfo.nMatchTypeID] = itemInfo;
 	}

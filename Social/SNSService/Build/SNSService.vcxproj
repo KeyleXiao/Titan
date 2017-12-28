@@ -233,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Common\SNSDef.h" />
+    <ClInclude Include="..\..\..\Common\SNS_ManagedDef.h" />
     <ClInclude Include="..\Include\ISNSManager.h" />
     <ClInclude Include="..\Include\ISNSService.h" />
     <ClInclude Include="..\Include\SNSHelper.h" />

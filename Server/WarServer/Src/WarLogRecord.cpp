@@ -64,6 +64,18 @@ void CWarLogRecord::Release()
 
 void CWarLogRecord::onWarRealStart()
 {
+	// 保存此时的经济和金钱
+	UID uidList[64] = { 0 };
+	int nCount = m_pWar->getAllPerson(uidList, sizeof(uidList));
+	for (int i = 0; i < nCount; ++i)
+	{
+		SWPerson* itPerson = m_pWar->getPlayerInfo(uidList[i]);
+		if (itPerson == NULL)
+			continue;
+
+		m_mapHeroAddExpOrTalentLog[itPerson->uPDBID].nOldTotalExp = itPerson->nExperien;
+		m_mapHeroAddExpOrTalentLog[itPerson->uPDBID].nOldTotalTalent = itPerson->nBaseRecord[EDT_Money];
+	}
 }
 
 void CWarLogRecord::onWarEnd()
@@ -456,6 +468,12 @@ void CWarLogRecord::recordAddExpOrTalentLog(bool bForceSave)
 			logBuf << nCurTalent << ";";
 		}
 
+		// 变化的总经验
+		logBuf << pPerson->nExperien - sData.nOldTotalExp << ';';
+
+		// 增加的总金币
+		logBuf << pPerson->nBaseRecord[EDT_Money] - sData.nOldTotalTalent << ';';
+
 		// 写入角色文字日记
 		pOSSLogServer->addGameNoteLog(pPerson->nSrcWorldID, OSS_NOTE_TRACK_WAR, uPDBID, logBuf.c_str());
 
@@ -465,6 +483,20 @@ void CWarLogRecord::recordAddExpOrTalentLog(bool bForceSave)
 		}
 	}
 	m_mapHeroAddExpOrTalentLog.clear();
+
+
+	// 保存此时的经济和金钱
+	UID uidList[64] = { 0 };
+	int nCount = m_pWar->getAllPerson(uidList, sizeof(uidList));
+	for (int i = 0; i < nCount; ++i)
+	{
+		SWPerson* itPerson = m_pWar->getPlayerInfo(uidList[i]);
+		if (itPerson == NULL)
+			continue;
+
+		m_mapHeroAddExpOrTalentLog[itPerson->uPDBID].nOldTotalExp = itPerson->nExperien;
+		m_mapHeroAddExpOrTalentLog[itPerson->uPDBID].nOldTotalTalent = itPerson->nBaseRecord[EDT_Money];
+	}
 }
 
 void CWarLogRecord::setAddExpToMap(PDBID pDbid, int nAddExp, EExpDropType type)
@@ -483,6 +515,7 @@ void CWarLogRecord::setAddExpToMap(PDBID pDbid, int nAddExp, EExpDropType type)
 	{
 		SHeroAddExpOrTalentLog sLog;
 		sLog.nAddExp[type] = nAddExp;
+
 		m_mapHeroAddExpOrTalentLog[pDbid] = sLog;
 	}
 

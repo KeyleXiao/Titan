@@ -707,7 +707,98 @@ bool CMonsSoliderExec::getSoliderVigourPropertyRatio(int* pVigourRatio,UID uidMo
 	return true;
 }
 
+void CMonsSoliderExec::monsterAddBuff(SWarEffectAddBuff sData)
+{
+	UID uidArrayp[512] = { INVALID_UID };
+	int nCount = 0;
+	MonsterRefreshVect::iterator refreshIt = m_vecMonsterRefresh.begin();
+	for (; refreshIt != m_vecMonsterRefresh.end(); ++refreshIt)
+	{
+		bool bNeedInsert = false;
+		switch (sData.byGetCampType)
+		{
+		case EWCT_SELFCAMP:
+		{
+			// 己方
+			if (refreshIt->RefreshWarInfo.nCamp == sData.bySelfCamp)
+			{
+				bNeedInsert = true;
+			}
+		}
+		break;
+		case EWCT_ENIMICAMP:
+		{
+			if (refreshIt->RefreshWarInfo.nCamp != sData.bySelfCamp)
+			{
+				bNeedInsert = true;
+			}
 
+		}
+		break;
+		case EWCT_ALL:
+		{
+			bNeedInsert = true;
+		}
+		break;
+		}
+
+		if (bNeedInsert)
+		{
+			for (CreateMonUIDList::iterator iter = refreshIt->creatMonUIDList.begin(); iter != refreshIt->creatMonUIDList.end(); ++iter)
+			{
+				uidArrayp[nCount++] = iter->first;
+			}
+		}
+	}
+
+	for (int n = 0; n < nCount; n++)
+	{
+		UID uid = uidArrayp[n];
+		MonsterHelper helper(uid);
+		INPCService *pNpcService = helper.m_ptr;
+		if (pNpcService != NULL)
+		{
+			switch (sData.byAddType)
+			{
+			case BUFF_ADD:
+			{
+				// 给实体添加buff
+				SBuffContext BuffContext;
+				BuffContext.nID = sData.nID;
+				pNpcService->BatchAddBuff(uidArrayp, nCount, sData.nBuffID, sData.nBuffLevel, sData.uidSrcEntity, 0, &BuffContext, sizeof(BuffContext));
+
+			}
+			break;
+			case BUFF_REMOVE:
+			{
+				// 给实体移除buff
+				pNpcService->BatchRemoveBuff(uidArrayp, nCount, sData.nBuffID, sData.uidSrcEntity, sData.uidSrcEntity);
+
+			}
+			break;
+			//case BUFF_OVERLAY:
+			//{
+			//	// 叠加BUFF
+			//	SetAccumulateBuff(iter->first, sData.nBuffID, sData.uidSrcEntity, true);
+			//}
+			//break;
+			//case BUFF_DECREASE:
+			//{
+			//	// 递减BUFF
+			//	SetAccumulateBuff(iter->first, sData.nBuffID, sData.uidSrcEntity, false);
+			//}
+			//break;
+			default:
+				break;
+			}
+
+			// 已经批量添加执行过一次了
+			break;
+		}
+
+	}
+
+}
 
 
 void CMonsSoliderExec::serchCampUIDList(BYTE bySerchCamp,BYTE byGetCampType, CreateMonUIDList& retMap)

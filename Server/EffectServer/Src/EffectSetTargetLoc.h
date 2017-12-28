@@ -81,7 +81,7 @@ public:
         }
         
         // 传送
-        g_EHelper.Transport(context->pEntity, vEndLoc, true, 0, INT_MAX, TRANSPORT_REASON_SET_POS);
+        g_EHelper.Transport(context->pEntity, vEndLoc, true, 0, INT_MAX, TRANSPORT_REASON_FLASH);
 
 		return true;
     }

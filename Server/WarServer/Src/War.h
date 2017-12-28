@@ -21,7 +21,8 @@
 #include <map>
 #include <vector>
 #include <list>
-
+#include "EffectCommon_ManagedDef.h"
+#include "BuffDef.h"
 using namespace War;
 using namespace std;
 
@@ -108,7 +109,7 @@ public:
 	virtual void forceEndWar(int nCamp, bool bNormalEnd) override;
 
 	// client 的网络消息
-	virtual bool onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg) override;
+	virtual bool onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen) override;
 
 	// 怪物死亡处理
 	virtual void onEntityDie(sEntityDieInfo entityDieInfo) override;
@@ -127,6 +128,14 @@ public:
 	@param bySerchType		    : 查找类型 EWarMonsterExec
 	*/
 	virtual DWORD warSerchTypeUIDList(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID* pReturnArray, DWORD dwArrayMaxSize) override;
+
+	/** 指定类型buff处理
+	@param bySelfCamp           : 自己的阵营
+	@param byGetCampType		: 阵营类型 EWarCampType
+	@param bySerchType		    : 查找类型 EWarMonsterExec
+	*/
+	virtual void warAddSerchTypeBuff(SWarEffectAddBuff sData) override;
+
     /////////////////////////////////IWar END/////////////////////////////////////////
 
     /////////////////////////////////IWarMiscManager Start/////////////////////////////////////////
@@ -318,7 +327,7 @@ public:
 	void setKillTitle(SWPerson& stWarGraded, int nTimeKill, int nDeadKill);
 
 	// 获得各项评分数值最高值
-	void getEveryEDTMaxData(SEDTPersonData* pMaxEDTGroup,SWPerson *pPerson);
+	void getEveryEDTMaxData(map<int, SEDTPersonData> &pMaxEDTPDBID,SWPerson *pPerson);
 
 	// 获得综合得分 返回分数 = 击杀破塔得分+团队贡献得分+特殊贡献得分
 	int getComprehensivePerformanceScore(const SWPerson& swPerson );
@@ -326,7 +335,7 @@ public:
 	// 设置阵营的总伤害的平均值   总伤害＝对英雄伤害*攻击伤害系数+承受伤害
 	void SetCampTeamRecordInfo();
 	// 判断能够给称号
-	bool canAddPersonTitle(int nEDTIndex,const SWPerson& swPerson,SEDTPersonData* pMaxEDTGroup);
+	bool canAddPersonTitle(int nEDTIndex,const SWPerson& swPerson, map<int, map<int, SEDTPersonData>>& pMaxEDTGroup);
 
 	/////////////////////////////////////////////////////////////////////////////////
 	//记录承受或造成的伤害
@@ -420,7 +429,10 @@ private:
     void    exitTester();
 
 	// 是否开启了恶劣行为检测
-	bool isOpenCheckBadBehavior();
+	bool	isOpenCheckBadBehavior();
+
+	// 玩家添加buf
+	void	playerAddBuff(SWarEffectAddBuff sData);
 
 	/////////////////////////////////////////////////////// 发送数据到客户端 /////////////////////////////
 private:
@@ -435,6 +447,9 @@ private:
 
 	// 计算连杀
 	void calcContKill();
+
+	// 计算失败方MVP
+	void calcFailedCampMvp(int nCamp, map<int, SEDTPersonData> &pMaxEDTPDBID);
 protected:
 	int                     m_nBroadcastProcessCount;                           // 阶段性提示广播列表
 	SBroadcastProcess       m_BroadCastTimeList[MAX_WAR_BROADCAST_PROCESS];

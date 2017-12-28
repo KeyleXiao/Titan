@@ -130,20 +130,25 @@ int MatchSceneService_Proxy::getTalentPageSelectIndex(PDBID idActor)
     return (m_pReal ? m_pReal->getRunePageSelectIndex(idActor) : 0);
  }  
 
- void MatchSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+ void MatchSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void* data, size_t len)
  {
-     PACKAGE_PTR::T_BAG bag(msg);
-     BUILD_MSG_CONTEXT_3( IMatchSceneService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+	 obuf256 t_data;
+	 t_data << serverID << head << len;
+	 t_data.push_back(data, len);
+
+     BUILD_MSG_BUFFER( IMatchSceneService::handleServerMsg, t_data);
 
      m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
  }
 
- void MatchSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+ void MatchSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, void* data, size_t len)
  {
-     PACKAGE_PTR::T_BAG bag(msg);
-     BUILD_MSG_CONTEXT_3( IMatchSceneService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+	 obuf256 t_data;
+	 t_data << client << head << len;
+	 t_data.push_back(data, len);
+	 BUILD_MSG_BUFFER(IMatchSceneService::handleClientMsg, t_data);
 
-     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+	 m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
  }
 
  void MatchSceneService_Proxy::onUpdateRoomPlayerClient( PDBID idActor, ClientID client )

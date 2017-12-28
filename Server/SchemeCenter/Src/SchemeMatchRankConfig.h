@@ -42,6 +42,10 @@ public:
     */
     virtual int getMatchTypeKingRankBaseScore(int eMatchTypeID);
 
+	/** 取得王者分段最低等级
+	*/
+	virtual int getMatchTypeKingRankBaseGrade(int eMatchTypeID);
+
 	/////////////////////////ISchemeUpdateSink/////////////////////////
 	virtual bool OnSchemeLoad(SCRIPT_READER reader,const char* szFileName);
 	virtual bool OnSchemeUpdate(SCRIPT_READER reader, const char* szFileName);
@@ -84,5 +88,5 @@ private:
     typedef std::map<EMMatchType, TMAP_MATCHRANKCONFIGSCHEME> TMAP_MATCHRANKCONFIG_MANAGER;
     TMAP_MATCHRANKCONFIG_MANAGER  m_mapMatchRankConfigManager;
     // 每个比赛类型最低的王者段位分
-    map<BYTE, int>  m_mapMatchTypeKingRankBase;
+    map<BYTE, pair<int, int>>  m_mapMatchTypeKingRankBase;
 };

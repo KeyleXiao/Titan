@@ -199,34 +199,37 @@ bool CClan::setDBMemberContext(LPCSTR pszContext, int nLen)
 
 	// 设置联盟成员数据
 	int offset = sizeof(DBREQ_RESULT_READMEMBERLIST);
-	for (int i = 0; i < pRetData->nMemberCount; i ++)
+	for (int i = 0; i < pRetData->nMemberCount; i++, offset += sizeof(DBREQ_TABLE_CLANMEMBER))
 	{
 		DBREQ_TABLE_CLANMEMBER* pMember = (DBREQ_TABLE_CLANMEMBER*)(pszContext + offset);
+        IKin* pKin = pKinService->getKin(pMember->dwKinID);
+        if (!pKin)
+            continue;
 		addMember(pMember->dwKinID);
 
 		m_pClanService->addClanMember(pMember->dwClanID, pMember->dwKinID, false);
 
 		// 登陆修改，往联盟战队数据缓存列表添加
-		m_pClanService->addReadingKin(pMember->dwClanID, pMember->dwKinID);
+		//m_pClanService->addReadingKin(pMember->dwClanID, pMember->dwKinID);
 
 		// TraceLn(_GT("联盟成员数据，联盟ID=") << pMember->dwClanID <<  _GT("战队ID=") << pMember->dwKinID);
 
 		// 登陆修改 检查战队数据是否读出来，或者正在读取，如果没，进行读取并放到读取列表中
-        SKinInfo sKin = pKinService->getKinInfo(pMember->dwKinID);
-		if (sKin.nKinProp_ID != 0)
-		{
-			// 1、发现战队数据已经读取完成
-			// 2、已经在读取数据的缓存列表
-			DWORD dwKinReadFlag = sKin.nKinProp_ReadFlag;
-			if (dwKinReadFlag == emKinRead_AllData)
-			{
-				offset += sizeof(DBREQ_TABLE_CLANMEMBER);
-				m_pClanService->removeReadingKin(pMember->dwKinID);
-				continue;
-			}
-		}
+  //      SKinInfo sKin = pKinService->getKinInfo(pMember->dwKinID);
+		//if (sKin.nKinProp_ID != 0)
+		//{
+		//	// 1、发现战队数据已经读取完成
+		//	// 2、已经在读取数据的缓存列表
+		//	DWORD dwKinReadFlag = sKin.nKinProp_ReadFlag;
+		//	if (dwKinReadFlag == emKinRead_AllData)
+		//	{
+		//		offset += sizeof(DBREQ_TABLE_CLANMEMBER);
+		//		m_pClanService->removeReadingKin(pMember->dwKinID);
+		//		continue;
+		//	}
+		//}
 
-		offset += sizeof(DBREQ_TABLE_CLANMEMBER);
+		//offset += sizeof(DBREQ_TABLE_CLANMEMBER);
 	}
 
 	m_dwReadFlag = m_dwReadFlag | emClanRead_Member;
@@ -852,6 +855,12 @@ void CClan::autoDismiss(int dismissActivity, int dismissWeeks)
 				pOSSLog->addGameNoteLog(getThisGameWorldID(), OSS_NOTE_TRACK_CLAN, m_dwID, szText);
 				dismiss(emClanDismiss_Activity);
 			}
+            else if (m_nWeekCount == dismissWeeks - 1)
+            {
+                char  szParam[MAIL_CONTENT_MAXSIZE];					// 内容
+                ssprintf_s(szParam, sizeof(szParam), a2utf8("%d;%d;%d;%d"), m_nWeekCount, dismissActivity, dismissWeeks, dismissActivity);
+                sendEMailToAll(emMailFill_ClanDismiss_Hint, szParam);
+            }
 		}
 		else
 		{
@@ -904,64 +913,41 @@ void CClan::dismiss(TClanDismissType nReason)
     obuf.push_back(&sendData, sizeof(sendData));
     g_EHelper.sendDataToZoneSvr(obuf.data(), obuf.size());
 
-	sendMail(nReason);
+    sendEMailToAll(nReason == emClanDismiss_Activity ? emMailFill_ClanAutoDismiss : emMailFill_ClanDismiss);
 
     // 释放自己，注意
     release();
 }
 
-void CClan::sendMail(TClanDismissType nReason)
+// 发送邮件给当前联盟所有玩家
+void CClan::sendEMailToAll(int mailID, LPCSTR szParam)
 {
-	EMMailFillID mailID;
-	if (nReason == emClanDismiss_Activity)
-	{
-		mailID = emMailFill_ClanAutoDismiss;
-	}
-	else
-	{
-		mailID = emMailFill_ClanDismiss;
-	}
-	
-	SMailConfig * pMailConfig = g_EHelper.getMailConfig(mailID);
-	if (!pMailConfig)
-	{
-		return;
-	}
+    MailHelper mailHelper;
+    IMailService *pMailService = mailHelper.m_ptr;
+    if (NULL == pMailService)
+    {
+        ErrorLn(__FUNCTION__": failed! pMailService == NULL");
+        return;
+    }
 
-	MailHelper mailHelper;
-	IMailService *pMailService = mailHelper.m_ptr;
-	if (NULL == pMailService)
-	{
-		ErrorLn(__FUNCTION__": failed! pMailService == NULL");
-		return;
-	}
+    KinHelper helper;
+    IKinService *pKinService = helper.m_ptr;
+    if (pKinService == NULL)
+        return;
+    PDBID pReturnArray[256] = { 0 };
+    for (list<int>::iterator it = m_nMemberIDList.begin(); it != m_nMemberIDList.end(); ++it)
+    {
+        DWORD dwCount = pKinService->getKinMemberList(*it, pReturnArray, sizeof(pReturnArray));
+        for (DWORD i = 0; i < dwCount; ++i)
+        {
+            SMailSendData mailInfo;
+            mailInfo.nType = emMailType_System;							// 邮件类型
+            mailInfo.nSourceType = emMailSourceType_System;				// 资源来源类型
+            mailInfo.dwMasterPDBID = pReturnArray[i];
 
-	SMailSendData mailInfo;
-	mailInfo.nType = emMailType_System;							// 邮件类型
-	mailInfo.nSourceType = emMailSourceType_System;				// 资源来源类型
-	sstrcpyn(mailInfo.szSenderName, pMailConfig->szSenderName, sizeof(mailInfo.szSenderName));// 发件者姓名
-	//mailInfo.dwMasterPDBID = m_nShaikhID;
-	sstrcpyn(mailInfo.szTitle, pMailConfig->szTitle, sizeof(mailInfo.szTitle));
-	mailInfo.nPlusMoney = 0;
-
-	char  szParam[MAIL_CONTENT_MAXSIZE];					// 内容
-	ssprintf_s(szParam, sizeof(szParam), a2utf8("%s"), pMailConfig->szContext);
-	//pMailService->sendMail(mailInfo, mailID, szParam);
-
-	KinHelper helper;
-	IKinService *pKinService = helper.m_ptr;
-	if (pKinService == NULL)
-		return;
-	PDBID pReturnArray[256] = { 0 };
-	for (list<int>::iterator it = m_nMemberIDList.begin(); it != m_nMemberIDList.end(); ++it)
-	{
-		DWORD dwCount = pKinService->getKinMemberList(*it, pReturnArray, sizeof(pReturnArray));
-		for (DWORD i = 0; i < dwCount; ++i)
-		{
-			mailInfo.dwMasterPDBID = pReturnArray[i];
-			pMailService->sendMail(mailInfo, mailID, szParam);
-		}
-	}
+            pMailService->sendMail(mailInfo, mailID, szParam);
+        }
+    }
 }
 
 // 联盟数据存数据库（这个过程以后会改成其他类去做）
@@ -1324,7 +1310,7 @@ void CClan::broadcastClanCreateLegendCupToClient(LONGLONG llLegendCupID, int nMa
             if (shareProperty.dwPDBID == INVALID_PDBID)
                 continue;
 
-            g_EHelper.showSystemMessage(*it, CHAT_TIP_CLAN_LEGEND_CUP_REGISTER_TIP, szText);
+            g_EHelper.showSystemMessage(dwPDBID, CHAT_TIP_CLAN_LEGEND_CUP_REGISTER_TIP, szText);
         }
 
 		
@@ -2027,6 +2013,9 @@ void CClan::onClientDismiss(DWORD dwPDBID, LPCSTR pszData, size_t nLen)
     logBuf.reserve(512);
     logBuf << a2utf8("解散联盟:角色ID:") << dwPDBID << a2utf8(",角色名:") << shareProperty.szName << a2utf8(",解散联盟名称:") << m_szName << a2utf8(",主动解散");
     g_EHelper.addClanGameNoteLog(m_dwID, logBuf.c_str());
+
+	// todo 是否有在进行联盟杯赛
+
 
     // 把联盟进入解散状态
     m_nDismissApplyTime = (int)time(NULL);
@@ -3492,4 +3481,15 @@ void CClan::recCreateLegendCupEvent(LPCSTR pCupName)
 void CClan::resetClanLegendDidaSend()
 {
     m_bClanLegendDidaSend = false;
+}
+
+void CClan::refreshCreateLegendCupCount()
+{
+	setNumProp(emClanProp_LegendCupCount, 1, true, true);
+
+	// 更新客户端
+	msg_clan_updateintprop_oc sendData;
+	sendData.nPropID = emClanProp_LegendCupCount;
+	sendData.nValue = m_nLegendCupCount;
+	broadcastMsgToObserve(MSG_CLAN_UPDATECLANINTPROP, (LPCSTR)&sendData, sizeof(sendData));
 }

@@ -45,7 +45,7 @@ public:
 	virtual int getAllPerson(UID *PersonArray, int nArraySize)=0;
 
 	// client 的网络消息
-	virtual void onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg) = 0;
+	virtual void onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen) = 0;
 
     // 战场进入停止流程
     virtual void destroy() = 0;
@@ -87,6 +87,14 @@ public:
     @param bySerchType		    : 查找类型 EWarMonsterExec
 	*/
 	virtual DWORD warSerchTypeUIDList(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID* pReturnArray, DWORD dwArrayMaxSize) = 0;
+
+
+	/** 指定类型buff处理
+	@param bySelfCamp           : 自己的阵营
+	@param byGetCampType		: 阵营类型 EWarCampType
+	@param bySerchType		    : 查找类型 EWarMonsterExec
+	*/
+	virtual void warAddSerchTypeBuff(SWarEffectAddBuff sData) = NULL;
 
     /** 更新玩家BUFF信息列表
     @param data

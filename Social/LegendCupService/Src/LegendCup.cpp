@@ -462,11 +462,14 @@ void CLegendCup::cancelLegendCup()
 
     changeLegendCupState(SATE_SYSTEMCANCEL);
 
-    // 移除杯赛并释放
+    // 移除杯赛记录
     if (m_pLegendCupService != NULL)
     {
         m_pLegendCupService->removeServiceCupInfo(m_LegendCupBaseInfo.llLegendCupID);
     }
+
+	// 释放
+	Release();
 }
 
 
@@ -2559,6 +2562,70 @@ void CLegendCup::exitStartCompetitionNode(int nSerchID, DWORD dwNewStartTime)
     }
 
     iter->second->updateNodeNewStartTime(nSerchID, dwNewStartTime);
+}
+
+void CLegendCup::sendAbstentionKinMail(DWORD dwFailedKinID)
+{
+	ISchemeCenter* pSchemeCenter = gSocialGlobal->getSchemeCenter();
+	if (NULL == pSchemeCenter)
+	{
+		ErrorLn(__FUNCTION__": failed! nullptr == pSchemeCenter");
+		return;
+	}
+
+	ISchemeMailDataCenter *pSchemeMailDataCenter = pSchemeCenter->getSchemeMailDataCenter();
+	if (NULL == pSchemeMailDataCenter)
+	{
+		ErrorLn(__FUNCTION__" nullptr == pSchemeMailDataCenter");
+		return;
+	}
+
+	SMailConfig* pMailConfig = pSchemeMailDataCenter->getConfig(emMailFill_LegendCupAbstentionMail);
+	if (NULL == pMailConfig)
+	{
+		ErrorLn(__FUNCTION__" nullptr == pMailConfig");
+		return;
+	}
+
+	KinHelper kinHelper;
+	IKinService *pKinService = kinHelper.m_ptr;
+	if (pKinService == NULL)
+	{
+		ErrorLn(__FUNCTION__": failed! pKinService == NULL");
+		return;
+	}
+
+	MailHelper mailHelper;
+	IMailService *pMailService = mailHelper.m_ptr;
+	if (NULL == pMailService)
+	{
+		ErrorLn(__FUNCTION__": failed! pMailService == NULL");
+		return;
+	}
+
+	tm localNowTime;
+	time_t currentTime = time(NULL);
+	localtime_s(&localNowTime, &currentTime);
+
+	PDBID memberList[256] = { 0 };
+	int memberCount = pKinService->getKinMemberList(dwFailedKinID, memberList, 256);
+	for (int i = 0; i < memberCount; ++i)
+	{
+		// 先给所有玩家发
+		SMailSendData mailInfo;
+		mailInfo.nType = emMailType_System;							// 邮件类型
+		mailInfo.nSourceType = emMailSourceType_System;				// 资源来源类型
+		sstrcpyn(mailInfo.szSenderName, pMailConfig->szSenderName, sizeof(mailInfo.szSenderName));// 发件者姓名
+		mailInfo.dwMasterPDBID = memberList[i];
+		sstrcpyn(mailInfo.szTitle, pMailConfig->szTitle, sizeof(mailInfo.szTitle));
+		mailInfo.nPlusMoney = 0;
+
+		char  szParam[MAIL_CONTENT_MAXSIZE];					// 内容
+		ssprintf_s(szParam, sizeof(szParam), a2utf8("%s;%s;%d;%d"), pMailConfig->szContext, m_LegendCupBaseInfo.szCupName, localNowTime.tm_mon + 1, localNowTime.tm_mday);
+
+		pMailService->sendMail(mailInfo, emMailFill_LegendCupAbstentionMail, szParam);
+	}
+
 }
 
 int CLegendCup::getRoundIDBySerchID(int nSerchID)

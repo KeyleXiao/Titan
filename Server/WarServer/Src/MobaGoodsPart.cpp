@@ -1833,7 +1833,11 @@ bool MobaGoodsPart::OnVote(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR p
                 if(!bCanUse)
                 {
                     //todo 无法使用的原因
-                    pCastSpell->nFailResult = (int)CHAT_TIP_ENTITY_SPELL_CAST_FAIL_CHARGED_NOTENOUGH;
+					if(pMobaGoods->bIsMultipleCDGoods())
+							pCastSpell->nFailResult = (int)CHAT_TIP_WAR_GOODS_FREEZE;
+					else
+							pCastSpell->nFailResult = (int)CHAT_TIP_ENTITY_SPELL_CAST_FAIL_CHARGED_NOTENOUGH;
+							
                 }
                 return bCanUse;
 			}

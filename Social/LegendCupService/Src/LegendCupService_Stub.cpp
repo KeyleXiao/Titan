@@ -17,23 +17,24 @@ bool LegendCupService_Stub::on_stop()
 bool LegendCupService_Stub::handle_message( SERVICE_MESSAGE * pMsg,rkt::obuf * resultBuf )
 {
 
-    if ( TEST_SAME_FUNCTION(ILegendCupService::handleServerMsg) )
-    {
-        DWORD serverID;SNetMsgHead head;PACKAGE_PTR::T_BAG bag;
-        GET_MSG_PARAM_3(DWORD, serverID,SNetMsgHead ,head,PACKAGE_PTR::T_BAG ,bag );
+	if (TEST_SAME_FUNCTION(ILegendCupService::handleServerMsg))
+	{
+		rkt::ibuffer in(pMsg->context, pMsg->context_len);
+		DWORD serverID; SNetMsgHead head; size_t len;
+		in >> serverID >> head >> len;
+		m_real_service->handleServerMsg(serverID, head, in.current(), len);
+		return true;
+	}
 
-        m_real_service->handleServerMsg( serverID,head,bag.get() );
-        return true;
-    }
+	if (TEST_SAME_FUNCTION(ILegendCupService::handleClientMsg))
+	{
+		rkt::ibuffer in(pMsg->context, pMsg->context_len);
+		DWORD client; SNetMsgHead head; size_t nLen;
+		in >> client >> head >> nLen;
 
-    if ( TEST_SAME_FUNCTION(ILegendCupService::handleClientMsg) )
-    {
-        DWORD client;SNetMsgHead head;PACKAGE_PTR::T_BAG bag;
-        GET_MSG_PARAM_3(DWORD, client,SNetMsgHead ,head,PACKAGE_PTR::T_BAG ,bag );
-
-        m_real_service->handleClientMsg( client,head,bag.get() );
-        return true;
-    }
+		m_real_service->handleClientMsg(client, head, in.current(), nLen);
+		return true;
+	}
 
     if ( TEST_SAME_FUNCTION(ILegendCupService::endCupRemoveCreaterRecInfo) )
     {
@@ -85,7 +86,15 @@ bool LegendCupService_Stub::handle_message( SERVICE_MESSAGE * pMsg,rkt::obuf * r
         return true;
     }
 
-  
+	if (TEST_SAME_FUNCTION(ILegendCupService::sendAbstentionKinMail))
+	{
+		LONGLONG llLegendCupID; DWORD dwFailedKinID;
+		GET_MSG_PARAM_2(LONGLONG, llLegendCupID, DWORD, dwFailedKinID);
+
+		m_real_service->sendAbstentionKinMail(llLegendCupID, dwFailedKinID);
+		return true;
+	}
+
     if ( TEST_SAME_FUNCTION(ILegendCupService::luaRemoveCupRegister) )
     {
         LONGLONG llLegendCupID;

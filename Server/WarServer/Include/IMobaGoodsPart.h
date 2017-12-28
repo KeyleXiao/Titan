@@ -91,6 +91,14 @@ struct __IMobaGoodsPart : public __IEntityPart
 ////////////////////////////物品对像////////////////////////////////////
 struct IMobaGoods
 {
+	
+	/** 是否是充能物品
+	@param
+	@param
+	@return
+	*/
+	virtual bool 						bIsMultipleCDGoods() = NULL;
+	
 	/** 获取物品是否是新添加
 	@param   
 	@param   

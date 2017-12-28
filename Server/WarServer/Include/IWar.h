@@ -265,7 +265,7 @@ public:
 	virtual SWPerson* getPlayerInfo(UID uid) = 0;
 
 	// client 的网络消息
-	virtual bool onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg) = 0;
+	virtual bool onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen) = 0;
 
 	// 获得胜利条件
 	virtual EWarEndReason getWarEndReason() = 0;
@@ -302,6 +302,13 @@ public:
 	@param bySerchType		    : 查找类型 EWarMonsterExec（怪物）、0（人物）
 	*/
 	virtual DWORD warSerchTypeUIDList(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID* pReturnArray, DWORD dwArrayMaxSize) = 0;
+
+	/** 指定类型buff处理
+	@param bySelfCamp           : 自己的阵营
+	@param byGetCampType		: 阵营类型 EWarCampType
+	@param bySerchType		    : 查找类型 EWarMonsterExec
+	*/
+	virtual void warAddSerchTypeBuff(SWarEffectAddBuff sData) = 0;
 };
 
 

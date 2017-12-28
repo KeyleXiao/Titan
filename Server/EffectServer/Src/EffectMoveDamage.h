@@ -285,7 +285,7 @@ public:
                 damage.fDamageBonusPCT = getProperty_Integer(m_uidOperator, PROPERTY_DAMAGE_BONUS_PCT)/ZOOM_IN_MULTIPLE;
                 damage.fAppendPCTPDP = static_cast<float>(getProperty_Integer(m_uidOperator, PROPERTY_APPEND_PCT_PDP)) / ZOOM_IN_MULTIPLE;      // 附加额外百分比护甲穿透
                 damage.fAppendPCTPMP = static_cast<float>(getProperty_Integer(m_uidOperator, PROPERTY_APPEND_PCT_MDP)) / ZOOM_IN_MULTIPLE;      // 附加额外百分比魔抗穿透
-
+                damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
 
                 // 发送实体消息
                 g_EHelper.sendEntityMessage(m_uidTarget, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));

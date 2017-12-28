@@ -38,9 +38,9 @@ struct IChatSceneService
 	virtual void broadcastActorTipMessage(PDBID nActorID, LPCSTR szActorName, int nChannel, int nChannelTargetID, EMChatTipID tipID, LPCSTR szParam = NULL, PDBID nTargetID = 0) = 0;
 
     // 处理其它服务器发送过来的消息
-    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, const char* pData, size_t nLen) = 0;
 
     // 处理客户端发送过来的消息
-    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, const char* pData, size_t nLen) = 0;
 
 };

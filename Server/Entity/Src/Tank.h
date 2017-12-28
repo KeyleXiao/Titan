@@ -22,6 +22,7 @@
 #include "EntityStandState.h"
 #include "EntityDieState.h"
 #include "EntityFightState.h"
+#include "EntityUseFlagMgr.h"
 
 class CTank : public ITank
 {
@@ -236,6 +237,9 @@ public:
 
     // 获取附属实体管理对象
     virtual IBelongEntityMgr*   getBelongEntityMgr(void) { return NULL; }
+
+    // 获取用途标识对象
+    virtual IUseFlag*           getUseFlag() { return NULL; }
 
 private:
 

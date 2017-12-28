@@ -106,10 +106,9 @@ void ClanScenService::onServerInfoUpdated(DWORD ServerID, BYTE nState, void* pSe
 
 }
 
-void ClanScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void ClanScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len)
 {
-    void *data = (void *)msg->c_str();
-    int nLen = (int)msg->size();
+    int nLen = (int)len;
 
     switch (head.byKeyAction)
     {
@@ -199,22 +198,22 @@ void ClanScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_
     }
 }
 
-void ClanScenService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
-{
-    if (isPublicGameWorld() == true)
-        return;
-	/*
-	switch (head->byKeyAction)
-	{
-	default:
-		{
-			ErrorLn(__FUNCTION__": unknown pHead->byKeyAction=" << head->byKeyAction);
-		}
-		break;
-	}
-	*/
-
-}
+//void ClanScenService::handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len)
+//{
+//    if (isPublicGameWorld() == true)
+//        return;
+//	/*
+//	switch (head->byKeyAction)
+//	{
+//	default:
+//		{
+//			ErrorLn(__FUNCTION__": unknown pHead->byKeyAction=" << head->byKeyAction);
+//		}
+//		break;
+//	}
+//	*/
+//
+//}
 
 int ClanScenService::getNumProp(DWORD dwClaneID, DWORD dwProp)
 {
@@ -300,9 +299,7 @@ void ClanScenService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head, 
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pClanSceneService->handleServerMsg( server, *head, pkg );
-
+    pClanSceneService->handleServerMsg( server, *head, data, len);
 }
 
 
@@ -310,18 +307,15 @@ void ClanScenService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head, 
 // 消息处理
 void ClanScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead *head, void *data, size_t len)
 {
-    ClanHelper clanSceneHelper;
-    IClanSceneService *pClanSceneService = clanSceneHelper.m_ptr;
-    if (pClanSceneService == NULL)
-    {
-        ErrorLn(__FUNCTION__": clientID ="<<clientID<<" uMsgID ="<<uMsgID);
-        return;
-    }
+    //ClanHelper clanSceneHelper;
+    //IClanSceneService *pClanSceneService = clanSceneHelper.m_ptr;
+    //if (pClanSceneService == NULL)
+    //{
+    //    ErrorLn(__FUNCTION__": clientID ="<<clientID<<" uMsgID ="<<uMsgID);
+    //    return;
+    //}
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pClanSceneService->handleClientMsg( clientID, *head, pkg );
-
-	
+    //pClanSceneService->handleClientMsg( clientID, *head, data, len);
 }
 
 

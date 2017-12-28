@@ -147,8 +147,7 @@ void StaticWarScenService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* h
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pStaticWarSceneService->handleServerMsg( server, *head, pkg );
+    pStaticWarSceneService->handleServerMsg( server, *head, data, len );
 }
 
 void StaticWarScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* head, void* data, size_t len)
@@ -163,12 +162,11 @@ void StaticWarScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHea
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pStaticWarSceneService->handleClientMsg( clientID, *head, pkg );
+    pStaticWarSceneService->handleClientMsg( clientID, *head, data, len);
 }
 
 
-void StaticWarScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void StaticWarScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen)
 {
     TraceLn(__FUNCTION__" serverID=" << serverID << " KeyAction=" << head.byKeyAction);
     switch( head.byKeyAction )
@@ -180,10 +178,10 @@ void StaticWarScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PAC
     }
 }
 
-void StaticWarScenService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void StaticWarScenService::handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
+    size_t len = nLen;
+    void *data = pData;
 
     switch(head.byKeyAction)
 	{
@@ -1231,7 +1229,7 @@ void StaticWarScenService::fillFakePlayerInfo(msg_entity_player_info_return *pla
     playerInfo->dwFighting = pInfo->dwFightCapacity;
     playerInfo->dwPKWinNum = pInfo->dwPKWinNum;
     playerInfo->dwPKTotalNum = pInfo->dwPKTotalNum;
-    
+    playerInfo->bSex = pInfo->bSex;
 }
 
 void StaticWarScenService::fillPlayerInfo(msg_entity_player_info_return & playerInfo, DBREQ_RESULT_QUERYACTORLOGIN* pInfo)
@@ -1292,7 +1290,7 @@ void StaticWarScenService::fillPlayerInfo(msg_entity_player_info_return & player
 	playerInfo.dwPKTotalNum = pInfo->dwPKTotalNum;
     memcpy(&playerInfo.nRankGrade, pInfo->byRankbuffdata + sizeof(BYTE)+ sizeof(DWORD), sizeof(playerInfo.nRankGrade));
     memcpy(&playerInfo.nRankScore, pInfo->byRankbuffdata + sizeof(BYTE), sizeof(playerInfo.nRankScore));
-
+	playerInfo.bSex = pInfo->bSex;
 	// dwGloryScore(荣耀积分)暂未赋值,如何获取？
 	// nRankScore（排位得分）函数外另外获取
 }
@@ -1355,6 +1353,7 @@ void StaticWarScenService::fillPlayerInfo(msg_entity_player_info_return & player
 	playerInfo.dwPKTotalNum = info.dwPKTotalNum;
     memcpy(&playerInfo.nRankGrade, info.byRankbuffdata + sizeof(BYTE)+ sizeof(DWORD), sizeof(playerInfo.nRankGrade));
     memcpy(&playerInfo.nRankScore, info.byRankbuffdata + sizeof(BYTE), sizeof(playerInfo.nRankScore));
+	playerInfo.bSex = info.bSex;
 	// dwGloryScore(荣耀积分)暂未赋值,如何获取？
 	// nRankScore（排位得分）函数外另外获取
 }

@@ -2282,7 +2282,7 @@ bool CHeroManager::checkTalentHeroIdIsCorrect(int nHeroId ,int nTalentId)
 	// аЇбщ
 	if(nTalentId <= 0 || nHeroId <= 0)
 	{
-		WarningLn(__FUNCTION__": failed dwTalentID <= 0 or nHeroId <= 0, nHeroId=" << nHeroId << ",nTalentId=" << nTalentId);
+		// WarningLn(__FUNCTION__": failed dwTalentID <= 0 or nHeroId <= 0, nHeroId=" << nHeroId << ",nTalentId=" << nTalentId);
 		return false ;
 	}
 	ISchemeCenter* pSchemeCenter = gServerGlobal->getSchemeCenter();

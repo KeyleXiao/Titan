@@ -434,10 +434,11 @@ struct SWarEvaluathInfo
 	float		fCureWR;				    // 治疗量加权系数
 
 	// 荣誉称号
-	float		fCureRateHonorT;		    // 治疗率荣誉阀值
+	float		fCureHonorT;				// 治疗量荣誉阀值
 	int			nThrillSaveHonorT;          // 惊险救治荣誉阀值
 	int			nDeadlyControlHonorT;	    // 夺命控制荣誉阀值
 	float		fTeamBattleControlHonorT;   // 团战控制荣誉阀值
+	int			nKillDragonHonorT;			// 杀龙荣誉阀值
 
 	// 上下限
 	float		fKillDestroyMin;			// 杀人破塔下限值

@@ -198,7 +198,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;MATCHSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../../Cluster/BridgeConnector/Include;../../include;../include;../../Connector/include;../../SocialGlobal/Include;../../SocialServer/Include;../../../Server/ShareServer/Include;../../ChatService/Include;../../TeamService/Include;../../KinService/Include;../../ClanService/Include;../../LegendCupService/Include;../../../Cluster/DBEngine/Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../../Cluster/BridgeConnector/Include;../../include;../include;../../Connector/include;../../SocialGlobal/Include;../../SocialServer/Include;../../../Server/ShareServer/Include;../../ChatService/Include;../../TeamService/Include;../../KinService/Include;../../ClanService/Include;../../LegendCupService/Include;../../../Cluster/DBEngine/Include;../../MailService/Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -218,7 +218,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;MATCHSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../../Cluster/BridgeConnector/Include;../../include;../include;../../Connector/include;../../SocialGlobal/Include;../../SocialServer/Include;../../../Server/ShareServer/Include;../../ChatService/Include;../../TeamService/Include;../../KinService/Include;../../ClanService/Include;../../LegendCupService/Include;../../../Cluster/DBEngine/Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common;../../../base/base/include;../../../framework/framework/include;../../../Cluster/CenterServer/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayConnector/Include;../../../Cluster/GatewayServer/Include;../../../Cluster/BridgeConnector/Include;../../include;../include;../../Connector/include;../../SocialGlobal/Include;../../SocialServer/Include;../../../Server/ShareServer/Include;../../ChatService/Include;../../TeamService/Include;../../KinService/Include;../../ClanService/Include;../../LegendCupService/Include;../../../Cluster/DBEngine/Include;../../MailService/Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

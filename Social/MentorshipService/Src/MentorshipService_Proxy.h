@@ -21,10 +21,10 @@ public:
 	///////////////////////////////IMentorshipService///////////////////////////////////////////
 
     // 处理其它服务器发送过来的消息
-    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len);
 
     // 处理客户端发送过来的消息
-    virtual void handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void handleClientMsg(DWORD client, SNetMsgHead head, void * data, size_t len);
 
 public:
 	SERVICE_PTR m_pContainer;

@@ -135,3 +135,15 @@ int CSchemeChatCD::getCDTime( int nChannel )
 	return iter->second.nCDTime;
 }
 
+SSchemeChatCD * CSchemeChatCD::getSchemeChatCD(int nChannel)
+{
+	std::map<int, SSchemeChatCD>::iterator iter = m_mapScheme.find(nChannel);
+	if (iter == m_mapScheme.end())
+	{
+		WarningLn(__FUNCTION__": not found item, check scheme file config! channel=" << nChannel);
+		return NULL;
+	}
+
+	return &iter->second;
+}
+

@@ -90,6 +90,7 @@ bool CClanService::create()
         sTriggerInfo.wday = -1;
         pDateTriggerService->RegisterDateTrigger(DCT_DataTrigger_AutoSetShaikhState, this, sTriggerInfo);
 
+		// 每天检测
         sTriggerInfo.year = -1;
         sTriggerInfo.month = -1;
         sTriggerInfo.day = -1;
@@ -97,6 +98,16 @@ bool CClanService::create()
         sTriggerInfo.min = -1;
         sTriggerInfo.wday = -1;
         pDateTriggerService->RegisterDateTrigger(DCT_DataTrigger_LegendCupDidaUpdate, this, sTriggerInfo);
+
+
+		// 每月1号检测
+		sTriggerInfo.year = -1;
+		sTriggerInfo.month = -1;
+		sTriggerInfo.day = 1;
+		sTriggerInfo.hour = 0;
+		sTriggerInfo.min = 0;
+		sTriggerInfo.wday = -1;
+		pDateTriggerService->RegisterDateTrigger(DCT_DataTrigger_MonsCheck, this, sTriggerInfo);
 	}
 
 	tm localNowTime;
@@ -153,6 +164,8 @@ void CClanService::release()
 		pDateTriggerService->UnRegisterDateTrigger(DCT_DataTrigger_WeekActivityReset, this);
         pDateTriggerService->UnRegisterDateTrigger(DCT_DataTrigger_AutoSetShaikhState, this);
         pDateTriggerService->UnRegisterDateTrigger(DCT_DataTrigger_LegendCupDidaUpdate, this);
+		pDateTriggerService->UnRegisterDateTrigger(DCT_DataTrigger_MonsCheck, this);
+		
         
 	}
 
@@ -255,8 +268,7 @@ void CClanService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead *head, voi
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pClanService->handleServerMsg( server, *head, pkg );
+    pClanService->handleServerMsg( server, *head, data, len );
 }
 
 ////////////////////////////////IMessageHandler//////////////////////////////////////////
@@ -271,15 +283,12 @@ void CClanService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead *head,
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pClanService->handleClientMsg( clientID, *head, pkg );
+    pClanService->handleClientMsg( clientID, *head, data, len );
 }
 
-void CClanService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void CClanService::handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len)
 {
     // 服务器转发过来的消息
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     if (data == NULL || len<sizeof(msg_clan_sub_head))
     {
         ErrorLn(__FUNCTION__": message data is null or length is invalid! len="<< len <<", sizeof="<< sizeof(msg_clan_sub_head) );
@@ -320,10 +329,8 @@ void CClanService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR
     }
 }
 
-void CClanService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void CClanService::handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     if (data == NULL || len < sizeof(msg_clan_sub_head))
     {
         ErrorLn(__FUNCTION__": message data is null or length is invalid! len="<< len <<", sizeof="<< sizeof(msg_clan_sub_head) );
@@ -683,6 +690,10 @@ void CClanService::DateCome(unsigned long nTriggerID)
     {
         updateClanLegendDida();
     }
+	else if(nTriggerID == DCT_DataTrigger_MonsCheck)
+	{
+		refreshCreateLegendCupCount();
+	}
 }
 
 ////////////////////////////////CClanService//////////////////////////////////////////
@@ -2154,4 +2165,16 @@ void CClanService::updateClanLegendDida()
             pClan->resetClanLegendDidaSend();
         }
     }
+}
+
+void CClanService::refreshCreateLegendCupCount()
+{
+	for (TMap_ClanIt itClan = m_ClanList.begin(); itClan != m_ClanList.end(); ++itClan)
+	{
+		CClan *pClan = (*itClan).second;
+		if (pClan != NULL)
+		{
+			pClan->refreshCreateLegendCupCount();
+		}
+	}
 }

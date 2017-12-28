@@ -42,6 +42,9 @@ bool CMonsEventCreateCampMonster::release()
 
     m_pWar = NULL;
     m_pMonsterExec = NULL;
+
+	delete this;
+
     return true;
 }
 

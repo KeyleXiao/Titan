@@ -73,6 +73,7 @@
     <ClInclude Include="..\Src\SchemeOutputRestriction.h" />
     <ClInclude Include="..\Src\SchemePlayerKill.h" />
     <ClInclude Include="..\Src\SchemePointShop.h" />
+    <ClInclude Include="..\Src\SchemeRecommPrize.h" />
     <ClInclude Include="..\Src\SchemeSceneMatron.h" />
     <ClInclude Include="..\Src\SchemeSpeedDecay.h" />
     <ClInclude Include="..\Src\SchemePrizeChest.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="..\Src\SchemePlayerKill.cpp" />
     <ClCompile Include="..\Src\SchemePointShop.cpp" />
     <ClCompile Include="..\Src\SchemePrizeUnlock.cpp" />
+    <ClCompile Include="..\Src\SchemeRecommPrize.cpp" />
     <ClCompile Include="..\Src\SchemeSceneMatron.cpp" />
     <ClCompile Include="..\Src\SchemeSpeedDecay.cpp" />
     <ClCompile Include="..\Src\SchemePrizeChest.cpp" />

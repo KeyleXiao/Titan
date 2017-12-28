@@ -321,6 +321,11 @@ void SNSService::onMessage( ClientID clientID, ulong uMsgID, SNetMsgHead* head, 
 
 	switch(uMsgID)
 	{
+	case MSG_SNS_SEND_DATA_TO_SOCIAL:
+		{
+			onViewMessage(shareProperty, head, data, len);
+		}
+		break;
 	case MSG_SNS_USER_LOGIN:
 		{
 			//onReqLogin(shareProperty, head, data, len);
@@ -482,8 +487,12 @@ void SNSService::recv_message( int msgID, const char* data, int nLen )
 			fillSNSHead(ob, MSG_ENDPOINT_CLIENT, msgID);
 
 			SSharePersonProperty pSharePerson = pShareReceiver->GetSharePerson(dwCurPdbID);
-			DWORD dwClientID = pSharePerson.clientID;
+			if (pSharePerson.dwPDBID != dwCurPdbID)
+			{
+				return;
+			}
 
+			DWORD dwClientID = pSharePerson.clientID;
 			ob.push_back(pNewData, nNewLen);
 			gSocialGlobal->getGatewayAcceptorService()->sendData(dwClientID, PACKAGE_PTR(new std::string((char const *)ob.data(), ob.size())));
 		}
@@ -676,6 +685,30 @@ void SNSService::OnReturn(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBRetCod
 			}
 		}
 		break;
+	}
+}
+
+void SNSService::onViewMessage(SSharePersonProperty & shareProperty, SNetMsgHead * head, void * data, size_t len)
+{
+	if (len < sizeof(SMsgSNSSendDataToSocial))
+	{
+		ErrorLn(__FUNCTION__ "The length of SMsgSNSSendDataToSocial is too short. len=" << len);
+		return;
+	}
+
+	SMsgSNSSendDataToSocial *pMsg = (SMsgSNSSendDataToSocial*)data;
+	switch (pMsg->nMsgType)
+	{
+	case SNSView2Social_JoinBuddyKin:
+		{
+			int* nReverse = (int*)((pMsg + 1));
+			int otherPdbid = *nReverse;
+
+			// 请求加入好友的战队
+			// TODO
+		}
+		break;
+	default:break;
 	}
 }
 

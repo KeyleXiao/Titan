@@ -221,6 +221,9 @@ public:
     // 退出开始比赛的节点
     void                exitStartCompetitionNode(int nSerchID, DWORD dwNewStartTime);
 
+	// 弃权战队邮件提示
+	void				sendAbstentionKinMail(DWORD dwFailedKinID);
+
     // 获取指定参赛战队成员列表
     void                getCupKinMemberList(DWORD dwKinID, list<DWORD> &KinMember);
 

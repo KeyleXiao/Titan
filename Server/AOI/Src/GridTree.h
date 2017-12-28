@@ -129,7 +129,7 @@ public:
 		return index;
 	}
 
-	GridNode * index2node(int index)
+	inline GridNode * index2node(int index)
 	{
 		if ( index<0 )
 			return 0;

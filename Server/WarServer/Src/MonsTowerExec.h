@@ -62,7 +62,11 @@ public:
 	*/
     virtual void serchCampUIDList(BYTE bySerchCamp,BYTE byGetCampType, CreateMonUIDList& retMap);
 
-
+	/** 添加buff
+	@param byGetCampType		: 阵营类型 EWarCampType
+	@param bySerchType		    : 查找类型 EWarMonsterExec
+	*/
+	virtual void monsterAddBuff(SWarEffectAddBuff sData);
     // 停止AI
     virtual void stopAI();
 

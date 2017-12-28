@@ -1120,16 +1120,6 @@ int PlayerRole::getFromGameWorldID()
 void PlayerRole::setMapID(int nMapID)
 {
 	m_nMapID = nMapID;
-
-	// 主城创建角色,则同时更新BankPart中playerinfo中的mapid,当玩家在主城下线时，才会保存当前地图id到数据库
-	if (IsMainMap(nMapID))
-	{
-		__IBankPart * pBankPart = (__IBankPart *)getEntityPart(PART_BANK);
-		if (pBankPart)
-		{
-			pBankPart->setActorBaseInfo(nMapID, ENPLAYERINFOTYPE_MAPID, ENCHANGEDATAMODE_SET, 0, 0, 0, 0, 0, 0);
-		}
-	}
 }
 
 //////////////////////////////////////////////////////////////////////////

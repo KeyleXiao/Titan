@@ -307,8 +307,8 @@ private:
     // purpose: 下发给观察者战队基础数据
     void sendObClientKinBaseData();
 
-	// 战队解散发送邮件通知玩家
-	void sendMail(TKinDismissType nReason);
+    // 发送邮件给当前战队所有玩家
+    void sendEMailToAll(int mailID, LPCSTR szParam = NULL);
 
 	// 队长进入离线状态
 	void enterOfflineState();

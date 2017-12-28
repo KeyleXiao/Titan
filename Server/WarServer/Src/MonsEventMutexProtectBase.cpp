@@ -36,7 +36,9 @@ bool CMonsEventMutexProtectBase::release()
     m_mapNeedProtectRec.clear();
     m_pWar = NULL;
     m_pMonsterExec = NULL;
-    return true;
+	delete this;
+
+	return true;
 }
 
 bool CMonsEventMutexProtectBase::handleSlefMonsterEvent(SWarEventDefine eventInfo, void *DataEx, int nSize,bool bBorn /*= true*/)

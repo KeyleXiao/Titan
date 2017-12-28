@@ -21,6 +21,8 @@
 #include "IAIService.h"
 #include <vector>
 #include <list>
+#include "EffectCommon_ManagedDef.h"
+#include "BuffDef.h"
 using namespace std;
 
 typedef map<UID, int> CreateMonUIDList;
@@ -128,4 +130,10 @@ public:
 
     // 停止AI
     virtual void stopAI() = 0;
+
+	/** 添加buff
+	@param byGetCampType		: 阵营类型 EWarCampType
+	@param bySerchType		    : 查找类型 EWarMonsterExec
+	*/
+	virtual void monsterAddBuff(SWarEffectAddBuff sData) = 0;
 };

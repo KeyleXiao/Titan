@@ -18,10 +18,10 @@ struct IClanService
     virtual void release() = 0;
 
     // 处理其它服务器发送过来的消息
-    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len) = 0;
 
     // 处理客户端发送过来的消息
-    virtual void handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len) = 0;
 
     // 查找战队所属帮会ID
     virtual DWORD findKinClan(DWORD dwKinID) = 0;

@@ -59,7 +59,8 @@ private:
 		DCT_DataTrigger_ClanUpdate,
 		DCT_DataTrigger_WeekActivityReset,
         DCT_DataTrigger_AutoSetShaikhState,
-        DCT_DataTrigger_LegendCupDidaUpdate
+        DCT_DataTrigger_LegendCupDidaUpdate,
+		DCT_DataTrigger_MonsCheck,
 	};
 
 public:
@@ -73,10 +74,10 @@ public:
     // _Stub::release() call
 
     // 处理其它服务器发送过来的消息
-    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len);
 
     // 处理客户端发送过来的消息
-    virtual void handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len);
 
     virtual void release();
 
@@ -221,6 +222,9 @@ private:
 
     // 更新杯赛dida标示
     void updateClanLegendDida();
+
+	// 更新每个联盟的创建联盟杯赛相关
+	void refreshCreateLegendCupCount();
 
 	// 重置周活跃度
 	void ResetWeekActivity();

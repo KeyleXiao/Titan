@@ -305,10 +305,15 @@ void CLegendCupInfoMgr::addKinMapedLegendID(DWORD dwKinID, LONGLONG llLegendCupI
 int CLegendCupInfoMgr::getAllCupBaseInfo(obuf &out, DWORD dwRequestKinID)
 {
     DWORD dwNowTime = (DWORD)time(NULL);
-    int CupCount = m_mapLegendID2Legend.size();
+    int CupCount = 0;
     map<LONGLONG, CLegendCup*>::iterator iter = m_mapLegendID2Legend.begin();
     for (;iter != m_mapLegendID2Legend.end(); ++iter)
     {
+		if (iter->second == NULL)
+		{
+			continue;
+		}
+
         SLegendCupBaseInfo* pCupBaseInfo = iter->second->getLegendCupBaseInfo();
         SMsgLegendCupInfo CupInfo;
 		
@@ -336,6 +341,8 @@ int CLegendCupInfoMgr::getAllCupBaseInfo(obuf &out, DWORD dwRequestKinID)
         CupInfo.dwRegistGold = pCupBaseInfo->dwRegisterNeedTicket;
        
         out<<CupInfo;
+
+		CupCount++;
       
     }
     return CupCount;
@@ -372,7 +379,7 @@ void CLegendCupInfoMgr::removeServiceCupInfo(LONGLONG llLegendCupID)
     removeLegendCupIDCreaterMap(llLegendCupID);
 
     // 释放杯赛相关
-    releaseLegendCup(llLegendCupID);
+	removeLegendCupIDRec(llLegendCupID);
 }
 
 void CLegendCupInfoMgr::removeLegendCupIDAllKinMap(LONGLONG llLegendCupID)
@@ -435,7 +442,7 @@ void CLegendCupInfoMgr::removeLegendCupIDCreaterMap(LONGLONG llLegendCupID)
     m_mapCreateIDHaveLegendCup.erase(dwCreateID);
 }
 
-void CLegendCupInfoMgr::releaseLegendCup(LONGLONG llLegendCupID)
+void CLegendCupInfoMgr::removeLegendCupIDRec(LONGLONG llLegendCupID)
 {
     map<LONGLONG, CLegendCup*>::iterator iterCup = m_mapLegendID2Legend.find(llLegendCupID);
     if (iterCup == m_mapLegendID2Legend.end())
@@ -446,7 +453,6 @@ void CLegendCupInfoMgr::releaseLegendCup(LONGLONG llLegendCupID)
 
     if (iterCup->second != NULL)
     {
-        iterCup->second->Release();
         iterCup->second = NULL;
     }
 

@@ -20,21 +20,27 @@ string ClanSceneService_Proxy::getClanName(DWORD nClanID)
 	return string();
 }
 
-void ClanSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void ClanSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len)
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IClanSceneService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
-
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+    obuf256 t_data;
+    t_data << serverID << head << len;
+    t_data.push_back(data, len);
+    
+    BUILD_MSG_BUFFER(IClanSceneService::handleServerMsg, t_data);
+    
+    m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 }
 
-void ClanSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
-{
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IClanSceneService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
-
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
-}
+//void ClanSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len)
+//{
+//    obuf256 t_data;
+//    t_data << client << head << len;
+//    t_data.push_back(data, len);
+//
+//    BUILD_MSG_BUFFER(IClanSceneService::handleClientMsg, t_data);
+//
+//    m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
+//}
 
 int ClanSceneService_Proxy::getNumProp(DWORD dwClaneID, DWORD dwProp)
 {

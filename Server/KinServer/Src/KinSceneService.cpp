@@ -1056,9 +1056,7 @@ void KinScenService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head, v
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pKinSceneService->handleServerMsg( server, *head, pkg );
-    
+    pKinSceneService->handleServerMsg( server, *head, data, len);
 }
 
 void KinScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* head, void* data, size_t len)
@@ -1071,14 +1069,11 @@ void KinScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* hea
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pKinSceneService->handleClientMsg( clientID, *head, pkg );
+    pKinSceneService->handleClientMsg( clientID, *head, data, len);
 }
 
-void KinScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void KinScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     switch( head.byKeyAction )
     {
         // 创建战队
@@ -1157,7 +1152,7 @@ void KinScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_P
     }
 }
 
-void KinScenService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void KinScenService::handleClientMsg(DWORD client, SNetMsgHead head, void * data, size_t len)
 {
     //TraceLn("KinSceneService::onClientMsg clientID=" << clientID);
 
@@ -1166,8 +1161,7 @@ void KinScenService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR
     {
         return;
     }
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
+
     switch( head.byKeyAction )
     {
     default:

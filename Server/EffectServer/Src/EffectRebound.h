@@ -310,6 +310,7 @@ public:
                 damage.fAppendPCTPDP = static_cast<float>(getProperty_Integer(uidSelf, PROPERTY_APPEND_PCT_PDP)) / ZOOM_IN_MULTIPLE;
                 // 附加额外百分比魔抗穿透
                 damage.fAppendPCTPMP = static_cast<float>(getProperty_Integer(uidSelf, PROPERTY_APPEND_PCT_MDP)) / ZOOM_IN_MULTIPLE;
+                damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
 
 				// 发送实体消息
 				g_EHelper.sendEntityMessage(pDamage->uidOperator, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));
@@ -524,7 +525,7 @@ public:
                 damage.fAttackFactor = pDamage->fAttackFactor;
                 damage.fPromoteFactor = pDamage->fPromoteFactor;
                 damage.nPASD          = pDamage->nPASD;
-
+                damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
                 // 设置反弹伤害
                 damage.bRebound = true;
                 // 发送实体消息

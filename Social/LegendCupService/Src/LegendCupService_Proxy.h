@@ -21,10 +21,10 @@ public:
 	// ILegendCupService
 	//////////////////////////////////////////////////////////////////////////
     // 处理其它服务器发送过来的消息
-    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen);
 
     // 处理客户端发送过来的消息
-    virtual void handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen);
 
 	// 设置杯赛比赛结果
 	virtual void setLegendCupMatchResult(SMsgRecordNodeWarResult sNodeWarResult);
@@ -40,6 +40,9 @@ public:
 
     // 退出正在比赛的节点
     virtual void exitStartCompetitionNode(LONGLONG llLegendCupID, int nSerchID, DWORD dwNewStartTime);
+
+	// 弃权战队邮件提示
+	virtual void sendAbstentionKinMail(LONGLONG llLegendCupID, DWORD dwFailedKinID);
 
     // 移除杯赛服务记录的信息
     virtual void endCupRemoveCreaterRecInfo(LONGLONG llLegendCupID);

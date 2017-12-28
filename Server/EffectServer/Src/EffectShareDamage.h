@@ -184,7 +184,8 @@ public:
                 damage.nSpellEffectType = pDamage->nSpellEffectType;
                 damage.nDamageBonus = getProperty_Integer(pDamage->uidOperator, PROPERTY_DAMAGE_BONUS);
                 damage.fDamageBonusPCT = getProperty_Integer(pDamage->uidOperator, PROPERTY_DAMAGE_BONUS_PCT)/ZOOM_IN_MULTIPLE;
-                
+                damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
+
                 // 发送实体消息
                 g_EHelper.sendEntityMessage(m_uidTarget, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));
 			}

@@ -94,21 +94,7 @@ bool CSchemeAIEcmExpCtrl::OnSchemeLoad(SCRIPT_READER reader,const char* szFileNa
 // 配置动态更新时通知
 bool CSchemeAIEcmExpCtrl::OnSchemeUpdate(SCRIPT_READER reader, const char* szFileName)
 {
-	CSchemeAIEcmExpCtrl* pNewInstance = NewInstance();
-    if (pNewInstance == NULL)
-    {
-        return false;
-    }
-
-    if (pNewInstance->OnSchemeLoad(reader, szFileName))
-    {
-        return true;
-    }
-    else
-    {
-        safeDelete(pNewInstance);
-        return false;
-    }
+	return OnSchemeLoad(reader, szFileName);
 }
 
 bool CSchemeAIEcmExpCtrl::LoadAIEcmCtrlScheme(SCRIPT_READER reader)

@@ -182,10 +182,10 @@ public:
 
     ///////////////////////////////////IStaticWarSceneService///////////////////////////////////////
     // 处理其它服务器发送过来的消息
-    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen);
 
     // 处理客户端发送过来的消息
-    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen);
 
 
 	// StaticWarSceneServer

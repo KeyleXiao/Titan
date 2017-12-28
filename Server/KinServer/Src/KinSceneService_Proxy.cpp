@@ -104,18 +104,24 @@ int KinSceneService_Proxy::getWeekActivity(DWORD dwKinID)
 	return 0;
 }
 
-void KinSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void KinSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len)
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IKinSceneService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+    obuf256 t_data;
+    t_data << serverID << head << len;
+    t_data.push_back(data, len);
+
+    BUILD_MSG_BUFFER(IKinSceneService::handleServerMsg, t_data);
 
     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
 }
 
-void KinSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void KinSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, void * data, size_t len)
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IKinSceneService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+    obuf256 t_data;
+    t_data << client << head << len;
+    t_data.push_back(data, len);
+
+    BUILD_MSG_BUFFER(IKinSceneService::handleClientMsg, t_data);
 
     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
 }

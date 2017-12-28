@@ -47,10 +47,10 @@ public:
     ////////////////////////////////ITransmitHandler//////////////////////////////////////////
 
     // 处理其它服务器发送过来的消息
-    virtual void     handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void     handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen);
 
     // 处理客户端发送过来的消息
-    virtual void     handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void     handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen);
 
 	/** 消息处理
 	@param server	源服务器ID
@@ -84,6 +84,8 @@ public:
     // 退出正在比赛的节点
     virtual void    exitStartCompetitionNode(LONGLONG llLegendCupID, int nSerchID, DWORD dwNewStartTime);
 
+	// 弃权战队邮件提示
+	virtual void	sendAbstentionKinMail(LONGLONG llLegendCupID, DWORD dwFailedKinID);
 	////////////////////////////////IMessageHandler//////////////////////////////////////////
 	/** 消息处理
 	@param msg 网络消息

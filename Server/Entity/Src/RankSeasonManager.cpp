@@ -7,6 +7,8 @@
 #include "PlayerBankPart.h"
 #include "Match_Manageddef.h"
 #include "MailHelper.h"
+#include "OssLogDef.h"
+#include "IOSSLogService.h"
 
 CRankSeasonManager::CRankSeasonManager()
 {
@@ -248,17 +250,8 @@ void CRankSeasonManager::onMessageRequestSeasonDetail()
 		return;
 
 	SSchemeMatchSeasonTime * pSchemeTime =  pSchemeSeasonTime->getSchemeMatchSeasonTimeByTime(time(NULL));
-	if (pSchemeTime == NULL)
-		return;
-
-	int nPrizeConfigID = pSchemeTime->nPrizeConfigID;
-	int nTopRankGrade = m_seasonDetail.wTopRankGrade;	// 按赛季最高段位奖励
-	SSchemeMatchSeasonPrize * pSchemePrize = pSchemeSeasonPrize->getSchemeMatchSeasonPrize(nPrizeConfigID, nTopRankGrade);
-	if(pSchemePrize == NULL)
-		return;
 
 	msg_entity_season_detail detail;
-	detail.dwEndTime = pSchemeTime->tEndTime;
 	detail.wTopRankGrade = m_seasonDetail.wTopRankGrade;
 	detail.wMatchCount = m_seasonDetail.wMatchCount;
 	detail.wWinCount = m_seasonDetail.wWinCount;
@@ -269,7 +262,11 @@ void CRankSeasonManager::onMessageRequestSeasonDetail()
 	detail.wKill4Count = m_seasonDetail.wKill4Count;
 	detail.wKill3Count = m_seasonDetail.wKill3Count;
 	
-	detail.wPrizeConfigID = nPrizeConfigID;
+	if (pSchemeTime != NULL	)
+	{
+		detail.dwEndTime = pSchemeTime->tEndTime;
+		detail.wPrizeConfigID = pSchemeTime->nPrizeConfigID;
+	}
 
 	__IPlayerRole *pPlayerRole = CAST_TYPE(__IPlayerRole*, m_pMaster);
 	if (pPlayerRole)
@@ -382,6 +379,7 @@ void CRankSeasonManager::dealSeasonBegin(int nBeginSeasonIndex)
 		return;
 
 	// 当前段位
+	int nRankScore = m_pBankPart->getMatchTypeRank(MatchType_Rank);
 	int nRankGrade = m_pBankPart->getMatchTypeRankGrade(MatchType_Rank);
     int nHideRankScore = m_pBankPart->getMatchTypeHideRank(MatchType_Rank);
 
@@ -408,6 +406,15 @@ void CRankSeasonManager::dealSeasonBegin(int nBeginSeasonIndex)
 		return;
 
 	m_pBankPart->setMatchTypeRank(MatchType_Rank, abs(pPrize->nAccountScore), nHideRankScore);	// 该接口会进行基础分判定
+	// 记录文字日志
+	IOSSLogService *pOSSLogService = gServerGlobal->getOSSLogService();
+	if (NULL != pOSSLogService)
+	{
+		char szText[512] = {0};
+		DWORD dwActorID = m_pMaster->getIntProperty(PROPERTY_ID);
+		sprintf_s(szText, sizeof(szText), a2utf8("(%s)玩家%s(%d)段位%s(%d)从%d分降为%d分"), pPrize->szSeasonDesc, m_pMaster->getName(), dwActorID, pPrize->szRankDesc, nRankGrade, nRankScore, pPrize->nAccountScore);
+		pOSSLogService->addGameNoteLog(getThisGameWorldID(), OSS_NOTE_TRACK_RANK, dwActorID, szText);
+	}
 
 	m_seasonDetail.dwBeginTime = 0;
 	m_seasonDetail.wReflushSeasonID = nBeginSeasonIndex;

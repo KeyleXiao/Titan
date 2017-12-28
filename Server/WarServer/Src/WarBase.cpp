@@ -654,7 +654,6 @@ void CWarBase::sendWarRecordInfo(UID uid)
 {
 	int nPersonCount = 0;
 	// 组织数据发送到客户端
-	obuf oAllPersonInfo;
 	obuf oAllPerson;
 	WarCampMap::iterator itCamp = m_mapWarCamp.begin();
 	for (; itCamp != m_mapWarCamp.end(); ++itCamp)

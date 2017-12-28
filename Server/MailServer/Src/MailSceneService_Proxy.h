@@ -22,13 +22,7 @@ public:
 	//IMailSceneService///////////////////////////////////////////////////////////////////////
 	
     // 处理其它服务器发送过来的消息
-    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
-
- //   // 处理客户端发送过来的消息
- //   virtual void    handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
-
-	//// 删除邮件
-	//virtual bool    delMail(DWORD dwPDBID, LONGLONG llMailID);
+    //virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len);
 
 	// 发送邮件
 	virtual bool	sendMail(SMailSendData sMailSendData, int nMailFillID = emMailFill_Begin, LPCSTR szParam = NULL);

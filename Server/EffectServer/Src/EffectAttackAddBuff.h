@@ -44,27 +44,38 @@ public:
 
 		m_pEntity = context->pEntity;
 
+
 		if (m_data.nAttackAddBuffType == ATTACK_ADD_BUFF_DAMAGE)
 		{
-			DWORD dwSceneID = m_pEntity->getSceneID();
+			//DWORD dwSceneID = m_pEntity->getSceneID();
 
-			SceneLogicEventHelper eventHelper(dwSceneID);
-			IEventEngine *pGlobalEvent = eventHelper.m_ptr;
-			if (pGlobalEvent == NULL)
-			{
-				ErrorLn("pGlobalEvent == NULL");
-				return false;
-			}
+			//SceneLogicEventHelper eventHelper(dwSceneID);
+			//IEventEngine *pGlobalEvent = eventHelper.m_ptr;
+			//if (pGlobalEvent == NULL)
+			//{
+			//	ErrorLn("pGlobalEvent == NULL");
+			//	return false;
+			//}
 
-			// 注册英雄伤害事件
-			pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0, "CEffectAttackAddBuff");
-			// 注册怪物伤害事件
-			pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0, "CEffectAttackAddBuff");
-			// 注册Tank伤害事件
-			pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0, "CEffectAttackAddBuff");
-		}
-		else
-		{
+			//// 注册英雄伤害事件
+			//pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0, "CEffectAttackAddBuff");
+			//// 注册怪物伤害事件
+			//pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0, "CEffectAttackAddBuff");
+			//// 注册Tank伤害事件
+			//pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0, "CEffectAttackAddBuff");
+
+            // 订阅自己的伤害事件
+            g_EHelper.Subscibe(m_pEntity, this, EVENT_ENTITY_DAMAGE, __FUNCTION__);
+            // 订阅目标的伤害事件
+            g_EHelper.Subscibe(m_pEntity, this, EVENT_ENTITY_TARGET_DAMAGE_RESULT, __FUNCTION__);
+
+            // 增加目标伤害通知操作者
+            IUseFlag * pUseFlag = m_pEntity->getUseFlag();
+            if (pUseFlag) {
+                pUseFlag->add(USE_FLAG_DAMAGE_NOTIFY_OPERATOR);
+            }
+	    }
+		else {
 			// 注册选择事件
 			g_EHelper.Subscibe(m_pEntity, this, (EventKey)m_data.nAttackAddBuffType, "CEffectAttackAddBuff");
 		}
@@ -79,20 +90,30 @@ public:
 		{
 			if (m_data.nAttackAddBuffType == ATTACK_ADD_BUFF_DAMAGE)
 			{
-				DWORD dwSceneID = m_pEntity->getSceneID();
+				//DWORD dwSceneID = m_pEntity->getSceneID();
 
-				SceneLogicEventHelper eventHelper(dwSceneID);
-				IEventEngine *pGlobalEvent = eventHelper.m_ptr;
-				if (pGlobalEvent != NULL)
-				{
-					// 反注册英雄伤害事件
-					pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0);
-					// 反注册怪物伤害事件
-					pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0);
-					// 反注册Tank伤害事件
-					pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0);
-				}
+				//SceneLogicEventHelper eventHelper(dwSceneID);
+				//IEventEngine *pGlobalEvent = eventHelper.m_ptr;
+				//if (pGlobalEvent != NULL)
+				//{
+				//	// 反注册英雄伤害事件
+				//	pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0);
+				//	// 反注册怪物伤害事件
+				//	pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0);
+				//	// 反注册Tank伤害事件
+				//	pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0);
+				//}
+                // 移除目标伤害通知操作者
+                IUseFlag * pUseFlag = m_pEntity->getUseFlag();
+                if (pUseFlag)
+                {
+                    pUseFlag->remove(USE_FLAG_DAMAGE_NOTIFY_OPERATOR);
+                }
 
+                // 取消订阅自己的伤害事件
+                g_EHelper.UnSubscibe(m_pEntity, this, EVENT_ENTITY_DAMAGE);
+                // 取消订阅目标的伤害事件
+                g_EHelper.UnSubscibe(m_pEntity, this, EVENT_ENTITY_TARGET_DAMAGE_RESULT);
 			}
 			else
 			{
@@ -514,6 +535,9 @@ public:
 				AddBuff(uidAddBuffTarget, m_data.nBuffID, m_data.nBuffLevel, uid, 0, &BuffContext, sizeof(BuffContext));
 			}
 			break;
+
+        case EVENT_ENTITY_DAMAGE:
+        case EVENT_ENTITY_TARGET_DAMAGE_RESULT:
 		case EVENT_GAME_ENTITY_DAMAGE:
 			{
 				if (m_pEntity == NULL)
@@ -704,6 +728,8 @@ public:
 				BuffContext.nID = pDamage->nID;
 				// 增加buff
 				AddBuff(uidAddBuffTarget, m_data.nBuffID, m_data.nBuffLevel, uid, 0, &BuffContext, sizeof(BuffContext));
+
+                //TraceLn(__FUNCTION__": uid=" << uid << ",wEventID=" << wEventID << ", buff=" << m_data.nBuffID << ", level=" << m_data.nBuffLevel);
 			}
 			break;
 		default:

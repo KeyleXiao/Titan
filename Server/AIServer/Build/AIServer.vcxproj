@@ -180,7 +180,7 @@
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Connector/Include;../../FreezeServer/Include;../../AOI/Include;../../Spell/Include;../../WarServer/Include;../../MapPathFind/Include;../../Condition/Include;../../EffectServer/Include;../../BuffServer/Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../include;../../../base/base/include;../../../framework/framework/include;../../../common;../../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../Entity/Include;../../Connector/Include;../../FreezeServer/Include;../../AOI/Include;../../Spell/Include;../../WarServer/Include;../../MapPathFind/Include;../../Condition/Include;../../EffectServer/Include;../../BuffServer/Include;../../../Server/SchemeCenter/Include;../../../base/lua</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

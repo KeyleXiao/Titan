@@ -100,10 +100,9 @@ void MentorshipSceneService::onServerInfoUpdated(DWORD ServerID, BYTE nState, vo
 
 }
 
-void MentorshipSceneService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void MentorshipSceneService::handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len)
 {
-    void *data = (void *)msg->c_str();
-    int nLen = (int)msg->size();
+    int nLen = (int)len;
 
     switch (head.byKeyAction)
     {
@@ -132,7 +131,7 @@ void MentorshipSceneService::handleServerMsg(DWORD serverID, SNetMsgHead head, P
     }
 }
 
-void MentorshipSceneService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void MentorshipSceneService::handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len)
 {
     if (isPublicGameWorld() == true)
         return;
@@ -252,9 +251,7 @@ void MentorshipSceneService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead*
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pMentorshipSceneService->handleServerMsg( server, *head, pkg );
-
+    pMentorshipSceneService->handleServerMsg( server, *head, data, len);
 }
 
 
@@ -270,8 +267,7 @@ void MentorshipSceneService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgH
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pMentorshipSceneService->handleClientMsg( clientID, *head, pkg );
+    pMentorshipSceneService->handleClientMsg( clientID, *head, data, len);
 }
 
 

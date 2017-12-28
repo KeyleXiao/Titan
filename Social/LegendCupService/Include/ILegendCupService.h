@@ -18,10 +18,10 @@ using Gateway::ClientID;
 struct ILegendCupService
 {
     // 处理其它服务器发送过来的消息
-    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen) = 0;
 
     // 处理客户端发送过来的消息
-    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen) = 0;
 
 	// 设置杯赛比赛结果
 	virtual void    setLegendCupMatchResult(SMsgRecordNodeWarResult sNodeWarResult)= 0;
@@ -55,4 +55,8 @@ struct ILegendCupService
 
     // 移除杯赛所有相关信息
     virtual void    removeServiceCupInfo(LONGLONG llLegendCupID) = 0;
+
+	// 弃权战队邮件提示
+	virtual void    sendAbstentionKinMail(LONGLONG llLegendCupID, DWORD dwFailedKinID) = 0;
+	
 };

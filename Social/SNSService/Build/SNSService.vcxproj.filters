@@ -49,6 +49,9 @@
     <ClInclude Include="..\Src\ExternalHelper.h">
       <Filter>Src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\SNS_ManagedDef.h">
+      <Filter>接口</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Service">

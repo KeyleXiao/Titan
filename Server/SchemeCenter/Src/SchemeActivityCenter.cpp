@@ -74,11 +74,6 @@ bool CSchemeActivityCenter::OnSchemeUpdate(SCRIPT_READER reader, const char* szF
         return false;
     }
 
-	if (rkt::StringHelper::casecmp(szFileName, ACTIVITY_SCHEME_FILENAME) == 0)
-	{
-		return false;
-	}
-
     if(pNewInstance->OnSchemeLoad(reader, szFileName))
     {
         return true;

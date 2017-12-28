@@ -58,7 +58,7 @@ public:
 	virtual void    End() override;
 
 	// client 的网络消息
-	virtual bool    onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg) override;
+	virtual bool    onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen) override;
 
 	// 战场正式开始
 	virtual void	onWarRealStart() override;

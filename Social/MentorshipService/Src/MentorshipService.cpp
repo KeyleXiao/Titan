@@ -1991,8 +1991,7 @@ void MentorshipService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head
         return;
     }
 
-	PACKAGE_PTR pkg( new string((const char*)data,len));
-	pMentorshipService->handleServerMsg( server, *head, pkg );
+	pMentorshipService->handleServerMsg( server, *head, data, len );
 }
 
 ////////////////////////////////IMessageHandler//////////////////////////////////////////
@@ -2009,15 +2008,12 @@ void MentorshipService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* 
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pMentorshipService->handleClientMsg( clientID, *head, pkg );
+    pMentorshipService->handleClientMsg( clientID, *head, data, len );
 }
 
 
-void MentorshipService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void MentorshipService::handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     // 服务器转发过来的消息
     if (data == NULL || len < sizeof(SMsgMentorshipSubMsg))
     {
@@ -2044,10 +2040,8 @@ void MentorshipService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAG
     }
 }
 
-void MentorshipService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void MentorshipService::handleClientMsg(DWORD client, SNetMsgHead head, void * data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     if (data == NULL || len < sizeof(SMsgMentorshipSubMsg))
     {
         return;

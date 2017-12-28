@@ -97,7 +97,7 @@ private:
     void    removeLegendCupIDCreaterMap(LONGLONG llLegendCupID);
 
     // 移除释放杯赛实例
-    void    releaseLegendCup(LONGLONG llLegendCupID);
+    void    removeLegendCupIDRec(LONGLONG llLegendCupID);
 
 private:
     ELegendCupType m_byCreateLegendCupType;

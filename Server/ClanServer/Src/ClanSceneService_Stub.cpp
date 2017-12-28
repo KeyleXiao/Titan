@@ -18,21 +18,23 @@ bool ClanSceneService_Stub::handle_message( SERVICE_MESSAGE * pMsg,rkt::obuf * r
 {
     if ( TEST_SAME_FUNCTION(IClanSceneService::handleServerMsg) )
     {
-        DWORD serverID;SNetMsgHead head;PACKAGE_PTR::T_BAG bag;
-        GET_MSG_PARAM_3(DWORD, serverID,SNetMsgHead ,head,PACKAGE_PTR::T_BAG ,bag );
+        rkt::ibuffer in(pMsg->context, pMsg->context_len);
+        DWORD serverID; SNetMsgHead head; size_t len;
+        in >> serverID >> head >> len;
 
-        m_real_service->handleServerMsg( serverID,head,bag.get() );
+        m_real_service->handleServerMsg( serverID,head, in.current(), len);
         return true;
     }
 
-    if ( TEST_SAME_FUNCTION(IClanSceneService::handleClientMsg) )
-    {
-        DWORD client;SNetMsgHead head;PACKAGE_PTR::T_BAG bag;
-        GET_MSG_PARAM_3(DWORD, client,SNetMsgHead ,head,PACKAGE_PTR::T_BAG ,bag );
+    //if ( TEST_SAME_FUNCTION(IClanSceneService::handleClientMsg) )
+    //{
+    //    rkt::ibuffer in(pMsg->context, pMsg->context_len);
 
-        m_real_service->handleClientMsg( client,head,bag.get() );
-        return true;
-    }
+    //    DWORD client;SNetMsgHead head; size_t len;
+    //    in >> client >> head >> len;
+    //    m_real_service->handleClientMsg(client, head, in.current(), len);
+    //    return true;
+    //}
 
 	if ( TEST_SAME_FUNCTION(IClanSceneService::getClanName) )
 	{

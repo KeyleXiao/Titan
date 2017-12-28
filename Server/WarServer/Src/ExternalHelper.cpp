@@ -313,6 +313,7 @@ ETalentDropType CExternalHelper::talentChangeType2TalentDropType(ENUM_TALENT_CHA
 	case ENUM_TALENT_KILLTOWER: return ETALENTDROPTYPE_TOWER;
 	case ENUM_TALENT_KILLBOSS: return ETALENTDROPTYPE_BOSS;
 	case ENUM_TALENT_WARTIMER: return ETALENTDROPTYPE_NORMAL;
+	case ENUM_TALENT_INIT: return ETALENTDROPTYPE_INIT;
 	default:return ETALENTDROPTYPE_MAX;
 	}
 }
@@ -330,5 +331,28 @@ ENUM_TALENT_CHANGE_TYPE CExternalHelper::talentDropType2TalentChangeType(ETalent
 	case  ETALENTDROPTYPE_BOSS: return ENUM_TALENT_KILLBOSS;
 	case  ETALENTDROPTYPE_NORMAL: return ENUM_TALENT_WARTIMER;
 	default:return ENUM_TALENT_MAX;
+	}
+}
+
+EDataType CExternalHelper::warMedal2DataType(EWarMedal warMedal)
+{
+	switch (warMedal)
+	{
+	case  EWM_OUTPUT: return EDT_OutPut;
+	case  EWM_KILLCOUNT: return EDT_KillCount;
+	case  EWM_ASSCOUNT: return EDT_AssistCount;
+	case  EWM_DAMAGE: return EDT_Damage;
+	case  EWM_DESTORYTOWER: return EDT_DestoryTower;
+	case  EWM_MONEY: return EDT_Money;
+	case  EWM_KILLMONSTER: return EDT_KillMonster;
+	case  EWM_CURE: return EDT_Cure;
+	case  EWM_THRILLSAVE: return EDT_ThrillSave;
+	case  EWM_DEADLYCONTROL: return EDT_DeadlyControl;
+	case  EWM_TEAMCONTROL: return EDT_TeamBattleControl;
+	case  EWM_SCORE: return EDT_Score;
+	case  EWM_KILLDRAGON: return EDT_KillDragon;
+	case  EWM_JOINBATTLE: return EDT_JoinBattleRate;
+
+	default:return EDT_MAX;
 	}
 }

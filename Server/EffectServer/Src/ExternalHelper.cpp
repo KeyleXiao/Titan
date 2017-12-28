@@ -316,14 +316,18 @@ void CExternalHelper::BatchAddBuff(UID* uidArray, DWORD dwArrayCount, DWORD dwBu
         return;
     }
 
-    UID uid = uidArray[0];
-    MonsterHelper helper(uid);
-    INPCService *pNpcService = helper.m_ptr;		
-    if (pNpcService == NULL)
-    {
-        return;
-    }
-    pNpcService->BatchAddBuff(uidArray,dwArrayCount,dwBuffID,dwBuffLevel,uidAdd,dwTime,pBuffContext,nContextLen); 
+	for (int n = 0; n < dwArrayCount; n++)
+	{
+		UID uid = uidArray[n];
+		MonsterHelper helper(uid);
+		INPCService *pNpcService = helper.m_ptr;
+		if (pNpcService != NULL)
+		{
+			pNpcService->BatchAddBuff(uidArray, dwArrayCount, dwBuffID, dwBuffLevel, uidAdd, dwTime, pBuffContext, nContextLen);
+			break;
+		}
+	}
+
 }
 
 // 给群体怪物移除BUFF
@@ -333,15 +337,19 @@ void CExternalHelper::BatchRemoveBuff(UID* uidArray, DWORD dwArrayCount, DWORD d
     {
         return;
     }
+	
+	for (int n = 0; n < dwArrayCount; n++)
+	{
+		UID uid = uidArray[n];
+		MonsterHelper helper(uid);
+		INPCService *pNpcService = helper.m_ptr;
+		if (pNpcService != NULL)
+		{
+			pNpcService->BatchRemoveBuff(uidArray, dwArrayCount, dwBuffID, uidAdd, uidRemove);
+			break;
+		}
+	}
 
-    UID uid = uidArray[0];
-    MonsterHelper helper(uid);
-    INPCService *pNpcService = helper.m_ptr;		
-    if (pNpcService == NULL)
-    {
-        return;
-    }
-    pNpcService->BatchRemoveBuff(uidArray,dwArrayCount,dwBuffID,uidAdd,uidRemove); 
 }
 
 // 给群体怪物带检测指定BUFFID和BUFF类型来增加BUFF

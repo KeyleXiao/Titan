@@ -1677,6 +1677,9 @@ void CKin::onClientQuit(ClientID clientID, LPCSTR pszData, size_t nLen)
         }
     }
 
+    // 移除观察者
+    removeObserve(pMember->dwPDBID, true);
+
     // 记录离开战队时间
     int nCurTime = (int)time(NULL);
     m_pKinService->setQuitKinTime(pMember->dwPDBID, nCurTime);
@@ -2209,6 +2212,7 @@ void CKin::onClientKinBaseData(ClientID clientID, LPCSTR pszData, size_t nLen)
     SMsgKin_KinBaseData_OC sendData;
     
     ///////////////////////////////基础信息/////////////////////////////////////////////////////////
+    sendData.dwKinID            = m_dwID;                   // 战队ID
     sendData.dwShaikhID			= m_nShaikhID;				// 队长
     sendData.nKinLevel			= m_nLevel;					// 战队等级
     sendData.nSysTime			= (int)time(NULL);			// 系统时间
@@ -2547,55 +2551,32 @@ void CKin::dismiss(TKinDismissType nReason, LPCSTR pszReason)
     obuf.push_back(&sendData, sizeof(sendData));
     g_EHelper.SendDataToSceneSvr(obuf.data(), obuf.size());
 
-	sendMail(nReason);
+    sendEMailToAll(nReason == emKinDismiss_Activity ? emMailFill_KinAutoDismiss : emMailFill_KinDismiss);
 
     // 释放自己，注意
     release();
 }
 
-void CKin::sendMail(TKinDismissType nReason)
+// 发送邮件给当前战队所有玩家
+void CKin::sendEMailToAll(int mailID, LPCSTR szParam)
 {
-	EMMailFillID mailID;
-	if (nReason == emKinDismiss_Activity)
-	{
-		mailID = emMailFill_KinAutoDismiss;
-	}
-	else
-	{
-		mailID = emMailFill_KinDismiss;
-	}
+    MailHelper mailHelper;
+    IMailService *pMailService = mailHelper.m_ptr;
+    if (NULL == pMailService)
+    {
+        ErrorLn(__FUNCTION__": failed! pMailService == NULL");
+        return;
+    }
 
-	SMailConfig * pMailConfig = g_EHelper.getMailConfig(mailID);
-	if (!pMailConfig)
-	{
-		return;
-	}
+    for (list<DWORD>::iterator iter = m_nMemberIDList.begin(); iter != m_nMemberIDList.end(); ++iter)
+    {
+        SMailSendData mailInfo;
+        mailInfo.nType = emMailType_System;							// 邮件类型
+        mailInfo.nSourceType = emMailSourceType_System;				// 资源来源类型
+        mailInfo.dwMasterPDBID = *iter;
 
-	MailHelper mailHelper;
-	IMailService *pMailService = mailHelper.m_ptr;
-	if (NULL == pMailService)
-	{
-		ErrorLn(__FUNCTION__": failed! pMailService == NULL");
-		return;
-	}
-
-	SMailSendData mailInfo;
-	mailInfo.nType = emMailType_System;							// 邮件类型
-	mailInfo.nSourceType = emMailSourceType_System;				// 资源来源类型
-	sstrcpyn(mailInfo.szSenderName, pMailConfig->szSenderName, sizeof(mailInfo.szSenderName));// 发件者姓名
-	//mailInfo.dwMasterPDBID = m_nShaikhID;
-	sstrcpyn(mailInfo.szTitle, pMailConfig->szTitle, sizeof(mailInfo.szTitle));
-	mailInfo.nPlusMoney = 0;
-
-	char  szParam[MAIL_CONTENT_MAXSIZE];					// 内容
-	ssprintf_s(szParam, sizeof(szParam), a2utf8("%s"), pMailConfig->szContext);
-	//pMailService->sendMail(mailInfo, mailID, szParam);
-
-	for (list<DWORD>::iterator iter = m_nMemberIDList.begin(); iter != m_nMemberIDList.end(); ++iter)
-	{
-		mailInfo.dwMasterPDBID = *iter;
-		pMailService->sendMail(mailInfo, mailID, szParam);
-	}
+        pMailService->sendMail(mailInfo, mailID, szParam);
+    }
 }
 
 void CKin::autoDismiss(int dismissActivity, int dismissWeeks)
@@ -2615,6 +2596,12 @@ void CKin::autoDismiss(int dismissActivity, int dismissWeeks)
 				sprintf_s(szText, sizeof(szText), a2utf8("%s战队活跃度连续%d周不满足%d点自动解散"), m_szName, dismissWeeks, dismissActivity);
 				dismiss(emKinDismiss_Activity, szText);
 			}
+            else if (m_nWeekCount == dismissWeeks - 1)
+            {
+                char  szParam[MAIL_CONTENT_MAXSIZE];					// 内容
+                ssprintf_s(szParam, sizeof(szParam), a2utf8("%d;%d;%d;%d"), m_nWeekCount, dismissActivity, dismissWeeks, dismissActivity);
+                sendEMailToAll(emMailFill_KinDismiss_Hint, szParam);
+            }
 		}
 		else
 		{
@@ -3053,6 +3040,7 @@ void CKin::broadcastKinBaseInfoToOb()
     sstrcpyn(sendData.szKinName, m_szName, sizeof(sendData.szKinName));
     sstrcpyn(sendData.szNotice, m_szNotice, sizeof(sendData.szNotice));
     sstrcpyn(sendData.szShaikhName, m_szShaikhName, sizeof(sendData.szShaikhName));
+    sendData.dwKinID            = m_dwID;                   // 战队ID
     sendData.dwShaikhID			= m_nShaikhID;				// 队长
     sendData.nKinLevel			= m_nLevel;					// 战队等级
     sendData.nSysTime			= (int)time(NULL);			// 系统时间
@@ -3301,6 +3289,7 @@ void CKin::sendObClientKinBaseData()
     msgHead.byKeyAction         = MSG_KIN_KINBASEDATA_UPDATE;
 
     SMsgKin_KinBaseData_OC sendData;
+    sendData.dwKinID            = m_dwID;                   // 战队ID
     sendData.dwShaikhID			= m_nShaikhID;				// 队长
     sendData.nKinLevel			= m_nLevel;					// 战队等级
     sendData.nSysTime			= (int)time(NULL);			// 系统时间
@@ -3460,6 +3449,7 @@ void CKin::OnClientLegendCupKinInfo(ClientID clientID, LPCSTR pszData, size_t nL
 	SMsgKin_KinBaseData_OC sendData;
 
 	///////////////////////////////基础信息/////////////////////////////////////////////////////////
+    sendData.dwKinID            = m_dwID;                   // 战队ID
 	sendData.dwShaikhID			= m_nShaikhID;				// 队长
 	sendData.nKinLevel			= m_nLevel;					// 战队等级
 	sendData.nSysTime			= (int)time(NULL);			// 系统时间

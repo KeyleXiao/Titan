@@ -19,9 +19,9 @@ using Gateway::ClientID;
 struct  IOrderSceneService
 {
     // 处理其它服务器发送过来的消息
-    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen) = 0;
 
     // 处理客户端发送过来的消息
-    virtual void handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen) = 0;
 
 };

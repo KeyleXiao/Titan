@@ -157,12 +157,22 @@ SMatchRankConfigSchemeInfo* CSchemeMatchRankConfig::getShemeInfoByTypeAndScore(i
 
 int CSchemeMatchRankConfig::getMatchTypeKingRankBaseScore(int eMatchTypeID)
 {
-    map<BYTE, int>::iterator iter = m_mapMatchTypeKingRankBase.find(eMatchTypeID);
+	map<BYTE, pair<int, int>>::iterator iter = m_mapMatchTypeKingRankBase.find(eMatchTypeID);
     if (iter == m_mapMatchTypeKingRankBase.end())
     {
         return 0;
     }
-    return iter->second;
+    return iter->second.second;
+}
+
+int CSchemeMatchRankConfig::getMatchTypeKingRankBaseGrade(int eMatchTypeID)
+{
+	map<BYTE, pair<int, int>>::iterator iter = m_mapMatchTypeKingRankBase.find(eMatchTypeID);
+	if (iter == m_mapMatchTypeKingRankBase.end())
+	{
+		return 0;
+	}
+	return iter->second.first;
 }
 
 bool CSchemeMatchRankConfig::LoadMatchRankScheme(ICSVReader* pCSVReader)
@@ -248,12 +258,12 @@ bool CSchemeMatchRankConfig::LoadMatchRankScheme(ICSVReader* pCSVReader)
         {
             if (m_mapMatchTypeKingRankBase.find(item.eMatchType) == m_mapMatchTypeKingRankBase.end())
             {
-                m_mapMatchTypeKingRankBase[item.eMatchType] = item.nGradeScore;
+                m_mapMatchTypeKingRankBase[item.eMatchType] = pair<int, int>(item.nGradeID,item.nGradeScore);
             }
 
-            if (item.nGradeScore < m_mapMatchTypeKingRankBase[item.eMatchType])
+            if (item.nGradeScore < m_mapMatchTypeKingRankBase[item.eMatchType].second)
             {
-                m_mapMatchTypeKingRankBase[item.eMatchType] = item.nGradeScore;
+                m_mapMatchTypeKingRankBase[item.eMatchType] = pair<int, int>(item.nGradeID, item.nGradeScore);
             }
         }
     }

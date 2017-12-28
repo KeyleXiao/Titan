@@ -720,9 +720,9 @@ void CMobaWar::onLearnSkill( event_learn_spell* entityLearnSpell )
 	broadCastDataToSameCamp(SC_MSG_WAR_BROADCAST_SKILL_STATE, oSkillInfo.data(), oSkillInfo.size(), nCamp  );
 }
 
-bool CMobaWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg)
+bool CMobaWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen)
 {
-    if (!CWar::onWarClientMsg(uidActor, byKeyAction, msg))
+    if (!CWar::onWarClientMsg(uidActor, byKeyAction, pData, nLen))
     {
         // 此类战场单独处理的客户端消息
         return false;

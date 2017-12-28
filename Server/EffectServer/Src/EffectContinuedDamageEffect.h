@@ -21,7 +21,7 @@ class CEffectContinuedDamageEffect : public IEffectEx, public TimerHandler
 public:
 	typedef  EffectServer_ContinuedDamageEffect SCHEME_DATA;
 
-	CEffectContinuedDamageEffect( SCHEME_DATA & data ) : m_data(data), m_uidOperator(INVALID_UID), m_uidTarget(INVALID_UID), m_nSpellID(0)
+	CEffectContinuedDamageEffect( SCHEME_DATA & data ) : m_data(data), m_pEntity(nullptr), m_uidOperator(INVALID_UID), m_uidTarget(INVALID_UID), m_nSpellID(0)
 	{
 	}
 
@@ -34,9 +34,9 @@ public:
 	// 效果启用
 	virtual bool			Start( EFFECT_CONTEXT * context,CONDITION_CONTEXT *pConditionContext )
 	{
-		if( context==0)
+		if( context==0 || context->pEntity == 0)
 			return false;
-
+        m_pEntity = context->pEntity;
 		m_uidOperator = context->uidOperator;
 		if (isInvalidUID(m_uidOperator))
 		{
@@ -85,6 +85,7 @@ public:
 		g_EHelper.KillTimer(0, this);
 
 		// 清理数据
+        m_pEntity = nullptr;
 		m_uidOperator = INVALID_UID;
 		m_uidTarget = INVALID_UID;
 	}
@@ -153,13 +154,14 @@ public:
 		damage.nDamageHP = nDamageHP;
         damage.nDamageBonus = getProperty_Integer(m_uidOperator, PROPERTY_DAMAGE_BONUS);
         damage.fDamageBonusPCT = getProperty_Integer(m_uidOperator, PROPERTY_DAMAGE_BONUS_PCT)/ZOOM_IN_MULTIPLE;
-
+        damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
 		// 发送实体消息
 		g_EHelper.sendEntityMessage(m_uidTarget, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));
 	}
 
 private:
 	SCHEME_DATA               m_data;
+    __IEntity   *             m_pEntity;
 	// 操作者UID
 	UID						  m_uidOperator;
 	// 目标UID

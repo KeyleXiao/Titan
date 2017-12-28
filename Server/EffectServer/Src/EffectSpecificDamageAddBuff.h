@@ -41,29 +41,40 @@ public:
 
 		m_pEntity = context->pEntity;
 
-        DWORD dwSceneID = m_pEntity->getSceneID();
+        //DWORD dwSceneID = m_pEntity->getSceneID();
 
-        SceneLogicEventHelper eventHelper(dwSceneID);
-        IEventEngine *pGlobalEvent = eventHelper.m_ptr;
-        if (pGlobalEvent == NULL)
-        {
-            return false;
-        }
+        //SceneLogicEventHelper eventHelper(dwSceneID);
+        //IEventEngine *pGlobalEvent = eventHelper.m_ptr;
+        //if (pGlobalEvent == NULL)
+        //{
+        //    return false;
+        //}
 
-        if (m_data.nEntityType == TYPE_ENTITY || m_data.nEntityType == TYPE_MAX)
-        {
-            // 注册英雄伤害事件
-            pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0, "CEffectSpecificDamageAddBuff");
-            // 注册怪物伤害事件
-            pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0, "CEffectSpecificDamageAddBuff");
-            // 注册Tank伤害事件
-            pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0, "CEffectSpecificDamageAddBuff");
-        }
-        else
-        {
-            // 注册类型伤害事件
-            pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, m_data.nEntityType, 0, "CEffectSpecificDamageAddBuff");
-        }
+        //if (m_data.nEntityType == TYPE_ENTITY || m_data.nEntityType == TYPE_MAX)
+        //{
+            //// 注册英雄伤害事件
+            //pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0, "CEffectSpecificDamageAddBuff");
+            //// 注册怪物伤害事件
+            //pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0, "CEffectSpecificDamageAddBuff");
+            //// 注册Tank伤害事件
+            //pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0, "CEffectSpecificDamageAddBuff");
+
+            // 订阅自己的伤害事件
+            g_EHelper.Subscibe(m_pEntity, this, EVENT_ENTITY_DAMAGE, __FUNCTION__);
+            // 订阅目标的伤害事件
+            g_EHelper.Subscibe(m_pEntity, this, EVENT_ENTITY_TARGET_DAMAGE_RESULT, __FUNCTION__);
+
+            // 增加目标伤害通知操作者
+            IUseFlag * pUseFlag = m_pEntity->getUseFlag();
+            if (pUseFlag) {
+                pUseFlag->add(USE_FLAG_DAMAGE_NOTIFY_OPERATOR);
+            }
+        //}
+        //else
+        //{
+        //    // 注册类型伤害事件
+        //    pGlobalEvent->Subscibe(this, EVENT_GAME_ENTITY_DAMAGE, m_data.nEntityType, 0, "CEffectSpecificDamageAddBuff");
+        //}
 
 		return true;
 	}
@@ -73,27 +84,39 @@ public:
 	{
 		if (m_pEntity != 0)
 		{
-            DWORD dwSceneID = m_pEntity->getSceneID();
+            //DWORD dwSceneID = m_pEntity->getSceneID();
 
-            SceneLogicEventHelper eventHelper(dwSceneID);
-            IEventEngine *pGlobalEvent = eventHelper.m_ptr;
-            if (pGlobalEvent != NULL)
-            {
-                if (m_data.nEntityType == TYPE_ENTITY || m_data.nEntityType == TYPE_MAX)
-                {
-                    // 注销英雄伤害事件
-                    pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0);
-                    // 注销怪物伤害事件
-                    pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0);
-                    // 注销Tank伤害事件
-                    pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0);
-                }
-                else
-                {
-                    // 注册类型伤害事件
-                    pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, m_data.nEntityType, 0);
-                }
-            }
+            //SceneLogicEventHelper eventHelper(dwSceneID);
+            //IEventEngine *pGlobalEvent = eventHelper.m_ptr;
+            //if (pGlobalEvent != NULL)
+            //{
+            //    if (m_data.nEntityType == TYPE_ENTITY || m_data.nEntityType == TYPE_MAX)
+            //    {
+                    //// 注销英雄伤害事件
+                    //pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_PLAYER_ROLE, 0);
+                    //// 注销怪物伤害事件
+                    //pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_MONSTER, 0);
+                    //// 注销Tank伤害事件
+                    //pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, TYPE_TANK, 0);
+                    
+                    // 移除目标伤害通知操作者
+                    IUseFlag * pUseFlag = m_pEntity->getUseFlag();
+                    if (pUseFlag)
+                    {
+                        pUseFlag->remove(USE_FLAG_DAMAGE_NOTIFY_OPERATOR);
+                    }
+
+                    // 取消订阅自己的伤害事件
+                    g_EHelper.UnSubscibe(m_pEntity, this, EVENT_ENTITY_DAMAGE);
+                    // 取消订阅目标的伤害事件
+                    g_EHelper.UnSubscibe(m_pEntity, this, EVENT_ENTITY_TARGET_DAMAGE_RESULT);
+                //}
+                //else
+                //{
+                //    // 注册类型伤害事件
+                //    pGlobalEvent->UnSubscibe(this, EVENT_GAME_ENTITY_DAMAGE, m_data.nEntityType, 0);
+                //}
+            //}
 
 			m_pEntity = 0;
 		}
@@ -128,7 +151,9 @@ public:
     {
 		switch (wEventID)
 		{
-		case EVENT_GAME_ENTITY_DAMAGE:
+        case EVENT_ENTITY_DAMAGE:
+        case EVENT_ENTITY_TARGET_DAMAGE_RESULT:
+		//case EVENT_GAME_ENTITY_DAMAGE:
 			{
                 if (m_pEntity == NULL)
                 {
@@ -233,6 +258,8 @@ public:
                 SBuffContext BuffContext;
                 BuffContext.nID = pDamage->nID;
                 AddBuff(uid, m_data.nBuffID, m_data.nBuffLevel, uidAddBuff, 0, &BuffContext, sizeof(BuffContext));
+
+                //TraceLn(__FUNCTION__": uid="<< uid<<",wEventID="<< wEventID <<", buff="<< m_data.nBuffID <<", level="<< m_data.nBuffLevel);
 			}
 			break;
 		default:

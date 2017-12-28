@@ -1060,11 +1060,9 @@ public:
 
     void getPlayerRoomExData(SMatchPlayerRoomExData *pRoomExData)
     {
-        
-		BUILD_MSG_CONTEXT_1( IActorService::getPlayerRoomExData,SMatchPlayerRoomExData *, pRoomExData);
-        rkt::obuf resultBuf;
-        m_pContainer->post_message(pMsg,nMsgLen, &resultBuf);
-    }
+
+		if (m_real_service) m_real_service->getPlayerRoomExData(pRoomExData);
+	}
 
 
     void setHeroExclusiveTalentEffect( int nHeroID )

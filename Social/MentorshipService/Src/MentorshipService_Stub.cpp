@@ -17,19 +17,21 @@ bool MentorshipService_Stub::handle_message( SERVICE_MESSAGE * pMsg,rkt::obuf * 
 {
     if ( TEST_SAME_FUNCTION(IMentorshipService::handleServerMsg) )
     {
-        DWORD serverID;SNetMsgHead head;PACKAGE_PTR::T_BAG bag;
-        GET_MSG_PARAM_3(DWORD, serverID, SNetMsgHead, head, PACKAGE_PTR::T_BAG, bag);
+        rkt::ibuffer in(pMsg->context, pMsg->context_len);
+        DWORD serverID; SNetMsgHead head; size_t len;
+        in >> serverID >> head >> len;
 
-        m_real_service->handleServerMsg( serverID,head,bag.get() );
+        m_real_service->handleServerMsg(serverID, head, in.current(), len);
         return true;
     }
 
     if ( TEST_SAME_FUNCTION(IMentorshipService::handleClientMsg) )
     {
-        DWORD client;SNetMsgHead head;PACKAGE_PTR::T_BAG bag;
-        GET_MSG_PARAM_3(DWORD, client,SNetMsgHead ,head,PACKAGE_PTR::T_BAG ,bag );
+        rkt::ibuffer in(pMsg->context, pMsg->context_len);
+        DWORD client; SNetMsgHead head; size_t len;
+        in >> client >> head >> len;
 
-        m_real_service->handleClientMsg( client,head,bag.get() );
+        m_real_service->handleClientMsg(client, head, in.current(), len);
         return true;
     }
 

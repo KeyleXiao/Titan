@@ -38,6 +38,7 @@
 #include "StaticWarSceneHelper.h"
 #include "IEntityAOI.h"
 #include "ITestServer.h"
+#include "ICommonPart.h"
 
 using namespace Mail_ManagerDef;
 
@@ -62,6 +63,7 @@ CPlayerBankPart::CPlayerBankPart()
 
 	memset(m_cRenameCache,0,DBDEF_ACTORNAME_MAXSIZE);
 	nRenameMoneyCache = 0;
+    m_dwMatchNum = 0;
 }
 
 CPlayerBankPart::~CPlayerBankPart()
@@ -677,6 +679,16 @@ bool CPlayerBankPart::onMessage(void * pEntityHead, int msgId, void * data, size
 			m_rankSeasonMgr.onMessageRequestSeasonRecord();
 		}
 		break;
+    case CS_MSG_ENTITY_REQ_RECOMMEND_DATA:		// 请求获取推广员奖励任务数据和总局数
+        {
+            onMessageRequestRecommendData(data, len);
+        }
+        break;
+    case CS_MSG_ENTITY_REQ_GAIN_RECOMMPRIZE:		// 请求获取推广员奖励任务数据和总局数
+        {
+            onMessageRequestGainRecommendPrize(data, len);
+        }
+        break;
 	default:
 		break;
 	}
@@ -997,6 +1009,11 @@ void CPlayerBankPart::OnReturn(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBR
 			addService_ResponseFromDB(pRealDBRetSink, nCmdID, nDBRetCode, pszDBRetDesc, nQueueIndex, pOutData, nOutLen);
 		}
 		break;
+    case GAMEDB_REQUEST_QUERYRECOMWARRECORD:
+        {
+            OnDBReturnRecommendRecord(pRealDBRetSink, nCmdID, nDBRetCode, pszDBRetDesc, nQueueIndex, pOutData, nOutLen);
+        }
+       break;
 	default:
 		break;
 	}
@@ -1140,6 +1157,48 @@ void CPlayerBankPart::OnClientRequestHeroScore(msg_entity_match_heroscore * pReq
 	{
 		ErrorLn(__FUNCTION__": pDBEngine->executeSP() GAMEDB_REQUEST_GET_MATCH_ALL_HEROSCORE failed");
 	}
+}
+
+void CPlayerBankPart::OnDBReturnRecommendRecord(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBRetCode, char * pszDBRetDesc, int nQueueIndex, char * pOutData, int nOutLen)
+{
+    if (nDBRetCode != DBRET_CODE_SUCCEED)
+    {
+        ErrorLn(__FUNCTION__ << " nCmdID=" << nCmdID << ",nDBRetCode=" << nDBRetCode << ",Desc=" << pszDBRetDesc);
+        return;
+    }
+
+    // 校验返回数据
+    if (pOutData == NULL || nOutLen < sizeof(DBREQ_RESULT_QUERYRECOMWARRECORD))
+    {
+        ErrorLn(__FUNCTION__": pData ==NULL or length is invalid, nOutLen=" << nOutLen << ", sizeof=" << sizeof(DBREQ_RESULT_QUERYRECOMWARRECORD));
+        return;
+    }
+    DBREQ_RESULT_QUERYRECOMWARRECORD * pData = (DBREQ_RESULT_QUERYRECOMWARRECORD *)pOutData;
+    if (nOutLen != (sizeof(*pData) + pData->nCount * sizeof(DBREQ_RECOM_QUERYRECOMWARRECORD)))
+    {
+        ErrorLn(__FUNCTION__": pData length error !");
+        return;
+    }
+    m_dwMatchNum = 0;
+    DBREQ_RECOM_QUERYRECOMWARRECORD* pItem = (DBREQ_RECOM_QUERYRECOMWARRECORD*)(pData + 1);
+    for (int i = 0; i < pData->nCount; ++i, ++pItem)
+    {
+        m_dwMatchNum += pItem->dwMatchNum;
+        TraceLn(__FUNCTION__" : matchnum=" << pItem->dwMatchNum << ", userID=" << pItem->dwUserID);
+    }
+
+    RecommendRecord msg;
+    msg.nCount = pData->nCount;
+    msg.nPrizeTaskData = getTaskDataIntEx(TASKKEY_RECOMMEND_PRIZE, 0);
+    obuf256 obuf;
+    obuf.push_back(&msg, sizeof(msg));
+    obuf.push_back(pOutData + sizeof(*pData), nOutLen - sizeof(*pData));
+    TraceLn("send recomm packat len=" << obuf.size());
+    __IPlayerRole *pPlayerRole = CAST_TYPE(__IPlayerRole*, m_pMaster);
+    if (pPlayerRole)
+    {
+        pPlayerRole->sendMessageToClient(PART_BANK, SC_MSG_ENTITY_RET_RECOMMEND_DATA, obuf.data(), obuf.size());
+    }
 }
 
 void CPlayerBankPart::OnDBReturnMatchTypeRank(IDBRetSink * pRealDBRetSink, int nCmdID, int nDBRetCode, char * pszDBRetDesc, int nQueueIndex, char * pOutData, int nOutLen)
@@ -1419,6 +1478,7 @@ void CPlayerBankPart::fillPlayerInfo(msg_entity_player_info_return & playerInfo,
 	playerInfo.dwFighting = info.dwFightCapacity;
 	playerInfo.dwPKWinNum = info.dwPKWinNum;
 	playerInfo.dwPKTotalNum = info.dwPKTotalNum;
+	playerInfo.bSex	= info.bSex;
 	// dwGloryScore(荣耀积分)暂未赋值,如何获取？
 	// nRankScore（排位得分）函数外另外获取
 }
@@ -1974,7 +2034,7 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
 		return false;
 	}
     __ITestPart * pTestPart = (__ITestPart *)m_pMaster->getEntityPart(PART_TEST);
-    if (pTestPart->isTester())
+    if (pTestPart != NULL && pTestPart->isTester())
     {
         return false;
     }
@@ -2026,6 +2086,13 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
 	if (iter == m_mapMatchTypeRank.end())
 	{
         // 以前没有打过该比赛类型的 有基础分数的
+		// 第一次打排位
+		__ICommonPart * pCommonPart = CAST_TYPE(__ICommonPart*, m_pMaster->getEntityPart(PART_COMMON));
+		if (pCommonPart && eMatchType == MatchType_Rank)
+		{
+			pCommonPart->saveGuideStep(GuideStep_First_Rank_Finished);
+		}
+
         // 先看是不是保底段位
         MatchTypeRankNode sNode;
         // 隐藏分数处理
@@ -2206,6 +2273,7 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
             iter->second.nRankScore = nNewRank;
         }
 
+
 		// 不处理王者段位等级的 王者段位等级的由社会服处理更新
         SMatchRankConfigSchemeInfo* pMatchTypeSchemeInfo = pSchemeInfo->getShemeInfoByTypeAndScore(eMatchType, iter->second.nRankScore);
         if(pMatchTypeSchemeInfo != NULL)
@@ -2214,7 +2282,8 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
             int nNewGrade = pMatchTypeSchemeInfo->nGradeID;
 
             bool bKingRankUpdate = false;
-            int nBaseKingRankScore = pSchemeInfo->getMatchTypeKingRankBaseScore(eMatchType);
+			int nBaseKingRankScore = pSchemeInfo->getMatchTypeKingRankBaseScore(eMatchType);
+			int nBaseKingRankGrade = pSchemeInfo->getMatchTypeKingRankBaseGrade(eMatchType);
             SMatchRankConfigSchemeInfo* pKingRankConfigScheme = pSchemeInfo->getShemeInfoByTypeAndScore(eMatchType, nBaseKingRankScore);
             if(pKingRankConfigScheme!= NULL)
             {
@@ -2251,12 +2320,20 @@ bool CPlayerBankPart::addMatchTypeRank(EMMatchType eMatchType,int nRankScore, in
                 else
                 {
                     // 设置客户端消息
-                    sMsgInfo.bRiseGrade = false;     // 晋级 动画相关
-                    sMsgInfo.bFallGrade = false;    // 降级 动画相关
+                    sMsgInfo.bRiseGrade = false;				// 晋级 动画相关
+                    sMsgInfo.bFallGrade = false;				// 降级 动画相关
                 }
 
                 // 设置段位等级
-                iter->second.nGrade = pMatchTypeSchemeInfo->nGradeID;
+				if (nNewGrade >= nBaseKingRankGrade)
+				{
+					iter->second.nGrade = nBaseKingRankGrade;	// 如果是新升级的王者段位则设置为基础王者段位等级
+				}
+				else
+				{
+					iter->second.nGrade = pMatchTypeSchemeInfo->nGradeID;
+				}
+                
             }
         }   
 
@@ -5159,6 +5236,123 @@ void CPlayerBankPart::calcBenefitCardMultiple( int *nGoldMultiple, int *nActorEx
 void CPlayerBankPart::onMessageOpenGemstoneChest(int nChestType)
 {
 	m_crownPageMgr.onMessageOpenGemstoneChest(nChestType);
+}
+
+void CPlayerBankPart::onMessageRequestRecommendData(void * data, size_t nLen)
+{
+    if (m_pMaster == NULL)
+    {
+        ErrorLn(__FUNCTION__ << " : m_pMaster == NULL");
+        return;
+    }
+    PDBID dwPDBID = m_pMaster->getIntProperty(PROPERTY_ID);
+    IDBEngineService* pDBEngine = (IDBEngineService*)gServerGlobal->getDBEngineService();
+    if (pDBEngine == NULL)
+        return;
+
+    DBREQ_PARAM_QUERYRECOMWARRECORD sendBuf;
+    sendBuf.dwRecomUserID = m_playInfo.dwUserID;
+
+    if (pDBEngine->executeSP(GAMEDB_REQUEST_QUERYRECOMWARRECORD, m_playInfo.dwUserID, (LPCSTR)&sendBuf, sizeof(sendBuf), static_cast<IDBRetSink *>(this)) == false)
+    {
+        ErrorLn(__FUNCTION__": pDBEngine->executeSP()  GAMEDB_REQUEST_QUERYRECOMWARRECORD failed");
+    }
+}
+
+void CPlayerBankPart::onMessageRequestGainRecommendPrize(void * data, size_t nLen)
+{
+    if (m_pMaster == NULL)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED);
+        ErrorLn(__FUNCTION__ << " : m_pMaster == NULL");
+        return;
+    }
+
+    if (data == NULL || nLen != sizeof(ParamRecommendPrize))
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED);
+        ErrorLn(__FUNCTION__ << " : len(" << nLen << ")invalid.");
+        return;
+    }
+
+    ParamRecommendPrize* pMsg = (ParamRecommendPrize*)data;
+    if (pMsg->nTargetID < 1 || pMsg->nTargetID > 32)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED);
+        WarningLn(__FUNCTION__ << " : RecommendPrize.csv targetID(" << pMsg->nTargetID << ") overflow.");
+        return;
+    }
+    int prizeTaskData = getTaskDataIntEx(TASKKEY_RECOMMEND_PRIZE, 0);
+    if ((1 << (pMsg->nTargetID - 1)) & prizeTaskData)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_ALREADY_OBTAIN);
+        WarningLn(__FUNCTION__ << " : already obtain recommend prize targetID(" << pMsg->nTargetID << ")");
+        return;
+    }
+
+    ISchemeCenter *pSchemeCenter = gServerGlobal->getSchemeCenter();
+    if (pSchemeCenter == NULL)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED);
+        WarningLn(__FUNCTION__ << " : pSchemeCenter == NULL");
+        return;
+    }
+
+    ISchemeRecommPrize* pISchemeRecommPrize = pSchemeCenter->getSchemeRecommPrize();
+    if (pISchemeRecommPrize == NULL)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED);
+        WarningLn(__FUNCTION__ << " : pISchemeRecommPrize == NULL");
+        return;
+    }
+
+    SSchemeRecommPrize* pSchmemeData = pISchemeRecommPrize->getByTargetID(pMsg->nTargetID);
+    if (pSchmemeData == NULL)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED);
+        WarningLn("not find recommend prize by targetID=" << pMsg->nTargetID);
+        return;
+    }
+
+    if (m_dwMatchNum < pSchmemeData->nMatchNum)
+    {
+        g_EHelper.showSystemMessage(m_pMaster, CHAT_TIP_GAMEPROMOTION_NO_ENOUGH_MATCHNUM);
+        WarningLn("recommend match number[" << m_dwMatchNum << "] not enough need[" << pSchmemeData->nMatchNum << "]");
+        return;
+    }
+
+    DWORD uidSelf = m_pMaster->getUID();
+    char szDesc[128] = { 0 };
+    string szPrizeID = "";
+    for (vector<int>::iterator it = pSchmemeData->vecPrizeID.begin(); it != pSchmemeData->vecPrizeID.end(); ++it)
+    {
+        int nPrizeId = *it;
+        if (canPrizeActor(nPrizeId, 1))
+        {
+            ssprintf_s(szDesc, sizeof(szDesc), a2utf8("[%d][%s]"), nPrizeId, m_playInfo.player.szActorName);
+            prizeActor(nPrizeId, 1, OSSRES_ADD_RECOMMEND_PRIZE, uidSelf, szDesc);
+            szPrizeID += nPrizeId + "，";
+        }
+    }
+
+    setTaskDataIntEx(TASKKEY_RECOMMEND_PRIZE, (1 << (pMsg->nTargetID - 1)) | prizeTaskData);
+
+    __IPlayerRole *pPlayerRole = CAST_TYPE(__IPlayerRole*, m_pMaster);
+    if (pPlayerRole)
+    {
+        pPlayerRole->sendMessageToClient(PART_BANK, SC_MSG_ENTITY_GAIN_RECOMMPRIZE_SUCCESS, &pMsg->nTargetID, sizeof(pMsg->nTargetID));
+    }
+    
+    int pdbid = m_pMaster->getIntProperty(PROPERTY_ID);
+    IOSSLogService *		pOSSLogServer = gServerGlobal->getOSSLogService();
+    if (!pOSSLogServer)
+    {
+        ErrorLn(__FUNCTION__": pOSSLogServer == NULL dwActorID= " << pdbid);
+        return;
+    }
+    
+    ssprintf_s(szDesc, sizeof(szDesc), a2utf8("推广员[%s]已成功领取总局数[%d]的所有奖励[%s]"), m_playInfo.player.szActorName, pSchmemeData->nMatchNum, szPrizeID.c_str());
+    pOSSLogServer->addGameNoteLog(getFromGameWorldID(), OSSRES_ADD_RECOMMEND_PRIZE, pdbid, szDesc);
 }
 
 void CPlayerBankPart::setProxyCrownPageEffect(int *propertyList, int timeToAddEffect)

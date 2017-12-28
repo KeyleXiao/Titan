@@ -20,7 +20,7 @@ class CEffectContinuedDamage : public IEffectEx, public TimerHandler
 public:
 	typedef  EffectServer_ContinuedDamage SCHEME_DATA;
 
-	CEffectContinuedDamage( SCHEME_DATA & data ) : m_data(data), m_uidSelf(INVALID_UID),m_uidOperator(INVALID_UID), m_uidTarget(INVALID_UID),
+	CEffectContinuedDamage( SCHEME_DATA & data ) : m_data(data), m_pEntity(nullptr),m_uidSelf(INVALID_UID),m_uidOperator(INVALID_UID), m_uidTarget(INVALID_UID),
 		m_nPenetration(0),m_nPenetrationPCT(0),m_nAttackCount(0),m_fFocoEnergiaPCT(0.0f),m_nSpellID(0)
 	{
 	}
@@ -36,7 +36,7 @@ public:
 	{
 		if( context == 0 || context->pEntity == NULL)
 			return false;
-
+        m_pEntity = context->pEntity;
         m_uidSelf = context->pEntity->getUID();
 
         m_nSpellID = context->nID;
@@ -102,6 +102,7 @@ public:
 		g_EHelper.KillTimer(0, this);
 
 		// 清理数据
+        m_pEntity = nullptr;
 		m_uidOperator = INVALID_UID;
 		m_uidTarget = INVALID_UID;
 		m_nPenetration = 0;
@@ -316,6 +317,10 @@ public:
         damage.fDamageBonusPCT = getProperty_Integer(m_uidOperator, PROPERTY_DAMAGE_BONUS_PCT)/ZOOM_IN_MULTIPLE;
         damage.fAppendPCTPDP = static_cast<float>(getProperty_Integer(m_uidOperator, PROPERTY_APPEND_PCT_PDP)) / ZOOM_IN_MULTIPLE;      // 附加额外百分比护甲穿透
         damage.fAppendPCTPMP = static_cast<float>(getProperty_Integer(m_uidOperator, PROPERTY_APPEND_PCT_MDP)) / ZOOM_IN_MULTIPLE;      // 附加额外百分比魔抗穿透
+        if (m_pEntity) {
+            damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
+        }
+        
 		// 发送实体消息
 		g_EHelper.sendEntityMessage(m_uidTarget, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));
 	}
@@ -374,7 +379,7 @@ public:
 
 private:
 	SCHEME_DATA               m_data;
-
+    __IEntity   *             m_pEntity;
     UID                       m_uidSelf;
 	// 操作者UID
 	UID						  m_uidOperator;

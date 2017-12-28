@@ -218,6 +218,9 @@ public:
     // 重置联盟杯赛dida
     void resetClanLegendDidaSend();
 
+	// 刷新杯赛创建次数
+	void refreshCreateLegendCupCount();
+
 private:
 	// 场景服请求卡牌支援
 	void onSceneRequestCard(DWORD dwSeverID, LPCSTR pszData, size_t nLen);
@@ -258,8 +261,9 @@ private:
     void onClientAppoint(DWORD dwPDBID, LPCSTR pszData, size_t nLen);
 	// 修改整形属性数据
 	void onClientSetIntProp(DWORD dwPDBID, LPCSTR pszData, size_t nLen);
-	// 联盟解散发送邮件通知玩家
-	void sendMail(TClanDismissType nReason);
+
+    // 发送邮件给当前联盟所有玩家
+    void sendEMailToAll(int mailID, LPCSTR szParam = NULL);
 
 private:
 	// 广播一个属性到客户端

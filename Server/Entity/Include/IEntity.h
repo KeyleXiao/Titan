@@ -17,6 +17,7 @@
 
 #include "EntityDef.h"
 #include "buffer.h"
+#include "IUseFlag.h"
 
 class Vector3;
 struct __IEntity;
@@ -127,6 +128,9 @@ struct __IEntity : public ISerializable
 
     // 获取附属实体管理对象
     virtual IBelongEntityMgr* getBelongEntityMgr(void) = 0;
+
+    // 获取用途标识对象
+    virtual IUseFlag* getUseFlag() = 0;
 };
 
 struct IEntityFactory

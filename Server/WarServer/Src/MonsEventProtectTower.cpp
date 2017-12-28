@@ -34,7 +34,8 @@ bool CMonsEventProtectTower::release()
 {
     m_pWar = NULL;
     m_pMonsterExec = NULL;
-    return true;
+	delete this;
+	return true;
 }
 
 bool CMonsEventProtectTower::handleSlefMonsterEvent(SWarEventDefine eventInfo, void *DataEx, int nSize,bool bBorn /*= true*/)

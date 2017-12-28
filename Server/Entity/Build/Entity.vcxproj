@@ -268,6 +268,7 @@
     <ClCompile Include="..\Src\EntityFightState.cpp" />
     <ClCompile Include="..\Src\EntityProperty.cpp" />
     <ClCompile Include="..\Src\EntityStandState.cpp" />
+    <ClCompile Include="..\Src\EntityUseFlagMgr.cpp" />
     <ClCompile Include="..\Src\ExternalHelper.cpp" />
     <ClCompile Include="..\Src\GuideStep.cpp" />
     <ClCompile Include="..\Src\HeroManager.cpp" />
@@ -345,6 +346,7 @@
     <ClInclude Include="..\Include\ITankService.h" />
     <ClInclude Include="..\Include\IDragonBallPart.h" />
     <ClInclude Include="..\Include\ITitlePart.h" />
+    <ClInclude Include="..\Include\IUseFlag.h" />
     <ClInclude Include="..\Include\IWingPart.h" />
     <ClInclude Include="..\Include\ReadWriteMap.h" />
     <ClInclude Include="..\Include\TalentEffectProxy.h" />
@@ -375,6 +377,7 @@
     <ClInclude Include="..\Src\EntityProperty.h" />
     <ClInclude Include="..\Src\EntityStandState.h" />
     <ClInclude Include="..\Src\EntityState.h" />
+    <ClInclude Include="..\Src\EntityUseFlagMgr.h" />
     <ClInclude Include="..\Src\ExternalHelper.h" />
     <ClInclude Include="..\Src\GuideStep.h" />
     <ClInclude Include="..\Src\HeroManager.h" />

@@ -182,7 +182,16 @@ bool CWarMonsterMgr::LoadMonsterScheme()
 	}
 	return true;
 }
-
+void CWarMonsterMgr::monsterAddBuff(SWarEffectAddBuff sData)
+{
+	for (MonsterExecMap::iterator it = m_mapAllMonstExec.begin(); it != m_mapAllMonstExec.end(); ++it)
+	{
+		if (it->first & sData.bySerchType)
+		{
+			it->second->monsterAddBuff(sData);
+		}
+	}
+}
 DWORD CWarMonsterMgr::getUIDListByMonsterType(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID * pReturnArray, DWORD dwArrayMaxSize)
 {
 	DWORD dwArraySize = 0;
@@ -426,3 +435,5 @@ void CWarMonsterMgr::onNpcDestroy(UID uid)
 		m_mapCreateMonster.erase(itMonster);
 	}
 }
+
+

@@ -3,21 +3,27 @@
 #include "StubMacroDef.h"
 
  //////////////////////////////////////////////////////////////////////////////////
- void MentorshipService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,PACKAGE_PTR msg )
+ void MentorshipService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,void * data, size_t len )
  {
-     PACKAGE_PTR::T_BAG bag(msg);
-     BUILD_MSG_CONTEXT_3( IMentorshipService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+     obuf256 t_data;
+     t_data << serverID << head << len;
+     t_data.push_back(data, len);
 
-     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+     BUILD_MSG_BUFFER(IMentorshipService::handleServerMsg, t_data);
+
+     m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
  };
 
  //////////////////////////////////////////////////////////////////////////////////
- void MentorshipService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,PACKAGE_PTR msg )
+ void MentorshipService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,void * data, size_t len )
  {
-     PACKAGE_PTR::T_BAG bag(msg);
-     BUILD_MSG_CONTEXT_3( IMentorshipService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+     obuf256 t_data;
+     t_data << client << head << len;
+     t_data.push_back(data, len);
 
-     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+     BUILD_MSG_BUFFER(IMentorshipService::handleClientMsg, t_data);
+
+     m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
  };
 
 

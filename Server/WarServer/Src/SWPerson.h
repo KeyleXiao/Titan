@@ -188,6 +188,8 @@ struct SWPerson
 	int nGetMatchTypeScore;
 	// 原来的撮合匹配类型得分
 	int nPreMatchTypeScore;
+	// 原来的撮合匹配等级
+	int nPreMatchTypeGrade;
     // 玩家性别
 	BYTE byActorSex;
 	// AIID

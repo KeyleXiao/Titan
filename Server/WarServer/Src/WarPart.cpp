@@ -233,7 +233,7 @@ bool WarPart::onMessage(void * pEntityHead, int msgId, void * data, size_t len)
         ErrorLn("WarPart::onMessage pWarService == NULL msgId ="<<msgId<< ", m_nWarID = "<<m_nWarID);
         return false;
     }
-    pWarService->onWarClientMsg(m_pMaster->getUID(), msgId, PACKAGE_PTR(new string((const char *)data, len)));
+    pWarService->onWarClientMsg(m_pMaster->getUID(), msgId, (const char *)data, len);
 	return true;
 }
 

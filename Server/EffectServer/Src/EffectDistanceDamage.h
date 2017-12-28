@@ -19,7 +19,7 @@ class CEffectDistanceDamage : public IEffectEx
 public:
 	typedef  EffectServer_DistanceDamage    SCHEME_DATA;
 
-	CEffectDistanceDamage( SCHEME_DATA & data ) : m_data(data)
+	CEffectDistanceDamage( SCHEME_DATA & data ) : m_data(data), m_pEntity(nullptr)
 	{
 	}
 
@@ -60,6 +60,9 @@ public:
         {
             return false;
         }
+
+        m_pEntity = context->pEntity;
+
         Vector3 vStartLoc = pAttackObject->getStartTile();
 
         UID uidProperty = INVALID_UID;
@@ -162,6 +165,9 @@ public:
         damage.fDamageBonusPCT = getProperty_Integer(uidProperty, PROPERTY_DAMAGE_BONUS_PCT)/ZOOM_IN_MULTIPLE;
         damage.fAppendPCTPDP = static_cast<float>(getProperty_Integer(uidProperty, PROPERTY_APPEND_PCT_PDP)) / ZOOM_IN_MULTIPLE;      // 附加额外百分比护甲穿透
         damage.fAppendPCTPMP = static_cast<float>(getProperty_Integer(uidProperty, PROPERTY_APPEND_PCT_MDP)) / ZOOM_IN_MULTIPLE;      // 附加额外百分比魔抗穿透
+        if (m_pEntity) {
+            damage.nUseFlag = m_pEntity->getUseFlag()->getAll();    // 用途标识
+        }
 
         // 发送实体消息
         g_EHelper.sendEntityMessage(uidTarget, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));
@@ -172,6 +178,7 @@ public:
 	// 效果停止
 	virtual void			Stop()
 	{
+        m_pEntity = nullptr;
 	}
 
 	// 克隆一个新效果
@@ -189,4 +196,5 @@ public:
 
 private:
 	SCHEME_DATA               m_data;
+    __IEntity   *             m_pEntity;
 };

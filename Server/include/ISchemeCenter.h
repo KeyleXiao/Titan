@@ -79,6 +79,7 @@ class ISchemeWarDevilKingNPC;
 
 class ISchemeMatchSeasonTime;
 class ISchemeMatchSeasonPrize;
+struct SSchemeChatCD;
 
 // 命名空间下声明
 namespace SPELL
@@ -492,9 +493,13 @@ struct ISchemeMatchRankConfigInfo
     */
     virtual SMatchRankConfigSchemeInfo* getShemeHideInfoByTypeAndScore(int eMatchTypeID, int nScore) = 0;
 
-    /** 取得王者分段最低等级
+    /** 取得王者分段最低等级分
     */
     virtual int getMatchTypeKingRankBaseScore(int eMatchTypeID) = 0;
+
+	/** 取得王者分段最低等级
+	*/
+	virtual int getMatchTypeKingRankBaseGrade(int eMatchTypeID) = 0;
 };
 
 
@@ -654,6 +659,8 @@ struct ISchemeChatCD
 	virtual int getLimitLevel(int nChannel) = 0;
 	// 获取CD时间
 	virtual int getCDTime(int nChannel) = 0;
+	// 获取频道配置
+	virtual SSchemeChatCD* getSchemeChatCD(int nChannel) = 0;
 };
 
 struct ISchemePlayerGloryInfo
@@ -1238,6 +1245,15 @@ struct  ISchemeWebUrl
     virtual std::map<DWORD, SSchemeWebUrl*>* getScheme() = 0;
 };
 
+// 推广员奖励配置
+struct SSchemeRecommPrize;
+// 推广员奖励配置接口
+struct ISchemeRecommPrize
+{
+    // 取得推广奖励配置信息
+    virtual SSchemeRecommPrize* getByTargetID(int nTargetID) = 0;
+};
+
 /////////////////////////////ISchemeCenter/////////////////////////////////////////////
 /**
 1.实现配置脚本的快速加载
@@ -1549,6 +1565,9 @@ struct ISchemeCenter
 
 	// 获取排位赛季奖励配置
 	virtual ISchemeMatchSeasonPrize* getSchemeMatchSeasonPrize() = 0;
+
+    // 推广奖励配置
+    virtual ISchemeRecommPrize* getSchemeRecommPrize() = 0;
 };
 
 

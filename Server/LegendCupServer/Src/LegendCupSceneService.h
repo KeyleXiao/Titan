@@ -18,6 +18,8 @@ class LegendCupScenService:public ILegendCupSceneService, public ITransmitHandle
 {
 
 public:
+
+	LegendCupScenService();
      //
 	////////////////////////////////////////ITransmitHandler//////////////////////////////////
 	/** 消息处理
@@ -52,10 +54,10 @@ public:
 
     ///////////////////////////////////ILegendCupSceneService///////////////////////////////////////
     // 处理其它服务器发送过来的消息
-    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void    handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen);
 
     // 处理客户端发送过来的消息
-    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg);
+    virtual void    handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen);
 
     //////////////////////////////////IDBRetSink///////////////////////
     // 数据库请求返回回调方法
@@ -93,4 +95,5 @@ private:
 
 private:
 	unsigned short m_u16ServerID;
+	volatile	LONG  m_mutex;
 };

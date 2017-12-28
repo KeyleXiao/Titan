@@ -77,10 +77,14 @@ public:
 
 	SEntityXml_Server* getEntityXml();
 
+	// 天赋改变类型转换成天赋掉落类型
 	ETalentDropType talentChangeType2TalentDropType(ENUM_TALENT_CHANGE_TYPE changeType);
 
+	// 天赋掉落类型转换成天赋改变类型
 	ENUM_TALENT_CHANGE_TYPE talentDropType2TalentChangeType(ETalentDropType dropType);
 
+	// EWarMedal转换成EDataType
+	EDataType warMedal2DataType(EWarMedal warMedal);
 };
 
 extern CExternalHelper				g_EHelper;

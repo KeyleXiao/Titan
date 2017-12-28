@@ -204,7 +204,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;LUA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../framework/framework/include;../../../base/base/include;../../../common;../../include;../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/GatewayServer/Include;../../../server/entity/include;../../../server/AOI/include;../../../Base/Base/Src/lua;../../../base/lua;../../../Server/Connector/Include;../../WarServer/Include;../../Condition/Include;../../EffectServer/Include;../../MapPathFind/Include;../../../Server/ChatServer/Include;../../../Server/OSSLogServer/Include;../../../Server/MentorshipServer/Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../framework/framework/include;../../../base/base/include;../../../common;../../include;../include;../../../Cluster/GatewayConnector/Include;../../../Cluster/CenterServerConnector/Include;../../../Cluster/CenterServer/Include;../../../Cluster/GatewayServer/Include;../../../server/entity/include;../../../server/AOI/include;../../../Base/Base/Src/lua;../../../base/lua;../../../Server/Connector/Include;../../WarServer/Include;../../Condition/Include;../../EffectServer/Include;../../MapPathFind/Include;../../../Server/ChatServer/Include;../../../Server/OSSLogServer/Include;../../../Server/MentorshipServer/Include;../../../Server/MailServer/Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

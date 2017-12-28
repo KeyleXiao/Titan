@@ -46,6 +46,13 @@ public:
 
     virtual void                addCreateMonsterInheritEffect(UID uid);
 
+	/** 是否是充能物品
+	@param
+	@param
+	@return
+	*/
+	virtual bool 				bIsMultipleCDGoods();
+
     /** 设置更新槽位数据
 	@param   
 	@param   

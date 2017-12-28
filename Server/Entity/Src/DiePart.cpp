@@ -400,34 +400,37 @@ void DiePart::onEventDamageResult(BYTE bSrcType, DWORD dwSrcID, LPCSTR pszContex
 
         // 直接通知凶手的技能部件
         {
-            obuf256 data;
+            if(pevent->nID != 0)
+            {
+                obuf256 data;
 
-            SNetMsgHead head;
-            head.bySrcEndPoint  = MSG_ENDPOINT_SCENE;
-            head.byDestEndPoint = MSG_ENDPOINT_SCENE;
-            head.byKeyModule = MSG_MODULEID_ENTITY;
-            head.byKeyAction = SPELL_MSG_KILL_ENTITY;
+                SNetMsgHead head;
+                head.bySrcEndPoint  = MSG_ENDPOINT_SCENE;
+                head.byDestEndPoint = MSG_ENDPOINT_SCENE;
+                head.byKeyModule = MSG_MODULEID_ENTITY;
+                head.byKeyAction = SPELL_MSG_KILL_ENTITY;
 
-            // 消息头
-            SMsgEntityHead entityHead;
-            entityHead.uidMaster = pevent->uidOperator;
-            entityHead.byPartID = PART_SPELL;
+                // 消息头
+                SMsgEntityHead entityHead;
+                entityHead.uidMaster = pevent->uidOperator;
+                entityHead.byPartID = PART_SPELL;
 
-            data << head << entityHead;
-            data.push_back(&die, sizeof(event_entity_die));
+                data << head << entityHead;
+                data.push_back(&die, sizeof(event_entity_die));
 
-            // 发送消息
-            handleMessage(pevent->uidOperator, data.data(), (int)data.size());
+                // 发送消息
+                handleMessage(pevent->uidOperator, data.data(), (int)data.size());
+            }
         }
 
         // 其他模块都处理完了 再发给客户端死亡。
         // 假如先发给客户端死亡，紧接着其他模块可能会下发消息造成客户端显示层出bug（如客户端反馈说死亡被技能模块的"打断动作"命令打断）。
         onDie(pevent->uidOperator, pevent->nDeadType, nPKType);
 
-        TraceLn(m_pMaster->getName() << "["<< die.uidTarget <<"] is dead.murder="<< die.uidOperator 
-            <<",spell="<< die.nSpellID <<",SpelEffT="<< die.nSpellEffectType <<",DeadT="<< die.nDeadType
-            <<",DamageT="<< pevent->nDamageType<<",AttT="<<pevent->nAttackResultType<<",rebound="<<pevent->bRebound
-        );
+//         TraceLn(m_pMaster->getName() << "["<< die.uidTarget <<"] is dead.murder="<< die.uidOperator 
+//             <<",spell="<< die.nSpellID <<",SpelEffT="<< die.nSpellEffectType <<",DeadT="<< die.nDeadType
+//             <<",DamageT="<< pevent->nDamageType<<",AttT="<<pevent->nAttackResultType<<",rebound="<<pevent->bRebound
+//        );
     }
 }
 

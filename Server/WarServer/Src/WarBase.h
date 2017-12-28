@@ -161,7 +161,7 @@ public:
 	virtual SWPerson* getPlayerInfo(UID uid) override;
 
 	// client 的网络消息
-	virtual bool onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg) override  { return true; }
+	virtual bool onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen) override  { return true; }
 
 	// 获得胜利条件
 	virtual EWarEndReason getWarEndReason() override;
@@ -186,6 +186,12 @@ public:
 	@param bySerchType		    : 查找类型 EWarMonsterExec
 	*/
 	virtual DWORD warSerchTypeUIDList(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID* pReturnArray, DWORD dwArrayMaxSize) override { return 0; }
+
+	/** 获取战场指定类型UID
+	@param byGetCampType		: 阵营类型 EWarCampType
+	@param bySerchType		    : 查找类型 EWarMonsterExec
+	*/
+	virtual void warAddSerchTypeBuff(SWarEffectAddBuff sData) override { return; }
 	/////////////////////////////////IWarBase End/////////////////////////////////////////
 
 protected:

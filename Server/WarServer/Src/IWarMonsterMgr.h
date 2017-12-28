@@ -66,4 +66,7 @@ public:
 
 	// NPC销毁
 	virtual void onNpcDestroy(UID uid) = 0;
+
+	// 怪物添加buff
+	virtual void monsterAddBuff(SWarEffectAddBuff sData) = 0;
 };

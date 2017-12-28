@@ -827,9 +827,9 @@ void CBattleWar::onLearnSkill( event_learn_spell* entityLearnSpell )
 
 
 
-bool CBattleWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg)
+bool CBattleWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen)
 {
-	CWar::onWarClientMsg(uidActor, byKeyAction, msg);
+	CWar::onWarClientMsg(uidActor, byKeyAction, pData, nLen);
 
 	switch (byKeyAction)
 	{

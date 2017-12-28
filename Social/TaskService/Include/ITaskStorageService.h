@@ -59,10 +59,10 @@ struct ITaskStorageService
 
 	///////////////////////IContactTask///////////////////////////////////////////////////
 	// 处理服务器消息
-	virtual void						handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+	virtual void						handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len) = 0;
 
 	// 处理客户端消息
-	virtual void						handleClientMsg(DWORD clientID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+	virtual void						handleClientMsg(DWORD clientID, SNetMsgHead head, void * data, size_t len) = 0;
 };
 
 

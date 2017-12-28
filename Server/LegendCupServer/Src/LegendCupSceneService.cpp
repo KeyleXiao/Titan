@@ -12,6 +12,14 @@
 #include "ITimeSyncService.h"
 #include "ClanHelper.h"
 #include "IOSSLogService.h"
+
+
+LegendCupScenService::LegendCupScenService()
+	: m_mutex(0)
+{
+
+}
+
 void LegendCupScenService::release()
 {
 	TraceLn("LegendCupSceneService::release");
@@ -60,6 +68,7 @@ bool LegendCupScenService::create()
 	return true;
 }
 
+
 void LegendCupScenService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head, void * data, size_t len)
 {
     LegendCupSceneHelper orderSceneHelper;
@@ -70,8 +79,7 @@ void LegendCupScenService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* h
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pLegendCupSceneService->handleServerMsg( server, *head, pkg );
+    pLegendCupSceneService->handleServerMsg( server, *head, data, len );
 }
 
 void LegendCupScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* head, void* data, size_t len)
@@ -86,15 +94,14 @@ void LegendCupScenService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHea
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pLegendCupSceneService->handleClientMsg( clientID, *head, pkg );
+    pLegendCupSceneService->handleClientMsg( clientID, *head, data, len );
 }
 
 
-void LegendCupScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void LegendCupScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
+    size_t len = nLen;
+    void *data = pData;
 
     MATCH_TRACELN(__FUNCTION__": "<<" serverID ="<<serverID << " KeyAction=" << head.byKeyAction);
 
@@ -119,10 +126,8 @@ void LegendCupScenService::handleServerMsg(DWORD serverID, SNetMsgHead head, PAC
     }
 }
 
-void LegendCupScenService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void LegendCupScenService::handleClientMsg(DWORD client, SNetMsgHead head, void* data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
 
     switch( head.byKeyAction )
     {
@@ -630,6 +635,7 @@ void LegendCupScenService::onMsgReqJoinLegendcupRoom(ClientID clientID, void* pD
     pMsg->dwSrcWorldID  = pActor->getFromGameWorldID();
     pMsg->bySex         = pActor->getProperty_Integer(PROPERTY_SEX);
     //房间所需附加数据
+	Simple_Atom_Lock lock(&m_mutex);
     pActor->getPlayerRoomExData(&(pMsg->sExData));
     pMsg->sExData.clientID = clientID;
 

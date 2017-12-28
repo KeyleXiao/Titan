@@ -169,12 +169,16 @@ public:
 	// 手动创建NPC
 	void doCreate( int id, UID uid, Vector3 loc, CreateNpcContext context)
 	{
+        COST_TIME_TRACE_START
+
 		// 检查传入的UID是否正确
         if(findNPC(uid) != NPC_PTR(0))
         {
             ErrorLn("NPCService::doCreate id=" << id << " failed, 1");
             return;
         }
+
+        COST_TIME_TRACE(__LINE__)
 
         Monster * pMonster = new Monster;
 		__IEntity * pNPC = CAST_TYPE(__IEntity*, pMonster);
@@ -217,7 +221,11 @@ public:
 
         Vector3 revisedLoc = loc;
 
+        COST_TIME_TRACE(__LINE__)
+
         gServerGlobal->getHeightFieldMgr()->correctPosFromPhysic(m_nMapID, revisedLoc, 50, 50);
+
+        COST_TIME_TRACE(__LINE__)
 // 
 //         IPathFindManager * pPathFindMgr = gServerGlobal->getPathFindManager();
 //         if ( pPathFindMgr!=NULL )
@@ -270,7 +278,12 @@ public:
         int nLenOffset = o.size();
         o << (int)0;  // 压入部件长度
         int nBegin = o.size();
+
+        COST_TIME_TRACE(__LINE__)
+
         npc_data.getDataBuffer( o,nflag );
+
+        COST_TIME_TRACE(__LINE__)
 
         *((int*)(o.data() + nLenOffset)) = o.size() - nBegin;
 
@@ -296,10 +309,14 @@ public:
 
 		// 设置地图ID
 		pMonster->setMapID(m_nMapID);
+
+        COST_TIME_TRACE(__LINE__)
        
         // 先将MONSTER加入到容器中
 		int index  = UID_2_SERIAL(uid) % MAX_NPC_COUNT;
         m_npcMap[index] =  NPC_PTR(pNPC); 
+
+        COST_TIME_TRACE(__LINE__)
 
 		// 创建实体
 		if ( !pNPC->create(uid,o.data(),o.size(),nflag ) )
@@ -308,6 +325,8 @@ public:
             destroyNPC(uid);
 			return;
         }
+
+        COST_TIME_TRACE(__LINE__)
 
 		// 设置怪物阵营
 		pMonster->setCamp(nCamp);
@@ -327,6 +346,9 @@ public:
 			pPKPart->setPKType(context.nPKType);
 			pPKPart->setPKState(context.nPKState);
 		}
+
+        COST_TIME_TRACE(__LINE__)
+
         //if (context.bRepication)
         //{
         //    // 分身怪物 发送

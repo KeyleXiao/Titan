@@ -22,10 +22,10 @@ using Gateway::ClientID;
 struct IChatService
 {
     // 处理其它服务器发送过来的消息
-    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void handleServerMsg(DWORD serverID, SNetMsgHead head, const char* pData, size_t nLen) = 0;
 
     // 处理客户端发送过来的消息
-    virtual void handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg) = 0;
+    virtual void handleClientMsg(DWORD client, SNetMsgHead head, const char* pData, size_t nLen) = 0;
 
 	// 发送系统广播(参数用分号分隔)
 	// @param tipID: EMChatTipID(SystemMessage.csv中配置相应)

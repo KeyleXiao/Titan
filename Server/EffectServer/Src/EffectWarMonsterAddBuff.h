@@ -58,98 +58,16 @@ public:
         }
 
         int nSelfCamp = context->pEntity->getIntProperty(PROPERTY_CAMP);
-
-		UID uidArray[MAX_INTEREST_OBJECT*2] = {0};
-		int nArraySize= MAX_INTEREST_OBJECT*2;
-		int nCount = pWarService->warSerchTypeUIDList(nSelfCamp, m_data.nCampType, m_data.nMonsterExec, uidArray, nArraySize);
-        if (nCount == 0)
-        {
-            return false;
-        }
-
-        UID uidSrcEntity = context->pEntity->getUID();
-        SBuffContext BuffContext;
-        BuffContext.nID = context->nID;
-
-        DWORD dwMaxCount = MAX_INTEREST_OBJECT*2;
-        UID uidMonsterAddBuff[MAX_INTEREST_OBJECT*2] = {0};
-        DWORD dwMonsterCount = 0;
-		for (int i=0; i<nCount; ++i)
-		{
-            if (dwMonsterCount >= dwMaxCount)
-            {
-                break;
-            }
-
-			UID uidTarget = uidArray[i];
-			if (isInvalidUID(uidTarget))
-			{
-				continue;
-			}
-
-			switch (m_data.nType)
-			{
-			case BUFF_ADD:
-				{
-                    if (isMonster(uidTarget))
-                    {
-                        uidMonsterAddBuff[dwMonsterCount++] = uidTarget;
-                    }
-                    else
-                    {
-					    // 给实体添加buff
-					    AddBuff(uidTarget, m_data.nBuffID, m_data.nBuffLevel, uidSrcEntity);
-                    }
-				}
-				break;
-			case BUFF_REMOVE:
-				{
-                    if (isMonster(uidTarget))
-                    {
-                        uidMonsterAddBuff[dwMonsterCount++] = uidTarget;
-                    }
-                    else
-                    {
-					    // 给实体移除buff
-					    RemoveBuff(uidTarget, m_data.nBuffID, uidSrcEntity, uidSrcEntity);
-                    }
-				}
-				break;
-			case BUFF_OVERLAY:
-				{
-					// 叠加BUFF
-					SetAccumulateBuff(uidTarget, m_data.nBuffID, uidSrcEntity, true);
-				}
-				break;
-			case BUFF_DECREASE:
-				{
-					// 递减BUFF
-					SetAccumulateBuff(uidTarget, m_data.nBuffID, uidSrcEntity, false);
-				}
-				break;
-			default:
-				break;
-			}
-		}
-
-        if (dwMonsterCount > 0)
-        {
-            switch (m_data.nType)
-            {
-            case BUFF_ADD:
-                {
-                    g_EHelper.BatchAddBuff(uidMonsterAddBuff, dwMonsterCount, m_data.nBuffID, m_data.nBuffLevel, uidSrcEntity, 0, &BuffContext, sizeof(BuffContext));
-                }
-                break;
-            case BUFF_REMOVE:
-                {
-                    g_EHelper.BatchRemoveBuff(uidMonsterAddBuff, dwMonsterCount, m_data.nBuffID, uidSrcEntity, uidSrcEntity);
-                }
-                break;
-            default:
-                break;
-            }
-        }
+		SWarEffectAddBuff sData;
+		sData.uidSrcEntity = context->pEntity->getUID();      // 添加实体UID
+		sData.nID			= context->nID;				// spellID
+		sData.bySelfCamp	= nSelfCamp;
+		sData.byGetCampType = m_data.nCampType;
+		sData.bySerchType	= m_data.nMonsterExec;
+		sData.byAddType		= m_data.nType;
+		sData.nBuffID		= m_data.nBuffID;
+		sData.nBuffLevel	= m_data.nBuffLevel;
+		pWarService->warAddSerchTypeBuff(sData);
 
 		return true;
 	}

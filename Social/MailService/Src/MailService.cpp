@@ -332,14 +332,14 @@ void MailService::onMsgRefreshMailList(DWORD dwServerID, void* pData, size_t stL
 	readPlayerMailList(pRecvData->dwPDBID);
 }
 
-void MailService::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR pszContext, int nLen)
-{
-    switch(wEventID)
-    {
-    default:
-        break;
-    }
-}
+//void MailService::OnExecute(WORD wEventID, BYTE bSrcType, DWORD dwSrcID, LPCSTR pszContext, int nLen)
+//{
+//    switch(wEventID)
+//    {
+//    default:
+//        break;
+//    }
+//}
 
 void MailService::OnLogin(ISharePerson * pSharePerson, ELoginMode nLineType)
 {
@@ -445,8 +445,7 @@ void MailService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head, void
         return;
     }
 
-	PACKAGE_PTR pkg( new string((const char*)data,len));
-	pMailService->handleServerMsg( server, *head, pkg );
+	pMailService->handleServerMsg( server, *head, data, len);
 }
 
 ////////////////////////////////IMessageHandler//////////////////////////////////////////
@@ -463,16 +462,12 @@ void MailService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* head, 
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pMailService->handleClientMsg( clientID, *head, pkg );
+    pMailService->handleClientMsg( clientID, *head, data, len);
 }
 
 
-void MailService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void MailService::handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
-
     // 服务器发过来的消息
     switch ( head.byKeyAction )
     {
@@ -509,20 +504,17 @@ void MailService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR 
     }
 }
 
-void MailService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void MailService::handleClientMsg(DWORD client, SNetMsgHead head, void * data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
-
-    // 服务器发过来的消息
-    switch ( head.byKeyAction )
-    {
-    default:
-        {
-            // 其他场景服消息
-            ErrorLn(__FUNCTION__": unknown byKeyAction= "<< head.byKeyAction);
-        }
-    }
+    //// 服务器发过来的消息
+    //switch ( head.byKeyAction )
+    //{
+    //default:
+    //    {
+    //        // 其他场景服消息
+    //        ErrorLn(__FUNCTION__": unknown byKeyAction= "<< head.byKeyAction);
+    //    }
+    //}
 }
 
 /// 发送邮件

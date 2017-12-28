@@ -141,6 +141,7 @@ public:
         damage.nDamageHP = nMaxHp;
         damage.nDamageBonus = getProperty_Integer(m_uidOperator, PROPERTY_DAMAGE_BONUS);
         damage.fDamageBonusPCT = getProperty_Integer(m_uidOperator, PROPERTY_DAMAGE_BONUS_PCT)/ZOOM_IN_MULTIPLE;
+        damage.nUseFlag = m_pMaster->getUseFlag()->getAll();    // 用途标识
 
         // 发送实体消息
         g_EHelper.sendEntityMessage(m_uidTarget, PART_DAMAGE, DAMAGE_MSG_DAMAGE, (char *)&damage, sizeof(damage));

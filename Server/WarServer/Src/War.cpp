@@ -56,6 +56,7 @@
 #include "WarMonsterMgr.h"
 #include <math.h>
 #include <sstream>
+#include "BuffDef.h"
 
 
 using namespace Mentorship_ManagerDef;
@@ -522,6 +523,101 @@ bool CWar::ClientPrepareEnterWar(const SActorPreaperEnterWar& sActorPreaperEnter
 {
 	iniWarActorInfo(sActorPreaperEnterWar);
 	return true;
+}
+
+void CWar::playerAddBuff(SWarEffectAddBuff sData)
+{
+	// 查找玩家
+	WarCampMap::iterator itCamp = m_mapWarCamp.begin();
+	for (; itCamp != m_mapWarCamp.end(); ++itCamp)
+	{
+		for (WarPersonVector::iterator itPerson = itCamp->second.warPersVect.begin(); itPerson != itCamp->second.warPersVect.end(); ++itPerson)
+		{
+			UID uid = INVALID_UID;
+			switch (sData.byGetCampType)
+			{
+			case EWCT_SELFCAMP:
+			{
+				// 己方
+				if (itCamp->first == sData.bySelfCamp)
+				{
+					uid = itPerson->uID;
+				}
+			}
+			break;
+			case EWCT_ENIMICAMP:
+			{
+				if (itCamp->first != sData.bySelfCamp)
+				{
+					// 添加buff
+					uid = itPerson->uID;
+				}
+			}
+			break;
+			case EWCT_ALL:
+			{
+				// 添加buff
+				uid = itPerson->uID;
+			}
+			break;
+			default:break;
+			}
+
+			if (uid == INVALID_UID)
+			{
+				continue;
+			}
+
+			switch (sData.byAddType)
+			{
+			case BUFF_ADD:
+			{
+				// 给实体添加buff
+				AddBuff(uid, sData.nBuffID, sData.nBuffLevel, sData.uidSrcEntity);
+	
+			}
+			break;
+			case BUFF_REMOVE:
+			{
+				// 给实体移除buff
+				RemoveBuff(uid, sData.nBuffID, sData.uidSrcEntity, sData.uidSrcEntity);
+			
+			}
+			break;
+			case BUFF_OVERLAY:
+			{
+				// 叠加BUFF
+				SetAccumulateBuff(uid, sData.nBuffID, sData.uidSrcEntity, true);
+			}
+			break;
+			case BUFF_DECREASE:
+			{
+				// 递减BUFF
+				SetAccumulateBuff(uid, sData.nBuffID, sData.uidSrcEntity, false);
+			}
+			break;
+			default:
+				break;
+			}
+		}
+	}
+}
+
+void CWar::warAddSerchTypeBuff(SWarEffectAddBuff sData)
+{
+	if (sData.bySerchType == EWME_None)
+	{
+		playerAddBuff(sData);
+
+	}
+	else
+	{
+		IWarMonsterMgr* pWarMonsterMgr = (IWarMonsterMgr*)getWarMgr(Mgr_Monster);
+		if (pWarMonsterMgr != NULL)
+		{
+			pWarMonsterMgr->monsterAddBuff(sData);
+		}
+	}
 }
 
 void CWar::sendToClientImportantEntityDie(const msg_war_important_entiy_dieinfo& EntiyDieInfo, const vector<msg_war_entity_assist_info> & assistList)
@@ -997,7 +1093,7 @@ void CWar::onTalentChange(event_entity_talent_change* pTalentChange)
 	// 天赋点更改日志
 	ILogRecordMgr* pLogRecordMgr = (ILogRecordMgr*)getWarMgr(Mgr_LogRecord);
 	if (pLogRecordMgr != NULL)
-		pLogRecordMgr->setAddTalentToMap(pPerson->uPDBID, nChangePoint, ChangeT2DropT((ENUM_TALENT_CHANGE_TYPE)pTalentChange->byChangeType));
+		pLogRecordMgr->setAddTalentToMap(pPerson->uPDBID, nChangePoint, ChangeT2DropT((ENUM_TALENT_CHANGE_TYPE)byChangeType));
 }
 
 void CWar::onEntityUpgrade(event_entity_upgrade_level entityUpgrade)
@@ -1095,14 +1191,14 @@ void CWar::onActorEnterWar(const SActorEnterWarBaseInfo& sActorEnterWarBaseInfo)
 	}
 
 	// 记录撮合类型分数
-	DWORD dwPersonScore = 0;
 	ActorHelper actorHelper(sActorEnterWarBaseInfo.uidActor);
 	IActorService *pActorService = actorHelper.m_ptr;
 	if (pActorService != NULL)
 	{
-		dwPersonScore = pActorService->getMatchTypeRank((EMMatchType)getMatchTypeID());
+		person.nPreMatchTypeScore = pActorService->getMatchTypeRank((EMMatchType)getMatchTypeID());
+
+		person.nPreMatchTypeGrade = pActorService->getMatchTypeRankGrade((EMMatchType)getMatchTypeID());
 	}
-	person.nPreMatchTypeScore = dwPersonScore;
 
 	// 统计玩家个数
 	if (person.bIsComputer)
@@ -1112,10 +1208,10 @@ void CWar::onActorEnterWar(const SActorEnterWarBaseInfo& sActorEnterWarBaseInfo)
 	else
 	{
 		itCamp->second.nRealPlayerCount++;
-		itCamp->second.nMatchScoreRealPlayer += dwPersonScore;
+		itCamp->second.nMatchScoreRealPlayer += person.nPreMatchTypeScore;
 	}
 	// 统计总分
-	itCamp->second.nTotalMatchScore += dwPersonScore;
+	itCamp->second.nTotalMatchScore += person.nPreMatchTypeScore;
 
 	// 找到阵营里面的人物之后修改
 	WarPersonVector::iterator iterPerson = itCamp->second.warPersVect.begin();
@@ -1128,7 +1224,7 @@ void CWar::onActorEnterWar(const SActorEnterWarBaseInfo& sActorEnterWarBaseInfo)
 				TraceLn(__FUNCTION__": Name" << person.szName << " AddTalentPoint = " << m_nInitialTalentPoint);
 			}
 
-			pActorService->updateTalentPoint(m_nInitialTalentPoint, ENUM_TALENT_INIT, ENUMTALENTADDTYPE_SPECIAL);
+			updateTalentPoint(iterPerson->uID, m_nInitialTalentPoint, ENUM_TALENT_INIT);
 			person.bIniTalentPointAdd = true;
 		}
 
@@ -1139,7 +1235,8 @@ void CWar::onActorEnterWar(const SActorEnterWarBaseInfo& sActorEnterWarBaseInfo)
 				TraceLn(__FUNCTION__": Name" << person.szName << " AddExp = " << m_nInitialExp);
 			}
 
-			pActorService->addExp(m_nInitialExp, 0);
+			addPersonExp(iterPerson->uID, m_nInitialExp, EEXPDROPTYPE_INIT);
+
 			person.bIniExpAdd = true;
 		}
 
@@ -1176,7 +1273,7 @@ void CWar::onActorEnterWar(const SActorEnterWarBaseInfo& sActorEnterWarBaseInfo)
 							TraceLn(__FUNCTION__": Name" << pActorService->getName().c_str() << " AddTalentPoint = " << m_nInitialTalentPoint);
 						}
 
-						pActorService->updateTalentPoint(m_nInitialTalentPoint, ENUM_TALENT_INIT, ENUMTALENTADDTYPE_SPECIAL);
+						updateTalentPoint(iterPerson->uID, m_nInitialTalentPoint, ENUM_TALENT_INIT);
 
 						iterPerson->bIniTalentPointAdd = true;
 					}
@@ -1552,8 +1649,9 @@ void CWar::End()
 	ISupportMgr* pSupportMgr = (ISupportMgr*)getWarMgr(Mgr_Support);
 	IWarMonsterMgr* pWarMonsterMgr = (IWarMonsterMgr*)getWarMgr(Mgr_Monster);
 
-	// 计算连杀
-	calcContKill();
+	// 角色战绩相关记录
+	statisticsPlayerGraded();
+
 
 	// 减少记录的玩家惩罚信息社会服的观察期
 	warEndPunishSubObserveCount();
@@ -1581,8 +1679,6 @@ void CWar::End()
 	//}
 
 
-	// 角色战绩相关记录
-	statisticsPlayerGraded();
 
 	// 设置战场结果（计算完战绩相关数据才能设置）
 	setLegendCupWarResult();
@@ -1704,9 +1800,8 @@ void CWar::exitTester()
 				MsgHead.bySrcEndPoint = MSG_ENDPOINT_SCENE;
 				MsgHead.byKeyModule = MSG_MODULEID_MATCH;
 				MsgHead.byKeyAction = SS_MSG_WAR_END_TESTER_EXIT_WAR;
-
-				PACKAGE_PTR pkg(new string((const char*)(&itPerson->uPDBID), sizeof(itPerson->uPDBID)));
-				pMatchSceneService->handleServerMsg(gServerGlobal->getServerID(), MsgHead, pkg);
+				
+				pMatchSceneService->handleServerMsg(gServerGlobal->getServerID(), MsgHead, (void*)(&itPerson->uPDBID), sizeof(itPerson->uPDBID));
 			}
 		}
 	}
@@ -1718,6 +1813,8 @@ bool CWar::isOpenCheckBadBehavior()
 
 	return pCheckBadBhvMgr != NULL;
 }
+
+
 
 void CWar::setMatchTypeRankScoreAndGrade()
 {
@@ -1789,8 +1886,8 @@ void CWar::setMatchTypeRankScoreAndGrade()
             itPerson->nGetMatchTypeScore = nScore;
             
             // 计算B A得分 B:敌方阵营隐藏平均分 A：我方阵营隐藏平均分
-            DWORD B = 0;
-            DWORD A = 0;
+            int B = 0;
+            int A = 0;
             for(map<int,int>::iterator iter = mapCampAvgHideRank.begin(); iter != mapCampAvgHideRank.end(); ++iter)
             {
                 if(itCamp->first == iter->first)
@@ -1813,16 +1910,14 @@ void CWar::setMatchTypeRankScoreAndGrade()
             {
                 if (getWinCamp() == itCamp->first)
                 {
-                    // 胜利得分= K*(0-1/(1+10^((B-A)/M)))
-                   nHideScore += (int)((float)(pHideScheme->nKRatio)*((float)1.0-(float)(1.0/(1.0+pow((float)10,(float)((B-A)/pHideScheme->nHideKRatio))))));
-                   TraceLn("A ="<<A<<" B ="<<B<<" name =("<<itPerson->szName<<") K = "<<pHideScheme->nKRatio<<" M ="<<pHideScheme->nHideKRatio<<" nHideScore= "<<nHideScore<<" nCureHideScore="<<nCureHideScore);
-                }
+                    // 胜利得分= K*(1-1/(1+10^((B-A)/M)))
+					nHideScore = (int)((float)(pHideScheme->nKRatio)*(1.0f - 1.0f/(1.0f+pow((float)10,((float)(B-A)/ (float)pHideScheme->nHideKRatio)))));
+				}
                 else
                 {
                     // 失败得分= K*(0-1/(1+10^((B-A)/M)))
-                    nHideScore += (int)((float)(pHideScheme->nKRatio)*((float)0.0-(float)(1.0/(1.0+pow((float)10,(float)((B-A)/pHideScheme->nHideKRatio))))));
-                    TraceLn("A ="<<A<<" B ="<<B<<" name =("<<itPerson->szName<<") K = "<<pHideScheme->nKRatio<<" M ="<<pHideScheme->nHideKRatio<<" nHideScore= "<<nHideScore<<" nCureHideScore="<<nCureHideScore);
-                }
+					nHideScore = (int)((float)(pHideScheme->nKRatio)*(0.0f - 1.0f/(1.0f+pow((float)10,((float)(B-A)/ (float)pHideScheme->nHideKRatio)))));
+				}
             }
 
 			// 添加匹配分
@@ -2824,10 +2919,10 @@ void CWar::calculateWarEndData()
 			WarInfo.gzAllData[ERDT_CRILDAMAGEMAX] = itPerson->nMaxCritical;
 
 			// 控龙
-			WarInfo.gzAllData[ERDT_DRAGEN] = itPerson->nBigBossMonster + itPerson->nSmallBossMonster;
+			WarInfo.gzAllData[ERDT_DRAGEN] = itPerson->nBaseRecord[EDT_KillDragon];
 
 			// 击杀怪物数
-			WarInfo.gzAllData[ERDT_KILLMONSTER] = itPerson->nBigBossMonster + itPerson->nBaseRecord[EDT_KillMonster];
+			WarInfo.gzAllData[ERDT_KILLMONSTER] = itPerson->nBaseRecord[EDT_KillDragon] + itPerson->nBaseRecord[EDT_KillMonster];
 
 			// 一场比赛的天梯分数
 			WarInfo.nMatchTypeScore = itPerson->nGetMatchTypeScore;
@@ -2839,6 +2934,11 @@ void CWar::calculateWarEndData()
 			WarInfo.nMatchType = emMatchType;
 			// 当前天梯分
 			WarInfo.nPlayerMatchScore = itPerson->nPreMatchTypeScore + itPerson->nGetMatchTypeScore;
+			// 以前的段位分
+			WarInfo.nPreMatchTypeScore = itPerson->nPreMatchTypeScore;
+			// 以前的段位等级
+			WarInfo.nPreMatchTypeGrade = itPerson->nPreMatchTypeGrade;
+			
 			SMatchRankConfigSchemeInfo* pScheme = pSchemeInfo->getShemeInfoByTypeAndScore(emMatchType, WarInfo.nPlayerMatchScore);
 			if (pScheme != NULL)
 				sstrcpyn(WarInfo.szPlayerMatchName, pScheme->szDes, sizeof(WarInfo.szPlayerMatchName));
@@ -2991,11 +3091,15 @@ bool CWar::isHaveRealPlayer(int nCamp)
 
 void CWar::statisticsPlayerGraded()
 {
-	SEDTPersonData  sMaxEDTGroup[EDT_MAX];              // 各项称号 评分数值最大值
+	//SEDTPersonData  sMaxEDTGroup[EDT_MAX];              // 各项称号 评分数值最大值
+
+	map<int,map<int, SEDTPersonData>> sMaxEDTGroup;              // 各项称号 评分数值最大值
 	
 	// 计算阵营团队的战绩信息
 	SetCampTeamRecordInfo();
 
+	// 计算连杀
+	calcContKill();
 
 	WarCampMap::iterator itBegin = m_mapWarCamp.begin();
 	for (; itBegin != m_mapWarCamp.end(); ++itBegin)
@@ -3012,9 +3116,14 @@ void CWar::statisticsPlayerGraded()
 			//m_mapWarEndGraded[itPerBegin->uPDBID] = stWarEndGraded;
 			// 获得各个评分数据值的最大值
 			itPerBegin->nBaseRecord[EDT_Score] = nComprehenScore;
-			getEveryEDTMaxData(sMaxEDTGroup, &(*itPerBegin));
+			getEveryEDTMaxData(sMaxEDTGroup[itPerBegin->nCamp], &(*itPerBegin));
+			getEveryEDTMaxData(sMaxEDTGroup[CAMP_MAX], &(*itPerBegin));
 		}
 	}
+
+	// 计算失败方mvp
+	int nFailedCamp = getEnemyCamp(getWinCamp());
+	calcFailedCampMvp(nFailedCamp, sMaxEDTGroup[CAMP_MAX]);
 
 	itBegin = m_mapWarCamp.begin();
 	for (; itBegin != m_mapWarCamp.end(); ++itBegin)
@@ -3025,12 +3134,6 @@ void CWar::statisticsPlayerGraded()
 		for (; itPerBegin != pWarCamp->warPersVect.end(); ++itPerBegin)
 		{
 			// 获得唯一称号的得主的pdbid
-			//map<PDBID, STWarEndGraded>::iterator itGradedResult = m_mapWarEndGraded.find(itPerBegin->uPDBID);
-			//if (itGradedResult == m_mapWarEndGraded.end())
-			//{
-				//continue;
-			//}
-
 			for (int i = 0; i < EDT_MAX; ++i)
 			{
 				int nTitleType = EWM_NONE + 1;
@@ -3047,7 +3150,7 @@ void CWar::statisticsPlayerGraded()
 	}
 }
 
-void CWar::getEveryEDTMaxData(SEDTPersonData* pMaxEDTPDBID, SWPerson *pPerson)
+void CWar::getEveryEDTMaxData(map<int, SEDTPersonData> &pMaxEDTPDBID, SWPerson *pPerson)
 {
 	for (int i = 0; i < EDT_MAX; ++i)
 	{
@@ -3070,34 +3173,52 @@ void CWar::getEveryEDTMaxData(SEDTPersonData* pMaxEDTPDBID, SWPerson *pPerson)
 	}
 }
 
-bool  CWar::canAddPersonTitle(int nEDTIndex, const SWPerson& swPerson, SEDTPersonData* pMaxEDTGroup)
+bool  CWar::canAddPersonTitle(int nEDTIndex, const SWPerson& swPerson, map<int, map<int, SEDTPersonData>> & pMaxEDTGroup)
 {
 	if (swPerson.nBaseRecord[nEDTIndex] <= 0)
 	{
 		return false;
 	}
 
-	if (swPerson.nBaseRecord[nEDTIndex] < pMaxEDTGroup[nEDTIndex].nBaseRecord)
-	{
-		return false;
-	}
-
 	EDataType eType = (EDataType)nEDTIndex;
-	bool bOneOnly = true;
-	if (eType == EDT_DestoryTower || eType == EDT_TeamBattleControl)
+	if (eType == EDT_JoinBattleRate)
 	{
-		bOneOnly = false;
-	}
+		// 每个阵营一个玩家
+		if (swPerson.nBaseRecord[nEDTIndex] < pMaxEDTGroup[swPerson.nCamp][nEDTIndex].nBaseRecord)
+		{
+			return false;
+		}
+		if (swPerson.uPDBID != pMaxEDTGroup[swPerson.nCamp][nEDTIndex].dwActorID)
+		{
+			return false;
+		}
 
-	if (bOneOnly&&swPerson.uPDBID != pMaxEDTGroup[nEDTIndex].dwActorID)
-	{
-		return false;
-	}
-
-	if (eType != EDT_Cure&&eType != EDT_ThrillSave&&eType != EDT_DeadlyControl&&eType != EDT_TeamBattleControl)
-	{
 		return true;
 	}
+	else
+	{
+		if (swPerson.nBaseRecord[nEDTIndex] < pMaxEDTGroup[CAMP_MAX][nEDTIndex].nBaseRecord)
+		{
+			return false;
+		}
+
+		bool bOneOnly = true;
+		if (eType == EDT_DestoryTower || eType == EDT_TeamBattleControl)
+		{
+			bOneOnly = false;
+		}
+
+		if (bOneOnly && swPerson.uPDBID != pMaxEDTGroup[CAMP_MAX][nEDTIndex].dwActorID)
+		{
+			return false;
+		}
+
+		if (eType != EDT_Cure&&eType != EDT_ThrillSave&&eType != EDT_DeadlyControl&&eType != EDT_TeamBattleControl && eType != EDT_KillDragon)
+		{
+			return true;
+		}
+	}
+
 
 	// 以下几个变量是需要脚本控制的量EDT_Cure 、EDT_ThrillSave 、EDT_DeadlyControl 、EDT_TeamBattleControl
 	ISchemeCenter* pSchemeCenter = gServerGlobal->getSchemeCenter();
@@ -3132,8 +3253,10 @@ bool  CWar::canAddPersonTitle(int nEDTIndex, const SWPerson& swPerson, SEDTPerso
 				break;
 			}
 
-			int nCampBearDamage = max(itTeamResult->second.nCampBearDamage, 1);
-			bReachLimit = ((float)swPerson.nBaseRecord[EDT_Cure] / nCampBearDamage) > pEvaluathInfo->fCureRateHonorT;
+			//int nCampBearDamage = max(itTeamResult->second.nCampBearDamage, 1);
+			//bReachLimit = ((float)swPerson.nBaseRecord[EDT_Cure] / nCampBearDamage) > pEvaluathInfo->fCureRateHonorT;
+
+			bReachLimit = swPerson.nBaseRecord[EDT_Cure] > pEvaluathInfo->fCureHonorT;
 		}
 		break;
 	case EDT_ThrillSave:
@@ -3168,6 +3291,11 @@ bool  CWar::canAddPersonTitle(int nEDTIndex, const SWPerson& swPerson, SEDTPerso
 			}
 
 			bReachLimit = bControlReachFive || fTeamBattleControlScore > pEvaluathInfo->fTeamBattleControlHonorT;
+		}
+		break;
+	case EDT_KillDragon:
+		{
+			bReachLimit = swPerson.nBaseRecord[EDT_KillDragon] > pEvaluathInfo->nKillDragonHonorT;
 		}
 		break;
 	default:
@@ -4005,27 +4133,24 @@ void CWar::onPlayerContinuePlay(event_entity_continue_play *pEvent)
 	sendDataToClient(pPerson->uID, SC_MSG_WAR_ACTIVE_TALENT_LIST, &data, sizeof(data));
 }
 
-bool CWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg)
+bool CWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t stLen)
 {
-	void*	pData = (void*)msg->c_str();
-	size_t	stLen = msg->size();
-
 	switch (byKeyAction)
 	{
 	case CS_MSG_WAR_MINI_MAP_INFO:	        // 客户端地图消息
 		{
-			onClientMsgMiniMapInfo(pData, stLen);
+			onClientMsgMiniMapInfo((void*)pData, stLen);
 		}
 		break;
 	case CS_MSG_WAR_REQ_WAR_BASE_INFO:
 		{
 			// 客户端请求战场信息
-			onClientReqWarBaseInfo(uidActor, pData, stLen);
+			onClientReqWarBaseInfo(uidActor, (void*)pData, stLen);
 		}
 		break;
 	case CS_MSG_WAR_PLAYER_TABLE_REQUEST:   // 客户端tab请求
 		{
-			onClientMsgUpdateTableRequest(uidActor, pData, stLen);
+			onClientMsgUpdateTableRequest(uidActor, (void*)pData, stLen);
 		}
 		break;
 	case CS_MSG_WAR_ADD_LABEL:   // 客户端为其他玩家添加标签
@@ -4033,12 +4158,16 @@ bool CWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg)
 			ISupportMgr* pSupportMgr = (ISupportMgr*)getWarMgr(Mgr_Support);
 			if (pSupportMgr != NULL)
 			{
-				pSupportMgr->onClientMsgPersonAddLabelRequest(uidActor, pData, stLen);
+				pSupportMgr->onClientMsgPersonAddLabelRequest(uidActor, (void*)pData, stLen);
 			}
 		}
 		break;
 	case CS_MSG_WAR_PICK_UP_ITEM:
 		{
+			if (pData == NULL)
+			{
+				return false;
+			}
 			msg_pick_up_item* pMsg = (msg_pick_up_item*)pData;
 
 			// 判断距离
@@ -4074,7 +4203,7 @@ bool CWar::onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg)
 			ICheckBadBehaviorMgr* pCheckBadBhvMgr = (ICheckBadBehaviorMgr*)getWarMgr(Mgr_CheckBadBehavior);
 			if (pCheckBadBhvMgr != NULL)
 			{
-				pCheckBadBhvMgr->onMessage(byKeyAction, uidActor, pData, stLen);
+				pCheckBadBhvMgr->onMessage(byKeyAction, uidActor, (void*)pData, stLen);
 			}
 		}
 		break;
@@ -4598,6 +4727,8 @@ void CWar::calcAroundBossCount(int nMurderCamp, UID nMurderUID, EWBossType bossT
 			{
 				itPerson->nSmallBossMonster++;
 			}
+
+			itPerson->nBaseRecord[EDT_KillDragon]++;
 		}
 	}
 
@@ -5131,19 +5262,50 @@ void CWar::calcContKill()
 	WarCampMap::iterator it = m_mapWarCamp.begin();
 	for (; it != m_mapWarCamp.end(); ++it)
 	{
-		WarPersonVector::iterator itBegin = it->second.warPersVect.begin();
-		for (; itBegin != it->second.warPersVect.end(); ++itBegin)
+		WarPersonVector::iterator swPerson = it->second.warPersVect.begin();
+		for (; swPerson != it->second.warPersVect.end(); ++swPerson)
 		{
 			// 清空连杀
-			setKillMaxInfo(&(*itBegin));
+			setKillMaxInfo(&(*swPerson));
 
-			itBegin->deadContKillList.push_back(itBegin->nDeadContKill);  // 记录不死连杀
-			itBegin->timeContKillList.push_back(itBegin->nTimeContKill);  // 记录时间连杀
+			swPerson->deadContKillList.push_back(swPerson->nDeadContKill);  // 记录不死连杀
+			swPerson->timeContKillList.push_back(swPerson->nTimeContKill);  // 记录时间连杀
 
-			itBegin->nDeadContKill = 0;
-			itBegin->nTimeContKill = 0;
-			itBegin->nAliveContAssist = 0;
+			swPerson->nDeadContKill = 0;
+			swPerson->nTimeContKill = 0;
+			swPerson->nAliveContAssist = 0;
+
+			map<int, SCampTeamRecordInfo>::iterator itTeamResult = m_mapCampTeamRecord.find(swPerson->nCamp);
+			if (itTeamResult != m_mapCampTeamRecord.end())
+			{
+				int nCampKillNum = max(itTeamResult->second.nCampKillNum, 1);
+				swPerson->nBaseRecord[EDT_JoinBattleRate] = 100 * ((float)(swPerson->nBaseRecord[EDT_KillCount] + swPerson->nBaseRecord[EDT_AssistCount])) / nCampKillNum;
+			}
 
 		}
+	}
+}
+
+void CWar::calcFailedCampMvp(int nCamp, map<int, SEDTPersonData> &pMaxData)
+{
+	SWarCamp* pWarCamp = getWarCamp(nCamp);
+	SWPerson* pMaxPerson = NULL;
+	int nMaxScore = 0;
+	if (pWarCamp != NULL)
+	{
+		for (auto itPerson = pWarCamp->warPersVect.begin(); itPerson != pWarCamp->warPersVect.end(); ++itPerson)
+		{
+			if (itPerson->nBaseRecord[EDT_Score] > nMaxScore)
+			{
+				nMaxScore = itPerson->nBaseRecord[EDT_Score];
+				pMaxPerson = &(*itPerson);
+			}
+		}
+	}
+	if (pMaxPerson != NULL)
+	{
+		pMaxPerson->nBaseRecord[EDT_MvpOfLoser] = 1;
+		pMaxData[EDT_MvpOfLoser].dwActorID = pMaxPerson->uPDBID;
+		pMaxData[EDT_MvpOfLoser].nBaseRecord = 1;
 	}
 }

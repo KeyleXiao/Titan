@@ -345,4 +345,7 @@ public:
 
 	// 获取排位赛季奖励配置
 	virtual ISchemeMatchSeasonPrize* getSchemeMatchSeasonPrize();
+
+    // 推广奖励配置
+    virtual ISchemeRecommPrize* getSchemeRecommPrize();
 };

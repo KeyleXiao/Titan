@@ -240,6 +240,11 @@ void CMobaGoods::addCreateMonsterInheritEffect(UID uid)
     }
 }
 
+bool CMobaGoods::bIsMultipleCDGoods()
+{
+	return m_bMultipleCDGoods;
+}
+
 void CMobaGoods::RecomputeGoodsEffect()
 {
     if(m_pMaster == NULL)

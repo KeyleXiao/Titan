@@ -155,8 +155,7 @@ void LegendCupService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head,
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pLegendCupService->handleServerMsg( server, *head, pkg );
+    pLegendCupService->handleServerMsg( server, *head, data, len);
 }
 
 
@@ -170,8 +169,7 @@ void LegendCupService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* h
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pLegendCupService->handleClientMsg( clientID, *head, pkg );
+    pLegendCupService->handleClientMsg( clientID, *head, data, len );
 }
 
 
@@ -714,6 +712,7 @@ void LegendCupService::onServerInfoUpdated(DWORD ServerID, BYTE nState, void* pS
 
 void LegendCupService::OnLogin(ISharePerson * pSharePerson, ELoginMode nLineType)
 {
+	// 动态场景 不提示
 	if (nLineType != elogin_online)
 		return;
 
@@ -815,14 +814,14 @@ void LegendCupService::setLegendCupNodeState(SMsgSetCompetitionNodeState sNodeSt
     pLegendCup->setLegendCupNodeState(&sNodeState);
 }
 
-void LegendCupService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void LegendCupService::handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen)
 {
     //LEDENDCUP_TRACELN(__FUNCTION__": serverID = " << serverID<<" byKeyAction ="<<head.byKeyAction );
     // todo 转发到公共区
 
     // 公共区转发到自己的公共区
-    void* data = (void*)msg->c_str();
-    size_t len = msg->size();
+    void* data = pData;
+    size_t len = nLen;
     switch( head.byKeyAction )
     {
 
@@ -863,11 +862,11 @@ void LegendCupService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE
 
 
 
-void LegendCupService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void LegendCupService::handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen)
 {
     // 公共区转发到自己的公共区
-    void* data = (void*)msg->c_str();
-    size_t len = msg->size();
+    void* data = pData;
+    size_t len = nLen;
     switch( head.byKeyAction )
     {
         
@@ -976,11 +975,18 @@ void LegendCupService::onClientMsgLoockOverLegendCup(ClientID clientID, SNetMsgH
     {
         return;
     }
+	SSharePersonProperty sShareProperty = pShareReceiver->GetSharePersonByClientID(clientID);
+	if (sShareProperty.dwPDBID == INVALID_PDBID)
+	{
+		return;
+	}
 
     // 添加到观察者
     DWORD dwActorID = pShareReceiver->GetSharePersonByClientID(clientID).dwPDBID;
     pLegendCup->addLegendCupViewer(dwActorID);
 
+	//下发基础数据
+	pLegendCup->updateSingleCupBaseInfo2Client(sShareProperty.clientID, sShareProperty.dwKinID);
     // 根据比赛阶段下发数据
     if (pLegendCup->getLegendCupBaseInfo()->nCurrentRound <= 0)
     {
@@ -991,7 +997,6 @@ void LegendCupService::onClientMsgLoockOverLegendCup(ClientID clientID, SNetMsgH
         pLegendCup->sendAllRoundInfo2Client(clientID);
     }
 
-    
 }
 
 void LegendCupService::onClientMsgRequestAllBlackKinlist(ClientID clientID, SNetMsgHead* pHead, void* pData, size_t stLen)
@@ -1088,7 +1093,9 @@ void LegendCupService::readAllCupInfoFromDB()
     }
 
     DWORD dwWorldID = getThisGameWorldID();
-    if (pDBEngine->executeSP(GAMEDB_REQUEST_READ_ALL_LEGEND_CUP, dwWorldID, "", 0, static_cast<IDBRetSink *>(this)) == false)
+	DBREQ_PARAM_READCUPLIST dbParam;
+	dbParam.dwWordID = dwWorldID;
+    if (pDBEngine->executeSP(GAMEDB_REQUEST_READ_ALL_LEGEND_CUP, dwWorldID, (LPCSTR)(&dbParam), sizeof(dbParam), static_cast<IDBRetSink *>(this)) == false)
     {
         ErrorLn(" executeSP GAMEDB_REQUEST_READ_ALL_LEGEND_CUP faild!");
         return;
@@ -1270,6 +1277,11 @@ void LegendCupService::onClientRequestCupList(ClientID clientID, SNetMsgHead* pH
     for(;iter != m_AllLegendCupMgr.end(); ++iter )
     {
         // 获取所有杯赛相关 默认系统比赛在最前面
+		if (iter->second == NULL)
+		{
+			continue;
+		}
+
         LegendCuphead.nCount += iter->second->getAllCupBaseInfo(LegendCupBuf,dwRequestKinID);
     }
     // 组织数据相关
@@ -2100,6 +2112,33 @@ void LegendCupService::exitStartCompetitionNode(LONGLONG llLegendCupID, int nSer
     }
     
     pLegendCup->exitStartCompetitionNode( nSerchID, dwNewStartTime);
+}
+
+void LegendCupService::sendAbstentionKinMail(LONGLONG llLegendCupID, DWORD dwFailedKinID)
+{
+	map<LONGLONG, BYTE>::iterator iter = m_LegendCupTypeList.find(llLegendCupID);
+	if (iter == m_LegendCupTypeList.end())
+	{
+		ErrorLn(__FUNCTION__": can't find legendCup Type LegendCupID=" << llLegendCupID);
+		return;
+	}
+
+	BYTE eCupType = iter->second;
+	map<BYTE, CLegendCupInfoMgr*>::iterator iterCupMgr = m_AllLegendCupMgr.find(eCupType);
+	if (iterCupMgr == m_AllLegendCupMgr.end())
+	{
+		ErrorLn(__FUNCTION__": can't find iterCupMgr LegendCupID=" << llLegendCupID);
+		return;
+	}
+
+	CLegendCup* pLegendCup = iterCupMgr->second->findCup(llLegendCupID);
+	if (pLegendCup == NULL)
+	{
+		ErrorLn(__FUNCTION__": can't find LegendCup LegendCupID=" << llLegendCupID);
+		return;
+	}
+
+	pLegendCup->sendAbstentionKinMail(dwFailedKinID);
 }
 
 void LegendCupService::onReturnCupEXListDataInfo(char* pOutData, int nOutLen)

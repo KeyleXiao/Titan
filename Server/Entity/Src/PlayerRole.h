@@ -28,6 +28,7 @@
 #include "EntityFightState.h"
 #include "MobaGoodsEffect.h"
 #include "BelongEntityMgr.h"
+#include "EntityUseFlagMgr.h"
 
 #include <list>
 
@@ -205,6 +206,9 @@ public:
     // 获取附属实体管理对象
     virtual IBelongEntityMgr* getBelongEntityMgr(void) { return &m_belongEntityMgr; }
 
+    // 获取用途标识对象
+    virtual IUseFlag* getUseFlag() { return &m_UseFlagMgr; }
+
 	// 通知LUA添加交互回复
 	virtual void sendLuaAddContactReply(LONGLONG llContactID);
 
@@ -250,4 +254,6 @@ protected:
     CMobaGoodsEffect*   m_pMobaGoodsEffect;
     // 附属实体管理类（分身、宠物...）
     CBelongEntityMgr    m_belongEntityMgr;
+    // 实体用途管理类
+    CEntityUseFlagMgr   m_UseFlagMgr;
 };

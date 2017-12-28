@@ -927,6 +927,7 @@ void MatchSceneService::onMsgCustomerInviteRespon(ClientID clientID, void* pData
     pSendMsg->bySex         = pActor->getProperty_Integer(PROPERTY_SEX);
 
     //房间所需附加数据
+	Simple_Atom_Lock lock(&m_mutex);
     pActor->getPlayerRoomExData(&(pSendMsg->sExData));
     pSendMsg->sExData.clientID = clientID;
 
@@ -1001,6 +1002,7 @@ void MatchSceneService::onMsgEnterHall(ClientID clientID, void* pData, size_t st
 	pMsgInfo->clientID      = clientID;
     pMsgInfo->bySex         = pActor->getProperty_Integer(PROPERTY_SEX);
     //房间所需附加数据
+	Simple_Atom_Lock lock(&m_mutex);
     pActor->getPlayerRoomExData(&(pMsgInfo->sExData));
     pMsgInfo->sExData.clientID = clientID;
 	sstrcpyn(pMsgInfo->szCreateName, pActor->getProperty_String(PROPERTY_NAME).c_str(), sizeof(pMsgInfo->szCreateName));
@@ -1050,6 +1052,7 @@ void MatchSceneService::onMsgCreateGuideRoom(ClientID clientID, void* pData, siz
     pMsg->bySex     = pActor->getProperty_Integer(PROPERTY_SEX);
 
     //房间所需附加数据
+	Simple_Atom_Lock lock(&m_mutex);
     pActor->getPlayerRoomExData(&(pMsg->sExData));
     pMsg->sExData.clientID = clientID;
     sstrcpyn(pMsg->szCreateName, pActor->getProperty_String(PROPERTY_NAME).c_str(), sizeof(pMsg->szCreateName));
@@ -2037,8 +2040,7 @@ void MatchSceneService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pMatchSceneService->handleServerMsg( server, *head, pkg );
+    pMatchSceneService->handleServerMsg( server, *head, data, len);
 }
 
 
@@ -2053,14 +2055,13 @@ void MatchSceneService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* 
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pMatchSceneService->handleClientMsg( clientID, *head, pkg );
+    pMatchSceneService->handleClientMsg( clientID, *head, data, len);
 }
 
-void MatchSceneService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void MatchSceneService::handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
+    size_t len = nLen;
+    void *data = pData;
     switch ( head.byKeyAction )
     {
     case OS_MSG_MATCH_CREATE_MOBA:			// 创建MOBA战场
@@ -2142,10 +2143,9 @@ void MatchSceneService::onMsgTesterExitWar(void* pData, size_t stLen)
     accordLeaveWar(idActor);
 }
 
-void MatchSceneService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void MatchSceneService::handleClientMsg(DWORD client, SNetMsgHead head, void* data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
+
     switch ( head.byKeyAction )
     {
     case MSG_MATCH_ROOM_MODULEMSG:      // 房间消息

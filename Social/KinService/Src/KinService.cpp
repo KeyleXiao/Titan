@@ -2153,13 +2153,16 @@ void KinService::OnLogin(ISharePerson * pSharePerson, ELoginMode nLineType)
     {
         return;
     }
-    
-    if (elogin_online != nLineType)
-    {
-        return;
-    }
 
     PDBID PersonDBID = pSharePerson->GetNumProp(PROPERTY_ID);
+    if (elogin_online != nLineType)
+    {
+        // 断线重连回到主城时，客户端没有了战队的基础信息
+        CKin* pKin = findKin(pSharePerson->GetNumProp(PROPERTY_KIN));
+        if (pKin != NULL)
+            pKin->sendDataToLoginClient(PersonDBID);
+        return;
+    }
 
     // 查找战队
     SKinMember *pKinMember = findKinMember(PersonDBID);
@@ -2368,8 +2371,7 @@ void KinService::onTransmit(DWORD server, ulong uMsgID, SNetMsgHead* head, void 
         return;
     }
 
-    PACKAGE_PTR pkg( new string((const char*)data,len));
-    pKinService->handleServerMsg( server, *head, pkg );
+    pKinService->handleServerMsg( server, *head, data, len );
 }
 
 ////////////////////////////////IMessageHandler//////////////////////////////////////////
@@ -2387,14 +2389,12 @@ void KinService::onMessage(ClientID clientID, ulong uMsgID, SNetMsgHead* head, v
     }
 
     PACKAGE_PTR pkg( new string((const char*)data,len));
-    pKinService->handleClientMsg( clientID, *head, pkg );
+    pKinService->handleClientMsg( clientID, *head, data, len );
 }
 
 
-void KinService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR msg)
+void KinService::handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     // 服务器转发过来的消息
     if (data == NULL || len < sizeof(SMsgKinDataSubMsg))
     {
@@ -2435,10 +2435,8 @@ void KinService::handleServerMsg(DWORD serverID, SNetMsgHead head, PACKAGE_PTR m
     }
 }
 
-void KinService::handleClientMsg(DWORD client, SNetMsgHead head, PACKAGE_PTR msg)
+void KinService::handleClientMsg(DWORD client, SNetMsgHead head, void *data, size_t len)
 {
-    size_t len = msg->size();
-    void *data = (void *)msg->c_str();
     if (data == NULL || len < sizeof(SMsgKinDataSubMsg))
     {
         return;

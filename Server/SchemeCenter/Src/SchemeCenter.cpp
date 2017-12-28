@@ -99,6 +99,7 @@
 #include "SchemeWebUrl.h"
 #include "SchemeMatchSeasonTime.h"
 #include "SchemeMatchSeasonPrize.h"
+#include "SchemeRecommPrize.h"
 
 extern "C" __declspec(dllexport) ISchemeCenter * createSchemeCenter()
 {
@@ -874,6 +875,15 @@ bool SchemeCenter::load()
 		return false;
 	}
 
+    // 加载推广奖励配置
+    TraceLn("Load CSchemeRecommPrize...");
+    CSchemeRecommPrize* pSchemeRecommPrize = CSchemeRecommPrize::NewInstance();
+    if (pSchemeRecommPrize == NULL || pSchemeRecommPrize->LoadScheme() == false)
+    {
+        safeDelete(pSchemeRecommPrize);
+        return false;
+    }
+
 	return true;
 }
 
@@ -995,6 +1005,7 @@ void SchemeCenter::release()
     CSchemeWebUrl::CloseAll();
 	CSchemeMatchSeasonTime::CloseAll();
 	CSchemeMatchSeasonPrize::CloseAll();
+    CSchemeRecommPrize::CloseAll();
 
 	delete this;
 }
@@ -1542,4 +1553,9 @@ ISchemeMatchSeasonTime* SchemeCenter::getSchemeMatchSeasonTime()
 ISchemeMatchSeasonPrize* SchemeCenter::getSchemeMatchSeasonPrize()
 {
 	return CSchemeMatchSeasonPrize::GetWorkInstance();
+}
+
+ISchemeRecommPrize* SchemeCenter::getSchemeRecommPrize()
+{
+    return CSchemeRecommPrize::GetWorkInstance();
 }

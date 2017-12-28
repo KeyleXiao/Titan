@@ -154,9 +154,9 @@ void WarService::onEntityRelive(UID uid)
 }
 
 // client 的网络消息
-void WarService::onWarClientMsg(UID uidActor, BYTE byKeyAction, PACKAGE_PTR msg)
+void WarService::onWarClientMsg(UID uidActor, BYTE byKeyAction, const char* pData, size_t nLen)
 {
-    m_pWar->onWarClientMsg(uidActor, byKeyAction, msg);
+    m_pWar->onWarClientMsg(uidActor, byKeyAction, pData, nLen);
 }
 
 int WarService::getAllPerson(UID *PersonArray, int nArraySize)
@@ -263,6 +263,11 @@ void WarService::setWarEndReason(BYTE byEndReason)
 DWORD WarService::warSerchTypeUIDList(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID* pReturnArray, DWORD dwArrayMaxSize)
 {
     return m_pWar->warSerchTypeUIDList(bySelfCamp, byGetCampType, bySerchType, pReturnArray, dwArrayMaxSize);
+}
+
+void WarService::warAddSerchTypeBuff(SWarEffectAddBuff sData)
+{
+	return m_pWar->warAddSerchTypeBuff(sData);
 }
 
 /** 更新玩家BUFF信息列表

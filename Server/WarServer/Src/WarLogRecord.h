@@ -25,6 +25,9 @@ class CWarLogRecord: public ILogRecordMgr, public TimerHandler, public IDBRetSin
 	{
 		int nAddTalent[ETALENTDROPTYPE_MAX];     // 增加天赋
 		int nAddExp[EEXPDROPTYPE_MAX];           // 增加经验
+		int nOldTotalTalent;					 // 旧的总天赋点
+		int nOldTotalExp;						 // 旧的总经验
+
 		SHeroAddExpOrTalentLog()
 		{
 			memset(this, 0, sizeof(*this));

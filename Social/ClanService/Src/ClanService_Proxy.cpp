@@ -9,21 +9,27 @@ void ClanService_Proxy::release()
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-void ClanService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,PACKAGE_PTR msg )
+void ClanService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,void *data, size_t len )
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IClanService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+    obuf256 t_data;
+    t_data << serverID << head << len;
+    t_data.push_back(data, len);
 
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+    BUILD_MSG_BUFFER(IClanService::handleServerMsg, t_data);
+
+    m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 };
 
 //////////////////////////////////////////////////////////////////////////////////
-void ClanService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,PACKAGE_PTR msg )
+void ClanService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,void *data, size_t len)
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( IClanService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+    obuf256 t_data;
+    t_data << client << head << len;
+    t_data.push_back(data, len);
 
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+    BUILD_MSG_BUFFER(IClanService::handleClientMsg, t_data);
+
+    m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 };
 
 // 查找战队所属帮会ID

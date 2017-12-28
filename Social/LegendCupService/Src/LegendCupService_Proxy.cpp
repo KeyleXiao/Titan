@@ -8,31 +8,47 @@
 #endif
 
 
-void LegendCupService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,PACKAGE_PTR msg )
+void LegendCupService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head, void* pData, size_t nLen)
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( ILegendCupService::handleServerMsg,DWORD ,serverID,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+	obuf256 t_data;
+	t_data << serverID << head << nLen;
+	t_data.push_back(pData, nLen);
 
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+	BUILD_MSG_BUFFER(ILegendCupService::handleServerMsg, t_data);
+
+	m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 };
 
 //////////////////////////////////////////////////////////////////////////////////
-void LegendCupService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,PACKAGE_PTR msg )
+void LegendCupService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head, void* pData, size_t nLen)
 {
-    PACKAGE_PTR::T_BAG bag(msg);
-    BUILD_MSG_CONTEXT_3( ILegendCupService::handleClientMsg,DWORD ,client,SNetMsgHead, head,PACKAGE_PTR::T_BAG, bag );
+	obuf256 t_data;
+	t_data << client << head << nLen;
+	t_data.push_back(pData, nLen);
+	BUILD_MSG_BUFFER(ILegendCupService::handleClientMsg, t_data);
 
-    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
+	m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 };
 
 
 void LegendCupService_Proxy::exitStartCompetitionNode( LONGLONG llLegendCupID, int nSerchID, DWORD dwNewStartTime )
 {
     
-    BUILD_MSG_CONTEXT_3( ILegendCupService::handleClientMsg,LONGLONG ,llLegendCupID,int, nSerchID,DWORD, dwNewStartTime );
+    BUILD_MSG_CONTEXT_3( ILegendCupService::exitStartCompetitionNode,LONGLONG ,llLegendCupID,int, nSerchID,DWORD, dwNewStartTime );
 
     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK );
 };
+
+
+
+void LegendCupService_Proxy::sendAbstentionKinMail(LONGLONG llLegendCupID, DWORD dwFailedKinID)
+{
+
+	BUILD_MSG_CONTEXT_2(ILegendCupService::sendAbstentionKinMail, LONGLONG, llLegendCupID, DWORD, dwFailedKinID);
+
+	m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
+};
+
 
 void LegendCupService_Proxy::endCupRemoveCreaterRecInfo(LONGLONG llLegendCupID)
 {

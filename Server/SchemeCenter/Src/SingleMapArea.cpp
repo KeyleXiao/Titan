@@ -117,7 +117,7 @@ bool CSingleMapArea::parse( TiXmlElement * pMapElement )
 
     if(m_eType == eAreaTypeNone)
     {
-        ErrorLn("CSingleMapArea::load error:type was not configed!");
+        ErrorLn("CSingleMapArea::load error:unknown type=" << szType);
         return false;
     }
 

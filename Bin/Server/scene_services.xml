@@ -1,0 +1,65 @@
+﻿<Services work_thread_num="8">
+  <Service name="ServerGlobalService" dll_path="ServerGlobal.dll" create_func="CreateServerGlobalService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="1">
+  </Service>
+  <Service name="TimerService" dll_path="framework.dll" dll_path_64="framework64.dll" create_func="CreateTimerService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" is_prefab="1">
+  </Service>
+  <Service name="PerformanceService" dll_path="framework.dll" dll_path_64="framework64.dll" create_func="CreatePerformanceService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1">
+  </Service>
+  <Service name="TimeSyncService" dll_path="AOI.dll" create_func="CreateTimeSyncService" thread_safe="0" stack_size="4096" time_slice="32" thread_id="-1" is_prefab="0" ip="127.0.0.1"  nTCPPort="9701">
+  </Service>
+  <Service name="GameResService" dll_path="GameResServer.dll" create_func="CreateGameResService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="0">
+  </Service>
+  <Service name="MigrateService" dll_path="MigrateServer.dll" create_func="CreateMigrateService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="ManagerConnector" dll_path="connector.dll" create_func="CreateManagerConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" server_ip="127.0.0.1" server_port="8700" is_prefab="1">
+  </Service>
+  <Service name="GatewayConnector" dll_path="connector.dll" create_func="CreateGatewayAcceptorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" newthread="1"  server_ip="127.0.0.1"  is_prefab="1">
+  </Service>
+  <Service name="CenterConnector" dll_path="connector.dll" create_func="CreateCenterConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" center_server_ip="127.0.0.1" center_server_port="8001" is_prefab="1">
+  </Service>
+  <Service name="VoiceConnector" dll_path="connector.dll" create_func="CreateVoiceConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" voice_server_ip="127.0.0.1" voice_server_port="12800" is_prefab="1">
+  </Service>
+  <Service name="BridgeConnector" dll_path="connector.dll" create_func="CreateBridgeConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" server_ip="127.0.0.1" server_port="10000" enable="0" is_prefab="1">
+  </Service>
+  <Service name="DBEngineService" dll_path="ServerGlobal.dll" create_func="CreateDBEngineService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" is_prefab="1">
+  </Service>
+  <Service name="Actor" dll_path="entity.dll" create_func="CreateActorService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1" watch_min="100" watch_max="500" score=30>
+  </Service>
+  <Service name="SceneLogicService" dll_path="entity.dll" create_func="CreateSceneLogicService" thread_safe="0" inner_timer="1" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1" watch_min="300" watch_max="800" score=100>
+  </Service>
+  <Service name="SceneService" dll_path="AOI.dll" create_func="CreateGameSceneService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="PathFindService" dll_path="MapPathFind.dll" create_func="CreatePathFindService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="MatchSceneService" dll_path="MatchSceneServer.dll" create_func="CreateMatchSceneService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service> 
+  <Service name="WarService" dll_path="WarServer.dll" create_func="CreateWarService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="ChatSceneService" dll_path="ChatSceneServer.dll" create_func="CreateChatSceneService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service> 
+  <Service name="OrderSceneService" dll_path="OrderServer.dll" create_func="CreateOrderSceneService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service> 
+  <Service name="ClanSceneService" dll_path="ClanServer.dll" create_func="CreateClanSceneService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service> 
+  <Service name="KinSceneService" dll_path="KinServer.dll" create_func="CreateKinSceneService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service> 
+   <Service name="AIService" dll_path="AIServer.dll" create_func="CreateAIService" thread_safe="0" stack_size="81920" inner_timer="1" time_slice="32" thread_id="0" is_prefab="1" score=100 watch_min="200" watch_max="500">
+  </Service>
+  <Service name="GuardConnector" dll_path="connector.dll" create_func="CreateGuardConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="1" server_ip="127.0.0.1" server_port="5168" is_prefab="1">
+  </Service>
+  <Service name="TeamSceneService" dll_path="TeamServer.dll" create_func="CreateTeamSceneService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="OSSLogService" dll_path="OSSLogServer.dll" create_func="CreateOSSLogService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="MentorshipSceneService" dll_path="MentorshipServer.dll" create_func="CreateMentorshipSceneService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="LegendCupSceneService" dll_path="LegendCupServer.dll" create_func="CreateLegendCupSceneService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="StaticWarSceneService" dll_path="StaticWarServer.dll" create_func="CreateStaticWarSceneService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="MailSceneService" dll_path="MailServer.dll" create_func="CreateMailSceneService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="DateTriggerService" dll_path="framework.dll" dll_path_64="framework64.dll" create_func="CreateDateTriggerService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1">
+  </Service>
+
+</Services>

@@ -468,10 +468,27 @@ void CLegendCup::cancelLegendCup()
         m_pLegendCupService->removeServiceCupInfo(m_LegendCupBaseInfo.llLegendCupID);
     }
 
+	// 通知观察者 移除
+	send2AllViewerRemoveCupInfo();
+
 	// 释放
 	Release();
 }
 
+void CLegendCup::send2AllViewerRemoveCupInfo()
+{
+	obuf ob;
+
+	SNetMsgHead NetMsgHead;
+	NetMsgHead.bySrcEndPoint = MSG_ENDPOINT_SOCIAL;
+	NetMsgHead.byDestEndPoint = MSG_ENDPOINT_CLIENT;
+	NetMsgHead.byKeyModule = MSG_MODULEID_LEGENDCUP;
+	NetMsgHead.byKeyAction = OC_CUP_SEND_SYSTEM_CANCEL_CUP;
+	ob << NetMsgHead;
+	ob << m_LegendCupBaseInfo.llLegendCupID;
+
+	sendDataToAllViewer(ob.data(), ob.size());
+}
 
 void CLegendCup::onTriggerBeginRound()
 {
@@ -2398,6 +2415,7 @@ void CLegendCup::updateSingleCupBaseInfo2Client(ClientID clientID, DWORD dwClien
 	CupInfo.nCurrentRound		= m_LegendCupBaseInfo.nCurrentRound;							// 当前打到第几轮
     CupInfo.dwTotalCompetitionBonus = m_LegendCupBaseInfo.dwTotalRegisterTicket + m_LegendCupBaseInfo.dwContriBonus;
     CupInfo.dwRegistGold        = m_LegendCupBaseInfo.dwRegisterNeedTicket;
+	CupInfo.dwClanID			= m_LegendCupBaseInfo.dwClanID;
     
     sstrcpyn(CupInfo.szCupName, m_LegendCupBaseInfo.szCupName,sizeof(CupInfo.szCupName));       // 杯赛名称
     sstrcpyn(CupInfo.szCreaterName, m_LegendCupBaseInfo.szCreaterName,sizeof(CupInfo.szCreaterName));     // 创建者
@@ -2447,6 +2465,7 @@ void CLegendCup::updateSingleCupBaseInfoAllView(bool bNewCreate /*= false */)
     CupInfo.nCurrentKinNum      = m_mapRegisterKin.size();                                      // 当前报名数量
     CupInfo.dwTotalCompetitionBonus = m_LegendCupBaseInfo.dwTotalRegisterTicket + m_LegendCupBaseInfo.dwContriBonus;
     CupInfo.dwRegistGold        = m_LegendCupBaseInfo.dwRegisterNeedTicket;
+	CupInfo.dwClanID			= m_LegendCupBaseInfo.dwClanID;
     
     sstrcpyn(CupInfo.szCupName, m_LegendCupBaseInfo.szCupName,sizeof(CupInfo.szCupName));       // 杯赛名称
     sstrcpyn(CupInfo.szCreaterName, m_LegendCupBaseInfo.szCreaterName,sizeof(CupInfo.szCreaterName));     // 创建者
@@ -2621,7 +2640,7 @@ void CLegendCup::sendAbstentionKinMail(DWORD dwFailedKinID)
 		mailInfo.nPlusMoney = 0;
 
 		char  szParam[MAIL_CONTENT_MAXSIZE];					// 内容
-		ssprintf_s(szParam, sizeof(szParam), a2utf8("%s;%s;%d;%d"), pMailConfig->szContext, m_LegendCupBaseInfo.szCupName, localNowTime.tm_mon + 1, localNowTime.tm_mday);
+		ssprintf_s(szParam, sizeof(szParam), a2utf8("%s;%d;%d"), m_LegendCupBaseInfo.szCupName, localNowTime.tm_mon + 1, localNowTime.tm_mday);
 
 		pMailService->sendMail(mailInfo, emMailFill_LegendCupAbstentionMail, szParam);
 	}

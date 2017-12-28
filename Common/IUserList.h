@@ -1,12 +1,9 @@
 #pragma once
+#include "ISessionUser.h"
 
-class ISessionUser;
 
-class IUserList
+template<typename TypeID = DWORD>
+struct IUserList
 {
-public:
-	virtual void DelUser(ISessionUser* pUser) = 0;
-	//virtual void OnRecv(DWORD dwDataLen) = 0;
-protected:
-private:
+	virtual void DelUser(ISessionUser<TypeID>* pUser) = 0;
 };

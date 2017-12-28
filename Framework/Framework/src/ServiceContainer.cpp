@@ -47,11 +47,9 @@ ServiceContainer::ServiceContainer()
     , m_bEmergent(false)
     , m_bLockingThread(-1)
     , m_bFinished(true)
-    , m_bSessionStarted(false)
-    , m_bStop(false)
     , m_pStartedCallback(0)
     , m_pStopedCallback(0)
-
+    , m_status(SERVICE_STATUS_STARTING)
 #ifdef   FRAMEWORK_DEBUG
     , m_waitStartTick(0)
     , m_statisticTick(0)
@@ -233,6 +231,9 @@ bool ServiceContainer::stop()
 
 	recv_message(pEndMsg);
 
+    // 设置服务当前状态
+    m_status = SERVICE_STATUS_STOPING;
+
     if ( bNeedResponse )
     {
         SERVICE_PTR pRunningService = ServiceMgr::getInstance().get_service(pRunning->service_id);
@@ -282,6 +283,15 @@ void * ServiceContainer::query_interface( int iid )
 // 插入一个消息
 bool ServiceContainer::recv_message(SERVICE_MESSAGE * pMsg, bool bEmergent)
 {
+    // 注意此处多线程访问这个状态(其他线程post)
+    // 有个问题：由于多线程问题,可能判断时还是working，判断后变成了closed，消息入队列，但是这个消息不会被消费，
+    // 所以极少数消息里的T_BAG可能会造成泄漏。 读写这个标记加锁性价比又好像不高。。
+    if(m_status > SERVICE_STATUS_WORKING)
+    {
+        free(pMsg);
+        return false;
+    }
+
     pMsg->enqueue_tick = getTickCountEx();
 
     if (pMsg->is_request)
@@ -342,17 +352,17 @@ void ServiceContainer::_handle_message( SERVICE_MESSAGE * pMsg,rkt::obuf * resul
     }
 
     DWORD dwRunTick = getTickCountEx() - dwStartTick; 
-    if(dwRunTick > 50)
+    if(dwRunTick > 1000)
     {
-        TraceLn("handle_message cost " << dwRunTick << " service=" << m_scheme.scheme->name << "! func=" << get_message_name(pMsg) << ", call=" << get_wait_function());
+        ErrorLn("handle_message cost " << dwRunTick << " service=" << m_scheme.scheme->name << "! func=" << get_message_name(pMsg) << ", call=" << get_wait_function());
     }
     else if(dwRunTick > 100)
     {
         WarningLn("handle_message cost " << dwRunTick << " service=" << m_scheme.scheme->name << "! func=" << get_message_name(pMsg) << ", call=" << get_wait_function());
     }
-    else if(dwRunTick > 1000)
+    else if(dwRunTick > 50)
     {
-        ErrorLn("handle_message cost " << dwRunTick << " service=" << m_scheme.scheme->name << "! func=" << get_message_name(pMsg) << ", call=" << get_wait_function());
+        TraceLn("handle_message cost " << dwRunTick << " service=" << m_scheme.scheme->name << "! func=" << get_message_name(pMsg) << ", call=" << get_wait_function());
     }
 }
 
@@ -545,7 +555,7 @@ void ServiceContainer::work_routine()
     _do_replaceable_message();
 
     SERVICE_MESSAGE * pMessage = 0;
-    while( m_request_queue.count()>0 && !m_bStop )
+    while( m_request_queue.count()>0 && m_status!=SERVICE_STATUS_CLOSED )
     {
         // 执行时间片超时，交回控制权
         if ( m_scheme.scheme->time_slice>0 )
@@ -748,8 +758,8 @@ bool ServiceContainer::handle_inner_message( SERVICE_MESSAGE * pMsg )
             m_pStartedCallback(ptrService);
         }
 
-        // Session处于Start完状态
-        m_bSessionStarted = true;
+        // 状态设置为工作状态
+        m_status = SERVICE_STATUS_WORKING;
 
 		free(pMsg);
 
@@ -759,6 +769,14 @@ bool ServiceContainer::handle_inner_message( SERVICE_MESSAGE * pMsg )
 	// 这样用户层收到stop调用时是处在正确的线程
 	if ( pMsg->session==MSG_SESSION_END )
 	{
+        // 等消息队列都消费完 再stop
+        if( m_pReplaceableMQ!=0 || m_request_queue.count()!=0 )
+        {
+            m_request_queue.push_ex(pMsg);
+            //recv_message(pMsg);
+            return true;
+        }
+
         _do_message(pMsg, 0);
 
         if ( pMsg->need_response )
@@ -789,9 +807,8 @@ bool ServiceContainer::handle_inner_message( SERVICE_MESSAGE * pMsg )
 			delete pAxis;
 		}
 
-        // Session处于Start完状态
-        m_bSessionStarted = false;
-        m_bStop = true;
+        // 设置状态
+        m_status = SERVICE_STATUS_CLOSED;
 
 		TraceLn("unregister service " << m_scheme.scheme->name << ",id=" << m_id);
 		ServiceMgr::getInstance().unregister_service( get_selfptr() );
@@ -914,6 +931,12 @@ bool ServiceContainer::post_message( SERVICE_MESSAGE * pMsg,size_t nMsgLen,rkt::
 // 投递一个可被替换的消息
 bool ServiceContainer::post_replaceable_message( unsigned long ulKey,SERVICE_MESSAGE * pMsg,size_t nMsgLen )
 {
+    if(m_status > SERVICE_STATUS_WORKING)
+    {
+        free(pMsg);
+        return false;
+    }
+
     // 检测长度越界
 	if ( pMsg->context_len+sizeof(SERVICE_MESSAGE)!=nMsgLen )
 	{
@@ -1010,21 +1033,21 @@ bool ServiceContainer::post_request( ServiceContainer * pRequest,SERVICE_MESSAGE
 				DWORD dwTick = getTickCountEx();
 				while( _do_message(pMsg,resultBuf,false)==false )
 				{
+                    if ( getTickCountEx() - dwTick > 100000 )
+                    {
+                        char szErr[128];
+                        ssprintf_s(szErr, sizeof(szErr), "post request dead-locked! func=%s, call=%s", get_message_name(pMsg), pRequest->m_scheme.scheme->name);
+                        ErrorLn(szErr);
+                        break;
+                    }
+
 					if ( getTickCountEx() - dwTick > 100 )
 					{
 						char szErr[128];
                         ssprintf_s(szErr, sizeof(szErr), "post request locked! func=%s, call=%s", get_message_name(pMsg), pRequest->m_scheme.scheme->name);
 						WarningLn(szErr);
 						continue;
-					}
-
-					if ( getTickCountEx() - dwTick > 100000 )
-					{
-						char szErr[128];
-                        ssprintf_s(szErr, sizeof(szErr), "post request dead-locked! func=%s, call=%s", get_message_name(pMsg), pRequest->m_scheme.scheme->name);
-						ErrorLn(szErr);
-						break;
-					}
+                    }
 
 					pRequest->yield(false);
 
@@ -1037,11 +1060,10 @@ bool ServiceContainer::post_request( ServiceContainer * pRequest,SERVICE_MESSAGE
 			}
 		}
 
-		// 放到消息队列中
-		recv_message(pMsg,nFlag & MSG_FLAG_EMERGENT);
+        return recv_message(pMsg,nFlag & MSG_FLAG_EMERGENT); 
 	}
 
-	return true;
+	return false;
 }
 
 // 投递一个回应

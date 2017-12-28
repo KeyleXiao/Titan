@@ -20,8 +20,8 @@
 
 
 // 用于监听到的连接
-template<class TYPE>
-class SessionUser : public ISessionUser, public TimerHandler
+template<typename TYPE, typename TypeID = DWORD>
+class SessionUser : public ISessionUser<TypeID>, public TimerHandler
 {
 	// 这里已经使用了1个TimerID，子类在使用Timer时，注意不要重复
 	enum
@@ -50,7 +50,7 @@ public:
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
-	SessionUser(IConnection * conn, IUserList& pUserList, Processer<TYPE>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord = nullptr)
+	SessionUser(IConnection * conn, IUserList<TypeID>& pUserList, Processer<TYPE>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord = nullptr)
 		: m_UserList(pUserList)
 		, m_pConnection(conn)
 		, m_Processer(processer)
@@ -107,8 +107,8 @@ public:
 	const char*		GetRemoteIP() { return m_szRemoteIP.c_str(); }
 	DWORD			GetRemotePort() { return m_dwRemotePort; }
 
-	void			SetID(const DWORD& id) { m_dwID = id; }
-	virtual DWORD	GetID() { return m_dwID; }
+	void			SetID(const TypeID& id) { m_dwID = id; }
+	virtual TypeID	GetID() { return m_dwID; }
 
 protected:
 	// 打印该连接的信息
@@ -129,20 +129,20 @@ private:
 
 protected:
 	IConnection	*		m_pConnection;		// 服务器与网关之间的连接
-	DWORD				m_dwID;				// 两种来源：1.连接建立的时候生成，自增的；2.外部传入的；
+	TypeID				m_dwID;				// 两种来源：1.连接建立的时候生成，自增的；2.外部传入的；
 	std::string			m_szRemoteIP;		// 连进来的IP
 	DWORD				m_dwRemotePort;		// 连进来的端口
 	DWORD				m_dwLastKeepaliveTime;	// 上次收到心跳包的时间
 
 	/*以下为引用别人的，无需释放*/
 	TimerAxis&			m_TimerAxis;
-	IUserList&			m_UserList;
+	IUserList<TypeID>&	m_UserList;
 	Processer<TYPE>&	m_Processer;
 	IByteRecord*		m_pByteRecord;
 };
 
-template<class TYPE>
-bool SessionUser<TYPE>::SendData(const char * pData, size_t dataLen)
+template<class TYPE, typename TypeID>
+bool SessionUser<TYPE, TypeID>::SendData(const char * pData, size_t dataLen)
 {
 	Assert(m_pConnection);
 	if (!m_pConnection) { return false; }
@@ -154,15 +154,15 @@ bool SessionUser<TYPE>::SendData(const char * pData, size_t dataLen)
 	return m_pConnection->SendData(pData, length);
 }
 
-template<class TYPE>
-void SessionUser<TYPE>::Disconnect()
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::Disconnect()
 {
 	if (m_pConnection)
 		m_pConnection->Disconnect();
 }
 
-template<class TYPE>
-void SessionUser<TYPE>::Release()
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::Release()
 {
 	m_TimerAxis.KillTimer(ETimerEventID_CheckKeepalive, this);
 	m_UserList.DelUser(this);
@@ -174,8 +174,8 @@ void SessionUser<TYPE>::Release()
 	delete this;
 }
 
-template<class TYPE>
-void SessionUser<TYPE>::UnHandled(LPVOID pData, DWORD dwDataLen)
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::UnHandled(LPVOID pData, DWORD dwDataLen)
 {
 	SGameMsgHead* head = (SGameMsgHead*)pData;
 
@@ -186,15 +186,15 @@ void SessionUser<TYPE>::UnHandled(LPVOID pData, DWORD dwDataLen)
 }
 
 ////////////////////////////////IConnectionEventHandler//////////////////////////////////////////////////////
-template<class TYPE>
-void SessionUser<TYPE>::OnDisconnected(IConnection * conn, DWORD reason)
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::OnDisconnected(IConnection * conn, DWORD reason)
 {
 	TraceLn("Connection disconnected!" << ToString());
 	Release();
 }
 
-template<class TYPE>
-void SessionUser<TYPE>::OnRecv(IConnection * conn, LPVOID pData, DWORD dwDataLen)
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::OnRecv(IConnection * conn, LPVOID pData, DWORD dwDataLen)
 {
 	assert(conn == m_pConnection);
 	if (dwDataLen < sizeof(SGameMsgHead))
@@ -221,8 +221,8 @@ void SessionUser<TYPE>::OnRecv(IConnection * conn, LPVOID pData, DWORD dwDataLen
 	OnRecvData(dwDataLen);
 }
 
-template<class TYPE>
-void SessionUser<TYPE>::OnError(IConnection * conn, DWORD dwErrorCode)
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::OnError(IConnection * conn, DWORD dwErrorCode)
 {
 	TraceLn("Connection occured an error!" << dwErrorCode << ToString());
 	Release();
@@ -230,8 +230,8 @@ void SessionUser<TYPE>::OnError(IConnection * conn, DWORD dwErrorCode)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////TimerHandler//////////////////////////////////////////////////////
-template<class TYPE>
-void SessionUser<TYPE>::OnTimer(unsigned long dwTimerID)
+template<class TYPE, typename TypeID>
+void SessionUser<TYPE, TypeID>::OnTimer(unsigned long dwTimerID)
 {
 	switch (dwTimerID)
 	{

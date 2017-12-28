@@ -890,7 +890,7 @@ void SocialGlobalService::onTimerCheckBaseService(void)
     for (int i=0; i<nCount; ++i)
     {
         SERVICE_PTR pService = pServiceMgr->get_service(arrServiceID[i]);
-        if(pService==NULL || !pService->is_started())
+        if(pService==NULL || pService->get_status() != SERVICE_STATUS_WORKING)
         {
             bBaseServicesStartOk = false;
             break;

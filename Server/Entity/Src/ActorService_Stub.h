@@ -39,7 +39,7 @@ public:
     IServiceContainer*		m_pContainer;
 	ActorService *       m_real_service;
 
-    ActorService_Proxy( ActorService * pReal) : m_real_service(pReal) {
+    ActorService_Proxy( ActorService * pReal) : m_real_service(pReal), m_pContainer(0){
     }
 
     virtual ~ActorService_Proxy(){

@@ -336,6 +336,9 @@ private:
     // 更新本轮杯赛节点信息到客户端
     void				sendCurRoundInfo2Viewer();
 
+	// 通知观察者移除杯赛信息
+	void				send2AllViewerRemoveCupInfo();
+
 private:
     ILegendCupService*          m_pLegendCupService;
     SLegendCupBaseInfo          m_LegendCupBaseInfo;

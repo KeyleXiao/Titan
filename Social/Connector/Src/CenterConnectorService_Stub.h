@@ -40,7 +40,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 
 
-	CenterConnectorService_Proxy() {
+	CenterConnectorService_Proxy() : m_pContainer(0) {
 	}
 
 	virtual ~CenterConnectorService_Proxy(){
@@ -57,6 +57,9 @@ public:
 	*/
 	virtual bool            connectServer(void)
     {
+        if (m_pContainer == 0)
+            return bool();
+
         BUILD_MSG_CONTEXT_VOID( ICenterConnectorService::connectServer );
 
         rkt::obuf resultBuf;
@@ -69,6 +72,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual bool  updateServerInfo( ibuffer & info )
     {
+        if (m_pContainer == 0)
+            return bool();
+
 	    obuf256 t_data;
         int size = info.size();
 	    t_data << size;
@@ -82,6 +88,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual CSID  getLocalServerCSID(  )
     {
+        if (m_pContainer == 0)
+            return CSID();
+
        BUILD_MSG_CONTEXT_VOID( ICenterConnectorService::getLocalServerCSID );
 
         rkt::obuf resultBuf;
@@ -94,6 +103,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual DWORD  getAllServersCount(  )
     {
+        if (m_pContainer == 0)
+            return DWORD();
+
 	    BUILD_MSG_CONTEXT_VOID( ICenterConnectorService::getAllServersCount );
 
         rkt::obuf resultBuf;
@@ -106,6 +118,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual DWORD  getServerList( ServerData* serverPtrArray[],DWORD dwArratSize,CGID GroupFilter,WORD wTypeFilter )
     {
+        if (m_pContainer == 0)
+            return DWORD();
+
 	    BUILD_MSG_CONTEXT_4( ICenterConnectorService::getServerList,ServerData**, serverPtrArray,DWORD ,dwArratSize,CGID ,GroupFilter,WORD, wTypeFilter );
 
         rkt::obuf resultBuf;
@@ -118,6 +133,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual ServerData  getServerInfo( CSID ServerID )
     {
+        if (m_pContainer == 0)
+            return ServerData();
+
 	    BUILD_MSG_CONTEXT_1( ICenterConnectorService::getServerInfo,CSID ,ServerID );
 
         rkt::obuf resultBuf;
@@ -130,6 +148,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual WORD  getServerType( )
    {
+       if (m_pContainer == 0)
+           return WORD();
+
        BUILD_MSG_CONTEXT_VOID( ICenterConnectorService::getServerType );
 
        rkt::obuf resultBuf;
@@ -142,6 +163,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual void  postMessage( CSID DestServerID,void * data, int len )
     {
+        if (m_pContainer == 0)
+            return;
+
 	    obuf256 t_data;
 	    t_data << DestServerID << len;
 		t_data.push_back(data, len);
@@ -154,6 +178,9 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual void  broadcastMessage( string & id_buff,ibuffer & msg )
     {
+        if (m_pContainer == 0)
+            return;
+
 	    obuf256 t_data;
 	    t_data << id_buff<<msg;
 
@@ -164,6 +191,9 @@ public:
 
    virtual void  sendDataToZoneSvr(LPCSTR pData, size_t nLen, CSID ServerID = INVALID_SERVER_ID)
    {
+       if (m_pContainer == 0)
+           return;
+
 	    obuf256 t_data;
 	    t_data << nLen<<ServerID;
 		t_data.push_back( pData,nLen);
@@ -180,6 +210,9 @@ public:
     */
     virtual void sendDataToDBHttpSvr(BYTE byKeyModule, BYTE byKeyAction, LPCSTR pData, size_t nLen)
     {
+        if (m_pContainer == 0)
+            return;
+
         obuf256 t_data;
         t_data << byKeyModule << byKeyAction << nLen;
         t_data.push_back( pData,nLen);

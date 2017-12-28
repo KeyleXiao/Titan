@@ -36,6 +36,10 @@ public:
 	// 检查创建联盟杯赛
 	virtual bool checkCreateClanLegendCup(DWORD dwClanID,int LegendCupConfigID);
 
+    ClanSceneService_Proxy() : m_pContainer(0)
+    {
+    }
+
 public:
 	SERVICE_PTR    m_pContainer;
 

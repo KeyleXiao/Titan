@@ -63,6 +63,8 @@ public:
 	*/
 	virtual int getWeekActivity(DWORD dwKinID);
 
+    KinSceneService_Proxy() : m_pContainer(0){}
+
 public:
 	SERVICE_PTR    m_pContainer;
 };

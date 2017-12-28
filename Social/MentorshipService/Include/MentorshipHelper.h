@@ -23,7 +23,7 @@ public:
 	IMentorshipService*	m_ptr;
     SERVICE_PTR	m_pContainer;
 
-	MentorshipHelper() : m_ptr( nullptr )
+	MentorshipHelper() : m_ptr( nullptr ), m_pContainer(0)
 	{
 		IMentorshipManager* pMentorshipManager = gSocialGlobal->getMentorshipManager();
 		if (nullptr == pMentorshipManager)
@@ -31,7 +31,7 @@ public:
 			return;
 		}
 
-		SERVICE_PTR m_pContainer = pMentorshipManager->GetMentorshipService();
+		m_pContainer = m_pContainer == 0? pMentorshipManager->GetMentorshipService() : m_pContainer;
 		if (nullptr == m_pContainer)
 		{
 			MENTORSHIP_ERRORLN("MentorshipHelper() failed! can not found SERVICE_PTR!");

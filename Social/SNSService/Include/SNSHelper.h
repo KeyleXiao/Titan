@@ -12,7 +12,7 @@ public:
 	SERVICE_PTR		m_pService;
 	ISNSService*	m_ptr;
 
-	SNSHelper() : m_ptr( nullptr )
+	SNSHelper() : m_ptr( nullptr ), m_pService(0)
 	{
 		ISNSManager* pSNSManager = gSocialGlobal->getSNSManager();
 		if (nullptr == pSNSManager)
@@ -20,7 +20,7 @@ public:
 			return;
 		}
 
-		m_pService = pSNSManager->getSNSService();
+		m_pService = m_pService == 0? pSNSManager->getSNSService() : m_pService;
 		if (nullptr == m_pService)
 		{
 			ErrorLn("SNSHelper() failed! can not found SERVICE_PTR!");

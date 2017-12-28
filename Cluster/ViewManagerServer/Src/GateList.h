@@ -4,7 +4,7 @@
 class GateUser;
 struct SMsgView_MV_GatesInfo;
 
-class GateList : public UserList<GateUser>, public Singleton<GateList>
+class GateList : public UserList<GateUser, GateID>, public Singleton<GateList>
 {
 public:
 	GateList();
@@ -22,12 +22,12 @@ public:
 	GateID	GetIdleGate(GateID wExceptID = 0);
 
 protected:
-	virtual void onDelUser(ISessionUser* pUser) {};
+	virtual void OnDelUser(ISessionUser<GateID>* pUser) {};
 
 	//注册这里要处理的所有消息，到m_Processer中
 	virtual void RegisterHandlers();
 
-	virtual DWORD GetMaxID() { return MAX_GATEWAY_COUNT; }
+	virtual GateID GetMaxID() { return MAX_GATEWAY_COUNT; }
 
 };
 extern GateList& gGateList;

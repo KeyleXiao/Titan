@@ -339,6 +339,7 @@ int CLegendCupInfoMgr::getAllCupBaseInfo(obuf &out, DWORD dwRequestKinID)
 		CupInfo.nCurrentRound = pCupBaseInfo->nCurrentRound;                      // 当前打到第几轮
         CupInfo.dwTotalCompetitionBonus = pCupBaseInfo->dwTotalRegisterTicket + pCupBaseInfo->dwContriBonus; // 比赛总奖金
         CupInfo.dwRegistGold = pCupBaseInfo->dwRegisterNeedTicket;
+		CupInfo.dwClanID	= pCupBaseInfo->dwClanID;
        
         out<<CupInfo;
 

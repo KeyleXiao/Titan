@@ -63,6 +63,7 @@ enum LEDENDCUP_NET_MESSAGE_KEYACTION
     OC_CUP_SEND_REGISTER_SUCCESS,           // 申请加入成功
     OC_CUP_SEND_CREATER_PUBLIC_SUCCESS,      // 发布成功
     OC_CUP_SEND_PUBLIC_SUCCESS,            // 发布成功
+	OC_CUP_SEND_SYSTEM_CANCEL_CUP,            // 系统取消杯赛
 
 
 	/////////////////////////////////////场景服到社会服/////////////////////////////////////
@@ -244,6 +245,7 @@ struct SMsgLegendCupInfo
 	int				nCurrentRound;                      // 当前打到第几轮
     DWORD			dwTotalCompetitionBonus;            // 比赛总奖金
     DWORD			dwRegistGold;                       // 报名需要的金币
+	DWORD           dwClanID;                           // 联盟ID
     
     SMsgLegendCupInfo()
     {

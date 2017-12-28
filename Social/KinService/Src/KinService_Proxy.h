@@ -18,6 +18,11 @@ using namespace std;
 class KinService_Proxy:public IKinService
 {
 public:
+	////////////////// KinService_Proxy ////////////////////////////////////////////////////////
+
+	KinService_Proxy() :m_pContainer(0) {};
+	~KinService_Proxy() {};
+public:
 	///////////////////////////////IKinService///////////////////////////////////////////
 
     // 处理其它服务器发送过来的消息

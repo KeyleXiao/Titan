@@ -7,8 +7,6 @@
 #define TraceLn(x)
 #endif
 
-
-
 //void KinSceneService_Proxy::start()
 //{
 //	BUILD_MSG_CONTEXT_VOID( IKinSceneService::start );
@@ -31,6 +29,8 @@
 // 发送社会服消息
 void KinSceneService_Proxy::sendToSocial(BYTE nMsgID, void * data, size_t len)
 {
+    if (m_pContainer == 0) { return; }
+
 	obuf128 t_data;
 	t_data << nMsgID;
 	t_data << len;
@@ -43,6 +43,8 @@ void KinSceneService_Proxy::sendToSocial(BYTE nMsgID, void * data, size_t len)
 
 SSceneKinMember KinSceneService_Proxy::getKinMember(DWORD dwPDBID)
 {
+    if (m_pContainer == 0) { return SSceneKinMember(); }
+
 	BUILD_MSG_CONTEXT_1(IKinSceneService::getKinMember,DWORD, dwPDBID);
 
 	rkt::obuf resultBuf;
@@ -54,6 +56,8 @@ SSceneKinMember KinSceneService_Proxy::getKinMember(DWORD dwPDBID)
 
 SKinInfo KinSceneService_Proxy::getKinInfo(DWORD dwKinID)
 {
+    if (m_pContainer == 0) { return SKinInfo(); }
+
     BUILD_MSG_CONTEXT_1(IKinSceneService::getKinInfo,DWORD, dwKinID);
 
 	rkt::obuf resultBuf;
@@ -65,6 +69,8 @@ SKinInfo KinSceneService_Proxy::getKinInfo(DWORD dwKinID)
 
 DWORD KinSceneService_Proxy::getKinMemberList(DWORD dwKinID,PDBID* pReturnArray, DWORD dwArrayMaxSize)
 {
+    if (m_pContainer == 0) { return DWORD(); }
+
     BUILD_MSG_CONTEXT_3(IKinSceneService::getKinMemberList,DWORD, dwKinID,PDBID*, pReturnArray, DWORD ,dwArrayMaxSize);
 
 	rkt::obuf resultBuf;
@@ -75,6 +81,8 @@ DWORD KinSceneService_Proxy::getKinMemberList(DWORD dwKinID,PDBID* pReturnArray,
 
 DWORD KinSceneService_Proxy::getKinMemberCount(DWORD dwKinID)
 {
+    if (m_pContainer == 0) { return DWORD(); }
+
     BUILD_MSG_CONTEXT_1(IKinSceneService::getKinMemberCount,DWORD ,dwKinID);
 
 	rkt::obuf resultBuf;
@@ -86,6 +94,8 @@ DWORD KinSceneService_Proxy::getKinMemberCount(DWORD dwKinID)
 
 bool KinSceneService_Proxy::setWeekActivity(DWORD dwKinID, int nValue)
 {
+    if (m_pContainer == 0) { return bool(); }
+
 	BUILD_MSG_CONTEXT_2(IKinSceneService::setWeekActivity, DWORD, dwKinID, int, nValue);
 
 	m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
@@ -95,6 +105,8 @@ bool KinSceneService_Proxy::setWeekActivity(DWORD dwKinID, int nValue)
 
 int KinSceneService_Proxy::getWeekActivity(DWORD dwKinID)
 {
+    if (m_pContainer == 0) { return int(); }
+
 	BUILD_MSG_CONTEXT_1(IKinSceneService::getWeekActivity, DWORD, dwKinID);
 
 	rkt::obuf resultBuf;
@@ -106,6 +118,8 @@ int KinSceneService_Proxy::getWeekActivity(DWORD dwKinID)
 
 void KinSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void * data, size_t len)
 {
+    if (m_pContainer == 0) { return ; }
+
     obuf256 t_data;
     t_data << serverID << head << len;
     t_data.push_back(data, len);
@@ -117,6 +131,8 @@ void KinSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, vo
 
 void KinSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, void * data, size_t len)
 {
+    if (m_pContainer == 0) { return; }
+
     obuf256 t_data;
     t_data << client << head << len;
     t_data.push_back(data, len);

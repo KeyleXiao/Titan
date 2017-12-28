@@ -16,8 +16,8 @@
 #include "ByteRecord.h"
 
 
-template<class TYPE>
-class UserContainer : public UserList<TYPE>
+template<typename TYPE, typename TypeID = DWORD>
+class UserContainer : public UserList<TYPE, TypeID>
 {
 public:
 	// 创建连接对象
@@ -30,7 +30,7 @@ public:
 	}
 
 	// 删除用户
-	virtual void	DelUser(ISessionUser* pUser)
+	virtual void	DelUser(ISessionUser<TypeID>* pUser)
 	{
 		UserList::DelUser(pUser);
 		m_unHandshakeSet.erase(pUser);
@@ -40,9 +40,9 @@ public:
 	// Returns:   bool 是否成功加入了UserMap
 	// Qualifier: 当收到握手消息时，对方会发来其ID.此时会将本连接从临时集合中移除，并加入UserMap
 	// Parameter: TYPE * pSession
-	// Parameter: DWORD dwID
+	// Parameter: TypeID dwID
 	//************************************
-	bool OnSessionRcvID(TYPE* pSession, DWORD dwID)
+	bool OnSessionRcvID(TYPE* pSession, TypeID dwID)
 	{
 		pSession->SetID(dwID);
 		m_unHandshakeSet.erase(pSession);
@@ -57,7 +57,7 @@ public:
 	}
 
 protected:
-	typedef std::set<ISessionUser*>	SessionSet;
+	typedef std::set<ISessionUser<TypeID>*>	SessionSet;
 
 	SessionSet		m_unHandshakeSet;	// 储存还未发来“握手”消息的连接
 	ByteRecord		m_ByteRecord;		// 流量记录器

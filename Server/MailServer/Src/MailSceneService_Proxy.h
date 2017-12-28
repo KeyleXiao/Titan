@@ -30,6 +30,11 @@ public:
 	// 发送填充邮件(数据由配置表里面填充)
 	virtual bool	sendFillMail(DWORD dwPDBID, int nMailFillID, LPCSTR szParam = NULL);
 
+    MailSceneService_Proxy() : m_pContainer(0)
+    {
+
+    }
+
 public:
 	SERVICE_PTR    m_pContainer;
 

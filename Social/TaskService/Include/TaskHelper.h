@@ -21,7 +21,7 @@ public:
 	ITaskStorageService*	m_ptr;
 	SERVICE_PTR				m_pContainer;
 
-	TaskHelper() : m_ptr(nullptr)
+	TaskHelper() : m_ptr(nullptr), m_pContainer(0)
 	{
 		ITaskManager* pTaskManager = gSocialGlobal->getTaskManager();
 		if (nullptr == pTaskManager)
@@ -29,7 +29,7 @@ public:
 			return;
 		}
 
-		m_pContainer = pTaskManager->GetTaskService();
+		m_pContainer = m_pContainer == 0? pTaskManager->GetTaskService() : m_pContainer;
 		if (nullptr == m_pContainer)
 		{
 			return;

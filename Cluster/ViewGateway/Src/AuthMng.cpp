@@ -21,7 +21,7 @@ EnumResultRequestAddPlayer AuthMng::Insert(SMsgView_MG_RequestAddPlayer* pMsg, A
 		return E_RESULT_RAP_ERR_NOT_REACH_VIEW;
 
 	// 1.2 检验该玩家是否已经连上来了
-	ClientSession* pClientSession = gClientContainer.GetByPlayerID(pMsg->reqMsg.dwPlayerID);
+	ClientSession* pClientSession = gClientContainer.Get(pMsg->reqMsg.dwPlayerID);
 	if (pClientSession)
 		return E_RESULT_RAP_ERR_PLAYER_EXIST;
 

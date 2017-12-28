@@ -32,7 +32,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 
 
-	GuardConnectorService_Proxy()
+	GuardConnectorService_Proxy() : m_pContainer(0)
 	{
 	}
 
@@ -47,6 +47,9 @@ public:
 	*/
 	virtual void Close()
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_VOID( IGuardConnectorService::Close );
 		m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
 	}
@@ -57,6 +60,9 @@ public:
 	*/
 	virtual bool RegisterMessageHandler(DWORD dwNameSpace, IGuardMessageHandler* handler)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_2( IGuardConnectorService::RegisterMessageHandler,DWORD ,dwNameSpace, IGuardMessageHandler*, handler );
 
         rkt::obuf resultBuf;
@@ -71,6 +77,9 @@ public:
 	*/
 	virtual bool UnregisterMessageHandler(DWORD dwNameSpace, IGuardMessageHandler* handler)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_2( IGuardConnectorService::UnregisterMessageHandler,DWORD ,dwNameSpace, IGuardMessageHandler*, handler );
 
         rkt::obuf resultBuf;
@@ -89,6 +98,9 @@ public:
 	*/
 	virtual bool WriteImageDataToServer(IGuardMessageHandler* handler, int nNameSpace, int nKey, const char * pData, DWORD dwLen)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		obuf256 t_data;
 		t_data <<handler<<nNameSpace<<nKey<<dwLen;
 		if (pData)
@@ -108,6 +120,9 @@ public:
 	*/
 	virtual bool ReadImageDataFromServer(IGuardMessageHandler* handler, int nNameSpace, int nKey)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_3( IGuardConnectorService::ReadImageDataFromServer,IGuardMessageHandler* ,handler, int, nNameSpace, int, nKey );
 		return m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
 	}
@@ -118,6 +133,9 @@ public:
 	*/
 	virtual DWORD  GetLocalServerCSID()
 	{
+        if (m_pContainer == 0)
+            return DWORD();
+
 		BUILD_MSG_CONTEXT_VOID( IGuardConnectorService::GetLocalServerCSID );
 
         rkt::obuf resultBuf;
@@ -133,6 +151,9 @@ public:
 	*/
 	virtual bool			IsDisconnectToServer(void)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_VOID( IGuardConnectorService::IsDisconnectToServer );
 
         rkt::obuf resultBuf;
@@ -148,6 +169,9 @@ public:
 	*/
 	virtual bool			IsStartup()
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_VOID( IGuardConnectorService::IsStartup );
 
         rkt::obuf resultBuf;

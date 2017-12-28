@@ -480,6 +480,7 @@ ENUM EMChatTipID
 	CHAT_TIP_POINTSHOP_NOTHAVE_REFLUSHNUM,					// 刷新卡牌次数不足
 	CHAT_TIP_POINTSHOP_REFLUSH_SUCCESS,						// 手动刷新卡牌成功
 	CHAT_TIP_POINTSHOP_CANT_BUY_INWAR,						// 战场不能购买商品
+	CHAT_TIP_POINTSHOP_NOT_IN_SELL_LIST,					// 节日赠送商品，不可购买
 
     CHAT_TIP_ORDER_BEGIN = 15000,						    // 排行榜相关
     CHAT_TIP_ORDER_SAVE_PERSONSET_SUCESS,                   // 个人排行榜设置成功

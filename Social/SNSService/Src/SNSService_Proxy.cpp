@@ -9,6 +9,10 @@
 
 void SNSService_Proxy::recv_message( int msgID, const char* data, int nLen)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	obuf256 t_data;
 	t_data << msgID << nLen;
 	t_data.push_back( data, nLen );
@@ -21,6 +25,10 @@ void SNSService_Proxy::recv_message( int msgID, const char* data, int nLen)
 
 void SNSService_Proxy::addBuddy(DWORD dwUserID1, DWORD dwUserID2,  const char* szActorName1, const char* szActorName2)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	BUILD_MSG_CONTEXT( ISNSService::addBuddy,addBuddy_Param );
 
 	pParam->dwUserID1 = dwUserID1;
@@ -37,6 +45,10 @@ void SNSService_Proxy::addBuddy(DWORD dwUserID1, DWORD dwUserID2,  const char* s
 // @param szInviterName : 邀请者名字
 void SNSService_Proxy::invitePlayGame(DWORD dwInviterActorID, DWORD dwTargetActorID, DWORD dwRoomID)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	BUILD_MSG_CONTEXT_3(ISNSService::invitePlayGame, DWORD, dwInviterActorID, DWORD, dwTargetActorID, DWORD, dwRoomID)
 
 	m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);

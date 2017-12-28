@@ -45,7 +45,7 @@ public:
     IGameSceneService * m_pRealService;
 
 
-	GameSceneService_Proxy() : m_pRealService(0)
+	GameSceneService_Proxy() : m_pRealService(0), m_pContainer(0)
     {
 	}
 
@@ -86,94 +86,156 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual bool  insertEntity( AOI_PROXY_PTR proxy,Vector3 loc, int flag = MSG_FLAG_DEFAULT )
     {
+        if(m_pContainer == 0)
+        {
+            return false;
+        }
+
 		AOI_PROXY_PTR::T_BAG packer(proxy);
 	    BUILD_MSG_CONTEXT_2( IGameSceneService::insertEntity,AOI_PROXY_PTR::T_BAG ,packer,Vector3, loc );
 
 	    rkt::obuf resultBuf;
-	    m_pContainer->post_message( pMsg,nMsgLen,&resultBuf, flag);
-
-        if(flag & MSG_FLAG_NO_BLOCK)
+	    if(!m_pContainer->post_message( pMsg,nMsgLen,&resultBuf, MSG_FLAG_NO_BLOCK))
         {
-            return true;
+            AOI_PROXY_PTR ptrProxy = packer.get();
+            return false;
         }
 
-	    RETURN_FROM_MSG_BUF(bool);
-
-	    return false;     // 请检查默认返回值是否正确
+        return true;
     };
 
    //////////////////////////////////////////////////////////////////////////////////
    virtual bool  removeEntity( AOI_PROXY_PTR proxy,Vector3 loc, int flag = MSG_FLAG_DEFAULT )
     {
+        if(m_pContainer == 0)
+        {
+            return false;
+        }
+
 		AOI_PROXY_PTR::T_BAG packer(proxy);
 	    BUILD_MSG_CONTEXT_2( IGameSceneService::removeEntity,AOI_PROXY_PTR::T_BAG ,packer,Vector3, loc );
 
 	    rkt::obuf resultBuf;
-	    m_pContainer->post_message( pMsg,nMsgLen,&resultBuf, flag);
-        if(flag & MSG_FLAG_NO_BLOCK)
+	    if(!m_pContainer->post_message( pMsg,nMsgLen,&resultBuf, MSG_FLAG_NO_BLOCK))
         {
-            return true;
+            AOI_PROXY_PTR ptrProxy = packer.get();
+            return false;
         }
-
-	    RETURN_FROM_MSG_BUF(bool);
-	    return false;     // 请检查默认返回值是否正确
+	    
+        return true;
     };
 
    //////////////////////////////////////////////////////////////////////////////////
    virtual bool  moveEntity( AOI_PROXY_PTR proxy,Vector3 newLoc )
     {
+        if(m_pContainer == 0)
+        {
+            return false;
+        }
+
 		AOI_PROXY_PTR::T_BAG packer(proxy);
 		BUILD_MSG_CONTEXT_2( IGameSceneService::moveEntity,AOI_PROXY_PTR::T_BAG ,packer,Vector3, newLoc );
 
-		return m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK);
+		if(!m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK))
+        {
+            AOI_PROXY_PTR ptrProxy = packer.get();
+            return false;
+        }
+        return true;
     };
 
    ////////////////////////////////////////////////////////////////////////////////
    virtual bool setObserver( AOI_PROXY_PTR proxy,bool bObserver )
    {
+       if(m_pContainer == 0)
+       {
+           return false;
+       }
+
        AOI_PROXY_PTR::T_BAG packer(proxy);
        BUILD_MSG_CONTEXT_2( IGameSceneService::setObserver,AOI_PROXY_PTR::T_BAG ,packer,bool,bObserver);
 
-       return m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK);
+       if(!m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK))
+       {
+           AOI_PROXY_PTR ptrProxy = packer.get();
+           return false;
+       }
+       return true;
    }
 
    //////////////////////////////////////////////////////////////////////////////////
    virtual void updateObjVisible( AOI_PROXY_PTR proxy )
    {
+       if(m_pContainer == 0)
+       {
+           return;
+       }
+
        AOI_PROXY_PTR::T_BAG packer(proxy);
        BUILD_MSG_CONTEXT_1( IGameSceneService::updateObjVisible,AOI_PROXY_PTR::T_BAG ,packer );
 
-       m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK);
+       if(!m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK))
+       {
+           AOI_PROXY_PTR ptrProxy = packer.get();
+       }
    }
 
    virtual void onUpdateObjAntiStealth( AOI_PROXY_PTR proxy )
    {
+       if(m_pContainer == 0)
+       {
+           return;
+       }
+
        AOI_PROXY_PTR::T_BAG packer(proxy);
        BUILD_MSG_CONTEXT_1( IGameSceneService::onUpdateObjAntiStealth,AOI_PROXY_PTR::T_BAG ,packer );
 
-       m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK);
+       if(!m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK))
+       {
+           AOI_PROXY_PTR ptrProxy = packer.get();
+       }
    }
 
    //////////////////////////////////////////////////////////////////////////////////
    virtual void setSight( AOI_PROXY_PTR proxy,int nSight )
    {
+       if(m_pContainer == 0)
+       {
+           return;
+       }
+
        AOI_PROXY_PTR::T_BAG packer(proxy);
        BUILD_MSG_CONTEXT_2( IGameSceneService::setSight,AOI_PROXY_PTR::T_BAG ,packer, int, nSight );
 
-       m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK);
+       if(!m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK))
+       {
+           AOI_PROXY_PTR ptrProxy = packer.get();
+       }
    }
 
    virtual void updateObjsInSight(AOI_PROXY_PTR proxy)
    {
+       if(m_pContainer == 0)
+       {
+           return;
+       }
+
        AOI_PROXY_PTR::T_BAG packer(proxy);
        BUILD_MSG_CONTEXT_1( IGameSceneService::updateObjsInSight,AOI_PROXY_PTR::T_BAG ,packer );
 
-       m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK);
+       if(!m_pContainer->post_message( pMsg,nMsgLen,0, MSG_FLAG_NO_BLOCK))
+       {
+           AOI_PROXY_PTR ptrProxy = packer.get();
+       }
    }
 
    //////////////////////////////////////////////////////////////////////////////////
    virtual int  k_nearest( Vector3 loc,float fDist,AOI_PROXY_PTR * pReturnArray,int nArraySize,int layerMask, bool bCheckDist=false)
     {
+        if(m_pRealService == NULL)
+        {
+            return 0;
+        }
 		return m_pRealService->k_nearest( loc,fDist,pReturnArray,nArraySize,layerMask, bCheckDist);
 	    //BUILD_MSG_CONTEXT_5( IGameSceneService::k_nearest,Vector3 ,loc,float ,fDist,UID* ,pReturnArray,int ,nArraySize,int, layerMask);
 
@@ -186,6 +248,11 @@ public:
 
    virtual int  k_nearestInSpell( Vector3 loc,float fDist,float fHeight,AOI_PROXY_PTR * pReturnArray,int nArraySize,int layerMask )
    {
+       if(m_pRealService == NULL)
+       {
+           return 0;
+       }
+
 	   return m_pRealService->k_nearestInSpell( loc,fDist,fHeight,pReturnArray,nArraySize,layerMask);
 	    //BUILD_MSG_CONTEXT_6( IGameSceneService::k_nearestInSpell,Vector3, loc,float ,fDist,float ,fHeight,UID* ,pReturnArray,int ,nArraySize,int ,layerMask);
 
@@ -198,6 +265,11 @@ public:
 
    virtual int  k_nearLineest( Vector3 loc,Vector3 dir,float fDist, float fWidth, float fHeight, AOI_PROXY_PTR * pReturnArray,int nArraySize,int layerMask )
    {
+       if(m_pRealService == NULL)
+       {
+           return 0;
+       }
+
 		return m_pRealService->k_nearLineest( loc,dir,fDist,fWidth,fHeight,pReturnArray,nArraySize,layerMask);
 	   //obuf128 t_data;
 	   //t_data << loc<< dir <<fDist << fWidth << fHeight <<pReturnArray<<nArraySize<<layerMask/*<<strFileInfo<<nFileLine*/;
@@ -212,6 +284,11 @@ public:
 
    virtual int  k_nearSectorest( Vector3 loc,Vector3 dir, float fr, float squaredR, float cosTheta, float fHeight, AOI_PROXY_PTR * pReturnArray,int nArraySize,int layerMask )
    {
+       if(m_pRealService == NULL)
+       {
+           return 0;
+       }
+
 	   	return m_pRealService->k_nearSectorest( loc,dir,fr,squaredR,cosTheta,fHeight,pReturnArray,nArraySize,layerMask);
 	   //obuf128 t_data;
 	   //t_data << loc<< dir <<fr << squaredR << cosTheta << fHeight <<pReturnArray<<nArraySize<<layerMask;
@@ -227,17 +304,30 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual int  broadcast( Vector3 loc,int dist,BROADCAST_ID id,string & msg,AOI_PROXY_PTR proxy=AOI_PROXY_PTR(0), bool ignoreSelf = false)
     {
+        if(m_pContainer == 0)
+        {
+            return 0;
+        }
+
        int nLen = sizeof(Vector3) + sizeof(int) + sizeof(BROADCAST_ID) + sizeof(string::size_type) + msg.size() + sizeof(AOI_PROXY_PTR) + sizeof(bool) ;
        BUILD_MSG_BUFFER_LEN(IGameSceneService::broadcast, nLen);
 
        t_data << loc << dist << id << msg << proxy << ignoreSelf;
 
-	    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
-	    return 0;
+	    if(!m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK))
+        {
+            free(pMsg);
+        }
+        return 0;
     };
 
    virtual int  broadcastMultiple( char *pLoc,int nCount,BROADCAST_ID id,string & msg,AOI_PROXY_PTR proxy=AOI_PROXY_PTR(0) )
    {
+       if(m_pContainer == 0)
+       {
+           return 0;
+       }
+
        int nLen = sizeof(int) + sizeof(BROADCAST_ID) + sizeof(string::size_type) + msg.size() + sizeof(AOI_PROXY_PTR) + nCount*sizeof(Vector3);
        BUILD_MSG_BUFFER_LEN(IGameSceneService::broadcastMultiple, nLen);
 
@@ -247,13 +337,21 @@ public:
 		   t_data.push_back(pLoc, nCount*sizeof(Vector3));
 	   }
 
-	    m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
+	    if(!m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK))
+        {
+            free(pMsg);
+        }
 	    return 0;
    };
 
    //////////////////////////////////////////////////////////////////////////////////
    virtual int  broadcast_all( BROADCAST_ID id,string & msg,int nCampMask )
     {
+        if(m_pContainer == 0)
+        {
+            return 0;
+        }
+
         int nLen = sizeof(BROADCAST_ID) + sizeof(string::size_type) + msg.size() + sizeof(int);
         BUILD_MSG_BUFFER_LEN(IGameSceneService::broadcast_all, nLen);
 
@@ -265,6 +363,11 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual int  broadcast_nearLoc( Vector3 loc,int dist,BROADCAST_ID id,string & msg,AOI_PROXY_PTR proxy=AOI_PROXY_PTR(0), bool ignoreSelf = false,int campMask=CAMP_MASK_ALL   )
    {
+       if(m_pContainer == 0)
+       {
+           return 0;
+       }
+
        int nLen = sizeof(Vector3) + sizeof(int) + sizeof(BROADCAST_ID) + sizeof(string::size_type) + msg.size() + sizeof(AOI_PROXY_PTR) + sizeof(bool);
        BUILD_MSG_BUFFER_LEN(IGameSceneService::broadcast_nearLoc, nLen);
 
@@ -276,6 +379,11 @@ public:
 
    virtual int  broadcastMultiple_nearLoc( char *pLoc,int nCount,BROADCAST_ID id,string & msg,AOI_PROXY_PTR proxy=AOI_PROXY_PTR(0),int campMask=CAMP_MASK_ALL  )
    {
+       if(m_pContainer == 0)
+       {
+           return 0;
+       }
+
        int nLen = sizeof(int) + sizeof(BROADCAST_ID) + sizeof(string::size_type) + msg.size() + sizeof(AOI_PROXY_PTR) + nCount*sizeof(Vector3);
        BUILD_MSG_BUFFER_LEN(IGameSceneService::broadcastMultiple_nearLoc, nLen);
 
@@ -315,11 +423,14 @@ public:
    // 获取场景更新共享数据
    virtual SceneUpdateShareInfo getUpdateShareInfo()
    {
-	    BUILD_MSG_CONTEXT_VOID( IGameSceneService::getUpdateShareInfo );
+       if(m_pContainer != 0)
+       {
+           BUILD_MSG_CONTEXT_VOID( IGameSceneService::getUpdateShareInfo );
 
-	    rkt::obuf resultBuf;
-	    m_pContainer->post_message( pMsg,nMsgLen,&resultBuf);
-	     RETURN_FROM_MSG_BUF(SceneUpdateShareInfo);
+           rkt::obuf resultBuf;
+           m_pContainer->post_message( pMsg,nMsgLen,&resultBuf);
+           RETURN_FROM_MSG_BUF(SceneUpdateShareInfo);
+       }
 
        return SceneUpdateShareInfo();     // 请检查默认返回值是否正确
    };
@@ -327,11 +438,14 @@ public:
    //////////////////////////////////////////////////////////////////////////////////
    virtual int  getAllPlayers( AOI_PROXY_PTR* pReturnArray,int nArraySize )
     {
-	    BUILD_MSG_CONTEXT_2( IGameSceneService::getAllPlayers,AOI_PROXY_PTR* ,pReturnArray,int, nArraySize );
+        if(m_pContainer != 0)
+        {
+            BUILD_MSG_CONTEXT_2( IGameSceneService::getAllPlayers,AOI_PROXY_PTR* ,pReturnArray,int, nArraySize );
 
-	    rkt::obuf resultBuf;
-	    m_pContainer->post_message( pMsg,nMsgLen,&resultBuf);
-	    RETURN_FROM_MSG_BUF(int);
+            rkt::obuf resultBuf;
+            m_pContainer->post_message( pMsg,nMsgLen,&resultBuf);
+            RETURN_FROM_MSG_BUF(int);
+        }
 
        return 0;
     };
@@ -350,16 +464,22 @@ public:
    // 关闭场景
    virtual void close() 
    {
-       BUILD_MSG_CONTEXT_VOID( IGameSceneService::close );
+       if(m_pContainer != 0)
+       {
+           BUILD_MSG_CONTEXT_VOID( IGameSceneService::close );
 
-       m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
+           m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
+       }
    }
    //////////////////////////////////////////////////////////////////////////////////
    virtual void  release(  )
     {
-       BUILD_MSG_CONTEXT_VOID( IGameSceneService::release );
+        if(m_pContainer != 0)
+        {
+            BUILD_MSG_CONTEXT_VOID( IGameSceneService::release );
 
-       m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
+            m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
+        }
     };
 
 };

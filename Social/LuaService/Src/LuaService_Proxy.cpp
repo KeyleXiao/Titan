@@ -9,6 +9,10 @@
 */
 void LuaService_Proxy::LoadLuaFile(const char* szLuaFileName) 
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	obuf256 t_data;
 	t_data << szLuaFileName;
 
@@ -25,6 +29,10 @@ void LuaService_Proxy::LoadLuaFile(const char* szLuaFileName)
 */
 void LuaService_Proxy::RunMemoryLua(const char* pLuaData, int nDataLen)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	obuf256 t_data;
 	t_data << pLuaData << nDataLen;
 
@@ -44,6 +52,10 @@ void LuaService_Proxy::RunMemoryLua(const char* pLuaData, int nDataLen)
 */
 void LuaService_Proxy::RunLuaFunction(const char* szFunName, CLuaParam * pInParam, int nInNum/*, CLuaParam * pOutParam, int nOutNum*/)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	obuf256 t_data;
 	t_data << szFunName;	// LUA函数
 	t_data << nInNum;	// 输入参数数量
@@ -64,6 +76,10 @@ void LuaService_Proxy::RunLuaFunction(const char* szFunName, CLuaParam * pInPara
 */
 bool LuaService_Proxy::IsFunction(const char * szFunName)
 {
+	if (m_pContainer == 0)
+	{
+		return false;
+	}
     obuf256 t_data;
 	t_data << szFunName;
 
@@ -82,6 +98,10 @@ bool LuaService_Proxy::IsFunction(const char * szFunName)
 */
 void LuaService_Proxy::UpdateLuaFile(const char* szLuaFileName)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     obuf256 t_data;
     t_data << szLuaFileName;
 
@@ -94,6 +114,10 @@ void LuaService_Proxy::UpdateLuaFile(const char* szLuaFileName)
 // 释放
 void LuaService_Proxy::release()
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	obuf256 t_data;
 
 	BUILD_MSG_BUFFER( ILuaService::release,t_data);

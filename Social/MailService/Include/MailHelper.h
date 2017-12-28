@@ -23,7 +23,7 @@ public:
 	IMailService*	m_ptr;
     SERVICE_PTR	m_pContainer;
 
-	MailHelper() : m_ptr( nullptr )
+	MailHelper() : m_ptr( nullptr ), m_pContainer(0)
 	{
 		IMailManager* pMailManager = gSocialGlobal->getMailManager();
 		if (nullptr == pMailManager)
@@ -31,7 +31,7 @@ public:
 			return;
 		}
 
-		SERVICE_PTR m_pContainer = pMailManager->GetMailService();
+		m_pContainer = m_pContainer == 0? pMailManager->GetMailService() : m_pContainer;
 		if (nullptr == m_pContainer)
 		{
 			MAIL_ERRORLN("MailHelper() failed! can not found SERVICE_PTR!");

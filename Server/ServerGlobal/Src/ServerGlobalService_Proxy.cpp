@@ -408,6 +408,9 @@ IAntiAddictServer*	ServerGlobalService_Proxy::getAntiAddictServer()
 // 取资源管理对象
 IResourceManager* ServerGlobalService_Proxy::getResourceManager()
 {
+    if (!m_pContainer)
+        return 0;
+
     BUILD_MSG_CONTEXT_VOID( IServerGlobalService::getResourceManager );
 
     rkt::obuf resultBuf;
@@ -420,6 +423,9 @@ IResourceManager* ServerGlobalService_Proxy::getResourceManager()
 // 取杂项管理对象
 IMiscManager* ServerGlobalService_Proxy::getMiscManager()
 {
+    if (!m_pContainer)
+        return 0;
+
     BUILD_MSG_CONTEXT_VOID( IServerGlobalService::getMiscManager );
 
     rkt::obuf resultBuf;
@@ -480,6 +486,9 @@ void ServerGlobalService_Proxy::requestHandleServerControl(DWORD dwState)
 // 请求管理器启动
 bool ServerGlobalService_Proxy::requestManagerStart(DWORD dwStartFlag, DWORD dwUserData)
 {
+    if (!m_pContainer)
+        return 0;
+
     BUILD_MSG_CONTEXT_2( IServerGlobalService::requestManagerStart,DWORD,dwStartFlag, DWORD, dwUserData);
 	rkt::obuf resultBuf;
     m_pContainer->post_message( pMsg,nMsgLen,&resultBuf);
@@ -582,6 +591,9 @@ void ServerGlobalService_Proxy::handleGateWayClientDisconnect(ClientID client,DW
 // 收到设置游戏ID
 void ServerGlobalService_Proxy::handleManagerSetGameWorldID()
 {
+    if (!m_pContainer)
+        return;
+
     BUILD_MSG_CONTEXT_VOID( IServerGlobalService::handleManagerSetGameWorldID );
     m_pContainer->post_message(pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
 }
@@ -589,6 +601,9 @@ void ServerGlobalService_Proxy::handleManagerSetGameWorldID()
 // 收到管理器下发的资源数据
 void ServerGlobalService_Proxy::handleManagerResourceData(LPVOID pData,DWORD dwDataLen)
 {
+    if (!m_pContainer)
+        return;
+
     if(dwDataLen == 0)
         return;
 
@@ -604,6 +619,9 @@ void ServerGlobalService_Proxy::handleManagerResourceData(LPVOID pData,DWORD dwD
 // 收到管理器下发的资源数据结果
 void  ServerGlobalService_Proxy::handleManagerResourceResult(LPVOID pData,DWORD dwDataLen)
 {
+    if (!m_pContainer)
+        return;
+
     if(dwDataLen == 0)
         return;
 

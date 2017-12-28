@@ -3,7 +3,7 @@
 
 class ViewUser;
 
-class ViewList : public UserList<ViewUser>, public Singleton<ViewList>
+class ViewList : public UserList<ViewUser, ViewID>, public Singleton<ViewList>
 {
 public:
 	ViewList();
@@ -15,12 +15,12 @@ public:
 	void	BroadcastGatesInfoToViews();
 
 protected:
-	virtual void onDelUser(ISessionUser* pUser) {};
+	virtual void OnDelUser(ISessionUser<ViewID>* pUser) {};
 
 	//注册这里要处理的所有消息，到m_Processer中
 	virtual void RegisterHandlers();
 
-	virtual DWORD GetMaxID() { return MAX_VIEW_SERVER_COUNT; }
+	virtual ViewID GetMaxID() { return MAX_VIEW_SERVER_COUNT; }
 
 public:
 };

@@ -166,6 +166,15 @@ typedef void (* ServiceStartedCallback)(SERVICE_PTR pService);
 // Service停止完成回调函数
 typedef void (* ServiceStopedCallback)(void);
 
+// service状态
+enum MY_SERVICE_STATUS
+{
+    SERVICE_STATUS_STARTING,    // 服务正在启动
+    SERVICE_STATUS_WORKING,     // 服务启动完成
+    SERVICE_STATUS_STOPING,     // 服务正在关闭
+    SERVICE_STATUS_CLOSED,       // 服务已关闭
+} ;
+
 struct ITimerService;
 struct IDateTriggerService;
 struct IServiceContainer
@@ -210,8 +219,8 @@ struct IServiceContainer
 	// 挂起
 	virtual void yield(bool finish) = 0;
 
-	// 是否已启好
-	virtual bool is_started() = 0;
+	// 服务状态
+	virtual MY_SERVICE_STATUS get_status() = 0;
 
 #ifdef   FRAMEWORK_DEBUG
 	virtual const char* get_wait_function() = 0;

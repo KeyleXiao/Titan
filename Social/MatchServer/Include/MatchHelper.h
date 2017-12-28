@@ -20,8 +20,8 @@ class MatchHelper
 {
 public:
 	IMatchService*	m_ptr;
-
-	MatchHelper() : m_ptr( nullptr )
+	SERVICE_PTR		m_pService;
+	MatchHelper() : m_ptr( nullptr ), m_pService(0)
 	{
 		//ISocialGlobalService * pSocialGlobalService = SocialGlobalHelper().m_ptr;
 		//if (nullptr == pSocialGlobalService)
@@ -36,14 +36,14 @@ public:
 			return;
 		}
 
-		SERVICE_PTR pService = pMatchManager->getMatchService();
-		if (nullptr == pService)
+		m_pService = m_pService == 0? pMatchManager->getMatchService() : m_pService;
+		if (nullptr == m_pService)
 		{
 			MATCH_ERRORLN("MatchHelper() failed! can not found SERVICE_PTR!");
 			return;
 		}
 
-		m_ptr = (IMatchService*)pService->query_interface();
+		m_ptr = (IMatchService*)m_pService->query_interface();
 		if (nullptr == m_ptr)
 		{
 			MATCH_ERRORLN("MatchHelper() failed!can not found IMatchService! ");

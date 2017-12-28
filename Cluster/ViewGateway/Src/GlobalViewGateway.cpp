@@ -271,8 +271,8 @@ bool GlobalViewGateway::Close()
 		m_MngConnector.Close();
 
 		// 清除所有用户
-		gClientContainer.shutdown();
-		gViewContainer.shutdown();
+		gClientContainer.Shutdown();
+		gViewContainer.Shutdown();
 		gAuthMng.Shutdown();
 
 		// 关闭管理连接器

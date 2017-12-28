@@ -123,7 +123,7 @@ void CDialogPageMapinfo::UpdateSceneInfoToUI(void)
     for (int i = 0; i < nSceneCount; ++i)
     {
         SERVICE_PTR ptrSceneSvr = array_scene[i];
-        if (ptrSceneSvr == SERVICE_PTR(0) || !ptrSceneSvr->is_started())
+        if (ptrSceneSvr == SERVICE_PTR(0) || ptrSceneSvr->get_status() != SERVICE_STATUS_WORKING)
         {
             continue;
         }

@@ -23,7 +23,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 	VoiceConnectorService *      m_real_service;
 
-	VoiceConnectorService_Proxy() : m_real_service(0) {
+	VoiceConnectorService_Proxy() : m_real_service(0), m_pContainer(0) {
 	}
 
 	virtual ~VoiceConnectorService_Proxy(){
@@ -35,6 +35,9 @@ public:
 	*/
 	virtual bool connectServer(void)
     {
+        if (m_pContainer == 0)
+            return bool();
+
         BUILD_MSG_CONTEXT_VOID( IVoiceConnectorService::connectServer );
 
         rkt::obuf resultBuf;
@@ -52,6 +55,9 @@ public:
 	*/
 	virtual void  SendData(const char * pData,DWORD dwLen)
     {
+        if (m_pContainer == 0)
+            return;
+
         obuf256 t_data;
         t_data << dwLen;
         t_data.push_back(pData, dwLen);
@@ -68,6 +74,9 @@ public:
 	*/
 	virtual bool registerMessageHandler(DWORD moduleId, IVoiceMessageHandler* handler)
     {
+        if (m_pContainer == 0)
+            return bool();
+
         BUILD_MSG_CONTEXT_2( IVoiceConnectorService::registerMessageHandler,DWORD ,moduleId, IVoiceMessageHandler*, handler );
 
         rkt::obuf resultBuf;
@@ -82,6 +91,9 @@ public:
 	*/
 	virtual bool unregisterMessageHandler(DWORD moduleId)
     {
+        if (m_pContainer == 0)
+            return bool();
+
         BUILD_MSG_CONTEXT_1( IVoiceConnectorService::unregisterMessageHandler,DWORD ,moduleId );
 
         rkt::obuf resultBuf;
@@ -97,6 +109,9 @@ public:
 	*/
 	virtual bool registerEventHandler(WORD wEventID,IVoiceEventHandler* handler)
     {
+        if (m_pContainer == 0)
+            return bool();
+
         BUILD_MSG_CONTEXT_2( IVoiceConnectorService::registerEventHandler,WORD ,wEventID, IVoiceEventHandler*, handler );
 
         rkt::obuf resultBuf;
@@ -112,6 +127,9 @@ public:
 	*/
 	virtual bool unregisterEventHandler(WORD wEventID,IVoiceEventHandler* handler)
     {
+        if (m_pContainer == 0)
+            return bool();
+
         BUILD_MSG_CONTEXT_2( IVoiceConnectorService::unregisterEventHandler,WORD ,wEventID, IVoiceEventHandler*, handler);
 
         rkt::obuf resultBuf;
@@ -127,6 +145,9 @@ public:
 	// 发数据给指定游戏服务器 dwServerID:服务器ID 为0时广播给所有服务器,bZeroBroadcast:为true时打开为0广播,否则无效
 	virtual void SendDataToServer(DWORD dwServerID,const char * pData,DWORD dwLen,bool bZeroBroadcast=false)
     {
+        if (m_pContainer == 0)
+            return;
+
         obuf256 t_data;
         t_data << dwServerID << bZeroBroadcast << dwLen;
         t_data.push_back(pData, dwLen);
@@ -139,6 +160,9 @@ public:
 	// 广播数据给指定列表游戏服务器 pServerArray:服务器ID列表,wServerNum:列表个数
 	virtual void BroadcastDataToServer(DWORD * pServerArray,WORD wServerNum,const char * pData,DWORD dwLen)
     {
+        if (m_pContainer == 0)
+            return;
+
         obuf256 t_data;
         t_data << wServerNum << dwLen;
         t_data.push_back(pServerArray, sizeof(DWORD) * wServerNum);
@@ -160,6 +184,9 @@ public:
 	*/
 	virtual void BroadcastDataToClient( BYTE nBroadcastType, void * pData, DWORD dwLen, DWORD dwPDBID1 = 0, DWORD dwPDBID2 = 0, DWORD dwWorldID1 = 0, DWORD dwWorldID2 = 0, DWORD dwValueID1 = 0, DWORD dwValueID2 = 0, bool bRoom = false )
     {
+        if (m_pContainer == 0)
+            return;
+
         obuf256 t_data;
         t_data << nBroadcastType << dwPDBID1 << dwPDBID2 << dwWorldID1 << dwWorldID2 << dwValueID1 << dwValueID2 << bRoom;
         t_data << dwLen;

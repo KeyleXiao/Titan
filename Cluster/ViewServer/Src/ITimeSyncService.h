@@ -12,6 +12,6 @@ public:
 
 	virtual bool Start(const char * szIP = "127.0.0.1", int nUDPPort = 6600, int nTCPPort = 6601) = 0;
 
-	virtual void release() = 0;
+	virtual void Release() = 0;
 };
 extern ITimeSyncService& gTimeSyncService;

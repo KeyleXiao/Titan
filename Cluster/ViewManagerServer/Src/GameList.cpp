@@ -20,7 +20,7 @@ void GameList::RegisterHandlers()
 	GameMsgRegister::RegisterMsgs(m_Processer);
 }
 
-DWORD GameList::GetMaxID()
+GameID GameList::GetMaxID()
 {
 	return MAX_GAME_SERVER_COUNT;
 }

@@ -45,6 +45,11 @@ public:
 	// 检测目标是否为玩家徒弟
 	virtual int checkIsPlayerPrentice(DWORD dwDBID, DWORD dwTargetDBID);
 
+    MentorshipSceneService_Proxy() : m_pContainer(0)
+    {
+
+    }
+
 public:
 	SERVICE_PTR    m_pContainer;
 

@@ -35,7 +35,7 @@ protected:
 	IBridgeConnector *  m_pConnector;
 
 public:
-	BridgeConnectorService() : m_pConnector()
+	BridgeConnectorService() : m_pConnector(0)
 	{
 	}
 

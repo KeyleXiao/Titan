@@ -156,13 +156,12 @@ public:
 	@ param dwReserve  : 保留数据（英雄评级时为英雄ID）
 	*/
 	virtual void addActorUpgradeLog(int nGameWorldID, DWORD dwUserID, DWORD dwActorID, BYTE nUpgradeType, DWORD dwValue, int nTime, DWORD dwReserve = 0);
-
 public:
-	////////////////// COSSLogService_Proxy ////////////////////////////////////////////////////////
+		////////////////// COSSLogService_Proxy ////////////////////////////////////////////////////////
 
-	COSSLogService_Proxy();
+	COSSLogService_Proxy() :m_pContainer(0) {};
+	~COSSLogService_Proxy() {};
 
-	~COSSLogService_Proxy();
 
 public:
 	SERVICE_PTR    m_pContainer;

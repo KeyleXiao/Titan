@@ -14,10 +14,10 @@
 #pragma once
 #include "SessionUser.h"
 
-class ViewSession :	public SessionUser<ViewSession>
+class ViewSession :	public SessionUser<ViewSession, ViewID>
 {
 public:
-	ViewSession(IConnection * conn, IUserList& pUserList, Processer<ViewSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
+	ViewSession(IConnection * conn, IUserList<ViewID>& pUserList, Processer<ViewSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
 	virtual ~ViewSession();
 
 	virtual std::string ToString() override;

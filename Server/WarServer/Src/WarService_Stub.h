@@ -40,7 +40,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 
 
-	WarService_Proxy() {
+	WarService_Proxy() : m_pContainer(0){
 	}
 
 	virtual ~WarService_Proxy() {
@@ -52,6 +52,9 @@ public:
 	// 开启战场逻辑
 	virtual void Start()
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_VOID(IWarService::Start);
 
 
@@ -61,6 +64,9 @@ public:
 	//////////////////////////////////////////////////////////////////////////////////
 	virtual bool  PrepareEnterWar(SActorPreaperEnterWar sActorPreaperEnterWar)
 	{
+		if (m_pContainer == 0)
+			return false;
+
 		obuf128 t_data;
 		t_data << sActorPreaperEnterWar;
 
@@ -76,6 +82,9 @@ public:
 	//////////////////////////////////////////////////////////////////////////////////
 	virtual void  setLegendCupInfo(SMsgLegendCupRoomInfo sLegendCupInfo)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf128 t_data;
 		t_data << sLegendCupInfo;
 
@@ -87,6 +96,9 @@ public:
 	// 玩家进入战场
 	virtual void onActorEnterWar(SActorEnterWarBaseInfo sActorEnterWarBaseInfo)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf128 t_data;
 		t_data << sActorEnterWarBaseInfo;
 		BUILD_MSG_BUFFER(IWarService::onActorEnterWar, t_data);
@@ -98,6 +110,9 @@ public:
 	// 保留原来接口!!
 	virtual void onEntityDie(sEntityDieInfo entityDieInfo)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf128 t_data;
 		//创建战场需要的参数
 		t_data << entityDieInfo;
@@ -109,6 +124,9 @@ public:
 
 	virtual void onEntityDieEx(sEntityDieInfo entityDieInfo, SEntityReliveInfo& info)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf256 t_data;
 
 		t_data << entityDieInfo;
@@ -125,6 +143,9 @@ public:
 
 	virtual void onEntityRelive(UID uid)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_1(IWarService::onEntityRelive, UID, uid)
 		m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 	}
@@ -132,6 +153,9 @@ public:
 	//////////////////////////////////////////////////////////////////////////////////
 	virtual void  onWarClientMsg(UID uidActor, byte byKeyAction, const char* pData, size_t nLen)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf256 t_data;
 		t_data << uidActor << byKeyAction << nLen;
 		t_data.push_back(pData, nLen);
@@ -143,6 +167,9 @@ public:
 
 	virtual int getAllPerson(UID *PersonArray, int nArraySize)
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_2(IWarService::getAllPerson, UID *, PersonArray, int, nArraySize);
 
 		rkt::obuf resultBuf;
@@ -154,6 +181,9 @@ public:
 
 	virtual int getWarSceneID()
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_VOID(IWarService::getWarSceneID);
 
 		rkt::obuf resultBuf;
@@ -165,6 +195,9 @@ public:
 
 	virtual LONGLONG getWarDBKey()
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_VOID(IWarService::getWarDBKey);
 
 		rkt::obuf resultBuf;
@@ -176,6 +209,9 @@ public:
 
 	virtual int getWarTypeId()
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_VOID(IWarService::getWarTypeId);
 
 		rkt::obuf resultBuf;
@@ -187,6 +223,9 @@ public:
 
 	virtual DWORD getMatchTypeID()
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_VOID(IWarService::getMatchTypeID);
 
 		rkt::obuf resultBuf;
@@ -198,6 +237,9 @@ public:
 
 	virtual void setChargedValue(UID uidTarget, int nEffectID, int nValue)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_3(IWarService::setChargedValue, UID, uidTarget, int, nEffectID, int, nValue);
 
 		rkt::obuf resultBuf;
@@ -206,6 +248,9 @@ public:
 
 	virtual int getChargedValue(UID uidTarget, int nEffectID)
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_2(IWarService::getChargedValue, UID, uidTarget, int, nEffectID);
 
 		rkt::obuf resultBuf;
@@ -217,12 +262,18 @@ public:
 
 	virtual void setWarEndReason(BYTE byEndReason)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_1(IWarService::setWarEndReason, BYTE, byEndReason);
 		m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 	}
 
 	virtual void destroy()
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_VOID(IWarService::destroy);
 
 		m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
@@ -231,6 +282,9 @@ public:
 	// 战场结束。(七龙珠功能)
 	virtual void DragonBallEndWar(int nFailedCamp, bool bNormalEnd)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_2(IWarService::DragonBallEndWar, int, nFailedCamp, bool, bNormalEnd);
 
 		m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
@@ -239,6 +293,9 @@ public:
 	// 场景已创建
 	virtual void onSceneCreated(int nWarID)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_1(IWarService::onSceneCreated, int, nWarID);
 
 		m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
@@ -247,6 +304,9 @@ public:
 	// 用于通知指定阵营野怪死亡状况
 	virtual void msgToSpecCampWildInfo(UID uMonsterUid, int nCamp)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_2(IWarService::msgToSpecCampWildInfo, UID, uMonsterUid, int, nCamp);
 
 		m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
@@ -259,6 +319,9 @@ public:
 	 */
 	virtual DWORD warSerchTypeUIDList(BYTE bySelfCamp, BYTE byGetCampType, BYTE bySerchType, PDBID* pReturnArray, DWORD dwArrayMaxSize)
 	{
+		if (m_pContainer == 0)
+			return 0;
+
 		BUILD_MSG_CONTEXT_5(IWarService::warSerchTypeUIDList, BYTE, bySelfCamp, BYTE, byGetCampType, BYTE, bySerchType, PDBID*, pReturnArray, DWORD, dwArrayMaxSize);
 
 		rkt::obuf resultBuf;
@@ -271,6 +334,9 @@ public:
 
 	virtual void warAddSerchTypeBuff(SWarEffectAddBuff sData)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		BUILD_MSG_CONTEXT_1(IWarService::warAddSerchTypeBuff, SWarEffectAddBuff, sData);
 
 		rkt::obuf resultBuf;
@@ -285,6 +351,9 @@ public:
 	*/
 	virtual void updateActorBuffList(char* data, size_t len)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << len;
 		t_data.push_back(data, len);
@@ -300,6 +369,9 @@ public:
 	*/
 	virtual void deSerialzed(UID uid, rkt::obuf & out, int flag)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << uid << flag;
 		BUILD_MSG_BUFFER(IWarService::deSerialzed, t_data);
@@ -316,6 +388,9 @@ public:
 	// 设置Ban选英雄
 	virtual void setBanHeroList(char* data, size_t len)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << len;
 		t_data.push_back(data, len);
@@ -328,6 +403,9 @@ public:
 	// 救治队友
 	virtual void cureMember(UID uid)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << uid;
 
@@ -339,6 +417,9 @@ public:
 	// 救治队友
 	virtual void changeVocation(UID uid, int nSlotID)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << uid;
 		t_data << nSlotID;
@@ -351,6 +432,9 @@ public:
 	// 救治队友
 	virtual void collectHeroGenic(UID uid, int nAddHeroID, int nAddSkinID)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << uid;
 		t_data << nAddHeroID;
@@ -364,6 +448,9 @@ public:
 	// 假死者复活
 	virtual void onFakeDeadRelive(UID uid)
 	{
+		if (m_pContainer == 0)
+			return;
+
 		obuf t_data;
 		t_data << uid;
 

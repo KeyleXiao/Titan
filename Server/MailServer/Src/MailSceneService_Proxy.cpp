@@ -17,6 +17,9 @@
 // 发送邮件
 bool MailSceneService_Proxy::sendMail(SMailSendData sMailSendData, int nMailFillID, LPCSTR szParam)
 {
+    if (m_pContainer == 0)
+        return bool();
+
 	string strParam = (szParam == NULL ? "" : szParam);
 	obuf1024 t_data;
 	t_data << sMailSendData << nMailFillID << strParam;
@@ -25,12 +28,16 @@ bool MailSceneService_Proxy::sendMail(SMailSendData sMailSendData, int nMailFill
 	rkt::obuf resultBuf;
 	m_pContainer->post_message(pMsg,nMsgLen,&resultBuf,MSG_FLAG_NO_BLOCK);
 	RETURN_FROM_MSG_BUF(bool);
-	return 0;
+
+	return bool();
 }
 
 // 发送填充邮件(数据由配置表里面填充)
 bool MailSceneService_Proxy::sendFillMail(DWORD dwPDBID, int nMailFillID, LPCSTR szParam)
 {
+    if (m_pContainer == 0)
+        return bool();
+
 	string strParam = (szParam == NULL ? "" : szParam);
 	obuf t_data;
 	t_data << dwPDBID << nMailFillID << strParam;
@@ -39,5 +46,6 @@ bool MailSceneService_Proxy::sendFillMail(DWORD dwPDBID, int nMailFillID, LPCSTR
 	rkt::obuf resultBuf;
 	m_pContainer->post_message(pMsg,nMsgLen,&resultBuf,MSG_FLAG_NO_BLOCK);
 	RETURN_FROM_MSG_BUF(bool);
-	return 0;
+
+	return bool();
 }

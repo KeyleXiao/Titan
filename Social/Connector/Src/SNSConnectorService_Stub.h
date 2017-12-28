@@ -32,7 +32,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 
 
-	SNSConnectorService_Proxy() {
+	SNSConnectorService_Proxy() : m_pContainer(0) {
 	}
 
 	virtual ~SNSConnectorService_Proxy(){
@@ -47,6 +47,9 @@ public:
 	*/
 	virtual void  sendMessage(int nMessageID, void * pData, int nDataLen)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		obuf256 t_data;
 		t_data << nMessageID << nDataLen;
 		t_data.push_back( pData, nDataLen );

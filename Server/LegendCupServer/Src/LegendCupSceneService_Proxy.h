@@ -28,6 +28,10 @@ public:
     // 处理客户端发送过来的消息
     virtual void handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen);
 
+    LegendCupSceneService_Proxy() : m_pContainer(0)
+    {
+
+    }
 
 public:
 	SERVICE_PTR    m_pContainer;

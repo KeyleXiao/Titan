@@ -3,7 +3,7 @@
 #include "ViewMsgDef_Server.h"
 
 
-GateUser::GateUser(IConnection * conn, IUserList& pUserList, Processer<GateUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
+GateUser::GateUser(IConnection * conn, IUserList<GateID>& pUserList, Processer<GateUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
 	:SessionUser(conn, pUserList, processer, timerAxis, pByteRecord)
 	, m_dwMaxCount(0)
 	, m_dwCurrCount(0)

@@ -22,13 +22,13 @@ public:
 	SERVICE_PTR		m_pContainer;
 	IClanService*	m_ptr;
 
-	ClanHelper() : m_ptr( nullptr )
+	ClanHelper() : m_ptr( nullptr ), m_pContainer(0)
 	{
 		IClanManager *pClanManager = gSocialGlobal->getClanManager();
 		if (pClanManager == NULL)
 			return;
 
-		m_pContainer = pClanManager->getClanService();
+		m_pContainer = m_pContainer == 0? pClanManager->getClanService() : m_pContainer;
 		if (m_pContainer == NULL)
 			return;
 

@@ -18,6 +18,11 @@ using namespace std;
 class MentorshipService_Proxy:public IMentorshipService
 {
 public:
+	////////////////// MentorshipService_Proxy ////////////////////////////////////////////////////////
+
+	MentorshipService_Proxy() :m_pContainer(0) {};
+	~MentorshipService_Proxy() {};
+public:
 	///////////////////////////////IMentorshipService///////////////////////////////////////////
 
     // 处理其它服务器发送过来的消息

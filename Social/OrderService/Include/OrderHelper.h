@@ -20,7 +20,7 @@ public:
 			return;
 		}
 
-		m_pService = pOrderManager->getOrderService();
+		m_pService = m_pService == 0? pOrderManager->getOrderService() : m_pService;
 		if (nullptr == m_pService)
 		{
 			ErrorLn(__FUNCTION__": failed! can not found SERVICE_PTR!");

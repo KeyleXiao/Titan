@@ -18,6 +18,11 @@ using namespace std;
 class LuaService_Proxy : public ILuaService
 {
 public:
+	////////////////// LuaService_Proxy ////////////////////////////////////////////////////////
+
+	LuaService_Proxy() :m_pContainer(0) {};
+	~LuaService_Proxy() {};
+public:
 	///////////////////////////////////ILuaService////////////////////////////
     /** 执行一个lua脚本
 	@param   szLuaFileName ： lua文件名

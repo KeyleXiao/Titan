@@ -30,7 +30,7 @@ public:
 			return;
 		}
 
-		SERVICE_PTR m_pContainer = pKinManager->GetKinService();
+		m_pContainer = m_pContainer == 0? pKinManager->GetKinService() : m_pContainer;
 		if (nullptr == m_pContainer)
 		{
 			MATCH_ERRORLN("KinHelper() failed! can not found SERVICE_PTR!");

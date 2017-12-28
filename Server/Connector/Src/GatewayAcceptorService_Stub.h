@@ -41,7 +41,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 	GatewayAcceptorService *      m_real_service;
 
-	GatewayAcceptorService_Proxy() : m_real_service(0) {
+	GatewayAcceptorService_Proxy() : m_real_service(0), m_pContainer(0){
 	}
 
 	virtual ~GatewayAcceptorService_Proxy(){
@@ -56,6 +56,9 @@ public:
 	*/
 	virtual bool connectGateway( string ip,int port )
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		obuf64 t_data;
 		t_data << ip << port;
 
@@ -87,6 +90,9 @@ public:
 	*/
 	virtual void broadcast(ClientID * pClientArray,WORD wClientNum,LPVOID pData,WORD wDataLen)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		obuf256 t_data;
 		t_data << wClientNum << wDataLen;
 				
@@ -100,6 +106,9 @@ public:
     // 踢人
     virtual void kickOutClient(ClientID client, int nReason)
     {
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_2( IGatewayAcceptorService::kickOutClient,ClientID, client, int, nReason );
         m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
     }   
@@ -107,6 +116,9 @@ public:
     // 获取sessionID
     virtual SessionID getSession(ClientID client)
     {
+        if (m_pContainer == 0)
+            return SessionID();
+
 		BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::getSession,ClientID, client );
 
 		rkt::obuf resultBuf;
@@ -118,6 +130,9 @@ public:
     // 某个session是否使用过
     virtual bool isSessionUsed(SessionID session)
     {
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::isSessionUsed,SessionID, session );
 
 		rkt::obuf resultBuf;
@@ -129,6 +144,9 @@ public:
     // 通知网关客户端迁移
     virtual void migrateClient(ClientID client, SessionID session, int nZoneServerID, int nSceneID)
     {
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_4( IGatewayAcceptorService::migrateClient,ClientID, client, SessionID, session, int, nZoneServerID, int, nSceneID );
         m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
     }
@@ -136,6 +154,9 @@ public:
     // 获取IP地址
     virtual string getIpAddress(ClientID client)
     {
+        if (m_pContainer == 0)
+            return string();
+
         BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::getIpAddress, ClientID, client );
 
         rkt::obuf resultBuf;
@@ -146,12 +167,18 @@ public:
 
     virtual void plug(ClientID client, SERVICE_ID id)
     {
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_2( IGatewayAcceptorService::plug,ClientID ,client, SERVICE_ID, id );
         m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
     }
 
     virtual void unplug(ClientID client)
     {
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::unplug,ClientID ,client );
         m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
     }

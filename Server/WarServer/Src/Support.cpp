@@ -262,8 +262,6 @@ void CSupport::getEveryESVTMaxList(SESVTPersonData* personESVTList)
 		if (personESVTList[nVoteID].dwActorID > 0)
 			mapESVT[personESVTList[nVoteID].dwActorID] = nVoteID;
 	}
-
-	WarningLn(a2utf8("点赞台个数：") << mapESVT.size());
 }
 
 int CSupport::getEveryESVTMaxValue(const SWPerson* pPerson, const SCampTeamRecordInfo* pCampRecord, int nVoteID)
@@ -576,8 +574,6 @@ void CSupport::updateAllFilteredPlayersForSupportToClient()
 		msg.uPDBIU = itPer->first;
 		msg.nVoteID = itPer->second.nVoteID;
 		obData.push_back(&msg, sizeof(msg));
-
-		TraceLn(__FUNCTION__ << _GT(" 点赞台, pdbid=") << msg.uPDBIU << " nVoteID=" << msg.nVoteID);
 	}
 
 	m_pWar->broadCastDataToAllPlayer(SC_MSG_WAR_FILTER_SUPPORT_PERSON, obData.data(), obData.size());

@@ -601,9 +601,13 @@ copy $(TargetDir)$(TargetName).pdb ..\..\..\Bin\Cluster\.
       <Message>
       </Message>
       <Command>copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).dll ..\..\..\Bin\Social\.
+copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).pdb ..\..\..\Bin\Social\.
 copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).dll ..\..\..\Bin\Manager\.
+copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).pdb ..\..\..\Bin\Manager\.
 copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).dll ..\..\..\Bin\Cluster\.
-copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).dll ..\..\..\Bin\WorldServer\.</Command>
+copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).pdb ..\..\..\Bin\Cluster\.
+copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).dll ..\..\..\Bin\WorldServer\.
+copy $(TargetDir)$(ProjectName)$(PlatformArchitecture).pdb ..\..\..\Bin\WorldServer\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

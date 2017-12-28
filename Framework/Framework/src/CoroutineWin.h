@@ -86,6 +86,7 @@ public:
         }
 
         m_status= CO_STATUS_CREATED;
+        m_stack_size = stack_size;
         m_param = 0;
         return true;
     }

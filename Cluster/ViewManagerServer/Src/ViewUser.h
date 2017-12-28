@@ -15,10 +15,10 @@
 #include "SessionUser.h"
 
 
-class ViewUser : public SessionUser<ViewUser>
+class ViewUser : public SessionUser<ViewUser, ViewID>
 {
 public:
-	ViewUser(IConnection * conn, IUserList& pUserList, Processer<ViewUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
+	ViewUser(IConnection * conn, IUserList<ViewID>& pUserList, Processer<ViewUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
 	virtual ~ViewUser() {}
 
 	DWORD	GetMaxCount() const { return m_dwMaxCount; }
@@ -42,6 +42,5 @@ protected:
 private:
 	DWORD	m_dwMaxCount;	// 能承载的最大人数
 	DWORD	m_dwCurrCount;	// 当前人数
-public:
 };
 

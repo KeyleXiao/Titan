@@ -3,7 +3,7 @@
 #include "ViewMsgDef_Server.h"
 
 
-GameUser::GameUser(IConnection * conn, IUserList& pUserList, Processer<GameUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
+GameUser::GameUser(IConnection * conn, IUserList<GameID>& pUserList, Processer<GameUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
 	:SessionUser(conn, pUserList, processer, timerAxis, pByteRecord)
 {
 }

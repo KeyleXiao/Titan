@@ -5,6 +5,9 @@
 // 获取帮会名称
 string ClanSceneService_Proxy::getClanName(DWORD nClanID)
 {
+    if (m_pContainer == 0)
+        return string();
+
 	BUILD_MSG_CONTEXT_1( IClanSceneService::getClanName,DWORD, nClanID);
 
 	rkt::obuf resultBuf;
@@ -22,6 +25,9 @@ string ClanSceneService_Proxy::getClanName(DWORD nClanID)
 
 void ClanSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void *data, size_t len)
 {
+    if (m_pContainer == 0)
+        return ;
+
     obuf256 t_data;
     t_data << serverID << head << len;
     t_data.push_back(data, len);
@@ -44,6 +50,9 @@ void ClanSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, v
 
 int ClanSceneService_Proxy::getNumProp(DWORD dwClaneID, DWORD dwProp)
 {
+    if (m_pContainer == 0)
+        return int();
+
     BUILD_MSG_CONTEXT_2( IClanSceneService::getNumProp,DWORD, dwClaneID, DWORD, dwProp);
 
     rkt::obuf resultBuf;
@@ -61,6 +70,9 @@ int ClanSceneService_Proxy::getNumProp(DWORD dwClaneID, DWORD dwProp)
 
 bool ClanSceneService_Proxy::setNumProp(DWORD dwClanID, DWORD dwProp, int nValue)
 {
+    if (m_pContainer == 0)
+        return bool();
+
 	BUILD_MSG_CONTEXT_3( IClanSceneService::setNumProp,DWORD, dwClanID,DWORD, dwProp,int, nValue );
 
 	rkt::obuf resultBuf;
@@ -71,6 +83,9 @@ bool ClanSceneService_Proxy::setNumProp(DWORD dwClanID, DWORD dwProp, int nValue
 
 bool ClanSceneService_Proxy::checkCreateClanLegendCup(DWORD dwClanID,int LegendCupConfigID)
 {
+    if (m_pContainer == 0)
+        return bool();
+
 	BUILD_MSG_CONTEXT_2( IClanSceneService::checkCreateClanLegendCup,DWORD, dwClanID,int, LegendCupConfigID);
 
 	rkt::obuf resultBuf;

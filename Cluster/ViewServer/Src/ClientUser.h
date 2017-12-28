@@ -22,7 +22,7 @@ struct ClientUser
 		header.byKeyAction = msg.GetActionId();
 
 		obuf obufData;
-		TBuildObufMsg(obufData, header, m_dwPlayerID, msg);
+		TBuildObufMsg(obufData, header, msg, &m_dwPlayerID, sizeof(m_dwPlayerID));
 
 		const DWORD dwLen = (DWORD)obufData.size();
 		Assert(dwLen == obufData.size());

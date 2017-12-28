@@ -71,7 +71,7 @@ struct SMsgView_VG_Handshake : public IFixMsg<SMsgView_VG_Handshake>
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_HANDSHAKE; }
 
 	DWORD	dwServerID;	// ServerID
-	DWORD	dwID;		// Mng为我生成的动态ID
+	ViewID	dwID;		// Mng为我生成的动态ID
 };
 struct SMsgView_SM_Handshake : public IFixMsg<SMsgView_SM_Handshake>
 {

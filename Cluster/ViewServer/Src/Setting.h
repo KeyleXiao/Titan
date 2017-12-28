@@ -36,8 +36,8 @@ public:
 	void			SetServerID( DWORD dwServerID );
 
 	// Mng为我生成的自增ID
-	inline	DWORD	GetID() { return m_dwID; }
-	inline	void	SetID(DWORD dwID) { m_dwID = dwID; }
+	inline	ViewID	GetID() { return m_dwID; }
+	inline	void	SetID(ViewID dwID) { m_dwID = dwID; }
 
 private:
 	// 读入配置文件
@@ -58,7 +58,7 @@ public:
 
 private:
 	WORD			m_dwBasePortForView;	// 网关上监听ViewServer的端口的基础值
+	ViewID			m_dwID;					// Mng为我生成的自增ID
 	DWORD			m_dwServerID;			// 本服务器ID
-	DWORD			m_dwID;					// Mng为我生成的自增ID
 };
 extern Setting& gSetting;

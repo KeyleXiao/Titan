@@ -17,19 +17,19 @@
 
 class ViewSession;
 
-class ViewContainer : public UserContainer<ViewSession>, public Singleton<ViewContainer>
+class ViewContainer : public UserContainer<ViewSession, ViewID>, public Singleton<ViewContainer>
 {
 public:
 	ViewContainer();
 	virtual ~ViewContainer();
 
 protected:
-	virtual void	onDelUser(ISessionUser* pUser) {};
+	virtual void	OnDelUser(ISessionUser<ViewID>* pUser) {};
 
 	//注册这里要处理的所有消息，到m_Processer中
 	virtual void	RegisterHandlers();
 
-	virtual DWORD	GetMaxID() { return MAX_VIEW_SERVER_COUNT; }
+	virtual ViewID	GetMaxID() { return MAX_VIEW_SERVER_COUNT; }
 
 };
 extern ViewContainer& gViewContainer;

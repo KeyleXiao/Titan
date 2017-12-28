@@ -225,7 +225,7 @@ bool GlobalViewServer::Close()
 
 		m_MngConnector.Close();
 
-		gTimeSyncService.release();
+		gTimeSyncService.Release();
 
 		// 关闭管理连接器
 		ReleaseManagerConnector();

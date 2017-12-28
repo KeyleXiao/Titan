@@ -15,10 +15,10 @@
 #include "SessionUser.h"
 
 
-class ClientSession : public SessionUser<ClientSession>
+class ClientSession : public SessionUser<ClientSession, PlayerID>
 {
 public:
-	ClientSession(IConnection * conn, IUserList& pUserList, Processer<ClientSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
+	ClientSession(IConnection * conn, IUserList<PlayerID>& pUserList, Processer<ClientSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
 	virtual ~ClientSession();
 
 	inline	time_t		GetConnectTime(void) { return m_tConnectTime; }

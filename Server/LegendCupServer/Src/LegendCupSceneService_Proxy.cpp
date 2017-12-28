@@ -9,6 +9,9 @@
 
 void LegendCupSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead head, void* pData, size_t nLen)
 {
+    if (m_pContainer == 0)
+        return;
+
 	obuf256 t_data;
 	t_data << serverID << head << nLen;
 	t_data.push_back(pData, nLen);
@@ -20,6 +23,9 @@ void LegendCupSceneService_Proxy::handleServerMsg(DWORD serverID, SNetMsgHead he
 
 void LegendCupSceneService_Proxy::handleClientMsg(DWORD client, SNetMsgHead head, void* pData, size_t nLen)
 {
+    if (m_pContainer == 0)
+        return;
+
 	obuf256 t_data;
 	t_data << client << head << nLen;
 	t_data.push_back(pData, nLen);

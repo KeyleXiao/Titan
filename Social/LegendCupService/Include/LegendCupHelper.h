@@ -12,7 +12,7 @@ public:
 	SERVICE_PTR		m_pService;
 	ILegendCupService*	m_ptr;
 
-	LegendCupHelper() : m_ptr( nullptr )
+	LegendCupHelper() : m_ptr( nullptr ), m_pService(0)
 	{
 		ILegendCupManager* pLegendCupManager = gSocialGlobal->getLegendCupManager();
 		if (nullptr == pLegendCupManager)
@@ -20,7 +20,7 @@ public:
 			return;
 		}
 
-		m_pService = pLegendCupManager->getLegendCupService();
+		m_pService = m_pService == 0? pLegendCupManager->getLegendCupService() : m_pService;
 		if (nullptr == m_pService)
 		{
 			ErrorLn(__FUNCTION__": failed! can not found SERVICE_PTR!");

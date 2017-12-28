@@ -18,6 +18,11 @@ using namespace std;
 class LegendCupService_Proxy:public ILegendCupService
 {
 public:
+	////////////////// LegendCupService_Proxy ////////////////////////////////////////////////////////
+
+	LegendCupService_Proxy() :m_pContainer(0) {};
+	~LegendCupService_Proxy() {};
+public:
 	// ILegendCupService
 	//////////////////////////////////////////////////////////////////////////
     // 处理其它服务器发送过来的消息

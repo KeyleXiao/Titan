@@ -51,12 +51,15 @@ void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, T t, const TMsg &
 // 将消息打包
 // pointer如果有值，就插在header后面，TMsg前面
 template<class TMsg>
-void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, const TMsg &data, const void* pointer = nullptr, size_t length = 0)
+void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, const TMsg &data, const void* pointer = nullptr, size_t size = 0)
 {
 	obufData.push_back(&header, sizeof(SGameMsgHead));
 
-	if (pointer)
-		obufData.push_back(pointer, length);
+	if (pointer && size > 0)
+	{
+		obufData << size;
+		obufData.push_back(pointer, size);
+	}
 
 	if (std::is_base_of<ISerializableData, TMsg>::value)
 	{
@@ -65,6 +68,34 @@ void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, const TMsg &data,
 	}
 	else
 		obufData.push_back(&data, sizeof(TMsg));
+}
+
+// 将消息打包(省掉header)
+// pointer如果有值，就插在header后面，TMsg前面
+template<class TMsg>
+void TBuildObufMsg(obuf &obufData, const TMsg &msg, const void* pointer = nullptr, size_t size = 0)
+{
+	SGameMsgHead header;
+	header.SrcEndPoint = msg.GetSrcEndPoint();
+	header.DestEndPoint = msg.GetDestEndPoint();
+	header.byKeyModule = msg.GetModuleId();
+	header.byKeyAction = msg.GetActionId();
+
+	obufData.push_back(&header, sizeof(SGameMsgHead));
+
+	if (pointer && size > 0)
+	{
+		obufData << size;
+		obufData.push_back(pointer, size);
+	}
+
+	if (std::is_base_of<ISerializableData, TMsg>::value)
+	{
+		const ISerializableData& isd = (const ISerializableData&)msg;
+		isd.toBytes(obufData);
+	}
+	else
+		obufData.push_back(&msg, sizeof(TMsg));
 }
 
 

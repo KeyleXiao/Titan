@@ -41,7 +41,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 	GatewayAcceptorService *      m_real_service;
 
-	GatewayAcceptorService_Proxy() : m_real_service(0) {
+	GatewayAcceptorService_Proxy() : m_real_service(0), m_pContainer(0) {
 	}
 
 	virtual ~GatewayAcceptorService_Proxy(){
@@ -56,6 +56,9 @@ public:
 	*/
 	virtual bool connectGateway( string ip,int port )
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		obuf64 t_data;
 		t_data << ip << port;
 
@@ -70,6 +73,9 @@ public:
 
 	virtual void sendData( ClientID client,PACKAGE_PTR package )
 	{
+        if (m_pContainer == 0)
+            return;
+
 		//obuf256 t_data;
 		//t_data << "sendData" << client << package;
 
@@ -92,6 +98,9 @@ public:
 	*/
 	virtual void broadcast(ClientID * pClientArray,WORD wClientNum,LPVOID pData,WORD wDataLen)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		obuf256 t_data;
 		t_data << wClientNum << wDataLen;
 				
@@ -111,6 +120,9 @@ public:
 
     virtual SessionID getSession(ClientID client)
     {
+        if (m_pContainer == 0)
+            return SessionID();
+
 		BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::getSession,ClientID, client );
 
 		rkt::obuf resultBuf;
@@ -121,6 +133,9 @@ public:
 
     virtual SSceneNodeLoc getSceneNodeLoc(ClientID client)
     {
+        if (m_pContainer == 0)
+            return SSceneNodeLoc();
+
         BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::getSceneNodeLoc,ClientID, client );
 
 		rkt::obuf resultBuf;
@@ -131,6 +146,9 @@ public:
 
 	virtual string getIpAddress(ClientID client)
 	{
+        if (m_pContainer == 0)
+            return string();
+
 		BUILD_MSG_CONTEXT_1( IGatewayAcceptorService::getIpAddress,ClientID, client );
 
 		rkt::obuf resultBuf;

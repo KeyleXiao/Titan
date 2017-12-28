@@ -18,6 +18,11 @@ using namespace std;
 class MailService_Proxy:public IMailService
 {
 public:
+	////////////////// MailService_Proxy ////////////////////////////////////////////////////////
+
+	MailService_Proxy() :m_pContainer(0) {};
+	~MailService_Proxy() {};
+public:
 	///////////////////////////////IMailService///////////////////////////////////////////
 
     // 处理其它服务器发送过来的消息
@@ -31,6 +36,7 @@ public:
 
     // 指定玩家读取邮件列表
     virtual bool readPlayerMailList(DWORD dwPDBID) override;
+
 public:
 	SERVICE_PTR m_pContainer;
 

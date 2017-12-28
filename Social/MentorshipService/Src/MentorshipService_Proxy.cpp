@@ -5,6 +5,10 @@
  //////////////////////////////////////////////////////////////////////////////////
  void MentorshipService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,void * data, size_t len )
  {
+	 if (m_pContainer == 0)
+	 {
+		 return;
+	 }
      obuf256 t_data;
      t_data << serverID << head << len;
      t_data.push_back(data, len);
@@ -17,6 +21,10 @@
  //////////////////////////////////////////////////////////////////////////////////
  void MentorshipService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,void * data, size_t len )
  {
+	 if (m_pContainer == 0)
+	 {
+		 return;
+	 }
      obuf256 t_data;
      t_data << client << head << len;
      t_data.push_back(data, len);

@@ -6,7 +6,7 @@
 #include "ViewSession.h"
 
 
-ClientSession::ClientSession(IConnection * conn, IUserList& pUserList, Processer<ClientSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
+ClientSession::ClientSession(IConnection * conn, IUserList<PlayerID>& pUserList, Processer<ClientSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
 	:SessionUser(conn, pUserList, processer, timerAxis, pByteRecord)
 {
 	m_tConnectTime = (DWORD)time(NULL);

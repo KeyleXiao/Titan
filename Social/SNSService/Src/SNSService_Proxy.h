@@ -25,6 +25,12 @@ public:
 		char szActorName1[32];
 		char szActorName2[32];
 	};
+public:
+	////////////////// SNSService_Proxy ////////////////////////////////////////////////////////
+
+	SNSService_Proxy() :m_pContainer(0) {};
+
+	~SNSService_Proxy() {};
 
 public:
 	// 接收数据

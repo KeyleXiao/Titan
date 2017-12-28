@@ -30,9 +30,11 @@ public:
 
 		for each (auto entry in _map)
 		{
-			const GateID& wGateID = entry.first;
 			const VecPlayerID& vecTmp = entry.second;
+			if (vecTmp.empty())
+				continue;
 
+			const GateID& wGateID = entry.first;
 			GateConnector* pGate = gGates.Get(wGateID);
 			if (pGate == nullptr)
 				continue;

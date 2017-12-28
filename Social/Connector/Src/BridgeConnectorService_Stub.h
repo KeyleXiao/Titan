@@ -32,7 +32,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 
 
-	BridgeConnectorService_Proxy() {
+	BridgeConnectorService_Proxy() : m_pContainer(0) {
 	}
 
 	virtual ~BridgeConnectorService_Proxy(){
@@ -45,6 +45,9 @@ public:
 		*/
 		virtual DWORD  getServerID()
 		{
+            if (m_pContainer == 0)
+                return DWORD();
+
 			BUILD_MSG_CONTEXT_VOID(IBridgeConnectorService::getServerID);
 
 			rkt::obuf resultBuf;
@@ -58,6 +61,9 @@ public:
 		*/
 		virtual DWORD getPublicWorldID()
 		{
+            if (m_pContainer == 0)
+                return DWORD();
+
 			BUILD_MSG_CONTEXT_VOID(IBridgeConnectorService::getPublicWorldID);
 
 			rkt::obuf resultBuf;
@@ -73,6 +79,9 @@ public:
 		*/
 		virtual void  sendData(ibuffer & msg)
 		{
+            if (m_pContainer == 0)
+                return;
+
 			BUILD_MSG_BUFFER( IBridgeConnectorService::sendData,msg);
 
 			m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
@@ -84,6 +93,9 @@ public:
 		*/
 		virtual void sendDataToServer(DWORD dwServerID,ibuffer & msg,bool bZeroBroadcast)
 		{
+            if (m_pContainer == 0)
+                return;
+
 			obuf128 t_data;
 			t_data << dwServerID<< bZeroBroadcast << msg ;
 
@@ -96,6 +108,9 @@ public:
 		*/
 		virtual void broadcastDataToServer(DWORD * pServerArray,WORD wServerNum,ibuffer & msg)
 		{
+            if (m_pContainer == 0)
+                return;
+
 			obuf128 t_data;
 			t_data << pServerArray << wServerNum << msg ;
 
@@ -110,6 +125,9 @@ public:
 		*/
 		virtual bool sendExtDataToServer(DWORD dwServerID,DWORD dwMsgCode,DWORD dwUserData1,DWORD dwUserData2,DWORD dwUserData3,const char * pData,DWORD dwLen)
 		{
+            if (m_pContainer == 0)
+                return bool();
+
 			obuf128 t_data;
 			t_data << dwServerID << dwMsgCode << dwUserData1 << dwUserData2 << dwUserData3 << dwLen;
 			t_data.push_back(pData, dwLen);
@@ -132,6 +150,9 @@ public:
 		*/
 		virtual DWORD getGameServerIDList(DWORD * pServerArray,DWORD dwArrayLen,DWORD &dwGetCounts,DWORD dwWorldID,WORD wServerType)
 		{
+            if (m_pContainer == 0)
+                return DWORD();
+
 			obuf256 t_data;
 			t_data << dwArrayLen << dwGetCounts << dwWorldID << wServerType;
 			t_data.push_back(pServerArray, dwArrayLen*sizeof(DWORD));
@@ -153,6 +174,9 @@ public:
 		*/
 		virtual DWORD getGameServerIDByTypeSubID(DWORD dwWorldID,WORD wServerType,WORD wSubID)
 		{
+            if (m_pContainer == 0)
+                return DWORD();
+
 			BUILD_MSG_CONTEXT_3( IBridgeConnectorService::getGameServerIDByTypeSubID,DWORD ,dwWorldID,WORD ,wServerType,WORD, wSubID);
 
 			rkt::obuf resultBuf;
@@ -173,6 +197,9 @@ public:
 		*/
 		virtual DWORD getGameWorldIDList(DWORD * pWorldArray,DWORD dwArrayLen,DWORD &dwGetCounts)
 		{
+            if (m_pContainer == 0)
+                return DWORD();
+
 			obuf128 t_data;
 			t_data << dwArrayLen << dwGetCounts;
 			t_data.push_back(pWorldArray, dwArrayLen*sizeof(DWORD));
@@ -192,6 +219,9 @@ public:
 		*/
 		virtual IBridgeWorldInfo * getGameWorldInfo(DWORD dwWorldID)
 		{
+            if (m_pContainer == 0)
+                return 0;
+
 			BUILD_MSG_CONTEXT_1( IBridgeConnectorService::getGameWorldInfo,DWORD ,dwWorldID);
 
 			rkt::obuf resultBuf;
@@ -209,6 +239,9 @@ public:
 		*/
 		virtual IBridgePart* getGameServerPart(DWORD dwServerID)
 		{
+            if (m_pContainer == 0)
+                return 0;
+
 			BUILD_MSG_CONTEXT_1( IBridgeConnectorService::getGameServerPart,DWORD ,dwServerID);
 
 			rkt::obuf resultBuf;
@@ -226,6 +259,9 @@ public:
 		*/
 		virtual IBridgePart* getGameServerPartByTypeSubID(DWORD dwWorldID,WORD wServerType,WORD wSubID)
 		{
+            if (m_pContainer == 0)
+                return 0;
+
 			BUILD_MSG_CONTEXT_3( IBridgeConnectorService::getGameServerPartByTypeSubID,DWORD ,dwWorldID,WORD, wServerType,WORD, wSubID);
 
 			rkt::obuf resultBuf;
@@ -240,6 +276,9 @@ public:
 		*/
 		virtual IBridgePart* getLocalBridgePart() 
 		{
+            if (m_pContainer == 0)
+                return 0;
+
 			BUILD_MSG_CONTEXT_VOID( IBridgeConnectorService::getLocalBridgePart);
 
 			rkt::obuf resultBuf;
@@ -252,6 +291,9 @@ public:
 		// 通过指定服务器发中转消息数据给目标游戏服务器 dwServerID:服务器ID 为0时广播给所有服务器,DWORD dwTransitServerID 中转到服务器ID
 		virtual void sendTransitDataToServer(DWORD dwServerID,DWORD dwTransitServerID,const char * pData,DWORD dwLen)
 		{
+            if (m_pContainer == 0)
+                return;
+
 			obuf128 t_data;
 			t_data << dwServerID << dwTransitServerID << dwLen;
 			t_data.push_back(pData, dwLen);

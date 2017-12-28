@@ -324,13 +324,13 @@ bool GlobalViewMng::Close()
 		ReleaseManagerConnector();
 
 		// 清除服务器列表
-		gGameList.shutdown();
+		gGameList.Shutdown();
 
 		// 清除网关列表
-		gGateList.shutdown();
+		gGateList.Shutdown();
 
 		// 清除ViewServer列表
-		gViewList.shutdown();
+		gViewList.Shutdown();
 
 		ReleaseListeners();
 

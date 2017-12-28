@@ -14,17 +14,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////
-COSSLogService_Proxy::COSSLogService_Proxy()
-{
-
-}
-
-COSSLogService_Proxy::~COSSLogService_Proxy()
-{
-
-}
-
-//////////////////////////////////////////////////////////////////////////
 /** 记录文字型日志
 @param   nNoteTrackType: OSS_NOTE_TRACK_TYPE
 @param   dwIndex ：索引，各个类型不同，索引也不一样：参考OSS_NOTE_TRACK_TYPE对应数值
@@ -33,6 +22,10 @@ COSSLogService_Proxy::~COSSLogService_Proxy()
 */
 void COSSLogService_Proxy::addGameNoteLog(int nGameWorldID, int nNoteTrackType, DWORD dwIndex, LPCSTR pszNote)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     if(pszNote == NULL) return;
 
     size_t nNoteLen = strlen(pszNote) + 1;
@@ -51,6 +44,10 @@ void COSSLogService_Proxy::addGameNoteLog(int nGameWorldID, int nNoteTrackType, 
 */
 void COSSLogService_Proxy::addPlazaTicketLog(int nGameWorldID, void* pActorTicketLog, size_t nLogSize)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     if(pActorTicketLog == NULL || nLogSize == 0) return;
 
     obuf256 t_data;
@@ -75,6 +72,10 @@ void COSSLogService_Proxy::addPlazaTicketLog(int nGameWorldID, void* pActorTicke
 */
 void COSSLogService_Proxy::addTicketLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -97,6 +98,10 @@ void COSSLogService_Proxy::addTicketLog(int nGameWorldID, DWORD dwMaster, int nT
 */
 void COSSLogService_Proxy::transTickLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -119,6 +124,10 @@ void COSSLogService_Proxy::transTickLog(int nGameWorldID, DWORD dwMaster, int nT
 */
 void COSSLogService_Proxy::addMoneyLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -141,6 +150,10 @@ void COSSLogService_Proxy::addMoneyLog(int nGameWorldID, DWORD dwMaster, int nTa
 */
 void COSSLogService_Proxy::transMoneyLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -163,6 +176,10 @@ void COSSLogService_Proxy::transMoneyLog(int nGameWorldID, DWORD dwMaster, int n
 */
 void COSSLogService_Proxy::addBindMoneyLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -185,6 +202,10 @@ void COSSLogService_Proxy::addBindMoneyLog(int nGameWorldID, DWORD dwMaster, int
 */
 void COSSLogService_Proxy::transBindMoneyLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -199,6 +220,10 @@ void COSSLogService_Proxy::transBindMoneyLog(int nGameWorldID, DWORD dwMaster, i
 */
 void COSSLogService_Proxy::addExpLog(int nGameWorldID, DWORD dwMaster, int nTarget, int nNum, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << dwMaster << nTarget << nNum << wApproach << nTime << dwReserve << strRemark;
@@ -222,6 +247,10 @@ void COSSLogService_Proxy::addExpLog(int nGameWorldID, DWORD dwMaster, int nTarg
 */
 void COSSLogService_Proxy::addNumericLog(int nGameWorldID, BYTE byObjType, int nObjectID, int nTarget, int nNum, BYTE byNumType, BYTE byOpType, WORD wApproach, int nTime, const char * szRemark, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << byObjType << nObjectID << nTarget << nNum << byNumType << byOpType << wApproach << nTime << dwReserve << strRemark;
@@ -250,6 +279,10 @@ void COSSLogService_Proxy::addNumericLog(int nGameWorldID, BYTE byObjType, int n
 void COSSLogService_Proxy::addActorGoodsLog(int nGameWorldID, BYTE byFromType, long lFromObjID, BYTE byToType, long lToObjID, BYTE nGoodsType, BYTE byOpType, WORD wApproach,
     int nTypeID, int nNum, int nTime, const char * szRemark, DWORD dwReserveID1, DWORD dwReserveID2)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     string strRemark = (szRemark == NULL ? "" : szRemark);
     obuf256 t_data;
     t_data << nGameWorldID << byFromType << lFromObjID << byToType << lToObjID << nGoodsType << byOpType << wApproach << nTypeID << nNum << nTime << dwReserveID1 << dwReserveID2 << strRemark;
@@ -269,6 +302,10 @@ void COSSLogService_Proxy::addActorGoodsLog(int nGameWorldID, BYTE byFromType, l
 */
 void COSSLogService_Proxy::addActorUpgradeLog(int nGameWorldID, DWORD dwUserID, DWORD dwActorID, BYTE nUpgradeType, DWORD dwValue, int nTime, DWORD dwReserve)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
     BUILD_MSG_CONTEXT_7( IOSSLogService::addActorUpgradeLog,int,nGameWorldID, DWORD, dwUserID, DWORD, dwActorID, BYTE, nUpgradeType, DWORD, dwValue, int, nTime, DWORD, dwReserve);
 
     m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);

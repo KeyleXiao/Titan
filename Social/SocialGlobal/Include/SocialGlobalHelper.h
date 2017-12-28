@@ -25,7 +25,7 @@ public:
 	SERVICE_PTR m_pContainer;
 	ISocialGlobalService * m_ptr;
 
-	SocialGlobalHelper() : m_ptr(0)
+	SocialGlobalHelper() : m_ptr(0), m_pContainer(0)
 	{
 		SERVICE_ID serviceID = gSocialGlobal->getSocialGlobalService();
 		if (serviceID == INVALID_SERVICE_ID)
@@ -34,7 +34,7 @@ public:
 			return;
 		}
 
-		m_pContainer = gSocialGlobal->getFramework()->get_service_manager()->get_service(serviceID);
+		m_pContainer = m_pContainer == 0? gSocialGlobal->getFramework()->get_service_manager()->get_service(serviceID) : m_pContainer;
 		if (m_pContainer == 0)
 		{
 			ErrorLn("SocialGlobalHelper() not get SERVICE_PTR, m_pContainer=0");

@@ -17,7 +17,7 @@
 class GameUser;
 
 
-class GameList : public UserList<GameUser>, public Singleton<GameList>
+class GameList : public UserList<GameUser, GameID>, public Singleton<GameList>
 {
 public:
 	GameList();
@@ -29,12 +29,12 @@ public:
 	//void	BroadcastGatesInfoToView();
 
 protected:
-	virtual void	onDelUser(ISessionUser* pUser) {};
+	virtual void	OnDelUser(ISessionUser<GameID>* pUser) {};
 
 	//注册这里要处理的所有消息，到m_Processer中
 	virtual void	RegisterHandlers();
 
-	virtual DWORD	GetMaxID();
+	virtual GameID	GetMaxID();
 
 };
 extern GameList& gGameList;

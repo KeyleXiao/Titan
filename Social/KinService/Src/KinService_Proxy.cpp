@@ -10,6 +10,10 @@
 
 IKin* KinService_Proxy::getKin(DWORD dwKinID)
 {
+	if (m_pContainer == 0)
+	{
+		return 0;
+	}
 	BUILD_MSG_CONTEXT_1( IKinService::getKin,DWORD, dwKinID );
 
 	rkt::obuf resultBuf;
@@ -20,6 +24,10 @@ IKin* KinService_Proxy::getKin(DWORD dwKinID)
 
 SKinInfo KinService_Proxy::getKinInfo(DWORD dwKinID)
 {
+	if (m_pContainer == 0)
+	{
+		return SKinInfo();
+	}
 	BUILD_MSG_CONTEXT_1( IKinService::getKinInfo,DWORD, dwKinID );
 
 	rkt::obuf resultBuf;
@@ -31,6 +39,10 @@ SKinInfo KinService_Proxy::getKinInfo(DWORD dwKinID)
 
 SKinMember KinService_Proxy::getKinMemberInfo(DWORD dwKinID)
 {
+	if (m_pContainer == 0)
+	{
+		return SKinMember();
+	}
     BUILD_MSG_CONTEXT_1( IKinService::getKinMemberInfo,DWORD, dwKinID );
 
     rkt::obuf resultBuf;
@@ -42,16 +54,24 @@ SKinMember KinService_Proxy::getKinMemberInfo(DWORD dwKinID)
 
 bool KinService_Proxy::deleteKinMember(DWORD dwKinID, DWORD ActorID)
 {
+	if (m_pContainer == 0)
+	{
+		return false;
+	}
 	BUILD_MSG_CONTEXT_2( IKinService::deleteKinMember,DWORD, dwKinID,DWORD,ActorID );
 
 	rkt::obuf resultBuf;
 	m_pContainer->post_message(pMsg,nMsgLen,&resultBuf);
 	RETURN_FROM_MSG_BUF(bool);
-	return 0;
+	return false;
 }
 
  DWORD KinService_Proxy::getKinMemberList(DWORD dwKinID, PDBID* pReturnArray, DWORD dwArrayMaxSize)
 {
+	if (m_pContainer == 0)
+	{
+		return 0;
+	}
 	BUILD_MSG_CONTEXT_3( IKinService::getKinMemberList,DWORD ,dwKinID, PDBID*, pReturnArray, DWORD, dwArrayMaxSize);
 
 	rkt::obuf resultBuf;
@@ -62,6 +82,10 @@ bool KinService_Proxy::deleteKinMember(DWORD dwKinID, DWORD ActorID)
 
  DWORD KinService_Proxy::getKinMemberCount(DWORD dwKinID)
  {
+	 if (m_pContainer == 0)
+	 {
+		 return 0;
+	 }
 	BUILD_MSG_CONTEXT_1( IKinService::getKinMemberCount,DWORD ,dwKinID);
 
 	rkt::obuf resultBuf;
@@ -72,6 +96,10 @@ bool KinService_Proxy::deleteKinMember(DWORD dwKinID, DWORD ActorID)
 
  DWORD KinService_Proxy::getTotalFightScore(DWORD dwKinID)
  {
+	 if (m_pContainer == 0)
+	 {
+		 return 0;
+	 }
      BUILD_MSG_CONTEXT_1( IKinService::getTotalFightScore,DWORD ,dwKinID);
 
      rkt::obuf resultBuf;
@@ -83,16 +111,24 @@ bool KinService_Proxy::deleteKinMember(DWORD dwKinID, DWORD ActorID)
 
  bool KinService_Proxy::addClanCtrb(DWORD dwPDBID, int nClanCtrb)
  {
+	if (m_pContainer == 0)
+	{
+		return false;
+	}
 	BUILD_MSG_CONTEXT_2( IKinService::addClanCtrb,DWORD, dwPDBID, int ,nClanCtrb);
 
 	rkt::obuf resultBuf;
 	m_pContainer->post_message(pMsg,nMsgLen,&resultBuf);
 	RETURN_FROM_MSG_BUF(bool);
-	return 0;
+	return false;
  }
 
 void KinService_Proxy::addKinLegendAward(SKinCupAwardNode sAwardNode)
  {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	 BUILD_MSG_CONTEXT_1( IKinService::addKinLegendAward, SKinCupAwardNode, sAwardNode);
 
 	 rkt::obuf resultBuf;
@@ -101,6 +137,10 @@ void KinService_Proxy::addKinLegendAward(SKinCupAwardNode sAwardNode)
 
 void KinService_Proxy::addKinLegendWarResult(SKinWarRecordNode sRecordNode)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	BUILD_MSG_CONTEXT_1( IKinService::addKinLegendWarResult, SKinWarRecordNode, sRecordNode);
 
 	rkt::obuf resultBuf;
@@ -110,6 +150,10 @@ void KinService_Proxy::addKinLegendWarResult(SKinWarRecordNode sRecordNode)
 // purpose:  战队杯赛荣誉增加
 void KinService_Proxy::addKinLegendGlory(int nKinID, int nNum, int nGloryType)
 {
+	if (m_pContainer == 0)
+	{
+		return;
+	}
 	BUILD_MSG_CONTEXT_3(IKinService::addKinLegendGlory, int, nKinID, int, nNum, int, nGloryType);
 
 	rkt::obuf resultBuf;
@@ -119,6 +163,10 @@ void KinService_Proxy::addKinLegendGlory(int nKinID, int nNum, int nGloryType)
 // purpose: 取战队杯赛荣誉
 int KinService_Proxy::getKinLegendGlory(int nKinID, int nGloryType)
 {
+	if (m_pContainer == 0)
+	{
+		return 0;
+	}
 	BUILD_MSG_CONTEXT_2(IKinService::getKinLegendGlory, int, nKinID, int, nGloryType);
 
 	rkt::obuf resultBuf;
@@ -130,6 +178,10 @@ int KinService_Proxy::getKinLegendGlory(int nKinID, int nGloryType)
 /// purpose: 获取周活跃度
 int KinService_Proxy::getWeekActivity(DWORD dwnKinID)
 {
+	if (m_pContainer == 0)
+	{
+		return 0;
+	}
 	BUILD_MSG_CONTEXT_1(IKinService::getWeekActivity, DWORD, dwnKinID);
 
 	rkt::obuf resultBuf;
@@ -141,6 +193,10 @@ int KinService_Proxy::getWeekActivity(DWORD dwnKinID)
  //////////////////////////////////////////////////////////////////////////////////
  void KinService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,void * data, size_t len )
  {
+	 if (m_pContainer == 0)
+	 {
+		 return;
+	 }
      obuf256 t_data;
      t_data << serverID << head << len;
      t_data.push_back(data, len);
@@ -153,6 +209,10 @@ int KinService_Proxy::getWeekActivity(DWORD dwnKinID)
  //////////////////////////////////////////////////////////////////////////////////
  void KinService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,void * data, size_t len )
  {
+	 if (m_pContainer == 0)
+	 {
+		 return;
+	 }
      obuf256 t_data;
      t_data << client << head << len;
      t_data.push_back(data, len);

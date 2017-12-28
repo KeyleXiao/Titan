@@ -59,8 +59,7 @@ protected:
 	bool                    m_bEmergent;            // 是不是紧急处理
     bool                    m_bFinished;            // 上次domsg是否完成了，可能被挂起了。
 
-    bool                    m_bSessionStarted;      // Session处于Start完状态
-    bool                    m_bStop;
+    MY_SERVICE_STATUS       m_status;               // 服务状态
 
     ServiceStartedCallback  m_pStartedCallback;     // 启动后回调函数
     ServiceStopedCallback   m_pStopedCallback;      // 停止后回调函数
@@ -144,8 +143,8 @@ public:
 	// 挂起 : 任务全部完成了bFinish=true,否则为false
 	virtual void yield(bool bFinish=true);
 
-    // 是否已启好
-    virtual bool is_started() { return m_bSessionStarted; }
+    // 获取状态
+    virtual MY_SERVICE_STATUS get_status() { return m_status; }
 
     // for test
     virtual int get_request_queue_count(){ return m_request_queue.count();}

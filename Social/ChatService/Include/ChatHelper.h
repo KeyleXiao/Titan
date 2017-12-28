@@ -12,7 +12,7 @@ public:
 	SERVICE_PTR		m_pService;
 	IChatService*	m_ptr;
 
-	ChatHelper() : m_ptr( nullptr )
+	ChatHelper() : m_ptr( nullptr ), m_pService(0)
 	{
 		IChatManager* pChatManager = gSocialGlobal->getChatManager();
 		if (nullptr == pChatManager)
@@ -20,7 +20,7 @@ public:
 			return;
 		}
 
-		m_pService = pChatManager->getChatService();
+		m_pService = m_pService == 0? pChatManager->getChatService() : m_pService;
 		if (nullptr == m_pService)
 		{
 			CHAT_ERRORLN("ChatHelper() failed! can not found SERVICE_PTR!");

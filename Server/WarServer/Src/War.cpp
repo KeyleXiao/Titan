@@ -1583,7 +1583,7 @@ const void CWar::getWarResultString(SWPerson* pPerson, char * szWarResultStr, si
 	warResult[WRTT_IsHaveClanMember] = isHaveSameClanMember(pPerson->uPDBID) ? 1 : 0;
 	warResult[WRTT_IsHaveMentorship] = isHaveMentorship(pPerson->uPDBID, nMentorshipPost) ? 1 : 0;
 	warResult[WRTT_IsWin] = (pPerson->nCamp == getWinCamp()) ? 1 : 0;
-	warResult[WRTT_IsSuperGod] = pPerson->nDeadContKill >= EKNT_TYPE_8 ? 1 : 0;
+	warResult[WRTT_IsSuperGod] = getSuperGodCount(pPerson->uPDBID) > 0 ? 1 : 0;
 	warResult[WRTT_IsMVP] = pPerson->nTitle & EWM_SCORE ? 1 : 0;
 	warResult[WRTT_IsTopOutput] = pPerson->nTitle & EWM_OUTPUT ? 1 : 0;
 	warResult[WRTT_IsTopKillTower] = pPerson->nTitle & EWM_DESTORYTOWER ? 1 : 0;
@@ -2831,7 +2831,6 @@ void CWar::calculateWarEndData()
 			/////////////////////////////////////////战斗统计////////////////////////////////////
 			// 击杀
 			WarInfo.gzAllData[ERDT_KILLNUM] = itPerson->nBaseRecord[EDT_KillCount];
-			WarningLn(__FUNCTION__": WarInfo.gzAllData[ERDT_KILLNUM] = " << WarInfo.gzAllData[ERDT_KILLNUM]);
 
 			// 死亡次数
 			WarInfo.gzAllData[ERDT_DEADNUM] = itPerson->nDeadNum;
@@ -3688,7 +3687,7 @@ void CWar::setCampLegendCupGlory(int nGlory[], int nGloryLen, int nCamp, int nWi
 		nGlory[emLegendGlory_KillCount] += itPerson->nBaseRecord[EDT_KillCount];
 		nGlory[emLegendGlory_AssistCount] += itPerson->nBaseRecord[EDT_AssistCount];
 		nGlory[emLegendGlory_DeathCount] += itPerson->nDeadNum;
-		nGlory[emLegendGlory_GodCount] += (itPerson->nDeadContKill >= EKNT_TYPE_8 ? 1 : 0);
+		nGlory[emLegendGlory_GodCount] += getSuperGodCount(itPerson->uPDBID);
 
 		ContinuKillList::iterator iter = itPerson->timeContKillList.begin();
 		for (; iter != itPerson->timeContKillList.end(); ++iter)

@@ -22,7 +22,7 @@ public:
 	ITeamService*	m_ptr;
     SERVICE_PTR		m_pContainer;
 
-	TeamHelper() : m_ptr( nullptr )
+	TeamHelper() : m_ptr( nullptr ), m_pContainer(0)
 	{
 		ITeamManager* pTeamManager = gSocialGlobal->getTeamManager();
 		if (nullptr == pTeamManager)
@@ -30,7 +30,7 @@ public:
 			return;
 		}
 
-		SERVICE_PTR m_pContainer = pTeamManager->GetTeamService();
+		m_pContainer = m_pContainer == 0? pTeamManager->GetTeamService() : m_pContainer;
 		if (nullptr == m_pContainer)
 		{
 			TEAM_ERRORLN("TeamHelper() failed! can not found SERVICE_PTR!");

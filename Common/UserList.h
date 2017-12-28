@@ -18,8 +18,8 @@
 #include "Processer.h"
 
 // TYPE 为实际拥有IConnection的类
-template<class TYPE>
-class UserList : public IUserList
+template<typename TYPE, typename TypeID = DWORD>
+class UserList : public IUserList<TypeID>
 {
 public:
 	UserList() :m_dwCurrIndex(0) {}
@@ -28,55 +28,55 @@ public:
 	Processer<TYPE>& GetProcesser() { return m_Processer; }
 
 	// 关服时调用
-	void	shutdown(void);
+	void	Shutdown(void);
 
 	// 用户数量
 	size_t	Count() { return m_UserMap.size(); }
 
 	// 取User
-	TYPE*	Get(DWORD id);
+	TYPE*	Get(TypeID id);
 
 	//************************************
 	// Returns:   bool				true 成功； false 连接数已满
 	// Qualifier:
 	// Parameter: TYPE * pNewUser	添加用户
-	// Parameter: DWORD id			id为0，表示需要生成自增的ID
+	// Parameter: TypeID id			id为0，表示需要生成自增的ID
 	//************************************
-	bool	AddUser(TYPE* pNewUser, DWORD id = 0);
+	bool	AddUser(TYPE* pNewUser, TypeID id = 0);
 	// 删除用户
-	virtual void	DelUser(ISessionUser* pUser);
+	virtual void	DelUser(ISessionUser<TypeID>* pUser);
 
 protected:
-	virtual void	onDelUser(ISessionUser* pUser) = 0;
+	virtual void	OnDelUser(ISessionUser<TypeID>* pUser) = 0;
 
 	// 注册这里要处理的所有消息，到m_Processer中
 	virtual void	RegisterHandlers() = 0;
 	// 获取最大连接数（同时也是允许出现的最大自增ID）
-	virtual DWORD	GetMaxID() = 0;
+	virtual TypeID	GetMaxID() = 0;
 	// 连接数是否达到上限
 	virtual	bool	IsFull() { return this->Count() >= GetMaxID(); }
 
 private:
 	// 生成ID	TODO 此方法需要单元测试
-	DWORD	GenerateID();
+	TypeID	GenerateID();
 
 protected:
 	// <ID,User>
-	typedef std::map<DWORD, TYPE*> USER_MAP;
+	typedef std::map<TypeID, TYPE*> USER_MAP;
 
 	USER_MAP			m_UserMap;
 	Processer<TYPE>		m_Processer;
 
 private:
-	DWORD	m_dwCurrIndex;
+	TypeID	m_dwCurrIndex;
 };
 
 // 以下为方法的具体实现
 /////////////////////////////////////////////////////////////////////////////////////
 
 // 取User
-template<class TYPE>
-TYPE* UserList<TYPE>::Get(DWORD id)
+template<class TYPE, typename TypeID>
+TYPE* UserList<TYPE, TypeID>::Get(TypeID id)
 {
 	auto it = m_UserMap.find(id);
 	if (it != m_UserMap.end())
@@ -86,27 +86,29 @@ TYPE* UserList<TYPE>::Get(DWORD id)
 }
 
 // 添加用户
-template<class TYPE>
-bool UserList<TYPE>::AddUser(TYPE* pNewUser, DWORD id)
+template<class TYPE, typename TypeID>
+bool UserList<TYPE, TypeID>::AddUser(TYPE* pNewUser, TypeID id)
 {
 	if (IsFull())
 		return false;
 
-	const DWORD tmpId = id <= 0 ? GenerateID() : id;
+	const TypeID tmpId = id <= 0 ? GenerateID() : id;
 	pNewUser->SetID(tmpId);
 	m_UserMap[tmpId] = pNewUser;
 	return true;
 }
 
-template<class TYPE>
-void UserList<TYPE>::DelUser(ISessionUser* pUser)
+template<class TYPE, typename TypeID>
+void UserList<TYPE, TypeID>::DelUser(ISessionUser<TypeID>* pUser)
 {
-	DWORD id = pUser->GetID();
+	TypeID id = pUser->GetID();
 	m_UserMap.erase(id);
+
+	OnDelUser(pUser);
 }
 
-template<class TYPE>
-void UserList<TYPE>::shutdown(void)
+template<class TYPE, typename TypeID>
+void UserList<TYPE, TypeID>::Shutdown(void)
 {
 	if (!m_UserMap.empty())
 	{
@@ -121,7 +123,6 @@ void UserList<TYPE>::shutdown(void)
 		{
 			TYPE * pUser = *it0;
 			pUser->Release();
-			//SafeRelease((*it0));
 		}
 
 		deletelist.clear();
@@ -131,10 +132,10 @@ void UserList<TYPE>::shutdown(void)
 	m_dwCurrIndex = 0;
 }
 
-template<class TYPE>
-DWORD UserList<TYPE>::GenerateID()
+template<class TYPE, typename TypeID>
+TypeID UserList<TYPE, TypeID>::GenerateID()
 {
-	const DWORD MAX_COUNT = GetMaxID();
+	const TypeID MAX_COUNT = GetMaxID();
 	do
 	{
 		// +1先，这样能够保证：不重用刚刚移除的User的ID

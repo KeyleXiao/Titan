@@ -16,10 +16,10 @@
 
 
 
-class GameUser : public SessionUser<GameUser>
+class GameUser : public SessionUser<GameUser, GameID>
 {
 public:
-	GameUser(IConnection * conn, IUserList& pUserList, Processer<GameUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
+	GameUser(IConnection * conn, IUserList<GameID>& pUserList, Processer<GameUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
 	virtual ~GameUser() {}
 
 protected:

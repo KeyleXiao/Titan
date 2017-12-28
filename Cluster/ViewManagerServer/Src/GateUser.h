@@ -15,10 +15,10 @@
 #include "SessionUser.h"
 
 
-class GateUser : public SessionUser<GateUser>
+class GateUser : public SessionUser<GateUser, GateID>
 {
 public:
-	GateUser(IConnection * conn, IUserList& pUserList, Processer<GateUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
+	GateUser(IConnection * conn, IUserList<GateID>& pUserList, Processer<GateUser>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
 	virtual ~GateUser() {}
 
 	inline	DWORD	GetMaxCount() const { return m_dwMaxCount; }

@@ -5,6 +5,10 @@
  //////////////////////////////////////////////////////////////////////////////////
  void MailService_Proxy::handleServerMsg( DWORD serverID,SNetMsgHead head,void * data, size_t len )
  {
+	 if (m_pContainer == 0)
+	 {
+		 return;
+	 }
      obuf256 t_data;
      t_data << serverID << head << len;
      t_data.push_back(data, len);
@@ -17,6 +21,10 @@
  //////////////////////////////////////////////////////////////////////////////////
  void MailService_Proxy::handleClientMsg( DWORD client,SNetMsgHead head,void * data, size_t len )
  {
+	 if (m_pContainer == 0)
+	 {
+		 return;
+	 }
      obuf256 t_data;
      t_data << client << head << len;
      t_data.push_back(data, len);
@@ -29,6 +37,10 @@
  /// 发送邮件
 bool MailService_Proxy::sendMail(SMailSendData sSendData, int nMailFillID, LPCSTR szParam)
 {
+	if (m_pContainer == 0)
+	{
+		return false;
+	}
 	string strParam = (szParam == NULL ? "" : szParam);
 	obuf1024 t_data;
 	t_data << sSendData << nMailFillID << strParam;
@@ -43,6 +55,10 @@ bool MailService_Proxy::sendMail(SMailSendData sSendData, int nMailFillID, LPCST
 
 bool MailService_Proxy::readPlayerMailList(DWORD dwPDBID)
 {
+	if (m_pContainer == 0)
+	{
+		return false;
+	}
     BUILD_MSG_CONTEXT_1(MailService_Proxy::readPlayerMailList, DWORD, dwPDBID);
     return m_pContainer->post_message(pMsg, nMsgLen, 0, MSG_FLAG_NO_BLOCK);
 }

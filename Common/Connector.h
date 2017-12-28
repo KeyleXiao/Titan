@@ -193,7 +193,7 @@ public:
 
 	// 发送消息，简化版
 	template<typename TMsg>
-	bool SendMsg(TMsg& msg, void* pointer = nullptr, size_t length = 0)
+	bool SendMsg(TMsg& msg, void* pointer = nullptr, size_t size = 0)
 	{
 		if (m_pConnection == NULL)
 			return false;
@@ -205,7 +205,7 @@ public:
 		header.byKeyAction = msg.GetActionId();
 
 		obuf obufData;
-		TBuildObufMsg(obufData, header, msg, pointer, length);
+		TBuildObufMsg(obufData, header, msg, pointer, size);
 
 		const DWORD dwLen = (DWORD)obufData.size();
 		Assert(dwLen == obufData.size());

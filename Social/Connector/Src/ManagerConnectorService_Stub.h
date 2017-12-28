@@ -32,7 +32,7 @@ public:
 	SERVICE_PTR    m_pContainer;
 
 
-	ManagerConnectorService_Proxy() {
+	ManagerConnectorService_Proxy() : m_pContainer(0) {
 	}
 
 	virtual ~ManagerConnectorService_Proxy(){
@@ -45,6 +45,9 @@ public:
 	*/
 	virtual DWORD  getLocalServerID()
 	{
+        if (m_pContainer == 0)
+            return DWORD();
+
 		BUILD_MSG_CONTEXT_VOID( IManagerConnectorService::getLocalServerID);
 
 		rkt::obuf resultBuf;
@@ -60,6 +63,9 @@ public:
 	*/
 	virtual void  sendData(ibuffer & msg)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_BUFFER( IManagerConnectorService::sendData,msg);
 
 		m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
@@ -71,6 +77,9 @@ public:
 	*/
 	virtual void  sendDataToMain(ibuffer & msg)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_BUFFER( IManagerConnectorService::sendDataToMain,msg);
 
 		m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
@@ -82,6 +91,9 @@ public:
 	*/
 	virtual void  sendDataToRoot(ibuffer & msg)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_BUFFER( IManagerConnectorService::sendDataToRoot,msg);
 
 		m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
@@ -93,6 +105,9 @@ public:
 	*/
 	virtual bool requestStart(DWORD dwStartFlag,DWORD dwUserData)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_2( IManagerConnectorService::requestStart,DWORD ,dwStartFlag,DWORD ,dwUserData);
 
 		rkt::obuf resultBuf;
@@ -107,6 +122,9 @@ public:
 	*/
 	virtual bool requestClose(DWORD dwCloseFlag,DWORD dwUserData)
 	{
+        if (m_pContainer == 0)
+            return bool();
+
 		BUILD_MSG_CONTEXT_2( IManagerConnectorService::requestStart,DWORD ,dwCloseFlag,DWORD ,dwUserData);
 
 		rkt::obuf resultBuf;
@@ -119,6 +137,9 @@ public:
 	*/
 	virtual DWORD  getServerUID()
 	{
+        if (m_pContainer == 0)
+            return DWORD();
+
 		BUILD_MSG_CONTEXT_VOID( IManagerConnectorService::getServerUID);
 
 		rkt::obuf resultBuf;
@@ -131,6 +152,9 @@ public:
 	*/
 	virtual DWORD  getWorldID()
 	{
+        if (m_pContainer == 0)
+            return DWORD();
+
 		BUILD_MSG_CONTEXT_VOID( IManagerConnectorService::getWorldID);
 
 		rkt::obuf resultBuf;
@@ -143,6 +167,9 @@ public:
 	*/
 	virtual SGameWorldConnectorInfo getGameWorldInfo()
 	{
+        if (m_pContainer == 0)
+            return SGameWorldConnectorInfo();
+
 		BUILD_MSG_CONTEXT_VOID( IManagerConnectorService::getGameWorldInfo);
 
 		rkt::obuf resultBuf;
@@ -187,6 +214,9 @@ public:
 	*/
 	virtual void setRealTimeData(DWORD dwDataID,int nValue)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_2( IManagerConnectorService::setRealTimeData,DWORD, dwDataID,int, nValue);
 
 		m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);
@@ -198,6 +228,9 @@ public:
 	*/
 	virtual int getRealTimeData(DWORD dwDataID)
 	{
+        if (m_pContainer == 0)
+            return int();
+
 		BUILD_MSG_CONTEXT_1( IManagerConnectorService::getRealTimeData,DWORD ,dwDataID);
 
 		rkt::obuf resultBuf;
@@ -212,6 +245,9 @@ public:
 	*/
     virtual void setServerState(DWORD dwStateFlag)
 	{
+        if (m_pContainer == 0)
+            return;
+
 		BUILD_MSG_CONTEXT_1( IManagerConnectorService::setServerState,DWORD,dwStateFlag);
 
 		m_pContainer->post_message( pMsg,nMsgLen,0,MSG_FLAG_NO_BLOCK);

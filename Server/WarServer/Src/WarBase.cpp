@@ -732,8 +732,6 @@ const void CWarBase::getCampPdbidString(int nCamp, char* resultStr, size_t nLen)
 
 		WarPersonVector& personList = pWarCamp->warPersVect;
 
-		return;
-
 		stringstream ss;
 		for (WarPersonVector::iterator iter = personList.begin(); iter != personList.end(); ++iter)
 		{

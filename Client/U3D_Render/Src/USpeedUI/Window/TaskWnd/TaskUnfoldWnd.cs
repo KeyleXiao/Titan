@@ -748,6 +748,11 @@ namespace USpeedUI.TaskWnd
             LogicFrame.gameObject.SetActive(true);
             finishBg.SetActive(false);
             PrizePopupGo.SetActive(false);
+
+            for (int i = 0; i < TASK_PRIZE_ITEM_COUNT; i++)
+            {
+                m_arrFinishPrizeItem[i].Clear();
+            }
         }
 
         // 完成任务消息响应
@@ -755,22 +760,24 @@ namespace USpeedUI.TaskWnd
         {
             if (CheckCloseUnfoldWnd())
             {
-                Sequence logicSequence = DOTween.Sequence();
-                logicSequence.AppendInterval(0.4f).OnComplete(OnFinishSequenceComplete);
-                // 光效
-                if (finishParam != null)
-                {
-                    UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref finishParam);
-                    finishParam = null;
-                }
-                finishParam = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_TaskUnfold_Finish, _tfAttachParent: finishAttachPoint, _bAutoDestroy: false);
-                UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref finishParam);
+                //Sequence logicSequence = DOTween.Sequence();
+                //logicSequence.AppendInterval(0.4f).OnComplete(OnFinishSequenceComplete);
+                //// 光效
+                //if (finishParam != null)
+                //{
+                //    UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref finishParam);
+                //    finishParam = null;
+                //}
+                //finishParam = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_TaskUnfold_Finish, _tfAttachParent: finishAttachPoint, _bAutoDestroy: false);
+                //UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref finishParam);
 
                 // 隐藏
                 LogicFrame.gameObject.SetActive(false);
                 // 显示
                 finishBg.GetComponent<RectTransform>().sizeDelta = new Vector2(1920.0f, 1500.0f);
                 finishBg.SetActive(true);
+
+                OnFinishSequenceComplete();
             }
         }
 
@@ -788,16 +795,16 @@ namespace USpeedUI.TaskWnd
                     {
                         if (prizeNode.nPrizeID[i] <= 0)
                             continue;
-                        m_arrFinishPrizeItem[nIndex++].SetData(prizeNode.nPrizeID[i]);
+                        m_arrFinishPrizeItem[nIndex++].SetData(prizeNode.nPrizeID[i], ECupPrizeType.ECPT_Personal, UEffectPrefabType.UEPT_TaskUnfold_Finish);
                     }
                 }
                 if (prizeNode.nBindingGoldCount > 0 && nIndex < TASK_PRIZE_ITEM_COUNT)
                 {
-                    m_arrFinishPrizeItem[nIndex++].SetData(prizeNode.nBindingGoldCount, ECupPrizeType.ECPT_Gold);
+                    m_arrFinishPrizeItem[nIndex++].SetData(prizeNode.nBindingGoldCount, ECupPrizeType.ECPT_Gold, UEffectPrefabType.UEPT_TaskUnfold_Finish);
                 }
                 if (prizeNode.nExpCount > 0 && nIndex < TASK_PRIZE_ITEM_COUNT)
                 {
-                    m_arrFinishPrizeItem[nIndex++].SetData(prizeNode.nExpCount, ECupPrizeType.ECPT_Exp);
+                    m_arrFinishPrizeItem[nIndex++].SetData(prizeNode.nExpCount, ECupPrizeType.ECPT_Exp, UEffectPrefabType.UEPT_TaskUnfold_Finish);
                 }
                 if (nIndex < TASK_PRIZE_ITEM_COUNT)
                 {

@@ -11,6 +11,7 @@ using DataCenter;
 using GameLogic;
 using UnityEngine.EventSystems;
 using USpeedUI.UEffect;
+using USpeedUI.UExtensions;
 
 namespace USpeedUI.WarMainFrame
 {
@@ -44,7 +45,7 @@ namespace USpeedUI.WarMainFrame
 
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_RANK_INVITE_SHOW, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_RANK_INVITE_RETURN, this);
-            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
+            //UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER, this);
 
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_TEAMMATEINFO_UPDATE, this);
@@ -63,7 +64,7 @@ namespace USpeedUI.WarMainFrame
 
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_RANK_INVITE_SHOW, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_RANK_INVITE_RETURN, this);
-            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
+            //UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER, this);
 
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_TEAMMATEINFO_UPDATE, this);
@@ -104,14 +105,9 @@ namespace USpeedUI.WarMainFrame
                         }
                     }
                     break;
-                case WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER:
-                    {
-                        LoadView();
-                    }
-                    break;
                 case WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER:
                     {
-                        UnloadView();
+                        SetVisible(false);
                     }
                     break;
 
@@ -160,9 +156,68 @@ namespace USpeedUI.WarMainFrame
                         m_wndView.TeammateInfoDisbandTeam();
                     }
                     break;
+                #region 新手引导部分
+
+                case WndMsgID.WND_MSG_WAR_MAIN_GAMEMODEBTN_ADDGUIDEWIDGET:
+                    {
+                        if (m_wndView == null)
+                        {
+                            LoadView();
+                            SetVisible(false);
+                        }
+                        UGuideWidgetMsgData cmdData = (UGuideWidgetMsgData)msgData;
+                        if (cmdData != null)
+                        {
+                            m_wndView.AddGuideUIWidget(cmdData);
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_WAR_MAIN_GAMEMODEBTN_REMOVEGUIDEWIDGET:
+                    {
+                        if (m_wndView != null)
+                        {
+                            UGuideWidgetMsgData cmdData = (UGuideWidgetMsgData)msgData;
+                            if (cmdData != null)
+                            {
+                                m_wndView.RemoveGuideUIWidget(cmdData);
+                            }
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_MSTCHIIMEINFO_GUIDE_ACTIONBEGIN:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.GuideActionBegin();
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_MSTCHIIMEINFO_GUIDE_ACTIONEND:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.GuideActionEnd();
+                        }
+                    }
+                    break;
+                #endregion
                 default:
                     break;
             }
+        }
+
+        // 显示后执行
+        protected override void PostSetVisible(bool _bVisible)
+        {
+            base.PostSetVisible(_bVisible);
+
+            if (_bVisible)
+            {
+                // 刷新聊天框层级
+                UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER, null);
+            }
+
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_DIDA_UPDATE_LAYER, new UIMsgCmdData((int)WndMsgID.WND_MSG_DIDA_UPDATE_LAYER, _bVisible ? 1 : 0, "", IntPtr.Zero, 0));
         }
     }
 
@@ -183,6 +238,7 @@ namespace USpeedUI.WarMainFrame
         public Image HeadIcon;
         public Image MasterIcon;
         public Button DeleteBtn;
+        public Image SexIcon;
         public Text NameDesc;
         public GameObject RankFrame;
         public Image RankIcon;
@@ -201,6 +257,7 @@ namespace USpeedUI.WarMainFrame
             selfData.nHeadID = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_FACEID);
             selfData.nLevel = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_LEVEL);
             selfData.isCaptain = 1;
+            selfData.nSex = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_SEX);
             selfData.nRankScore = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_RANKSCORE);
             selfData.byMatchType = (byte)EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_MATCHTYPE);
             selfData.nRankGrade = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_RANKGRADE);
@@ -215,7 +272,19 @@ namespace USpeedUI.WarMainFrame
             PlayerGo.SetActive(true);
             EmptyGo.SetActive(false);
 
-            // HeadIcon
+            // HeadIcon SexIcon
+            if (data.nSex < (int)PERSON_SEX.SEX_MAX && data.nSex >= (int)PERSON_SEX.SEX_MALE)
+            {
+                SexIcon.gameObject.SetActive(true);
+                SexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_RANK_INVITE, data.nSex + 1);
+                HeadIcon.gameObject.SetActive(true);
+                HeadIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_RANK_INVITE, 1, data.nSex + 1);
+            }
+            else
+            {
+                SexIcon.gameObject.SetActive(false);
+                HeadIcon.gameObject.SetActive(false);
+            }
 
             MasterIcon.gameObject.SetActive(data.isCaptain > 0);
             DeleteBtn.gameObject.SetActive(bSelfCaptain && data.isCaptain <= 0);
@@ -425,9 +494,13 @@ namespace USpeedUI.WarMainFrame
         public Text StartBtnDesc;
         public Text HideBtnDesc;
         public URichText InviteClanRT;
+        public Button StartBtn;
 
         private int m_nMatchType;
         private RankInviteWndView m_wndView;
+
+        private float m_fLastInviteClanTime = 0.0f;
+        private float INVITE_CLAN_COOL_TIME = 10.0f;
 
         public override void Init(RankInviteWndView view)
         {
@@ -450,18 +523,43 @@ namespace USpeedUI.WarMainFrame
                 strMatchName = IntPtrHelper.Ptr2Str(ptr);
             TitleDesc.text = strMatchName;
 
-            if (nMatchType == (int)EMMatchType.MatchType_Rank)
+            switch (nMatchType)
             {
-                StartBtnDesc.text = "开始排位";
-            }
-            else if (nMatchType == (int)EMMatchType.MatchType_Match)
-            {
-                StartBtnDesc.text = "开始匹配";
+                case (int)EMMatchType.MatchType_Match:
+                    {
+                        StartBtnDesc.text = "开始匹配";
+                    }
+                    break;
+                case (int)EMMatchType.MatchType_MachineMatch:
+                    {
+                        StartBtnDesc.text = "开始人机";
+                    }
+                    break;
+                case (int)EMMatchType.MatchType_Rank:
+                    {
+                        StartBtnDesc.text = "开始排位";
+                    }
+                    break;
+                case (int)EMMatchType.MatchType_MultiCampMatch:
+                    {
+                        StartBtnDesc.text = "开始生存";
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
         public void OnClickInviteClanRT(string eventName)
         {
+            float fNow = Time.unscaledTime;
+            if (fNow - m_fLastInviteClanTime < INVITE_CLAN_COOL_TIME)
+            {
+                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_MATCH_CALN_TEAM_INVITE_TOO_QUICK);
+                return;
+            }
+            m_fLastInviteClanTime = fNow;
+
             if (eventName == "InviteClan")
             {
                 string strTitle = ULocalizationService.Instance.Get("UIView", "Task", "FirstWinGuideTitleDes");
@@ -553,13 +651,30 @@ namespace USpeedUI.WarMainFrame
                 return;
             }
 
-            if (m_nMatchType == (int)EMMatchType.MatchType_Rank)
+            switch (m_nMatchType)
             {
-                LogicDataCenter.matchDataManager.OnRankModeBtnClick();
-            }
-            else if (m_nMatchType == (int)EMMatchType.MatchType_Match)
-            {
-                LogicDataCenter.matchDataManager.OnMatchModeBtnClick();
+                case (int)EMMatchType.MatchType_Match:
+                    {
+                        LogicDataCenter.matchDataManager.OnMatchModeBtnClick();
+                    }
+                    break;
+                case (int)EMMatchType.MatchType_MachineMatch:
+                    {
+                        LogicDataCenter.matchDataManager.OnMachineVSModeBtnClick();
+                    }
+                    break;
+                case (int)EMMatchType.MatchType_Rank:
+                    {
+                        LogicDataCenter.matchDataManager.OnRankModeBtnClick();
+                    }
+                    break;
+                case (int)EMMatchType.MatchType_MultiCampMatch:
+                    {
+                        LogicDataCenter.matchDataManager.OnSurviveVSModeBtnClick();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -570,6 +685,8 @@ namespace USpeedUI.WarMainFrame
             {
                 m_wndView.SetVisible(false);
             }
+            // 关闭比赛入口界面
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_WAR_MAIN_CLOSE, null);
 
             // 显示回到界面入口
             if (LogicDataCenter.viewPersonStateDataManager.bIsMatching == false)
@@ -593,6 +710,7 @@ namespace USpeedUI.WarMainFrame
 
         public RankInvitePlayerFrame PlayerFrame;
         public RankInviteMiscFrame MiscFrame;
+        public GameObject GuideModalFrame;
 
         public override bool Init(IUIWnd wnd)
         {
@@ -604,6 +722,9 @@ namespace USpeedUI.WarMainFrame
                 (materialEffectParam as UEffectMaterialParam).ReturnEffectMaterial.SetColor("_TintColor", new Color(0, 0, 0, 0.20f));
                 (materialEffectParam as UEffectMaterialParam).ReturnEffectMaterial.SetFloat("_Vibrancy", 0f);
             }
+
+            if (GuideModalFrame != null)
+                GuideModalFrame.SetActive(false);
 
             PlayerFrame.Init(this);
             MiscFrame.Init(this);
@@ -666,5 +787,44 @@ namespace USpeedUI.WarMainFrame
         {
             PlayerFrame.TeammateInfoDisbandTeam();
         }
+
+        #region 新手引导部分
+        internal void AddGuideUIWidget(UGuideWidgetMsgData _msgData)
+        {
+            if (MiscFrame == null || MiscFrame.StartBtn == null || _msgData == null)
+                return;
+
+            Guide.UGuideWidget guideWidget = MiscFrame.StartBtn.gameObject.GetComponent<Guide.UGuideWidget>();
+            if (guideWidget == null)
+                guideWidget = MiscFrame.StartBtn.gameObject.AddComponent<Guide.UGuideWidget>();
+
+            guideWidget.SetFromMsgData(_msgData);
+        }
+        internal void RemoveGuideUIWidget(UGuideWidgetMsgData _msgData)
+        {
+            {
+                if (MiscFrame.StartBtn == null)
+                    return;
+
+                Guide.UGuideWidget guideWidget = MiscFrame.StartBtn.gameObject.GetComponent<Guide.UGuideWidget>();
+                if (guideWidget != null)
+                {
+                    MiscFrame.StartBtn.gameObject.RemoveComponent<Guide.UGuideWidget>();
+                }
+            }
+        }
+
+        public void GuideActionBegin()
+        {
+            if (GuideModalFrame != null)
+                GuideModalFrame.SetActive(true);
+        }
+
+        public void GuideActionEnd()
+        {
+            if (GuideModalFrame != null)
+                GuideModalFrame.SetActive(false);
+        }
+        #endregion
     }
 }

@@ -7,7 +7,7 @@ struct IListOp;
 class ListOpTest : public IRedisTest
 {
 public:
-	ListOpTest(Redis::IListOp* pValueOp);
+	ListOpTest(Redis::IListOp* pOp);
 
 	virtual const char* GetName() override;
 
@@ -15,5 +15,5 @@ public:
 	virtual bool Run() override;
 
 private:
-	Redis::IListOp*	m_pValueOp;
+	Redis::IListOp*	m_pOp;
 };

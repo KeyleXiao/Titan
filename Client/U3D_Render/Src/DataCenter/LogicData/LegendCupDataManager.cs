@@ -75,7 +75,8 @@ namespace DataCenter
 
         // LegendCupCompetition(Group, BigKnockout, SmallKnockout)
         //public const int SMALLKNOCKOUTWND_MAXKINNUM = 16;
-        private SingleCompetitionInfo m_legendCupCompetition;
+        //private SingleCompetitionInfo m_legendCupCompetition;
+        private Dictionary<long, SingleCompetitionInfo> m_legendCupCompetitionDic;
         private Dictionary<int, List<cmd_legendcup_competition_kinmembernode> > m_CompetitionKinMemberDic;
 
         // Res
@@ -94,7 +95,7 @@ namespace DataCenter
             m_legendCupRegistBlacklistDic = new Dictionary<long, SingleRegistBlacklistInfo>();
             m_legendCupRegistKinMembrDic = new Dictionary<int, SingleRegistKinMemberInfo>();
 
-            m_legendCupCompetition = new SingleCompetitionInfo();
+            m_legendCupCompetitionDic = new Dictionary<long, SingleCompetitionInfo>();
             m_CompetitionKinMemberDic = new Dictionary<int, List<cmd_legendcup_competition_kinmembernode>>();
 
             m_legendCupPrizeItemRes = AssetBundleManager.GetAssets(AssetType.Asset_Prefab, "UI/Prefabs/LegendCup/PrizeItemTemplate");
@@ -434,42 +435,58 @@ namespace DataCenter
             IntPtrVaArgParseHelper helper = new IntPtrVaArgParseHelper(ptrParam, nPtrLen);
 
             cmd_legendcup_competition_kinmemberhead headData = helper.get<cmd_legendcup_competition_kinmemberhead>();
+            long nLegendCupID = headData.nLegendCupID;
+            if (!m_legendCupCompetitionDic.ContainsKey(nLegendCupID))
+            {
+                SingleCompetitionInfo info = new SingleCompetitionInfo();
+                m_legendCupCompetitionDic.Add(nLegendCupID, info);
+            }
+
             // 时间从这里获取
-            m_legendCupCompetition.roundInfo = new List<cmd_legendcup_recv_competition_roundinfo>();
+            m_legendCupCompetitionDic[nLegendCupID].roundInfo = new List<cmd_legendcup_recv_competition_roundinfo>();
             for (int i = 0; i < headData.nMemberCount; i++)
             {
                 cmd_legendcup_recv_competition_roundinfo roundData = helper.get<cmd_legendcup_recv_competition_roundinfo>();
-                m_legendCupCompetition.roundInfo.Add(roundData);
+                m_legendCupCompetitionDic[nLegendCupID].roundInfo.Add(roundData);
             }
         }
 
         public void RecvCupCompetitionInfo(IntPtr ptrParam, int nPtrLen)
         {
             IntPtrVaArgParseHelper helper = new IntPtrVaArgParseHelper(ptrParam, nPtrLen);
-            m_legendCupCompetition.headInfo = helper.get<cmd_legendcup_recv_competition_head>();
+
+            cmd_legendcup_recv_competition_head head = helper.get<cmd_legendcup_recv_competition_head>();
+            long nLegendCupID = head.nLegendCupID;
+            if (!m_legendCupCompetitionDic.ContainsKey(nLegendCupID))
+            {
+                SingleCompetitionInfo info = new SingleCompetitionInfo();
+                m_legendCupCompetitionDic.Add(nLegendCupID, info);
+            }
+
+            m_legendCupCompetitionDic[nLegendCupID].headInfo = head;
 
             // 时间不从这里获取,改为单独下发RecvCupCompetitionAllRoundTime()
             //m_legendCupCompetition.roundInfo = new List<cmd_legendcup_recv_competition_roundinfo>();
-            for (int i = 0; i < m_legendCupCompetition.headInfo.nRoundID; i++)
+            for (int i = 0; i < head.nRoundID; i++)
             {
                 cmd_legendcup_recv_competition_roundinfo roundData = helper.get<cmd_legendcup_recv_competition_roundinfo>();
                 //m_legendCupCompetition.roundInfo.Add(roundData);
             }
-            m_legendCupCompetition.nodeInfo = new List<cmd_legendcup_recv_competition_node>();
-            for (int i = 0; i < m_legendCupCompetition.headInfo.nCompetitionNodeCount; ++i)
+            m_legendCupCompetitionDic[nLegendCupID].nodeInfo = new List<cmd_legendcup_recv_competition_node>();
+            for (int i = 0; i < head.nCompetitionNodeCount; ++i)
             {
                 cmd_legendcup_recv_competition_node nodeData = helper.get<cmd_legendcup_recv_competition_node>();
-                m_legendCupCompetition.nodeInfo.Add(nodeData);
+                m_legendCupCompetitionDic[nLegendCupID].nodeInfo.Add(nodeData);
             }
 
             // 通知相应界面
             LegendCupIDData uiData = new LegendCupIDData();
-            uiData.nLegendCupID = m_legendCupCompetition.headInfo.nLegendCupID;
-            if (m_legendCupCompetition.headInfo.byCompetitionType == (int)ERoundCompetitionType.emType_GroupCompetition)
+            uiData.nLegendCupID = nLegendCupID;
+            if (head.byCompetitionType == (int)ERoundCompetitionType.emType_GroupCompetition)
             {
                 UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_GROUP_SHOW, uiData);
             }
-            else if (m_legendCupCompetition.headInfo.byCompetitionType == (int)ERoundCompetitionType.emType_KnockoutCompetition)
+            else if (head.byCompetitionType == (int)ERoundCompetitionType.emType_KnockoutCompetition)
             {
                 // 大淘汰赛、小淘汰赛界面合并
                 UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_SMALLKNOCKOUT_SHOW, uiData);
@@ -493,25 +510,30 @@ namespace DataCenter
             cmd_legendcup_recv_cuplist_node cupBaseData = LogicDataCenter.legendCupDataManager.GetSingleLegendCupNode(llegendCupId);
             if (cupBaseData.nLegendCupID == 0)
                 return;
-            if (m_legendCupCompetition == null || m_legendCupCompetition.nodeInfo == null)
+
+            if (!m_legendCupCompetitionDic.ContainsKey(llegendCupId))
                 return;
-            for (int i = 0; i < m_legendCupCompetition.nodeInfo.Count; i++)
+            SingleCompetitionInfo competitionInfo = m_legendCupCompetitionDic[llegendCupId];
+            if (competitionInfo == null || competitionInfo.nodeInfo == null)
+                return;
+
+            for (int i = 0; i < competitionInfo.nodeInfo.Count; i++)
             {
-                if (m_legendCupCompetition.nodeInfo[i].nSearchID == node.nSearchID)
+                if (competitionInfo.nodeInfo[i].nSearchID == node.nSearchID)
                 {
-                    m_legendCupCompetition.nodeInfo[i] = node;
+                    competitionInfo.nodeInfo[i] = node;
                     break;
                 }
             }
 
             // 通知相应界面
             LegendCupIDData uiData = new LegendCupIDData();
-            uiData.nLegendCupID = m_legendCupCompetition.headInfo.nLegendCupID;
-            if (m_legendCupCompetition.headInfo.byCompetitionType == (int)ERoundCompetitionType.emType_GroupCompetition)
+            uiData.nLegendCupID = competitionInfo.headInfo.nLegendCupID;
+            if (competitionInfo.headInfo.byCompetitionType == (int)ERoundCompetitionType.emType_GroupCompetition)
             {
                 UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_GROUP_UPDATE, uiData);
             }
-            else if (m_legendCupCompetition.headInfo.byCompetitionType == (int)ERoundCompetitionType.emType_KnockoutCompetition)
+            else if (competitionInfo.headInfo.byCompetitionType == (int)ERoundCompetitionType.emType_KnockoutCompetition)
             {
                 // 大淘汰赛、小淘汰赛界面合并
                 UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_LEGENDCUP_SMALLKNOCKOUT_UPDATE, uiData);
@@ -529,9 +551,14 @@ namespace DataCenter
             return null;
         }
 
-        public SingleCompetitionInfo GetSingleCompetitionInfo()
+        public SingleCompetitionInfo GetSingleCompetitionInfo(long lLegendCupID)
         {
-            return m_legendCupCompetition;
+            if (m_legendCupCompetitionDic.ContainsKey(lLegendCupID))
+            {
+                return m_legendCupCompetitionDic[lLegendCupID];
+            }
+
+            return null;
         }
 
         // DIDA移除有三处:1、时间到2、点DIDA3、点参加    设置DIDA：该位置、线上赛
@@ -612,21 +639,6 @@ namespace DataCenter
             }
             return result;
         }
-
-        //// 检测自身是否在某战队报名列表内
-        //public bool CheckIsSelfInKinRegistMember(int nKinID)
-        //{
-        //    int nSelfID = EntityFactory.MainHeroView.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_ID);
-        //    SingleRegistKinMemberInfo memberInfo = GetSingleRegistKinMemberInfo(nKinID);
-        //    if (memberInfo == null)
-        //        return false;
-
-        //    int nHit = memberInfo.nodeInfo.FindIndex(item => item.nPDBID == nSelfID);
-        //    if (nHit >= 0)
-        //        return true;
-
-        //    return false;
-        //}
 
         // 检测自身是否在某战队比赛列表内
         public bool CheckIsSelfInCompetitionMember(int nKinID)

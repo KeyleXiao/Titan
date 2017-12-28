@@ -47,6 +47,7 @@ typedef struct DBREQ_PARAM_TABLE_ORDERINFO_PERSON           OrderComPersonKey_It
 struct PersonKeyOrderItem_OC
 {
     int		nOrder;  								// 排行名次
+	BYTE	bySex;									// 性别（0男1女）
     WORD    wHeadID;                                // 头像Id
     DWORD   dwUserID;                               // 账号ID
     int		nLastOrder;								// 上次排名

@@ -145,7 +145,13 @@ namespace USpeedUI.HeroDetail
                 SkinNameText.color = colorItem;
             }
 
-            UpdatePossessState(data.dwSkinLimitTime, data.bIsHaveSkin);
+            string strTip = "";
+            SkinInfoScheme skinConfig = new SkinInfoScheme();
+            if (GameLogicAPI.GetHeroSkinInfo(m_nSkinID, ref skinConfig))
+            {
+                strTip = skinConfig.szSkinTip;
+            }
+            UpdatePossessState(data.dwSkinLimitTime, data.bIsHaveSkin, strTip);
         }
 
         public void ClearItem()
@@ -178,7 +184,7 @@ namespace USpeedUI.HeroDetail
             UpdateItemState();
         }
 
-        public void UpdatePossessState(uint dwSkinLimitTime, bool bIsHaveSkin)
+        public void UpdatePossessState(uint dwSkinLimitTime, bool bIsHaveSkin, string strSkinTip)
         {
             string days = ULocalizationService.Instance.Get("UIView", "Common", "Days");
             string hours = ULocalizationService.Instance.Get("UIView", "Common", "Hour");
@@ -208,8 +214,15 @@ namespace USpeedUI.HeroDetail
             else
             {
                 szProssesText = ULocalizationService.Instance.Get("UIView", "Common", "NotPossess");
+                // 未拥有，优先读脚本
+                if (!string.IsNullOrEmpty(strSkinTip))
+                {
+                    szProssesText = strSkinTip;
+                }
+
                 prossesColor = ColorExtension.FromHex("ffffff");
             }
+
             SkinProssesText.text = szProssesText;
             SkinProssesText.color = prossesColor;
         }
@@ -410,7 +423,7 @@ namespace USpeedUI.HeroDetail
                     dwSkinLimitTime = 0;
                 }
 
-                item.UpdatePossessState(dwSkinLimitTime, bIsHaveSkin);
+                item.UpdatePossessState(dwSkinLimitTime, bIsHaveSkin, skinConfig.szSkinTip);
             }
         }
 
@@ -980,8 +993,15 @@ namespace USpeedUI.HeroDetail
                 }
                 else
                 {
+                    bool bShowInShop = true;
+                    int nSellID = PointShopConfig.Instance.GetPointShopSellIDBySkinID(nHeroId, nSkinId);
+                    if (nSellID <= 0)
+                    {
+                        bShowInShop = false;
+                    }
+                        
                     BuyOrSwitchText.text = ULocalizationService.Instance.Get("UIView", "Common", "SkinUnlock");
-                    this.gameObject.SetActive(LogicDataCenter.playerSystemDataManager.bRequestSelf);
+                    this.gameObject.SetActive(LogicDataCenter.playerSystemDataManager.bRequestSelf && bShowInShop);
                     upstarModelFrame.gameObject.SetActive(false);
                 }
             }
@@ -1642,7 +1662,7 @@ namespace USpeedUI.HeroDetail
                 if (!prizeItem)
                     return;
 
-                prizeItem.SetData(prizeConfig.nPrizeIdList[j], ECupPrizeType.ECPT_Personal, bShowEffect);
+                prizeItem.SetData(prizeConfig.nPrizeIdList[j], ECupPrizeType.ECPT_Personal, UEffectPrefabType.UEPT_HeroDetailInfo_UpstarPrizeItem);
 
                 m_upstarPrizeList.Add(prizeItem);
             }

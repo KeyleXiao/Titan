@@ -30,7 +30,6 @@
     <ClInclude Include="..\src\CloudService.h" />
     <ClInclude Include="..\src\Coroutine.h" />
     <ClInclude Include="..\src\CoroutineWin.h" />
-    <ClInclude Include="..\src\Framework.h" />
     <ClInclude Include="..\src\PerformanceService.h" />
     <ClInclude Include="..\src\PerformanceService_Stub.h" />
     <ClInclude Include="..\src\ServiceContainer.h" />
@@ -80,6 +79,7 @@
     <ClInclude Include="..\src\DateTriggerHandlerProxy.h">
       <Filter>DateTriggerService</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Framework.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="DateTriggerService">

@@ -193,7 +193,7 @@ public:
 
 	// 发送消息，简化版
 	template<typename TMsg>
-	bool SendMsg(TMsg& msg)
+	bool SendMsg(TMsg& msg, void* pointer = nullptr, size_t length = 0)
 	{
 		if (m_pConnection == NULL)
 			return false;
@@ -205,7 +205,7 @@ public:
 		header.byKeyAction = msg.GetActionId();
 
 		obuf obufData;
-		TBuildObufMsg(obufData, header, msg);
+		TBuildObufMsg(obufData, header, msg, pointer, length);
 
 		const DWORD dwLen = (DWORD)obufData.size();
 		Assert(dwLen == obufData.size());
@@ -216,6 +216,21 @@ public:
 		OnSendData(dwLen);
 
 		return true;
+	}
+
+	// 发送消息
+	bool SendData(const char * pData, DWORD dwLen)
+	{
+		if (m_pConnection)
+		{
+			if (!m_pConnection->SendData(pData, dwLen))
+				return false;
+
+			OnSendData(dwLen);
+			return true;
+		}
+
+		return false;
 	}
 
 	virtual std::string ToString() = 0;
@@ -247,17 +262,6 @@ protected:
 	virtual	DWORD			GetMaxTimeout() = 0;
 	// 重连的时间间隔，单位：毫秒
 	virtual	DWORD			GetReconnectInterval() = 0;
-
-private:
-	// 发送消息
-	void SendData(const char * pData, DWORD dwLen)
-	{
-		if (m_pConnection)
-		{
-			m_pConnection->SendData(pData, dwLen);
-			OnSendData(dwLen);
-		}
-	}
 
 protected:
 	TimerAxis&			m_TimerAxis;	// 时间轴（由外部传入）

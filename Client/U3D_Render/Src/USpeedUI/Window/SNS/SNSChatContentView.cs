@@ -88,7 +88,17 @@ namespace USpeedUI.SNS
 			if (contentTrans == null)
 				return;
 
-			timeTrans.GetComponent<Text>().text = Api.convertTimeStamp2DateTime(data.info.msg.dwTime).ToString("yyyy-MM-dd HH:mm");
+            Image avatar = curTrans.FindChild("Avatar").GetComponent<Image>();
+            if (avatar == null)
+                return;
+
+            SNSDataManager.BuddyInfo buddy = LogicDataCenter.snsDataManager.getBuddyInfoByUserID(data.info.msg.dwFromAccountID);
+
+            // 设置头像
+            avatar.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_SNS_MAINPANEL, 1, buddy.Info.nSex + 1);
+
+
+            timeTrans.GetComponent<Text>().text = Api.convertTimeStamp2DateTime(data.info.msg.dwTime).ToString("yyyy-MM-dd HH:mm");
 
 			// 设置content的最大宽度
 			RectTransform contentRect = contentTrans as RectTransform;

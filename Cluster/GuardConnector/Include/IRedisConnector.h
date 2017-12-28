@@ -38,7 +38,7 @@ namespace Redis
 		// 获取Value操作器
 		virtual IValueOp*			valueOp() = 0;
 		// 获取List操作器
-		virtual Redis::IListOp*		listOp() = 0;
+		virtual IListOp*		listOp() = 0;
 		//// 获取Set操作器
 		//virtual ISetOp*			setOp() = 0;
 		//// 获取Hash操作器

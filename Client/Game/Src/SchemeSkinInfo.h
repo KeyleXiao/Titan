@@ -31,6 +31,7 @@ class CSchemeSkinInfo : public ISchemeSkinInfo, public ISchemeUpdateSink
 		SKININFO_COL_SKINICON,						// 皮肤图片ID
         SKININFO_COL_SELECT_EFFECT, 				// 选人光效ID
 		SKININFO_COL_SELECT_SOUND,	 				// 选人音效ID
+		SKININFO_COL_SKIN_TIP,						// 皮肤Tip
     };
 public:
 	/////////////////////////ISchemeMonster/////////////////////////

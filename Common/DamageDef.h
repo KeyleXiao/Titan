@@ -20,8 +20,9 @@ using namespace SPELL;
 // 消息码定义键值
 enum DAMAGE_NET_MESSAGE
 {
-	DAMAGE_MSG_DAMAGE = 0,		    // 伤害消息
-	DAMAGE_MSG_CURE,				// 治疗消息
+	DAMAGE_MSG_DAMAGE = 0,                  // 伤害消息
+    DAMAGE_MSG_CURE,                        // 治疗消息
+    DAMAGE_MSG_TARGET_DAMAGE_SNAPSHOT,      // 施法者接受到伤害者的伤害事件快照
 };
 
 
@@ -65,6 +66,7 @@ struct msg_entity_damage
     int     nPASD;                  // 攻击速度
     float   fAppendPCTPDP;          // 附加额外百分比护甲穿透
     float   fAppendPCTPMP;          // 附加额外百分比魔抗穿透
+    int     nUseFlag;               // 用途标识
 
 	msg_entity_damage()
 	{
@@ -119,6 +121,7 @@ struct DamageCalcContext : public event_base
     float       fAttackFactor;              /// 普攻系数
     float       fPromoteFactor;             /// 提升系数
     int         nPASD;                      /// 攻速
+    int         nUseFlag;               // 用途标识
 
 	DamageCalcContext()
 	{

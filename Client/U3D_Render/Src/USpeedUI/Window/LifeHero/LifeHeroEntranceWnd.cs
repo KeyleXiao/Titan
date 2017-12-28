@@ -160,7 +160,7 @@ namespace USpeedUI.LifeHero
                 List<cmd_warstatistic_history_record> recordList = LogicDataCenter.lifeHeroDataManager.HistoryRecord;
                 if (recordList == null || recordList.Count < 1)
                 {
-                    Debug.LogError("lifehero entance: history record is empty.");
+                    Debug.LogWarning("lifehero entance: history record is empty.");
                     return;
                 }
 

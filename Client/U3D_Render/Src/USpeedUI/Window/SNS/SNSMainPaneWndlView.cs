@@ -192,18 +192,21 @@ namespace USpeedUI.SNS
 	}
 
 
-	public class SNSMainPanelWndView : UIBaseWndView
+	public class SNSMainPanelWndView : UIBaseWndView, IPointerClickHandler
     {
         public UBuddyGroupTreeList BuddyGroupTree;
         public Image MyAvatar;
         public Text MyName;
         public Image MyStateIcon;
         public Text MyStateText;
+        public InputField MyMoodInputField;
         public SNSSettingWndView SettingWnd;
 		public SearchBuddyInputField SearchBuddy;
 		public SNSSearchBuddyWndView SearchBuddyView;
 
 		private List<UBuddyGroupTreeViewDataSource> Data = new List<UBuddyGroupTreeViewDataSource>();
+
+        private Image MoodBg = null;
 
         public override bool Init(IUIWnd wnd)
         {
@@ -223,7 +226,10 @@ namespace USpeedUI.SNS
 					SearchBuddyView.gameObject.SetActive(false);
 			};
 
-			return true;
+            MyMoodInputField.onEndEdit.AddListener(onMoodChange);
+            MoodBg = MyMoodInputField.GetComponent<Image>();
+
+            return true;
         }
 
 		public void Clear()
@@ -364,6 +370,11 @@ namespace USpeedUI.SNS
             MyStateText.text = LogicDataCenter.snsDataManager.getSelfStatusDesc();
             MyStateIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_GameState, WndID.WND_ID_SNS_MAINPANEL,
                 UDefines.GetGameStateIconID(myInfo.Info.nStatus));
+
+            if(String.IsNullOrEmpty(myInfo.Info.szMood) == false)
+            {
+                MyMoodInputField.text = myInfo.Info.szMood;
+            }
         }
         
         public void openFindBuddyWnd()
@@ -421,7 +432,56 @@ namespace USpeedUI.SNS
 			SearchBuddyView.gameObject.SetActive(false);
 		}
 
-	}
+        // 选中心情
+        private void onMoodFocus(bool bFocus)
+        {
+            if(bFocus)
+            {
+                if(MoodBg != null && MoodBg.enabled == false)
+                {
+                    MoodBg.enabled = true;
+                }
+            }
+            else
+            {
+                if (MoodBg != null && MoodBg.enabled == true)
+                {
+                    MoodBg.enabled = false;
+                }
+            }
+        }
+        // 修改心情
+        private void onMoodChange(string strText)
+        {
+            if(String.IsNullOrEmpty(strText))
+            {
+                return;
+            }
+
+            if(LogicDataCenter.snsDataManager.MyBuddyInfo.Info.szMood == strText)
+            {
+                return;
+            }
+
+            LogicDataCenter.snsDataManager.reqChangeMood(strText);
+
+            onMoodFocus(false);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Vector2 mousePos = UISystem.Instance.GetMousePos();
+            RectTransform rectTrans = MyMoodInputField.gameObject.GetComponent<RectTransform>();
+            if (RectTransformUtility.RectangleContainsScreenPoint(rectTrans, mousePos, UISystem.Instance.GetCamera()))
+            {
+                onMoodFocus(true);
+            }
+            else
+            {
+                onMoodFocus(false);
+            }
+        }
+    }
 
 #region 设置窗口
     public class SNSSettingWndView : MonoBehaviour

@@ -358,6 +358,10 @@ namespace USpeedUI
         Icon_DeadlyControl,
         Icon_ThrilSave,
         Icon_TeamControl,
+        Icon_KillDragon,        // 杀龙最高
+        Icon_JoinBattle,    // 参战率最高
+        Icon_MvpOfLoser,        // 失败方mvp
+        Icon_Cure,        // 失败方mvp
     }
 
     public enum EHeroDiffcultType

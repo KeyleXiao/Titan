@@ -238,7 +238,7 @@ namespace USpeedUI.AcceptWaitInfo
                         // todo 长时间没有反应 直接关闭这个界面 查找问题
                         if (nCurTime <= -2)
                         {
-                            Trace.LogError("Match error m_dwCheckID =" + m_dwCheckID);
+                            Trace.Warning("Match error m_dwCheckID =" + m_dwCheckID);
                             KillTimer((int)EN_AcceptWait_Timer.ENMT_AcceptWaitTimer);
                             CloseModalWnd();
                             return;

@@ -24,6 +24,7 @@ using ASpeedGame.Data.LoadingWarTipConfig;
 using USpeedUI.UWidgets;
 using Match_ManagerDef;
 using U3D_Render.Common;
+using ASpeedGame.Data.HeroXPskillConfig;
 
 namespace USpeedUI
 {
@@ -58,11 +59,32 @@ namespace USpeedUI
                 skinSprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_HeadPortrait, WndID.WND_ID_LOADINGWARVIEW, 1, 1, data.nHeroID);
             HeroIcon.sprite = skinSprite;
 
-            XpIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_Skill, WndID.WND_ID_LOADINGWARVIEW, 1, data.nXPSkillID);
-            XpIcon.gameObject.SetActive(XpIcon.sprite != null);
+            SSchemeHeroXPskillConfig xpConfig = HeroXPskillConfig.Instance.GetHeroXPskillConfig(data.nHeroID, data.nXPSkillID);
+            if (xpConfig != null)
+            {
+                XpIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_Skill, WndID.WND_ID_LOADINGWARVIEW, 1, xpConfig.nIconID);
+                XpIcon.gameObject.SetActive(true);
+            }
+            else
+            {
+                XpIcon.gameObject.SetActive(false);
+            }
+            
 
             SummerIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_Skill, WndID.WND_ID_LOADINGWARVIEW, 1, data.nSupportSkill[0]);
             SummerIcon.gameObject.SetActive(SummerIcon.sprite != null);
+
+            //HeadIcon
+            int nSex = data.cmdPlayerVsDetails.nSex;
+            if (nSex < (int)PERSON_SEX.SEX_MAX && nSex >= (int)PERSON_SEX.SEX_MALE)
+            {
+                HeadIcon.gameObject.SetActive(true);
+                HeadIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_RANK_INVITE, 1, nSex + 1);
+            }
+            else
+            {
+                HeadIcon.gameObject.SetActive(false);
+            }
 
             VocationText.text = data.szVocationName;
             VocationText.color = data.nCamp == data.nSelfCamp ? UDefines.CommomColor(ECommonColor.ECC_Blue1) : UDefines.CommomColor(ECommonColor.ECC_Red1);

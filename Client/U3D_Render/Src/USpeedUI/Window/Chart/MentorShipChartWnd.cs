@@ -530,9 +530,9 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             score.text = "";
-            sexIcon.gameObject.SetActive(false);
             borderImg.sprite = borderList[0];
             bSelfItem = false;
         }
@@ -543,6 +543,9 @@ namespace USpeedUI.Chart
 
             playerName.text = info.szName;
             score.text = info.dwShipVal.ToString();
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             bool bTop3 = false;
             if (info.nOrder == 1 || info.nOrder == 2 || info.nOrder == 3)

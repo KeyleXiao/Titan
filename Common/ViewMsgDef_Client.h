@@ -16,6 +16,7 @@
 #include "ViewMsgDef.h"
 #include "buffer.h"
 #include "ViewDef_.h"
+#include "ViewRedisData.h"
 
 
 #pragma pack(1)
@@ -28,6 +29,7 @@
 // CG	Client——网关
 // CM	Client——管理服
 // CV	Client——观战服
+// VC	观战服——Client
 
 
 ///////////////////////////////////////////////////////////////////
@@ -103,5 +105,56 @@ FixMsgStruct(SMsgView_GC_Answer_KeepAlive)
 	static BYTE	GetActionId() { return ENUM_MSG_VIEW_ANSWER_KEEPALIVE; }
 	// 空消息
 };
+
+
+///////////////////////////////////////////////////////////////////
+// 战报预备信息	ENUM_MSG_VIEW_BATTLE_PREP
+FixMsgStruct(SMsgView_VC_BattlePrep)
+{
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEW; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_CLIENT; };
+	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
+	static BYTE	GetActionId() { return ENUM_MSG_VIEW_BATTLE_PREP; }
+
+	ReplayID						rID;		// 战报ID
+	ViewRedisData::BattlePrepInfo	sPrepInfo;	// 战报预备信息
+};
+
+///////////////////////////////////////////////////////////////////
+// 战报信息	ENUM_MSG_VIEW_BATTLE_INFO
+struct SMsgView_VC_BattleInfo : public ISerializableData
+{
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEW; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_CLIENT; };
+	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
+	static BYTE	GetActionId() { return ENUM_MSG_VIEW_BATTLE_INFO; }
+
+	ReplayID						rID;		// 战报ID
+	ViewRedisData::BattleInfo		sBattleInfo;// 战报信息(某一时刻的)
+
+	SMsgView_VC_BattleInfo() : rID(0)
+	{}
+
+	SMsgView_VC_BattleInfo(const ReplayID& id, const ViewRedisData::BattleInfo& info)
+		: rID(id), sBattleInfo(info)
+	{}
+
+	SMsgView_VC_BattleInfo(const ReplayID& id, ViewRedisData::BattleInfo&& info)
+		: rID(id), sBattleInfo(info)
+	{}
+
+	virtual void fromBytes(const char* p, size_t len) override
+	{
+		throw std::logic_error("The method or operation is not implemented.");
+	}
+
+
+	virtual void toBytes(obuf& obufData) const override
+	{
+		throw std::logic_error("The method or operation is not implemented.");
+	}
+
+};
+
 
 #pragma pack()

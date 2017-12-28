@@ -1212,5 +1212,16 @@ struct SSchemeWebUrl
     }
 };
 
+#define RECOMMPRIZE_SCHEME_FILENAME                  "Scp\\RecommendPrize.csv"
+struct SSchemeRecommPrize
+{
+    int nTargetID;                           // 目标ID
+    int nMatchNum;                           // 总局数量
+    vector<int> vecPrizeID;                  // 奖励ID列表
+    SSchemeRecommPrize()
+    {
+        memset(this, 0, sizeof(*this));
+    }
+};
 
 #pragma once

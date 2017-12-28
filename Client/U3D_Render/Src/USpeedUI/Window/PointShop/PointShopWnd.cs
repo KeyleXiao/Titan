@@ -56,6 +56,7 @@ namespace USpeedUI.PointShop
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_POINTSHOP_UPDATECARDLIST, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_HEROPREVIEWFRAME_GETHEROINFO, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_LEAVE, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL, this);
             //UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_POINTSHOP_OPEN_PAY, this);
             return true;
         }
@@ -70,6 +71,7 @@ namespace USpeedUI.PointShop
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_POINTSHOP_UPDATECARDLIST, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_HEROPREVIEWFRAME_GETHEROINFO, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_LEAVE, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL, this);
             //UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_POINTSHOP_OPEN_PAY, this);
         }
 
@@ -101,6 +103,12 @@ namespace USpeedUI.PointShop
                     {
                         if (m_wndView != null)
                             m_wndView.OnHeroInfoUpdate();
+                    }
+                    break;
+                case WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL:
+                    {
+                        if (m_wndView != null && msgData != null)
+                            m_wndView.ProcessPayUrl(msgData as UWebUrlData);
                     }
                     break;
                 //case WndMsgID.WND_MSG_POINTSHOP_OPEN_PAY:
@@ -2594,9 +2602,15 @@ namespace USpeedUI.PointShop
         private string szQRCodeUrl;
         private int qrImgWidth;
 
+        private Dictionary<int, string> m_webMap;
+
         public override void Init(PointShopWndView wndView)
         {
             base.Init(wndView);
+
+            m_webMap = new Dictionary<int, string>();
+
+            RequestWebUrl();
 
             qrImgWidth = (int)QRPayImg.rectTransform.sizeDelta.x;
 
@@ -2605,6 +2619,12 @@ namespace USpeedUI.PointShop
 
         public void OnDestroy()
         {
+            if(m_webMap != null)
+            {
+                m_webMap.Clear();
+                m_webMap = null;
+            }
+
             QRPayImg.texture = null;
             StopAllCoroutines();
         }
@@ -2614,9 +2634,24 @@ namespace USpeedUI.PointShop
             PostRequestHttpQRCodeInfo();
         }
 
+        public void ProcessWebUrl(UWebUrlData webUrlData)
+        {
+            if (m_webMap == null)
+                m_webMap = new Dictionary<int, string>();
+
+            if (!m_webMap.ContainsKey(webUrlData.nNavID))
+                m_webMap.Add(webUrlData.nNavID, webUrlData.szWebUrl);
+
+            m_webMap[webUrlData.nNavID] = webUrlData.szWebUrl;
+        }
+
         private void PosRequestOpenLanPage()
         {
-            string szUrl = Config.PayUrl;
+            if (m_webMap == null || !m_webMap.ContainsKey((int)ASpeedGame.Data.Scheme.GameWebUrl.PAY_LINK))
+                return;
+
+            //string szUrl = Config.PayUrl;
+            string szUrl = m_webMap[(int)ASpeedGame.Data.Scheme.GameWebUrl.PAY_LINK];
             szUrl += GetUserName(true);
             szUrl += GetWorldID();
             Application.OpenURL(szUrl);
@@ -2627,6 +2662,9 @@ namespace USpeedUI.PointShop
             string payUrl = GetPayUrl();
 
             szQRCodeUrl = BuildQRUrl(payUrl, qrImgWidth, 4, 4);
+
+            if (string.IsNullOrEmpty(szQRCodeUrl))
+                return;
 
             if(QRPayImg.texture == null)
             {
@@ -2662,7 +2700,12 @@ namespace USpeedUI.PointShop
 
         private string GetPayUrl()
         {
-            string payUrl = Config.PayQRUrl;
+            if (m_webMap == null || !m_webMap.ContainsKey((int)ASpeedGame.Data.Scheme.GameWebUrl.PAY_QR_LINK))
+                return string.Empty;
+
+            //string payUrl = Config.PayQRUrl;
+            string payUrl = m_webMap[(int)ASpeedGame.Data.Scheme.GameWebUrl.PAY_QR_LINK];
+
             payUrl += "?gameid=7";
             payUrl += GetUserName(false);
             payUrl += GetWorldID();
@@ -2672,7 +2715,14 @@ namespace USpeedUI.PointShop
 
         private string BuildQRUrl(string payUrl, int w, int bw, int bs)
         {
-            string url = Config.QRBuildUrl;
+            if (string.IsNullOrEmpty(payUrl))
+                return string.Empty;
+
+            if (m_webMap == null || !m_webMap.ContainsKey((int)ASpeedGame.Data.Scheme.GameWebUrl.QR_BUILD_LINK))
+                return string.Empty;
+
+            //string url = Config.QRBuildUrl;;
+            string url = m_webMap[(int)ASpeedGame.Data.Scheme.GameWebUrl.QR_BUILD_LINK];
 	
 	        //--二维码打开的链接
             url += Uri.EscapeDataString(payUrl);
@@ -2718,6 +2768,21 @@ namespace USpeedUI.PointShop
                 szServerId += nID;
             }
             return szServerId;
+        }
+
+        private void RequestWebUrl()
+        {
+            GamePromotion.PromotionWebUrl payUrl = new GamePromotion.PromotionWebUrl();
+            payUrl.webUrlID = (int)ASpeedGame.Data.Scheme.GameWebUrl.PAY_LINK;
+            EntityEventHelper.Instance.SendCommand<GamePromotion.PromotionWebUrl>(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQUEST_WEBURL, ref payUrl);
+
+            GamePromotion.PromotionWebUrl payQRUrl = new GamePromotion.PromotionWebUrl();
+            payQRUrl.webUrlID = (int)ASpeedGame.Data.Scheme.GameWebUrl.PAY_QR_LINK;
+            EntityEventHelper.Instance.SendCommand<GamePromotion.PromotionWebUrl>(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQUEST_WEBURL, ref payQRUrl);
+
+            GamePromotion.PromotionWebUrl QRBuildUrl = new GamePromotion.PromotionWebUrl();
+            QRBuildUrl.webUrlID = (int)ASpeedGame.Data.Scheme.GameWebUrl.QR_BUILD_LINK;
+            EntityEventHelper.Instance.SendCommand<GamePromotion.PromotionWebUrl>(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQUEST_WEBURL, ref QRBuildUrl);
         }
     }
     #endregion
@@ -3074,6 +3139,17 @@ namespace USpeedUI.PointShop
                 SSchemePointShopGoodsConfig goodsConfig = PointShopConfig.Instance.GetPointShopGoodsConfig(nSellID);
                 if (goodsConfig != null)
                     m_searchList.Add(goodsConfig);
+            }
+        }
+
+        public void ProcessPayUrl(UWebUrlData urlData)
+        {
+            if(shopPageItem.Length > (int)PointShopPageType.Page_Pay)
+            {
+                if(shopPageItem[(int)PointShopPageType.Page_Pay] != null)
+                {
+                    (shopPageItem[(int)PointShopPageType.Page_Pay] as PointShopPayItem).ProcessWebUrl(urlData);
+                }
             }
         }
 

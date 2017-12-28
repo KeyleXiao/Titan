@@ -281,7 +281,7 @@ namespace USpeedUI.LegendCup
         {
             m_sCreateNode = createNode;
 
-            bool bInCreateNode = LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(m_kinID);
+            bool bInCreateNode = LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(createNode.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(createNode.nKin2ID);
             m_bCanJoinMatch = bInCreateNode && (createNode.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter);
 
             // 比分
@@ -646,11 +646,11 @@ namespace USpeedUI.LegendCup
             // 处理布局显示层数
             SetFrameVisible();
 
+            // 进场时间提示
+            SetEntryTime(competitionInfo);
+
             // 设置参赛按钮状态
             UpdateJoinMatchBtnState();
-
-            // 处理进场按钮与进场时间提示
-            SetEntryTime(competitionInfo);
         }
 
         public void Clear()
@@ -747,6 +747,10 @@ namespace USpeedUI.LegendCup
             // 计算每个node应该放置位置
             foreach (cmd_legendcup_recv_competition_node node in competitionInfo.nodeInfo)
             {
+                // 小组赛数据不体现在淘汰赛部分
+                if (node.byCompetitionType == (int)ERoundCompetitionType.emType_GroupCompetition)
+                    continue;
+
                 int nTempViewRound = m_nViewCurRound + node.nRoundID - m_nLogicCurRound;
                 // 排除非法节点
                 if (nTempViewRound < (int)EViewRoundIndex.EVRI_First || nTempViewRound > (int)EViewRoundIndex.EVRI_Fifth)
@@ -815,11 +819,11 @@ namespace USpeedUI.LegendCup
         {
             foreach (cmd_legendcup_recv_competition_node node in competitionInfo.nodeInfo)
             {
-                int nTempViewRound = m_nViewCurRound + node.nRoundID - m_nLogicCurRound;
-
                 // 小组赛数据不体现在淘汰赛部分
                 if (node.byCompetitionType == (int)ERoundCompetitionType.emType_GroupCompetition)
                     continue;
+
+                int nTempViewRound = m_nViewCurRound + node.nRoundID - m_nLogicCurRound;
 
                 string strCreateScore1 = "-:-";
                 string strCreateScore2 = "-:-";
@@ -895,42 +899,52 @@ namespace USpeedUI.LegendCup
 
             // 配置是否拥有（去掉非淘汰赛信息）
             bool[] bHaveConfig = new bool[(int)EViewRoundIndex.EVRI_Max];
-            foreach (SSchemeLegendCupDetailConfig item in cupTypeConfigList)
+            foreach (var item in cupTypeConfigList)
             {
-                if (item.nCompetitionType != (int)ERoundCompetitionType.emType_KnockoutCompetition)
+                int nTempViewRound = m_nViewCurRound + item.nRoundIndex - m_nLogicCurRound;
+                // 排除非法节点
+                if (nTempViewRound < (int)EViewRoundIndex.EVRI_First || nTempViewRound > (int)EViewRoundIndex.EVRI_Fifth)
                     continue;
 
-                switch (item.nGroupCount)
-                {
-                    case (int)EViewGroupCount.EVGC_Round1:
-                        {
-                            bHaveConfig[(int)EViewRoundIndex.EVRI_First] = true;
-                        }
-                        break;
-                    case (int)EViewGroupCount.EVGC_Round2:
-                        {
-                            bHaveConfig[(int)EViewRoundIndex.EVRI_Second] = true;
-                        }
-                        break;
-                    case (int)EViewGroupCount.EVGC_Round3:
-                        {
-                            bHaveConfig[(int)EViewRoundIndex.EVRI_Third] = true;
-                        }
-                        break;
-                    case (int)EViewGroupCount.EVGC_Round4:
-                        {
-                            bHaveConfig[(int)EViewRoundIndex.EVRI_Fourth] = true;
-                        }
-                        break;
-                    case (int)EViewGroupCount.EVGC_Round5 - 1:
-                        {
-                            bHaveConfig[(int)EViewRoundIndex.EVRI_Fifth] = true;
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                bHaveConfig[nTempViewRound] = true;
             }
+            //bool[] bHaveConfig = new bool[(int)EViewRoundIndex.EVRI_Max];
+            //foreach (SSchemeLegendCupDetailConfig item in cupTypeConfigList)
+            //{
+            //    if (item.nCompetitionType != (int)ERoundCompetitionType.emType_KnockoutCompetition)
+            //        continue;
+
+            //    switch (item.nGroupCount)
+            //    {
+            //        case (int)EViewGroupCount.EVGC_Round1:
+            //            {
+            //                bHaveConfig[(int)EViewRoundIndex.EVRI_First] = true;
+            //            }
+            //            break;
+            //        case (int)EViewGroupCount.EVGC_Round2:
+            //            {
+            //                bHaveConfig[(int)EViewRoundIndex.EVRI_Second] = true;
+            //            }
+            //            break;
+            //        case (int)EViewGroupCount.EVGC_Round3:
+            //            {
+            //                bHaveConfig[(int)EViewRoundIndex.EVRI_Third] = true;
+            //            }
+            //            break;
+            //        case (int)EViewGroupCount.EVGC_Round4:
+            //            {
+            //                bHaveConfig[(int)EViewRoundIndex.EVRI_Fourth] = true;
+            //            }
+            //            break;
+            //        case (int)EViewGroupCount.EVGC_Round5 - 1:
+            //            {
+            //                bHaveConfig[(int)EViewRoundIndex.EVRI_Fifth] = true;
+            //            }
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
 
             In32Frame.gameObject.SetActive(true);
             In16Frame.gameObject.SetActive(true);
@@ -953,6 +967,7 @@ namespace USpeedUI.LegendCup
                         if (!bHaveNode[(int)EViewRoundIndex.EVRI_Fourth] || !bHaveConfig[(int)EViewRoundIndex.EVRI_Fourth])
                         {
                             In4Frame.gameObject.SetActive(false);
+                            SetFirstRoundScoreState((int)EViewRoundIndex.EVRI_Fifth);
                             if (!bHaveNode[(int)EViewRoundIndex.EVRI_Fifth] || !bHaveConfig[(int)EViewRoundIndex.EVRI_Fifth])
                             {
                                 In2Frame.gameObject.SetActive(false);
@@ -1049,10 +1064,15 @@ namespace USpeedUI.LegendCup
                             switch (selfCurRoundNode.byCompetitionNodeState)
                             {
                                 case (int)ECompetitionNodeState.emNodeState_WaitStart:
-                                case (int)ECompetitionNodeState.emNodeState_CanEnter:
                                     {
                                         //EntryTime.text = String.Format("您战队的下一场比赛入场时间为：{0}月{1}日{2:D2}:{3:D2} - {4:D2}:{5:D2}", enterTime.Month, enterTime.Day, enterTime.Hour, enterTime.Minute, beginTime.Hour, beginTime.Minute);
                                         EntryTime.text = String.Format(ULocalizationService.Instance.Get("UIView", "LegendCupSmallKnockout", "NodeNextTime"), enterTime.Month, enterTime.Day, enterTime.Hour, enterTime.Minute, beginTime.Hour, beginTime.Minute);
+                                    }
+                                    break;
+                                case (int)ECompetitionNodeState.emNodeState_CanEnter:
+                                    {
+                                        //EntryTime.text = String.Format("杯赛已经开启，将在{0:D2}:{1:D2}关闭参赛入口，请尽快参战", beginTime.Hour, beginTime.Minute);
+                                        EntryTime.text = String.Format(ULocalizationService.Instance.Get("UIView", "LegendCupSmallKnockout", "NodeCanEnter"), beginTime.Hour, beginTime.Minute);
                                     }
                                     break;
                                 case (int)ECompetitionNodeState.emNodeState_Competition:
@@ -1162,9 +1182,11 @@ namespace USpeedUI.LegendCup
         private void UpdateJoinMatchBtnState()
         {
             bool bState = false;
+
+            int nCheckNodeRound = m_nViewCurRound == (int)EViewRoundIndex.EVRI_Fifth ? m_nViewCurRound : m_nViewCurRound + 1;
             for (int j = 0; j < (int)EViewGroupCount.EVGC_Max * 2; ++j)
             {
-                if (m_kinNodeMatrix[m_nViewCurRound, j] != null && m_kinNodeMatrix[m_nViewCurRound, j].CanJoinMatch)
+                if (m_kinNodeMatrix[nCheckNodeRound, j] != null && m_kinNodeMatrix[nCheckNodeRound, j].CanJoinMatch)
                 {
                     bState = true;
                     break;
@@ -1298,6 +1320,14 @@ namespace USpeedUI.LegendCup
                         }
                     }
                     break;
+                case (int)EViewRoundIndex.EVRI_Fifth:
+                    {
+                        m_kinNodeMatrix[(int)EViewRoundIndex.EVRI_Fifth, (int)ESpecialItemIndex.ESII_WinGroup1].SetScore(ULocalizationService.Instance.Get("UIView", "Common", "Team"), node);
+                        m_kinNodeMatrix[(int)EViewRoundIndex.EVRI_Fifth, (int)ESpecialItemIndex.ESII_WinGroup2].SetScore(ULocalizationService.Instance.Get("UIView", "Common", "Team"), node);
+                        m_kinNodeMatrix[(int)EViewRoundIndex.EVRI_Fifth, (int)ESpecialItemIndex.ESII_LoseGroup1].SetScore(ULocalizationService.Instance.Get("UIView", "Common", "Team"), node);
+                        m_kinNodeMatrix[(int)EViewRoundIndex.EVRI_Fifth, (int)ESpecialItemIndex.ESII_LoseGroup2].SetScore(ULocalizationService.Instance.Get("UIView", "Common", "Team"), node);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -1370,7 +1400,7 @@ namespace USpeedUI.LegendCup
                 LegendCupPrizeItem personalPrizeItems = PersonalPrizeObj.GetComponent<LegendCupPrizeItem>();
                 if (!personalPrizeItems)
                     return;
-                personalPrizeItems.SetData(Pos1PrizeConfig.nPrizeIDList[i], ECupPrizeType.ECPT_Personal, false, false);
+                personalPrizeItems.SetData(Pos1PrizeConfig.nPrizeIDList[i], ECupPrizeType.ECPT_Personal, UEffectPrefabType.UEPT_None, false);
             }
             PrizeItemTemplate.SetActive(false);
         }
@@ -1564,7 +1594,7 @@ namespace USpeedUI.LegendCup
         public void OnShowSmallKnockoutWnd(long nCupID)
         {
             m_LegendCupID = nCupID;
-            SingleCompetitionInfo competitionInfo = LogicDataCenter.legendCupDataManager.GetSingleCompetitionInfo();
+            SingleCompetitionInfo competitionInfo = LogicDataCenter.legendCupDataManager.GetSingleCompetitionInfo(m_LegendCupID);
             if (competitionInfo == null)
                 return;
             cmd_legendcup_recv_cuplist_node cupBaseData = LogicDataCenter.legendCupDataManager.GetSingleLegendCupNode(nCupID);

@@ -262,12 +262,14 @@
     <ClInclude Include="..\..\..\Common\Connector.h" />
     <ClInclude Include="..\..\..\Common\ConnectorWithProcess.h" />
     <ClInclude Include="..\..\..\Common\Handler.h" />
+    <ClInclude Include="..\..\..\Common\ICallback.h" />
     <ClInclude Include="..\..\..\Common\IHandler.h" />
     <ClInclude Include="..\..\..\Common\Processer.h" />
     <ClInclude Include="..\..\..\Common\ViewDef_.h" />
     <ClInclude Include="..\..\..\Common\ViewMsgDef.h" />
     <ClInclude Include="..\..\..\Common\ViewMsgDef_Client.h" />
     <ClInclude Include="..\..\..\Common\ViewMsgDef_Server.h" />
+    <ClInclude Include="..\..\..\Common\ViewRedisData.h" />
     <ClInclude Include="..\..\..\Common\ViewRedisKey.h" />
     <ClInclude Include="..\Src\Acceptor.h" />
     <ClInclude Include="..\Src\ClientList.h" />
@@ -280,17 +282,25 @@
     <ClInclude Include="..\Src\GV_CRequestReplayHandler.h" />
     <ClInclude Include="..\Src\GV_HandshakeResponseHandler.h" />
     <ClInclude Include="..\Src\HandshakeResponseHandler.h" />
+    <ClInclude Include="..\Src\IReplayRunnable.h" />
+    <ClInclude Include="..\Src\IRunnableCallback.h" />
+    <ClInclude Include="..\Src\ITimeSyncService.h" />
     <ClInclude Include="..\Src\ListInfoDlg.h" />
+    <ClInclude Include="..\Src\LoadBattleInfoTask.h" />
     <ClInclude Include="..\Src\MngConnector.h" />
     <ClInclude Include="..\Src\MngMsgRegister.h" />
     <ClInclude Include="..\Src\MsgFactory.h" />
     <ClInclude Include="..\Src\OperationDlg.h" />
+    <ClInclude Include="..\Src\LoadPrepInfoTask.h" />
     <ClInclude Include="..\Src\RedisMng.h" />
+    <ClInclude Include="..\Src\RedisThread.h" />
     <ClInclude Include="..\Src\Replay.h" />
     <ClInclude Include="..\Src\ReplayContainer.h" />
     <ClInclude Include="..\Src\StartViewHandler.h" />
     <ClInclude Include="..\Src\stdafx.h" />
     <ClInclude Include="..\Src\Setting.h" />
+    <ClInclude Include="..\Src\TimeSyncService.h" />
+    <ClInclude Include="..\Src\ViewNode.h" />
     <ClInclude Include="..\Src\ViewServer.h" />
     <ClInclude Include="..\Src\ViewServerDlg.h" />
     <ClInclude Include="..\Include\IGlobalViewServer.h" />
@@ -307,11 +317,14 @@
     <ClCompile Include="..\Src\Gates.cpp" />
     <ClCompile Include="..\Src\GlobalViewServer.cpp" />
     <ClCompile Include="..\Src\ListInfoDlg.cpp" />
+    <ClCompile Include="..\Src\LoadBattleInfoTask.cpp" />
+    <ClCompile Include="..\Src\LoadPrepInfoTask.cpp" />
     <ClCompile Include="..\Src\MngConnector.cpp" />
     <ClCompile Include="..\Src\MngMsgRegister.cpp" />
     <ClCompile Include="..\Src\MsgFactory.cpp" />
     <ClCompile Include="..\Src\OperationDlg.cpp" />
     <ClCompile Include="..\Src\RedisMng.cpp" />
+    <ClCompile Include="..\Src\RedisThread.cpp" />
     <ClCompile Include="..\Src\Replay.cpp" />
     <ClCompile Include="..\Src\ReplayContainer.cpp" />
     <ClCompile Include="..\Src\stdafx.cpp">
@@ -320,6 +333,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UniRelease|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Src\TimeSyncService.cpp" />
     <ClCompile Include="..\Src\ViewServer.cpp" />
     <ClCompile Include="..\Src\ViewServerDlg.cpp" />
     <ClCompile Include="..\Src\ResizingDialog.cpp" />

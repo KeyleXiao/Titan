@@ -434,12 +434,18 @@ public partial class AssetBundleManagerEditor : EditorWindow
          * 当EXE完成的时候，整个发布流程已经完成，这个时候删除所有的发布文件就可以了。
          */
 
+        if (!File.Exists(GetRunFromOutSideProgramPath()))
+        {
+            System.Diagnostics.Process.Start(GetRunTimeBinPatchRoot());
+        }
+
         if(System.IO.Directory.Exists(GetBuildFlowFloderPathRoot()))
         {
             System.IO.Directory.Delete(GetBuildFlowFloderPathRoot(), true);
         }
 
-        System.Diagnostics.Process.Start(GetRunTimeBinPatchRoot());
+
+        
         if (NeedToExitEditor)
         {
             EditorApplication.Exit(0);

@@ -24,6 +24,23 @@ namespace USpeedUI.Chat
 		public ChatItemSubType subType;                   // 对象子类型
 		public String text;                             // 对象正文
 		public Dictionary<String, String> param;        // 参数列表
+
+        public override string ToString()
+        {
+            String strResult = "" + ChatMessageManager.ChatItemFlag;
+            String typeName = ChatItem.GetChatObjSubTypeString(subType, false);
+            strResult += String.Format("[{0}", typeName);
+            if (param != null)
+            {
+                foreach (var data in param)
+                {
+                    strResult += String.Format(" {0}={1}", data.Key, data.Value);
+                }
+            }
+            strResult += String.Format("][/{0}]", typeName);
+            return strResult;
+        }
+
 	}
 
 	public struct SChatMessageInfo

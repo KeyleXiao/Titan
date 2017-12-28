@@ -55,7 +55,7 @@ public:
 	virtual bool	lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue);
 
 	// 获取（index元素）
-	virtual bool	lIndex(const string& strKey, long nIndex, string* pstrValue);
+	virtual bool	lIndexString(const string& strKey, long nIndex, string* pstrValue);
 
 	// 数量
 	virtual bool	lLen(const string& strKey, long* pnValue);

@@ -189,7 +189,7 @@ ICoroutine* WorkThread::allot_co(int nStackSize)
     return pCo;
 }
 
-#define co_free_list_max_size 5
+#define co_free_list_max_size 30
 void WorkThread::revert_co(ICoroutine* pCo)
 {
     int nStackSize = pCo->get_stack_size();

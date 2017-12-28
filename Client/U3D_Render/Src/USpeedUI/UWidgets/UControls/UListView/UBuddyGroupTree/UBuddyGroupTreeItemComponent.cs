@@ -119,6 +119,7 @@ namespace USpeedUI.UWidgets
         public Image GameStateIcon;
         public Image RankIcon;
         public Text RankName;
+        public Text Mood;
 
         private UPopupMenuHandle popupMenuHandle;
 
@@ -301,6 +302,7 @@ namespace USpeedUI.UWidgets
 				m_Component.GameStateIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_GameState, WndID.WND_ID_SNS_MAINPANEL, 
                     UDefines.GetGameStateIconID(buddyInfo.Info.nStatus));
                 m_Component.RankName.text = buddyInfo.Info.szRankName;
+                m_Component.Mood.text = buddyInfo.Info.szMood;
 
                 if (buddyInfo.Info.nStatus == (int)ACTOR_GAME_STATE.GAME_STATE_OFFLINE)
                 {
@@ -347,6 +349,8 @@ namespace USpeedUI.UWidgets
                 buddyInfoTooltipTrigger.SetText("WinPro", ULocalizationService.Instance.Get("UIView", "SNS", "WinPro") + nWinPro + "%");
                 buddyInfoTooltipTrigger.SetText("MatchNum", ULocalizationService.Instance.Get("UIView", "SNS", "MatchNum") + buddy.Info.nMatchNum);
                 buddyInfoTooltipTrigger.SetText("Status", LogicDataCenter.snsDataManager.getBuddyStatusDesc(buddy));
+                buddyInfoTooltipTrigger.SetText("ActorName", ULocalizationService.Instance.Get("UIView", "Common", "roleName") + ": " + buddy.Info.szName);
+                buddyInfoTooltipTrigger.SetText("Mood", buddy.Info.szMood + " ");
             }
 
             public virtual void addPopupMenu()
@@ -365,7 +369,7 @@ namespace USpeedUI.UWidgets
 						popupAction.Add(UPopupItemDataTeamInvite.GetDescString(), new UPopupItemDataTeamInvite((int)buddy.Info.dwPdbID));
 					}
 					popupAction.Add(UPopupItemDataGetPlayerDetail.GetDescString(), new UPopupItemDataGetPlayerDetail((int)buddy.Info.dwPdbID));
-					popupAction.Add(UPopupItemDataKinRequest.GetDescString(), new UPopupItemDataKinRequest((int)buddy.Info.dwPdbID));
+					//popupAction.Add(UPopupItemDataRequestJoinBuddyKin.GetDescString(), new UPopupItemDataRequestJoinBuddyKin((int)buddy.Info.dwPdbID));
 					popupAction.Add(UPopupItemDataKinInvite.GetDescString(), new UPopupItemDataKinInvite((int)buddy.Info.dwPdbID));
 				}
 				if (buddy.Info.nStatus != (int)ACTOR_GAME_STATE.GAME_STATE_OFFLINE)
@@ -479,7 +483,7 @@ namespace USpeedUI.UWidgets
 					popupAction.Add(UPopupItemDataTeamInvite.GetDescString(), new UPopupItemDataTeamInvite((int)buddy.Info.dwPdbID));
 					popupAction.Add(UPopupItemDataGetPlayerDetail.GetDescString(), new UPopupItemDataGetPlayerDetail((int)buddy.Info.dwPdbID));
 					popupAction.Add(UPopupItemDataKinInvite.GetDescString(), new UPopupItemDataKinInvite((int)buddy.Info.dwPdbID));
-					popupAction.Add(UPopupItemDataKinRequest.GetDescString(), new UPopupItemDataKinRequest((int)buddy.Info.dwPdbID));
+					//popupAction.Add(UPopupItemDataRequestJoinBuddyKin.GetDescString(), new UPopupItemDataRequestJoinBuddyKin((int)buddy.Info.dwPdbID));
 					popupAction.Add(UPopupItemDataPrivateChat.GetDescString(), new UPopupItemDataPrivateChat(buddy.Info.szName));
 				}
 				popupAction.Add(UPopupItemDataAddBlackList.GetDescString(), new UPopupItemDataAddBlackList(buddy.Info.nUserID, buddy.Info.szName));

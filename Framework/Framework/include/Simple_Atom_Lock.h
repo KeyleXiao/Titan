@@ -51,7 +51,7 @@ public:
 			{
 				j+=1000;           // Sleep一次就增加饥渴度，让他下次更容易获得
 				i=0;
-                WarningLn(__FUNCTION__":sleep");
+                WarningLn(__FUNCTION__":sleep threadid="<<::GetCurrentThreadId());
 				Sleep(1);
 			}
 		}

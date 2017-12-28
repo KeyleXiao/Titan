@@ -52,6 +52,8 @@ namespace UIWidgets {
 		public Text Name;
 		[SerializeField]
 		public Image SelectedBg;
+        [SerializeField]
+        public Button CloseBtn;
 
 		UBuddySessionListItem item;
 
@@ -80,7 +82,7 @@ namespace UIWidgets {
 
             HeadIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_SNS_CHAT, 1, buddy.Info.nSex+1);
 			GameStateDesc.text = LogicDataCenter.snsDataManager.getBuddyStatusDesc(buddy);
-            Name.text = buddy.Info.szName;
+            Name.text = getBuddyName(buddy);
 
             if (buddy.Info.nStatus == (int)ACTOR_GAME_STATE.GAME_STATE_OFFLINE)
             {
@@ -127,5 +129,37 @@ namespace UIWidgets {
             msgData.dwUserID = item.UserID;
             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_SELECT_SESSION, msgData);
         }
-	}
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            CloseBtn.gameObject.SetActive(true);
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            CloseBtn.gameObject.SetActive(false);
+        }
+
+        public void onCloseBtnClick()
+        {
+            SNSDeleteSessionMsgData msgData = new SNSDeleteSessionMsgData();
+            msgData.msgID = (int)WndMsgID.WND_MSG_SNS_DELETE_SESSION;
+            msgData.dwUserID = item.UserID;
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_DELETE_SESSION, msgData);
+        }
+
+        protected string getBuddyName(SNSDataManager.BuddyInfo buddyInfo)
+        {
+            string remark = LogicDataCenter.snsDataManager.getBuddyRemark(buddyInfo.Info.nUserID);
+
+            if (String.IsNullOrEmpty(remark))
+            {
+                return buddyInfo.Info.szName;
+            }
+            else
+            {
+                return string.Format("{0}({1})", remark, buddyInfo.Info.szName);
+            }
+        }
+    }
 }

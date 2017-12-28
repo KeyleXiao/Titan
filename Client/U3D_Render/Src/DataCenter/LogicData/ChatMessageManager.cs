@@ -664,11 +664,6 @@ namespace DataCenter
                 ||msgInfo.channel == (int)EMChatChannelType.CHAT_CHANNEL_CAMP
                 ||msgInfo.channel == (int)EMChatChannelType.CHAT_CHANNEL_WARSCENE)
 			{
-				if (msgInfo.senderUID == 0)
-				{
-					return;
-				}
-
 				// 战场内不显示联盟和战队的气泡
 				if (msgInfo.channel == (int)EMChatChannelType.CHAT_CHANNEL_KIN || msgInfo.channel == (int)EMChatChannelType.CHAT_CHANNEL_CLAN)
 				{

@@ -258,6 +258,7 @@ namespace USpeedUI.Guide
             if(GetCursorEffect != null && IsForceGuide)
             {
                 GetCursorEffect.SetParent(UISystem.Instance.transform, true);
+                GetCursorEffect.anchoredPosition3D = new Vector3(GetCursorEffect.anchoredPosition3D.x, GetCursorEffect.anchoredPosition3D.y, GetCursorEffect.anchoredPosition3D.z - 1);
                 GetCursorEffect.GetComponent<USpeedUILayerElement>().SortingLayerName = UISystem.Instance.GetCanvas().sortingLayerName;
             }            
         }

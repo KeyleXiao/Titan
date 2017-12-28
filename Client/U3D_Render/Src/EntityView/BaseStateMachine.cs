@@ -134,6 +134,34 @@ public class BaseStateMachine : MonoBehaviour
     }
     protected EntitySkinControl m_SkinControl;
 
+    protected Transform currentSkinDataObj
+    {
+        get
+        {
+            if(this.SkinControl)
+            {
+                if(!SkinInstance.isNullOrEmpry(SkinControl.CurrentSkinInstance))
+                {
+                    return SkinControl.CurrentSkinInstance.SkinDataObj;
+                }
+            }
+            return null;
+        }
+    }
+
+    public Transform[] excludeParentList
+    {
+        get
+        {
+            if(null == m_excludeParentList)
+            {
+                m_excludeParentList = new Transform[1];
+            }
+            m_excludeParentList[0] = currentSkinDataObj;
+            return m_excludeParentList;
+        }
+    }
+    protected Transform[] m_excludeParentList = null;
 
     /// <summary>
     /// 重置所有成员变量，恢复到实例化之前的状态
@@ -554,7 +582,8 @@ public class BaseStateMachine : MonoBehaviour
 
         if (m_pickableCount > 0)
         {
-            GameUtil.SetLayer(m_PKLayer, transform.gameObject, true);
+
+            GameUtil.SetLayer(m_PKLayer, transform.gameObject, true, excludeParentList);
         }
 
         //更新选中框
@@ -610,18 +639,18 @@ public class BaseStateMachine : MonoBehaviour
                 U3D_Render.EntityView ev = EntityFactory.getEntityViewByID(this.entityID);
                 if(ev != null && ev.Flag != (int)MONSTER_SUB_TYPE.MONSTER_SUB_TYPE_HP_SUPPLIES)
                 {
-                    GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerIngoreRayCast), transform.gameObject, true);
+                    GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerIngoreRayCast), transform.gameObject, true, excludeParentList);
                 }
             }
             else if (m_pickableCount <= 0 && value > 0)
             {
                 if (m_isPK)
                 {
-                    GameUtil.SetLayer(m_PKLayer, transform.gameObject, true);
+                    GameUtil.SetLayer(m_PKLayer, transform.gameObject, true, excludeParentList);
                 }
                 else
                 {
-                    GameUtil.SetLayer(baseLayer, transform.gameObject, true);
+                    GameUtil.SetLayer(baseLayer, transform.gameObject, true, excludeParentList);
                     //关于ward结界类型的特殊处理
                     //结界类型的物理盒子放在LayerWard层，用于阻挡指定类型的玩家
                     //但是结界有可以选中和不可以选中，

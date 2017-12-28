@@ -355,6 +355,12 @@ struct msg_war_entity_end_warinfo
     // 玩家的天梯分数
     int nPlayerMatchScore;
 
+	// 以前的段位分
+	int nPreMatchTypeScore;
+
+	// 以前的段位等级
+	int nPreMatchTypeGrade;
+
     // 天梯名称
     char szPlayerMatchName[GAME_NAME_MAXSIZE];
 

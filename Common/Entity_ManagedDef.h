@@ -735,6 +735,7 @@ STRUCT SkinInfoScheme
 
     sp_char_array(szSkinName,GAME_NAME_MAXSIZE);	    // 名字
     sp_char_array(szSkinPatch,GAME_TITLE_MAXSIZE);		// 路径使用大字符串长度，现在有的模型路径已经超过原来的GAME_NAME_MAXSIZE了
+	sp_char_array(szSkinTip,GAME_TITLE_MAXSIZE);
 
     STRUCT_INIT(SkinInfoScheme)
 };
@@ -1059,10 +1060,15 @@ ENUM ENNOVICEGUIDE_TYPE
 // 场外引导记录Key GuideStep.csv
 ENUM EMMatchGuideStep
 {
-    GuideStep_StartWar_FirstEnter	= 1,	    // 点新手引导UI进新手一号战场
-    GuideStep_RadomMachine_StartWar,           // 随机电脑引导点开战UI
+    GuideStep_StartWar_FirstEnter	= 1,	   //点新手引导UI进新手一号战场
+    GuideStep_RadomMachine_StartWar,           //随机电脑引导点开战UI
     GuideStep_MachineGameModel_Select,         //点新手人机对战选择战场
     GuideStep_RadomMachine_ConfrimHero,        //选择英雄并确定
+	GuideStep_HeroReward,                      //新手奖励
+	GuideStep_LifeHero_Start,                  //本命英雄激活引导
+	GuideStep_LifeHero_Finish,                 //本名英雄收集完成  
+	GuideStep_Upgrade_GuideEnd,                //等级升到引导自动结束
+	GuideStep_First_Rank_Finished,             //完成排位引导结束新手引导
 };
 
 // 复活重激活类型
@@ -1136,6 +1142,33 @@ ENUM ELifeHeroType
 ENUM EHeroStar
 {
 	HERO_STAR_LEVEL_MAX = 30
+};
+
+// 推广员总局数相关数据记录
+STRUCT RecommendRecordItem
+{
+    unsigned int   dwUserID;                           // 下家账号ID
+    unsigned int	dwMatchNum;                         // 下家总场次
+    unsigned int	dwWinNum;                           // 下家总胜场次
+
+    STRUCT_INIT(RecommendRecordItem)
+};
+
+// 推广员总局数相关数据记录
+STRUCT RecommendRecord
+{
+    int    nPrizeTaskData;                   // 推广奖励ID
+    int    nCount;                           // 下家记录数
+                                             // nCount * RecommendRecordItem
+    
+    STRUCT_INIT(RecommendRecord)
+};
+
+STRUCT ParamRecommendPrize
+{
+    int nTargetID;                 // 推广目标ID，RecommendPrize.csv 的第一列
+
+    STRUCT_INIT(ParamRecommendPrize)
 };
 
 #endif	// __COMMON_ENTITY_MANAGED_DEF_H__

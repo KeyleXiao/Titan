@@ -118,6 +118,9 @@ namespace USpeedUI.ChatBox
         public int RoomMatchType { set { m_nMatchType = value; } }
         private int m_nMatchType;
 
+        public bool bAutoHide { set { m_bAutoHide = value; } get { return m_bAutoHide; } }
+        public bool m_bAutoHide = false;
+
         public enum EChatTimer
         {
             EChatTimer_ShowChatMsg = 1,     // 显示聊听消息定时器
@@ -710,6 +713,13 @@ namespace USpeedUI.ChatBox
             inputField.ClearContent();
         }
 
+        public void onSendChatMessage(USendChatMessage uiMsgData)
+        {
+            EMChatChannelType channelType = m_dropDownIndexToChannel [channelDropdown.value];
+            UIUtil.SendChatMessage(channelType, uiMsgData.chatMsg);
+        }
+
+
         public void OnChatMessageUpdate()
         {
             if (!contentView)
@@ -831,6 +841,7 @@ namespace USpeedUI.ChatBox
                 inputField.ActivateInputField();
             }
 
+            
             inputField.selectionFocusPosition = inputField.caretPosition;
             inputField.InsertItem(itemObj, subItem, -1);
 

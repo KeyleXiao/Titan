@@ -91,6 +91,7 @@ enum EM_MSG_SNS
 	MSG_SNS_REQ_CHANGE_MOOD,				// 请求修改心情（客户端发送）
 	MSG_SNS_REQ_UPDATE_BUDDY_STATUS,		// 请求更新在线状态（客户端发送）
 	MSG_SNS_REQ_INVITE_PLAYGAME,			// 请求邀请一起游戏（客户端发送）
+	MSG_SNS_SEND_DATA_TO_SOCIAL,			// 客户端C#直接发数据到社会服（客户端发送）
 
 	MSG_SNS_MSG_DATA,						// 发送聊听消息（发给客户端）
 	MSG_SNS_UPDATE_RELATIONSHIP,			// 好友关系状态更新（发给客户端）
@@ -539,6 +540,19 @@ struct SMsgSNSReqInviteMatchTeam
 	char szInviterName[ACTORNAME_MAXSIZE];
 
 	SMsgSNSReqInviteMatchTeam()
+	{
+		memset(this, 0, sizeof(*this));
+	}
+};
+
+// MSG_SNS_SEND_DATA_TO_SOCIAL C#直接发数据到社会服
+struct SMsgSNSSendDataToSocial
+{
+	int nMsgType;
+
+	// data...
+
+	SMsgSNSSendDataToSocial()
 	{
 		memset(this, 0, sizeof(*this));
 	}

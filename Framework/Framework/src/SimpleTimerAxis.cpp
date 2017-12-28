@@ -16,7 +16,7 @@
 bool SimpleTimerAxis::Create()
 {
 	m_pAxis = new TimerAxis(16,300,6000);
-	return Framework::getInstance().get_service_timer()->SetTimer(0,16,this);
+	return Framework::getInstance().get_service_timer()->SetTimer(0,32,this);
 }
 
 bool SimpleTimerAxis::Close()

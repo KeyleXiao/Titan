@@ -20,7 +20,10 @@ public:
 	ViewSession(IConnection * conn, IUserList& pUserList, Processer<ViewSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord);
 	virtual ~ViewSession();
 
-	virtual std::string ToString();
+	virtual std::string ToString() override;
+
+	// 处理未注册的消息（比如要转发的消息）
+	virtual	void		UnHandled(LPVOID pData, DWORD dwDataLen) override;
 
 protected:
 	virtual WORD		GetKeepAliveID();

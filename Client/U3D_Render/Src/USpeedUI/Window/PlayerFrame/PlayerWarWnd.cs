@@ -1097,9 +1097,9 @@ namespace USpeedUI.PlayerFrame
 			else
 				strKDAValue += data.nKillPersonNum.ToString();
 			strKDAValue += "/";
-			if (nDieTop > 0 && data.nDieCount == nDieTop)
-				strKDAValue += "<color=#FFCE34FF>" + data.nDieCount + "</color>";
-			else
+			//if (nDieTop > 0 && data.nDieCount == nDieTop)
+				//strKDAValue += "<color=#FFCE34FF>" + data.nDieCount + "</color>";
+			//else
 				strKDAValue += data.nDieCount.ToString();
 			strKDAValue += "/";
 			if (nAssistTop > 0 && data.nAssistCount == nAssistTop)
@@ -1153,39 +1153,64 @@ namespace USpeedUI.PlayerFrame
                 MVPIcon.SetActive(false);
             }
 
-			if ((data.nGlory & (int)EWarMedal.EWM_OUTPUT) > 0)
+            if ((data.nGlory & (int)EWarMedal.EWM_MVPOFLOSER) > 0)
+                AddAchiIcon((int)AchiIconType.Icon_MvpOfLoser);
+
+            if ((data.nGlory & (int)EWarMedal.EWM_OUTPUT) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TopDamage);
+
 			if ((data.nGlory & (int)EWarMedal.EWM_KILLCOUNT) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TopKill);
+
 			if ((data.nGlory & (int)EWarMedal.EWM_ASSCOUNT) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TopAssist);
-			if ((data.nGlory & (int)EWarMedal.EWM_DAMAGE) > 0)
+
+            if ((data.nGlory & (int)EWarMedal.EWM_DAMAGE) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TopTank);
-			if ((data.nGlory & (int)EWarMedal.EWM_DESTORYTOWER) > 0)
+
+            if ((data.nGlory & (int)EWarMedal.EWM_DESTORYTOWER) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TopTowerKill);
-			if ((data.nGlory & (int)EWarMedal.EWM_MONEY) > 0)
+
+            if ((data.nGlory & (int)EWarMedal.EWM_MONEY) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TopRich);
             // 不显示补刀最多
 			//if ((data.nGlory & (int)EWarMedal.EWM_KILLMONSTER) > 0)
 			//	AddAchiIcon((int)AchiIconType.Icon_TopFarm);
+		
 			if ((data.nGlory & (int)EWarMedal.EWM_DEADLYCONTROL) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_DeadlyControl);
-			if ((data.nGlory & (int)EWarMedal.EWM_THRILLSAVE) > 0)
+
+            if ((data.nGlory & (int)EWarMedal.EWM_THRILLSAVE) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_ThrilSave);
-			if ((data.nGlory & (int)EWarMedal.EWM_TEAMCONTROL) > 0)
+
+            if ((data.nGlory & (int)EWarMedal.EWM_TEAMCONTROL) > 0)
 				AddAchiIcon((int)AchiIconType.Icon_TeamControl);
-			if ((data.nAliveAssistMax) >= 15)
+
+            if ((data.nAliveAssistMax) >= 15)
 				AddAchiIcon((int)AchiIconType.Icon_AliveAssist);
-			if (data.nContinueKillMax >= 8)
+
+            if (data.nContinueKillMax >= 8)
 				AddAchiIcon((int)AchiIconType.Icon_Godlike);
-			if (data.nMultiKillMax == 3)
+
+            if (data.nMultiKillMax == 3)
 				AddAchiIcon((int)AchiIconType.Icon_TripleKill);
-			if (data.nMultiKillMax == 4)
+
+            if (data.nMultiKillMax == 4)
 				AddAchiIcon((int)AchiIconType.Icon_FourKill);
-			if (data.nMultiKillMax == 5)
+
+            if (data.nMultiKillMax == 5)
 				AddAchiIcon((int)AchiIconType.Icon_FiveKill);
 
-			gameObject.SetActive(true);
+            if ((data.nGlory & (int)EWarMedal.EWM_KILLDRAGON) > 0)
+                AddAchiIcon((int)AchiIconType.Icon_KillDragon);
+
+            if ((data.nGlory & (int)EWarMedal.EWM_JOINBATTLE) > 0)
+                AddAchiIcon((int)AchiIconType.Icon_JoinBattle);
+
+            if ((data.nGlory & (int)EWarMedal.EWM_CURE) > 0)
+                AddAchiIcon((int)AchiIconType.Icon_Cure);
+
+            gameObject.SetActive(true);
 
 			// 设置玩家信息tips
 			setActorInfoToolTips();

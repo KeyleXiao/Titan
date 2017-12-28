@@ -39,16 +39,26 @@ typedef	WORD	GameID;		// 游戏服ID
 
 typedef	DWORD	ReplayID;	// 战报ID
 typedef DWORD	PlayerID;	// 用来标识观战客户端的唯一ID（目前由请求观战的服务器发来，现在可以用玩家DBID）
+typedef WORD	RightID;	// 权限ID
+
+typedef	std::vector<PlayerID>	VecPlayerID;
 
 
 //////////////////////////////////////////////////////////////////////////
 /* 通用宏*/
 //////////////////////////////////////////////////////////////////////////
 // 检查val，如果是false，则返回false
-#define D_IF_FALSE_RETURN(val)	\
+#define D_IF_FALSE_RETURN_FALSE(val)	\
 if (!val)						\
 {								\
 	return false;				\
+}
+
+// 检查val，如果是false，则返回
+#define D_IF_FALSE_RETURN(val)	\
+if (!val)						\
+{								\
+	return;						\
 }
 
 

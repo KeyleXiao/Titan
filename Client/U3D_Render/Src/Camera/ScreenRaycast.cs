@@ -27,7 +27,7 @@ public class ScreenRaycast : MonoBehaviour
 
     public enum SelectInputType
     {
-        MousePos=0,
+        MousePos = 0,
         FaceDirection,
         WalkingDirection,
         MoveDirDefaultRawInputDir,
@@ -35,7 +35,7 @@ public class ScreenRaycast : MonoBehaviour
         CrossHairPos,
         MousePosAndCrossHairPos,
     }
-    
+
     public enum SelectViewType //选择对象时候的类型
     {
         InAngle = 0,
@@ -46,7 +46,7 @@ public class ScreenRaycast : MonoBehaviour
     /// <summary>
     /// 检测层
     /// </summary>
-    private LayerMask collisionLayers = -1;    
+    private LayerMask collisionLayers = -1;
     private int LayerMaskOnPos; //选择Position的时候用这个Mask，排除Object用于校准的ScreenRaycast盒子
 
     //场景锁定框对象
@@ -84,26 +84,26 @@ public class ScreenRaycast : MonoBehaviour
         machine = transform.GetComponentInParent<CreatureStateMachine>();
         if (machine != null)
         {
-            CreatureProperty cp = machine.creaturePropety;            
+            CreatureProperty cp = machine.creaturePropety;
             if (cp != null)
             {
                 CurCP = cp;
-                SetCrossHairPos(cp.CrossHairOffset);                
+                SetCrossHairPos(cp.CrossHairOffset);
 
             }
             rootTrans = machine.transform;//.FindTransformEx(transform, "Main");    //技能施法不要与皮肤挂钩
         }
         SetDefaultSelection();
-        
+
     }
 
     public void OnDestroy()
     {
     }
 
- 
 
-#region 主要参与的参数
+
+    #region 主要参与的参数
 
     public bool showLog = false;
 
@@ -130,7 +130,7 @@ public class ScreenRaycast : MonoBehaviour
     float m_fTraceHeight = 1.5f; //沿地面拾取时防碰撞的高度
     private MouseCtrl mouseCtrl = null;
 
-      [System.NonSerialized]
+    [System.NonSerialized]
     public int targetID;
 
     [System.NonSerialized]
@@ -142,7 +142,7 @@ public class ScreenRaycast : MonoBehaviour
     private BaseStateMachine attackHeroMachine; //记录攻击我的英雄
     public float MAX_CAST_DISTANCE = 100.0f; //射线检测最远长度
 
-#endregion
+    #endregion
 
     #region 拾取函数
     //----------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ public class ScreenRaycast : MonoBehaviour
         Vector3 forward = lastSelectPos - heroPos;
         forward.y = 0.0f;
         forward.Normalize();
-        Vector3 right = Vector3.Cross(forward, Vector3.up);        
+        Vector3 right = Vector3.Cross(forward, Vector3.up);
         right.Normalize();
         Vector3 mouseVec = hitInfo.point - heroPos;
         Vector3 mouseDir = mouseVec;
@@ -223,13 +223,13 @@ public class ScreenRaycast : MonoBehaviour
         {
             return calRotateRay(lastSelectPos, detaAngle);
         }
-        if(!Initialize.mainCam)
+        if (!Initialize.mainCam)
         {
             return new Ray();
         }
         Vector3 selectPoint = GetCrossHairPos();//new Vector3(Screen.width / 2, Screen.height / 2, 0);
 
-        if(!rootTrans)
+        if (!rootTrans)
         {
             return new Ray();
         }
@@ -240,11 +240,11 @@ public class ScreenRaycast : MonoBehaviour
         }
 
         Ray castRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            //Initialize.mainCam.ScreenPointToRay(selectPoint);
+        //Initialize.mainCam.ScreenPointToRay(selectPoint);
 
         SelectInputType inputType = nInputType;
         if (!rootTrans) return castRay;
-       
+
         //WalkingDirToFaceDir，当有移动速度时优先选择移动方向，否则选择面向
         if (inputType == SelectInputType.MoveDirDefaultRawInputDir)
         {
@@ -266,7 +266,7 @@ public class ScreenRaycast : MonoBehaviour
             }
         }
 
-        if (inputType == SelectInputType.MousePos || inputType == SelectInputType.CrossHairPos || inputType==SelectInputType.MousePosAndCrossHairPos)
+        if (inputType == SelectInputType.MousePos || inputType == SelectInputType.CrossHairPos || inputType == SelectInputType.MousePosAndCrossHairPos)
         {
             if (inputType == SelectInputType.MousePos || ((!SoldierCamera.MainInstance<SoldierCamera>().bRotateWithMouse) && (inputType == SelectInputType.MousePosAndCrossHairPos)))
             {
@@ -288,8 +288,8 @@ public class ScreenRaycast : MonoBehaviour
             if (bRight) //如果是前向，则从摄像机位置出发。如果是右向，则射线从人物位置出发，因为从摄像机出发的右向屏幕看不到。
             {
                 castRay.direction = Initialize.mainCam.transform.right;
-                 //更精确的方法，根据地面法向前进
-                if (machine != null && machine.IsGrounded() && machine.groundNormal.y>0.01f)
+                //更精确的方法，根据地面法向前进
+                if (machine != null && machine.IsGrounded() && machine.groundNormal.y > 0.01f)
                 {
                     castRay.direction = Vector3.Cross(machine.groundNormal.normalized, Initialize.mainCam.transform.up.normalized);
                 }
@@ -326,23 +326,23 @@ public class ScreenRaycast : MonoBehaviour
                     fDistance = newDis;
                     //Trace.Log("rad="+_Distance+" deta="+deta.magnitude+ " rayDistance=" + rayDistance);
                 }
-                else 
+                else
                 {
                     fDistance *= -1.0f;
                     if (machine != null && machine.IsGrounded() && machine.groundNormal.y > 0.01f)
                     {
-                        castRay.direction = Vector3.Cross(machine.groundNormal.normalized,Initialize.mainCam.transform.right.normalized);
+                        castRay.direction = Vector3.Cross(machine.groundNormal.normalized, Initialize.mainCam.transform.right.normalized);
                     }
                     else
                     {
                         castRay.direction = Initialize.mainCam.transform.forward.normalized;
                         castRay.direction *= -1.0f;
                     }
-                    castRay.origin = heroPos + new Vector3(0, m_fTraceHeight, 0);                    
+                    castRay.origin = heroPos + new Vector3(0, m_fTraceHeight, 0);
                 }
             }
         }
-        else if (inputType==SelectInputType.FaceDirection)
+        else if (inputType == SelectInputType.FaceDirection)
         {
             Vector3 orgPos = heroPos;
             orgPos.y += m_fTraceHeight; //抬高避免撞地面
@@ -350,26 +350,26 @@ public class ScreenRaycast : MonoBehaviour
             if (machine != null && machine.IsGrounded() && machine.groundNormal.y > 0.01f)
             {
                 Vector3 groundNormal = machine.groundNormal;
-                
+
                 face = Vector3.Cross(transform.right.normalized, groundNormal.normalized);
                 if (bRight)
                 {
                     face = Vector3.Cross(groundNormal.normalized, transform.forward.normalized);
-                }                
+                }
             }
             else if (bRight)
             {
-                face=transform.right;
+                face = transform.right;
             }
             face.Normalize();
-            if (fDistance<0.0f)
+            if (fDistance < 0.0f)
             {
-                face*=-1.0f;
-                fDistance*=-1.0f;
+                face *= -1.0f;
+                fDistance *= -1.0f;
             }
-            castRay=new Ray(orgPos,face);
+            castRay = new Ray(orgPos, face);
         }
-        else if (inputType==SelectInputType.WalkingDirection)
+        else if (inputType == SelectInputType.WalkingDirection)
         {
             Vector3 orgPos = heroPos;
             orgPos.y += m_fTraceHeight; //抬高避免撞地面
@@ -459,7 +459,7 @@ public class ScreenRaycast : MonoBehaviour
         if (m_bHeroProjectToFloor)
         {
             heroPos = ProjectToFloor(heroPos);
-        }        
+        }
 
         Vector3 vecDistance = t_targetObject.transform.position - heroPos;
 
@@ -470,7 +470,7 @@ public class ScreenRaycast : MonoBehaviour
 
         if (m_bEnableGroundBlock || m_bEnableWardBlock)
         {
-            if (isBlocked(t_targetObject.transform.position+new Vector3(0,m_fTraceHeight,0)))
+            if (isBlocked(t_targetObject.transform.position + new Vector3(0, m_fTraceHeight, 0)))
             {
                 return false;
             }
@@ -480,7 +480,7 @@ public class ScreenRaycast : MonoBehaviour
         {
             if (0 != (entityView.InitMaskFlag & (int)ENTITY_MASKFLAG.MASKFLAG_NOT_SELECT))
             {
-                Debug.Log("英雄无法选取了！！！：" +entityView.InitMaskFlag);
+                Debug.Log("英雄无法选取了！！！：" + entityView.InitMaskFlag);
                 return false;
             }
 
@@ -508,9 +508,9 @@ public class ScreenRaycast : MonoBehaviour
             }
             else //属于怪物
             {
-                if (0 == (m_nTargetFilter & 
-                    (((int)TARGET_FILTER.TARGET_FRIENDLY_SOLDIER) 
-                    | ((int)TARGET_FILTER.TARGET_ENEMY_SOLDIER) 
+                if (0 == (m_nTargetFilter &
+                    (((int)TARGET_FILTER.TARGET_FRIENDLY_SOLDIER)
+                    | ((int)TARGET_FILTER.TARGET_ENEMY_SOLDIER)
                     | ((int)TARGET_FILTER.TARGET_NEUTRAL_LITTLE_MONSTER)
                     | ((int)TARGET_FILTER.TARGET_FRIENDLY_SUMMON_ENTITY)
                     | ((int)TARGET_FILTER.TARGET_ENEMY_SUMMON_ENTITY)
@@ -537,12 +537,12 @@ public class ScreenRaycast : MonoBehaviour
     //点了右边头像，判断是否符合技能要求
     public bool onClickPlayer(int uid)
     {
-        U3D_Render.EntityView view=EntityFactory.getEntityViewByID(uid);
+        U3D_Render.EntityView view = EntityFactory.getEntityViewByID(uid);
         if (view == null)
         {
             return false;
         }
-        if (isTargetValid(view.gameObject, view.StateMachine, m_selectDistance,view))
+        if (isTargetValid(view.gameObject, view.StateMachine, m_selectDistance, view))
         {
             //合法，更新目标输出
             targetPos = view.gameObject.transform.position;
@@ -553,10 +553,10 @@ public class ScreenRaycast : MonoBehaviour
                 //CreatureProperty property = t_targetMachine.creaturePropety;
                 //if (property != null)
                 //{
-                    if (t_targetMachine.wound != null)
-                    {
-                        targetPos = t_targetMachine.wound.position;
-                    }
+                if (t_targetMachine.wound != null)
+                {
+                    targetPos = t_targetMachine.wound.position;
+                }
                 //}
             }
             return true;
@@ -573,15 +573,15 @@ public class ScreenRaycast : MonoBehaviour
         //int c = m_nTargetFilter & b;
         //Debug.Log("filter" + a.ToString() + b.ToString() +" "+c.ToString());
 
-        if (ev==null || !ev.StateMachine || !ev.StateMachine.GetVisible())
+        if (ev == null || !ev.StateMachine || !ev.StateMachine.GetVisible())
         {
             return false;
         }
 
         if (ev.CampFlag == CampFlag.CampFlag_Enemy &&
-        (0 == (m_nTargetFilter 
-            & ((int)TARGET_FILTER.TARGET_ENEMY_ROLE 
-            | (int)TARGET_FILTER.TARGET_ENEMY_SOLDIER 
+        (0 == (m_nTargetFilter
+            & ((int)TARGET_FILTER.TARGET_ENEMY_ROLE
+            | (int)TARGET_FILTER.TARGET_ENEMY_SOLDIER
             | (int)TARGET_FILTER.TARGET_ENEMY_TOWER
             | (int)TARGET_FILTER.TARGET_ENEMY_SUMMON_ENTITY
             | (int)TARGET_FILTER.TARGET_ENEMY_SMALL_DRAGON
@@ -591,9 +591,9 @@ public class ScreenRaycast : MonoBehaviour
             return false;
         }
         else if (ev.CampFlag == CampFlag.CampFlag_Friend &&
-            (0 == (m_nTargetFilter & 
-            ((int)TARGET_FILTER.TARGET_FRIENDLY_ROLE 
-            | (int)TARGET_FILTER.TARGET_FRIENDLY_SOLDIER 
+            (0 == (m_nTargetFilter &
+            ((int)TARGET_FILTER.TARGET_FRIENDLY_ROLE
+            | (int)TARGET_FILTER.TARGET_FRIENDLY_SOLDIER
             | (int)TARGET_FILTER.TARGET_FRIENDLY_TOWER
             | (int)TARGET_FILTER.TARGET_FRIENDLY_SUMMON_ENTITY
             | (int)TARGET_FILTER.TARGET_FRIENDLY_SMALL_DRAGON
@@ -609,9 +609,9 @@ public class ScreenRaycast : MonoBehaviour
             return false;
         }
         else if (ev.CampFlag == CampFlag.CampFlag_Neutral &&
-            (0 == (m_nTargetFilter 
+            (0 == (m_nTargetFilter
                 & ((int)TARGET_FILTER.TARGET_NEUTRAL_ROLE)
-                | (int)TARGET_FILTER.TARGET_NEUTRAL_LITTLE_MONSTER 
+                | (int)TARGET_FILTER.TARGET_NEUTRAL_LITTLE_MONSTER
                 | (int)TARGET_FILTER.TARGET_NEUTRAL_TOWER
                 | (int)TARGET_FILTER.TARGET_NEUTRAL_SMALL_DRAGON
                 | (int)TARGET_FILTER.TARGET_NEUTRAL_HUGE_DRAGON
@@ -810,7 +810,7 @@ public class ScreenRaycast : MonoBehaviour
                 //if ((int)MONSTER_TYPE.MONSTER_TYPE_TOWER == ev.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_SEX))
                 if (isSnapMonster(ev.Flag))
                 {
-                        t_Type = ENTITY_TYPE.TYPE_PLAYER_ROLE;
+                    t_Type = ENTITY_TYPE.TYPE_PLAYER_ROLE;
                 }
                 else
                 {
@@ -896,12 +896,12 @@ public class ScreenRaycast : MonoBehaviour
     /// 拾取工具
     private int lockDrawingTargetID = -1;
     private Vector3 m_lastRecordPos = Vector3.zero;
-    private void rayCast(bool recordLastPos=false,float deltaAngle=-1.0f)
+    private void rayCast(bool recordLastPos = false, float deltaAngle = -1.0f)
     {
         int layMask = LayerMaskOnPos;
         float traceDis = m_selectDistance;
 
-        if(!machine)
+        if (!machine)
         {
             return;
         }
@@ -932,13 +932,13 @@ public class ScreenRaycast : MonoBehaviour
 
             return;
         }
-        
+
         bool bHitObject = false;
 
         //第一优先级，锁定目标
         if (m_bSnapToObject && bLockTarget && targetID > 0)
         {
-            if (!isTargetValid(targetObject, targetMachine, machine.creaturePropety.lockAimDistance,targetEntityView))
+            if (!isTargetValid(targetObject, targetMachine, machine.creaturePropety.lockAimDistance, targetEntityView))
             { //不合法时，脱离锁定状态
                 bLockTarget = false;
                 m_bKeyQuoteLock = false;
@@ -959,7 +959,7 @@ public class ScreenRaycast : MonoBehaviour
                 //}
             }
         }
-       
+
         if (!bHitObject)
         {
             if (lockDrawingTargetID > 0)
@@ -972,7 +972,7 @@ public class ScreenRaycast : MonoBehaviour
                 lockDrawingTargetID = -1;
             }
         }
-        
+
         if (!bHitObject && targetID > 0)
         {
             //没有锁定的情况下，按技能情况选取，此时如果已选目标不合法，则清空已选目标
@@ -982,12 +982,12 @@ public class ScreenRaycast : MonoBehaviour
             //{
             //    checkDistance = machine.creaturePropety.attackedAimDistance;
             //}
-            if (!isTargetValid(targetObject, targetMachine, checkDistance,targetEntityView))
+            if (!isTargetValid(targetObject, targetMachine, checkDistance, targetEntityView))
             {
                 zeroTarget();
             }
         }
-        
+
         //第二优先级，鼠标正好选中
         SelectInputType selectType = m_selectInputType;
         if (deltaAngle > 0.0f)
@@ -1009,10 +1009,10 @@ public class ScreenRaycast : MonoBehaviour
         if (!bHitObject)
         {
             RaycastHit hitInfo;
-            bool hit = false ;
+            bool hit = false;
             calRayHitInfo(out hitInfo, out hit, castRay, layMask, traceDis);
 
-            targetPos =hitInfo.point; //即使没有选中人物，也有targetPos
+            targetPos = hitInfo.point; //即使没有选中人物，也有targetPos
             bool hitTarget = false;
             if (hit && hitInfo.transform && calHitID(hitInfo.transform))
             {
@@ -1116,14 +1116,14 @@ public class ScreenRaycast : MonoBehaviour
             targetMachine = null;
             targetEntityView = null;
         }
-       
+
         //更新锁定框
         updateTargetFrame();
 
         //如果需要投影到地面,则targetPos取向下与地面或建筑物的焦点
         if (m_bProjectToFloor)
         {
-            targetPos=ProjectToFloor(targetPos);
+            targetPos = ProjectToFloor(targetPos);
         }
 
 
@@ -1144,10 +1144,10 @@ public class ScreenRaycast : MonoBehaviour
             //如果需要投影到地面,这里需要再投影一次
             int LayerMaskOnGround = (1 << LayerMask.NameToLayer(Config.LayerDefault)) | (1 << LayerMask.NameToLayer(Config.LayerBuilding));
             RaycastHit hitGroundInfo;
-            bool hitGround=false;
+            bool hitGround = false;
             if (m_bProjectToFloor)
-            {                
-                targetPos=ProjectToFloor(targetPos);
+            {
+                targetPos = ProjectToFloor(targetPos);
             }
 
             if (m_bEnableGroundBlock)
@@ -1159,7 +1159,7 @@ public class ScreenRaycast : MonoBehaviour
                 hitGround = Physics.Raycast(detectRay, out hitGroundInfo, m_selectDistance, LayerMaskOnGround);
                 if (hitGround)
                 {
-                    if(Vector3.Distance(heroPos, hitGroundInfo.point) < Vector3.Distance(heroPos, targetPos)) //如果障碍物在中间
+                    if (Vector3.Distance(heroPos, hitGroundInfo.point) < Vector3.Distance(heroPos, targetPos)) //如果障碍物在中间
                         targetPos = hitGroundInfo.point;
                 }
             }
@@ -1185,7 +1185,7 @@ public class ScreenRaycast : MonoBehaviour
             targetPos = ProjectToFloor(targetPos);
         }
 
-        
+
         if (recordLastPos)
         {
             m_lastRecordPos = targetPos;
@@ -1204,7 +1204,7 @@ public class ScreenRaycast : MonoBehaviour
     private int m_nDefaultSelectDrawTargetType = 0;
     private SelectEffectManager m_selectEffects = null;
     private bool drawingDefaultSelectDrawShape = false; //是否正在画普攻的圆圈，在setSelection刷成false，在SetDefaultSelection按需求刷成True
-    public void setDefaultSelectionParam(int nDefaultSelectType, int nDefaultTargetFilter, int nDefaultSelectDrawType, float fDefaultSelectDrawAttackRange, float fDefaultSelectDrawChooseRange, int nDefaultSelectDrawTargetType, SelectEffectManager selectEffects,bool resetSelection)
+    public void setDefaultSelectionParam(int nDefaultSelectType, int nDefaultTargetFilter, int nDefaultSelectDrawType, float fDefaultSelectDrawAttackRange, float fDefaultSelectDrawChooseRange, int nDefaultSelectDrawTargetType, SelectEffectManager selectEffects, bool resetSelection)
     {
         m_nDefaultSelectType = nDefaultSelectType;
         m_nDefaultTargetFilter = nDefaultTargetFilter;
@@ -1234,7 +1234,7 @@ public class ScreenRaycast : MonoBehaviour
             m_nTargetFilter = (((int)TARGET_FILTER.TARGET_ENEMY_ROLE) | ((int)TARGET_FILTER.TARGET_ENEMY_SOLDIER) | ((int)TARGET_FILTER.TARGET_ENEMY_SUMMON_ENTITY)
                 | ((int)TARGET_FILTER.TARGET_ENEMY_SMALL_DRAGON)
                 | ((int)TARGET_FILTER.TARGET_NEUTRAL_ROLE) | ((int)TARGET_FILTER.TARGET_NEUTRAL_LITTLE_MONSTER)
-                | ((int)TARGET_FILTER.TARGET_NEUTRAL_SMALL_DRAGON) | ((int)TARGET_FILTER.TARGET_NEUTRAL_HUGE_DRAGON) 
+                | ((int)TARGET_FILTER.TARGET_NEUTRAL_SMALL_DRAGON) | ((int)TARGET_FILTER.TARGET_NEUTRAL_HUGE_DRAGON)
                 | ((int)TARGET_FILTER.TARGET_ENEMY_TOWER) | ((int)TARGET_FILTER.TARGET_NEUTRAL_TOWER));
             SetSelection(nSelectType, defaultAimDistance, 0.0f, m_nTargetFilter);
         }
@@ -1244,12 +1244,12 @@ public class ScreenRaycast : MonoBehaviour
             if (m_selectEffects != null)
             {
                 int drawShape = (m_nDefaultSelectDrawType & ((int)SPELL_DRAW_TYPE.DRAW_TYPE_RECT | (int)SPELL_DRAW_TYPE.DRAW_TYPE_SECTOR | (int)SPELL_DRAW_TYPE.DRAW_TYPE_ROUND));
-                m_selectEffects.enableEffect(drawShape, m_nDefaultSelectDrawType, defaultAimDistance, m_fDefaultSelectDrawAttackRange, m_fDefaultSelectDrawChooseRange, m_nDefaultSelectDrawTargetType,0);   //DefaultSelect不需要管build层，所以SelectType传0
+                m_selectEffects.enableEffect(drawShape, m_nDefaultSelectDrawType, defaultAimDistance, m_fDefaultSelectDrawAttackRange, m_fDefaultSelectDrawChooseRange, m_nDefaultSelectDrawTargetType, 0);   //DefaultSelect不需要管build层，所以SelectType传0
                 m_selectEffects.updateEffect(targetPos);
                 drawingDefaultSelectDrawShape = true;
             }
         }
-        
+
 
         m_isDefaultAim = true;
     }
@@ -1271,7 +1271,7 @@ public class ScreenRaycast : MonoBehaviour
 
 
     //nTargetFilter默认7，排除自己，友方英雄和友方怪物
-    public void SetSelection(int selectType,float dis=0.0f,float height=0.0f,int nTargetFilter=888,bool isSkillSelect=false, bool isStrafe=false)
+    public void SetSelection(int selectType, float dis = 0.0f, float height = 0.0f, int nTargetFilter = 888, bool isSkillSelect = false, bool isStrafe = false)
     {
         //Debug.Log("SetSelection: selectType=" + selectType + "dis=" + dis + "height=" + height + "nTargetFilter=" + nTargetFilter + "isSkillSelect=" + isSkillSelect + "isStrafe=" + isStrafe);
         m_selectInputType = SelectInputType.MousePos;
@@ -1281,16 +1281,16 @@ public class ScreenRaycast : MonoBehaviour
         {
             dis = 0.0f;
         }
-        else if ((selectType &((int)SPELL_SELECT_TYPE.SpellSelectType_SelectFaceDirection)) !=0)
+        else if ((selectType & ((int)SPELL_SELECT_TYPE.SpellSelectType_SelectFaceDirection)) != 0)
         {
             m_selectInputType = SelectInputType.FaceDirection;
         }
-        else if ((selectType &((int)SPELL_SELECT_TYPE.SpellSelectType_SelectWalkDirection)) !=0)
+        else if ((selectType & ((int)SPELL_SELECT_TYPE.SpellSelectType_SelectWalkDirection)) != 0)
         {
             m_selectInputType = SelectInputType.WalkingDirection;
             if ((selectType & ((int)SPELL_SELECT_TYPE.SpellSelectType_MoveDirDefaultRawInputDir)) != 0)
             {
-                m_selectInputType=SelectInputType.MoveDirDefaultRawInputDir;
+                m_selectInputType = SelectInputType.MoveDirDefaultRawInputDir;
             }
         }
         else if ((selectType & ((int)SPELL_SELECT_TYPE.SpellSelectType_SelectAimPos)) != 0)
@@ -1303,13 +1303,13 @@ public class ScreenRaycast : MonoBehaviour
             }
         }
 
-        m_bRight = false;        
+        m_bRight = false;
         if ((selectType & ((int)SPELL_SELECT_TYPE.SpellSelectType_SelectRightDirection)) != 0)
         {
             m_bRight = true;
         }
 
-        m_bSnapToObject = false;        
+        m_bSnapToObject = false;
         if ((selectType & ((int)SPELL_SELECT_TYPE.SpellSelectType_SnapToObject)) != 0)
         {
             m_bSnapToObject = true;
@@ -1340,19 +1340,19 @@ public class ScreenRaycast : MonoBehaviour
         }
 
 
-        m_bCrossObject=false; //target点选择为拾取目标对象身后的点
+        m_bCrossObject = false; //target点选择为拾取目标对象身后的点
         if ((selectType & (int)SPELL_SELECT_TYPE.SpellSelectType_CrossObject) != 0)
         {
             m_bCrossObject = true;
         }
-        
-        m_bPlayerSelectFirst=true; //是否优先拾取玩家英雄
+
+        m_bPlayerSelectFirst = true; //是否优先拾取玩家英雄
         if ((selectType & (int)SPELL_SELECT_TYPE.SpellSelectType_DownGradeHero) != 0)
         {
             m_bPlayerSelectFirst = false;
         }
 
-        m_bEnableGroundBlock=false; //是否考虑地形阻挡
+        m_bEnableGroundBlock = false; //是否考虑地形阻挡
         if ((selectType & (int)SPELL_SELECT_TYPE.SpellSelectType_EnableGroundBlock) != 0)
         {
             m_bEnableGroundBlock = true;
@@ -1368,9 +1368,9 @@ public class ScreenRaycast : MonoBehaviour
         if ((selectType & (int)SPELL_SELECT_TYPE.SpellSelectType_SelectDistance) != 0)
         {
             m_bSelectMaxDistancePoint = true;
-        }        
+        }
 
-        m_bDownGradeTower=false; //将塔的选择优先级降低至小兵
+        m_bDownGradeTower = false; //将塔的选择优先级降低至小兵
         if ((selectType & (int)SPELL_SELECT_TYPE.SpellSelectType_DownGradeTower) != 0)
         {
             m_bDownGradeTower = true;
@@ -1413,7 +1413,7 @@ public class ScreenRaycast : MonoBehaviour
             rayCast(); //强制更新一遍
         }
 
-        
+
         m_isDefaultAim = false;
         drawingDefaultSelectDrawShape = true;
     }
@@ -1437,7 +1437,7 @@ public class ScreenRaycast : MonoBehaviour
             return;
         }
 
-        if (0 == (m_nTargetFilter 
+        if (0 == (m_nTargetFilter
             & ((int)TARGET_FILTER.TARGET_NEUTRAL_ROLE
                 | (int)TARGET_FILTER.TARGET_NEUTRAL_LITTLE_MONSTER
                 | (int)TARGET_FILTER.TARGET_NEUTRAL_SMALL_DRAGON
@@ -1457,7 +1457,7 @@ public class ScreenRaycast : MonoBehaviour
         }
         if (0 == (m_nTargetFilter & (int)TARGET_FILTER.TARGET_FRIENDLY_SOLDIER) && (0 == (m_nTargetFilter & (int)TARGET_FILTER.TARGET_FRIENDLY_TOWER)))
         {
-            LayerMaskOnPos = LayerMaskOnPos & (~(1 << LayerMask.NameToLayer(Config.LayerMonsterFriend)));            
+            LayerMaskOnPos = LayerMaskOnPos & (~(1 << LayerMask.NameToLayer(Config.LayerMonsterFriend)));
         }
         if (0 == (m_nTargetFilter & (int)TARGET_FILTER.TARGET_ENEMY_ROLE))
         {
@@ -1465,7 +1465,7 @@ public class ScreenRaycast : MonoBehaviour
         }
         if ((0 == (m_nTargetFilter & ((int)TARGET_FILTER.TARGET_ENEMY_SOLDIER | (int)TARGET_FILTER.TARGET_ENEMY_SUMMON_ENTITY))) && (0 == (m_nTargetFilter & (int)TARGET_FILTER.TARGET_ENEMY_TOWER)))
         {
-            LayerMaskOnPos = LayerMaskOnPos & (~(1 << LayerMask.NameToLayer(Config.LayerMonsterEnemy)));            
+            LayerMaskOnPos = LayerMaskOnPos & (~(1 << LayerMask.NameToLayer(Config.LayerMonsterEnemy)));
         }
 
         //if ((0 == (m_nTargetFilter & (int)TARGET_FILTER.TARGET_FRIENDLY_MONSTER)) || (0 == (m_nTargetFilter & (int)TARGET_FILTER.TARGET_FRIENDLY_MONSTER)))
@@ -1586,13 +1586,13 @@ public class ScreenRaycast : MonoBehaviour
         entityLayer |= 1 << LayerMask.NameToLayer(Config.LayerWard_Enemy);
         entityLayer |= 1 << LayerMask.NameToLayer(Config.LayerWard_Friend);
 
-        if( (lay & entityLayer) != 0)
+        if ((lay & entityLayer) != 0)
         {
             return true;
         }
         return false;
     }
- 
+
     /// 根据命中信息获得实体ID和相关属性
     /// 返回值，输入为有效数据，并且已经重写target
     bool calHitID(Transform hitTransform)
@@ -1603,14 +1603,14 @@ public class ScreenRaycast : MonoBehaviour
         BaseStateMachine t_targetMachine = null;
 
 
-        if (hitTransform == null || ! IsEntityObj(hitTransform))
+        if (hitTransform == null || !IsEntityObj(hitTransform))
         {
             return false;
         }
 
         //GetComponentInParent会有2KB的GC，想办法干掉
         t_targetMachine = hitTransform.GetComponentInParent<BaseStateMachine>();
-        
+
         if (t_targetMachine == null)
         {
             return false;
@@ -1637,8 +1637,8 @@ public class ScreenRaycast : MonoBehaviour
         }
 
         U3D_Render.EntityView t_entityView = EntityFactory.getEntityViewByID(t_targetMachine.entityID);
-    
-        if (isTargetValid(t_targetObject, t_targetMachine, m_selectDistance,t_entityView))
+
+        if (isTargetValid(t_targetObject, t_targetMachine, m_selectDistance, t_entityView))
         {
             targetID = t_targetID;
             targetObject = t_targetObject;
@@ -1715,9 +1715,9 @@ public class ScreenRaycast : MonoBehaviour
     //判断点是否在屏幕内
     //targetPos为判断点
     //screenThroad为阈值0-1，例如阈值为0.1表示在屏幕空间0.1-0.9的范围内才有效
-    static public bool isInScreen(Vector3 targetPos,float screenThroad=0.0f)
+    static public bool isInScreen(Vector3 targetPos, float screenThroad = 0.0f)
     {
-        if(!Initialize.mainCam)
+        if (!Initialize.mainCam)
         {
             return false;
         }
@@ -1727,7 +1727,7 @@ public class ScreenRaycast : MonoBehaviour
             return false;
         }
         Vector3 t_viewPos = Initialize.mainCam.WorldToViewportPoint(targetPos);
-        if (t_viewPos.z >= 0.0f && t_viewPos.x >= screenThroad && t_viewPos.x <= (1.0f - screenThroad) && t_viewPos.y >= screenThroad && t_viewPos.y <= (1.0f-screenThroad))
+        if (t_viewPos.z >= 0.0f && t_viewPos.x >= screenThroad && t_viewPos.x <= (1.0f - screenThroad) && t_viewPos.y >= screenThroad && t_viewPos.y <= (1.0f - screenThroad))
         {
             return true;
         }
@@ -1782,7 +1782,7 @@ public class ScreenRaycast : MonoBehaviour
         {
             LayerMaskOnBlocked |= 1 << LayerMask.NameToLayer(Config.LayerWard_Enemy);
         }
-        
+
         RaycastHit hitInfo;
         bool isHit = Physics.Raycast(castRay, out hitInfo, ray.magnitude, LayerMaskOnBlocked);
 
@@ -1800,7 +1800,7 @@ public class ScreenRaycast : MonoBehaviour
     public Transform drawingTargetTransform = null;
     private void updateTargetFrame()
     {
-        if(!machine)
+        if (!machine)
         {
             return;
         }
@@ -1848,7 +1848,7 @@ public class ScreenRaycast : MonoBehaviour
             }
 
             EntityEventHelper.Instance.SendCommand<cmd_creature_Set_Target_Info>(machine.entityID, EntityLogicDef.ENTITY_CMD_SET_TARGET_INFO, ref data);
-            USpeedUI.UISystem.Instance.SendWndMessage(USpeedUI.WndMsgID.WND_MSG_WAR_FRONTSIGHT_TOGGLELOCKTARGET, new USpeedUI.UIMsgCmdData((int)USpeedUI.WndMsgID.WND_MSG_WAR_FRONTSIGHT_TOGGLELOCKTARGET,1,string.Empty,IntPtr.Zero,0));
+            USpeedUI.UISystem.Instance.SendWndMessage(USpeedUI.WndMsgID.WND_MSG_WAR_FRONTSIGHT_TOGGLELOCKTARGET, new USpeedUI.UIMsgCmdData((int)USpeedUI.WndMsgID.WND_MSG_WAR_FRONTSIGHT_TOGGLELOCKTARGET, 1, string.Empty, IntPtr.Zero, 0));
         }
     }
 
@@ -1872,7 +1872,7 @@ public class ScreenRaycast : MonoBehaviour
     public bool bDrawTarget = true;
     private CreatureProperty CurCP = null;
     private CreatureStateMachine machine = null;
-    private bool m_bSkillLock=false;
+    private bool m_bSkillLock = false;
     private bool m_bKeyQuoteLock = false;
 
     public void setSkillLock(bool enable)
@@ -1911,14 +1911,18 @@ public class ScreenRaycast : MonoBehaviour
                 //更新锁定框
                 updateTargetFrame();
             }
+            if (rootTrans != null&&machine.SkinControl.CurrentSkinInstance != null)
+            {
+                rayCast();
+            }
             return;
         }
 
 
 
-        if (Time.time - lastTime<1.0f) return; //创建1秒内不更新，因为视口创建未完成时，射线提取会报错
+        if (Time.time - lastTime < 1.0f) return; //创建1秒内不更新，因为视口创建未完成时，射线提取会报错
         bool lockKey = false;
-        uint tick=GameLogicAPI.getTickCount();
+        uint tick = GameLogicAPI.getTickCount();
         //`键开关选取，鼠标左键按住不放选取
         //m_bMouseLeftLock=InputManager.GetKey(KeyCode.Mouse0);
 
@@ -2018,7 +2022,7 @@ public class ScreenRaycast : MonoBehaviour
 
         if (lockKey)
         {
-            if (bLockTarget==false && targetID > 0 && isTargetValid(targetObject, targetMachine, m_selectDistance,targetEntityView))
+            if (bLockTarget == false && targetID > 0 && isTargetValid(targetObject, targetMachine, m_selectDistance, targetEntityView))
             {
                 bLockTarget = true;
             }
@@ -2062,7 +2066,7 @@ public class ScreenRaycast : MonoBehaviour
             }
         }
 
-        if (drawingDefaultSelectDrawShape && m_selectEffects!=null)
+        if (drawingDefaultSelectDrawShape && m_selectEffects != null)
         {
             m_selectEffects.updateEffect(targetPos);
         }
@@ -2076,7 +2080,7 @@ public class ScreenRaycast : MonoBehaviour
         {
             this.attackHeroMachine = attacker.StateMachine;
         }
-        
+
     }
 
     private Vector3 ProjectToFloor(Vector3 posBeforeProject)
@@ -2086,7 +2090,7 @@ public class ScreenRaycast : MonoBehaviour
         int LayerMaskOnGround = (1 << LayerMask.NameToLayer(Config.LayerDefault));
         if (!m_bProjectToFloorSkipBuilding)
         {
-            LayerMaskOnGround = LayerMaskOnGround|(1 << LayerMask.NameToLayer(Config.LayerBuilding));
+            LayerMaskOnGround = LayerMaskOnGround | (1 << LayerMask.NameToLayer(Config.LayerBuilding));
         }
 
 
@@ -2102,7 +2106,7 @@ public class ScreenRaycast : MonoBehaviour
         {
             posAfterProject = posAfterProject + new Vector3(0, 10.0f, 0);
         }
-        
+
         Ray downRay = new Ray(posAfterProject - new Vector3(0, 0.1f, 0), new Vector3(0, -1, 0));
         bool hitGround = Physics.Raycast(downRay, out hitInfo, MAX_CAST_DISTANCE, LayerMaskOnGround);
         if (hitGround)

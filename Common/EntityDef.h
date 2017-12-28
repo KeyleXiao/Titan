@@ -1599,6 +1599,11 @@ enum ENTITY_MESSAGE
 	SC_MSG_ENTITY_RET_SEASON_RECORD,			// 返回排位赛季历史数据
 
 	SC_MSG_ENTITY_UPDATE_EMOJI_INFO,            // 更新表情包数据
+
+    CS_MSG_ENTITY_REQ_RECOMMEND_DATA,           // 请求推广员奖励任务数据和总局数
+    SC_MSG_ENTITY_RET_RECOMMEND_DATA,           // 返回推广员奖励任务数据和总局数
+    CS_MSG_ENTITY_REQ_GAIN_RECOMMPRIZE,         // 请求领取推广奖励
+    SC_MSG_ENTITY_GAIN_RECOMMPRIZE_SUCCESS,     // 请求领取推广奖励成功
 };
 
 // 实体类统一用子头来用于转向部件
@@ -1992,7 +1997,8 @@ struct msg_entity_player_info_return
 	int		nSupportNum;						// 点赞数量
 	DWORD	dwPKTotalNum;						// PK总场次
     DWORD   dwRankMatchNum;                    // 排位比赛次数
-    WORD    wRankWinNum;                       // 排位胜利场次 
+    WORD    wRankWinNum;                       // 排位胜利场次
+	bool	bSex;								// 性别
 
 	// nCount * msg_entity_hero_info
 	msg_entity_player_info_return()

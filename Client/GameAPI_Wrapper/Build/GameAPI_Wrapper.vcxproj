@@ -258,6 +258,7 @@ copy "$(TargetDir)$(TargetName).dll" "../../../Bin/Client/Game/Assets/Scripts" /
     <ClInclude Include="..\..\Common\Minimap_ManageDef.h" />
     <ClInclude Include="..\..\Game\Include\EntityViewDef.h" />
     <ClInclude Include="..\..\Game\Include\GameViewDef.h" />
+    <ClInclude Include="..\..\Game\Include\PublishedCommonDef.h" />
     <ClInclude Include="..\Include\GameLogicAPI.h" />
     <ClInclude Include="..\Include\IRenderView.h" />
   </ItemGroup>

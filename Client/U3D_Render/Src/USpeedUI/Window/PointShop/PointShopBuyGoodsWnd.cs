@@ -70,6 +70,12 @@ namespace USpeedUI.PointShop
             {
                 case WndMsgID.WND_MSG_POINTSHOPBUYGOODS_OPEN:
                     {
+                        if(GameLogicAPI.isInWarScene() > 0)
+                        {
+                            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_POINTSHOP_CANT_BUY_INWAR);
+                            return;
+                        }
+
                         SetVisible(true);
 
                         if (m_wndView != null)

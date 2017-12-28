@@ -110,7 +110,7 @@ bool CListOp::lRangeString(const string& strKey, long nStart, long nStop, vector
 	return m_redis.Lrange(strKey, nStart, nStop, pvecValue) == RC_SUCCESS;
 }
 
-bool CListOp::lIndex(const string& strKey, long nIndex, string* pstrValue)
+bool CListOp::lIndexString(const string& strKey, long nIndex, string* pstrValue)
 {
 	if (pstrValue == nullptr)
 		return false;

@@ -5,7 +5,6 @@
 #include "ViewServer.h"
 #include "GlobalViewServer.h"
 #include "ViewServerDlg.h"
-#include "ClientList.h"
 #include "ListInfoDlg.h"
 
 
@@ -62,14 +61,14 @@ END_MESSAGE_MAP()
 void CListInfoDlg::OnBnClickedServerButton()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	ShowListInfo(0);
+	//ShowListInfo(0);
 }
 
 
 void CListInfoDlg::OnBnClickedButtonWorld()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	ShowListInfo(0);
+	//ShowListInfo(0);
 }
 
 
@@ -120,90 +119,8 @@ BOOL CListInfoDlg::OnInitDialog()
 	// 初始化列表头
 	InitColumns();
 
-	ShowListInfo();
+	//ShowListInfo();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
-}
-
-// 软件服务器列表  0:游戏世界列表,1:软件服务器列表
-void CListInfoDlg::ShowListInfo(int nListType)
-{
-	CViewServerDlg * pServerDlg =(CViewServerDlg *) AfxGetApp()->m_pMainWnd;
-
-	CListCtrl& ListCtrl = m_InfoList;
-
-	GlobalViewServer& mainServer = pServerDlg->m_VoiceGateway;	//语音网关服务
-
-	CClientList & clientList = CClientList::getInstance();
-
-	char szBuf[256]={0};
-
-	// 防止闪
-	ListCtrl.SetRedraw(FALSE);
-
-	InitColumns(nListType);
-
-	int nImageID = 0;
-
-	// insert items 
-
-	LVITEMA lvi;
-
-	int nItemIndex = 0;
-
-	int nIndex = 0;
-
-	DWORD dwGatewayID = clientList.GetServerID();
-
-	for (DWORD i=0;i<VOICE_MAX_CLIENT_COUNT;i++)
-	{
-		CClientUser * pClient = clientList.GetUserByIndex(i);
-		if (NULL==pClient)
-		{
-			continue;
-		}
-		sprintf_s(szBuf, sizeof(szBuf), "%d",pClient->GetID());
-
-		nImageID = TREE_ICON_USER;
-
-		lvi.pszText = szBuf;
-		lvi.mask = LVIF_TEXT | LVIF_IMAGE| LVIF_STATE;
-		lvi.iItem = nIndex;
-		lvi.iSubItem = 0;
-		lvi.iImage = nImageID;
-		lvi.stateMask = LVIS_STATEIMAGEMASK;
-		lvi.state = INDEXTOSTATEIMAGEMASK(1);
-
-		//nItemIndex = ListCtrl.InsertItem(&lvi);
-		nItemIndex = ListCtrl_InsertItem(ListCtrl,&lvi);
-		//	_T("客户端ID"),_T("网关ID"),_T("IP"),	_T("端口"),	_T("网卡地址"),	_T("帐号"), _T(",昵称"),_T("PDBID"),_T("连入时间")
-		ListCtrl_SetItemText(ListCtrl, nItemIndex,0,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%d",dwGatewayID);
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,1,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%s",pClient->GetClientIP());
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,2,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%d",pClient->GetPort());
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,3,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%s",pClient->GetMacAddress());
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,4,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%s",pClient->m_szUsername.c_str());
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,5,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%s",pClient->m_szNickname.c_str());
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,6,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%d",pClient->m_dwPDBID);
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,7,szBuf);
-		sprintf_s(szBuf, sizeof(szBuf), "%s",GetTimeString(pClient->GetConnectTime()));
-		ListCtrl_SetItemText(ListCtrl,nItemIndex,8,szBuf);
-
-		ListCtrl.SetItemData(nItemIndex,pClient->GetID());
-
-
-	}
-
-
-	// 防止闪
-	ListCtrl.SetRedraw(TRUE);
-	ListCtrl.Invalidate();
-	ListCtrl.UpdateWindow();
 }

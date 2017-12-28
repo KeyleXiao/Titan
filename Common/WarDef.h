@@ -181,6 +181,9 @@ enum EDataType
 	EDT_DeadlyControl,			// 夺命控制
 	EDT_TeamBattleControl,		// 团控
     EDT_Score,                  // 综合分数
+    EDT_KillDragon,             // 杀龙数
+	EDT_JoinBattleRate,			// 参战率
+	EDT_MvpOfLoser,				// 失败方mvp
 
     EDT_MAX
 };
@@ -194,6 +197,7 @@ enum EExpDropType
     EEXPDROPTYPE_TOWER,             // 塔怪掉落经验
     EEXPDROPTYPE_BOSS,              // BOSS掉落经验
     EEXPDROPTYPE_NORMAL,            // 自然掉落经验
+    EEXPDROPTYPE_INIT,				// 初始掉落经验
     EEXPDROPTYPE_MAX
 };
 
@@ -209,7 +213,8 @@ enum ETalentDropType
     ETALENTDROPTYPE_NORMAL,         // 自然增加金钱
     ETALENTDROPTYPE_EFFECT,         // 效果增加金钱
     ETALENTDROPTYPE_SELLEQUIP,      // 卖装备增加金钱
-    ETALENTDROPTYPE_BOSS,           // BOSS掉落经验
+    ETALENTDROPTYPE_BOSS,           // BOSS掉落金钱
+    ETALENTDROPTYPE_INIT,           // 初始金钱
 
     ETALENTDROPTYPE_MAX
 };
@@ -359,6 +364,25 @@ enum EWarResultToTask
 
 // 计算经济控制线 60秒
 #define WarEcmControlLineTime	60000
+
+// 创建War上下文
+struct SWarEffectAddBuff
+{
+	
+	DWORD   uidSrcEntity;      // 添加实体UID
+	int		nID;				// spellID
+	BYTE	bySelfCamp;
+	BYTE	byGetCampType;
+	BYTE	bySerchType; 
+	BYTE	byAddType;
+	int		nBuffID;
+	int		nBuffLevel;
+
+	SWarEffectAddBuff()
+	{
+		memset(this, 0, sizeof(*this));
+	}
+};
 
 //////////////////////////////////////////////////////////////////////////
 // 创建War上下文

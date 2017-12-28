@@ -34,6 +34,124 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ServiceContainer::ServiceContainer()
+    : m_pInstance(0)
+    , m_pCoroutine(0)
+    , m_wait_session(0)
+    , m_session_count(MSG_SESSION_USER)
+    , m_response_msg(0)
+    , m_id(INVALID_SERVICE_ID)
+    , m_handleDll(0)
+    , m_nMethodFlag(-1)
+    , m_bEmergent(false)
+    , m_bLockingThread(-1)
+    , m_bFinished(true)
+    , m_bSessionStarted(false)
+    , m_bStop(false)
+    , m_pStartedCallback(0)
+    , m_pStopedCallback(0)
+
+#ifdef   FRAMEWORK_DEBUG
+    , m_waitStartTick(0)
+    , m_statisticTick(0)
+    , m_statisticCount(0)
+    , m_statisticTotal(0)
+    , m_statisticYield(0)
+    , m_statisticYieldTotal(0)
+    , m_bStatisticRequest(false)
+    , m_pInnerTimerAxis(0)
+    , m_pReplaceableMQ(0)
+    , m_bBlocking(false)
+#endif
+{
+    memset(&m_scheme, 0, sizeof(m_scheme));
+}
+
+ServiceContainer::~ServiceContainer()
+{
+    TraceLn("Destory ServiceContainer service id=" << m_id);
+
+    if (m_pReplaceableMQ)
+    {
+        // 释放残留内存
+        if (m_pReplaceableMQ->size() > 0) {
+            TraceLn(__FUNCTION__":[" << m_scheme.scheme->name << ",id=" << m_id<<"] free ReplaceableMQ queue count=" << m_pReplaceableMQ->size());
+
+            for (auto iter = m_pReplaceableMQ->begin(); iter != m_pReplaceableMQ->end(); ++iter) {
+                SERVICE_MESSAGE* pMsg = iter->second;
+                if (pMsg) {
+                    free(pMsg);
+                }
+            }
+        }
+
+        delete m_pReplaceableMQ;
+        m_pReplaceableMQ = 0;
+    }
+
+    
+    // 释放残留内存
+    auto free_queue = [&](MESSAGE_QUEUE& queue) {
+        SERVICE_MESSAGE * pMessage = 0;
+        while (queue.count()>0) {
+            if (!queue.pop_ex(pMessage))
+                return;
+
+            if (NULL == pMessage || pMessage->session != MSG_SESSION_USER)
+                continue;
+
+            free(pMessage);
+            pMessage = 0;
+        }
+    };
+
+    DWORD dwCount = 0;
+    dwCount = m_request_queue.count();
+    if (dwCount > 0)
+    {
+        TraceLn(__FUNCTION__":[" << m_scheme.scheme->name << ",id=" << m_id << "] free request queue count=" << dwCount);
+        free_queue(m_request_queue);
+    }    
+
+    dwCount = m_emergent_queue.count();
+    if (dwCount > 0)
+    {
+        TraceLn(__FUNCTION__":[" << m_scheme.scheme->name << ",id=" << m_id << "] free emergent queue count=" << dwCount);
+        free_queue(m_emergent_queue);
+    }
+
+    if (m_response_msg)
+    {
+        free(m_response_msg);
+        m_response_msg = 0;
+    }
+
+    if (m_pInnerTimerAxis)
+    {
+        m_pInnerTimerAxis->Close();
+        delete m_pInnerTimerAxis;
+        m_pInnerTimerAxis = 0;
+    }
+
+    if (m_pCoroutine != 0)
+    {
+        ErrorLn(__FUNCTION__ << ", m_pCoroutine != 0");
+        safeRelease(m_pCoroutine);
+    }
+
+    //if (m_handleDll)
+    //{
+    //    freelib(m_handleDll);
+    //    m_handleDll = 0;
+    //}
+
+    safeRelease(m_pInstance);
+
+    m_pStartedCallback = 0;
+    m_pStopedCallback = 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool ServiceContainer::start( SERVICE_PTR pService,SERVICE_SCHEME * pScheme,IServiceStub * pInstance,void * pData,int nLen, ServiceStartedCallback pStartedCallback, ServiceStopedCallback pStopedCallback)
 {
     if ( (IServiceContainer*)pService!=this )
@@ -68,7 +186,7 @@ bool ServiceContainer::start( SERVICE_PTR pService,SERVICE_SCHEME * pScheme,ISer
     }
 
     char szLog[256];
-    ssprintf_s(szLog, sizeof(szLog), " [this=0x%p, m_pInstance=0x%p, m_pCoroutine=0x%p]", this, m_pInstance, m_pCoroutine);
+    ssprintf_s(szLog, sizeof(szLog), " [this=0x%p, Instance=0x%p, Coroutine=0x%p, thread=%d]", this, m_pInstance, m_pCoroutine, GetCurrentThreadId());
     TraceLn("register service " << m_scheme.scheme->name << " success,id=" << m_id << szLog);
 
 
@@ -361,7 +479,11 @@ void ServiceContainer::yield(bool bFinish)
 		
 		m_pCoroutine->yield();
 		
-		if ( bFinish==false ) m_statisticYield += getTickCountEx()-dwTick;
+#ifdef   FRAMEWORK_DEBUG
+        if (bFinish == false) {
+            m_statisticYield += getTickCountEx() - dwTick;
+        }
+#endif
 	}
 }
 
@@ -440,6 +562,7 @@ void ServiceContainer::work_routine()
             return;
         }
         
+#ifdef   FRAMEWORK_DEBUG
         // 统计数量
         if ( getTickCountEx()-m_statisticTick > 10000 )
         {
@@ -489,7 +612,7 @@ void ServiceContainer::work_routine()
 			int num = m_statisticRequest[szMsgName];
 			m_statisticRequest[szMsgName] = num + 1;
 		}
-
+#endif
 
         // 内部消息自己处理
         if ( pMessage->session!=MSG_SESSION_USER )

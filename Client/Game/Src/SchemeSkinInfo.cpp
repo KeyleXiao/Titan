@@ -140,6 +140,10 @@ bool CSchemeSkinInfo::OnSchemeLoad(SCRIPT_READER reader,const char* szFileName)
 		// 选人音效ID
 		item.nSoundID = pCSVReader->GetInt(nRow, SKININFO_COL_SELECT_SOUND, 0);
 
+		// 设置皮肤Tip
+		nLen = sizeof(item.szSkinTip);
+		pCSVReader->GetString(nRow, SKININFO_COL_SKIN_TIP, item.szSkinTip, nLen);
+
 		entityInfo.nSkinID = item.nSkinID;
 		entityInfo.EntityType = item.nSkinType;
 		entityInfo.ndata1 = item.nPreLoad;  //目前用来表示是否需要预加载

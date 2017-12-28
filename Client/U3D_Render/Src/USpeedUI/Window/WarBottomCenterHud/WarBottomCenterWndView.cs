@@ -646,8 +646,15 @@ namespace USpeedUI
         private GameObject m_TimeCountWordObj;
         private Color m_SkinBGColor;
 
+        private bool m_bInit = false;
+
         public void Init()
         {
+            if(m_bInit)
+            {
+                return;
+            }
+            
             InitSkilltipTrigger();
             if (skilImage)
                 skilImage.gameObject.SetActive(false);
@@ -661,6 +668,8 @@ namespace USpeedUI
             m_SkinFlagBGColor = timeCount.gameObject.GetComponent<Image>().color;
             m_SkinBGColor = skilImage.gameObject.GetComponent<Image>().color;
             m_TimeCountWordObj = timeCount.transform.FindChild("Text").gameObject;
+
+            m_bInit = true;
         }
 
         private void InitSkilltipTrigger()
@@ -706,13 +715,23 @@ namespace USpeedUI
 
         public void SetSpellSlot(int nSlotID, int nSlotType, int nSlotIconID, string strSlotTipsDesc, int nSlotLevel, bool bSpellUseFlag)
         {
+            if(m_bInit == false)
+            {
+                Init();
+            }
+
+            Debug.LogWarning("SetSpellSlot::nSlotID=" + nSlotID);
             if (skilImage == null)
             {
+                Debug.LogWarning("SetSpellSlot::skilImage == null");
                 return;
             }
 
             if (nSlotIconID <= 0)
+            {
+                Debug.LogWarning("SetSpellSlot::nSlotIconID <= 0");
                 return;
+            }
 
             m_nSlotID = nSlotID;
             skilImage.gameObject.SetActive(true);

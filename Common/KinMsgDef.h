@@ -330,6 +330,7 @@ struct SMsgKin_UpdateMember_OC
 // 消息体
 struct SMsgKin_KinBaseData_OC
 {
+    DWORD dwKinID;                                      // 战队ID
     char  szKinName[KIN_NAME_SIZE];						// 战队名
     DWORD dwShaikhID;									// 族长
     char  szShaikhName[ACTORNAME_MAXSIZE];				// 战队名

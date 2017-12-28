@@ -48,6 +48,10 @@ namespace  War
 			EWM_DEADLYCONTROL	= 0X0200,	  // 夺命控制
 			EWM_TEAMCONTROL		= 0X0400,	  // 团控
             EWM_SCORE           = 0x0800,     // 综合分数最高即mvp
+
+            EWM_KILLDRAGON		= 0x1000,     // 杀龙最多
+            EWM_JOINBATTLE		= 0x2000,     // 参战率最高
+			EWM_MVPOFLOSER		= 0x4000,	  // 失败方mvp
         };
 
 		// 战场地图信息累类型

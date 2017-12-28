@@ -8,6 +8,10 @@ using System.Runtime.InteropServices;
 using USpeedUI;
 using Data.SideButtonConfig;
 using USpeedUI.PlayerFrame;
+using War;
+using UnityEngine;
+using Data.ActorPrizeConfig;
+using ASpeedGame.Data.RunePage;
 
 namespace DataCenter
 {
@@ -1038,6 +1042,62 @@ namespace DataCenter
                 LogicDataCenter.sideButtonDataManager.RemoveItem(msg);
             }
         }
-	}
+
+        public Sprite GetIconByPrize(SSchemeActorPrizeConfig prizeConfig, WndID wndID)
+        {
+            if (prizeConfig == null)
+                return null;
+
+            Sprite sprite = null;
+            switch (prizeConfig.nPrizeType)
+            {
+                case (int)EMActorPrizeType.ACTOR_PRIZE_HERO:
+                    {
+                        int iconIndex;
+                        if (wndID == WndID.WND_ID_MAILBOX)
+                            iconIndex = 4;
+                        else
+                            iconIndex = 3;
+                        sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_HeadPortrait, wndID, 1, iconIndex, prizeConfig.nPrizeParam[0]);
+                    }
+                    break;
+                case (int)EMActorPrizeType.ACTOR_PRIZE_HEROCARD:
+                    {
+                        int iconIndex;
+                        if (wndID == WndID.WND_ID_MAILBOX)
+                            iconIndex = 4;
+                        else
+                            iconIndex = 7;
+                        sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_HeadPortrait, wndID, 1, iconIndex, prizeConfig.nPrizeParam[0]);
+                    }
+                    break;
+                case (int)EMActorPrizeType.ACTOR_PRIZE_RUNE:
+                    {
+                        SSchemeRuneConfig runeConfig = RunePage.Instance.allRunePageTable[prizeConfig.nPrizeParam[0]] as SSchemeRuneConfig;
+                        if (runeConfig != null)
+                        {
+                            sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_Rune, wndID, runeConfig.nRuneInlayType, runeConfig.nRuneIconId);
+                        }
+                    }
+                    break;
+                case (int)EMActorPrizeType.ACTOR_PRIZE_HEROSKIN:
+                    {
+                        SkinInfoScheme skinConfig = new SkinInfoScheme();
+                        if (GameLogicAPI.GetHeroSkinInfo(prizeConfig.nPrizeParam[1], ref skinConfig))
+                        {
+                            sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_HeadPortrait, wndID, skinConfig.nSkinIconID, 3, prizeConfig.nPrizeParam[0]);
+                        }
+                    }
+                    break;
+                default:
+                    {
+                        sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_ActorPrize, wndID, prizeConfig.nPrizeType, prizeConfig.nPrizeIcon);
+                    }
+                    break;
+            }
+
+            return sprite;
+        }
+    }
 }
 

@@ -110,7 +110,14 @@ public class GameUtil
         return host.StartCoroutine(routine);
     }
 
-    public static void SetLayer(int layer, GameObject go, bool bIncludeChild = false)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="layer"></param>
+    /// <param name="go"></param>
+    /// <param name="bIncludeChild"></param>
+    /// <param name="excludeParent">排除哪些父节点,仅当bIncludeChild为true有效</param>
+    public static void SetLayer(int layer, GameObject go, bool bIncludeChild = false,Transform[] excludeParent = null)
     {
         if (bIncludeChild)
         {
@@ -118,7 +125,28 @@ public class GameUtil
             //先找出skinDataObj和ScreenCastLayerObj和ColliderShapeObj
             foreach (Transform t in trs)
             {
-                t.gameObject.layer = layer;
+                bool canApplyLayer = true;
+                if(null != excludeParent)
+                {
+                    foreach (Transform parent in excludeParent)
+                    {
+                        if(parent)
+                        {
+                            if (t.IsChildOf(parent))
+                            {
+                                canApplyLayer = false;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+
+                if (canApplyLayer)
+                {
+                    t.gameObject.layer = layer;
+                }
+                
             }
         }
         else

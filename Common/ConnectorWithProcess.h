@@ -54,6 +54,17 @@ public:
 		m_br.OnRecvData(dwDataLen);	// 流量记录 接收
 	}
 
+	// 处理未注册的消息（比如要转发的消息）
+	virtual	void	UnHandled(LPVOID pData, DWORD dwDataLen)
+	{
+		SGameMsgHead* head = (SGameMsgHead*)pData;
+
+		char szBuf[256];
+		sprintf(szBuf, "UnKnown msg: SrcEndPoint=%d, DestEndPoint=%d, byKeyModule=%d, byKeyAction=%d !",
+			head->SrcEndPoint, head->DestEndPoint, head->byKeyModule, head->byKeyAction);
+		ErrorLn(szBuf);
+	}
+
 protected:
 	// 流量记录 发送
 	virtual	void	OnSendData(DWORD dwDataLen) { m_br.OnSendData(dwDataLen); }

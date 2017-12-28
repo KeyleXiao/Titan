@@ -177,6 +177,8 @@ private:
 	void				onMsgActorUnlockData(LPCSTR data, int len);
 	void				onMsgRankSeasonDetail(LPCSTR data, int len);
 	void				onMsgRankSeasonRecord(LPCSTR data, int len);
+    void                onMsgRetRecommRecord(LPCSTR data, int len);
+    void                onMsgRetGainPrizeSuccess(LPCSTR data, int len);
 
 protected:
     // 返回给显示层一个玩家的详细信息

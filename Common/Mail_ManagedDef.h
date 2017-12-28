@@ -54,12 +54,16 @@ namespace Mail_ManagerDef
         emMailFill_LegendCupCancelCreateRet,         // 回退创建杯赛创建费用
         emMailFill_LegendCupCancelContriBonusRet,    // 回退创建杯赛出资费用
         emMailFill_LegendCupCancelRegisterRet,      // 回退创建杯赛失败报名费用
+		emMailFill_LegendCupAbstentionMail,      // 杯赛弃权邮件
         emMailFill_LegendCup_End = 10099,
 
 		emMailFill_Rank_Begin = 10100,			// 排位开始
 		emMailFill_Rank_TaskPrize,				// 排位任务奖励
 		emMailFill_Rank_SeasonPrize,			// 排位赛季奖励
 		emMailFill_Rank_End = 10199,			// 排位结束
+
+        emMailFill_ClanDismiss_Hint = 10200,    // 联盟活跃解散提醒
+        emMailFill_KinDismiss_Hint = 10201,     // 战队活跃解散提醒
 
 	    emMailFill_Max = 50000,					// 最大
     };

@@ -132,7 +132,8 @@ namespace ASpeedGame.Data.PrizeUnlockConfig
                         item.nPrizeIdList = new int[strPrizeID.Length];
                         for (int j = 0; j < strPrizeID.Length; j++)
                         {
-                            item.nPrizeIdList[j] = Convert.ToInt32(strPrizeID[j]);
+                            //item.nPrizeIdList[j] = Convert.ToInt32(strPrizeID[j]);
+                            Int32.TryParse(strPrizeID[j], out item.nPrizeIdList[j]);
                         }
                     }
                     item.nPrizeIconId = reader.GetInt(i, nIndex++, 0);
@@ -150,7 +151,8 @@ namespace ASpeedGame.Data.PrizeUnlockConfig
                         item.nPrizeIdList = new int[strPrizeID.Length];
                         for (int j = 0; j < strPrizeID.Length; j++)
                         {
-                            item.nPrizeIdList[j] = Convert.ToInt32(strPrizeID[j]);
+                            //item.nPrizeIdList[j] = Convert.ToInt32(strPrizeID[j]);
+                            Int32.TryParse(strPrizeID[j], out item.nPrizeIdList[j]);
                         }
                     }                
                     item.nPrizeIconId = reader.GetInt(i, nIndex++, 0);
@@ -174,7 +176,8 @@ namespace ASpeedGame.Data.PrizeUnlockConfig
                         item.nPrizeIdList = new int[strPrizeID.Length];
                         for (int j = 0; j < strPrizeID.Length; j++)
                         {
-                            item.nPrizeIdList[j] = Convert.ToInt32(strPrizeID[j]);
+                            //item.nPrizeIdList[j] = Convert.ToInt32(strPrizeID[j]);
+                            Int32.TryParse(strPrizeID[j], out item.nPrizeIdList[j]);
                         }
                     }
                     item.nPrizeIconId = reader.GetInt(i, nIndex++, 0);

@@ -118,5 +118,15 @@ ENUM EMSNS_BUDDYINFO_UPDATE_TYPE
 	EMSNS_BUDDYINFO_UPDATE_TYPE_MOOD = 0,				// 好友更新了心情
 	EMSNS_BUDDYINFO_UPDATE_TYPE_BUDDYRELATION,			// 更新好友关系
 };
+
+////////////////////////////////////////C#显示层发送到社会服消息ID/////////////////////////////////////////
+#define ESNSView2SocialMsg_Start 0
+ENUM ESNSView2SocialMsg
+{
+	SNSView2Social_JoinBuddyKin = ESNSView2SocialMsg_Start,	// 加入好友的战队
+};
+
+////////////////////////////////////////C#显示层发送到社会服消息结构体/////////////////////////////////////////
+
 #pragma pack()
 #endif	// __SNS_MANAGED_DEF_H__

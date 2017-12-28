@@ -107,6 +107,7 @@ public partial class SceneResInfoManager : MonoBehaviour
         
 
         ApplyRenderingPath(RenderingPath.Forward);
+        ApplyCameraHDR_Fastest();
         OnSceneLight_Fastest();
         ApplyTerrainParams_Fastest();
         enabledGrassShadow = false;
@@ -124,7 +125,7 @@ public partial class SceneResInfoManager : MonoBehaviour
 
 
         ApplyRenderingPath(RenderingPath.Forward);
-
+        ApplyCameraHDR_Good();
         OnSceneLight_Good();
         ApplyTerrainParams_Good();
         enabledGrassShadow = false;
@@ -144,6 +145,7 @@ public partial class SceneResInfoManager : MonoBehaviour
 
 
         ApplyRenderingPath(OrginalRenderPath);
+        ApplyCameraHDR_High();
         OnSceneLight_High();
         ApplyTerrainParams_High();
         enabledGrassShadow = false;
@@ -161,6 +163,7 @@ public partial class SceneResInfoManager : MonoBehaviour
 
 
         ApplyRenderingPath(OrginalRenderPath);
+        ApplyCameraHDR_Best();
         OnSceneLight_Best();
         ApplyTerrainParams_Best();
         enabledGrassShadow = true;
@@ -201,7 +204,7 @@ public partial class SceneResInfoManager : MonoBehaviour
 
     private void OnSceneLight_Good()
     {
-        SceneCamera.hdr = false;
+        
         foreach (SceneLightInfo lig in LightInfoList)
         {
             if (isVaildLight(lig))
@@ -232,7 +235,7 @@ public partial class SceneResInfoManager : MonoBehaviour
 
     private void OnSceneLight_High()
     {
-        SceneCamera.hdr = OrginalHDR;
+        
         if (FirstSunLight)
         {
             FirstSunLight.shadows = OrginalFirstSunLightShadowType;
@@ -265,7 +268,7 @@ public partial class SceneResInfoManager : MonoBehaviour
 
     private void OnSceneLight_Best()
     {
-        SceneCamera.hdr = OrginalHDR;
+        
         if (FirstSunLight)
         {
             FirstSunLight.shadows = OrginalFirstSunLightShadowType;
@@ -297,5 +300,26 @@ public partial class SceneResInfoManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ApplyCameraHDR_Fastest()
+    {
+        SceneCamera.hdr = false;
+
+    }
+
+    public void ApplyCameraHDR_Good()
+    {
+        SceneCamera.hdr = false;
+    }
+
+    public void ApplyCameraHDR_High()
+    {
+        SceneCamera.hdr = OrginalHDR;
+    }
+
+    public void ApplyCameraHDR_Best()
+    {
+        SceneCamera.hdr = OrginalHDR;
     }
 }

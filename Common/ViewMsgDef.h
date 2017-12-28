@@ -61,6 +61,10 @@ enum EMMsgView
 	// GATE——CLIENT
 	ENUM_MSG_VIEW_HANDSHAKE_FAIL,			// Gate回复Client，登陆失败
 
+	// VIEW——CLIENT
+	ENUM_MSG_VIEW_BATTLE_PREP,				// 战报预备信息
+	ENUM_MSG_VIEW_BATTLE_INFO,				// 战报信息
+
 	//ENUM_MSG_VIEW_SENDDATA,						// 请求网关服务发送数据给各软件服务器
 	//ENUM_MSG_VIEW_SERVERLIST_UPDATE,			// 服务器列表更新
 	//ENUM_MSG_VIEW_DATA_SUBMSG,					// 语音子消息处理

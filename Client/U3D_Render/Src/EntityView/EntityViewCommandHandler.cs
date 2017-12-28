@@ -388,6 +388,9 @@ public class EntityViewCommandHandler : Singleton<EntityViewCommandHandler>
         setHandler((int)EntityLogicDef.ENTITY_TOVIEW_RANK_SEASON_DETAIL, onCommand_RankSeasonDetail, typeof(cmd_entity_rank_season_detail));
         setHandler((int)EntityLogicDef.ENTITY_TOVIEW_RANK_SEASON_RECORD, onCommand_RankSeasonRecord, null);
 
+        setHandler((int)EntityLogicDef.ENTITY_TOVIEW_RECOMMEND_RECORD, onCommand_SetRecommendRecord, null);
+        setHandler((int)EntityLogicDef.ENTITY_TOVIEW_GAIN_RECOMMPRIZE_SUCCESS, onCommand_GainRecommPrizeSuccess, null);
+
         //注册实时更新数值属性的方法  FUNC_ENTITY_INTEGERPROPERTY_HANDLER(entity_update_Integerproperty data); 
         // CreatureProperty.SetImmediateHandler(pid , handlerName);
     }
@@ -1602,6 +1605,7 @@ public class EntityViewCommandHandler : Singleton<EntityViewCommandHandler>
         {
             cmd_show_win_or_fail data = IntPtrHelper.toData<cmd_show_win_or_fail>(ptrParam);
 
+            Debug.Log("onCommond_ShowWarEndWinOrFail,WND_MSG_COMMON_WAREND");
 
             // 播放结束动画
             if (SoldierCamera.MainInstance<SoldierCamera>() != null && data.isPlayEndAnim > 0)
@@ -3574,8 +3578,15 @@ public class EntityViewCommandHandler : Singleton<EntityViewCommandHandler>
         string strUrl = strParam;
         Trace.Log("web id=" + nWebUrlID.ToString() + ", url=" + strUrl);
         // TODO
-        UPromotionWebUrl webUrlData = new UPromotionWebUrl(nWebUrlID, strUrl);
-        UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_REDIRECT_WEB, webUrlData);
+        UWebUrlData webUrlData = new UWebUrlData(nWebUrlID, strUrl);
+        if(nWebUrlID < 1000)
+        {
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_REDIRECT_WEB, webUrlData);
+        }
+        else
+        {
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL, webUrlData);
+        }
         return true;
     }
     
@@ -3608,4 +3619,29 @@ public class EntityViewCommandHandler : Singleton<EntityViewCommandHandler>
         return true;
     }
 
+    public static bool onCommand_SetRecommendRecord(EntityView ev, GameObject entity, ENTITY_ID id, Int32 cmdID, int nParam, string strParam, IntPtr ptrParam, int nPtrLen)
+    {
+        if (null == ptrParam || IntPtr.Zero == ptrParam)
+        {
+            Trace.Log(string.Format("==================onCommand_SetRecommendRecord=================== : {0}", nParam));
+            return false;
+        }
+
+        LogicDataCenter.gamePromotionDataManager.SetRecommRecord(ptrParam, nPtrLen);
+
+        return true;
+    }
+
+    public static bool onCommand_GainRecommPrizeSuccess(EntityView ev, GameObject entity, ENTITY_ID id, Int32 cmdID, int nParam, string strParam, IntPtr ptrParam, int nPtrLen)
+    {
+        if (null == ptrParam || IntPtr.Zero == ptrParam)
+        {
+            Trace.Log(string.Format("==================onCommand_GainRecommPrizeSuccess=================== : {0}", nParam));
+            return false;
+        }
+
+        LogicDataCenter.gamePromotionDataManager.SetObtainPrizeSuccess(nParam, strParam, ptrParam, nPtrLen);
+
+        return true;
+    }
 }

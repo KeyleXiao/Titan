@@ -939,8 +939,8 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
             //还原输入功能
             AddChild(new NOD_SetInputManagerEnable(true));
             AddChild(new NOD_SetLogicNextStep((int)ENNOVICEGUIDE_TYPE.ENNOVICEGUIDE_TYPE_GUIDE_WAITFORFREEMATCH));
+            AddChild(new NOD_ReportGuideStep((int)EMMatchGuideStep.GuideStep_HeroReward));
             AddChild(new NOD_DelayFinish(true));
-
         }
     }
     /// <summary>
@@ -1030,6 +1030,7 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
             AddChild(new NOD_SetInputManagerEnable(true));
             //测试用的
             AddChild(new NOD_SetLogicNextStep((int)ENNOVICEGUIDE_TYPE.ENNOVICEGUIDE_TYPE_GUIDE_LIFEHEROCULTURE));
+            AddChild(new NOD_ReportGuideStep((int)EMMatchGuideStep.GuideStep_LifeHero_Start));
             AddChild(new NOD_DelayFinish(true));
         }
     }
@@ -1101,7 +1102,6 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
             AddChild(new NOD_SetLogicNextStep((int)ENNOVICEGUIDE_TYPE.ENNOVICEGUIDE_TYPE_GUIDE_LISFHEROALLFIND));
             AddChild(new NOD_SetInputManagerEnable(true));
             AddChild(new NOD_DelayFinish(true));
-
         }
     }
     /// <summary>
@@ -1170,6 +1170,7 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
 
             SetPrecondition(new TBTPreconditionAND(new CON_IsNodeFinished(GuideNodeID()), new CON_IsWndViewVisible(true, WndID.WND_ID_WAR_MAIN_FRAME)));
 
+            AddChild(new NOD_ReportGuideStep((int)EMMatchGuideStep.GuideStep_LifeHero_Finish));
             AddChild(new NOD_ShowGuideUIInfoParam(m_strDes_0, _bModal: true));
             AddChild(new NOD_PlaySound(nSoundID_0));
             AddChild(new TBTActionTimer().SetElapseTime(4)
@@ -1413,7 +1414,7 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
             //确定点击了开战指引和已经显示游戏模式界面后，显示游戏模式指引
             AddChild((new NOD_ShowGuideUIWidget(0)).SetPrecondition(new TBTPreconditionAND(new CON_IsGuideUIWidgetClicked(0, EGuideNodeID.GuideNodeID_3001), new CON_IsWndViewVisible(true, WndID.WND_ID_WAR_MAIN_FRAME))));
             AddChild(new NOD_PlaySound(m_nSound_4));
-            AddChild(new TBTActionTimer().SetElapseTime(2f).AddChild(new NOD_SetCurrentGuideNode(EGuideNodeID.GuideNodeID_3004)));
+            AddChild(new NOD_SetCurrentGuideNode(EGuideNodeID.GuideNodeID_3004).SetPrecondition(new CON_IsGuideUIWidgetClicked(0, EGuideNodeID.GuideNodeID_3003)));
         }
 
         protected override void onTransition(TBTWorkingData wData)
@@ -1429,13 +1430,38 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
         }
     }
     /// <summary>
-    /// 等待匹配时间时控制引导相关部分逻辑与界面显示
+    /// 引导邀请界面点击开始游戏
     /// </summary>
     class GSD_Static_SecondGuide_4 : GuideNodeDataSequence
     {
+        protected int m_nEffectID;
+
         public override EGuideNodeID GuideNodeID()
         {
             return EGuideNodeID.GuideNodeID_3004;
+        }
+        protected override void Init()
+        {
+            SSchemeGuideNodeData guideNodeData = GuideManager.Instance.getNodeConfigData(GuideNodeID());
+            m_nEffectID = (int)USpeedUI.UEffect.UEffectPrefabType.UEPT_GuideWidget_ExitButton_huicheng;
+
+            UGuideWidgetMsgData msgData = new UGuideWidgetMsgData((int)GuideNodeID(), 0, m_nEffectID, _bForceGuide: true);
+
+            SetPrecondition(new CON_IsCurrentGuideNode(GuideNodeID()));
+            AddChild(new NOD_HideGuideUIInfo());
+            AddChild(new NOD_SendTargetWndMessage(WndID.WND_ID_RANK_INVITE, WndMsgID.WND_MSG_WAR_MAIN_GAMEMODEBTN_ADDGUIDEWIDGET, msgData));
+            AddChild((new NOD_ShowGuideUIWidget(0)).SetPrecondition(new TBTPreconditionAND(new CON_IsGuideUIWidgetClicked(0, EGuideNodeID.GuideNodeID_3003), new CON_IsWndViewVisible(true, WndID.WND_ID_RANK_INVITE))));
+            AddChild(new NOD_SetCurrentGuideNode(EGuideNodeID.GuideNodeID_3005).SetPrecondition(new CON_IsGuideUIWidgetClicked(0, EGuideNodeID.GuideNodeID_3004)));
+        }
+    }
+    /// <summary>
+    /// 等待匹配时间时控制引导相关部分逻辑与界面显示
+    /// </summary>
+    class GSD_Static_SecondGuide_5 : GuideNodeDataSequence
+    {
+        public override EGuideNodeID GuideNodeID()
+        {
+            return EGuideNodeID.GuideNodeID_3005;
         }
         protected override void Init()
         {
@@ -1444,7 +1470,7 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
             int m_nSound_5 = guideNodeData.GuideIntParams[(int)EGuideNodeConfigParamID.GuideParamID_0];//325
 
             SetPrecondition(new CON_IsCurrentGuideNode(GuideNodeID()));
-
+            AddChild(new NOD_SendTargetWndMessage(WndID.WND_ID_RANK_INVITE, WndMsgID.WND_MSG_MSTCHIIMEINFO_GUIDE_ACTIONBEGIN));
             //匹配时间界面显示后，匹配时间界面初始化引导相关属性
             AddChild((new NOD_SendTargetWndMessage(WndID.WND_ID_MATCHTIMEINFO, WndMsgID.WND_MSG_MSTCHIIMEINFO_GUIDE_ACTIONBEGIN))
                     .SetPrecondition(new CON_IsWndViewVisible(true, WndID.WND_ID_MATCHTIMEINFO)));
@@ -1457,6 +1483,7 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
             base.onTransition(wData);
 
             UISystem.Instance.SendTargetWndMessage(WndID.WND_ID_MATCHTIMEINFO, WndMsgID.WND_MSG_MSTCHIIMEINFO_GUIDE_ACTIONEND, null);
+            UISystem.Instance.SendTargetWndMessage(WndID.WND_ID_RANK_INVITE, WndMsgID.WND_MSG_MSTCHIIMEINFO_GUIDE_ACTIONEND, null);
 
             SSchemeGuideNodeData guideNodeData = GuideManager.Instance.getNodeConfigData(GuideNodeID());
             int m_nSound_5 = guideNodeData.GuideIntParams[(int)EGuideNodeConfigParamID.GuideParamID_0];//325
@@ -1466,13 +1493,13 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
     /// <summary>
     /// 英雄选取引导
     /// </summary>
-    class GSD_Static_SecondGuide_5 : GuideNodeDataSequence
+    class GSD_Static_SecondGuide_6 : GuideNodeDataSequence
     {
         protected int m_nEffectID;
 
         public override EGuideNodeID GuideNodeID()
         {
-            return EGuideNodeID.GuideNodeID_3005;
+            return EGuideNodeID.GuideNodeID_3006;
         }
         protected override void Init()
         {
@@ -1521,13 +1548,13 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
     /// <summary>
     /// 战场开始按钮点击引导
     /// </summary>
-    class GSD_Static_SecondGuide_6 : GuideNodeDataSequence
+    class GSD_Static_SecondGuide_7 : GuideNodeDataSequence
     {
         protected int m_nEffectID;
 
         public override EGuideNodeID GuideNodeID()
         {
-            return EGuideNodeID.GuideNodeID_3006;
+            return EGuideNodeID.GuideNodeID_3007;
         }
         protected override void Init()
         {
@@ -1559,11 +1586,11 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, 0, m_nEffectID));
     /// <summary>
     /// 开战前啰嗦的语音提示
     /// </summary>
-    class GSD_Static_SecondGuide_7 : GuideNodeDataSequence
+    class GSD_Static_SecondGuide_8 : GuideNodeDataSequence
     {
         public override EGuideNodeID GuideNodeID()
         {
-            return EGuideNodeID.GuideNodeID_3007;
+            return EGuideNodeID.GuideNodeID_3008;
         }
         protected override void Init()
         {

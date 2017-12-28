@@ -55,6 +55,7 @@ namespace USpeedUI.SNS
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_BLACKLIST_BY_OTHER, this);
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_SELECT_SESSION, this);
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_BUDDY_STATUS_UPDATE, this);
+			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_DELETE_SESSION, this);
 
 			return base.Init();
 		}
@@ -69,6 +70,7 @@ namespace USpeedUI.SNS
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_BLACKLIST_BY_OTHER, this);
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_SELECT_SESSION, this);
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_BUDDY_STATUS_UPDATE, this);
+			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_DELETE_SESSION, this);
 		}
 
 		public override void OnMessage(WndMsgID msgID, UIMsgData data)
@@ -132,6 +134,14 @@ namespace USpeedUI.SNS
                         }
                     }
                     break;
+                case WndMsgID.WND_MSG_SNS_DELETE_SESSION:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.onDeleteSession(data as SNSDeleteSessionMsgData);
+                        }
+                    }
+                    break;
                 default:
 					break;
 			}
@@ -150,6 +160,7 @@ namespace USpeedUI.SNS
         public UBuddySessionListView SessionListView;
         public Button MinBtn;
         public Button CloseBtn;
+
 
         // 会话列表<会话ID,会话>
         private Dictionary<long, SNSSession> m_SessionList = new Dictionary<long, SNSSession>();
@@ -179,9 +190,10 @@ namespace USpeedUI.SNS
             MinBtn.onClick.AddListener(onMinWnd);
             CloseBtn.onClick.AddListener(onCloseWnd);
             SendBtn.onClick.AddListener(onClickSendBtn);
+            ChatInputField.onValueChanged.AddListener(onChatInputFieldValueChange);
 
             return true;
-		}
+        }
 
 		public void Clear()
 		{
@@ -208,6 +220,7 @@ namespace USpeedUI.SNS
             }
 
             m_CurSessionID = data.SessionID;
+
             // 不存在对话
             if(!m_SessionList.ContainsKey(m_CurSessionID))
             {
@@ -258,7 +271,12 @@ namespace USpeedUI.SNS
             // 更新历史记录
             if (ChatHistroyView.isActiveAndEnabled)
             {
-                initHistoryMsg(CurSession.nCurHistoryPage);
+                int nCurHistoryPage = 0;
+                if(CurSession != null)
+                {
+                    nCurHistoryPage = CurSession.nCurHistoryPage;
+                }
+                initHistoryMsg(nCurHistoryPage);
             }
         }
 
@@ -358,11 +376,39 @@ namespace USpeedUI.SNS
         {
             if(msgData.dwUserID == 0)
             {
-                Debug.LogError("onSelectSession,msgData.dwUserID == 0");
+                Debug.LogWarning("onSelectSession,msgData.dwUserID == 0");
                 return;
             }
 
             m_CurSessionID = msgData.dwUserID;
+
+            onUpdateView();
+        }
+
+        public void onDeleteSession(SNSDeleteSessionMsgData msgData)
+        {
+            if (msgData.dwUserID == 0)
+            {
+                Debug.LogWarning("onDeleteSession,msgData.dwUserID == 0");
+                return;
+            }
+
+            int userID = msgData.dwUserID;
+            if (m_SessionList.ContainsKey(userID) == false)
+                return;
+
+            m_SessionList.Remove(userID);
+
+            // 取第一个session为当前的
+            if(m_SessionList.Count > 0)
+            {
+                m_CurSessionID = m_SessionList.Keys.First<long>();
+            }
+            else
+            {
+                m_CurSessionID = 0;
+                onCloseWnd();
+            }
 
             onUpdateView();
         }
@@ -409,17 +455,25 @@ namespace USpeedUI.SNS
 				m_isLeftAltDown = false;
             }
 
-            if (!m_isLeftAltDown && Input.GetKeyDown(KeyCode.Return))
+            if (!m_isLeftAltDown && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
             {
                 onClickSendBtn();
             }
 
-            if (m_isLeftAltDown && Input.GetKeyDown(KeyCode.Return))
+            if (m_isLeftAltDown && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
 			{
 				ChatInputField.text += "\n";
 				ChatInputField.MoveTextEnd(false);
 			}
 		}
+
+        public void onChatInputFieldValueChange(string strText)
+        {
+            if(strText.Length >= 80)
+            {
+                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_CUSTOMER_TIP, "字数不能超过80个");
+            }
+        }
 
         public void onUpdateChatMessage()
         {

@@ -260,9 +260,28 @@ struct SMsgView_MV_GatesInfo : public ISerializableData
 };
 
 
+// 观战权限
+enum EnumViewRight
+{
+	E_V_RIGHT_INVALID = 0,	// 无效ID
+	E_V_RIGHT_FRIEND,			// 好友
+	E_V_RIGHT_ANCHOR,			// 主播
+	E_V_RIGHT_GM,				// GM
+	E_V_RIGHT_FRIEND_NO_DELAY,	// 好友（无延迟）
+
+	E_V_RIGHT_MAX,
+};
+// 观战参数
+struct ViewParam
+{
+	DWORD	dwDelaySec;	// 延迟秒数
+	WORD	wCampMask;	// 可以看哪些阵营的掩码（bAllCamp为false时，才有意义）
+	bool	bAllCamp;	// 是否允许看全阵营
+
+	ViewParam() { memset(this, 0, sizeof(ViewParam)); }
+};
 ///////////////////////////////////////////////////////////////////
 // 请求观看某场战报	ENUM_MSG_VIEW_REQUEST_REPLAY
-// 回复给Game服的结果枚举
 FixMsgStruct(SMsgView_SM_RequestReplay)
 {
 	BYTE GetSrcEndPoint() { return MSG_MG_ENDPOINT_UNKNOW; };
@@ -272,12 +291,13 @@ FixMsgStruct(SMsgView_SM_RequestReplay)
 
 	PlayerID	dwPlayerID;	// 标识观战客户端的唯一ID
 	ReplayID	rID;		// 战报ID
-	WORD		wRightID;	// 权限ID
+	ViewParam	sViewParam;	// 观战参数
 };
 
 
-///////////////////////////////////////////////////////////////////
-// 请求观看某场战报 的回复——失败	ENUM_MSG_VIEW_REQUEST_REPLAY_FAIL
+
+
+// 回复给Game服的结果枚举
 enum EnumResultRequestReplay
 {
 	E_RESULT_RR_SUCCESS = 0,			// 成功
@@ -288,6 +308,8 @@ enum EnumResultRequestReplay
 
 	E_RESULT_RR_MAX,
 };
+///////////////////////////////////////////////////////////////////
+// 请求观看某场战报 的回复——失败	ENUM_MSG_VIEW_REQUEST_REPLAY_FAIL
 FixMsgStruct(SMsgView_MS_RequestReplay_Fail)
 {
 	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEWMNG; };

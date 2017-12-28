@@ -393,6 +393,8 @@ namespace USpeedUI
         WND_MSG_COMMON_POPUPWND_VISIBLE,
         // 在主城打开或关闭全屏界面
         WND_MSG_COMMON_FULLWND_VISIBLE,
+        // 接收web url
+        WND_MSG_COMMON_PROCESS_WEBURL,
 
         // 聊天窗口用消息
         WND_MSG_CHATBOX_START = WndID.WND_ID_CHATBOX * 1000,
@@ -408,6 +410,7 @@ namespace USpeedUI
         WND_MSG_CHATBOX_UPDATELOCKSTATE,
         WND_MSG_CHATBOX_TOGGLE,             // 切换最小化
         WND_MSG_CHATBOX_RESETSORTORDER,     // 刷新层级
+        WND_MSG_CHATBOX_SENDCHATMESSAGE,           // 发送数据
 
         // 玩家信息按钮
         WND_MSG_PLAYERBUTTONFRAME_START = WndID.WND_ID_PLAYERBUTTONFRAME * 1000,
@@ -908,6 +911,7 @@ namespace USpeedUI
         // DIDA界面
         WND_MSG_DIDA_START = WndID.WND_ID_DIDA * 1000,
         WND_MSG_DIDA_UPDATE,
+        WND_MSG_DIDA_UPDATE_LAYER,
 		// TAB对战信息界面
         WND_MSG_PLAYERSVSINFO_START = WndID.WND_ID_PLAYERSVSINFO * 1000,
 
@@ -981,6 +985,7 @@ namespace USpeedUI
         WND_MSG_SNS_SHOW_FINDBUDDY_WND,		// 显示查找好友窗口
         WND_MSG_SNS_SHOW_INVITE_PLAYGAME_WND,	// 显示邀请一起游戏窗口
         WND_MSG_SNS_SELECT_SESSION,	// 选择会话
+        WND_MSG_SNS_DELETE_SESSION,	// 删除会话
         WND_MSG_SNS_SHOW_INVITE_MATCH_WND,	// 显示邀请匹配/排位窗口
         WND_MSG_SNS_BUDDY_STATUS_UPDATE,    // 好友状态发生变化
 
@@ -1251,6 +1256,9 @@ namespace USpeedUI
         WND_MSG_GAME_PROMOTION_UPDATE_MY_USERS_INFO, // 更新下家信息
         WND_MSG_GAME_PROMOTION_UPDATE_NAV,
         WND_MSG_GAME_PROMOTION_REDIRECT_WEB,
+        WND_MSG_GAME_PROMOTION_RET_RECOMMEND_DATA,
+        WND_MSG_GAME_PROMOTION_OBTAIN_PRIZE_SUCCESS,
+        WND_MSG_GAME_PROMOTION_SET_QRCODE,              // 设置二维码
 
         // 生存模式战场击杀助攻显示界面
         WND_MSG_BATTLEWAR_KA_START = WndID.WND_ID_BATTLEWAR_BATTLEWARKA * 1000,

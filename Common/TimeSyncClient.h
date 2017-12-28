@@ -15,12 +15,14 @@
 #include "buffer.h"
 #include <string>
 #include "TimerHandler.h"
+#include "STime.h"
 
 #ifndef TIME_SYNC_PING
 	#define  TIME_SYNC_PING    1        // ping
 	#define  TIME_SYNC_TEST    2        // 测试
 	#define  TIME_SYNC_ADJUST  3		// 校正
 #endif
+
 
 /**
 	网络对时原因
@@ -34,7 +36,7 @@
 class AbstractSyncClient : public TimerHandler
 {
 public:
-    DWORD GetTick()
+    inline DWORD GetTick()
     {
         return getTickCountEx()-m_dwServerTick;
     }
@@ -53,6 +55,10 @@ public:
     {
         return ctime(&m_tStartTime);
     }
+	inline STime GetTime()
+	{
+		return STime(m_tStartTime, GetTick());
+	}
 
     void    Release()
     {
@@ -66,7 +72,7 @@ public:
         if(m_pTimerAixs == 0)
             return false;
 
-       m_pTimerAixs->SetTimer(3,16,this );
+       m_pTimerAixs->SetTimer(TIME_SYNC_ADJUST,16,this );
 
         DoStart(strIP, nUDPPort, mTCPPort);
         return true;
@@ -131,7 +137,7 @@ protected:
     void OnRecvPing( unsigned char opcode,rkt::ibuffer & inbuf )
     {
         DWORD nClientTick = 0;
-        DWORD nServerTick = 0;
+        DWORD nServerTick = 0;// 服务器启动后，过了多少毫秒
         inbuf >> nClientTick >> nServerTick;
         if ( !inbuf )
         {
@@ -173,7 +179,7 @@ protected:
         // 误差很小时不用再对
         if ( m_dwLastLatency>0 && m_dwLastLatency<30 )
         {
-            m_pTimerAixs->SetTimer(1,10000,this);
+            m_pTimerAixs->SetTimer(TIME_SYNC_PING,10000,this);
         }
     }
 
@@ -203,10 +209,10 @@ protected:
     unsigned short    m_nUPDPort;
     unsigned short    m_nTCPPort;
 
-    DWORD             m_dwServerTick;	// 服务器逻辑开始时间
+    time_t            m_tStartTime;     // 服务器逻辑开始的 时间（从1970年1月1日00:00:00到此刻总共的秒数）
+    DWORD             m_dwServerTick;	// 服务器逻辑开始的 毫秒计数
     DWORD             m_dwPingLatency;	// 当前的网络延时
     DWORD             m_dwLastLatency;	// 最后一次更新m_dwServerTick时的网络延时，后面再更新，延迟必须小于之前的1/2
-    time_t            m_tStartTime;     // 从1970年1月1日00:00:00到现在总共的秒数
 };
 
 
@@ -226,7 +232,7 @@ public:
         m_nTCPPort = mTCPPort;
 
         m_pTimerAixs->SetTimer(0,1,this,1 );
-        m_pTimerAixs->SetTimer(1,10000,this,100 );
+        m_pTimerAixs->SetTimer(TIME_SYNC_PING,10000,this,100 );
         m_pTimerAixs->SetTimer(2,1000,this );
 
         return true;
@@ -480,7 +486,7 @@ public:
         m_strServerIP = strIP;
         m_nTCPPort = mTCPPort;
 
-        m_pTimerAixs->SetTimer(1,10000,this );
+        m_pTimerAixs->SetTimer(TIME_SYNC_PING,10000,this );
 
         return Connect();
     }
@@ -674,6 +680,12 @@ public:
     {
         return m_pClient->Getctime();
     }
+
+	// 取服务器的 从1970年1月1日00:00:00到现在总共的秒数
+	inline STime GetTime()
+	{
+		return m_pClient->GetTime();
+	}
 
     bool Start( const char * strIP,unsigned short nUDPPort,unsigned short nTCPPort,TimerAxis * pAxis)
     {

@@ -10,6 +10,7 @@ using USpeedUI.PointShop;
 using ASpeedGame.Data.TaskViewTimeConfig;
 using USpeedUI.TooltipAndDialog;
 using Data.SideButtonConfig;
+using ASpeedGame.Data.TaskConfig;
 
 namespace DataCenter
 {
@@ -2022,6 +2023,28 @@ namespace DataCenter
                     m_prizeNode.nPrizeID = nPrizeID;
                 }
             }
+
+            SSchemeSystemTaskConfig config = TaskConfig.Instance.GetSystemTaskConfig(m_prizeNode.nTaskID);
+            if (config != null && config.nTaskType == (int)ENTASK_TYPE.ENTASK_TYPE_RANK)
+            {
+                UPrizePopupData uiData = new UPrizePopupData();
+                uiData.strPrizeTitle = m_prizeNode.szTaskName;
+                uiData.strPrizeDesc = "";
+                uiData.nExpCount = m_prizeNode.nExpCount;
+                uiData.nMoneyCount = m_prizeNode.nBindingGoldCount;
+                uiData.nPrizeIdList = new List<int>();
+                foreach (var item in m_prizeNode.nPrizeID)
+                {
+                    if (item > 0)
+                    {
+                        uiData.nPrizeIdList.Add(item);
+                    }
+                }
+                UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_PRIZEPOPUP_OPEN, uiData);
+
+                m_prizeNode.Clear();
+            }
+
         }
 
         // 拥有任务列表+发布交互列表（排序）
@@ -2060,6 +2083,11 @@ namespace DataCenter
             int nCount = 0;
             foreach (var item in m_listTaskData)
             {
+                if (item.nTaskType == (int)ENTASK_TYPE.ENTASK_TYPE_RANK)
+                {
+                    continue;
+                }
+
                 if (item.nTaskState == (int)Task_State_Type.TaskStateType_Finish)
                 {
                     nCount++;

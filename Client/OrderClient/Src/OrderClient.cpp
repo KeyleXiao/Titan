@@ -489,6 +489,7 @@ void OrderClient::onRequestRankKingOrderInfo(SNetMsgHead* head, void* data, size
 
         // 显示层数据
         cmd_Entity_HighLadder_Rank_Info cmdRankInfo;
+		cmdRankInfo.bySex = PersonItem->bySex;			// 性别
         cmdRankInfo.dwUserID = PersonItem->dwUserID;
         cmdRankInfo.dwHeadID = PersonItem->wHeadID;     // 头像ID
         cmdRankInfo.nOrderID = PersonItem->nOrder;      // 排名ID
@@ -575,6 +576,7 @@ void OrderClient::onRequestMatchTypeOrderInfo(SNetMsgHead* head, void* data, siz
 
         // 显示层数据
         cmd_Entity_HighLadder_Rank_Info cmdRankInfo;
+		cmdRankInfo.bySex = PersonItem->bySex;			// 性别
         cmdRankInfo.dwUserID = PersonItem->dwUserID;
         cmdRankInfo.dwHeadID = PersonItem->wHeadID;     // 头像ID
         cmdRankInfo.nOrderID = PersonItem->nOrder;      // 排名ID
@@ -1052,6 +1054,7 @@ void OrderClient::onRequestPlayerKillOrderInfo(SNetMsgHead* head, void* data, si
 
         // 显示层数据
         cmd_entity_kill_order_info cmdInfo;
+		cmdInfo.bySex	= pData->bySex;										// 性别
         cmdInfo.dwUserID = pData->dwUserID;
         cmdInfo.nPDBID  = pData->dwActorID;
         cmdInfo.nOrderID        = pData->nOrder;                                    // 排名 
@@ -1109,6 +1112,7 @@ void OrderClient::onRequestDonateOrderInfo(SNetMsgHead* head, void* data, size_t
         // 逻辑层数据 按排名顺序作为键值存储
         // 显示层数据
         cmd_entity_donate_order_info cmdInfo;
+		cmdInfo.bySex			= pData->bySex;										// 性别
         cmdInfo.dwUserID        = pData->dwUserID;
         cmdInfo.nPDBID          = pData->dwActorID;
         cmdInfo.dwHeadID        = pData->wHeadID ;                                   // 头像ID
@@ -1170,6 +1174,7 @@ void OrderClient::onRequestHeroOrderInfo(SNetMsgHead* head, void* data, size_t l
 
         // 显示层数据
         cmd_entity_hero_order_info cmdInfo;
+		cmdInfo.bySex			= pData->bySex;
         cmdInfo.nOrder          = pData->nOrder;                                     // 排名
         cmdInfo.dwHeadID        = pData->wHeadID ;                                   // 头像ID
         cmdInfo.dwUserID        = pData->dwUserID ;                                   // 账号ID
@@ -1387,8 +1392,9 @@ void OrderClient::onRequestKingOfHeroOrder(SNetMsgHead* head, void* data, size_t
 
         // 显示层数据
         cmd_entity_king_of_hero_order_info cmdInfo;
-        cmdInfo.dwUserID = pData->dwUserID;
-        cmdInfo.nPDBID  = pData->dwActorID;
+		cmdInfo.bySex			= pData->bySex;										// 性别
+        cmdInfo.dwUserID		= pData->dwUserID;
+        cmdInfo.nPDBID			= pData->dwActorID;
         cmdInfo.nOrderID        = pData->nOrder;                                    // 排名 
         cmdInfo.dwHeadID        = pData->wHeadID ;                                  // 头像ID
         cmdInfo.nWinMatch       = pData->lValue1;                                   // 胜利场次
@@ -1443,6 +1449,7 @@ void OrderClient::onRequestMentorshipOrder( SNetMsgHead* head, void* data, size_
 		// 逻辑层数据 按排名顺序作为键值存储
 		// 显示层数据
 		cmd_entity_mentorship_order_info cmdInfo;
+		cmdInfo.bySex			= pData->bySex;
 		cmdInfo.nOrder          = pData->nOrder;                                    // 排名 
 		cmdInfo.dwPDBID         = pData->dwActorID;                                   // 玩家ID
 		cmdInfo.dwUserID        = pData->dwUserID;
@@ -1512,9 +1519,10 @@ void OrderClient::onRequestGemstoneOrderInfo( SNetMsgHead* head, void* data, siz
 		// 逻辑层数据 按排名顺序作为键值存储
 		// 显示层数据
 		cmd_entity_gemstone_order_info cmdInfo;
+		cmdInfo.bySex			= pData->bySex;										// 性别
 		cmdInfo.nOrder          = pData->nOrder;                                    // 排名 
 		cmdInfo.dwUserID        = pData->dwUserID;
-        cmdInfo.dwPDBID          = pData->dwActorID;
+        cmdInfo.dwPDBID         = pData->dwActorID;
 		cmdInfo.dwFaceScore     = pData->lValue1;								// 颜值
 		cmdInfo.dwPropVal		= pData->lValue2;								// 威力
         cmdInfo.dwClanID        = pData->dwClanID;
@@ -1552,6 +1560,7 @@ void OrderClient::onRequestSkinOrderInfo(SNetMsgHead*head, void*data, size_t len
 	for (int i = 0; i < pMsgHead->nCount; ++i)
 	{
 		cmd_entity_skin_order_info cmdNode;
+		cmdNode.bySex = pMsgNode->bySex;										// 性别
 		cmdNode.nOrder = pMsgNode->nOrder;
 		cmdNode.dwPDBID = pMsgNode->dwActorID;
 		cmdNode.dwUserID = pMsgNode->dwUserID;
@@ -1596,6 +1605,7 @@ void OrderClient::onRequestHeroCountOrderInfo(SNetMsgHead*head, void*data, size_
 	for (int i = 0; i < pMsgHead->nCount; ++i)
 	{
 		cmd_entity_herocount_order_info cmdNode;
+		cmdNode.bySex = pMsgNode->bySex;										// 性别
 		cmdNode.nOrder = pMsgNode->nOrder;
         cmdNode.dwPDBID = pMsgNode->dwActorID;
 		cmdNode.dwUserID = pMsgNode->dwUserID;

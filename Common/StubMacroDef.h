@@ -309,6 +309,28 @@
     }                                                               \
     return "";                                                      \
 
+// 构建一个带一个参数的消息现场
+#define  BUILD_MSG_CONTEXT_EX_1(FUNC,PARAM,VALUE)  					\
+    int nMsgLen = sizeof(SERVICE_MESSAGE)+sizeof(PARAM);			\
+    SERVICE_MESSAGE * pMsg = (SERVICE_MESSAGE*)malloc(nMsgLen);		\
+    pMsg->context_len = sizeof(PARAM);								\
+    auto temp_adrr = &FUNC;                                         \
+    pMsg->function_id = *(DWORD_PTR*)&temp_adrr;	        		\
+    memcpy(pMsg+1, &VALUE, sizeof(PARAM));                           \
+    BUILD_DEBUG_INFO(FUNC, pMsg);                                   \
+
+
+// 构建一个带两个参数的消息现场
+#define  BUILD_MSG_CONTEXT_EX_2(FUNC,PARAM1,VALUE1,PARAM2,VALUE2)  	      \
+    int nMsgLen = sizeof(SERVICE_MESSAGE)+sizeof(PARAM1)+sizeof(PARAM2);  \
+    SERVICE_MESSAGE * pMsg = (SERVICE_MESSAGE*)malloc(nMsgLen);		      \
+    pMsg->context_len = sizeof(PARAM1)+sizeof(PARAM2);				      \
+    auto temp_adrr = &FUNC;                                               \
+    pMsg->function_id = *(DWORD_PTR*)&temp_adrr;	        			  \
+    memcpy(pMsg+1, &VALUE1, sizeof(PARAM1));                                \
+    memcpy((PARAM1*)(pMsg+1) + 1, &VALUE2, sizeof(PARAM2));                 \
+    BUILD_DEBUG_INFO(FUNC, pMsg);                                          \
+
 
 // 判断函数名称，临时占用enqueue_tick保存下变量...待修改
 #define TEST_SAME_FUNCTION(name)	true){auto temp_adrr = &name;pMsg->enqueue_tick=*(DWORD_PTR*)&temp_adrr;} if ( pMsg->enqueue_tick==pMsg->function_id 

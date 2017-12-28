@@ -400,6 +400,7 @@ void KinClient::onViewLegendCupKinInfo(LPCSTR pszMsg, int nLen)
 	obuf obData;
 	int nPosNum = pRecvData->nMemberCount;
 	cmd_kin_basedata headData;
+    headData.nKinID = pRecvData->dwKinID;
 	headData.nKinLevel = pRecvData->nKinLevel;              // 战队等级 
 	headData.dwShaikhID = pRecvData->dwShaikhID;            // 族长
 	headData.nMemberCount = pRecvData->nMemberCount;        // 成员数量

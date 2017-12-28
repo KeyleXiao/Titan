@@ -39,6 +39,7 @@ SNSClient::~SNSClient()
 		gClientGlobal->getEntityClient()->unregisterGameViewEventHandler(GVIEWCMD_SNS_REQ_UPDATE_BUDDYSTATUS);
 		gClientGlobal->getEntityClient()->unregisterGameViewEventHandler(GVIEWCMD_SNS_REQ_INVITE_PLAYGAME);
 		gClientGlobal->getEntityClient()->unregisterGameViewEventHandler(GVIEWCMD_SNS_REQ_INVITE_MATCH_TEAM);
+		gClientGlobal->getEntityClient()->unregisterGameViewEventHandler(GVIEWCMD_SNS_SEND_DATA_TO_SOCIAL);
 	}
 
 	g_pSNSClient = NULL;
@@ -67,6 +68,7 @@ bool SNSClient::Create(void)
 	gClientGlobal->getEntityClient()->registerGameViewEventHandler(GVIEWCMD_SNS_REQ_UPDATE_BUDDYSTATUS, this);
 	gClientGlobal->getEntityClient()->registerGameViewEventHandler(GVIEWCMD_SNS_REQ_INVITE_PLAYGAME, this);
 	gClientGlobal->getEntityClient()->registerGameViewEventHandler(GVIEWCMD_SNS_REQ_INVITE_MATCH_TEAM, this);
+	gClientGlobal->getEntityClient()->registerGameViewEventHandler(GVIEWCMD_SNS_SEND_DATA_TO_SOCIAL, this);
 
 	return true;
 }
@@ -836,6 +838,22 @@ bool SNSClient::onViewEvent( int eventID, int nParam, const char *strParam, void
 			sstrcpyn(msg.szInviterName, pMsgInfo->szInviterName, sizeof(msg.szInviterName));
 
 			sendMsgToSocial(MSG_SNS_REQ_INVITE_MATCH_TEAM, NULL, 0, &msg, sizeof(msg));
+		}
+		break;
+	case GVIEWCMD_SNS_SEND_DATA_TO_SOCIAL:
+		{
+			if (NULL == ptrParam)
+				return false;
+
+			gameview_sns_data_to_social* pMsgInfo = (gameview_sns_data_to_social*)ptrParam;
+
+			SMsgSNSSendDataToSocial msg;
+			msg.nMsgType = pMsgInfo->nMsgType;
+
+			obuf ob;
+			ob << msg;
+			ob << pMsgInfo->nReverse1;
+			sendMsgToSocial(MSG_SNS_SEND_DATA_TO_SOCIAL, NULL, 0, ob.data(), ob.size());
 		}
 		break;
 	}

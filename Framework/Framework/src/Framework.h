@@ -101,6 +101,9 @@ public:
     // 是否多线程模式开启service
     virtual bool isMulitThreadMode();
 
+	// 当前服务休眠
+	virtual void current_service_sleep();
+
 protected:
 	TiXmlDocument		doc;
 	volatile LONG		m_mutex;

@@ -11,6 +11,8 @@ using DG.Tweening;
 using USpeedUI.UWidgets;
 using Data.ActorPrizeConfig;
 using ASpeedGame.Data.RecommendPrize;
+using UIWidgets;
+using War;
 
 namespace USpeedUI.GamePromotion
 {
@@ -67,6 +69,10 @@ namespace USpeedUI.GamePromotion
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_UPDATE_MY_USERS_INFO, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_UPDATE_NAV, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_REDIRECT_WEB, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_RET_RECOMMEND_DATA, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_OBTAIN_PRIZE_SUCCESS, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_SET_QRCODE, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL, this);
 
             return true;
         }
@@ -78,6 +84,10 @@ namespace USpeedUI.GamePromotion
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_UPDATE_MY_USERS_INFO, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_UPDATE_NAV, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_REDIRECT_WEB, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_RET_RECOMMEND_DATA, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_OBTAIN_PRIZE_SUCCESS, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_GAME_PROMOTION_SET_QRCODE, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL, this);
 
             base.Destroy();
         }
@@ -110,10 +120,41 @@ namespace USpeedUI.GamePromotion
                     break;
                 case WndMsgID.WND_MSG_GAME_PROMOTION_REDIRECT_WEB:
                     {
-                        if(m_wndView != null)
+                        if(m_wndView != null && data != null)
                         {
-                            if (data != null)
-                                m_wndView.RedirectWeb(data as UPromotionWebUrl);
+                            m_wndView.RedirectWeb(data as UWebUrlData);
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_COMMON_PROCESS_WEBURL:
+                    {
+                        if(m_wndView != null && data != null)
+                        {
+                            m_wndView.ProcessWebUrl(data as UWebUrlData);
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_GAME_PROMOTION_RET_RECOMMEND_DATA:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.SetRecommPrizeData();
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_GAME_PROMOTION_OBTAIN_PRIZE_SUCCESS:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.GainPrizeSuccess(data as UIMsgCmdData);
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_GAME_PROMOTION_SET_QRCODE:
+                    {
+                        if (m_wndView != null)
+                        {
+                            m_wndView.SetQRCode();
                         }
                     }
                     break;
@@ -127,7 +168,6 @@ namespace USpeedUI.GamePromotion
     {
         public int webUrlID;
     }
-
 
     public class GamePromotionView : UIBaseWndView
     {
@@ -165,8 +205,11 @@ namespace USpeedUI.GamePromotion
             //ShowSubFrameView(GamePromotionButtonType.BTN_TAITANSAYSAY);
             EntityEventHelper.Instance.SendCommand(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQUEST_NAVGROUP);
 
-            RequestWebUrl((int)GameWebUrl.TAITAN_MAINHOME);
-            RequestWebUrl((int)GameWebUrl.PROMOTION_LINK);
+            LogicDataCenter.gamePromotionDataManager.RequestWebUrl((int)GameWebUrl.TAITAN_ACTIVITIES_LINK);
+            LogicDataCenter.gamePromotionDataManager.RequestWebUrl((int)GameWebUrl.QRCODE_LINK);
+            LogicDataCenter.gamePromotionDataManager.RequestWebUrl((int)GameWebUrl.WEB_INTERFACE_LINK);
+            LogicDataCenter.gamePromotionDataManager.RequestWebUrl((int)GameWebUrl.WITHDRAW_LINK);
+            LogicDataCenter.gamePromotionDataManager.RequestWebUrl((int)GameWebUrl.SHARE_PERSONAL_LINK);
 
             return ret;
         }
@@ -194,7 +237,14 @@ namespace USpeedUI.GamePromotion
             {
                 if (item.GetButtonType() == GamePromotionButtonType.BTN_WEBLINK)
                     (item as PromotionWebFrame).RefreshBrowser(_bVisible);
+                else if (item.GetButtonType() == GamePromotionButtonType.BTN_TAITANSAYSAY)
+                    (item as TaiTanSaySayFrame).ResetView(_bVisible);
             }
+        }
+
+        public void SetQRCode()
+        {
+            (m_subFrameViewList[(int)GamePromotionButtonType.BTN_TAITANSAYSAY] as TaiTanSaySayFrame).SetQRCode();
         }
 
         public void UpdateMyUserInfo()
@@ -254,14 +304,51 @@ namespace USpeedUI.GamePromotion
             }
         }
 
-        public void RedirectWeb(UPromotionWebUrl webUrlData)
+        public void SetRecommPrizeData()
+        {
+            (m_subFrameViewList[(int)GamePromotionButtonType.BTN_TAITANSAYSAY] as TaiTanSaySayFrame).SetRecommPrizeData();
+        }
+
+        public void GainPrizeSuccess(UIMsgCmdData msg)
+        {
+            if (msg == null)
+                return;
+            int targetID = IntPtrHelper.toData<int>(msg.ptrParam);
+
+            (m_subFrameViewList[(int)GamePromotionButtonType.BTN_TAITANSAYSAY] as TaiTanSaySayFrame).GainPrizeSuccess(targetID);
+
+            UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_GAMEPROMOTION_OBTAIN_SUCCESS);
+        }
+
+        public void ProcessWebUrl(UWebUrlData webUrlData)
         {
             LogicDataCenter.gamePromotionDataManager.WebUrl[(GameWebUrl)webUrlData.nNavID] = webUrlData.szWebUrl;
-            if (webUrlData.nNavID == (int)GameWebUrl.TAITAN_MAINHOME)
+            switch (webUrlData.nNavID)
             {
-                (m_subFrameViewList[(int)GamePromotionButtonType.BTN_TAITANSAYSAY] as TaiTanSaySayFrame).privateLinkText.text = webUrlData.szWebUrl;
+                case (int)GameWebUrl.SHARE_PERSONAL_LINK:
+                    {
+                        (m_subFrameViewList[(int)GamePromotionButtonType.BTN_TAITANSAYSAY] as TaiTanSaySayFrame).privateLinkText.text = webUrlData.szWebUrl + GameLogicAPI.getPlayerUserID(EntityFactory.MainHeroID);
+                    }
+                    break;
+                case (int)GameWebUrl.WEB_INTERFACE_LINK:
+                    {
+                        if (gameObject.activeInHierarchy)
+                            StartCoroutine(LogicDataCenter.gamePromotionDataManager.GetInfoAndUserList());
+                    }
+                    break;
+                case (int)GameWebUrl.QRCODE_LINK:
+                    {
+                        if (gameObject.activeInHierarchy)
+                            StartCoroutine(LogicDataCenter.gamePromotionDataManager.BuildRecommendQRCode());
+                    }
+                    break;
+                default:
+                    break;
             }
+        }
 
+        public void RedirectWeb(UWebUrlData webUrlData)
+        {
             if (webUrlData.nNavID < 0 || webUrlData.nNavID != m_curNavID)
                 return;
 
@@ -364,21 +451,13 @@ namespace USpeedUI.GamePromotion
         private void OnWebLinkNavMethod(int _navId)
         {
             ShowSubFrameView(GamePromotionButtonType.BTN_WEBLINK);
-            RequestWebUrl(_navId);
-        }
-
-        private void RequestWebUrl(int nUrlID)
-        {
-            PromotionWebUrl url = new PromotionWebUrl();
-            url.webUrlID = nUrlID;
-            EntityEventHelper.Instance.SendCommand<PromotionWebUrl>(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQUEST_WEBURL, ref url);
+            LogicDataCenter.gamePromotionDataManager.RequestWebUrl(_navId);
         }
 
         #region 内置方法
         public void OnTaiTanSaySay()
         {
             ShowSubFrameView(GamePromotionButtonType.BTN_TAITANSAYSAY);
-            StartCoroutine(LogicDataCenter.gamePromotionDataManager.GetInfoAndUserList());
         }
         #endregion
 
@@ -399,25 +478,32 @@ namespace USpeedUI.GamePromotion
         public Text targetText;
         public Button obtainBtn;
         public Text obtainBtnDesc;
+        public Image obtainBtnMaskImage;
+        public Text obtainedPrizeText;
         [HideInInspector]
         public List<DefaultPrizeItem> m_prizeIDList = new List<DefaultPrizeItem>();
-        private int m_targetID; // 奖励目标ID 
+        [HideInInspector]
+        public int m_targetID; // 奖励目标ID 
 
-        public bool Init(TaiTanSaySayFrame saysayFrame)
+        public bool Init(TaiTanSaySayFrame saysayFrame, Transform parent)
         {
+            obtainedPrizeText.text = "";
             targetText.text = "";
+            obtainBtnDesc.text = "领取";
+            obtainedPrizeText.text = "已领取";
             obtainBtn.onClick.AddListener(OnObtainBtnClick);
+            obtainBtnMaskImage.gameObject.SetActive(false);
 
             for (int i = 0; i < saysayFrame.PRIZE_ID_COUNT; ++i)
             {
-                GameObject go = Instantiate(saysayFrame.defaultSubPrizeItem.gameObject);
+                GameObject go = Instantiate(saysayFrame.defaultSubPrizeItemObj.gameObject);
                 if (go == null)
                 {
                     Trace.LogError("DefaultPrizeItem Instantiate failed");
                     return false;
                 }
 
-                go.transform.SetParent(saysayFrame.defaultSubPrizeItem.parent, false);
+                go.transform.SetParent(parent, false);
                 go.SetActive(false);
                 DefaultPrizeItem item = go.GetComponent<DefaultPrizeItem>();
                 if (!item.Init())
@@ -431,10 +517,13 @@ namespace USpeedUI.GamePromotion
 
         public void OnObtainBtnClick()
         {
-
+            obtainBtn.enabled = false;
+            ParamRecommendPrize param;
+            param.nTargetID = m_targetID;
+            EntityEventHelper.Instance.SendCommand<ParamRecommendPrize>(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQ_GAIN_RECOMMPRIZE, ref param);
         }
 
-        public void SetData(int targetID, int totalNumber, List<int> prizeIDList)
+        public void SetData(int targetID, int totalNumber, List<int> prizeIDList, ref RecommRecord record)
         {
             m_targetID = targetID;
             targetText.text = totalNumber.ToString();
@@ -447,7 +536,43 @@ namespace USpeedUI.GamePromotion
             for (int i = 0; i < count; ++i)
             {
                 m_prizeIDList[i].SetData(prizeIDList[i]);
+                m_prizeIDList[i].gameObject.SetActive(true);
+                if (record.dwMatchNum >= totalNumber)
+                {
+                    if ((record.nPrizeTaskData & (1 << (targetID - 1))) != 0)
+                    {
+                        obtainedPrizeText.gameObject.SetActive(true);
+                        obtainBtnMaskImage.gameObject.SetActive(false);
+                        obtainBtn.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        obtainedPrizeText.gameObject.SetActive(false);
+                        obtainBtnMaskImage.gameObject.SetActive(false);
+                        obtainBtn.gameObject.SetActive(true);
+                        obtainBtn.enabled = true;
+                    }
+                }
+                else
+                {
+                    obtainedPrizeText.gameObject.SetActive(false);
+                    obtainBtnMaskImage.gameObject.SetActive(true);
+                    obtainBtn.gameObject.SetActive(true);
+                    obtainBtn.enabled = false;
+                }
             }
+
+            for (int i = count; i < m_prizeIDList.Count; ++i)
+            {
+                m_prizeIDList[i].gameObject.SetActive(false);
+            }
+        }
+
+        public void GainPrizeSuccess()
+        {
+            obtainedPrizeText.gameObject.SetActive(true);
+            obtainBtn.gameObject.SetActive(false);
+            obtainBtnMaskImage.gameObject.SetActive(false);
         }
     }
 
@@ -459,7 +584,6 @@ namespace USpeedUI.GamePromotion
         public bool Init()
         {
             prizeNameText.text = "";
-            prizeImage.gameObject.SetActive(false);
 
             return true;
         }
@@ -469,9 +593,9 @@ namespace USpeedUI.GamePromotion
             SSchemeActorPrizeConfig actorPrizeConfig = ActorPrizeConfig.Instance.GetActorPrizeConfig(prizeID);
             if (actorPrizeConfig != null)
             {
-                prizeImage.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_ActorPrize, WndID.WND_ID_GAME_PROMOTION, actorPrizeConfig.nPrizeType, actorPrizeConfig.nPrizeIcon);
+                prizeImage.sprite = LogicDataCenter.playerSystemDataManager.GetIconByPrize(actorPrizeConfig, WndID.WND_ID_GAME_PROMOTION);
                 prizeNameText.text = actorPrizeConfig.strPrizeName;
-             // this.GetComponent<UTooltipTrigger>().SetText(UTooltipParamName.BodyText, actorPrizeConfig.strPrizeDesc);
+                GetComponent<UTooltipTrigger>().SetText(UTooltipParamName.BodyText, actorPrizeConfig.strPrizeDesc);
             }
         }
     }
@@ -482,7 +606,7 @@ namespace USpeedUI.GamePromotion
         public Button copyBtn;
         public Image screenshortImage;
         public Text screenShortText;
-        public Image QRCodeImage;
+        public RawImage QRCodeImage;
         public Text QRCodeText;
 
         public Text withdrawText;
@@ -507,13 +631,14 @@ namespace USpeedUI.GamePromotion
         public Text targetHeaderLabel;
         public Text prizeHeaderLabel;
         public GameObject totalNumberGamesObj;
-        public Transform defaultPromotionPrizeItem;
-        public Transform defaultSubPrizeItem;
+        public GameObject defaultPrizeItemObj;
+        public GameObject defaultSubPrizeItemObj;
+
         private GameObject m_prizeFrameObj;
 
-        public readonly int PRIZE_LEVEL_COUNT = 5; // 推广奖励列表最大数量
+        public readonly int MAX_PRIZE_LEVEL_COUNT = 50; // 推广奖励列表最大数量
         public readonly int PRIZE_ID_COUNT = 3;    // 每一个等级下的最大奖励ID数
-        private List<DefaultPromotionPrizeItem> m_prizeList = new List<DefaultPromotionPrizeItem>();
+        private List<DefaultPromotionPrizeItem> m_prizVeiwList = new List<DefaultPromotionPrizeItem>();
 
         #endregion
 
@@ -562,72 +687,131 @@ namespace USpeedUI.GamePromotion
             return true;
         }
 
+        public void ResetView(bool isShow)
+        {
+            m_prizeFrameObj.SetActive(false);
+            if (isShow)
+            {
+                SetRecommPrizeData();
+                EntityEventHelper.Instance.SendCommand(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQ_RECOMMEND_RECORD);
+                if (gameObject.activeInHierarchy)
+                    StartCoroutine(LogicDataCenter.gamePromotionDataManager.GetInfoAndUserList());
+            }
+        }
+
         private bool InitTotalNumGamesFrame()
         {
-            totalNumberGamesObj.SetActive(false);
             m_prizeFrameObj = totalNumberGamesObj.transform.FindChild("PrizeFrame").gameObject;
             totalNumGamesIF.text = LogicDataCenter.gamePromotionDataManager.TotalNumGames.ToString();
             giftBtn.onClick.AddListener(OnGiftBtnClick);
 
-            if (!InitPrizeFrame())
-                return false;
+            defaultPrizeItemObj.SetActive(false);
+            defaultSubPrizeItemObj.SetActive(false);
+            Transform parent = defaultPrizeItemObj.transform.parent;
+            defaultPrizeItemObj.transform.SetParent(totalNumberGamesObj.transform);
+            defaultSubPrizeItemObj.transform.SetParent(totalNumberGamesObj.transform);
 
-            return true;
-        }
-
-        private bool InitPrizeFrame()
-        {
-            for (int i = 0; i < PRIZE_LEVEL_COUNT; ++i)
+            int count = RecommendPrizeConfig.Instance.ConfigList.Count;
+            count = count > MAX_PRIZE_LEVEL_COUNT ? MAX_PRIZE_LEVEL_COUNT : count;
+            for (int i = 0; i < count; ++i)
             {
-                GameObject go = Instantiate(defaultPromotionPrizeItem.gameObject);
+                GameObject go = Instantiate(defaultPrizeItemObj.gameObject);
                 if (go == null)
                 {
                     Trace.LogError("DefaultPromotionPrizeItem Instantiate failed");
                     return false;
                 }
 
-                go.transform.SetParent(defaultPromotionPrizeItem.parent, false);
+                go.transform.SetParent(parent, false);
+                go.SetActive(false);
+                Transform subParent = go.transform.FindChild("Prize/PrizeContainer");
                 DefaultPromotionPrizeItem item = go.GetComponent<DefaultPromotionPrizeItem>();
-                if (!item.Init(this))
+                if (!item.Init(this, subParent))
                     return false;
 
-                m_prizeList.Add(item);
+                m_prizVeiwList.Add(item);
             }
-
-            defaultPromotionPrizeItem.gameObject.SetActive(false);
-            defaultSubPrizeItem.gameObject.SetActive(false);
 
             return true;
         }
 
-        private void SetPrizeFrameData()
+        public void SetQRCode()
         {
-            List<SSchemeRecommendPrize> list = RecommendPrizeConfig.Instance.ConfigList;
-            int count = list.Count < m_prizeList.Count ? list.Count : m_prizeList.Count;
-            for (int i = 0; i < count; ++i)
+            QRCodeImage.texture = LogicDataCenter.gamePromotionDataManager.RecommendQRCode;
+        }
+
+        public void GainPrizeSuccess(int targetID)
+        {
+            redPointImage.gameObject.SetActive(IsHavePrize());
+            DefaultPromotionPrizeItem prize = m_prizVeiwList.Find(item => item.m_targetID == targetID);
+            prize.GainPrizeSuccess();
+        }
+
+        public void SetRecommPrizeData()
+        {
+            RecommRecord record = LogicDataCenter.gamePromotionDataManager.recommRecord;
+            if (record == null)
             {
-                m_prizeList[i].SetData(list[i].targetID, list[i].totalNumGames, list[i].prizeList);
-                m_prizeList[i].gameObject.SetActive(true);
+                Trace.Log("GamePromotion: record == null");
+                return;
             }
 
-            for (int i = count; i < m_prizeList.Count; ++i)
+            SetMyUserListData();
+
+            List<SSchemeRecommendPrize> list = RecommendPrizeConfig.Instance.ConfigList;
+            int count = list.Count < m_prizVeiwList.Count ? list.Count : m_prizVeiwList.Count;
+            bool isHavePrize = false;
+            for (int i = 0; i < count; ++i)
             {
-                m_prizeList[i].gameObject.SetActive(false);
+                m_prizVeiwList[i].SetData(list[i].targetID, list[i].totalNumGames, list[i].prizeList, ref record);
+                m_prizVeiwList[i].gameObject.SetActive(true);
             }
+            for (int i = count; i < m_prizVeiwList.Count; ++i)
+            {
+                m_prizVeiwList[i].gameObject.SetActive(false);
+            }
+
+            totalNumGamesIF.text = record.dwMatchNum.ToString();
+            redPointImage.gameObject.SetActive(IsHavePrize());
+        }
+
+        private bool IsHavePrize()
+        {
+            RecommRecord record = LogicDataCenter.gamePromotionDataManager.recommRecord;
+            if (record == null)
+            {
+                Trace.Log("GamePromotion: record == null");
+                return false;
+            }
+
+            List<SSchemeRecommendPrize> list = RecommendPrizeConfig.Instance.ConfigList;
+            int count = list.Count < m_prizVeiwList.Count ? list.Count : m_prizVeiwList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                if (record.dwMatchNum >= list[i].totalNumGames // 总局数大于等于奖励要求数
+                    && ((1 << (list[i].targetID - 1)) & record.nPrizeTaskData) == 0) // 该目标ID，在任务中的任务ID为0（还未领取）
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void OnGiftBtnClick()
         {
             if (m_prizeFrameObj != null)
                 m_prizeFrameObj.SetActive(!m_prizeFrameObj.activeSelf);
+        }
 
-            SetPrizeFrameData();
+        public void OnCloseBtnClick()
+        {
+            if (m_prizeFrameObj != null)
+                m_prizeFrameObj.SetActive(false);
         }
 
         public void InitShareRecordData()
         {
-            Debug.Log("xxxpath:" + Application.dataPath);
-
             Sprite sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_GamePromotion, shareImgName, m_masterVeiw.GetUIWnd().GetID());
             if (sprite == null)
             {
@@ -638,11 +822,18 @@ namespace USpeedUI.GamePromotion
             ShareBar.SetData(SocialSharingType.GamePromotion, sprite.texture.EncodeToPNG());
         }
 
+        public void OnWeChatBtnClick()
+        {
+            if (!ShareBar.WeChatQRFrame.gameObject.activeSelf)
+            {
+                ShareBar.WeChatQRFrame.gameObject.SetActive(true);
+                ShareBar.QRImg.texture = LogicDataCenter.gamePromotionDataManager.RecommendQRCode;
+            }
+        }
+
         public void OnWithdrawBtnClick()
         {
-            Debug.LogFormat("OnWithdrawBtnClick");
-
-            OnTaiTanLinkBtnClick();
+            OpenLink(GameWebUrl.WITHDRAW_LINK);
         }
 
         public void OnScreenshortBtnClick()
@@ -656,13 +847,11 @@ namespace USpeedUI.GamePromotion
 
         public void OnCopyBtnClick()
         {
-            Trace.LogFormat("OnCopyBtnClick");
-
             SocialSharingNode node = SchemeSocialSharing.Instance.RandomSharingNode(SocialSharingType.GamePromotion);
             string prefix = "";
             if (node != null && !string.IsNullOrEmpty(node.szTitle))
             {
-                prefix = node.szTitle + ":";
+                prefix = node.szTitle;
             }
 
             TextEditor textEditor = new TextEditor();
@@ -675,17 +864,26 @@ namespace USpeedUI.GamePromotion
 
         public void OnTaiTanLinkBtnClick()
         {
-            string mainhomeLink;
-            if (LogicDataCenter.gamePromotionDataManager.WebUrl.TryGetValue(GameWebUrl.TAITAN_MAINHOME, out mainhomeLink))
+            OpenLink(GameWebUrl.TAITAN_ACTIVITIES_LINK);
+        }
+
+        private void OpenLink(GameWebUrl urlType)
+        {
+            string promotionLink;
+            if (LogicDataCenter.gamePromotionDataManager.WebUrl.TryGetValue(urlType, out promotionLink))
             {
-                Trace.Log(string.Format("OnTaiTanLinkBtnClick{0}", mainhomeLink));
+                if (string.IsNullOrEmpty(promotionLink))
+                {
+                    Trace.LogWarning("链接是空的，请检查脚本配置[weburl.csv]");
+                    return;
+                }
                 try
                 {
-                    System.Diagnostics.Process.Start(mainhomeLink);
+                    System.Diagnostics.Process.Start(promotionLink);
                 }
                 catch (Exception e)
                 {
-                    Trace.LogError(string.Format("{0},{1}", e.Message, mainhomeLink));
+                    Trace.LogWarning(string.Format("打开链接失败：{0},{1}", e.Message, promotionLink));
                     return;
                 }
             }
@@ -743,6 +941,14 @@ namespace USpeedUI.GamePromotion
             return true;
         }
 
+        public void Update()
+        {
+            if (InputManager.Raw_GetKeyDown(FuntionShortCutCtrl.GetInstance().GetKeyCodeByIndex(FuntionShortCutSlotIndex.Exit)))
+            {
+                UISystem.Instance.ShowWnd(WndID.WND_ID_GAME_PROMOTION, false);
+            }
+        }
+
         public override GamePromotionButtonType GetButtonType()
         {
             return GamePromotionButtonType.BTN_WEBLINK;
@@ -754,14 +960,25 @@ namespace USpeedUI.GamePromotion
                 m_canvGroup.alpha = bShow ? 1 : 0;
 
             base.ShowFrameView(true);
+
+            InputManager.Available = !bShow;
         }
 
         public void RefreshBrowser(bool bVisible)
         {
             if (bVisible)
+            {
                 LoadWebBrowser();
+                if(m_canvGroup != null && m_canvGroup.alpha == 1)
+                    InputManager.Available = false;
+            }
             else
+            {
                 UnloadWebBrowser();
+                InputManager.Available = true;
+
+                m_reqUrlList.Clear();
+            }
         }
 
         public void OnDestroy()
@@ -846,6 +1063,8 @@ namespace USpeedUI.GamePromotion
             m_browserInstance.Height = (int)WebBrowserSize.y;
             m_browserInstance.InitialURL = m_curUrl == "" ? WebBrowserUrl : m_curUrl;
             m_browserInstance.GetRectTransform.SetParent(WebBrowserContainer, false);
+
+            m_reqUrlList.AddLast(m_browserInstance.InitialURL);
 
             m_browserInstance.OnPageLoadedEvent.RemoveListener(OnPageLoadedEvent);
             m_browserInstance.OnPageLoadedEvent.AddListener(OnPageLoadedEvent);

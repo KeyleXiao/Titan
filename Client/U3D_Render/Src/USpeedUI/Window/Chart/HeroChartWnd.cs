@@ -518,9 +518,9 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             winRate.text = "";
-            sexIcon.gameObject.SetActive(false);
             rankIcon.gameObject.SetActive(false);
             rank.text = "";
             detailData.text = "";
@@ -536,6 +536,9 @@ namespace USpeedUI.Chart
             index.text = info.nOrderID.ToString();
 
             playerName.text = info.szName;
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             winRate.text = Math.Round((float)info.nWinMatch / (float)info.nTotalMatch * 100, 1).ToString() + "%";
 
@@ -625,6 +628,7 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             heroName.text = "";
             starIcon.sprite = USpriteManager.Instance.DefaultSprite;
@@ -633,7 +637,6 @@ namespace USpeedUI.Chart
             score.text = "";
             chanceOfWin.text = "";
             clanName.text = "";
-            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();
@@ -653,6 +656,9 @@ namespace USpeedUI.Chart
             starName.text = info.szStarDesc;
             starLv.text = info.nHeroStar.ToString();
             score.text = info.nHeroScore.ToString();
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             chanceOfWin.text = Math.Round((float)info.dwWinNum / (float)info.dwMatchNum * 100, 1).ToString() + "%";
             clanName.text = info.szClanName.ToString();

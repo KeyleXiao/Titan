@@ -24,8 +24,6 @@ public:
 
 	// 初始化列表头
 	void InitColumns(int nListType=0);
-
-	void ShowListInfo(int nListType=0);
 	// 服务器列表
 	CListCtrl m_InfoList;
 

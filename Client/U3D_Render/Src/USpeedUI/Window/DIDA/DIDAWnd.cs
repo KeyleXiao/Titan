@@ -129,6 +129,7 @@ namespace USpeedUI.DIDA
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_BATTLESTATE_ENTER, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_BATTLESTATE_LEAVE, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_DIDA_UPDATE, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_DIDA_UPDATE_LAYER, this);
             return true;
         }
 
@@ -143,6 +144,7 @@ namespace USpeedUI.DIDA
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_BATTLESTATE_ENTER, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_BATTLESTATE_LEAVE, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_DIDA_UPDATE, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_DIDA_UPDATE_LAYER, this);
         }
 
         // 接受消息
@@ -181,6 +183,14 @@ namespace USpeedUI.DIDA
                     {
                         if (m_wndView != null)
                             m_wndView.RefreshList(msgData as DIDARefreshData);
+                    }
+                    break;
+                case WndMsgID.WND_MSG_DIDA_UPDATE_LAYER:
+                    {
+                        if(m_wndView != null && msgData != null)
+                        {
+                            UISystem.Instance.AddView(m_wndView, (msgData as UIMsgCmdData).nParam > 0 ? WndLayerDef.WND_LAYER_POPUP02 : WndLayerDef.WND_LAYER_FIXED);
+                        }
                     }
                     break;
                 default:

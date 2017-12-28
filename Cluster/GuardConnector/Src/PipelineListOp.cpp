@@ -79,7 +79,7 @@ bool CPipelineListOp::lRangeString(const string& strKey, long nStart, long nStop
 	return m_redis.Lrange(strKey, nStart, nStop, pvecValue, m_pPipeline) == RC_SUCCESS;
 }
 
-bool CPipelineListOp::lIndex(const string& strKey, long nIndex, string* pstrValue)
+bool CPipelineListOp::lIndexString(const string& strKey, long nIndex, string* pstrValue)
 {
 	if (pstrValue == nullptr)
 		return false;

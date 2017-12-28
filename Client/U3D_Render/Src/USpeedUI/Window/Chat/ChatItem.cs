@@ -2509,7 +2509,12 @@ namespace USpeedUI.Chat
             animKey = data.param["animkey"];
 
             if (data.param.ContainsKey("id"))
-                emotionID = Convert.ToInt32(data.param["id"]);
+            {
+                if(int.TryParse(data.param["id"], out emotionID) == false)
+                {
+                    return false;
+                }
+            }
 
             if (emotionID > 0)
             {

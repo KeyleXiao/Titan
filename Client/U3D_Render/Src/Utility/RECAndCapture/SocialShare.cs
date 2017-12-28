@@ -40,7 +40,7 @@ namespace SocialSharing
     public class SocialShare : MonoBehaviour
     {
         private bool bUploadFinish = true;
-        private const string defaultWebUrl = "http://tt.q1.com";
+        private const string defaultWebUrl = "http://tg.q1.com/tt/";
 
         private uint checkPoint;
 
@@ -193,14 +193,13 @@ namespace SocialSharing
 
             szWebUrl = DataCenter.LogicDataCenter.gamePromotionDataManager.ShareURL;
 
-            if (szWebUrl == "")
+            if (string.IsNullOrEmpty(szWebUrl))
                 szWebUrl = defaultWebUrl;
 
             uint promotionID = GameLogicAPI.getPlayerUserID(EntityFactory.MainHeroID);
 
             if(promotionID > 0)
             {
-                szWebUrl += "/";
                 szWebUrl += promotionID;
             }
 

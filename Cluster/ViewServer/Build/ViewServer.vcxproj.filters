@@ -52,14 +52,20 @@
     <Filter Include="Common File\Redis">
       <UniqueIdentifier>{14394876-5324-4b35-a784-5a38efcd3beb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Replay\Task">
+      <UniqueIdentifier>{4e5d34e5-726f-4b4c-971c-4e00c1a27789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Replay\Interface">
+      <UniqueIdentifier>{d5524667-8a99-4b58-94f7-adf3e7128f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Replay\Thread">
+      <UniqueIdentifier>{b44bf784-4a6b-4fb8-aff5-c9f2b4f8b95c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Client">
+      <UniqueIdentifier>{a1e0a307-95b4-495e-907c-267a8ae54ff9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\ClientList.h">
-      <Filter>View</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\ClientUser.h">
-      <Filter>View</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\stdafx.h">
       <Filter>View</Filter>
     </ClInclude>
@@ -174,14 +180,44 @@
     <ClInclude Include="..\..\..\Common\ViewRedisKey.h">
       <Filter>Common File\Redis</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Common\ViewRedisData.h">
+      <Filter>Common File\Redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\ICallback.h">
+      <Filter>Common File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoadPrepInfoTask.h">
+      <Filter>Replay\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LoadBattleInfoTask.h">
+      <Filter>Replay\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IRunnableCallback.h">
+      <Filter>Replay\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\RedisThread.h">
+      <Filter>Replay\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IReplayRunnable.h">
+      <Filter>Replay\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientUser.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ClientList.h">
+      <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TimeSyncService.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ViewNode.h">
+      <Filter>Replay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ITimeSyncService.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Src\ClientList.cpp">
-      <Filter>View</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\ClientUser.cpp">
-      <Filter>View</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\stdafx.cpp">
       <Filter>View</Filter>
     </ClCompile>
@@ -238,6 +274,24 @@
     </ClCompile>
     <ClCompile Include="..\Src\Replay.cpp">
       <Filter>Replay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\RedisThread.cpp">
+      <Filter>Replay\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoadBattleInfoTask.cpp">
+      <Filter>Replay\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientUser.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ClientList.cpp">
+      <Filter>Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TimeSyncService.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\LoadPrepInfoTask.cpp">
+      <Filter>Replay\Task</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

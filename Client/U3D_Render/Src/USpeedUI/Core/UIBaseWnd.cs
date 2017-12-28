@@ -309,7 +309,7 @@ namespace USpeedUI
                 cacheMsg.msgID = (int)msgID;
                 cacheMsg.msgData = msgData;
 
-                Debug.Log("增加缓存消息," + msgID);
+                Debug.Log("增加缓存消息," + GetID() + "," + msgID);
                 m_CacheUIMsgList.Add(cacheMsg);
             }
         }
@@ -326,9 +326,9 @@ namespace USpeedUI
             {
                 WndMsgID msgid = (WndMsgID)item.msgID;
 
-                Debug.Log("执行缓存消息," + msgid);
+                Debug.Log("执行缓存消息," + GetID() + "," + msgid);
 
-                if(curWndMsgID == msgid)
+                if (curWndMsgID == msgid)
                 {
                     continue;
                 }

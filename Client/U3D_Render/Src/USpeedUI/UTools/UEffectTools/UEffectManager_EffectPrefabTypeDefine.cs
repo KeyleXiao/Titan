@@ -146,6 +146,13 @@ namespace USpeedUI.UEffect
         UEPT_WarMain_RankEffect5,
         UEPT_WarMain_RankEffect6,
 
+        UEPT_WarMain_ItemMachine,
+        UEPT_WarMain_ItemRank,
+        UEPT_WarMain_ItemCustome,
+        UEPT_WarMain_ItemSurvive,
+
+        UEPT_WarMain_ItemEnter,
+
 
         // 解锁效果
         UEPT_Unlock_Actor_CurLevelUnlock,
@@ -273,6 +280,11 @@ namespace USpeedUI.UEffect
                 { UEffectPrefabType.UEPT_WarMain_RankEffect4,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainFrame_ListWarMainMode_RankIcon04") },
                 { UEffectPrefabType.UEPT_WarMain_RankEffect5,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainFrame_ListWarMainMode_RankIcon05") },
                 { UEffectPrefabType.UEPT_WarMain_RankEffect6,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainFrame_ListWarMainMode_RankIcon06") },
+                { UEffectPrefabType.UEPT_WarMain_ItemMachine,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainModeFrame_Machine") },
+                { UEffectPrefabType.UEPT_WarMain_ItemRank,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainModeFrame_Rank") },
+                { UEffectPrefabType.UEPT_WarMain_ItemCustome,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainModeFrame_Custome") },
+                { UEffectPrefabType.UEPT_WarMain_ItemSurvive,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainModeFrame_Survive") },
+                { UEffectPrefabType.UEPT_WarMain_ItemEnter,new UEffectDataParam(UPath.UStaticState + "/ef_UI_WarMainFrame_ListWarMainMode_KaiZhanYinDaoXuanZhong") },
 
                 { UEffectPrefabType.UEPT_CreateHeroView_BtnConfirm_Up,new UEffectDataParam(UPath.UStaticState + "/ef_UI_CreateHeroView_SubFrame01_BtnConfine_Up") },
                 { UEffectPrefabType.UEPT_CreateHeroView_BtnConfirm_Over,new UEffectDataParam(UPath.UStaticState + "/ef_UI_CreateHeroView_SubFrame01_BtnConfine_Over") },
@@ -346,7 +358,8 @@ namespace USpeedUI.UEffect
                 { UEffectPrefabType.UEPT_TaskMain_TaskTemplate,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskMainView_TaskTemplate_renwu") },
                 { UEffectPrefabType.UEPT_TaskPublish_Send,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskPublishView_fasong") },
                 { UEffectPrefabType.UEPT_TaskUnfold_Delete,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskUnfoldView_delete") },
-                { UEffectPrefabType.UEPT_TaskUnfold_Finish,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskUnfoldView_FinishRT_finish") },
+                //{ UEffectPrefabType.UEPT_TaskUnfold_Finish,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskUnfoldView_FinishRT_finish") },
+                { UEffectPrefabType.UEPT_TaskUnfold_Finish,new UEffectDataParam(UPath.UStaticState + "/ef_TaskUnfoldView_PrizePopupGo_List_sousuojiangli01") },
                 { UEffectPrefabType.UEPT_TaskUnfold_Search,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskMainView_BgAttachPoint_saomiao") },
                 { UEffectPrefabType.UEPT_TaskMain_FinishState,new UEffectDataParam(UPath.UStaticState + "/ef_UI_TaskMainView_TaskIcon_wancheng") },
            

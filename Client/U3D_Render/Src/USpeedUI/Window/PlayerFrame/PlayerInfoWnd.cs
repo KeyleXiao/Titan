@@ -296,7 +296,17 @@ namespace USpeedUI.PlayerFrame
 
         public void setPlayerInfo(cmd_player_info_return cmdPlayerInfo)
         {
-            playerHead.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_PLAYERFRAME, 2, 1);
+            int nSex = cmdPlayerInfo.nSex;
+            if (nSex < (int)PERSON_SEX.SEX_MAX && nSex >= (int)PERSON_SEX.SEX_MALE)
+            {
+                playerHead.gameObject.SetActive(true);
+                playerHead.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_PLAYERFRAME, 2, nSex + 1);
+            }
+            else
+            {
+                playerHead.gameObject.SetActive(false);
+            }
+
             playerName.text = cmdPlayerInfo.chPlayerName;
             kinName.text = cmdPlayerInfo.chKinName;
             clanName.text = cmdPlayerInfo.chClanName;

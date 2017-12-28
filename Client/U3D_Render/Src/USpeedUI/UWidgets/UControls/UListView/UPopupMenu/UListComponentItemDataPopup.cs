@@ -625,11 +625,14 @@ namespace USpeedUI.UWidgets
             msgData.onClickDelegate = (text)=>{
                 string remark = text;
                 if (remark.Length >= 10)
+                {
+                    UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_CUSTOMER_TIP, "名称需要小于10个字");
                     return;
+                }
 
                 if (m_dwUserID <= 0)
                     return;
-                LogicDataCenter.snsDataManager.reqChangeBuddyName(m_dwUserID, m_ActorName, remark);
+                LogicDataCenter.snsDataManager.reqChangeBuddyRemark(m_dwUserID, m_ActorName, remark);
             };
 
             UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_SHOW_INPUTDIALOG, msgData);
@@ -799,7 +802,10 @@ namespace USpeedUI.UWidgets
             {
                 string newName = text;
                 if (newName.Length <= 0 || newName.Length >= 10)
+                {
+                    UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_CUSTOMER_TIP, "名称不能为空且小于10个字");
                     return;
+                }
 
                 if (m_dwBuddyGroupID <= 0)
                     return;
@@ -835,6 +841,8 @@ namespace USpeedUI.UWidgets
             LogicDataCenter.snsDataManager.reqDelBuddyGroup(m_dwBuddyGroupID);
         }
     }
+    
+    // 传送
     public class UPopupItemDataTransmitTo : UListComponentItemDataPopup
     {
         private int m_nWorldID = 0;
@@ -875,6 +883,32 @@ namespace USpeedUI.UWidgets
         }
     }
 
+    // 请求加入好友的战队
+    public class UPopupItemDataRequestJoinBuddyKin: UListComponentItemDataPopup
+    {
+        private int m_nPdbid;
+
+        // 弹出菜单元素数据内容
+        public UPopupItemDataRequestJoinBuddyKin(int nPdbid, UnityAction _actionClearPopupMenu = null, string _strItemTypeName = "", int _nGroupID = 0,
+                                            Sprite _sprItemPopup = null, int _nDepth = 0)
+
+            : base(null, _actionClearPopupMenu, _strItemTypeName, _nGroupID, _sprItemPopup, _nDepth)
+        {
+            m_nPdbid = nPdbid;
+            ItemSelectedAction = OnCallBack;
+        }
+
+        static public String GetDescString()
+        {
+            return ULocalizationService.Instance.Get("UIView", "PopupMenu", "KinRequest");
+        }
+
+        private void OnCallBack()
+        {
+            // 申请加入好友的战队功能
+            LogicDataCenter.snsDataManager.reqJoinBuddyKin(m_nPdbid);
+        }
+    }
 
     // 解散师徒
     public class UPopupItemDataDismissMentorship : UListComponentItemDataPopup

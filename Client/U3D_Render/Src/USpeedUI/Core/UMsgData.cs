@@ -658,6 +658,12 @@ namespace USpeedUI
         public int dwUserID;
     }
 
+    // WND_MSG_SNS_DELETE_SESSION  删除会话
+    public class SNSDeleteSessionMsgData : UIMsgData
+    {
+        public int dwUserID;
+    }
+
     // WND_MSG_SNS_START 结束
 
     //WndMsgID.WND_MSG_FULLSCREEN_CHANGEIMAGE 全屏背景图片切换
@@ -1113,12 +1119,12 @@ namespace USpeedUI
     }
 
 
-    public class UPromotionWebUrl : UIMsgData
+    public class UWebUrlData : UIMsgData
     {
         public int nNavID;
         public string szWebUrl;
 
-        public UPromotionWebUrl(int _navID, string _webUrl)
+        public UWebUrlData(int _navID, string _webUrl)
         {
             nNavID = _navID;
             szWebUrl = _webUrl;
@@ -1138,5 +1144,10 @@ namespace USpeedUI
         {
             unlockEmotionGroup = _group;
         }
+    }
+
+    public class USendChatMessage: UIMsgData
+    {
+        public string chatMsg;
     }
 }

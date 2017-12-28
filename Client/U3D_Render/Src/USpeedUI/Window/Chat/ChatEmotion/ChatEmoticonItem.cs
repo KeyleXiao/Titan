@@ -141,12 +141,10 @@ namespace USpeedUI.Chat
             emotionObj.param.Add("type", ((int)emotionType).ToString());
             emotionObj.param.Add("serialid", serialID.ToString());
             emotionObj.param.Add("animkey", emotionKey);
-            ChatBoxAddInputFieldItemData uiData = new ChatBoxAddInputFieldItemData();
-            uiData.msgID = (int)WndMsgID.WND_MSG_CHATBOX_INPUTFIELDADDITEM;
-            uiData.objInfo = emotionObj;
-            uiData.bActiveInputField = false;
-            uiData.bAutoSend = true;
-            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBOX_INPUTFIELDADDITEM, uiData);
+
+            USendChatMessage uiData = new USendChatMessage();
+            uiData.chatMsg = emotionObj.ToString();
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBOX_SENDCHATMESSAGE, uiData);
         }
     }
 

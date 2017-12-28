@@ -17,15 +17,11 @@
 //#define ENTITY_MSG_CACHE_PRINT
 
 CEntityMessageCache::CEntityMessageCache()
-	:m_isInit(false)
 {
 }
 
 CEntityMessageCache::~CEntityMessageCache()
 {
-	if (m_isInit)
-		return;
-
 	ENTITYMSGCACHEMAP_ITER iterMap = m_EntityMsgCacheList.begin();
 	for (; iterMap != m_EntityMsgCacheList.end(); ++iterMap)
 	{
@@ -40,19 +36,12 @@ bool CEntityMessageCache::Init()
 {
 	gClientGlobal->getTimerAxis()->SetTimer(TIMERID_CLEAR_CACHE_MSG, TIMER_INTERNAL_CLEAR_CACHE_MSG, static_cast<ITimerHandler*>(this));
 
-	m_isInit = true;
-
 	return true;
 }
 
 void CEntityMessageCache::UnInit()
 {
-	if (!m_isInit)
-		return;
-
 	gClientGlobal->getTimerAxis()->KillTimer(TIMERID_CLEAR_CACHE_MSG, static_cast<ITimerHandler*>(this));
-
-	m_isInit = false;
 }
 
 void CEntityMessageCache::AddEntityMessage(SNetMsgHead * head, SMsgEntityHead * entityHead, char * data, size_t len)

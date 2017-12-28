@@ -613,7 +613,7 @@ void CViewServerDlg::UpdateTotalInfo()
 
 	// 服务务器更新和相关处理
 	//m_VoiceGateway.m_TotalInfo.dwServers	= 0;		// 在线服务器数
-	m_VoiceGateway.m_TotalInfo.dwClients = CClientList::getInstance().CountUser();	// 客户端数
+	m_VoiceGateway.m_TotalInfo.dwClients = 0;	// 客户端数	TODO
 	m_VoiceGateway.m_TotalInfo.dwVoiceClients	= 0;	// 在线客户端数
 
 	DWORD dwMaxUserCounts = gSetting.m_dwMaxConnection;	// 最大连接数

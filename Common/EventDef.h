@@ -271,7 +271,7 @@ struct event_entity_attack_ex  : public event_base
 };
 
 
-// 受到伤害						EVENT_ENTITY_DAMAGE
+// 受到伤害						EVENT_ENTITY_DAMAGE，EVENT_ENTITY_TARGET_DAMAGE_RESULT
 struct event_entity_damage : public event_base
 {
 	int			nID;				// 技能ID
@@ -287,6 +287,7 @@ struct event_entity_damage : public event_base
 	int			nInitialDamageHP;	// 初始伤害,未经过效果改变的伤害值
     int         nAttackResultType;  // 攻击结果
     bool		bRebound;			// 是否反弹伤害
+    int         nUseFlag;           // 用途标识
 
 	event_entity_damage() { memset(this, 0, sizeof(*this)); }
 };

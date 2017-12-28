@@ -25,6 +25,8 @@ public:
 
 	virtual std::string ToString();
 
+	virtual	void		UnHandled(LPVOID pData, DWORD dwDataLen);
+
 	// 保存Mac地址，虽然暂时不知道有什么用
 	void SetMacAddress(char szMacAddress[]);
 

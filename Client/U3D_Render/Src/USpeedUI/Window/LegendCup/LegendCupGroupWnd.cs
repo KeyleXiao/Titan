@@ -11,6 +11,7 @@ using UIWidgets;
 using UnityEngine;
 using USpeedUI.UEffect;
 using LegendCup_ManagedDef;
+using DG.Tweening;
 
 namespace USpeedUI.LegendCup
 {
@@ -144,6 +145,8 @@ namespace USpeedUI.LegendCup
         public GameObject AttachPoint2;
         private UEffectParamBase param1;
         private UEffectParamBase param2;
+        public Image CatchBtnEffect;
+        private Sequence CatchBtnEffectSequence;
 
         public override bool Init(IUIWnd wnd)
         {
@@ -179,12 +182,14 @@ namespace USpeedUI.LegendCup
             if (param1 != null)
             {
                 UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param1);
+                param1 = null;
             }
             param1 = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_LegendCupListView_ConfineFrame_beisai01, _tfAttachParent: AttachPoint1.transform, _bAutoDestroy: false);
             UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref param1);
             if (param2 != null)
             {
                 UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param2);
+                param2 = null;
             }
             param2 = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_LegendCupListView_ConfineFrame_beisai02, _tfAttachParent: AttachPoint2.transform, _bAutoDestroy: false);
             UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref param2);
@@ -195,7 +200,7 @@ namespace USpeedUI.LegendCup
         public void OnShowGroupWnd(long nCupID)
         {
             m_LegendCupID = nCupID;
-            SingleCompetitionInfo competitionInfo = LogicDataCenter.legendCupDataManager.GetSingleCompetitionInfo();
+            SingleCompetitionInfo competitionInfo = LogicDataCenter.legendCupDataManager.GetSingleCompetitionInfo(m_LegendCupID);
             if (competitionInfo == null)
                 return;
             cmd_legendcup_recv_cuplist_node cupBaseData = LogicDataCenter.legendCupDataManager.GetSingleLegendCupNode(m_LegendCupID);
@@ -251,7 +256,7 @@ namespace USpeedUI.LegendCup
             LegendCupGroupList.OnSelect.AddListener(OnSelectCupGroupItem);
             LegendCupGroupList.onDoubleClick.AddListener(OnDoubleClickGroupItem);
 
-            // 参赛按钮及状态
+            // 状态
             string strMonth = ULocalizationService.Instance.Get("UIView", "LegendCupSmallKnockout", "Month");
             string strDay = ULocalizationService.Instance.Get("UIView", "LegendCupSmallKnockout", "Day");
             int nRoundEndTime = 0;
@@ -263,28 +268,55 @@ namespace USpeedUI.LegendCup
             roundEndTime = roundEndTime.ToLocalTime();
             RoundTimeDesc.text = String.Format("{0}:{1}{2}{3}{4}{5:D2}:{6:D2}", ULocalizationService.Instance.Get("UIView", "LegendCupGroup", "GroupEndTime"), roundEndTime.Month, strMonth, roundEndTime.Day, strDay, roundEndTime.Hour, roundEndTime.Minute);
             
-            GotoBtn.interactable = false;
-            GotoBtnDes.color = UDefines.CommomColor(ECommonColor.ECC_Gray);
-
-            foreach (var item in competitionInfo.nodeInfo)
+            foreach (var item1 in competitionInfo.nodeInfo)
             {
-                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item.nKin2ID))
+                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item1.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item1.nKin2ID))
                 {
-                    if (item.byCompetitionNodeState <= (int)ECompetitionNodeState.emNodeState_Competition)//进行中
+                    if (item1.byCompetitionNodeState <= (int)ECompetitionNodeState.emNodeState_Competition)//进行中
                     {
-                        DateTime enterTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(item.nEnterTime);
+                        DateTime enterTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(item1.nEnterTime);
                         enterTime = enterTime.ToLocalTime();
-                        DateTime beginTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(item.nBeginTime);
+                        DateTime beginTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(item1.nBeginTime);
                         beginTime = beginTime.ToLocalTime();
                         RoundTimeDesc.text = ULocalizationService.Instance.Get("UIView", "LegendCupSmallKnockout", "YourNextCup") +
                             enterTime.Month + strMonth + enterTime.Day + strDay +
                             String.Format("{0:D2}:{1:D2} - {2:D2}:{3:D2}", enterTime.Hour, enterTime.Minute, beginTime.Hour, beginTime.Minute);
+                        break;
                     }
-                    if (item.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter)
+                }
+            }
+
+            // 按钮
+            GotoBtn.interactable = false;
+            GotoBtnDes.color = UDefines.CommomColor(ECommonColor.ECC_Gray);
+
+            CatchBtnEffect.color = Color.clear;
+            if (CatchBtnEffectSequence != null)
+                CatchBtnEffectSequence.Kill(true);
+
+            foreach (var item2 in competitionInfo.nodeInfo)
+            {
+                if (LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item2.nKin1ID) || LogicDataCenter.legendCupDataManager.CheckIsSelfInCompetitionMember(item2.nKin2ID))
+                {
+                    if (item2.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_CanEnter)
                     {
                         GotoBtn.interactable = true;
                         GotoBtnDes.color = UDefines.CommomColor(ECommonColor.ECC_White);
-                        m_GotoSearchID = item.nSearchID;
+                        m_GotoSearchID = item2.nSearchID;
+
+                        Color baseColor = Color.white;
+                        baseColor.a = 0f;
+                        CatchBtnEffect.color = baseColor;
+                        CatchBtnEffectSequence = DOTween.Sequence();
+                        CatchBtnEffectSequence.Append(DOTween.ToAlpha(() => CatchBtnEffect.color, x => CatchBtnEffect.color = x, 1f, 0.5f));
+                        CatchBtnEffectSequence.Append(DOTween.ToAlpha(() => CatchBtnEffect.color, x => CatchBtnEffect.color = x, 0f, 0.5f).SetDelay(0.2f));
+                        CatchBtnEffectSequence.SetLoops(-1, LoopType.Restart);
+                        CatchBtnEffectSequence.OnKill(() => CatchBtnEffectSequence = null);
+
+                        DateTime beginTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(item2.nBeginTime);
+                        beginTime = beginTime.ToLocalTime();
+                        RoundTimeDesc.text = String.Format(ULocalizationService.Instance.Get("UIView", "LegendCupSmallKnockout", "NodeCanEnter"), beginTime.Hour, beginTime.Minute);
+
                         break;
                     }
                 }
@@ -436,11 +468,17 @@ namespace USpeedUI.LegendCup
             if (param1 != null)
             {
                 UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param1);
+                param1 = null;
             }
             if (param2 != null)
             {
                 UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param2);
+                param2 = null;
             }
+
+            CatchBtnEffect.color = Color.clear;
+            if (CatchBtnEffectSequence != null)
+                CatchBtnEffectSequence.Kill(true);
 
             m_wnd.UnloadView();
         }

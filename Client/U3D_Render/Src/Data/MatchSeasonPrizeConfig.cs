@@ -62,7 +62,7 @@ namespace ASpeedGame.Data.MatchSeasonPrizeConfig
                     node.arrNormalPrize = new int[strNormalPrizeList.Length];
                     for (int j = 0; j < strNormalPrizeList.Length; j++)
                     {
-                        node.arrNormalPrize[j] = Convert.ToInt32(strNormalPrizeList[j]);
+                        Int32.TryParse(strNormalPrizeList[j], out node.arrNormalPrize[j]);
                     }
                 }
 
@@ -72,7 +72,7 @@ namespace ASpeedGame.Data.MatchSeasonPrizeConfig
                     node.arrExtraCondition = new int[strExtraConditionList.Length];
                     for (int j = 0; j < strExtraConditionList.Length; j++)
                     {
-                        node.arrExtraCondition[j] = Convert.ToInt32(strExtraConditionList[j]);
+                        Int32.TryParse(strExtraConditionList[j], out node.arrExtraCondition[j]);
                     }
                 }
 
@@ -82,7 +82,7 @@ namespace ASpeedGame.Data.MatchSeasonPrizeConfig
                     node.arrExtraPrize = new int[strExtraPrizeList.Length];
                     for (int j = 0; j < strExtraPrizeList.Length; j++)
                     {
-                        node.arrExtraPrize[j] = Convert.ToInt32(strExtraPrizeList[j]);
+                        Int32.TryParse(strExtraPrizeList[j], out node.arrExtraPrize[j]);
                     }
                 }
 

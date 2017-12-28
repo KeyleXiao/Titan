@@ -127,18 +127,22 @@ public partial class ImageSetting : MonoBehaviour
         switch (currData.currSceneRenderingQuality)
         {
             case SceneRenderingQuality.Fastest:
+                SceneResInfoManager.CurrentActiveInstance.ApplyCameraHDR_Fastest();
                 SceneResInfoManager.CurrentActiveInstance.ApplyRenderingPath(RenderingPath.Forward);
                 ImageEffects.ImageEffectManager.API_ImageQuality_Fastest();
                 break;
             case SceneRenderingQuality.Good:
+                SceneResInfoManager.CurrentActiveInstance.ApplyCameraHDR_Good();
                 SceneResInfoManager.CurrentActiveInstance.ApplyRenderingPath(RenderingPath.Forward);
                 ImageEffects.ImageEffectManager.API_ImageQuality_Good();
                 break;
             case SceneRenderingQuality.High:
+                SceneResInfoManager.CurrentActiveInstance.ApplyCameraHDR_High();
                 SceneResInfoManager.CurrentActiveInstance.ApplyRenderingPath(SceneResInfoManager.CurrentActiveInstance.OrginalRenderPath);
                 ImageEffects.ImageEffectManager.API_ImageQuality_High();
                 break;
             case SceneRenderingQuality.Best:
+                SceneResInfoManager.CurrentActiveInstance.ApplyCameraHDR_Best();
                 SceneResInfoManager.CurrentActiveInstance.ApplyRenderingPath(SceneResInfoManager.CurrentActiveInstance.OrginalRenderPath);
                 ImageEffects.ImageEffectManager.API_ImageQuality_Best();
                 break;

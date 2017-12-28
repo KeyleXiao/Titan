@@ -20,7 +20,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
         public virtual void SetData(UListItemMyUser item)
         {
             accountText.text = item.data.UserName;
-            totalPayText.text = item.data.TotalPay;
+            totalPayText.text = item.data.MatchNum;// 消费金额替换为总局数
             totalExchangeText.text = item.data.TotalExchange;
             createDatetimeText.text = item.data.CreateDatetime;
         }

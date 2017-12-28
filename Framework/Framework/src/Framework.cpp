@@ -355,8 +355,26 @@ bool Framework::isMulitThreadMode()
     return m_isMulitThreadMode;
 }
 
+// 当前服务休眠
+void Framework::current_service_sleep()
+{
+	RUNNING_CONTEXT* pRunning = WorkThreadScheduler::getInstance().get_running();
+	SERVICE_PTR pContainer = Framework::getInstance().get_service_manager()->get_service(pRunning->call_service);
+	if(pContainer != 0)
+	{
+		pContainer->yield(false);
+	}else
+	{
+		Sleep(1);
+	}
+}
 
 extern "C" __declspec(dllexport) IFramework * GetFramework()
 {
 	return &Framework::getInstance();
+}
+
+extern "C" __declspec(dllexport)  void framework_sleep()
+{
+    Framework::getInstance().current_service_sleep();
 }

@@ -106,6 +106,9 @@ struct IFramework
 
     // 是否多线程模式开启service
     virtual bool isMulitThreadMode() = 0;
+
+	// 当前服务休眠
+	virtual void current_service_sleep() = 0;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,8 +116,12 @@ struct IFramework
 #	pragma comment(lib, MAKE_LIB_NAME(framework))
 extern "C" IFramework * GetFramework();
 #	define	GetFrameworkProc	GetFramework
+
+extern "C" IFramework * framework_sleep();
+#	define	Framework_Sleep	framework_sleep
 #else													/// 动态库版本
 typedef IFramework * (RKT_CDECL * procGetFramework)();
 #	define	GetFrameworkProc	DllApi<procGetFramework>::load(MAKE_DLL_LIB_NAME_BY_ARCH(framework), "GetFramework")
+#	define	Framework_Sleep 	DllApi<procGetFramework>::load(MAKE_DLL_LIB_NAME_BY_ARCH(framework), "Framework_Sleep")
 #endif
 

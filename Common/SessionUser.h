@@ -73,6 +73,9 @@ public:
 
 	void			Release();
 
+	// 处理未注册的消息（比如要转发的消息）。如有必要，欢迎override
+	virtual	void	UnHandled(LPVOID pData, DWORD dwDataLen);
+
 	// 发送消息，简化版
 	template<typename TMsg>
 	bool			SendMsg(TMsg& msg)
@@ -99,6 +102,8 @@ public:
 		return true;
 	}
 
+	bool SendData(const char * pData, size_t dwDataLen);
+
 	const char*		GetRemoteIP() { return m_szRemoteIP.c_str(); }
 	DWORD			GetRemotePort() { return m_dwRemotePort; }
 
@@ -121,7 +126,6 @@ protected:
 private:
 	void OnSendData(DWORD dwDataLen) { if (m_pByteRecord)	m_pByteRecord->OnSendData(dwDataLen); }
 	void OnRecvData(DWORD dwDataLen) { if (m_pByteRecord)	m_pByteRecord->OnRecvData(dwDataLen); }
-	bool SendData(const char * pData, size_t dwDataLen);
 
 protected:
 	IConnection	*		m_pConnection;		// 服务器与网关之间的连接
@@ -138,13 +142,13 @@ protected:
 };
 
 template<class TYPE>
-bool SessionUser<TYPE>::SendData(const char * pData, size_t dwDataLen)
+bool SessionUser<TYPE>::SendData(const char * pData, size_t dataLen)
 {
 	Assert(m_pConnection);
 	if (!m_pConnection) { return false; }
 
-	DWORD length = (DWORD)dwDataLen;
-	Assert(length == dwDataLen);
+	DWORD length = (DWORD)dataLen;
+	Assert(length == dataLen);
 	OnSendData(length);
 
 	return m_pConnection->SendData(pData, length);
@@ -168,6 +172,17 @@ void SessionUser<TYPE>::Release()
 		m_pConnection = NULL;
 	}
 	delete this;
+}
+
+template<class TYPE>
+void SessionUser<TYPE>::UnHandled(LPVOID pData, DWORD dwDataLen)
+{
+	SGameMsgHead* head = (SGameMsgHead*)pData;
+
+	char szBuf[256];
+	sprintf(szBuf, "UnKnown msg: SrcEndPoint=%d, DestEndPoint=%d, byKeyModule=%d, byKeyAction=%d !",
+		head->SrcEndPoint, head->DestEndPoint, head->byKeyModule, head->byKeyAction);
+	ErrorLn(szBuf);
 }
 
 ////////////////////////////////IConnectionEventHandler//////////////////////////////////////////////////////

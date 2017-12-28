@@ -62,6 +62,8 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             string sTalentName = item.sTalentName;
             UBBProperty.GetInstance().getRatio(sTalentDesc);
             U3D_Render.Common.UBB.toHtml(ref sTalentDesc, UBB_FORMAT_TYPE.UGUI);
+            // 此处需要再转换一下，不然PASD标签不能正确解析
+            U3D_Render.Common.UBB.toHtml(ref sTalentDesc, UBB_FORMAT_TYPE.UGUI);
 
             U3D_Render.Common.UBB.toHtml(ref sTalentName, UBB_FORMAT_TYPE.UGUI);
 

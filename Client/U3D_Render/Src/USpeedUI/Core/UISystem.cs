@@ -928,18 +928,27 @@ namespace USpeedUI
         /// <param name="_eWndLayerNotVisible">处理层</param>
         internal void SetMutexWndVisbleAlone(IUIWndView _wndView, params WndLayerDef[] _eWndLayerNotVisible)
         {
+            if (_wndView == null)
+                return;
+
             foreach(WndLayerDef layerDef in _eWndLayerNotVisible)
             {
                 RectTransform LayerTrans = GetWndLayerTrans(layerDef);
                 if (LayerTrans != null)
                 {
-                    int count = LayerTrans.childCount;
-                    for (int i = 0; i < count; ++i)
+                    for (int i = LayerTrans.childCount - 1; i >= 0; --i)
                     {
-                        IUIWndView wndView = LayerTrans.GetChild(i).GetComponent<IUIWndView>();
-                        if (wndView != null && _wndView != null && wndView != _wndView && wndView.GetUIWnd().GetMutexLevel() > WndMutexLevelDef.WND_Mutex_None)
+                        Transform childTrans = LayerTrans.GetChild(i);
+                        if (childTrans == null)
+                            continue;
+
+                        IUIWndView wndView = childTrans.GetComponent<IUIWndView>();
+                        if (wndView == null)
+                            continue;
+
+                        if (wndView != _wndView && wndView.GetUIWnd().GetMutexLevel() > WndMutexLevelDef.WND_Mutex_None)
                         {
-                            if(_wndView.GetUIWnd().GetMutexLevel() >= wndView.GetUIWnd().GetMutexLevel())
+                            if (_wndView.GetUIWnd().GetMutexLevel() >= wndView.GetUIWnd().GetMutexLevel())
                             {
                                 if (wndView.IsVisible())
                                     wndView.GetUIWnd().SetVisible(false);

@@ -35,8 +35,13 @@ namespace USpeedUI.InvitePlayGame
         emNearbyGroup
     }
 
+    public enum ETimerID
+    {
+        ETimerID_SendInviteTimer = 0,
+    }
+
     // 邀请一起游戏玩家信息
-    public struct InvitePlayGamePlayerInfo
+    public struct InvitePlayGamePlayerInfo : IComparable
     {
         public int nUserID;     
 
@@ -53,6 +58,24 @@ namespace USpeedUI.InvitePlayGame
         public int nRankIconID;
 
         public string RankName;
+
+        // 显示排序(空闲、已邀请、游戏中)
+        public int CompareTo(object o)
+        {
+            InvitePlayGamePlayerInfo info = (InvitePlayGamePlayerInfo)o;
+            if (this.nGameState == (int)ACTOR_GAME_STATE.GAME_STATE_IDLE  && (info.nGameState != (int)ACTOR_GAME_STATE.GAME_STATE_IDLE))
+            {
+                return -1;
+            }
+            else if (this.nGameState != (int)ACTOR_GAME_STATE.GAME_STATE_IDLE  && (info.nGameState == (int)ACTOR_GAME_STATE.GAME_STATE_IDLE))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 
     [Serializable]
@@ -111,7 +134,6 @@ namespace USpeedUI.InvitePlayGame
         public bool bIsInvited;
     }
 
-
 	public class InvitePlayGameWnd : UIPopupWnd<InvitePlayGameWndView>
 	{
 		public override WndID GetID()
@@ -134,6 +156,7 @@ namespace USpeedUI.InvitePlayGame
 			m_isKeyClose = true;
 
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_LEAVE, this);
+			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER, this);
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
 			UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_SHOW_INVITE_PLAYGAME_WND, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_SNS_SHOW_INVITE_MATCH_WND, this);
@@ -145,6 +168,7 @@ namespace USpeedUI.InvitePlayGame
 		{
 			base.Destroy();
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_LEAVE, this);
+			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER, this);
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
 			UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_SHOW_INVITE_PLAYGAME_WND, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_SNS_SHOW_INVITE_MATCH_WND, this);
@@ -154,7 +178,17 @@ namespace USpeedUI.InvitePlayGame
 		{
 			switch (msgID)
 			{
-				case WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_LEAVE:
+                case WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER:
+                    {
+                        // 清空数据
+						if (m_wndView != null)
+						{
+							m_wndView.Clear();
+						}
+                    }
+                    break;
+
+                case WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_LEAVE:
 					{
 						// 进入登录界面,清理上一局数据
 						if (m_wndView != null)
@@ -170,7 +204,7 @@ namespace USpeedUI.InvitePlayGame
 						//SetVisible(true);
 					}
 					break;
-				case WndMsgID.WND_MSG_SNS_SHOW_INVITE_PLAYGAME_WND: // 显示邀请一起游戏窗口
+				case WndMsgID.WND_MSG_SNS_SHOW_INVITE_PLAYGAME_WND: // 显示邀请一起自定义游戏窗口
 					{
 						SetVisible(true);
 
@@ -180,7 +214,7 @@ namespace USpeedUI.InvitePlayGame
                         }
 					}
 					break;
-                case WndMsgID.WND_MSG_SNS_SHOW_INVITE_MATCH_WND: // 显示邀请一起游戏窗口
+                case WndMsgID.WND_MSG_SNS_SHOW_INVITE_MATCH_WND: // 显示邀请一起匹配游戏窗口
                     {
                         SetVisible(true);
 
@@ -204,8 +238,7 @@ namespace USpeedUI.InvitePlayGame
 		}
 	}
 
-
-	public class InvitePlayGameWndView : UIBaseWndView
+	public class InvitePlayGameWndView : UIBaseWndView, ITimerHanlder
     {
         public UInvitePlayGameTreeList InvitePlayGameTree;
 		public Button SearchBtn;
@@ -221,7 +254,12 @@ namespace USpeedUI.InvitePlayGame
         private Dictionary<int, bool> m_InvitedRecord = new Dictionary<int, bool>();
 
         // 上次发送联盟邀请时间
-        private float m_SendClanInviteTime = 0;
+        private float m_SendClanInviteTime = 0f;
+
+        // 上次邀请时间
+        private bool m_bCanSendInvite = true;
+        private float m_SendInviteTime = 0f;
+
         public override bool Init(IUIWnd wnd)
         {
 			base.Init(wnd);
@@ -243,7 +281,12 @@ namespace USpeedUI.InvitePlayGame
 			m_SearchText = "";
             m_InvitedRecord.Clear();
 
-            m_SendClanInviteTime = 0;
+            m_SendClanInviteTime = 0f;
+
+            m_SendInviteTime = 0f;
+            m_bCanSendInvite = true;
+
+            TimerManager.KillTimer(this, (int)ETimerID.ETimerID_SendInviteTimer);
         }
 
         public void SetInviteGameMode()
@@ -267,28 +310,97 @@ namespace USpeedUI.InvitePlayGame
 
 		public void onInviteBtnClick()
 		{
-			var items = InvitePlayGameTree.DataSource;
-			foreach(var item in items)
-			{
-				int nUserID = item.Node.Item.nUserID;
-                bool isSelected = item.Node.Item.isSelected;
-				if(isSelected && nUserID > 0)
-				{
-					int nRoomID = (int)GameLogicAPI.getCurrentRoomID();
-					LogicDataCenter.snsDataManager.reqInvitePlayGame(nRoomID, nUserID);
+            onInvite((int nUserID) =>
+            {
+                int nRoomID = (int)GameLogicAPI.getCurrentRoomID();
+                LogicDataCenter.snsDataManager.reqInvitePlayGame(nRoomID, nUserID);
+            });
+            //         // 30秒cd
+            //         if (m_bCanSendInvite == false)
+            //         {
+            //             float cdTime = Time.time - m_SendInviteTime;
+            //             UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_COMMON_OPT_CD_TIP, cdTime.ToString("F2"));
+            //             return;
+            //         }
 
-                    // 邀请记录
-                    if(!m_InvitedRecord.ContainsKey(nUserID))
-                        m_InvitedRecord.Add(nUserID, true);
-				}
-			}
+            //         m_InvitedRecord.Clear();
 
-            // 刷新界面
-            updateContent();
-		}
+            //         var items = InvitePlayGameTree.DataSource;
+            //foreach(var item in items)
+            //{
+            //	int nUserID = item.Node.Item.nUserID;
+            //             bool isSelected = item.Node.Item.isSelected;
+            //	if(isSelected && nUserID > 0)
+            //	{
+            //		int nRoomID = (int)GameLogicAPI.getCurrentRoomID();
+            //		LogicDataCenter.snsDataManager.reqInvitePlayGame(nRoomID, nUserID);
+
+            //                 // 邀请记录
+            //                 if(!m_InvitedRecord.ContainsKey(nUserID))
+            //                     m_InvitedRecord.Add(nUserID, true);
+            //	}
+            //}
+
+            //         // 刷新界面
+            //         updateContent();
+
+            //         m_SendInviteTime = Time.time;
+            //         m_bCanSendInvite = false;
+            //         TimerManager.SetTimer(this, (int)ETimerID.ETimerID_SendInviteTimer, 30);
+        }
 
         public void onInviteMatchTeamBtnClick()
         {
+            onInvite((int nUserID) =>
+            {
+                    LogicDataCenter.snsDataManager.reqInviteMatchTeam(nUserID);
+            });
+            //// 30秒cd
+            //if (m_bCanSendInvite == false)
+            //{
+            //    float cdTime = Time.time - m_SendInviteTime;
+            //    UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_COMMON_OPT_CD_TIP, cdTime.ToString("F2"));
+            //    return;
+            //}
+
+            //m_InvitedRecord.Clear();
+
+            //var items = InvitePlayGameTree.DataSource;
+            //foreach (var item in items)
+            //{
+            //    int nUserID = item.Node.Item.nUserID;
+            //    bool isSelected = item.Node.Item.isSelected;
+            //    if (isSelected && nUserID > 0)
+            //    {
+            //        LogicDataCenter.snsDataManager.reqInviteMatchTeam(nUserID);
+
+            //        // 邀请记录
+            //        if (!m_InvitedRecord.ContainsKey(nUserID))
+            //            m_InvitedRecord.Add(nUserID, true);
+            //    }
+            //}
+
+            //// 刷新界面
+            //updateContent();
+
+            //m_SendInviteTime = Time.time;
+            //m_bCanSendInvite = false;
+            //TimerManager.SetTimer(this, (int)ETimerID.ETimerID_SendInviteTimer, 30);
+        }
+
+        private void onInvite(Action<int> CallBack)
+        {
+            // 30秒cd
+            if (m_bCanSendInvite == false)
+            {
+                float cdTime = 30 - (Time.time - m_SendInviteTime);
+                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_COMMON_OPT_CD_TIP, cdTime.ToString("F2"));
+                return;
+            }
+
+
+            // 选择的邀请对象列表
+            List<int> inviteList = new List<int>();
             var items = InvitePlayGameTree.DataSource;
             foreach (var item in items)
             {
@@ -296,18 +408,37 @@ namespace USpeedUI.InvitePlayGame
                 bool isSelected = item.Node.Item.isSelected;
                 if (isSelected && nUserID > 0)
                 {
-                    LogicDataCenter.snsDataManager.reqInviteMatchTeam(nUserID);
+                    //LogicDataCenter.snsDataManager.reqInviteMatchTeam(nUserID);
+                    inviteList.Add(nUserID);
 
-                    // 邀请记录
-                    if (!m_InvitedRecord.ContainsKey(nUserID))
-                        m_InvitedRecord.Add(nUserID, true);
+
+                }
+            }
+
+            // 邀请对象为空
+            if(inviteList.Count == 0)
+            {
+                return;
+            }
+
+            foreach (int nUserID in inviteList)
+            {
+                CallBack(nUserID);
+
+                // 邀请记录
+                if (!m_InvitedRecord.ContainsKey(nUserID))
+                {
+                    m_InvitedRecord.Add(nUserID, true);
                 }
             }
 
             // 刷新界面
             updateContent();
-        }
 
+            m_SendInviteTime = Time.time;
+            m_bCanSendInvite = false;
+            TimerManager.SetTimer(this, (int)ETimerID.ETimerID_SendInviteTimer, 30);
+        }
         public void onInviteClanMemberClick()
         {
             // 30秒cd
@@ -411,6 +542,7 @@ namespace USpeedUI.InvitePlayGame
         public void setInvitePlayGameTreeViewDataSource()
         {
             var nodes = new ObservableList<TreeNode<UInvitePlayGameTreeItemData>>();
+
             List2Tree(nodes);
             InvitePlayGameTree.Nodes = nodes;
         }
@@ -443,6 +575,7 @@ namespace USpeedUI.InvitePlayGame
                 group1.Add(info);
             }
             string groupName1 = ULocalizationService.Instance.Get("UIView", "Common", "OnlineBuddy");
+            group1.Sort();
             groups.Add(groupName1, group1);
 
             // 战队
@@ -473,6 +606,7 @@ namespace USpeedUI.InvitePlayGame
                 group2.Add(info);
             }
             string groupName2 = ULocalizationService.Instance.Get("UIView", "Common", "Team");
+            group2.Sort();
             groups.Add(groupName2, group2);
 
             // 附近的人
@@ -492,6 +626,7 @@ namespace USpeedUI.InvitePlayGame
                 group3.Add(info);
             }
             string groupName3 = ULocalizationService.Instance.Get("UIView", "Common", "NearbyPeople");
+            group3.Sort();
             groups.Add(groupName3, group3);
 
             foreach (var group in groups)
@@ -571,6 +706,18 @@ namespace USpeedUI.InvitePlayGame
                 return true;
 
             return false;
+        }
+
+        public void OnTimer(int nTimerID)
+        {
+            if(nTimerID == (int)ETimerID.ETimerID_SendInviteTimer)
+            {
+                m_bCanSendInvite = true;
+                m_InvitedRecord.Clear();
+
+                // 刷新界面
+                updateContent();
+            }
         }
     }
 }

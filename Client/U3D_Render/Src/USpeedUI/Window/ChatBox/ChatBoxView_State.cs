@@ -707,11 +707,39 @@ namespace USpeedUI.ChatBox
 
             override public void OnUpdate()
             {
+                // 自动隐藏
+                doAutoHide();
+
+                // 输入框激活状态是否变化
+                if (View.m_isInputFieldFocus != View.inputField.isFocused)
+                {
+                    View.m_isInputFieldFocus = View.inputField.isFocused;
+                    InputManager.Available = !View.m_isInputFieldFocus;
+                    ImeManager.ActiveIme(View.m_isInputFieldFocus);
+                }
+            }
+
+            override public void OnNewChatMsg()
+            {
+                View.SetContentHide(false);
+                View.m_showContentTime = Time.time;
+            }
+
+            override public ChatBoxState GetChatBoxState()
+            {
+                return ChatBoxState.WarState;
+            }
+
+            public void doAutoHide()
+            {
+                if (View.bAutoHide == false)
+                    return;
+
                 bool isMouseInWnd = View.detectMouseInWnd();
 
                 if (View.m_hideFrame)
                 {
-                    if(isMouseInWnd)
+                    if (isMouseInWnd)
                     {
                         View.SetContentHide(false);
                     }
@@ -776,27 +804,7 @@ namespace USpeedUI.ChatBox
                         }
                     }
                 }
-
-                // 输入框激活状态是否变化
-                if (View.m_isInputFieldFocus != View.inputField.isFocused)
-                {
-                    View.m_isInputFieldFocus = View.inputField.isFocused;
-                    InputManager.Available = !View.m_isInputFieldFocus;
-                    ImeManager.ActiveIme(View.m_isInputFieldFocus);
-                }
             }
-
-            override public void OnNewChatMsg()
-            {
-                View.SetContentHide(false);
-                View.m_showContentTime = Time.time;
-            }
-
-            override public ChatBoxState GetChatBoxState()
-            {
-                return ChatBoxState.WarState;
-            }
-
 
             // 是否战斗状态
             private bool isFightState()

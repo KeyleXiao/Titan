@@ -1295,4 +1295,22 @@ new UGuideWidgetMsgData((int)gData.GuideCurrentNode, m_nStepID, m_nEffectID));
             return m_strDefaultDebugMessage;
         }
     }
+
+    //记录引导步骤
+    class NOD_ReportGuideStep : TBTActionLeaf
+    {
+        public int nStepID;
+        public NOD_ReportGuideStep(int stepID)
+        {
+            nStepID = stepID;
+        }
+        protected override void onEnter(TBTWorkingData wData)
+        {
+            // 发送到逻辑层 引导相关记录
+            cmd_guide_info guideInfo = new cmd_guide_info();
+            guideInfo.nGuideID = nStepID;
+
+            ViewEventHelper.Instance.SendCommand<cmd_guide_info>(GameLogicDef.GVIEWCMD_MATCH_GUIDE_INFO, ref guideInfo);
+        }
+    }
 }

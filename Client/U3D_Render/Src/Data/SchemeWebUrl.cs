@@ -16,11 +16,14 @@ namespace ASpeedGame.Data.Scheme
 {
     public enum GameWebUrl
     {
-        TOPUP = 1000,
-        TOPUP_1 = 1001,
-        TOPUP_2 = 1002,
-        TAITAN_MAINHOME = 1003,
-        PROMOTION_LINK = 1004
+        PAY_LINK = 1000,
+        PAY_QR_LINK = 1001,
+        QR_BUILD_LINK = 1002,
+        TAITAN_ACTIVITIES_LINK = 1003, // 泰坦推广活动链接
+        QRCODE_LINK = 1004,            // 二维码链接
+        WITHDRAW_LINK = 1005,          // 提现链接  
+        WEB_INTERFACE_LINK = 1006,     // 推广员WEB接口链接
+        SHARE_PERSONAL_LINK = 1007,    // 分享链接和个人专属链接（带用户ID）
     }
 
     public class SchemeWebUrlNode

@@ -77,7 +77,7 @@ public:
 		auto it = m_map.find(msgKey.key);
 		if (it == m_map.end())
 		{
-			ErrorLn(_GT("Î´×¢²áµÄÏûÏ¢ºÅ£¬actionId = ") << msgKey.key);
+			pSession->UnHandled(pData, dwDataLen);
 			return;
 		}
 		IHandler<TYPE>* pHandler = it->second;

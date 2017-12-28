@@ -963,7 +963,9 @@ namespace DataCenter
 						{
 							desc += span.Hours + ULocalizationService.Instance.Get("UIView", "Common", "Hour");
                         }
-						desc += span.Minutes + ULocalizationService.Instance.Get("UIView", "Common", "Minute");
+
+                        int nMin = span.Minutes < 0 ? 0 : span.Minutes;
+                        desc += nMin + ULocalizationService.Instance.Get("UIView", "Common", "Minute");
                         result = String.Format("<color=#{0}>{1}</color>", strColor, desc);
 					}
 					break;
@@ -1108,7 +1110,7 @@ namespace DataCenter
 			ViewEventHelper.Instance.SendCommand(GameLogicDef.GVIEWCMD_SNS_LOGIN, ref data);
 		}
 		// 请求修改好友名字
-		public void reqChangeBuddyName(int dwAcountID, string actorName, string remark)
+		public void reqChangeBuddyRemark(int dwAcountID, string actorName, string remark)
 		{
 			gameview_sns_update_remark data = new gameview_sns_update_remark();
 			data.dwUserID = dwAcountID;
@@ -1154,8 +1156,17 @@ namespace DataCenter
 
 			ViewEventHelper.Instance.SendCommand(GameLogicDef.GVIEWCMD_SNS_UPDATE_BUDDY, ref data);
 		}
-		// 请求删除好友分组
-		public void reqDelBuddyGroup(int dwBuddyGroupID)
+        // 请求加入好友战队
+        public void reqJoinBuddyKin(int pdbid)
+        {
+            gameview_sns_data_to_social data = new gameview_sns_data_to_social();
+            data.nMsgType = (int)ESNSView2SocialMsg.SNSView2Social_JoinBuddyKin;
+            data.nReverse1 = pdbid;
+
+            ViewEventHelper.Instance.SendCommand(GameLogicDef.GVIEWCMD_SNS_SEND_DATA_TO_SOCIAL, ref data);
+        }
+        // 请求删除好友分组
+        public void reqDelBuddyGroup(int dwBuddyGroupID)
 		{
 			gameview_sns_update_buddygroup data = new gameview_sns_update_buddygroup();
 			data.dwBuddyGroupID = dwBuddyGroupID;
@@ -1398,13 +1409,13 @@ namespace DataCenter
 				SNSSession session = getSession(sid);
 				session.addMsgData(data);
 
-				// 通知UI
-				SNSAddChatMsgData msg = new SNSAddChatMsgData();
+                // 存到客户端记录中去
+                session.addMsgToDB(sid, data);
+
+                // 通知UI
+                SNSAddChatMsgData msg = new SNSAddChatMsgData();
 				msg.SessionID = sid;
 				UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_SNS_ADD_CHAT_MESSAGE, msg);
-
-				// 存到客户端记录中去
-				session.addMsgToDB(sid, data);
 			}
 
 			// 获取所有聊听消息

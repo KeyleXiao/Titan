@@ -260,12 +260,12 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             DonateNum.text = "";
             DonationNum.text = "";
             totalNum.text = "";
             clanName.text = "";
-            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();
@@ -283,6 +283,9 @@ namespace USpeedUI.Chart
             DonateNum.text = info.nClanCtrb.ToString();
             totalNum.text = info.nTotalClanCtrb.ToString();
             clanName.text = info.szClanName.ToString();
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();

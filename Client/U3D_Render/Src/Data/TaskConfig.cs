@@ -10,7 +10,7 @@ namespace ASpeedGame.Data.TaskConfig
     {
         ETCC_TASK_ID = 0,           // 任务ID
 
-        ETCC_TASK_TYPE = 3,         // 任务类型（1首胜任务2帮会任务3循环任务4主线5交互6日常）
+        ETCC_TASK_TYPE = 3,         // 任务类型（1首胜任务2帮会任务3循环任务4主线5交互6日常7排位）
 
         ETCC_SUBTYPE_ID = 33,       // 子类（1炫耀、2互助、3交友、4心情、5一起玩）
         ETCC_SUBTYPE_NAME,          // 子类名称
@@ -35,6 +35,7 @@ namespace ASpeedGame.Data.TaskConfig
     public class SSchemeSystemTaskConfig
     {
         public int nTaskID;
+        public int nTaskType;
         public int nTaskLevel;
     }
 
@@ -101,6 +102,7 @@ namespace ASpeedGame.Data.TaskConfig
                 {
                     SSchemeSystemTaskConfig systemTaskInfo = new SSchemeSystemTaskConfig();
                     systemTaskInfo.nTaskID = reader.GetInt(i, (int)ETaskConfigCol.ETCC_TASK_ID, 0);
+                    systemTaskInfo.nTaskType = nType;
                     systemTaskInfo.nTaskLevel = reader.GetInt(i, (int)ETaskConfigCol.ECTT_TASK_LEVEL, 0);
                     m_mapSystemTaskConfig[systemTaskInfo.nTaskID] = systemTaskInfo;
                 }
@@ -145,6 +147,16 @@ namespace ASpeedGame.Data.TaskConfig
             }
 
             return nLevel;
+        }
+
+        public SSchemeSystemTaskConfig GetSystemTaskConfig(int nTaskID)
+        {
+            if (m_mapSystemTaskConfig.ContainsKey(nTaskID))
+            {
+                return m_mapSystemTaskConfig[nTaskID];
+            }
+
+            return null;
         }
 
     }

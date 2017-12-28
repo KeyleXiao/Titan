@@ -26,13 +26,13 @@ public:
 
 	// 对比本地的所有Gate信息，没连的全都连上
 	void Update(VecGateInfo& vecGates);
+	// 查找指定ID的Gate连接
+	GateConnector*	Get(WORD wID);
 
 private:
 	// 建立通往Gate的连接
 	void NewConnect(SGateInfo*& pInfo);
 
-	// 查找指定ID的Gate连接
-	GateConnector*	Get(WORD wID);
 	// 查找指定IP和端口的Gate连接
 	GateConnector*	Get(const std::string& ip, const WORD& port);
 

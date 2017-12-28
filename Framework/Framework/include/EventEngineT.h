@@ -16,7 +16,7 @@ using namespace rkt;
 #define REF_MAX_LAYERNUM			5
 
 // 是否支持性能分析
-#define  SUPPORT_PROFILE
+//#define  SUPPORT_PROFILE
 
 // 是否支持多线程
 //#define  TEVENT_MULTITHREAD

@@ -76,6 +76,7 @@ namespace USpeedUI.ChatBox
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMON_FULLWND_VISIBLE, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_CHATBOX_TOGGLE, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_CHATBOX_SENDCHATMESSAGE, this);
 
             // 订阅按键消息
             UISystem.Instance.RegisterKeyMessage(FuntionShortCutSlotIndex.ChatBoxActiveKey1, KeyStatus.Down, this);
@@ -112,6 +113,7 @@ namespace USpeedUI.ChatBox
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMON_FULLWND_VISIBLE, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_CHATBOX_TOGGLE, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_CHATBOX_SENDCHATMESSAGE, this);
 
             // 退订按键消息
             UISystem.Instance.UnregisterKeyMessage(FuntionShortCutSlotIndex.ChatBoxActiveKey1, KeyStatus.Down, this);
@@ -285,7 +287,18 @@ namespace USpeedUI.ChatBox
                     break;
                 case WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER:
                     {
-                        resetAllSortingOrder();
+                        if(m_wndView != null)
+                        {
+                            m_wndView.transform.SetAsLastSibling();
+                            m_wndView.gameObject.SetActive(true);
+                            resetAllSortingOrder();
+                        }
+                    }
+                    break;
+                case WndMsgID.WND_MSG_CHATBOX_SENDCHATMESSAGE:
+                    {
+                        if (m_wndView != null)
+                            m_wndView.onSendChatMessage(msgData as USendChatMessage);
                     }
                     break;
                 default:
@@ -656,6 +669,9 @@ namespace USpeedUI.ChatBox
         public void SwitchEmotionPanelActiveState()
         {
             this.gameObject.SetActive(!this.gameObject.activeInHierarchy);
+
+            // 表情栏打开的时候不隐藏聊天框
+            m_chatWndView.bAutoHide = !gameObject.activeInHierarchy;
         }
 
         public void UpdateEmoticonGroupLockState(List<int> unLockGroup)

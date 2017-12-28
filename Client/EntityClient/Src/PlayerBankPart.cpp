@@ -328,6 +328,16 @@ bool CPlayerBankPart::onMessage(void * pEntityHead, int msgId, void * data, size
 			onMsgRankSeasonRecord((LPCSTR)data, len);
 		}
 		break;
+    case SC_MSG_ENTITY_RET_RECOMMEND_DATA:
+        {
+            onMsgRetRecommRecord((LPCSTR)data, len);
+        }
+        break;
+    case SC_MSG_ENTITY_GAIN_RECOMMPRIZE_SUCCESS:
+        {
+            onMsgRetGainPrizeSuccess((LPCSTR)data, len);
+        }
+        break;
 	default:
         break;
     }
@@ -993,6 +1003,16 @@ bool CPlayerBankPart::onCommand( int cmdid,void * data,size_t len )
 			SendMessageToEntityScene(m_pMaster->getUID(), PART_BANK, CS_MSG_ENTITY_REQ_SEASON_RECORD, NULL, 0);
 		}
 		break;
+    case ENTITY_CMD_REQ_RECOMMEND_RECORD:
+        {
+            SendMessageToEntityScene(m_pMaster->getUID(), PART_BANK, CS_MSG_ENTITY_REQ_RECOMMEND_DATA, NULL, 0);
+        }
+        break;
+    case ENTITY_CMD_REQ_GAIN_RECOMMPRIZE:
+        {
+            SendMessageToEntityScene(m_pMaster->getUID(), PART_BANK, CS_MSG_ENTITY_REQ_GAIN_RECOMMPRIZE, data, len);
+        }
+        break;
 	default:
 		break;
     }
@@ -1555,6 +1575,7 @@ void CPlayerBankPart::OnMsgMatchReturnPlayerInfo(LPCSTR pszMsg, int nLen)
 	cmdPlayerInfoRet.nPKTotalNum = pPlayrInfo->dwPKTotalNum;
     cmdPlayerInfoRet.nRankMatchNum = pPlayrInfo->dwRankMatchNum;
     cmdPlayerInfoRet.nRankWinNum   = pPlayrInfo->wRankWinNum;
+	cmdPlayerInfoRet.nSex = pPlayrInfo->bSex ? 1 : 0;										// 玩家性别(0男1女)
 	const SMatchRankConfigSchemeInfo* pRankConfigInfo = pMatchRank->getMatchRankConfigShemeInfo(MatchType_Rank, pPlayrInfo->nRankGrade);
 	if( pRankConfigInfo != NULL )
 	{
@@ -3351,6 +3372,16 @@ void CPlayerBankPart::onMsgRankSeasonDetail(LPCSTR data, int len)
 	cmdDetail.wPrizeConfigID = pDetail->wPrizeConfigID;
 
 	m_pMaster->sendCommandToEntityView(ENTITY_TOVIEW_RANK_SEASON_DETAIL,0, 0, &cmdDetail, sizeof(cmdDetail));
+}
+
+void CPlayerBankPart::onMsgRetRecommRecord(LPCSTR data, int len)
+{
+    m_pMaster->sendCommandToEntityView(ENTITY_TOVIEW_RECOMMEND_RECORD, 0, 0, (void*)data, len);
+}
+
+void CPlayerBankPart::onMsgRetGainPrizeSuccess(LPCSTR data, int len)
+{
+    m_pMaster->sendCommandToEntityView(ENTITY_TOVIEW_GAIN_RECOMMPRIZE_SUCCESS, 0, 0, (void*)data, len);
 }
 
 void CPlayerBankPart::onMsgRankSeasonRecord(LPCSTR data, int len)

@@ -133,6 +133,7 @@ enum OSS_RESOURCE_ADD_RANGE
 	OSSRES_ADD_MAILPLUS,                // 邮件附件
 	OSSRES_ADD_GLOD_FROM_TICKET,        // 点券兑换金币
 	OSSRES_ADD_LIFEHERO,                // 本命英雄奖励
+    OSSRES_ADD_RECOMMEND_PRIZE,         // 推广员获取奖励
 
 	OSSRES_ADD_MAX = 6999,
 };

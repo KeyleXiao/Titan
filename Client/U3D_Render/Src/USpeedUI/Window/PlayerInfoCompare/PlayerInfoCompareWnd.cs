@@ -47,7 +47,16 @@ namespace USpeedUI.PlayerInfoCompare
         {
             FightCap.text = wndView.strFightCap;
 
-            playerHead.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_PLAYERINFOCOMPARE, 2, 1);
+            int nSex = sPlayerInfo.nSex;
+            if (nSex < (int)PERSON_SEX.SEX_MAX && nSex >= (int)PERSON_SEX.SEX_MALE)
+            {
+                playerHead.gameObject.SetActive(true);
+                playerHead.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_PlayerHead, WndID.WND_ID_PLAYERINFOCOMPARE, 2, nSex + 1);
+            }
+            else
+            {
+                playerHead.gameObject.SetActive(false);
+            }
             playerName.text = sPlayerInfo.chPlayerName;
             playerLv.text = "等级: " + sPlayerInfo.nLv.ToString();
             nFightCap = (int)sPlayerInfo.ulFighting;
@@ -180,6 +189,8 @@ namespace USpeedUI.PlayerInfoCompare
 
         public override bool Init()
         {
+            m_isKeyClose = true;
+
             // 订阅聊天消息更新消息
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_PLAYERINFOCOMPARE_OPEN, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_PLAYERINFO_INITINFO, this);

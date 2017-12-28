@@ -113,6 +113,7 @@ namespace GUIDE
         GuideNodeID_3005,
         GuideNodeID_3006,
         GuideNodeID_3007,
+        GuideNodeID_3008,
 
         //非主逻辑提示引导
         GuideNodeID_9001 = 9001,//血量低回城提示

@@ -188,7 +188,8 @@ namespace Data.PointShopConfig
                     sConfig.nGoodsLabel = new int[strGoodsLabel.Length];
                     for (int j = 0; j < strGoodsLabel.Length; ++j)
                     {
-                        sConfig.nGoodsLabel[j] = Convert.ToInt32(strGoodsLabel[j]);
+                        //sConfig.nGoodsLabel[j] = Convert.ToInt32(strGoodsLabel[j]);
+                        Int32.TryParse(strGoodsLabel[j], out sConfig.nGoodsLabel[j]);
                     }
                 }
                 sConfig.nPositionWeight = reader.GetInt(i, (int)EMSchemePointShopGoodsCol.GOODS_POSITIONWEIGHT, 0);
@@ -196,9 +197,11 @@ namespace Data.PointShopConfig
                 string[] strLvLimit = reader.GetString(i, (int)EMSchemePointShopGoodsCol.GOODS_ACTORLVLIMIT, "").Split(';');
                 if (strLvLimit != null && strLvLimit.Length > 0 && strLvLimit[0].Length > 0)
                 {
-                    sConfig.nNeedActorLvMin = Convert.ToInt32(strLvLimit[0]);
+                    //sConfig.nNeedActorLvMin = Convert.ToInt32(strLvLimit[0]);
+                    Int32.TryParse(strLvLimit[0], out sConfig.nNeedActorLvMin);
                     if (strLvLimit.Length > 1)
-                        sConfig.nNeedActorLvMax = Convert.ToInt32(strLvLimit[1]);
+                        //sConfig.nNeedActorLvMax = Convert.ToInt32(strLvLimit[1]);
+                        Int32.TryParse(strLvLimit[1], out sConfig.nNeedActorLvMax);
                     else
                         sConfig.nNeedActorLvMax = 999;
                 }
@@ -270,8 +273,9 @@ namespace Data.PointShopConfig
                     config.nSellIDList = new List<int>();
                     for (int j = 0; j < sellIDList.Length; ++j)
                     {
-                        int nSellID = Convert.ToInt32(sellIDList[j]);
-                        config.nSellIDList.Add(nSellID);
+                        int nSellID = 0;
+                        if(Int32.TryParse(sellIDList[j], out nSellID))
+                            config.nSellIDList.Add(nSellID);
                     }
                 }
 

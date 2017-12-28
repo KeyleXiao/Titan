@@ -45,23 +45,24 @@ namespace USpeedUI.UWidgets
             NameDesc.text = item.strHeroName;
 
             BanCount.text = String.Format("+{0}", item.nBanCount);
-            MaskIcon.gameObject.SetActive(bIsBan);
+            //MaskIcon.gameObject.SetActive(bIsBan);
+            MaskIcon.gameObject.SetActive(false);
             BanIcon.gameObject.SetActive(bIsBan);
             BanCount.gameObject.SetActive(bIsBan);
         }
 
         public void SelectColoring()
         {
-            if (bIsBan)
-                return;
+            //if (bIsBan)
+            //    return;
 
             MaskIcon.gameObject.SetActive(true);
         }
 
         public void DefaultColoring()
         {
-            if (bIsBan)
-                return;
+            //if (bIsBan)
+            //    return;
 
             MaskIcon.gameObject.SetActive(false);
         }

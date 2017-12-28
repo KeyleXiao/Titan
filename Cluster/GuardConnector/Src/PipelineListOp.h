@@ -22,7 +22,7 @@ public:
 	virtual bool lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue) override;
 
 
-	virtual bool lIndex(const string& strKey, long nIndex, string* pstrValue) override;
+	virtual bool lIndexString(const string& strKey, long nIndex, string* pstrValue) override;
 
 
 	virtual bool lLen(const string& strKey, long* pnValue) override;

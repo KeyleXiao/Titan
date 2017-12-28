@@ -24,13 +24,6 @@ struct SGameMsgHead;
 /// 语音网关全局对象
 struct IGlobalViewServer
 {
-	/// 客户端消息处理
-	virtual void onClientMessage(CClientUser &client, ulong actionId, SGameMsgHead* head, void* data, size_t len) = 0;
-
-	/// 服务器网络消息处理
-	virtual void onServerMessage(ulong actionId, SGameMsgHead* head, void* data, size_t len) = 0;
-
-
 	/// 获取时间轴
 	virtual TimerAxis* getTimerAxis() = 0;
 

@@ -48,6 +48,7 @@ ENUM ENTITYEVENT_KEY
 	EVENT_ENTITY_PREPARE_DAMAGE,                // 准备伤害事件
 	EVENT_ENTITY_DAMAGE,                        // 受到伤害,伤害不一定等同被攻击，例如从悬崖上掉下，毒伤害
 	EVENT_ENTITY_DAMAGE_RESULT,                 // 最终受到伤害
+    EVENT_ENTITY_TARGET_DAMAGE_RESULT,          // 目标最终受到伤害
     EVENT_ENTITY_DAMAGE_VOTE_FAKEDEAD,          // 伤害后投票假死事件
 
 	EVENT_ENTITY_CHANGE_STATE,                  // 切换状态

@@ -12,6 +12,7 @@ using U3D_Render.Common;
 using UnityEngine.EventSystems;
 using Data.ActorPrizeConfig;
 using War;
+using DataCenter;
 
 namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
 {
@@ -98,14 +99,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             {
                 goodsName.text = config.strPrizeName;
                 goodsNum.text = item.nCount.ToString();
-                if (config.nPrizeType == (int)EMActorPrizeType.ACTOR_PRIZE_HERO || config.nPrizeType == (int)EMActorPrizeType.ACTOR_PRIZE_HEROCARD)
-                {
-                    goodsImage.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_HeadPortrait, WndID.WND_ID_MAILBOX, 1, 4, config.nPrizeParam[0]);
-                }
-                else
-                {
-                    goodsImage.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_ActorPrize, WndID.WND_ID_MAILBOX, config.nPrizeType, config.nPrizeIcon);
-                }             
+                goodsImage.sprite = LogicDataCenter.playerSystemDataManager.GetIconByPrize(config, WndID.WND_ID_MAILBOX);
 
                 String szDesc = config.strPrizeDesc;
                 UBB.toHtml(ref szDesc, UBB_FORMAT_TYPE.UGUI);

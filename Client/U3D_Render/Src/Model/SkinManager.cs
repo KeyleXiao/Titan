@@ -341,7 +341,7 @@ public partial class SkinManager
         Vector3 rotation = instance.GetHeroModelRotation(viewType, nHeroId);
         if (renderType == HEROSKIN_RENDER_TYPE.CAMERA)
         {
-            GameUtil.SetLayer(5, goc, true);
+            GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerUI), goc, true,new Transform[]{si.SkinDataObj});
             Vector2 size = new Vector2(1280f, 720f);
 
             UEffectMeshObject MeshObject = new UEffectMeshObject(si.SkinObj, pos, rotation, scale, _bIsSceneObj: true);
@@ -351,7 +351,7 @@ public partial class SkinManager
         }
         else if (renderType == HEROSKIN_RENDER_TYPE.SCENE)
         {
-            GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerHero), goc, true);
+            GameUtil.SetLayer(LayerMask.NameToLayer(Config.LayerHero), goc, true,new Transform[]{si.SkinDataObj});
             goc.transform.parent = transHeroFrame;
             goc.transform.localPosition = pos;
             goc.transform.localEulerAngles = rotation;

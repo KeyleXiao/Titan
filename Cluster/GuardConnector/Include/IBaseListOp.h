@@ -103,9 +103,6 @@ namespace Redis
 			return lSet(strKey, nIndex, TToString(tValue));
 		}
 
-		// 获取（index元素）
-		virtual bool	lIndex(const string& strKey, long nIndex, string* pstrValue) = 0;
-
 		//************************************
 		// Returns:   bool	是否成功
 		// Qualifier: 取strKey对应的list的长度
@@ -132,5 +129,8 @@ namespace Redis
 
 		// 获取（区间元素）
 		virtual bool	lRangeString(const string& strKey, long nStart, long nStop, vector<string>* pvecValue) = 0;
+
+		// 获取（index元素）
+		virtual bool	lIndexString(const string& strKey, long nIndex, string* pstrValue) = 0;
 	};
 };

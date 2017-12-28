@@ -144,40 +144,46 @@ namespace USpeedUI.HeroPreviewFrame
             }
 
             // 普通奖励
-            for (int i = 0; i < nPrizeCount && data.nPrizeIdList[i] > 0; i++)
+            if (data.nPrizeIdList != null)
             {
-                GameObject prizeObj = ResNode.InstantiateRes(PrizeTemplate);
-                if (!prizeObj)
-                    return;
-                RectTransform prizeRect = prizeObj.transform as RectTransform;
-                if (!prizeRect)
-                    return;
-                prizeRect.SetParent(PrizeFrame, false);
-                LegendCupPrizeItem prizeItem = prizeObj.GetComponent<LegendCupPrizeItem>();
-                if (!prizeItem)
-                    return;
-                prizeItem.SetData(data.nPrizeIdList[i]);      
+                for (int i = 0; i < nPrizeCount && data.nPrizeIdList[i] > 0; i++)
+                {
+                    GameObject prizeObj = ResNode.InstantiateRes(PrizeTemplate);
+                    if (!prizeObj)
+                        return;
+                    RectTransform prizeRect = prizeObj.transform as RectTransform;
+                    if (!prizeRect)
+                        return;
+                    prizeRect.SetParent(PrizeFrame, false);
+                    LegendCupPrizeItem prizeItem = prizeObj.GetComponent<LegendCupPrizeItem>();
+                    if (!prizeItem)
+                        return;
+                    prizeItem.SetData(data.nPrizeIdList[i]);
+                }
             }
 
             // 天赋奖励
-            int nHeroID = data.nHeroID;
-            for(int j = 0; j < data.nTalentIDList.Count; ++j)
+            if (data.nTalentIDList != null)
             {
-                GameObject prizeObj = ResNode.InstantiateRes(PrizeTemplate);
-                if (!prizeObj)
-                    return;
-                RectTransform prizeRect = prizeObj.transform as RectTransform;
-                if (!prizeRect)
-                    return;
-                prizeRect.SetParent(PrizeFrame, false);
-                LegendCupPrizeItem prizeItem = prizeObj.GetComponent<LegendCupPrizeItem>();
-                if (!prizeItem)
-                    return;
+                int nHeroID = data.nHeroID;
+                for (int j = 0; j < data.nTalentIDList.Count; ++j)
+                {
+                    GameObject prizeObj = ResNode.InstantiateRes(PrizeTemplate);
+                    if (!prizeObj)
+                        return;
+                    RectTransform prizeRect = prizeObj.transform as RectTransform;
+                    if (!prizeRect)
+                        return;
+                    prizeRect.SetParent(PrizeFrame, false);
+                    LegendCupPrizeItem prizeItem = prizeObj.GetComponent<LegendCupPrizeItem>();
+                    if (!prizeItem)
+                        return;
 
-                int nTalentID = data.nTalentIDList[j];
+                    int nTalentID = data.nTalentIDList[j];
 
-                SSchemeHeroTalentConfig talentConfig = HeroTalentConfigPage.Instance.GetHeroTalentConfig(nHeroID, nTalentID);
-                prizeItem.SetData(talentConfig);
+                    SSchemeHeroTalentConfig talentConfig = HeroTalentConfigPage.Instance.GetHeroTalentConfig(nHeroID, nTalentID);
+                    prizeItem.SetData(talentConfig);
+                }
             }
 
             // 金币、经验奖励

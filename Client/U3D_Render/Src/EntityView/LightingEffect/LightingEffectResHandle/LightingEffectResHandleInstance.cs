@@ -360,6 +360,7 @@ public class LightingEffectResHandleInstance
         
         instance.m_effectPrefabTransform = instance.m_effectPrefab.transform;
         instance.m_effectPrefabTransform.SetParent(parent);
+        instance.m_effectPrefabTransform.position = Vector3.one * 999.0f;
         instance.m_effectPrefab.name = node.prefabResNode.AssetName + "(effect" + node.EffectID + ")";
         
     

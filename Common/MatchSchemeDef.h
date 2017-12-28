@@ -540,7 +540,7 @@ public:
 };
 
 // 排位赛季时间配置
-#define MATCH_SEASON_TIME_SCHEME_FILENAME "SchemeMatchSeasonTime.csv"
+#define MATCH_SEASON_TIME_SCHEME_FILENAME "Scp\\SchemeMatchSeasonTime.csv"
 
 struct SSchemeMatchSeasonTime 
 {
@@ -580,7 +580,7 @@ public:
 };
 
 // 排位赛季奖励配置
-#define MATCH_SEASON_PRIZE_SCHEME_FILENAME "SchemeMatchSeasonPrize.csv"
+#define MATCH_SEASON_PRIZE_SCHEME_FILENAME "Scp\\SchemeMatchSeasonPrize.csv"
 
 struct SSchemeMatchSeasonPrize 
 {

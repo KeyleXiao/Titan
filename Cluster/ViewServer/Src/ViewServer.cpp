@@ -5,7 +5,6 @@
 #include "ViewServer.h"
 #include "ViewServerDlg.h"
 #include "GlobalViewServer.h"
-#include "ClientUser.h"
 
 
 #ifdef _DEBUG

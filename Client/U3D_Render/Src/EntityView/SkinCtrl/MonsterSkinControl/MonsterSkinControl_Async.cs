@@ -129,7 +129,7 @@ namespace U3D_Render.SkinCtrl
                 return ;
             }
             GameObject go = si.SkinObj;
-            GameUtil.SetLayer(m_machine.creature.gameObject.layer, go, true);
+            GameUtil.SetLayer(m_machine.creature.gameObject.layer, go, true,new Transform[]{si.SkinDataObj});
             m_currentLoadedSkinInstance = si;
             go.transform.parent = m_machine.creature;
             go.transform.localPosition = Vector3.zero;

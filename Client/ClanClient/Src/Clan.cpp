@@ -85,8 +85,8 @@ CClan::CClan()
 	m_propAddress[emClanProp_Activity] = (int*)&m_nActivity;
 	m_propAddress[emClanProp_WeekActivity] = (int*)&m_nWeekActivity;
 	m_propAddress[emClanProp_Place] = (int*)&m_nPlace;
-	m_propAddress[emClanProp_LegendCupCount] = (int*)m_nLegendCupCount;
-	m_propAddress[emClanProp_AutoAcceptFlag] = (int*)m_nAutoAcceptFlag;
+	m_propAddress[emClanProp_LegendCupCount] = (int*)&m_nLegendCupCount;
+	m_propAddress[emClanProp_AutoAcceptFlag] = (int*)&m_nAutoAcceptFlag;
 }
 
 // 析构函数

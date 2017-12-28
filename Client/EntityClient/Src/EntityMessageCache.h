@@ -97,6 +97,4 @@ public:
 private:
 
 	ENTITYMSGCACHEMAP m_EntityMsgCacheList;
-
-	bool m_isInit;
 };

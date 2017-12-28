@@ -108,7 +108,7 @@ namespace USpeedUI.LegendCup
             transform.SetParent(rect, false);
         }
 
-        public void SetData(int nParam, ECupPrizeType eType = ECupPrizeType.ECPT_Personal, bool bShowEffect = false, bool bShowPrizeDes = true)
+        public void SetData(int nParam, ECupPrizeType eType = ECupPrizeType.ECPT_Personal, UEffectPrefabType effectType = UEffectPrefabType.UEPT_None, bool bShowPrizeDes = true)
         {
             string sGold = ULocalizationService.Instance.Get("UIView", "LegendCupPrize", "Gold");
             string sExp = ULocalizationService.Instance.Get("UIView", "LegendCupPrize", "Exp");
@@ -172,13 +172,14 @@ namespace USpeedUI.LegendCup
 
             PrizeDes.gameObject.SetActive(bShowPrizeDes);
 
-            if (bShowEffect)
+            if (effectType != UEffectPrefabType.UEPT_None)
             {
                 if (param != null)
                 {
                     UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param);
+                    param = null;
                 }
-                param = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_HeroDetailInfo_UpstarPrizeItem, _tfAttachParent: PrizeEffect.transform, _bAutoDestroy: false);
+                param = new UEffectPrefabParam(_eType: effectType, _tfAttachParent: PrizeEffect.transform, _bAutoDestroy: false);
                 UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref param);
             }
 
@@ -217,6 +218,7 @@ namespace USpeedUI.LegendCup
             if (param != null)
             {
                 UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param);
+                param = null;
             }
             this.gameObject.SetActive(false);
         }

@@ -119,7 +119,9 @@ public:
             }
             memcpy(m_pMessage->context + nPrefixLen, szDebugInfo, nSize);
 
+#ifdef FRAMEWORK_DEBUG
             m_strDebugInfo = szDebugInfo;
+#endif
         }
 
 #if defined(FRAMEWORK_DEBUG) && defined(VERSEION_DEBUG)
@@ -145,7 +147,11 @@ public:
 
     std::string GetDebugString()
     {
+#ifdef FRAMEWORK_DEBUG
         return m_strDebugInfo;
+#else
+        return "";
+#endif
     }
 
 	//virtual void Do()

@@ -13,6 +13,7 @@
 #include "LegendCup_ManagedDef.h"
 #include "Mail_ManagedDef.h"
 #include "Game_ManagedDef.h"
+#include "PublishedCommonDef.h"
 namespace GameLogic {
 
 

@@ -73,7 +73,7 @@ namespace rkt {
 	// 是否允许进行定时器统计
 //#	define SUPPORT_TIMEAXIS_STAT
 
-#define SUPPORT_TIMEAXIS_DEBUG_INFO	// 是否支持调试信息
+//#define SUPPORT_TIMEAXIS_DEBUG_INFO	// 是否支持调试信息
 
 	struct SAnalyseTimer
 	{

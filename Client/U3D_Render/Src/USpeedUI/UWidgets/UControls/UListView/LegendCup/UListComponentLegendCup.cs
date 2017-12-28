@@ -360,7 +360,7 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             Kin2Name.text = nodeInfo.szKin2Name;
             //GotoBtnDes.text = strGotoBtn;
 
-            // 考虑到排版，只改变透明度不隐藏，弃权的不现实比分
+            // 考虑到排版，只改变透明度不隐藏，弃权的不显示比分
             bool bKin1Win = nodeInfo.nKin1ID == nodeInfo.nWinnerKinID && nodeInfo.nKin1Score > nodeInfo.nKin2Score;
             bool bKin2Win = nodeInfo.nKin2ID == nodeInfo.nWinnerKinID && nodeInfo.nKin2Score > nodeInfo.nKin1Score;
             Kin1WinIcon.color = bKin1Win ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
@@ -401,9 +401,9 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
                         NodeState.text = ULocalizationService.Instance.Get("UIView", "LegendCupGroup", "WaitJudge");
                     }
                     break;
-                case (byte)ECompetitionNodeState.emNodeState_End:
+                case (byte)ECompetitionNodeState.emNodeState_End:// 比赛已结束
                     {
-                        NodeState.text = "";
+                        NodeState.text = ULocalizationService.Instance.Get("UIView", "LegendCupGroup", "CompetitionEnd");
                     }
                     break;
                 default:
@@ -421,7 +421,8 @@ namespace U3D_Render.USpeedUI.UWidgets.UControls.UListView
             Kin1Name.color = clrState;
             VSDes.color = clrState;
             Kin2Name.color = clrState;
-            NodeState.color = clrState;
+            // 完成态显示红色
+            NodeState.color = nodeInfo.byCompetitionNodeState == (byte)ECompetitionNodeState.emNodeState_End ? UDefines.CommomColor(ECommonColor.ECC_Red1) : clrState;
         }
 
         public void Clear()

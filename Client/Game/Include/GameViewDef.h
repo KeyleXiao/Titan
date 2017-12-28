@@ -638,6 +638,8 @@ namespace GameLogic
 		GVIEWCMD_SNS_REQ_INVITE_PLAYGAME,
 		// 邀请好友一起组队匹配
 		GVIEWCMD_SNS_REQ_INVITE_MATCH_TEAM,
+		// C#直接发到社会服
+		GVIEWCMD_SNS_SEND_DATA_TO_SOCIAL,
 		//////////////////////SNS  view2c++ 结束///////////////////////////
 
 		///////////////////////MAIL view2c++ 开始///////////////////////
@@ -3809,6 +3811,15 @@ namespace GameLogic
 		sp_char_array(szInviterName, ACTORNAME_MAXSIZE);
 
 		STRUCT_INIT(gameview_sns_req_invite_match_team);
+	};
+	// SNS的C#消息直接发到社会服
+	STRUCT gameview_sns_data_to_social
+	{
+		int nMsgType;		// 消息类型
+		
+		int nReverse1;
+
+		STRUCT_INIT(gameview_sns_data_to_social);
 	};
 
 

@@ -336,6 +336,9 @@ namespace USpeedUI.TeammateInfo
         ActorNameChangeView actorNameChangeView;
         ResNode actorNameChangeNode;
 
+        private float m_fLastInviteClanTime = 0.0f;
+        private float INVITE_CLAN_COOL_TIME = 10.0f;
+
         public override bool Init(IUIWnd wnd)
         {
             base.Init(wnd);
@@ -600,6 +603,13 @@ namespace USpeedUI.TeammateInfo
 
         public void OnTeammateClanInviteJoinClick()
         {
+            float fNow = Time.unscaledTime;
+            if (fNow - m_fLastInviteClanTime < INVITE_CLAN_COOL_TIME)
+            {
+                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_MATCH_CALN_TEAM_INVITE_TOO_QUICK);
+                return;
+            }
+            m_fLastInviteClanTime = fNow;
 
             string strTitle = ULocalizationService.Instance.Get("UIView", "Task", "FirstWinGuideTitleDes");
             string strMessage = ULocalizationService.Instance.Get("UIView", "Task", "FirstWinGuideDes");

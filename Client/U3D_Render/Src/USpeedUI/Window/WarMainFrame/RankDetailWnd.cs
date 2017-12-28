@@ -48,6 +48,8 @@ namespace USpeedUI.WarMainFrame
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_RANK_DETIAL_SHOW, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_RANK_DETAIL_RECEIVE, this);
             UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_TASK_MAIN_UPDATE_HOLD, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
+            UISystem.Instance.RegisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER, this);
 
             return true;
         }
@@ -60,6 +62,8 @@ namespace USpeedUI.WarMainFrame
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_RANK_DETIAL_SHOW, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_RANK_DETAIL_RECEIVE, this);
             UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_TASK_MAIN_UPDATE_HOLD, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER, this);
+            UISystem.Instance.UnregisterWndMessage(WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER, this);
         }
 
         // 接受消息
@@ -96,6 +100,16 @@ namespace USpeedUI.WarMainFrame
                         }
                     }
                     break;
+                case WndMsgID.WND_MSG_COMMOM_STATICGAMESTATE_ENTER:
+                    {
+                        LoadView();
+                    }
+                    break;
+                case WndMsgID.WND_MSG_COMMOM_MATCHROOMSTATE_ENTER:
+                    {
+                        UnloadView();
+                    }
+                    break;
 
                 default:
                     break;
@@ -106,6 +120,17 @@ namespace USpeedUI.WarMainFrame
         private void OnRankDetialWndShow()
         {
             EntityEventHelper.Instance.SendCommand(EntityFactory.MainHeroID, EntityLogicDef.ENTITY_CMD_REQ_SEASON_DETAIL);
+        }
+
+        protected override void PostSetVisible(bool _bVisible)
+        {
+            base.PostSetVisible(_bVisible);
+
+            if (_bVisible)
+            {
+                // 刷新聊天框层级
+                UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_CHATBOX_RESETSORTORDER, null);
+            }
         }
 
     }
@@ -126,6 +151,8 @@ namespace USpeedUI.WarMainFrame
         public Image RankImg;
         public Text RankGradeDes;
         public Transform RankStarFrame;
+
+        private UEffectParamBase param;
 
         public void SetData()
         {
@@ -173,6 +200,25 @@ namespace USpeedUI.WarMainFrame
                     RankStarFrame.GetChild(index).gameObject.SetActive(false);
                 }
             }
+
+            if (param != null)
+            {
+                UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param);
+                param = null;
+            }
+            param = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_WarMain_RankEffect1 + nRankIcon - 1, _tfAttachParent: RankImg.gameObject.transform, _bAutoDestroy: false);
+            UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref param);
+        }
+
+        public override void Clear()
+        {
+            base.Clear();
+
+            if (param != null)
+            {
+                UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref param);
+                param = null;
+            }
         }
     }
 
@@ -183,6 +229,7 @@ namespace USpeedUI.WarMainFrame
         public Text GetBtnDesc;
         public Button GetBtn;
         public UTooltipTrigger Trigger;
+        public UTooltipTrigger PrizeTip;
 
         private int m_nTaskID;
 
@@ -192,7 +239,7 @@ namespace USpeedUI.WarMainFrame
             if (listTask == null)
                 return;
             int nIndex = listTask.FindIndex(item => item.nTaskType == (int)ENTASK_TYPE.ENTASK_TYPE_RANK);
-            if (nIndex < 0)
+            if (nIndex < 0 || listTask[nIndex].nTaskState == (int)Task_State_Type.TaskStateType_End)
             {
                 TaskDesc.text = "周任务全部完成";
                 GetBtn.interactable = false;
@@ -213,6 +260,10 @@ namespace USpeedUI.WarMainFrame
             string strTip = ULocalizationService.Instance.Get("UIView", "RankSeason", "TaskTip");
             UBB.toHtml(ref strTip);
             Trigger.SetText(UTooltipParamName.BodyText, strTip);
+
+            string strPrizeTip = task.szDescription;
+            UBB.toHtml(ref strPrizeTip);
+            PrizeTip.SetText(UTooltipParamName.BodyText, strPrizeTip);
         }
 
         public void OnClickGetBtn()
@@ -257,7 +308,7 @@ namespace USpeedUI.WarMainFrame
             TitleDesc.text = "赛季成绩";
 
             SSchemeSeasonPrizeConfig config = MatchSeasonPrizeConfig.Instance.GetSeasonPrizeData(data.wPrizeConfigID, data.wTopRankGrade);
-            if (config != null)
+            if (config != null && data.dwEndTime > 0)
             {
                 DateTime endTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(data.dwEndTime);
                 endTime = endTime.ToLocalTime();
@@ -371,7 +422,7 @@ namespace USpeedUI.WarMainFrame
         public void SetData(cmd_entity_rank_season_detail data)
         {   
             TitleDesc.text = "赛季奖励";
-            SubTitleDesc.text = " / 赛季结束将按照本赛季最高段位发放奖励";
+            SubTitleDesc.text = ULocalizationService.Instance.Get("UIView", "RankSeason", "PrizeTile1");
 
             // 隐藏
             for (int i = 0; i < PrizeItems.Length; i++)
@@ -382,19 +433,36 @@ namespace USpeedUI.WarMainFrame
             // 设置
             SSchemeSeasonPrizeConfig config = MatchSeasonPrizeConfig.Instance.GetSeasonPrizeData(data.wPrizeConfigID, data.wTopRankGrade);
             if (config == null)
-                return;
-
-            int nIndex = 0;
-            for (int i = 0; i < config.arrNormalPrize.Length && nIndex < PrizeItems.Length; i++)// 基础
             {
-                PrizeItems[nIndex].SetData(config.arrNormalPrize[i], data.wTopRankGrade, config.arrExtraCondition[1], data.wWinCount, false, config.szNormalCondition);
-                nIndex++;
+                SubTitleDesc.text = ULocalizationService.Instance.Get("UIView", "RankSeason", "PrizeTile2");
+                return;
             }
 
-            for (int i = 0; i < config.arrExtraPrize.Length && nIndex < PrizeItems.Length; i++)// 额外
+            int nExtraCondition1 = 0;
+            int nExtraCondition2 = 0;
+            if (config.arrExtraCondition != null && config.arrExtraCondition.Length >= 2)
             {
-                PrizeItems[nIndex].SetData(config.arrExtraPrize[i], config.arrExtraCondition[0], config.arrExtraCondition[1], data.wWinCount, true, config.szExtralCondition);
-                nIndex++;
+                nExtraCondition1 = config.arrExtraCondition[0];
+                nExtraCondition2 = config.arrExtraCondition[1];
+            }
+                
+            int nIndex = 0;
+            if (config.arrNormalPrize != null)
+            {
+                for (int i = 0; i < config.arrNormalPrize.Length && nIndex < PrizeItems.Length; i++)// 基础
+                {
+                    PrizeItems[nIndex].SetData(config.arrNormalPrize[i], data.wTopRankGrade, nExtraCondition2, data.wWinCount, false, config.szNormalCondition);
+                    nIndex++;
+                }
+            }
+
+            if (config.arrExtraPrize != null)
+            {
+                for (int i = 0; i < config.arrExtraPrize.Length && nIndex < PrizeItems.Length; i++)// 额外
+                {
+                    PrizeItems[nIndex].SetData(config.arrExtraPrize[i], nExtraCondition1, nExtraCondition2, data.wWinCount, true, config.szExtralCondition);
+                    nIndex++;
+                }
             }
         }
     }
@@ -498,5 +566,16 @@ namespace USpeedUI.WarMainFrame
         {
             TaskFrame.SetData();
         }
+
+        public override void SetVisible(bool visible)
+        {
+            base.SetVisible(visible);
+
+            if (!visible)
+            {
+                ScoreFrame.Clear(); // 清理光效
+            }
+        }
+
     }
 }

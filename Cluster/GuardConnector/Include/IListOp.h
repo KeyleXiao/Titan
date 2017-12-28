@@ -27,6 +27,18 @@ namespace Redis
 			return true;
 		}
 
+		// 获取（index元素）
+		template<typename T>
+		bool	lIndex(const string& strKey, long nIndex, T& tValue)
+		{
+			string strValue;
+			if (!lIndexString(strKey, nIndex, &strValue))
+				return false;
+
+			TFromString(strValue, tValue);
+			return true;
+		}
+
 		//************************************
 		// Returns:   bool	是否成功
 		// Qualifier: 从List左侧弹出一个元素并删除

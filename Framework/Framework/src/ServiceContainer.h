@@ -83,63 +83,9 @@ protected:
 
 public:
 
-	ServiceContainer() 
-		: m_pInstance(0)
-		, m_pCoroutine(0)
-		, m_wait_session(0)
-		, m_session_count(MSG_SESSION_USER)
-		, m_response_msg(0)
-		, m_id(INVALID_SERVICE_ID)
-		, m_handleDll(0)
-		, m_nMethodFlag(-1)
-		, m_bEmergent(false)
-		, m_bLockingThread(-1)
-        , m_bFinished(true)
-        , m_bSessionStarted(false)
-        , m_bStop(false)
-        , m_pStartedCallback(0)
-        , m_pStopedCallback(0)
+    ServiceContainer();
 
-#ifdef   FRAMEWORK_DEBUG
-		, m_waitStartTick(0)
-		, m_statisticTick(0)
-		, m_statisticCount(0)
-		, m_statisticTotal(0)
-		, m_statisticYield(0)
-		, m_statisticYieldTotal(0)
-		, m_bStatisticRequest(false)
-		, m_pInnerTimerAxis(0)
-        , m_pReplaceableMQ(0)
-        , m_bBlocking(false)
-#endif
-	{
-		memset( &m_scheme,0,sizeof(m_scheme) );
-	}
-
-	virtual ~ServiceContainer()
-	{
-		TraceLn("Destory ServiceContainer service id=" << m_id);
-		if ( m_response_msg)
-		{
-			free(m_response_msg);
-			m_response_msg = 0;
-		}
-
-		if ( m_pInnerTimerAxis )
-		{
-			m_pInnerTimerAxis->Close();
-			delete m_pInnerTimerAxis;
-			m_pInnerTimerAxis  =0;
-		}
-
-        if( m_pCoroutine != 0 )
-        {
-            ErrorLn(__FUNCTION__ << ", m_pCoroutine != 0");
-            safeRelease ( m_pCoroutine );
-        }
-
-		safeRelease ( m_pInstance );
-	}
+    virtual ~ServiceContainer();
 
 	// 紧急调用 ：需要优先处理
 	bool handle_emergent_message();

@@ -94,6 +94,7 @@ enum ACTOR_TASK_KEY
 	TASKKEY_ACTOR_PRIZECHEST_NUM_END					= 10300,	// 拥有宝箱数量结束ID
 	// 预留位置到11000,后续请从11001开始枚举
 
+    TASKKEY_RECOMMEND_PRIZE                             = 11001,   // 推广员总局数奖励领取情况
 };
 
 // 任务键值类型
@@ -143,6 +144,8 @@ public:
 		{
 			nActorSaveDBIntTaskKey.push_back(i);
 		}
+
+        nActorSaveDBIntTaskKey.push_back(TASKKEY_RECOMMEND_PRIZE);
 
         //////////////////////////////////// 不需要存DB的键值在这里加上 ////////////////////////////////////
 		//nActorTempIntTaskKey.push_back();

@@ -162,6 +162,7 @@ ENUM EMChatTipID
     CHAT_TIP_WAR_BATTLEWAR_GENIC_OWNEDTIP,			// 淘汰{1}玩家，收集{2}的影响基因
     CHAT_TIP_WAR_BATTLEWAR_DIE_IN_NOX,				// {1}在安全区外被毒圈淘汰
     CHAT_TIP_WAR_BATTLEWAR_FAKED_KILL,				// 您击倒了{1}
+	CHAT_TIP_WAR_GOODS_FREEZE,						// 正在冷却中
 
 
 	CHAT_TIP_CHAT_BEGIN = 6000,						// 聊天用提示起始
@@ -464,6 +465,7 @@ ENUM EMChatTipID
     CHAT_TIP_MATCH_NOT_ENOUGH_PERSON_REMATCH,               //  人数不够！无法开始比赛！重新进入匹配！
     CHAT_TIP_MATCH_CANT_REQUEST,                            //  您无法进行匹配操作！
     CHAT_TIP_MATCH_CANT_KICK_OUT_GM,                        //  无法提出该用户！
+	CHAT_TIP_MATCH_CALN_TEAM_INVITE_TOO_QUICK,              //  联盟邀请过于频繁，请稍后再试！
 
 	CHAT_TIP_POINTSHOP_BEGIN = 14000,						// 商城相关
 	CHAT_TIP_POINTSHOP_SERVERBUSY,							// 服务器繁忙提示
@@ -477,6 +479,7 @@ ENUM EMChatTipID
 	CHAT_TIP_ACTORPRIZE_ALREADYBUYBENEFITCARD,				// 购买重复类型增益卡提示
 	CHAT_TIP_POINTSHOP_NOTHAVE_REFLUSHNUM,					// 刷新卡牌次数不足
 	CHAT_TIP_POINTSHOP_REFLUSH_SUCCESS,						// 手动刷新卡牌成功
+	CHAT_TIP_POINTSHOP_CANT_BUY_INWAR,						// 战场不能购买商品
 
     CHAT_TIP_ORDER_BEGIN = 15000,						    // 排行榜相关
     CHAT_TIP_ORDER_SAVE_PERSONSET_SUCESS,                   // 个人排行榜设置成功
@@ -690,6 +693,10 @@ ENUM EMChatTipID
     
     CHAT_TIP_GAMEPROMOTION_BEGIN = 21300,                   // 游戏推广界面飘字
     CHAT_TIP_GAMEPROMOTION_COPY_SUCCESS,                    // 复制成功
+    CHAT_TIP_GAMEPROMOTION_OBTAIN_SUCCESS,                  // 领取成功
+    CHAT_TIP_GAMEPROMOTION_OBTAIN_FAILED,                   // 领取失败
+    CHAT_TIP_GAMEPROMOTION_ALREADY_OBTAIN,                  // 已经领取过
+    CHAT_TIP_GAMEPROMOTION_NO_ENOUGH_MATCHNUM,              // 局数不足，无法领取
 
 	CHAT_TIP_MIGRATE_BEGIN= 21500,							 // 迁移相关
 	CHAT_TIP_MIGRATE_CANT_SWITCHSCENE,						 // 不能切换场景

@@ -262,7 +262,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     cupInfo.nDeadline = new int[strDeadline.Length];
                     for (int j = 0; j < strDeadline.Length; ++j)
                     {
-                        cupInfo.nDeadline[j] = Convert.ToInt32(strDeadline[j]);
+                        //cupInfo.nDeadline[j] = Convert.ToInt32(strDeadline[j]);
+                        Int32.TryParse(strDeadline[j], out cupInfo.nDeadline[j]);
                     }
                 }
                 cupInfo.nCreateNeedMoney = reader.GetInt(i, (int)ECupConfigCol.ECCC_COL_CUP_CREATENEEDMONEY, 0);
@@ -304,7 +305,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     cupTypeInfo.nBeginTime = new int[strBeginTime.Length];
                     for (int j = 0; j < strBeginTime.Length; ++j)
                     {
-                        cupTypeInfo.nBeginTime[j] = Convert.ToInt32(strBeginTime[j]);
+                        //cupTypeInfo.nBeginTime[j] = Convert.ToInt32(strBeginTime[j]);
+                        Int32.TryParse(strBeginTime[j], out cupTypeInfo.nBeginTime[j]);
                     }
                 }
 
@@ -314,7 +316,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     cupTypeInfo.nStartTime = new int[strStartTime.Length];
                     for (int p = 0; p < strStartTime.Length; ++p)
                     {
-                        cupTypeInfo.nStartTime[p] = Convert.ToInt32(strStartTime[p]);
+                        //cupTypeInfo.nStartTime[p] = Convert.ToInt32(strStartTime[p]);
+                        Int32.TryParse(strStartTime[p], out cupTypeInfo.nStartTime[p]);
                     }
                 }
 
@@ -324,7 +327,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     cupTypeInfo.nRoundResetEndTime = new int[strResetEndTime.Length];
                     for (int q = 0; q < strResetEndTime.Length; ++q)
                     {
-                        cupTypeInfo.nRoundResetEndTime[q] = Convert.ToInt32(strResetEndTime[q]);
+                        //cupTypeInfo.nRoundResetEndTime[q] = Convert.ToInt32(strResetEndTime[q]);
+                        Int32.TryParse(strResetEndTime[q], out cupTypeInfo.nRoundResetEndTime[q]);
                     }
                 }
 
@@ -334,7 +338,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     cupTypeInfo.nRoundEndTime = new int[strRoundEndTime.Length];
                     for (int q = 0; q < strRoundEndTime.Length; ++q)
                     {
-                        cupTypeInfo.nRoundEndTime[q] = Convert.ToInt32(strRoundEndTime[q]);
+                        //cupTypeInfo.nRoundEndTime[q] = Convert.ToInt32(strRoundEndTime[q]);
+                        Int32.TryParse(strRoundEndTime[q], out cupTypeInfo.nRoundEndTime[q]);
                     }
                 }
 
@@ -378,7 +383,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     prizeInfo.nPrizeIDList = new int[strPrizeIDList.Length];
                     for (int j = 0; j < strPrizeIDList.Length; j++)
                     {
-                        prizeInfo.nPrizeIDList[j] = Convert.ToInt32(strPrizeIDList[j]);
+                        //prizeInfo.nPrizeIDList[j] = Convert.ToInt32(strPrizeIDList[j]);
+                        Int32.TryParse(strPrizeIDList[j], out prizeInfo.nPrizeIDList[j]);
                     }
                 }
                 prizeInfo.nBonusRatio = reader.GetInt(i, (int)ECupPrizeCol.ECPC_COL_PRIZE_BONUSRATIO, 0);
@@ -415,7 +421,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     typeInfo.nFreeCupConfigIDList = new int[strFreeTypeIDList.Length];
                     for (int j = 0; j < strFreeTypeIDList.Length; j++)
                     {
-                        typeInfo.nFreeCupConfigIDList[j] = Convert.ToInt32(strFreeTypeIDList[j]);
+                        //typeInfo.nFreeCupConfigIDList[j] = Convert.ToInt32(strFreeTypeIDList[j]);
+                        Int32.TryParse(strFreeTypeIDList[j], out typeInfo.nFreeCupConfigIDList[j]);
                     }
                 }
 
@@ -425,7 +432,8 @@ namespace ASpeedGame.Data.LegendCupConfig
                     typeInfo.nChargeCupconfigIDList = new int[strChargeTypeIDList.Length];
                     for (int j = 0; j < strChargeTypeIDList.Length; j++)
                     {
-                        typeInfo.nChargeCupconfigIDList[j] = Convert.ToInt32(strChargeTypeIDList[j]);
+                        //typeInfo.nChargeCupconfigIDList[j] = Convert.ToInt32(strChargeTypeIDList[j]);
+                        Int32.TryParse(strChargeTypeIDList[j], out typeInfo.nChargeCupconfigIDList[j]);
                     }
                 }
 

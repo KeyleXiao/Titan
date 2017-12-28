@@ -49,7 +49,7 @@ namespace ImageEffects
         public Vector3 area_Center = Vector3.zero;
         public float area_e0 = 1;
         public float area_e1 = 1;
-
+        private bool canUseMask = true;
 
         private int validShaderLOD = 200;
 
@@ -75,13 +75,30 @@ namespace ImageEffects
 
             if (!isSupported)
                 ReportAutoDisable ();
-
+            canUseMask = false;
+            var skybox = RenderSettings.skybox;
+            if (skybox)
+            {
+                if (skybox.HasProperty("_Tint"))
+                {
+                    canUseMask = true;
+                }
+            }
             return isSupported;
         }
 
         public override void OnActive()
         {
             API_AttachCameraRenderFlags(DepthTextureMode.Depth);
+            canUseMask = false;
+            var skybox = RenderSettings.skybox;
+            if (skybox)
+            {
+                if (skybox.HasProperty("_Tint"))
+                {
+                    canUseMask = true;
+                }
+            }
         }
 
         public override void OnDeActive()
@@ -152,7 +169,7 @@ namespace ImageEffects
             sunShaftsMaterial.SetVector ("_SunThreshold", sunThreshold);
 
             var skybox = RenderSettings.skybox;
-            if (skybox!=null && skyMask!=null)
+            if (skybox != null && skyMask != null && canUseMask)
             {
                 sunShaftsMaterial.SetTexture("_SkyCubemap", skyMask);
                 sunShaftsMaterial.SetColor("_SkyTint", skybox.GetColor("_Tint"));

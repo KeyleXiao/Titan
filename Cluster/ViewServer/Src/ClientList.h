@@ -1,123 +1,49 @@
-﻿/*******************************************************************
-** 文件名:	E:\Rocket\Cluster\VoiceGateway\Src\ClientList.h
-** 版  权:	(C) 深圳冰川网络股份有限公司
-** 创建人:	宋文武
-** 日  期:	2012-11-21
-** 版  本:	1.0
-** 描  述:	语音客户端用户列表
-** 应  用:  	
-
-**************************** 修改记录 ******************************
-** 修改人: 
-** 日  期: 
-** 描  述: 
-********************************************************************/
-
-
-#ifndef __CLIENT_LIST_H__
-#define __CLIENT_LIST_H__
-
-#include "ViewDef.h"
+#pragma once
 #include "ClientUser.h"
-#include "Singleton.h"
-#include <list>
-  
+#include "GateConnector.h"
+#include "Gates.h"
 
-/**
-@name : 客户端列表
-@brief:
-*/
-class CClientList : public Singleton<CClientList>
+
+class ClientList : public Singleton<ClientList>
 {
 public:
-	/**
-	@name        : 添加一个客户端用户
-	@param client: 用户指针
-	@return      : 如果当前已达到最大用户数则返回false
-	*/
-    bool AddUser(CClientUser * pClient);
+	// ���û�оʹ���������У��ͷ�����ָ�롣���Ա����������᷵��nullptr
+	ClientUser* InsertIfAbsent(PlayerID dwPlayerID, GateConnector* pGateConnector);
 
-	/**
-	@name        : 从用户列表中删除一个客户端用户
-	@param client: 用户指针
-	@return      : 如果找不到该用户则返回false
-	*/
-	bool DelUser(CClientUser * pClient);
+	ClientUser*	Get(PlayerID dwPlayerID);
 
-	/**
-	@name        : 根据ID查找一个用户
-	@return      : 如果找不到该用户则返回0
-	*/
-	CClientUser * FindUser(const DWORD dwID);
-
-	/**
-	@name        : 根据ID查找一个用户
-	@return      : 如果找不到该用户则返回0
-	*/
-	CClientUser * FindUser( const char * szIP, const WORD nPort );
-
-	/**
-	@name        : 统计当前所有用户数
-	@return      : 返回用户数
-	*/
-	DWORD CountUser();
-
-	void Clear(void);
-
-	/**
-	@name        : 根据索引取得用户指针
-	@warning     : 注意：索引值的上限是MAX_CLIENT_COUNT而不是CountUser
-	@param index : 用户索引
-	@return      : 如果该索引无用户则返回false,
-	*/
-	CClientUser * GetUserByIndex(DWORD dwIndex);
-
-	DWORD GetServerID();
-	void  SetServerID(DWORD dwID);
-
-	// 保存用户信息列表到csv文件
-	void SaveUserListToCSV();
-
-	/** 写入数据到文件
-	@param  BYTE* pData:要保存的数据
-	@param  int nLens: 数据大小
-	@param  char * szFileName:要保存的文件名
-	@return  
-	*/	
-	void WriteData2File(BYTE* pData,int nLens,const char * szFileName);
-
-	CClientList() : m_dwServerID(0),m_dwCounts(0)
+	template<typename TMsg>
+	void BroadCastData(TMsg& msg, const VecPlayerID& vec)
 	{
-		memset(&m_list,0,sizeof(m_list));
+		std::map<GateID, VecPlayerID>	_map;
+		
+		for (size_t i = 0; i < vec.size(); i++)
+		{
+			const PlayerID& dwPlayerID = vec.at(i);
+			auto it = m_ClientMap.find(dwPlayerID);
+			if (it == m_ClientMap.end())
+				continue;
+			
+			const GateID& wGateID = it->second.m_wGateID;
+			_map[wGateID].push_back(dwPlayerID);
+		}
+
+		for each (auto entry in _map)
+		{
+			const GateID& wGateID = entry.first;
+			const VecPlayerID& vecTmp = entry.second;
+
+			GateConnector* pGate = gGates.Get(wGateID);
+			if (pGate == nullptr)
+				continue;
+			
+			pGate->SendMsg(msg, (void*)vecTmp.data(), vecTmp.size()*sizeof(PlayerID));
+		}
 	}
 
-protected:
-	/// 产生一个客户端ID
-	inline bool GenerateID(DWORD & dwID);
+private:
+	typedef std::map<PlayerID, ClientUser>	ClientMap;
 
-	/// 归还一个客户端ID
-	inline void RestoreID(const DWORD & dwID);
-
-	/// 从ID转成索引
-	inline DWORD ID2Index(const DWORD & dwID);
-
-	/// 从索引转成ID
-	inline DWORD  Index2ID(DWORD dwIndex);
-
-	/** 取得时间字串
-	@param   DWORD dwTime:时间
-	@param   
-	@return  LPCSTR
-	*/
-	LPCSTR GetTimeString(DWORD dwTime);
-
-protected:
-	// 用数组提高效率
-	CClientUser*		m_list[VOICE_MAX_CLIENT_COUNT];
-	DWORD				m_dwCounts;	// 客户端数
-
-	DWORD				m_dwServerID;
-	std::list<DWORD>	m_IDStock;
+	ClientMap	m_ClientMap;
 };
-
-#endif//__CLIENT_LIST_H__
+extern ClientList& gClientList;

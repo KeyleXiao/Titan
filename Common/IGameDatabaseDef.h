@@ -1143,13 +1143,25 @@ namespace rkt
             memset(this, 0, sizeof(*this));
         }
     };
-    // 返回结构
-    struct DBREQ_RESULT_QUERYRECOMWARRECORD   
+    // 下家战绩信息
+    struct DBREQ_RECOM_QUERYRECOMWARRECORD   
     {
-        DWORD   dwRecomUserID;                      // 上家账号ID 直通
+        DWORD   dwUserID;                           // 下家账号ID
         DWORD	dwMatchNum;                         // 下家总场次
 		DWORD	dwWinNum;                           // 下家总胜场次
 
+        DBREQ_RECOM_QUERYRECOMWARRECORD(void)
+        {
+            memset(this, 0, sizeof(*this));
+        }
+    };
+    // 返回结构
+    struct DBREQ_RESULT_QUERYRECOMWARRECORD   
+    {
+        DWORD  dwRecomUserID;                    // 上家账号ID
+        int    nCount;                           // 下家记录数
+        // nCount * DBREQ_RECOM_QUERYRECOMWARRECORD
+        
         DBREQ_RESULT_QUERYRECOMWARRECORD(void)
         {
             memset(this, 0, sizeof(*this));
@@ -1903,7 +1915,7 @@ namespace rkt
     {
         BYTE    byMatchType;									// 排行类		
         int     nCount;										// 记录条数 最大200
-        // nCount * DBREQ_PARAM_ORDERINFO_PERSON
+        // nCount * DBREQ_RESULT_MATCHTYPE_ORDERINFO_PERSON
 
         DBREQ_RESULT_READ_MATCHTYPE_ORDERINFO_LIST(void)
         {
@@ -1914,6 +1926,7 @@ namespace rkt
     struct DBREQ_RESULT_MATCHTYPE_ORDERINFO_PERSON
     {
         int		nOrder;  								// 排行名次
+		BYTE	bySex;									// 性别
         DWORD   dwUserID;                               // 账号ID
         DWORD	dwActorID;								// 角色ID
         char	szActorName[DBDEF_ACTORNAME_MAXSIZE];	// 角色名称
@@ -2065,6 +2078,7 @@ namespace rkt
     struct DBREQ_RESULT_HEROORDER_DETAIL_INFO
     {
         int		nOrder;                                     // 排名
+		BYTE	bySex;										// 性别
         DWORD   dwUserID;                                   // 账号ID
         DWORD   dwPlayerID;                                 // 玩家ID
         char    szName[DBDEF_ACTORNAME_MAXSIZE];            // 玩家名字
@@ -2231,6 +2245,7 @@ namespace rkt
     struct DBREQ_PARAM_TABLE_ORDERINFO_PERSON
     {
         int		nOrder;  								// 排行名次
+		BYTE	bySex;									// 性别
         int		nLastOrder;								// 上次排名
         DWORD   dwUserID;                               // 账号ID
         DWORD	dwActorID;								// 角色ID
@@ -5009,6 +5024,7 @@ namespace rkt
     ///- 传入参数结构
     struct DBREQ_PARAM_READCUPLIST
     {
+		DWORD dwWordID;
         DBREQ_PARAM_READCUPLIST(void)
         {
             memset(this, 0, sizeof(DBREQ_PARAM_READCUPLIST));

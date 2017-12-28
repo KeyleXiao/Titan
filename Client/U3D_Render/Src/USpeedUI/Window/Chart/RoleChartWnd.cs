@@ -488,12 +488,12 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             rankIcon.gameObject.SetActive(false);
             rankDesc.text = "";
             StarScore.text = "";
             clanName.text = "";
-            sexIcon.gameObject.SetActive(false);
             for (int i = 0; i < StarImgFrame.childCount - 1; i++)
             {
                 StarImgFrame.GetChild(i).gameObject.SetActive(false);
@@ -515,6 +515,9 @@ namespace USpeedUI.Chart
             rankIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_RankImage, WndID.WND_ID_CHART, 2, info.nRankIconID);
             rankIcon.gameObject.SetActive(true);
             rankDesc.text = info.szGradeName;
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             int nRankStar = GameLogicAPI.getActorRankStar((int)Match_ManagerDef.EMMatchType.MatchType_Rank, info.nRankScore);
             int nMaxRankStar = GameLogicAPI.getActorCurRankMaxStar((int)Match_ManagerDef.EMMatchType.MatchType_Rank, info.nRankScore);
@@ -626,12 +629,12 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             fiveKillCount.text = "";
             rankIcon.gameObject.SetActive(false);
             rankDesc.text = "";
             clanName.text = "";
-            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();
@@ -651,6 +654,10 @@ namespace USpeedUI.Chart
             rankIcon.gameObject.SetActive(true);
             rankDesc.text = info.szGradeName;
             clanName.text = info.szClanName;
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
+
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();
 

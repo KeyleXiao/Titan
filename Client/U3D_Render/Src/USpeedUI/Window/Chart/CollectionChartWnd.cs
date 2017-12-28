@@ -554,9 +554,9 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             number.text = "";
-            sexIcon.gameObject.SetActive(false);
 
             if (popupMenuHandle.HandlePopupAction != null)
             {
@@ -573,6 +573,9 @@ namespace USpeedUI.Chart
 
             playerName.text = info.szName;
             number.text = info.dwHeroCount.ToString();
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();
@@ -654,9 +657,9 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             skinNums.text = "";
-            sexIcon.gameObject.SetActive(false);
             foreach (Text txt in assetNums)
             {
                 txt.text = "";
@@ -680,6 +683,9 @@ namespace USpeedUI.Chart
             assetNums[0].text = info.dwLegendSkinCount.ToString();
             assetNums[1].text = info.dwEpicSkinCount.ToString();
             assetNums[2].text = info.dwLimitedSkinCount.ToString();
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();
@@ -763,9 +769,9 @@ namespace USpeedUI.Chart
             index.text = "";
             index.gameObject.SetActive(true);
             indexIcon.gameObject.SetActive(false);
+            sexIcon.gameObject.SetActive(false);
             playerName.text = "";
             score.text = "";
-            sexIcon.gameObject.SetActive(false);
             if (popupMenuHandle.HandlePopupAction != null)
             {
                 popupMenuHandle.HandlePopupAction.Clear();
@@ -780,7 +786,10 @@ namespace USpeedUI.Chart
             index.text = info.nOrder.ToString();
 
             playerName.text = info.szName;
-            score.text = info.dwFaceScore.ToString();
+            score.text = info.dwPropVal.ToString();
+
+            sexIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_KinSex, WndID.WND_ID_CHART, (int)info.bySex + 1);
+            sexIcon.gameObject.SetActive(true);
 
             if (popupMenuHandle == null)
                 popupMenuHandle = this.gameObject.AddComponent<UPopupMenuHandle>();

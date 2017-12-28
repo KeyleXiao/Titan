@@ -589,7 +589,7 @@ void CKin::onRecvKinBaseData(LPCSTR pszMsg, int nLen)
     // 显示层战队数据更新数据组装
     obuf obData;
     cmd_kin_basedata headData;
-    headData.nKinID = m_dwID;
+    headData.nKinID = pRecvData->dwKinID;
     headData.nKinLevel = pRecvData->nKinLevel;              // 战队等级 
     headData.dwShaikhID = pRecvData->dwShaikhID;            // 族长
     headData.nMemberCount = pRecvData->nMemberCount;        // 成员数量
@@ -639,7 +639,7 @@ void CKin::onUpdateKinBaseData(LPCSTR pszMsg, int nLen)
     // 显示层战队数据更新数据组装
     obuf obData;
     cmd_kin_basedata headData;
-    headData.nKinID = m_dwID;
+    headData.nKinID = pRecvData->dwKinID;
     headData.nKinLevel = pRecvData->nKinLevel;              // 战队等级 
     headData.dwShaikhID = pRecvData->dwShaikhID;            // 族长
     headData.nMemberCount = pRecvData->nMemberCount;        // 成员数量
@@ -698,6 +698,7 @@ void CKin::onUpdateKinMemData(LPCSTR pszMsg, int nLen)
     obuf obData;
     int nPosNum = pRecvData->nMemberCount;
     cmd_kin_basedata headData;
+    headData.nKinID = pRecvData->dwKinID;
     headData.nKinLevel = pRecvData->nKinLevel;              // 战队等级 
     headData.dwShaikhID = pRecvData->dwShaikhID;            // 族长
     headData.nMemberCount = pRecvData->nMemberCount;        // 成员数量
@@ -791,7 +792,7 @@ void CKin::onKinUpdateClient(LPCSTR pszMsg, int nLen)
     // 下发基础信息到显示层
     obuf obData;
     cmd_kin_basedata headData;
-    headData.nKinID = m_dwID;
+    headData.nKinID = pRecvData->dwID;
     headData.nKinLevel = pRecvData->nKinLevel;                                                             // 战队等级 
     headData.dwShaikhID= pRecvData->dwShaikhID;                                         // 族长
     sstrcpyn(headData.szKinName, m_szName, sizeof(headData.szKinName));

@@ -4,6 +4,9 @@
 #include "ViewServer.h"
 #include "MngMsgRegister.h"
 #include "RedisMng.h"
+#include "ReplayContainer.h"
+#include "RedisThread.h"
+#include "ITimeSyncService.h"
 
 /// purpose: 构造函数
 GlobalViewServer::GlobalViewServer() : m_MngConnector(m_processer, m_brMng, m_TimerAxis)
@@ -110,6 +113,18 @@ bool GlobalViewServer::InitEnvironment(void)
 		return false;
 	}
 
+	if (!gReplays.Init(&m_TimerAxis))
+	{
+		ErrorLn(_GT("ReplayContainer init fail! "));
+		return false;
+	}
+
+	// 启动战报读取线程
+	gRedisThread.start();
+
+	// 开始对表
+	gTimeSyncService.Start();
+
 	// 是否初始化
 	m_bInit = true;
 
@@ -153,8 +168,6 @@ bool GlobalViewServer::Create( DWORD dwServerID, const char * szMngIP, WORD wMng
 
 		if( dwServerID <= 0 || dwServerID >= VIEW_MAX_GATEWAYID )
 			return false;
-
-		CClientList::getInstance().SetServerID(dwServerID);
 
 		// 语音服务器连接器初始化
 		m_MngConnector.SetServerID(dwServerID);
@@ -204,13 +217,18 @@ bool GlobalViewServer::Close()
 			return false;
 		}
 
+		// 停止Redis线程，需要后续整理 TODO
+		gRedisThread.wait();
+		gRedisThread.terminate();
+
+		gReplays.Shutdown();
+
 		m_MngConnector.Close();
+
+		gTimeSyncService.release();
 
 		// 关闭管理连接器
 		ReleaseManagerConnector();
-
-		// 清除所有用户
-		CClientList::getInstance().Clear();
 
 		// 是否启动
 		m_bStart = false;
@@ -394,7 +412,7 @@ void GlobalViewServer::OnManagerEventExecute(WORD wEventID, LPSTR pszContext, si
 			/// 获取当前进程的虚拟内存已使用大小
 			m_ManagerConnector->SetRealTimeData(MG_VoiceGatewayRTData_VirtualMemoryUsedSize,(int)getVirtualMemoryUsedSizeByCurrentProcess());
 			// 更新实时数据 在线数
-			m_ManagerConnector->SetRealTimeData(MG_VoiceGatewayRTData_OnLineCounts,(int)(CClientList::getInstance().CountUser()));
+			m_ManagerConnector->SetRealTimeData(MG_VoiceGatewayRTData_OnLineCounts,(int)(0));//TODO
 			// 客户端每秒发包速度
 			m_ManagerConnector->SetRealTimeData(MG_VoiceGatewayRTData_ClientSendSpeed,(int)(m_TotalInfo.dwSendSpeedClient));
 			// 客户端每秒收包速度
@@ -726,106 +744,6 @@ bool GlobalViewServer::KillTimer(DWORD timerID, ITimerHandler * handler)
 
 
 
-/// purpose: 客户端网络消息处理
-void GlobalViewServer::onClientMessage(CClientUser &client, ulong actionId, SGameMsgHead* head, void* data, size_t len)
-{
-	switch(actionId)
-	{
-	case MSG_VOICE_KEEPALIVE:		// 心跳检查消息
-		{
-			SGameMsgHead header;
-			header.SrcEndPoint = MSG_ENDPOINT_VOICEGATE;
-			header.DestEndPoint= MSG_ENDPOINT_CLIENT;
-			header.byKeyModule  = MSG_MODULEID_VOICE;
-			header.byKeyAction  = MSG_VOICE_ANSWER_KEEPALIVE;	//回应心跳检查
-			obuf obufData;
-			obufData.push_back(&header, sizeof(SGameMsgHead));
-			client.SendData(obufData.data(),obufData.size());
-
-			// 记录最后保持心跳时间
-			client.m_dwLastKeepaliveTime = ::GetTickCount();
-		}
-		break;
-
-	case MSG_VOICE_HANDSHAKE:		// 握手消息
-		{
-			OnMsgClientHandshake(client,actionId,head,data, len);
-		}
-		break;
-
-	case MSG_VOICE_PERFORMANCE:		// 请求性能检测消息包
-		{
-		}
-		break;
-
-		//case MSG_VOICE_SENDDATA:		// 请求桥服务器网关服务发送数据给各软件服务器消息
-		//	{
-		//		OnMsgClientSendData(client,actionId,head,data, len);
-		//	}
-		//	break;
-
-		//case MSG_VOICE_BROADCASTDATA:		// 请求桥服务器网关服务广播数据给各软件服务器
-		//	{
-		//		OnMsgClientBroadcastData(client,actionId,head,data, len);
-		//	}
-		//	break;
-
-	default:
-		{
-			ErrorLn(_GT("尚有一个客户端的消息未处理，actionId = ")<<actionId);
-		}
-		break;
-	}
-}
-
-
-
-/// purpose: 服务器网络消息处理
-void GlobalViewServer::onServerMessage( ulong actionId, SGameMsgHead* head, void* data, size_t len)
-{
-	switch(actionId)
-	{
-	case MSG_VOICE_ANSWER_KEEPALIVE:		// 心跳检查
-		{
-		m_MngConnector.m_bIsAnswer = true;							// 是否有回应
-		m_MngConnector.m_dwLastAnswerTime = ::GetTickCount();		// 最后收到心跳Tick时间
-			//TraceLn("收到心跳回应!");
-		}
-		break;
-	case MSG_VOICE_HANDSHAKE_RESPONSE:		// 回应握手消息
-		{
-			OnMsgServerHandshakeResponse(actionId,head,data, len);
-		}
-		break;
-
-	case MSG_VOICE_SENDDATA:		// 请求语音网关服务发送数据给各客户端消息
-		{
-			OnMsgServerSendData(actionId,head,data, len);
-		}
-		break;
-
-	case MSG_VOICE_DATA_SUBMSG:			// 语音网关子消息
-		{
-			OnMsgServerSubMsg( actionId,head,data, len );
-		}
-		break;
-
-	case MSG_VOICE_PERFORMANCE:		// 请求性能检测消息包
-		{
-			OnMsgServerPerformance(actionId,head,data, len);
-		}
-		break;
-
-	default:
-		{
-			ErrorLn(_GT("尚有一个语音服务器消息未处理，actionId = ")<<actionId);
-		}
-		break;
-	}
-}
-
-
-
 //////////////////////////////////////////////////////////////////////////
 /// purpose: 客户端连入
 void GlobalViewServer::OnClientUserEnter(CClientUser *pUser, DWORD dwReason )
@@ -854,7 +772,7 @@ void GlobalViewServer::ExcutCommand( int nNum1, int nNum2, const char * szTxt )
 	switch(nNum1)
 	{
 	case VoiceCommand_ExportUserList:		// 导出用户列表
-		CClientList::getInstance().SaveUserListToCSV();
+		//CClientList::getInstance().SaveUserListToCSV();
 		break;
 
 	case VoiceCommand_ChangeMaxConnection:	// 修改最大连接数
@@ -1090,57 +1008,6 @@ void GlobalViewServer::OnMsgServerHandshakeResponse(ulong actionId, SGameMsgHead
 	TraceLn(_GT("收到语音服务器回应握手信息! ") << a2utf8(m_MngConnector.ToString().data()));
 }
 
-/// purpose: 语音服务器请求发送数据到客户端
-void GlobalViewServer::OnMsgServerSendData(ulong actionId, SGameMsgHead* head, void* data, size_t len)
-{
-	if(data==NULL|| len <= sizeof(SMsgVoiceSendData))
-	{
-		return;
-	}
-
-	SMsgVoiceSendData * pMsg = (SMsgVoiceSendData *)(data);
-
-#ifdef VOICE_PRINT_DEBUG_INF
-	// 调式代码
-	char szBuf[512]={0};
-	sprintf_s(szBuf, _countof(szBuf),_NGT"GlobalViewServer::OnMsgServerSendData() 发送数据给各软件客户端消息:软件服务器ID=%d,数据长度=%d",
-		pMsg->dwServerID,pMsg->nDataLens);
-	TraceLn(szBuf);
-#endif
-
-	DWORD dwSendDataLens = (DWORD)(len-sizeof(SMsgVoiceSendData) );
-
-	if (dwSendDataLens!=pMsg->nDataLens)
-	{
-		ErrorLn(_GT("语音服务器请求发送数据到客户端长度错误! 实际长度=")<<dwSendDataLens<<_GT(",指示长度=")<<pMsg->nDataLens);
-		return ;
-	}
-
-	// 取得客户端ID，并找到客户端
-	DWORD dwClientID = pMsg->dwServerID;
-	CClientUser *pClientUser = CClientList::getInstance().FindUser(dwClientID);
-	if( NULL == pClientUser )
-	{
-		return ;
-	}
-
-	LPSTR pSendData = (LPSTR)data + sizeof(SMsgVoiceSendData);
-
-	switch(pMsg->nSendChennel)
-	{
-	case VoiceSendChannel_Voice:	// 用语音通道发
-		{
-		}
-		break;
-
-	case VoiceSendChannel_Control:
-	default:
-		pClientUser->SendData( pSendData, dwSendDataLens );
-		break;
-	}
-}
-
-
 // 语音网关子消息
 void GlobalViewServer::OnMsgServerSubMsg(ulong actionId, SGameMsgHead* head, void* data, size_t len)
 {
@@ -1187,70 +1054,6 @@ void GlobalViewServer::OnMsgServerSubMsg(ulong actionId, SGameMsgHead* head, voi
 		break;
 	}
 }
-
-
-// 请求性能检测消息包
-void GlobalViewServer::OnMsgServerPerformance(ulong actionId, SGameMsgHead* head, void* data, size_t len)
-{
-
-	if(data==NULL|| len != sizeof(SMsgVoicePerformance_S))
-	{
-		return;
-	}
-
-	SMsgVoicePerformance_S * pMsg = (SMsgVoicePerformance_S *)(data);
-
-#ifdef VOICE_PRINT_DEBUG_INF
-	// 调式代码
-	char szBuf[512]={0};
-	sprintf_s(szBuf,sizeof(szBuf), "GlobalViewServer::OnMsgServerPerformance() 请求性能检测消息包:ClientID=%d",pMsg->dwClientID );
-	TraceLn(szBuf);
-#endif
-
-	SGameMsgHead header;
-	header.SrcEndPoint = MSG_ENDPOINT_VOICEGATE;
-	header.DestEndPoint= MSG_ENDPOINT_CLIENT;
-	header.byKeyModule  = MSG_MODULEID_VOICE;
-	header.byKeyAction  = MSG_VOICE_PERFORMANCE;
-
-	SMsgVoicePerformance_S sendData;
-	sendData = *pMsg;
-
-	DWORD dwType = VoicePerformanceType_Gateway;
-	bool bSend = false;
-	DWORD dwCounts = m_MngConnector.GetPendingCount(bSend);
-
-	SMsgVoicePerformanceNode &myNode = sendData.perData.data[dwType];
-	// 取得高性能计数
-	LARGE_INTEGER litmpTims; 
-	::QueryPerformanceCounter(&litmpTims);
-	myNode.nFrequency = getPerformanceFrequency();
-	if (bSend)
-	{
-		myNode.nSendTicks = litmpTims.QuadPart;
-		myNode.nSendCounts = (WORD)dwCounts;
-	}
-	else
-	{
-		myNode.nRecvTicks = litmpTims.QuadPart;
-		myNode.nRecvCounts = (WORD)dwCounts;
-	}
-
-	obuf obufData;
-	obufData.push_back(&header, sizeof(SGameMsgHead));
-	obufData.push_back(&sendData, sizeof(SMsgVoicePerformance_S));
-
-	// 取得客户端ID，并找到客户端
-	DWORD dwClientID = pMsg->dwClientID;
-	CClientUser *pClientUser = CClientList::getInstance().FindUser(dwClientID);
-	if( NULL == pClientUser )
-	{
-		return ;
-	}
-
-	pClientUser->SendData( obufData.data(),obufData.size());
-}
-
 
 
 

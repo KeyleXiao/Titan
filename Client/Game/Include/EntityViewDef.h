@@ -623,6 +623,12 @@ namespace GameLogic
 
 			// 更新宝箱信息
 			ENTITY_TOVIEW_UPDATE_EMOJI_INFO,
+                
+			// 返回推广员下家总局数和奖励任务数据
+            ENTITY_TOVIEW_RECOMMEND_RECORD,
+
+            // 通知VIEW领取推广奖励成功
+            ENTITY_TOVIEW_GAIN_RECOMMPRIZE_SUCCESS,
 
             ///////////////////////////////////////////////////////////////////////////////
             // ！！！别插到这个命令下，请在上面加发送到显示层命令
@@ -950,10 +956,30 @@ namespace GameLogic
 			// 请求排位赛季历史数据
 			ENTITY_CMD_REQ_SEASON_RECORD,
 
+            // 推广员请求获取下家总局数和奖励任务数据
+            ENTITY_CMD_REQ_RECOMMEND_RECORD,
+
+            // 推广员请求领取推广奖励
+            ENTITY_CMD_REQ_GAIN_RECOMMPRIZE,
 
             ENTITY_CMD_MAX,
             // END 显示层上发到逻辑层命令
             ////////////////////////////////////////////////////////////////////////////////////
+
+			//// 请求头像基础数据
+			//ENTITY_CMD_REQ_CHANGE_ICON_DETAIL,
+
+			//// 下发客户端头像基础数据
+			//ENTITY_TOVIEW_CHANGE_ICON_DETAIL_SELF,
+
+			//// 下发客户端头像基础数据
+			//ENTITY_TOVIEW_CHANGE_ICON_DETAIL_OTHER,
+
+			//// 请求改变头像属性
+			//ENTITY_CMD_CHANGE_ICON_PROPERTY,
+
+			//// 下发改变头像属性
+			//ENTITY_TOVIEW_CHANGE_ICON_PROPERTY,
     };
 
 
@@ -2745,11 +2771,13 @@ public:
         int     nScore;                                         // 获得的分数
         int     nTitle;                                         // 所有称号信息   EWarMedal
         int     nMatchScore;									// 一局天梯分数
+		int     nCurStarSection;								// 当前分数星级段
         int     nPlayerMatchScore;								// 当前天梯分数
-        int     nOldPlayerMatchScore;                           // 上次天梯分数
+        int     nPreMatchTypeScore;                           // 上次天梯分数
+		int		nPreMatchTypeGrade;								// 以前的段位等级
         int     nMatchType;                                     // 战场类型
 		int		nUpgradeRank;									// 天梯段位变化情况(0为不变，小于0为降段位，大于0为升段位)
-		int		nPlayerType;									// 玩家类型
+		int		nPlayerType;									// 玩家类型														
         sp_char_array( szPlayerName, GAME_NAME_MAXSIZE);        // 玩家名字
         sp_char_array( szMatchTypeName, GAME_NAME_MAXSIZE);     // 天梯名字
         sp_int_array(gzAllData, ERDT_MAXR);                     // 所有数据
@@ -2827,6 +2855,7 @@ public:
     STRUCT cmd_Entity_HighLadder_Rank_Info
     {
     public:
+		BYTE bySex;				// 性别
         int nOrderID;           // 排名ID
         unsigned long dwUserID;    // 角色ID
         unsigned long idActor;    // 角色ID
@@ -2876,6 +2905,7 @@ public:
     STRUCT cmd_entity_kill_order_info
     {
     public:
+		BYTE			bySex;									// 性别
         int nOrderID;                                           // 排名ID
         unsigned long   dwUserID;                               // 账号ID
         unsigned long   nPDBID;                                 // 玩家ID 
@@ -2897,6 +2927,7 @@ public:
     STRUCT cmd_entity_king_of_hero_order_info
     {
     public:
+		BYTE			bySex;									// 性别
         int nOrderID;                                           // 排名ID
         unsigned long   dwUserID;                               // 账号ID
         unsigned long   nPDBID;                                 // 玩家ID 
@@ -2918,6 +2949,7 @@ public:
     STRUCT cmd_entity_donate_order_info
     {
     public:
+		BYTE			bySex;										// 性别
         unsigned long   dwUserID;                                   // 账号ID
         unsigned long   nPDBID;                                     // 玩家ID
         unsigned long   dwHeadID;                                   // 头像ID
@@ -2935,6 +2967,7 @@ public:
     STRUCT cmd_entity_hero_order_info
     {
     public:
+		BYTE			bySex;										// 性别
         int             nOrder;                                   // 排名
         unsigned long   dwHeadID;                                 // 头像ID
         unsigned long   dwUserID;                                 // 账号ID
@@ -2980,6 +3013,7 @@ public:
 	STRUCT cmd_entity_mentorship_order_info
 	{
 	public:
+		BYTE			bySex;										// 性别
 		int		        nOrder;                                     // 排名
         unsigned long   dwUserID;
 		unsigned long   dwPDBID;									// 玩家ID
@@ -2992,6 +3026,7 @@ public:
 	STRUCT cmd_entity_gemstone_order_info
 	{
 	public:
+		BYTE			bySex;										// 性别
 		int		        nOrder;                                     // 排名
         unsigned long   dwUserID;									// 玩家ID
 		unsigned long   dwPDBID;									// 玩家ID
@@ -3007,6 +3042,7 @@ public:
 	STRUCT cmd_entity_skin_order_info
 	{
 	public:
+		BYTE bySex;										// 性别
 		int nOrder;										// 排名
 		int dwPDBID;			                        // 玩家PDBID
         int dwUserID;                                   // 账号ID
@@ -3025,6 +3061,7 @@ public:
 	STRUCT cmd_entity_herocount_order_info
 	{
 	public:
+		BYTE bySex;										// 性别
 		int nOrder;										// 排名
 		int dwPDBID;			                        // 玩家PDBID
         int dwUserID;			                        // 账号ID
@@ -3317,6 +3354,7 @@ public:
 		int		nPKTotalNum;
         int     nRankMatchNum;
         int     nRankWinNum;
+		int		nSex;
         // nCount * cmd_entity_hero_info
         STRUCT_INIT(cmd_player_info_return)
     };
@@ -3817,6 +3855,7 @@ public:
 		int nHeadID;
 		int nLevel;
 		int isCaptain;
+		int nSex;
 		int nRankScore;
         int nRankGrade;
 		BYTE byMatchType;
@@ -4644,5 +4683,46 @@ public:
 
 		STRUCT_INIT(cmd_entity_rank_season_record_node);
 	};
+		
+	//// 请求头像基础数据	ENTITY_CMD_REQ_CHANGE_ICON_DETAIL,
+	//STRUCT cmd_entity_req_head_icon_detail
+	//{
+	//	int nActorID;					// 玩家ID
+
+	//	STRUCT_INIT(cmd_entity_req_head_icon_detail);
+	//};
+
+	//// 下发客户端头像基础数据（自身） ENTITY_TOVIEW_CHANGE_ICON_DETAIL_SELF,
+	//STRUCT cmd_entity_head_icon_detail_self	
+	//{
+	//	int nActorID;					// 玩家ID
+	//	BYTE byHeadIconID;				// 头像ID
+	//	BYTE byHeadBaseID;				// 头像框ID
+	//	BYTE byHaveBaseCount;			// 拥有头像框个数
+	//	sp_char_array(szIconSpecialUrl, GAME_TITLE_MAXSIZE);		// 上传头像Url
+	//	//BYTE[] arrHaveBaseID;			// 拥有头像框列表
+
+	//	STRUCT_INIT(cmd_entity_head_icon_detail_self);
+	//};
+
+	//// 下发客户端头像基础数据（别人） ENTITY_TOVIEW_CHANGE_ICON_DETAIL_OTHER,
+	//STRUCT cmd_entity_head_icon_detail_other
+	//{
+	//	int nActorID;					// 玩家ID
+	//	BYTE byHeadIconID;				// 头像ID
+	//	BYTE byHeadBaseID;				// 头像框ID
+	//	sp_char_array(szIconSpecialUrl, GAME_TITLE_MAXSIZE);		// 上传头像Url
+
+	//	STRUCT_INIT(cmd_entity_head_icon_detail_other);
+	//};
+
+	//// 请求改变头像属性 ENTITY_CMD_CHANGE_ICON_PROPERTY,
+	//STRUCT cmd_entity_req_change_head_icon
+	//{
+	//	BYTE byChangeType;				// 改变类型
+	//	BYTE byHeadIconID;				// 头像ID
+	//	BYTE byHeadBaseID;				// 头像框ID
+	//	sp_char_array(szIconSpecialUrl, GAME_TITLE_MAXSIZE);		// 上传头像Url
+	//};
 }
 using namespace GameLogic;

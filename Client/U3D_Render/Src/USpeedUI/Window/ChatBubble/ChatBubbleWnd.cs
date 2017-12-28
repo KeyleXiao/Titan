@@ -122,9 +122,11 @@ namespace USpeedUI.ChatBubble
 			uint uid = data.uid;
 
 			// 判断是否在视野范围内
-			if (ChatBubbleItem.isEntityDisappear(uid))
+			if (ChatBubbleItem.isInSight(uid, data.info.senderPdbid) == false)
 				return;
-			
+
+            Debug.LogWarning("data.isShowBg:" + data.isShowBg);
+
 			ChatBubbleItem tmpItem;
 			if (!m_ItemList.TryGetValue(uid, out tmpItem))
 			{
@@ -136,16 +138,15 @@ namespace USpeedUI.ChatBubble
 
 				tmpItem.transform.SetParent(this.transform, false);
 
-                tmpItem.bg.gameObject.SetActive(data.isShowBg);
-
 				m_ItemList.Add(uid, tmpItem);
 			}
 
 			if(tmpItem.setData(this, uid, data.info))
 			{
 				tmpItem.gameObject.SetActive(true);
-			}
-			else
+                tmpItem.bg.gameObject.SetActive(data.isShowBg);
+            }
+            else
 			{
 				removeChatBubbleItem(uid);
 			}
@@ -233,6 +234,7 @@ namespace USpeedUI.ChatBubble
 	{
 		// 玩家UID
 		private uint m_UID = 0;
+        private uint m_Pdbid = 0;
 		EntityView m_EntityView = null;
 		private CreatureProperty m_EntryProperty = null;
 		private ChatBubbleWndView m_View = null;
@@ -281,9 +283,17 @@ namespace USpeedUI.ChatBubble
 
 			m_View = view;
 			m_UID = uid;
+            m_Pdbid = info.senderPdbid;
 
-			// 实体气泡,则更新位置
-			m_EntityView = EntityFactory.getEntityViewByID((int)uid);
+            // 实体气泡,则更新位置
+            m_EntityView = EntityFactory.getEntityViewByID((int)uid);
+
+            // uid获取失败，则使用pdbid
+            if(m_EntityView == null)
+            {
+                m_EntityView = getEntityViewByPdbid(info.senderPdbid);
+            }
+
 			if (m_EntityView == null || !m_EntityView.IsValid)
 			{
 				return false;
@@ -305,7 +315,7 @@ namespace USpeedUI.ChatBubble
 		private void updatePosition()
 		{
 			// 实体消失,则关闭气泡
-			if(isEntityDisappear(m_UID))
+			if(isInSight(m_UID, m_Pdbid) == false)
 			{
 				Close();
 				return;
@@ -321,8 +331,6 @@ namespace USpeedUI.ChatBubble
 			Vector3 pos = getChatBubblePos(m_UID);
 
 			Vector3 screenPos = WorldToUIPoint(UISystem.Instance.GetCanvas(), pos);
-			//screenPos.x += 50;
-			//screenPos.y += 50;
 
 			transform.GetComponent<RectTransform>().SetPosition(screenPos);
 		}
@@ -356,11 +364,40 @@ namespace USpeedUI.ChatBubble
 		}
 
 		// 实体是否消失,不再视野范围内
-		public static bool isEntityDisappear(uint uid)
+		public static bool isInSight(uint uid, uint pdbid)
 		{
 			EntityView ev = EntityFactory.getEntityViewByID((int)uid);
+            if(ev == null)
+            {
+                ev = getEntityViewByPdbid(pdbid);
+            }
 
-			return ev == null;
+            if (ev == null)
+            {
+                return false;
+            }
+
+            Vector3 diffPos = ev.transform.position - EntityFactory.MainHeroView.transform.position;
+
+            // 距离小于25m，则视为在视野内，气泡可见
+            return diffPos.magnitude <= 25;
 		}
+
+        public static EntityView getEntityViewByPdbid(uint pdbid)
+        {
+            var players = EntityFactory.GetPlayerList();
+            foreach (var player in players)
+            {
+                if (player == null || player.Property == null)
+                    continue;
+
+                if (player.Property.GetNumProp(ENTITY_PROPERTY.PROPERTY_ID) == pdbid)
+                {
+                    return player;
+                }
+            }
+
+            return null;
+        }
 	}
 }

@@ -118,16 +118,16 @@ namespace ASpeedGame.Data.SelectArrayTipPage
                 sConfig.nId = reader.GetInt(i, (int)nIndex++, 0);
                 sConfig.sName = reader.GetString(i, (int)nIndex++, "");
                 sConfig.nTiplimit = reader.GetInt(i, (int)nIndex++, 0);
+                sConfig.nAssassinDown = reader.GetInt(i, (int)nIndex++, 0);
+                sConfig.nAssassinUp = reader.GetInt(i, (int)nIndex++, 0);
                 sConfig.nSoldier_limitDown = reader.GetInt(i, (int)nIndex++, 0);
                 sConfig.nSoldier_limitUp = reader.GetInt(i, (int)nIndex++, 0);
                 sConfig.nMagicDown = reader.GetInt(i, (int)nIndex++, 0);
                 sConfig.nMagicUp = reader.GetInt(i, (int)nIndex++, 0);
-                sConfig.nAssassinDown = reader.GetInt(i, (int)nIndex++, 0);
-                sConfig.nAssassinUp = reader.GetInt(i, (int)nIndex++, 0);
-                sConfig.nSupportDown = reader.GetInt(i, (int)nIndex++, 0);
-                sConfig.nSupportUp = reader.GetInt(i, (int)nIndex++, 0);              
                 sConfig.nAdcDown = reader.GetInt(i, (int)nIndex++, 0);
                 sConfig.nAdcUp = reader.GetInt(i, (int)nIndex++, 0);
+                sConfig.nSupportDown = reader.GetInt(i, (int)nIndex++, 0);
+                sConfig.nSupportUp = reader.GetInt(i, (int)nIndex++, 0);              
                 allSelectArrayTipPageTable[sConfig.nId] = sConfig;
             }
 

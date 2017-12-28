@@ -265,7 +265,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *l)
 	if (!state)
 	{
 		/* Unlocked to locked */
-		if (!_InterlockedCompareExchangePointer((void * volatile *)l, (void *)0x11, NULL)) return 0;
+		if (!InterlockedCompareExchangePointer((void * volatile *)l, (void *)0x11, NULL)) return 0;
 		return EBUSY;
 	}
 
@@ -275,7 +275,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *l)
 	/* Multiple writers exist? */
 	if ((uintptr_t)state & 14) return EBUSY;
 
-	if (_InterlockedCompareExchangePointer((void * volatile *)l, (void *)((uintptr_t)state + 16), state) == state) return 0;
+	if (InterlockedCompareExchangePointer((void * volatile *)l, (void *)((uintptr_t)state + 16), state) == state) return 0;
 
 	return EBUSY;
 }
@@ -283,7 +283,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *l)
 int pthread_rwlock_trywrlock(pthread_rwlock_t *l)
 {
 	/* Try to grab lock if it has no users */
-	if (!_InterlockedCompareExchangePointer((void * volatile *)l, (void *)1, NULL)) return 0;
+	if (!InterlockedCompareExchangePointer((void * volatile *)l, (void *)1, NULL)) return 0;
 
 	return EBUSY;
 }

@@ -87,6 +87,10 @@ namespace USpeedUI.WarMain
                         //UISystem.Instance.ShowWnd(WndID.WND_ID_CHART, false);
 
                         SetVisible(true);
+                        if (m_wndView != null)
+                        {
+                            m_wndView.WarMainModeItemsInit();
+                        }
                     }
                     break;
 
@@ -99,7 +103,7 @@ namespace USpeedUI.WarMain
                 case WndMsgID.WND_MSG_WAR_MAIN_CLOSE:
                     {
                         // 隐藏其他同级窗体
-                        SetVisible(false);
+                        OnCloseKey();
                     }
                     break;
                 case WndMsgID.WND_MSG_WAR_MAIN_MATCHTYPE_OPEN_OR_CLOSE:
@@ -107,7 +111,7 @@ namespace USpeedUI.WarMain
                         //更新下显示相关
                         if (m_wndView != null)
                         {
-                            m_wndView.OnMatchOpenOrClose();
+                            m_wndView.WarMainModeItemsInit();
                         }
                     }
                     break;
@@ -163,14 +167,17 @@ namespace USpeedUI.WarMain
             }
         }
 
-        protected override void PostSetVisible(bool _bVisible)
+        // ESC退出
+        public override bool OnCloseKey()
         {
-            base.PostSetVisible(_bVisible);
-            if (m_wndView != null && _bVisible)
+            base.OnCloseKey();
+
+            if (m_wndView != null)
             {
-                //m_wndView.UpdateAllItems();
-                //m_wndView.ViewAnim.PlayForward();
+                m_wndView.OnBackBtnClick();
             }
+
+            return true;
         }
     }
 
@@ -181,6 +188,7 @@ namespace USpeedUI.WarMain
         public Text ModeDesText;
         public Image SelectIcon;
         public RectTransform GuideModalTrans;
+        //public LoginVideo GameModeVideo;
 
         public float JumpDuration;
         public Vector2 StartJumpPos;
@@ -195,6 +203,9 @@ namespace USpeedUI.WarMain
         private int m_nModeID;
         private UWarMainWndView m_wndView;
 
+        //private UEffectParamBase m_DefaultParam;
+        private UEffectParamBase m_EnterParam;
+
         protected override void Awake()
         {
             this.GetRectTransform.anchoredPosition = new Vector3(StartJumpPos.x, StartJumpPos.y, 0);
@@ -205,8 +216,11 @@ namespace USpeedUI.WarMain
             m_wndView = view;
             m_nModeID = nModeID;
 
-            HeadIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_WarMainMode, "mode_head_" + nModeID, WndID.WND_ID_WAR_MAIN_FRAME);
-            HeadIcon.gameObject.SetActive(HeadIcon.sprite != null);
+            if(HeadIcon != null)
+            {
+                HeadIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_WarMainMode, "mode_head_" + nModeID, WndID.WND_ID_WAR_MAIN_FRAME);
+                HeadIcon.gameObject.SetActive(HeadIcon.sprite != null);
+            }
 
             ModeIcon.sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_WarMainMode, "mode_base_" + nModeID, WndID.WND_ID_WAR_MAIN_FRAME);
             ModeIcon.gameObject.SetActive(ModeIcon.sprite != null);
@@ -215,11 +229,30 @@ namespace USpeedUI.WarMain
             ModeDesText.gameObject.SetActive(false);
 
             SelectIcon.gameObject.SetActive(false);
+
+            //ShowDefaultEffect();
+        }
+
+        public void Clear()
+        {
+            //if (m_DefaultParam != null)
+            //{
+            //    UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref m_DefaultParam);
+            //    m_DefaultParam = null;
+            //}
+            if (m_EnterParam != null)
+            {
+                UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref m_EnterParam);
+                m_EnterParam = null;
+            }
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (m_wndView == null)
+                return;
+
+            if (eventData.button != PointerEventData.InputButton.Left)
                 return;
 
             switch (m_nModeID)
@@ -258,12 +291,76 @@ namespace USpeedUI.WarMain
         {
             ModeDesText.gameObject.SetActive(true);
             SelectIcon.gameObject.SetActive(true);
+
+            ShowEnterEffect();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             ModeDesText.gameObject.SetActive(false);
             SelectIcon.gameObject.SetActive(false);
+
+            if (m_EnterParam != null)
+            {
+                UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref m_EnterParam);
+                m_EnterParam = null;
+            }
+        }
+
+        //private void ShowDefaultEffect()
+        //{
+        //    if (m_DefaultParam != null)
+        //    {
+        //        UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref m_DefaultParam);
+        //        m_DefaultParam = null;
+        //    }
+
+        //    UEffectPrefabType prefabType = UEffectPrefabType.UEPT_None;
+        //    switch (m_nModeID)
+        //    {
+        //        case (int)EWarModeDef.MODE_MachineVS:
+        //            {
+        //                prefabType = UEffectPrefabType.UEPT_WarMain_ItemMachine;
+        //            }
+        //            break;
+        //        case (int)EWarModeDef.MODE_RankVS:
+        //            {
+        //                prefabType = UEffectPrefabType.UEPT_WarMain_ItemRank;
+        //            }
+        //            break;
+        //        case (int)EWarModeDef.MODE_CustomerVS:
+        //            {
+        //                prefabType = UEffectPrefabType.UEPT_WarMain_ItemCustome;
+        //            }
+        //            break;
+        //        case (int)EWarModeDef.MODE_SurviveVS:
+        //            {
+        //                prefabType = UEffectPrefabType.UEPT_WarMain_ItemSurvive;
+        //            }
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //    if (prefabType != UEffectPrefabType.UEPT_None)
+        //    {
+        //        m_DefaultParam = new UEffectPrefabParam(_eType: prefabType, _tfAttachParent: this.gameObject.transform);
+        //        UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref m_DefaultParam);
+        //    }
+        //}
+
+        private void ShowEnterEffect()
+        {
+            if (m_EnterParam != null)
+            {
+                UEffectManager.Instance.DestroyEffect(UEffectType.UET_EffectPrefab, ref m_EnterParam);
+                m_EnterParam = null;
+            }
+
+            //if (m_nModeID != (int)EWarModeDef.MODE_SpeedVS)
+            //{
+            m_EnterParam = new UEffectPrefabParam(_eType: UEffectPrefabType.UEPT_WarMain_ItemEnter, _tfAttachParent: ModeIcon.gameObject.transform);
+            UEffectManager.Instance.CreateEffect(UEffectType.UET_EffectPrefab, ref m_EnterParam);
+            //}
         }
 
         #region 新手引导部分
@@ -311,8 +408,6 @@ namespace USpeedUI.WarMain
 
         public UWarMainModeItem[] WarMainModeItems;
 
-        //public UViewAnim ViewAnim;
-
         public override bool Init(IUIWnd wnd)
         {
             base.Init(wnd);
@@ -325,11 +420,6 @@ namespace USpeedUI.WarMain
             }
 
             TitleDesc.text = "选择模式";
-
-            WarMainModeItemsInit();
-
-            //if (ViewAnim == null)
-            //    ViewAnim = GetComponent<UViewAnim>();
 
             return true;
         }
@@ -344,12 +434,6 @@ namespace USpeedUI.WarMain
                 WarMainModeItems[i-1].SetData(this, i, strMode, strModeDesc);
             }
         }
-
-        public void OnMatchOpenOrClose()
-        {
-            WarMainModeItemsInit();
-        }
-
 
         public void OnMatchModeBtnClick()
         {
@@ -366,19 +450,22 @@ namespace USpeedUI.WarMain
 
         public void OnMachineVSModeBtnClick()
         {
-            if (LogicDataCenter.viewPersonStateDataManager.bIsMatching == true)
-            {
-                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_MATCH_PLEASE_QUIT_MATCH);
-                return;
-            }
+            UIMsgCmdData cmdData = new UIMsgCmdData((int)WndMsgID.WND_MSG_RANK_INVITE_SHOW, (int)EMMatchType.MatchType_MachineMatch, "", IntPtr.Zero, 0);
+            UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_RANK_INVITE_SHOW, cmdData);
 
-            if (LogicDataCenter.viewPersonStateDataManager.bDelayJoinMatchRoom)
-            {
-                UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_PLAYER_CANT_DO_THIS_OPRATION);
-                return;
-            }
+            //if (LogicDataCenter.viewPersonStateDataManager.bIsMatching == true)
+            //{
+            //    UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_MATCH_PLEASE_QUIT_MATCH);
+            //    return;
+            //}
 
-            LogicDataCenter.matchDataManager.OnMachineVSModeBtnClick();
+            //if (LogicDataCenter.viewPersonStateDataManager.bDelayJoinMatchRoom)
+            //{
+            //    UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_PLAYER_CANT_DO_THIS_OPRATION);
+            //    return;
+            //}
+
+            //LogicDataCenter.matchDataManager.OnMachineVSModeBtnClick();
         }
 
         public void OnRankModeBtnClick()
@@ -419,6 +506,9 @@ namespace USpeedUI.WarMain
 
         public void OnSurviveVSModeBtnClick()
         {
+            //UIMsgCmdData cmdData = new UIMsgCmdData((int)WndMsgID.WND_MSG_RANK_INVITE_SHOW, (int)EMMatchType.MatchType_MultiCampMatch, "", IntPtr.Zero, 0);
+            //UISystem.Instance.SendWndMessage(WndMsgID.WND_MSG_RANK_INVITE_SHOW, cmdData);
+
             //if (LogicDataCenter.viewPersonStateDataManager.bIsMatching == true)
             //{
             //    UIUtil.ShowSystemMessage(EMChatTipID.CHAT_TIP_MATCH_PLEASE_QUIT_MATCH);
@@ -487,7 +577,12 @@ namespace USpeedUI.WarMain
 
         public void OnBackBtnClick()
         {
-            m_wnd.SetVisible(false);
+            for (int i = (int)EWarModeDef.MODE_SpeedVS; i < (int)EWarModeDef.MODE_MAX && i - 1 < WarMainModeItems.Length; ++i)
+            {
+                WarMainModeItems[i - 1].Clear();
+            }
+
+            SetVisible(false);
         }
 
         #region 新手引导部分

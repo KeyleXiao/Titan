@@ -39,6 +39,7 @@
 #include "Base.h"
 #define new RKT_NEW
 #pragma comment(lib, MAKE_DLL_LIB_NAME_BY_ARCH(Base))
+#pragma comment(lib, MAKE_DLL_LIB_NAME_BY_ARCH(hiredis))
 #include "Common.h"
 #include "DGlobalMessage.h"
 #include "GlobalServerDef.h"

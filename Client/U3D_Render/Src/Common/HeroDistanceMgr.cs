@@ -333,10 +333,18 @@ public class HeroDistanceMgr : Singleton<HeroDistanceMgr>, ITimerHanlder
         if (mainHero == null)
             return;
 
+        if (mainHero.StateMachine == null)
+            return;
+
         IList<U3D_Render.EntityView> enemyList = MapFinderManager.Nearest(mainHero.StateMachine.transform.position, nFlyEncounterDistance, SPELL.CampFlag.CampFlag_Enemy);
+        if (enemyList == null)
+            return;
 
         foreach (U3D_Render.EntityView ev in enemyList)
         {
+            if (ev == null || ev.StateMachine == null)
+                continue;
+
             if (ev.Type == ENTITY_TYPE.TYPE_PLAYER_ROLE && ev.StateMachine.GetState() != GameLogic.EntityState.Dead)
             {
                 // 请求降落

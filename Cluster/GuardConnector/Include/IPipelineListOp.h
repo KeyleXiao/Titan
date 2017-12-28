@@ -43,5 +43,17 @@ namespace Redis
 			pushConverter(pConverter);
 			return true;
 		}
+
+		// »ñÈ¡£¨indexÔªËØ£©
+		template<typename T>
+		bool	lIndex(const string& strKey, long nIndex, T& tValue)
+		{
+			Converter<T>* pConverter = new Converter<T>(tValue);
+			if (!lIndexString(strKey, nIndex, &pConverter->m_strValue))
+				return false;
+
+			pushConverter(pConverter);
+			return true;
+		}
 	};
 };

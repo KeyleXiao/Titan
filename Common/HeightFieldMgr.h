@@ -20,7 +20,7 @@
 using namespace std::tr1;
 
 class dtNavMesh;
-struct rcCompactHeightfield;
+struct rcCompactHeightfield_Voxel;
 enum rcBuildContoursFlags;
 
 #pragma pack(push, 1)
@@ -66,13 +66,35 @@ struct NvBuildConfig
 
 struct SCHF_NODE
 {
-    rcCompactHeightfield*  chf;
+    rcCompactHeightfield_Voxel*  chf;
     NvBuildConfig*         cfg;
 
     SCHF_NODE()
     {
         memset(this, 0, sizeof(*this) );
     }
+};
+
+/// Represents a span of unobstructed space within a compact heightfield.
+struct rcCompactSpan_Voxel
+{
+    unsigned short y;			///< The lower extent of the span. (Measured from the heightfield's base.)
+    unsigned short h;			///< The height of the span.  (Measured from #y.)
+};
+
+/// A compact, static heightfield representing unobstructed space.
+/// @ingroup recast
+struct rcCompactHeightfield_Voxel
+{
+    int width;					///< The width of the heightfield. (Along the x-axis in cell units.)
+    int height;					///< The height of the heightfield. (Along the z-axis in cell units.)
+    int spanCount;				///< The number of spans in the heightfield.
+    float bmin[3];				///< The minimum bounds in world space. [(x, y, z)]
+    float bmax[3];				///< The maximum bounds in world space. [(x, y, z)]
+    float cs;					///< The size of each cell. (On the xz-plane.)
+    float ch;					///< The height of each cell. (The minimum increment along the y-axis.)
+    rcCompactCell* cells;		///< Array of cells. [Size: #width*#height]
+    rcCompactSpan_Voxel* spans;	///< Array of spans. [Size: #spanCount]
 };
 
 #pragma pack(pop)
@@ -83,8 +105,6 @@ struct TileHeader
     int size;
 };
 
-struct rcCompactSpan;
-
 // 场景高度场容器管理类
 class HeightFieldMgr
 {
@@ -93,6 +113,16 @@ public:
     {
         // 格式化下，主城镜像地图和源地图是同样的高度场
         nMapID = FormatMap(nMapID);
+
+        std::string strFile = pcszFileName;
+        
+        // 文件已经加载过了
+        std::map<std::string, SCHF_NODE>::iterator itFileLoad = m_mapFileLoad.find(strFile);
+        if(itFileLoad != m_mapFileLoad.end())
+        {
+            m_mapData[nMapID] = itFileLoad->second;
+            return true;
+        }
 
         if(pcszFileName == NULL || strlen(pcszFileName) <= 1)
         {
@@ -112,6 +142,7 @@ public:
             return false;
         }
         m_mapData[nMapID] = node;
+        m_mapFileLoad[strFile] = node;
         return true;
     }
     
@@ -126,7 +157,7 @@ public:
     {
         float fCellHeight = 0;
         float fBoundMinY = 0;
-        std::vector<rcCompactSpan> vecSpans;
+        std::vector<rcCompactSpan_Voxel> vecSpans;
         static int offset[4][2] = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
         float fAgentHeadY = pos.y + fAgentHeight; // 头的坐标
@@ -146,7 +177,7 @@ public:
 
             bool bPassable = false;
 
-            std::vector<rcCompactSpan>::iterator it = vecSpans.begin();
+            std::vector<rcCompactSpan_Voxel>::iterator it = vecSpans.begin();
             while(it != vecSpans.end())
             {
                 int nCurSpanMin = it->y;
@@ -192,7 +223,7 @@ public:
     /// <returns></returns>
     bool correctPosFromPhysic(int nMapID, Vector3& pos, float fUpCheckDistance, float fDownCheckDistance)
     {
-        std::vector<rcCompactSpan> vecSpans; float fCellHeight = 0; float fBoundMinY = 0;
+        std::vector<rcCompactSpan_Voxel> vecSpans; float fCellHeight = 0; float fBoundMinY = 0;
         if(!getSpans(nMapID, pos.x, pos.z, vecSpans, fCellHeight, fBoundMinY))
         {
             return false;
@@ -215,9 +246,9 @@ public:
 
         int nMinDistance = INT_MAX;
         float fGround = 0;
-        for(std::vector<rcCompactSpan>::reverse_iterator it = vecSpans.rbegin(); it != vecSpans.rend(); ++it)
+        for(std::vector<rcCompactSpan_Voxel>::reverse_iterator it = vecSpans.rbegin(); it != vecSpans.rend(); ++it)
         {
-            std::vector<rcCompactSpan>::reverse_iterator itNext = it + 1;
+            std::vector<rcCompactSpan_Voxel>::reverse_iterator itNext = it + 1;
 
             // 这一层和下一层是连着的(下一层高度大于最大值 这一层是下一层拆出来的)
             if(itNext != vecSpans.rend() && it->y == itNext->y + itNext->h)
@@ -271,21 +302,6 @@ public:
         return false;
     }
 
-    // 获取SCHF_NODE
-    bool getChfNode(int nMapID, SCHF_NODE& node)
-    {
-        // 格式化下，主城镜像地图和源地图是同样的高度场
-        nMapID = FormatMap(nMapID);
-
-        TMAP_MAPCHFDATA::iterator it = m_mapData.find(nMapID);
-        if(it == m_mapData.end())
-            return false;
-
-        node = it->second;
-
-        return true;
-    }
-
     void destroy()
     {
         for (TMAP_MAPCHFDATA::iterator iter = m_mapData.begin(); iter != m_mapData.end(); ++iter)
@@ -296,10 +312,7 @@ public:
 
             for(int i = 0; i < node.cfg->tileNumPerRow * node.cfg->tileNumPerColum; ++i)
             {
-                rcCompactHeightfield chf = node.chf[i];
-
-                if(chf.areas) delete [] chf.areas;
-                if(chf.dist) delete [] chf.dist;
+                rcCompactHeightfield_Voxel chf = node.chf[i];
                 if(chf.spans) delete [] chf.spans;
                 if(chf.cells) delete [] chf.cells;   
             }
@@ -336,13 +349,13 @@ private:
             return false;
 
         int nSize = 0;
-        node.chf = new rcCompactHeightfield[node.cfg->tileNumPerRow * node.cfg->tileNumPerColum];
+        node.chf = new rcCompactHeightfield_Voxel[node.cfg->tileNumPerRow * node.cfg->tileNumPerColum];
         if(node.chf == NULL)
             return false;
-        // rcCompactHeightfield 无构造函数..
-        memset(node.chf, 0, sizeof(rcCompactHeightfield) * node.cfg->tileNumPerRow * node.cfg->tileNumPerColum);
+        // rcCompactHeightfield_Voxel 无构造函数..
+        memset(node.chf, 0, sizeof(rcCompactHeightfield_Voxel) * node.cfg->tileNumPerRow * node.cfg->tileNumPerColum);
 
-        nSize += (node.cfg->tileNumPerRow * node.cfg->tileNumPerColum * sizeof(rcCompactHeightfield)); 
+        nSize += (node.cfg->tileNumPerRow * node.cfg->tileNumPerColum * sizeof(rcCompactHeightfield_Voxel)); 
 
         ulong nOffset = sizeof(NvBuildConfig);
 
@@ -359,59 +372,31 @@ private:
             if(tileHeader.key < 0 || tileHeader.key >= node.cfg->tileNumPerRow * node.cfg->tileNumPerColum)
                 return false;
 
-            rcnCompactHeightFieldHeader chfHeader;
-            if(!pStream->read(&chfHeader, sizeof(rcnCompactHeightFieldHeader)))
+            rcCompactHeightfield_Voxel& chf = node.chf[tileHeader.key];
+
+            int nHeadSize = sizeof(rcCompactHeightfield_Voxel) - sizeof(rcCompactCell*) - sizeof(rcCompactSpan_Voxel*);
+            if(!pStream->read(&chf, nHeadSize))
                 return false;
 
-            int spanCount = chfHeader.spanCount;
-            int cellCount = chfHeader.width * chfHeader.height;
-
-            rcCompactHeightfield& chf = node.chf[tileHeader.key];
-
-            chf.width         = chfHeader.width;
-            chf.height        = chfHeader.height;
-            chf.spanCount     = chfHeader.spanCount;
-            chf.walkableHeight= chfHeader.walkableHeight;
-            chf.walkableClimb = chfHeader.walkableClimb;
-            chf.borderSize    = chfHeader.borderSize;
-            chf.maxDistance   = chfHeader.maxDistance;
-            chf.maxRegions    = chfHeader.maxRegions;
-
-            chf.bmin[0]       = chfHeader.bmin[0];
-            chf.bmin[1]       = chfHeader.bmin[1];
-            chf.bmin[2]       = chfHeader.bmin[2];
-
-            chf.bmax[0]       = chfHeader.bmax[0];
-            chf.bmax[1]       = chfHeader.bmax[1];
-            chf.bmax[2]       = chfHeader.bmax[2];
-            chf.cs = chfHeader.cs;
-            chf.ch = chfHeader.ch;
-
             // 读取cells
-            chf.cells = new rcCompactCell[cellCount]; 
+            chf.cells = new rcCompactCell[chf.width * chf.height]; 
             if(chf.cells == NULL)
                 return false;
 
-            nSize += (cellCount * sizeof(rcCompactCell));
-
-            if(!pStream->read(chf.cells, cellCount * sizeof(rcCompactCell)))
+            if(!pStream->read(chf.cells, chf.width * chf.height * sizeof(rcCompactCell)))
                 return false;
 
+            nSize += (chf.width * chf.height * sizeof(rcCompactCell));
+
             // 读取spans
-            chf.spans = new rcCompactSpan[spanCount];
+            chf.spans = new rcCompactSpan_Voxel[chf.spanCount];
             if(chf.spans == NULL)
                 return false;
 
-            nSize += spanCount * sizeof(rcCompactSpan); 
-
-            if(!pStream->read(chf.spans, spanCount * sizeof(rcCompactSpan)))
+            if(!pStream->read(chf.spans, chf.spanCount * sizeof(rcCompactSpan_Voxel)))
                 return false;
 
-            // 忽略dist数据
-            chf.dist = 0;
-
-            // 忽略area数据
-            chf.areas = 0;
+            nSize += chf.spanCount * sizeof(rcCompactSpan_Voxel); 
 
             // 定位到下一个tile数据位置
             nOffset += (sizeof(TileHeader) + tileHeader.size); 
@@ -438,7 +423,7 @@ private:
         if(!(nIndexX < 0 || nIndexX >= node.cfg->tileNumPerRow || nIndexZ < 0 || nIndexZ >= node.cfg->tileNumPerColum))
         {
             int nTileKey = nIndexX + node.cfg->tileNumPerRow * nIndexZ;
-            rcCompactHeightfield* pTile = (rcCompactHeightfield*)(node.chf + nTileKey);
+            rcCompactHeightfield_Voxel* pTile = (rcCompactHeightfield_Voxel*)(node.chf + nTileKey);
             if(pTile != NULL && fPosX >= pTile->bmin[0] && fPosX <= pTile->bmax[0] && fPosZ >= pTile->bmin[2] && fPosZ <= pTile->bmax[2])
             {
                 return nTileKey;
@@ -449,7 +434,7 @@ private:
         for(int nTileKey = 0; nTileKey < node.cfg->tileNumPerRow * node.cfg->tileNumPerColum; nTileKey++)
         {
             //没有chf数据 跳过
-            rcCompactHeightfield* pTile = (rcCompactHeightfield*)(node.chf + nTileKey);
+            rcCompactHeightfield_Voxel* pTile = (rcCompactHeightfield_Voxel*)(node.chf + nTileKey);
             if (pTile != NULL)
             {
                 // 如果在该tile范围 就返回
@@ -463,7 +448,7 @@ private:
         return -1;
     }
 
-    bool getSpans(int nMapID, float fPosX, float fPosZ, std::vector<rcCompactSpan>& vecSpans, float& fCellHeight, float& fBoundMinY)
+    bool getSpans(int nMapID, float fPosX, float fPosZ, std::vector<rcCompactSpan_Voxel>& vecSpans, float& fCellHeight, float& fBoundMinY)
     {
         // 格式化下，主城镜像地图和源地图是同样的高度场
         nMapID = FormatMap(nMapID);
@@ -489,7 +474,7 @@ private:
         }
 
         //没有chf数据
-        rcCompactHeightfield* pTile = (rcCompactHeightfield*)(node.chf + nTileKey);
+        rcCompactHeightfield_Voxel* pTile = (rcCompactHeightfield_Voxel*)(node.chf + nTileKey);
         if (pTile == NULL)
         {
             WarningLn(__FUNCTION__ << ", get tile data failed, map(" << nMapID << "), pos(" << fPosX << "," << fPosZ << ")");
@@ -523,4 +508,6 @@ private:
     // <地图ID, SCHF_NODE>
 	typedef unordered_map<int, SCHF_NODE>    TMAP_MAPCHFDATA;
     TMAP_MAPCHFDATA                          m_mapData;
+
+    std::map<std::string, SCHF_NODE>         m_mapFileLoad;
 };

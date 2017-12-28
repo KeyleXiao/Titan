@@ -18,6 +18,7 @@ using ASpeedGame.Data.GameMobaSchemes;
 using U3D_Render.Common;
 using UIWidgets;
 using ASpeedGame.Data.WarStatisticMap;
+using Match_ManagerDef;
 
 namespace USpeedUI
 {
@@ -207,73 +208,130 @@ namespace USpeedUI
         public void setRankInfo(cmd_entity_end_player_data selfData)
         {
             Debug.Log(String.Format("{0}({1}),{2},当前分：{3},上次分：{4}本局分：{5}", selfData.nMatchType,selfData.szMatchTypeName, selfData.nUpgradeRank, selfData.nPlayerMatchScore, 
-                selfData.nOldPlayerMatchScore, selfData.nMatchScore));
+                selfData.nPreMatchTypeScore, selfData.nMatchScore));
 
             // 胜利且是排位赛才显示
-            if(selfData.nMatchType == 8)
+            if((EMMatchType)selfData.nMatchType == EMMatchType.MatchType_Rank)
             {
                 // todo 战场的要单独处理下 王者段位以上的 只加分了 段位是单独换算的
+                int nBaseKingRankScore = GameLogicAPI.getMatchtTypeBaseKingRankScore(selfData.nMatchType);
                 int nMatchType = selfData.nMatchType;
                 int nCurRankScore = selfData.nPlayerMatchScore;
                 int nRankIconID = GameLogicAPI.getActorRankIconID(nMatchType, nCurRankScore);
-                int nRankStar = GameLogicAPI.getActorRankStar(nMatchType, nCurRankScore);
-                int nMaxRankStar = GameLogicAPI.getActorCurRankMaxStar(nMatchType, nCurRankScore);
-
-                int nOldRankScore = selfData.nOldPlayerMatchScore;
-                int nOldRankStar = GameLogicAPI.getActorRankStar(nMatchType, nOldRankScore);
-
-                // 段位名称
-                IntPtr ptr = GameLogicAPI.getActorRankName(nMatchType, nCurRankScore);
+                int nRankStar = 0;
                 string strRankName = "";
-                if (ptr != IntPtr.Zero)
-                    strRankName = IntPtrHelper.Ptr2Str(ptr);
-                GradeDesc.text = strRankName;
-
-                // 当前段位所有星级
-                m_RankIconList = new Image[nMaxRankStar];
-                for (int i = 0; i < nMaxRankStar; ++i)
+                if (nCurRankScore >= nBaseKingRankScore)
                 {
-                    GameObject RankIconItem = ResNode.InstantiateRes(RankIconDefaultItem);
-                    RankIconItem.transform.SetParent(RankIconDefaultItem.transform.parent, false);
-                    RankIconItem.SetActive(true);
-
-                    m_RankIconList[i] = RankIconItem.GetComponent<Image>();
-                }
-
-                // 当前拥有星级
-                for(int j = 0; j < nRankStar; ++j)
-                {
-                    m_RankIconList[j].sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_RankStarImage, WndID.WND_ID_WAR_RECORDTABLE_END, 2);
-                }
-
-                if(selfData.nUpgradeRank == 0) // 段位未发生改变
-                {
-                    // 升星级个数
-                    int nDiff = nRankStar - nOldRankStar;
-                    if (nDiff < 0)
+                    if (selfData.nPreMatchTypeScore >= nBaseKingRankScore )
                     {
-                        StarUpDesc.gameObject.SetActive(true);
-                        StarUpDesc.text = String.Format("星级{0}", nDiff);
-                    }
-                    else if (nDiff > 0)
-                    {
-                        StarUpDesc.gameObject.SetActive(true);
-                        StarUpDesc.text = String.Format("星级+{0}", nDiff);
+                        // 本来就是王者段位的就取以前的等级
+                        nRankIconID = GameLogicAPI.getRankIconIDByGrade(nMatchType, selfData.nPreMatchTypeGrade);
+                        nRankStar = GameLogicAPI.getActorRankStar(nMatchType, nBaseKingRankScore);
+                        // 段位名称
+                        IntPtr ptr = GameLogicAPI.getActorRankNameByGrade(nMatchType, selfData.nPreMatchTypeGrade);
+                        if (ptr != IntPtr.Zero)
+                            strRankName = IntPtrHelper.Ptr2Str(ptr);
+
+                        // 升星级个数
+                        int nDiff = 0;
+                        if (selfData.nCurStarSection > 0 )
+                            nDiff = selfData.nMatchScore / selfData.nCurStarSection;
+
+                        //当前星级 +
+                        if (nDiff < 0)
+                        {
+                            StarUpDesc.gameObject.SetActive(true);
+                            StarUpDesc.text = String.Format("星级:{0} 本局星级{1}", nRankStar, nDiff);
+                        }
+                        else if (nDiff > 0)
+                        {
+                            StarUpDesc.gameObject.SetActive(true);
+                            StarUpDesc.text = String.Format("星级:{0} 本局星级+{0}", nRankStar, nDiff);
+                        }
+                        else
+                        {
+                            StarUpDesc.gameObject.SetActive(false);
+                        }
                     }
                     else
                     {
-                        StarUpDesc.gameObject.SetActive(false);
+                        // 新升级到王者段位的
+                        nRankIconID = GameLogicAPI.getActorRankIconID(nMatchType, nCurRankScore);
+                        nRankStar = GameLogicAPI.getActorRankStar(nMatchType, nCurRankScore);
+                        // 段位名称
+                        IntPtr ptr = GameLogicAPI.getActorRankName(nMatchType, nCurRankScore);
+                        if (ptr != IntPtr.Zero)
+                            strRankName = IntPtrHelper.Ptr2Str(ptr);
+
+                        if (selfData.nUpgradeRank > 0)
+                        {
+                            StarUpDesc.gameObject.SetActive(true);
+                            StarUpDesc.text = String.Format("星级+{0}", 1);
+                        }
                     }
+                    GradeDesc.text = strRankName;
+
                 }
-                else if(selfData.nUpgradeRank < 0)
+                else
                 {
-                    StarUpDesc.gameObject.SetActive(true);
-                    StarUpDesc.text = String.Format("星级-{0}", 1);
-                }
-                else if (selfData.nUpgradeRank > 0)
-                {
-                    StarUpDesc.gameObject.SetActive(true);
-                    StarUpDesc.text = String.Format("星级+{0}", 1);
+                    nRankStar = GameLogicAPI.getActorRankStar(nMatchType, nCurRankScore);
+                    int nMaxRankStar = GameLogicAPI.getActorCurRankMaxStar(nMatchType, nCurRankScore);
+
+                    int nOldRankScore = selfData.nPreMatchTypeScore;
+                    int nOldRankStar = GameLogicAPI.getActorRankStar(nMatchType, nOldRankScore);
+
+                    // 段位名称
+                    IntPtr ptr = GameLogicAPI.getActorRankName(nMatchType, nCurRankScore);
+                    if (ptr != IntPtr.Zero)
+                        strRankName = IntPtrHelper.Ptr2Str(ptr);
+                    GradeDesc.text = strRankName;
+
+                    // 当前段位所有星级
+                    m_RankIconList = new Image[nMaxRankStar];
+                    for (int i = 0; i < nMaxRankStar; ++i)
+                    {
+                        GameObject RankIconItem = ResNode.InstantiateRes(RankIconDefaultItem);
+                        RankIconItem.transform.SetParent(RankIconDefaultItem.transform.parent, false);
+                        RankIconItem.SetActive(true);
+
+                        m_RankIconList[i] = RankIconItem.GetComponent<Image>();
+                    }
+
+                    // 当前拥有星级
+                    for (int j = 0; j < nRankStar; ++j)
+                    {
+                        m_RankIconList[j].sprite = USpriteManager.Instance.GetSprite(USpriteManager.ESpriteType.EST_RankStarImage, WndID.WND_ID_WAR_RECORDTABLE_END, 2);
+                    }
+
+                    if (selfData.nUpgradeRank == 0) // 段位未发生改变
+                    {
+                        // 升星级个数
+                        int nDiff = nRankStar - nOldRankStar;
+                        if (nDiff < 0)
+                        {
+                            StarUpDesc.gameObject.SetActive(true);
+                            StarUpDesc.text = String.Format("星级{0}", nDiff);
+                        }
+                        else if (nDiff > 0)
+                        {
+                            StarUpDesc.gameObject.SetActive(true);
+                            StarUpDesc.text = String.Format("星级+{0}", nDiff);
+                        }
+                        else
+                        {
+                            StarUpDesc.gameObject.SetActive(false);
+                        }
+                    }
+                    else if (selfData.nUpgradeRank < 0)
+                    {
+                        StarUpDesc.gameObject.SetActive(true);
+                        StarUpDesc.text = String.Format("星级-{0}", 1);
+                    }
+                    else if (selfData.nUpgradeRank > 0)
+                    {
+                        StarUpDesc.gameObject.SetActive(true);
+                        StarUpDesc.text = String.Format("星级+{0}", 1);
+                    }
                 }
             }
             else
@@ -495,9 +553,9 @@ namespace USpeedUI
             else
                 strKillNum = nKillNum.ToString();
 
-            if (nDieTop != 0 && nDeadNum == nDieTop)
-                strDeadNum = "<color=#FF6E2E>" + nDeadNum + "</color>";
-            else
+            //if (nDieTop != 0 && nDeadNum == nDieTop)
+                //strDeadNum = "<color=#FF6E2E>" + nDeadNum + "</color>";
+            //else
                 strDeadNum = nDeadNum.ToString();
 
             if (nAssTop != 0 && nAssNum == nAssTop)
@@ -555,16 +613,25 @@ namespace USpeedUI
             int nTitle = cmdData.nTitle;
             if ((nTitle & (int)EWarMedal.EWM_SCORE) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_MVP);
+
+            if ((nTitle & (int)EWarMedal.EWM_MVPOFLOSER) > 0)
+                AddTitleIcon((int)AchiIconType.Icon_MvpOfLoser);
+
             if ((nTitle & (int)EWarMedal.EWM_OUTPUT) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TopDamage);
+
             if ((nTitle & (int)EWarMedal.EWM_KILLCOUNT) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TopKill);
+
             if ((nTitle & (int)EWarMedal.EWM_ASSCOUNT) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TopAssist);
+
             if ((nTitle & (int)EWarMedal.EWM_DAMAGE) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TopTank);
+
             if ((nTitle & (int)EWarMedal.EWM_DESTORYTOWER) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TopTowerKill);
+
             if ((nTitle & (int)EWarMedal.EWM_MONEY) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TopRich);
             // 不显示补兵最多图标
@@ -572,20 +639,36 @@ namespace USpeedUI
             //    AddTitleIcon((int)AchiIconType.Icon_TopFarm);
             if ((nTitle & (int)EWarMedal.EWM_DEADLYCONTROL) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_DeadlyControl);
+
             if ((nTitle & (int)EWarMedal.EWM_THRILLSAVE) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_ThrilSave);
+
             if ((nTitle & (int)EWarMedal.EWM_TEAMCONTROL) > 0)
                 AddTitleIcon((int)AchiIconType.Icon_TeamControl);
+
             if (cmdData.gzAllData[(int)ERecord_Data_Type.ERDT_ALIVECOUTASSISTMAX] >= 15)
                 AddTitleIcon((int)AchiIconType.Icon_AliveAssist);
+
             if (cmdData.gzAllData[(int)ERecord_Data_Type.ERDT_ALIVECONTKILLMAX] >= 8)
                 AddTitleIcon((int)AchiIconType.Icon_Godlike);
+
             if (cmdData.gzAllData[(int)ERecord_Data_Type.ERDT_TIMEKILLMAX] == 3)
                 AddTitleIcon((int)AchiIconType.Icon_TripleKill);
+
             if (cmdData.gzAllData[(int)ERecord_Data_Type.ERDT_TIMEKILLMAX] == 4)
                 AddTitleIcon((int)AchiIconType.Icon_FourKill);
+
             if (cmdData.gzAllData[(int)ERecord_Data_Type.ERDT_TIMEKILLMAX] >= 5)
                 AddTitleIcon((int)AchiIconType.Icon_FiveKill);
+
+            if ((nTitle & (int)EWarMedal.EWM_KILLDRAGON) > 0)
+                AddTitleIcon((int)AchiIconType.Icon_KillDragon);
+
+            if ((nTitle & (int)EWarMedal.EWM_JOINBATTLE) > 0)
+                AddTitleIcon((int)AchiIconType.Icon_JoinBattle);
+
+            if ((nTitle & (int)EWarMedal.EWM_CURE) > 0)
+                AddTitleIcon((int)AchiIconType.Icon_Cure);
         }
 
         // 创建荣耀预制体，并设置信息
@@ -603,6 +686,7 @@ namespace USpeedUI
                 UTooltipTrigger heroTipsTrigger = instance.GetComponent<UTooltipTrigger>();
                 string stTitleDesc = ULocalizationService.Instance.Get("ToolTips", "RecordTableEnd", stTitleName);
                 heroTipsTrigger.SetText(UTooltipParamName.BodyText, stTitleDesc);
+                heroTipsTrigger.tipPosition = TipPosition.MouseTopRightCorner;
             }
         }
     }

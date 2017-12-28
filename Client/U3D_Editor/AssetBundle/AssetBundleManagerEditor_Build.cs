@@ -744,16 +744,23 @@ public partial class AssetBundleManagerEditor : EditorWindow
     //    fromTaiTanProgrma = true;
     //    AssetBundleManager.InitAssetBundleThread();
 
-    //    isBuildingPackage = true;
-    //   // PreGeneratePrefabConfig();
-    //   // SaveAndRefershAssets();
 
-    //   // BuildCurrAssetBundleList();
+    //    BuildOptions options =  BuildOptions.Development | BuildOptions.ConnectWithProfiler | BuildOptions.AllowDebugging;
+    //    BuildTarget target = BuildTarget.StandaloneWindows;
 
-    //   // PostGeneratePrefabConfig();
+    //    List<string> scenes = new List<string>();
+    //    //登录场景
+    //    scenes.Add("Assets/Login.unity");
+    //    // scenes.Add("Assets/UnityScene/Login.unity");
+    //    BuildPipeline.BuildPlayer(scenes.ToArray(), GetRunTimeBinPatchRoot() + GameName + "." + GameExeName, target, options);
 
-    //    isBuildingPackage = false;
-    //    BuildProject_Impl(true,false);
+    //    GenerateOtherInfo(true, false);
+
+    //    List<string> OtherModifList = null;
+    //    List<string> OtherDeleteList = null;
+    //    ReadDetailFile(GetOtherDetailFileNamePath(), ref OtherModifList, ref OtherDeleteList);
+
+    //    EncodeFile_Addtive(new List<string>(), new List<string>(), OtherModifList, OtherDeleteList, false);
     //    System.Diagnostics.Process.Start(GetRunTimeBinPatchRoot());
     //    fromTaiTanProgrma = false;
     //}

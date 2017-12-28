@@ -32,11 +32,31 @@ struct IFixMsg
 /*******************************************************************
 // 工具方法
 ********************************************************************/
-// 将消息打包
-template<class TMsg>
-void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, const TMsg &data)
+// 将消息打包 +1参数T(必须为支持位拷贝的类型)
+template<class T, class TMsg>
+void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, T t, const TMsg &data)
 {
 	obufData.push_back(&header, sizeof(SGameMsgHead));
+	obufData << t;
+
+	if (std::is_base_of<ISerializableData, TMsg>::value)
+	{
+		const ISerializableData& isd = (const ISerializableData&)data;
+		isd.toBytes(obufData);
+	}
+	else
+		obufData.push_back(&data, sizeof(TMsg));
+}
+
+// 将消息打包
+// pointer如果有值，就插在header后面，TMsg前面
+template<class TMsg>
+void TBuildObufMsg(obuf &obufData, const SGameMsgHead& header, const TMsg &data, const void* pointer = nullptr, size_t length = 0)
+{
+	obufData.push_back(&header, sizeof(SGameMsgHead));
+
+	if (pointer)
+		obufData.push_back(pointer, length);
 
 	if (std::is_base_of<ISerializableData, TMsg>::value)
 	{

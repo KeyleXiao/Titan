@@ -15,7 +15,6 @@
 
 #include "net.h"
 #include "TimerAxis.h"
-#include "ClientList.h"
 #include "Acceptor.h"
 #include "Reactor.h"
 #include "Trace.h"
@@ -184,13 +183,6 @@ public:
 	*/
 	virtual bool KillTimer(DWORD timerID, ITimerHandler * handler);
 
-
-	/// 客户端网络消息处理
-	virtual void onClientMessage(CClientUser &client, ulong actionId, SGameMsgHead* head, void* data, size_t len);
-
-	/// 服务器网络消息处理
-	virtual void onServerMessage(ulong actionId, SGameMsgHead* head, void* data, size_t len);
-
 	// 客户端连入
 	virtual void OnClientUserEnter(CClientUser *pUser, DWORD dwReason = 0);
 
@@ -218,14 +210,8 @@ private:
 	// 握手消息
 	void OnMsgServerHandshakeResponse(ulong actionId, SGameMsgHead* head, void* data, size_t len);
 
-	// 请求桥服务器网关服务发送数据给各软件服务器消息
-	void OnMsgServerSendData(ulong actionId, SGameMsgHead* head, void* data, size_t len);
-
 	// 语音网关子消息
 	void OnMsgServerSubMsg(ulong actionId, SGameMsgHead* head, void* data, size_t len);
-
-	// 请求性能检测消息包
-	void OnMsgServerPerformance(ulong actionId, SGameMsgHead* head, void* data, size_t len);
 
 public:
 	TimerAxis                   m_TimerAxis;		// 时间轴

@@ -185,7 +185,7 @@ namespace U3D_Render.SkinCtrl
                 ClearPersonSkinDataFromMachine(m_machine);
                 return ;
             }
-            GameUtil.SetLayer(m_machine.creature.gameObject.layer, si.SkinObj, true);
+            GameUtil.SetLayer(m_machine.creature.gameObject.layer, si.SkinObj, true, new Transform[] { si.SkinDataObj });
 
             m_currentLoadedSkinInstance = si;
             PersonSkinConfig psp = si.entitySkinConfig as PersonSkinConfig;

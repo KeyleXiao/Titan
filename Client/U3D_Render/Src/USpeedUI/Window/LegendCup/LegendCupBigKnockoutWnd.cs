@@ -155,7 +155,7 @@ namespace USpeedUI.LegendCup
         public void OnShowBigKnockoutWnd(long nCupID)
         {
             m_LegendCupID = nCupID;
-            SingleCompetitionInfo competitionInfo = LogicDataCenter.legendCupDataManager.GetSingleCompetitionInfo();
+            SingleCompetitionInfo competitionInfo = LogicDataCenter.legendCupDataManager.GetSingleCompetitionInfo(m_LegendCupID);
             if (competitionInfo == null)
                 return;
             cmd_legendcup_recv_cuplist_node cupBaseData = LogicDataCenter.legendCupDataManager.GetSingleLegendCupNode(m_LegendCupID);

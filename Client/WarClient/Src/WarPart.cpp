@@ -1169,6 +1169,8 @@ void CWarPart::BroadKillCn(cmd_war_entity_killcountinfo *KillInfo, const vector<
 // 处理结束战场
 void CWarPart::OnMessageWarEndhandle(void *pData, size_t nLen)
 {
+	InfoLn(__FUNCTION__":OnMessageWarEndhandle");
+
 	//校验数据大小
 	if ( pData == NULL || m_pMaster == NULL  )
 	{
@@ -1775,21 +1777,25 @@ void CWarPart::loadEndRecordData(msg_war_entity_end_warinfo* pInfo, int nPlayerC
 
 	for (int i = 0; i < nPlayerCount; ++i )
 	{
+		// 修正最新的匹配分(因为有保底分)
+		int nCurRankScore = getAddMatchScoreAfterScore(pInfo->nMatchType, pInfo->nPreMatchTypeScore, pInfo->nMatchTypeScore);
 		cmd_entity_end_player_data cmdData;
 		cmdData.pDbid = pInfo->pDbid;
 		cmdData.nCamp = pInfo->nCamp;
 		cmdData.nScore = pInfo->nScore;
-
-		int nOldPlayerMatchScore = pInfo->nPlayerMatchScore - pInfo->nMatchTypeScore;
-		// 修正最新的匹配分(因为有保底分)
-		int nCurRankScore = getAddMatchScoreAfterScore(pInfo->nMatchType, nOldPlayerMatchScore, pInfo->nMatchTypeScore);
-
 		cmdData.nPlayerMatchScore = nCurRankScore;
-		cmdData.nOldPlayerMatchScore = nOldPlayerMatchScore;
+		cmdData.nPreMatchTypeScore = pInfo->nPreMatchTypeScore;
 		cmdData.nMatchScore = pInfo->nMatchTypeScore;
-		cmdData.nUpgradeRank = pMatchRank->cmpRankGrade(pInfo->nMatchType, nOldPlayerMatchScore, nCurRankScore);
+		cmdData.nUpgradeRank = pMatchRank->cmpRankGrade(pInfo->nMatchType, pInfo->nPreMatchTypeScore, nCurRankScore);
 		cmdData.nMatchType = pInfo->nMatchType;
 		cmdData.nPlayerType = pInfo->nPlayerType;
+		cmdData.nPreMatchTypeGrade = pInfo->nPreMatchTypeGrade;
+		const SMatchRankConfigSchemeInfo* pScheme = pMatchRank->getMatchRankConfigShemeInfo(pInfo->nMatchType, pInfo->nPreMatchTypeScore);
+		if (pScheme != NULL)
+		{
+			cmdData.nCurStarSection = pScheme->nStarSection;
+		}
+		
 		sstrcpyn( cmdData.szMatchTypeName, pInfo->szPlayerMatchName, sizeof(cmdData.szMatchTypeName));
 		sstrcpyn( cmdData.szPlayerName, pInfo->PlayerName, sizeof(cmdData.szPlayerName));
 		memcpy(cmdData.gzAllData, pInfo->gzAllData, sizeof(pInfo->gzAllData));

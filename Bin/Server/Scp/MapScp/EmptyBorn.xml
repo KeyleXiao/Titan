@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="Legacy" ?>
+<scheme>
+
+</scheme>
+
+<!--注: batchnum:一次重刷刷多少个 bornx borny bornz 出生点 dirx diry dirz 朝向 pathid:路径ID totalmax最多多少个怪-->

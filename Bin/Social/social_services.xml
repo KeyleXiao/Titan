@@ -1,0 +1,52 @@
+﻿<Services work_thread_num="1">
+  <Service name="SocialGlobalService" dll_path="SocialGlobal.dll" create_func="CreateSocialGlobalService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1">
+  </Service>
+  <Service name="TimerService" dll_path="framework.dll" dll_path_64="framework64.dll" create_func="CreateTimerService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="PerformanceService" dll_path="framework.dll" dll_path_64="framework64.dll" create_func="CreatePerformanceService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1">
+  </Service>
+
+  <Service name="ManagerConnector" dll_path="ConnectorService.dll" create_func="CreateManagerConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" server_ip="127.0.0.1" server_port="8700" is_prefab="1">
+  </Service>
+  <Service name="GatewayConnector" dll_path="ConnectorService.dll" create_func="CreateGatewayAcceptorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" newthread="0"  is_prefab="1">
+  </Service>
+  <Service name="CenterConnector" dll_path="ConnectorService.dll" create_func="CreateCenterConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" center_server_ip="127.0.0.1" center_server_port="8001" is_prefab="1">
+  </Service>
+   <Service name="VoiceConnector" dll_path="ConnectorService.dll" create_func="CreateVoiceConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" voice_server_ip="127.0.0.1" voice_server_port="12800" is_prefab="1">
+  </Service>
+  <Service name="BridgeConnector" dll_path="ConnectorService.dll" create_func="CreateBridgeConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" server_ip="127.0.0.1" server_port="10000" enable="0" is_prefab="1">
+  </Service>
+  <Service name="SNSConnector" dll_path="ConnectorService.dll" create_func="CreateSNSConnectorService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" server_ip="127.0.0.1" server_port="8601" enable="0" is_prefab="1">
+  </Service>
+  <Service name="DBEngineService" dll_path="SocialGlobal.dll" create_func="CreateDBEngineService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="MatchService" dll_path="MatchService.dll" create_func="CreateMatchService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="ChatService" dll_path="ChatService.dll" create_func="CreateChatService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="OrderService" dll_path="OrderService.dll" create_func="CreateOrderService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="ClanService" dll_path="ClanService.dll" create_func="CreateClanService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="KinService" dll_path="KinService.dll" create_func="CreateKinService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+	<Service name="TeamService" dll_path="TeamService.dll" create_func="CreateTeamService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="MentorshipService" dll_path="MentorshipService.dll" create_func="CreateMentorshipService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="LegendCupService" dll_path="LegendCupService.dll" create_func="CreateLegendCupService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+	<Service name="SNSService" dll_path="SNSService.dll" create_func="CreateSNSService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="LuaService" dll_path="LuaService.dll" create_func="CreateLuaService" thread_safe="0" stack_size="0" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="OSSLogService" dll_path="OSSLogService.dll" create_func="CreateOSSLogService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="TaskService" dll_path="TaskService.dll" create_func="CreateTaskStorageService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+  <Service name="MailService" dll_path="MailService.dll" create_func="CreateMailService" thread_safe="0" stack_size="81920" time_slice="32" thread_id="-1" is_prefab="1">
+  </Service>
+
+  <Service name="DateTriggerService" dll_path="framework.dll" dll_path_64="framework64.dll" create_func="CreateDateTriggerService" thread_safe="0" stack_size="40960" time_slice="32" thread_id="-1">
+  </Service>
+</Services>

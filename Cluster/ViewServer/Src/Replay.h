@@ -33,6 +33,8 @@ public:
 	bool Start();
 	// 加入一个观战者
 	void Insert(ClientUser* pClientUser, const ViewParam& sViewParam);
+	// 移除观战者
+	void Remove(PlayerID dwPlayerID);
 	// 每隔N毫秒，由ReplayContainer来调用
 	void HeartBeat();
 

@@ -456,4 +456,28 @@ FixMsgStruct(SMsgView_GV_CRequestReplay)
 };
 
 
+///////////////////////////////////////////////////////////////////
+// GATE——VIEW、GATE——MNG
+// 删除玩家，即玩家下线	ENUM_MSG_VIEW_PLAYER_DEL
+FixMsgStruct(SMsgView_GV_PlayerDel)
+{
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_VIEW; };
+	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
+	static BYTE	GetActionId() { return ENUM_MSG_VIEW_PLAYER_DEL; }
+
+	PlayerID			dwPlayerID;	// 标识观战客户端的唯一ID
+};
+FixMsgStruct(SMsgView_GM_PlayerDel)
+{
+	BYTE GetSrcEndPoint() { return MSG_ENDPOINT_VIEWGATE; };
+	BYTE GetDestEndPoint() { return MSG_ENDPOINT_VIEWMNG; };
+	static BYTE	GetModuleId() { return MSG_MODULEID_VIEW; }
+	static BYTE	GetActionId() { return ENUM_MSG_VIEW_PLAYER_DEL; }
+
+	PlayerID			dwPlayerID;	// 标识观战客户端的唯一ID
+};
+
+
+
 #pragma pack()

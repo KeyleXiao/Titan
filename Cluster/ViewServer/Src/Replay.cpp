@@ -56,6 +56,11 @@ void Replay::HeartBeat()
 	//	(integer) 10
 }
 
+void Replay::Remove(PlayerID dwPlayerID)
+{
+	m_UserMap.erase(dwPlayerID);
+}
+
 void Replay::BroadCastBattleInfo()
 {
 	// 用来广播的map
@@ -80,7 +85,6 @@ void Replay::BroadCastBattleInfo()
 		STime alowTime = gTimeSyncService.GetTime();	// 当前时间
 		alowTime.tSec -= node.m_sViewParam.dwDelaySec;	// 小于这个时间的都可以播放
 
-		DWORD& currTime = node.currTime;
 		DWORD dwIndex = node.m_dwIndex;
 
 		for (DWORD i = dwIndex; i < m_vecBattleInfo.size(); i++)

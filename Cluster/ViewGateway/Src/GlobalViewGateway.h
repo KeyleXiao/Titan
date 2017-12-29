@@ -195,6 +195,9 @@ public:
 	// 用户断线
 	virtual void OnClientUserLeave(CClientUser * pUser, DWORD dwReason = 0);
 
+	// 观战管理服连接器
+	virtual	MngConnector&	GetMngConnector() { return m_MngConnector; }
+
 private:
 
 	// 命令操作

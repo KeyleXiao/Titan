@@ -50,6 +50,8 @@ enum EMMsgView
 	ENUM_MSG_VIEW_REQUEST_ADD_PLAYER_REPLY,	// Gate回复Mng，添加玩家结果
 	// MNG——GATE、GATE——MNG
 	ENUM_MSG_VIEW_AUTH_DEL,					// 某玩家的验证信息删除
+	// GATE——VIEW、GATE——MNG
+	ENUM_MSG_VIEW_PLAYER_DEL,				// 删除玩家，即玩家下线
 
 	// GAME——MNG
 	ENUM_MSG_VIEW_REQUEST_REPLAY,			// 请求观看某场战报

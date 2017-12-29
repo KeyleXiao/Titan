@@ -26,3 +26,8 @@ ClientUser*	ClientList::Get(PlayerID dwPlayerID)
 	else
 		return nullptr;
 }
+
+void ClientList::Del(const PlayerID& dwPlayerID)
+{
+	m_ClientMap.erase(dwPlayerID);
+}

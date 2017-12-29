@@ -19,13 +19,14 @@
 #include "IActionway.h"
 #include "IDBHttpServiceProtocol.h"
 #include "IMessageHandler.h"
+#include "IShareServer.h"
 
 using namespace DBHttp;
 
 /*
 @brief: 该模块主要职责是接受DBHttpService的请求，处理消息。
 */
-class DBHttpService : public IDBHttpService, public ITransmitHandler
+class DBHttpService : public IDBHttpService, public ITransmitHandler, ISharePersonHandler
 {
 public:
 	//////////////////////////////////////////////////////////////////////////
@@ -62,6 +63,37 @@ public:
 	@brief        : 例如服务器人数变化等等
 	*/
 	virtual void	onServerInfoUpdated(DWORD ServerID, BYTE nState, void* pServerData);
+
+
+    /////////////////////////ISharePersonHandler/////////////////////////////////////////////////
+    // 共享人物关注者
+    /** 上线或者跨进程切换地图后，也是在这里得到通知
+    @param   SHARELINE_TYPE ：在线回调类型
+    @param   
+    @return  
+    */
+    virtual void            OnLogin(ISharePerson * pSharePerson, ELoginMode nLineType) override;
+
+    /** 下线或者跨进程切换地图后，也是在这里得到通知，当调完以后，就无法再取到
+    @param   SHARELINE_TYPE ：在线回调类型
+    @param   
+    @return  
+    */
+    virtual void            OnLogout(ISharePerson * pSharePerson, ELogoutMode nLineType) override;
+
+    /** 更新数据前，此处分一前一后，是让应用层知道什么数据改变了，而nUpdateFlag表示是因为什么原因改变了
+    @param   pSharePerson ：更新前的对像
+    @param   nUpdateFlag  ：改变原因
+    @return  
+    */
+    virtual void            OnPre_Update(ISharePerson * pSharePerson, SHAREUPDATE_REASON nUpdateReason) override;
+
+    /** 更新数据后，此处分一前一后，是让应用层知道什么数据改变了，而nUpdateFlag表示是因为什么原因改变了
+    @param   pSharePerson ：更新后的对像
+    @param   nUpdateFlag  ：改变原因
+    @return  
+    */
+    virtual void            OnPost_Update(ISharePerson * pSharePerson, SHAREUPDATE_REASON nUpdateReason) override;
 
 	//////////////////////////////////////////////////////////////////////////
 	void HandleDBHttpRequest(void * data, size_t len);

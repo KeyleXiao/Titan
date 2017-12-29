@@ -94,12 +94,12 @@ bool SocialGlobalService::on_stop()
     m_UnLockHandler.onStop();
 
     // 释放子模块的顺序最好和初始化顺序相反
-    if (m_DBHttpService)            m_DBHttpService->onStop();
 	//if(m_pMailManager)			m_pMailManager->onStop();
     if(m_pTaskManager)              m_pTaskManager->onStop();
 	if(m_pOSSLogServer)				m_pOSSLogServer->onStop();
     if(m_pShareReceiver)            m_pShareReceiver->onStop();
     if(m_pShareSceneSvrSource)      m_pShareSceneSvrSource->onStop();
+    if (m_DBHttpService)            m_DBHttpService->onStop();
     //if(m_pMatchManager)           m_pMatchManager->onStop();
     //if(m_pSchemeCenter)           m_pSchemeCenter->onStop();
     //if(m_pOrderManager)           m_pOrderManager->onStop();

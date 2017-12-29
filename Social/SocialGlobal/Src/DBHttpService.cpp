@@ -18,6 +18,7 @@
 #include "DBHttpActionway.h"
 #include "DBHttpService.h"
 #include "IShareServer.h"
+#include "ICenterConnectorService.h"
 
 using namespace DBHttp;
 
@@ -55,6 +56,12 @@ bool DBHttpService::Create(void)
         pMessageDispatch->registerTransmitHandler(MSG_MODULEID_DBHTTP, static_cast<ITransmitHandler*>(this));
     }
 
+    IShareReceiver *pShareReceiver = gSocialGlobal->getShareReceiver();
+    if (pShareReceiver != NULL)
+    {
+        pShareReceiver->RegisterHandler(this, "ChatService::create");
+    }
+
 	RegisterActionwayHandler(DBHttpAction_Notity,           new DBHttpActionNotity);
     RegisterActionwayHandler(DBHttpAction_SystemMessage,    new ActionwaySystemMessage);
 
@@ -69,6 +76,12 @@ void DBHttpService::onStop(void)
 {
     UnRegisterActionwayHandler(DBHttpAction_Notity);
     UnRegisterActionwayHandler(DBHttpAction_SystemMessage);
+
+    IShareReceiver *pShareReceiver = gSocialGlobal->getShareReceiver();
+    if (pShareReceiver != NULL)
+    {
+        pShareReceiver->UnregisterHandler(this);
+    }
 
     IMessageDispatch* pMessageDispatch = gSocialGlobal->getMessageDispatch();
     if (pMessageDispatch) {
@@ -157,6 +170,56 @@ void DBHttpService:: onServerListUpdated()
 
 //////////////////////////////////////////////////////////////////////////
 void DBHttpService:: onServerInfoUpdated(DWORD ServerID, BYTE nState, void* pServerData)
+{
+
+}
+/////////////////////////ISharePersonHandler/////////////////////////////////////////////////
+void DBHttpService::OnLogin(ISharePerson * pSharePerson, ELoginMode nLineType)
+{
+    if (nullptr == pSharePerson)
+        return;
+
+    if (elogin_online != nLineType)
+        return;
+
+    SMsgDBHttp_UserLogin msg;
+    msg.pdbid = pSharePerson->GetNumProp(PROPERTY_ID);
+    msg.svrid = pSharePerson->GetServerID();
+
+    ICenterConnectorService* pCenterConnectorService = gSocialGlobal->getCenterConnectorService();
+    if (pCenterConnectorService)
+    {
+        //TraceLn(__FUNCTION__": pdbid="<< msg.pdbid);
+        pCenterConnectorService->sendDataToDBHttpSvr(MSG_MODULEID_DBHTTP, MSG_DBHTTP_USERLOGIN, (LPCSTR)&msg, sizeof(msg));
+    }
+}
+
+void DBHttpService::OnLogout(ISharePerson * pSharePerson, ELogoutMode nLineType)
+{
+    if (nullptr == pSharePerson)
+        return;
+
+    if (elogout_offline != nLineType)
+        return;
+
+    SMsgDBHttp_UserLogout msg;
+    msg.pdbid = pSharePerson->GetNumProp(PROPERTY_ID);
+    msg.svrid = pSharePerson->GetServerID();
+
+    ICenterConnectorService* pCenterConnectorService = gSocialGlobal->getCenterConnectorService();
+    if (pCenterConnectorService)
+    {
+        //TraceLn(__FUNCTION__": pdbid="<< msg.pdbid);
+        pCenterConnectorService->sendDataToDBHttpSvr(MSG_MODULEID_DBHTTP, MSG_DBHTTP_USERLOGOUT, (LPCSTR)&msg, sizeof(msg));
+    }
+}
+
+void DBHttpService::OnPre_Update(ISharePerson * pSharePerson, SHAREUPDATE_REASON nUpdateReason)
+{
+
+}
+
+void DBHttpService::OnPost_Update(ISharePerson * pSharePerson, SHAREUPDATE_REASON nUpdateReason)
 {
 
 }

@@ -1,3 +1,16 @@
+/*******************************************************************
+** 文件名:	ClientList.h
+** 版  权:	(C) 深圳冰川网络股份有限公司
+** 创建人:	baoliang.shen
+** 日  期:	2017/12/28
+** 版  本:	1.0
+** 描  述:	在本服的所有Client
+** 应  用:  	
+**************************** 修改记录 ******************************
+** 修改人: 
+** 日  期: 
+** 描  述: 
+********************************************************************/
 #pragma once
 #include "ClientUser.h"
 #include "GateConnector.h"
@@ -11,6 +24,8 @@ public:
 	ClientUser* InsertIfAbsent(PlayerID dwPlayerID, GateConnector* pGateConnector);
 
 	ClientUser*	Get(PlayerID dwPlayerID);
+
+	void Del(const PlayerID& dwPlayerID);
 
 	template<typename TMsg>
 	void BroadCastData(TMsg& msg, const VecPlayerID& vec)
@@ -47,5 +62,6 @@ private:
 	typedef std::map<PlayerID, ClientUser>	ClientMap;
 
 	ClientMap	m_ClientMap;
+
 };
 extern ClientList& gClientList;

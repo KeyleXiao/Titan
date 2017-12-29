@@ -19,6 +19,7 @@
 #include "IGatewayAcceptorService.h"
 #include "DBHttpActionway.h"
 #include "EntityHelper.h"
+#include "ChatHelper.h"
 #include "DBHttpService.h"
 
 
@@ -265,7 +266,7 @@ void DBHttpService::onTransmitHandleDBHttpKickout(void* data, size_t len)
         return;
     }
 
-    ActorHelper helper(msg.pdbid);
+    ActorHelper helper(msg.pdbid, ACTOR_DBID);
     if (nullptr == helper.m_ptr) {
 		WarningLn(__FUNCTION__": Execute Failed because not find the player, pdbid="<< msg.pdbid);
 		return;
@@ -276,9 +277,22 @@ void DBHttpService::onTransmitHandleDBHttpKickout(void* data, size_t len)
         return;
     }
 
-    // TODO 通知客户端踢人
-    // g_ExternalFacade.SendKickoutMessageBox(m_clientid, pszReason);
+
+    // 通知客户端踢人
+    ChatHelper chatHelper;
+    IChatSceneService *pChatSceneService = chatHelper.m_ptr;
+    if (pChatSceneService)
+    {
+        pChatSceneService->broadcastSystemMessageToChatBox(CHAT_BROADCASTTYPE_SINGLE,
+            msg.pdbid,
+            CHAT_TIP_CHATBOX_AND_MIDDLE_TIP,
+            CHAT_CHANNEL_WORLD,
+            a2utf8(msg.szReason),
+            0, 0);
+    }
+
     pGatewayAcceptorService->kickOutClient(clientID, 0);
+
 }
 
 /**

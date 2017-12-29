@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SNSConnector", "SNSConnecto
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SNSServer", "SNSServer\Build\SNSServer.vcxproj", "{2751CBA3-087F-4258-8412-BD44DA552FDF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DBHttpServer", "DBHttpServer\Build\DBHttpServer.vcxproj", "{464BCEE1-6070-4270-810D-90053B09878B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -317,6 +319,21 @@ Global
 		{2751CBA3-087F-4258-8412-BD44DA552FDF}.UniRelease|Win32.Build.0 = UniRelease|Win32
 		{2751CBA3-087F-4258-8412-BD44DA552FDF}.UniRelease|x64.ActiveCfg = UniRelease|x64
 		{2751CBA3-087F-4258-8412-BD44DA552FDF}.UniRelease|x64.Build.0 = UniRelease|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Debug|Win32.ActiveCfg = UniRelease|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Debug|x64.ActiveCfg = UniRelease|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Debug|x64.Build.0 = UniRelease|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Release|Win32.ActiveCfg = Release|Win32
+		{464BCEE1-6070-4270-810D-90053B09878B}.Release|Win32.Build.0 = Release|Win32
+		{464BCEE1-6070-4270-810D-90053B09878B}.Release|x64.ActiveCfg = Release|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Release|x64.Build.0 = Release|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Template|Win32.ActiveCfg = Template|Win32
+		{464BCEE1-6070-4270-810D-90053B09878B}.Template|Win32.Build.0 = Template|Win32
+		{464BCEE1-6070-4270-810D-90053B09878B}.Template|x64.ActiveCfg = Template|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.Template|x64.Build.0 = Template|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.UniRelease|Win32.ActiveCfg = UniRelease|Win32
+		{464BCEE1-6070-4270-810D-90053B09878B}.UniRelease|Win32.Build.0 = UniRelease|Win32
+		{464BCEE1-6070-4270-810D-90053B09878B}.UniRelease|x64.ActiveCfg = UniRelease|x64
+		{464BCEE1-6070-4270-810D-90053B09878B}.UniRelease|x64.Build.0 = UniRelease|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -51,6 +51,7 @@ protected:
 			return;
 		}
 		pClient->SetMacAddress(pMsg->szMacAddress);// 保存mac地址
+		pClient->SetViewID(pView->GetID());
 
 		// 3.0 回复握手消息
 		pClient->SendMsg(SMsgView_GC_HandshakeResponse());

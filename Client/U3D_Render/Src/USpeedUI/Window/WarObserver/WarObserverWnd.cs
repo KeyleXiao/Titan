@@ -636,7 +636,6 @@ namespace USpeedUI.WarObserver
 
         public void SetCurrentPlayerSlotSpellCD(UIMsgCmdData uiSpellEffect)
         {
-            Trace.Log("SetSKillEffect WND_MSG_WARBUTTOMCENTER_SKILLEFFECT");
             if (CurrentPlayer == null || CurrentPlayer.nEntityID != LogicDataCenter.warOBUIDataManager.CurrentUID)
                 return;
 
@@ -825,7 +824,6 @@ namespace USpeedUI.WarObserver
                 {
                     int currentTime = (int)GameLogicAPI.getTickCount();
                     int elapsTime = currentTime - slot.initCDTime;
-                    Trace.Log("warobserverwnd:" + currentTime + "," + slot.changeSlot.slotview.nMaxData + "," + slot.changeSlot.slotview.nCurData + "," + slot.initCDTime);
                     if (elapsTime < slot.changeSlot.slotview.nMaxData)
                     {
                         slot.changeSlot.slotview.nCurData = slot.changeSlot.slotview.nMaxData - elapsTime;

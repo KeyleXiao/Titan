@@ -7,7 +7,8 @@
 
 
 ClientSession::ClientSession(IConnection * conn, IUserList<PlayerID>& pUserList, Processer<ClientSession>& processer, TimerAxis& timerAxis, IByteRecord* pByteRecord)
-	:SessionUser(conn, pUserList, processer, timerAxis, pByteRecord)
+	: SessionUser(conn, pUserList, processer, timerAxis, pByteRecord)
+	, m_wViewID(0)
 {
 	m_tConnectTime = (DWORD)time(NULL);
 

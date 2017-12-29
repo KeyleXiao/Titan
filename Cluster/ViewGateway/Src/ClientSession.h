@@ -23,6 +23,9 @@ public:
 
 	inline	time_t		GetConnectTime(void) { return m_tConnectTime; }
 
+	inline	void		SetViewID(ViewID id) { m_wViewID = id; }
+	inline	ViewID		GetViewID() { return m_wViewID; }
+
 	virtual std::string ToString();
 
 	virtual	void		UnHandled(LPVOID pData, DWORD dwDataLen);
@@ -36,6 +39,7 @@ protected:
 	virtual	const obuf&	GetAnswerKeepAliveMsg();
 
 protected:
-	time_t		m_tConnectTime;						//	连入时间
+	time_t		m_tConnectTime;						// 连入时间
 	char		m_szMacAddress[MAC_ADDRESS_SIZE];	// 网卡地址
+	ViewID		m_wViewID;							// 该客户端登陆的ViewServer
 };

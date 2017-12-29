@@ -281,6 +281,7 @@
     <ClInclude Include="..\Src\GlobalViewServer.h" />
     <ClInclude Include="..\Src\GV_CRequestReplayHandler.h" />
     <ClInclude Include="..\Src\GV_HandshakeResponseHandler.h" />
+    <ClInclude Include="..\Src\GV_PlayerDelHandler.h" />
     <ClInclude Include="..\Src\HandshakeResponseHandler.h" />
     <ClInclude Include="..\Src\IReplayRunnable.h" />
     <ClInclude Include="..\Src\IRunnableCallback.h" />

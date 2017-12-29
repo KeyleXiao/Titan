@@ -1238,6 +1238,9 @@ namespace GameLogic
 
 		// 系统取消杯赛
 		GVIEWCMD_LEGENDCUP_SYSTEM_CANCEL_CUP,
+
+		// view2c++ 邀请组队
+		GVIEWCMD_TEAM_REQUEST_INFO,
 	};
 
     /*****************************************************************************

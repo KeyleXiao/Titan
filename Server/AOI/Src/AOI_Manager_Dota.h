@@ -348,7 +348,19 @@ public:
             for ( int i=0;i<count;++i )
             {
                 pObjectArray[i]->onCreateNotify( obj->m_uid,-1 );
-                pObjectArray[i]->onInOutSight( -1,true,obj->m_uid );
+
+                if( pObjectArray[i]->m_nVisibaleFlag&CAMP_MASK(m_nCampCount) )
+                {
+                    // 已经对OB阵营可见的话 进新来的OB的视野
+                    pObjectArray[i]->onInOutSight( -1,true,obj->m_uid );
+                }
+                else
+                {
+                    // 对OB阵营不可见的话 更新他的可见性
+                    COORD_TYPE _loc[DIM];
+                    _loc[0] = pObjectArray[i]->m_Loc.x; _loc[1] = pObjectArray[i]->m_Loc.z;
+                    UpdateObjVisible( _loc,pObjectArray[i] );
+                }
             }
 
             return true;

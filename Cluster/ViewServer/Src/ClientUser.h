@@ -6,6 +6,14 @@ struct ClientUser
 {
 	GateID			m_wGateID;		// 此玩家所在的GateID
 	PlayerID		m_dwPlayerID;	// 玩家唯一ID
+	ReplayID		m_rID;			// 正在观看的战报ID(目前，每个玩家同一时间只能看一场)
+
+	ClientUser() : m_wGateID(0), m_dwPlayerID(0), m_rID(0)
+	{}
+
+	bool IsViewing() { return m_rID != 0; }
+
+	void StopView();
 
 	// 发送消息
 	template<typename TMsg>
@@ -44,4 +52,5 @@ struct ClientUser
 private:
 	void OnSendData(DWORD dwDataLen);
 	GateConnector*	GetGate();
+
 };

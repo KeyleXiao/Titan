@@ -37,6 +37,7 @@ ENUM EMChatChannelType
 // 服务器与服务器、服务器与客户端、客户端与客户端之间涉及到的字符串传输统一使用UTF-8格式
 ENUM EMChatTipID
 {
+    CHAT_TIP_CHATBOX_AND_MIDDLE_TIP = -4,			// {1}配置的的自定义描述（聊天框和屏幕中间显示）
     CHAT_TIP_CHATBOX_CUSTOMER_TIP = -3,				// {1}配置的的自定义描述（聊天框显示）
     CHAT_TIP_COMMON_OPT_CD_TIP = -2,				// 你操作太频繁,{1}秒再试
     CHAT_TIP_CUSTOMER_TIP = -1,						// {1}配置的自定义描述（屏幕正下方显示）

@@ -18,6 +18,7 @@
 
 class CClientUser;
 class CAudioUser;
+class MngConnector;
 struct SGameMsgHead;
 
 
@@ -45,6 +46,9 @@ struct IGlobalViewGateway
 
 	// 设置当前操作代码  DWORD dwCode 参考 EMVoiceGatewayControlCode
 	virtual void SetControlCode(DWORD dwCode) = 0;
+
+	// 观战管理服连接器
+	virtual	MngConnector&	GetMngConnector() = 0;
 };
 
 #define gGlobalServer	((IGlobalViewGateway*)::rkt::getGlobal())

@@ -434,6 +434,9 @@ namespace USpeedUI.AntiAddict
         private UAntiAddictWndView m_wndView;
         private int nCountTime;
 
+        private const int ADDICT_COUNT_DOWN_TIME = 10;  // 提示显示时间
+        private const int ADDICT_OFFSET_TIME = 5;       // 提示offset时间后可设置
+
         protected override void Awake()
         {
             Title.text = ULocalizationService.Instance.Get("UIView", "AntiAddict", "TipTitle");
@@ -446,7 +449,7 @@ namespace USpeedUI.AntiAddict
             Content.text = strContent;
             TimerManager.KillTimer(this, 1);
             TimerManager.SetTimer(this, 1, 1);
-            nCountTime = 60;
+            nCountTime = ADDICT_COUNT_DOWN_TIME;
             ConfirmBtnDesc.text = nCountTime.ToString();
             ConfirmBtn.interactable = false;
             CloseBtn.gameObject.SetActive(false);
@@ -457,7 +460,7 @@ namespace USpeedUI.AntiAddict
             nCountTime--;
             ConfirmBtnDesc.text = nCountTime.ToString();
             // 5秒后弹出填写沉迷信息的窗口,没有实名认证过的
-            if (nCountTime == 55 && !GameLogicAPI.isRealNameAuthed())
+            if ((nCountTime == ADDICT_COUNT_DOWN_TIME - ADDICT_OFFSET_TIME) && !GameLogicAPI.isRealNameAuthed())
             {
                 m_wndView.guideFrame.SetData(m_wndView, ULocalizationService.Instance.Get("UIView", "AntiAddict", "GuideContentTip"));
                 m_wndView.guideFrame.gameObject.SetActive(true);

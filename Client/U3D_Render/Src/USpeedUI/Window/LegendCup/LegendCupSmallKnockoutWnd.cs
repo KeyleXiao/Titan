@@ -981,12 +981,15 @@ namespace USpeedUI.LegendCup
         // 设置进场提示
         public void SetEntryTime(SingleCompetitionInfo competitionInfo)
         {
+            if (competitionInfo == null)
+                return;
+                
             // 最后一轮结算时间
             cmd_legendcup_recv_cuplist_node cupBaseData = LogicDataCenter.legendCupDataManager.GetSingleLegendCupNode(m_nLegendCupID);
             if (cupBaseData.nLegendCupID == 0)
                 return;
             int nCupEndTime = 0;
-            if (competitionInfo.roundInfo.Count > cupBaseData.nNeedRoundCount - 1)
+            if (competitionInfo.roundInfo != null && competitionInfo.roundInfo.Count > cupBaseData.nNeedRoundCount - 1)
             {
                 nCupEndTime = competitionInfo.roundInfo[cupBaseData.nNeedRoundCount - 1].nRoundEndTime;
             }
@@ -1051,7 +1054,7 @@ namespace USpeedUI.LegendCup
                         // 下一轮时间
                         DateTime nextRoundEnterTime = new DateTime();
                         DateTime nextRoundBeginTime = new DateTime();
-                        if (competitionInfo.roundInfo.Count > competitionInfo.headInfo.nRoundID)
+                        if (competitionInfo.roundInfo != null && competitionInfo.roundInfo.Count > competitionInfo.headInfo.nRoundID)
                         {
                             nextRoundEnterTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Unspecified).AddSeconds(competitionInfo.roundInfo[competitionInfo.headInfo.nRoundID].nRoundCreateRoomTme);
                             nextRoundEnterTime = nextRoundEnterTime.ToLocalTime();

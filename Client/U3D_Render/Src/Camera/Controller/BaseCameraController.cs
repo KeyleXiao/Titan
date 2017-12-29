@@ -327,6 +327,8 @@ namespace U3D_Render.CameraControl
                 CurCameraProperty.NormalDistance = curCameraModeParam.curDistance;
                 CurCameraProperty.NormalHeight = curCameraModeParam.targetOffset;
                 CurCameraProperty.InitedEulerAngle.x = curCameraModeParam.curPitchAngle;
+
+                m_userDesireTran = new Vector3(0, CurCameraProperty.NormalHeight, 0);
             }
         }
 

@@ -2899,7 +2899,7 @@
 			<effectServer id0="17" id1="19" id2="21" id3="1069"></effectServer>
 			<effectClient id0="16" id1="2314"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
-			<dispelbuff buffid="" per=""></dispelbuff>
+			<dispelbuff buffid0="1465" buffid1="2235" buffid2="2015" per="10000"></dispelbuff>
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
 		</sub>
@@ -4648,7 +4648,7 @@
 		<sub level="1" desc="被剑插中拖拽中">
 			<flasheffect id="25" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
-			<effectServer id0="19" id1="17" id2="84" id3="5593"></effectServer>
+			<effectServer id0="19" id1="17" id2="84" id3="5593" id4="7057"></effectServer>
 			<effectClient id0="16" id1="82" id2="1487" id3="6569"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -4658,7 +4658,7 @@
 		<sub level="2" desc="被剑插中拖拽中">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
-			<effectServer id0="19" id1="17" id2="84" id3="5593"></effectServer>
+			<effectServer id0="19" id1="17" id2="84" id3="5593" id4="7057"></effectServer>
 			<effectClient id0="16" id1="82" id2="1487" id3="6569"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -4668,7 +4668,7 @@
 		<sub level="3" desc="被剑插中拖拽中">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
-			<effectServer id0="19" id1="17" id2="84" id3="5593"></effectServer>
+			<effectServer id0="19" id1="17" id2="84" id3="5593" id4="7057"></effectServer>
 			<effectClient id0="16" id1="82" id2="1487" id3="6569"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -10736,7 +10736,7 @@
 		</sub>
 	</buff>
 	<buff buffid="1377" buffname="艾丽娅被动">
-		<base replacerule="1" pileqty="1" flag ="16777219" endflag0="1" iconid="145"></base>
+		<base replacerule="1" pileqty="1" flag ="16777219" endflag0="1" iconid=""></base>
 		<sub level="1" desc="光效">
 			<flasheffect id="3022" idex=""></flasheffect>
 			<time long="" longex=""></time>
@@ -20448,12 +20448,12 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="1941" buffname="叠加玩水增益状态">
-		<base replacerule="0" pileqty="1" flag ="1" endflag0="1" iconid=""></base>
+	<buff buffid="1941" buffname="玩水回复生命">
+		<base replacerule="0" pileqty="1" flag ="134217731" endflag0="1" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
-			<time long="500" longex=""></time>
-			<effectServer id0="4810"></effectServer>
+			<time long="2100" longex=""></time>
+			<effectServer id0="4814"></effectServer>
 			<effectClient id=""></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -21134,7 +21134,7 @@
 		</sub>
 	</buff>
 	<buff buffid="1986" buffname="沉重打击">
-		<base replacerule="1" pileqty="1" flag ="2051" endflag0="1" iconid="2"></base>
+		<base replacerule="1" pileqty="1" flag ="2051" endflag0="1" iconid="94"></base>
 		<sub level="1" desc="自身处于虚弱效果，护甲降低30%">
 			<flasheffect id="1661" idex=""></flasheffect>
 			<time long="3000" longex=""></time>
@@ -21641,7 +21641,7 @@
 		</sub>
 	</buff>
 	<buff buffid="2025" buffname="快速吟唱">
-		<base replacerule="0" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
 		<sub level="1" desc="吟唱时间减少50%">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="1000" longex=""></time>
@@ -28617,12 +28617,12 @@
 		</sub>
 	</buff>
 	<buff buffid="2479" buffname="狼狂怒天赋">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
+		<base replacerule="1" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="" longex=""></time>
-			<effectServer id0="6822" id1="6823"></effectServer>
-			<effectClient id0="6824" id1="6825"></effectClient>
+			<effectServer id=""></effectServer>
+			<effectClient id=""></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
@@ -29628,6 +29628,19 @@
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="500" longex=""></time>
 			<effectServer id0="7056"></effectServer>
+			<effectClient id=""></effectClient>
+			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
+			<dispelbuff buffid="" per=""></dispelbuff>
+			<rand effectid="" per="" flasheffectid="" desc=""></rand>
+			<endarose id="" le="" per=""></endarose>
+		</sub>
+	</buff>
+	<buff buffid="2543" buffname="狼学习快速吟唱">
+		<base replacerule="1" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
+		<sub level="1" desc="狼学习快速吟唱">
+			<flasheffect id="" idex=""></flasheffect>
+			<time long="" longex=""></time>
+			<effectServer id=""></effectServer>
 			<effectClient id=""></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -33701,7 +33714,7 @@
 		<base replacerule="3" pileqty="1" flag ="1" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
-			<time long="1000" longex=""></time>
+			<time long="1300" longex=""></time>
 			<effectServer id=""></effectServer>
 			<effectClient id0="21271"></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
@@ -33762,9 +33775,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3202" buffname="鱼姬Q技能（初级）">
-		<base replacerule="1" pileqty="1" flag ="131" endflag0="0" iconid=""></base>
-		<sub level="1" desc="打中人附带减速">
+	<buff buffid="3202" buffname="袭扰">
+		<base replacerule="1" pileqty="1" flag ="131" endflag0="0" iconid="306"></base>
+		<sub level="1" desc="北海鱼姬减缓了你的移动速度">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
 			<effectServer id0="20003"></effectServer>
@@ -33775,9 +33788,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3203" buffname="鱼姬E技能（初级）">
-		<base replacerule="1" pileqty="1" flag ="2097155" endflag0="0" iconid=""></base>
-		<sub level="1" desc="免疫一次控制或伤害">
+	<buff buffid="3203" buffname="灵盾">
+		<base replacerule="1" pileqty="1" flag ="2097155" endflag0="0" iconid="307"></base>
+		<sub level="1" desc="北海鱼姬的守护，持续期间免疫所有伤害与控制">
 			<flasheffect id="5506" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="20042" id1="20006"></effectServer>
@@ -33789,8 +33802,8 @@
 		</sub>
 	</buff>
 	<buff buffid="3204" buffname="鱼姬R技能（对自己）一级大招">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid="308"></base>
+		<sub level="1" desc="当前状态依附队友移动，期间可释放技能但不可普攻">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="20000" longex=""></time>
 			<effectServer id0="21" id1="20010" id2="20009" id3="6595" id4="6721" id5="7045"></effectServer>
@@ -33802,8 +33815,8 @@
 		</sub>
 	</buff>
 	<buff buffid="3205" buffname="鱼姬R技能（对队友）一级大招">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="1" iconid=""></base>
-		<sub level="1" desc="">
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="1" iconid="308"></base>
+		<sub level="1" desc="北海鱼姬的灵魂体正在依附你">
 			<flasheffect id="5511" idex=""></flasheffect>
 			<time long="20000" longex=""></time>
 			<effectServer id0="20012"></effectServer>
@@ -33814,9 +33827,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3206" buffname="鱼姬E天赋（定身版）">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
-		<sub level="1" desc="抵挡成功后续触发范围定身">
+	<buff buffid="3206" buffname="汹涌">
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid="307"></base>
+		<sub level="1" desc="北海鱼姬的深海守护，持续期间免疫所有伤害与控制<br>护盾消失时在周围造成一次范围眩晕">
 			<flasheffect id="5506" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="20046" id1="5594"></effectServer>
@@ -33853,9 +33866,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3209" buffname="鱼姬E天赋（回复版）">
-		<base replacerule="0" pileqty="1" flag ="2097155" endflag0="0" iconid=""></base>
-		<sub level="1" desc="抵挡成功后续触发回复效果">
+	<buff buffid="3209" buffname="沧海">
+		<base replacerule="0" pileqty="1" flag ="2097155" endflag0="0" iconid="307"></base>
+		<sub level="1" desc="北海鱼姬的祝福守护，持续期间抵挡1次伤害或控制<br>抵挡成功时将会回复你的生命值">
 			<flasheffect id="5506" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="20020" id1="20006"></effectServer>
@@ -33865,7 +33878,7 @@
 			<rand effectid="" per="" flasheffectid="" desc=""></rand>
 			<endarose id="" le="" per=""></endarose>
 		</sub>
-		<sub level="2" desc="抵挡成功后续触发回复效果">
+		<sub level="2" desc="北海鱼姬的神圣祝福守护，持续期间抵挡1次伤害或控制<br>抵挡成功时将会大量回复你的生命值">
 			<flasheffect id="5506" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="20071" id1="20006"></effectServer>
@@ -33900,8 +33913,8 @@
 		</sub>
 	</buff>
 	<buff buffid="3211" buffname="鱼姬R技能（对队友）二级大招">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="1" iconid=""></base>
-		<sub level="1" desc="">
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="1" iconid="308"></base>
+		<sub level="1" desc="北海鱼姬的灵魂体正在依附你">
 			<flasheffect id="5511" idex=""></flasheffect>
 			<time long="20000" longex=""></time>
 			<effectServer id0="20012"></effectServer>
@@ -33912,9 +33925,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3212" buffname="灵盾加护盾值">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+	<buff buffid="3212" buffname="浩瀚">
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid="307"></base>
+		<sub level="1" desc="北海鱼姬的神圣守护，护盾量提升，持续期间免疫所有伤害与控制">
 			<flasheffect id="5506" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="20044" id1="20006"></effectServer>
@@ -33938,9 +33951,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3214" buffname="鱼姬Q天赋（减速加强版）效果">
-		<base replacerule="1" pileqty="1" flag ="131" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+	<buff buffid="3214" buffname="澎湃">
+		<base replacerule="1" pileqty="1" flag ="131" endflag0="0" iconid="306"></base>
+		<sub level="1" desc="北海鱼姬减缓了你的移动速度">
 			<flasheffect id="2920" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
 			<effectServer id0="20025"></effectServer>
@@ -33951,9 +33964,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3215" buffname="鱼姬Q天赋1">
-		<base replacerule="1" pileqty="1" flag ="16387" endflag0="0" iconid=""></base>
-		<sub level="1" desc="位置buff">
+	<buff buffid="3215" buffname="漩涡">
+		<base replacerule="1" pileqty="1" flag ="16387" endflag0="0" iconid="306"></base>
+		<sub level="1" desc="北海鱼姬使你当前不可移动且受到持续伤害">
 			<flasheffect id="227" idex=""></flasheffect>
 			<time long="2000" longex=""></time>
 			<effectServer id0="17" id1="5593" id2="5598"></effectServer>
@@ -33977,9 +33990,9 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3217" buffname="鱼姬E技能（初级）">
-		<base replacerule="1" pileqty="1" flag ="2097155" endflag0="0" iconid=""></base>
-		<sub level="1" desc="免疫一次控制或伤害">
+	<buff buffid="3217" buffname="波澜">
+		<base replacerule="1" pileqty="1" flag ="2097155" endflag0="0" iconid="307"></base>
+		<sub level="1" desc="北海鱼姬的战争守护，持续期间增加攻击力且免疫所有伤害与控制">
 			<flasheffect id="5506" idex=""></flasheffect>
 			<time long="5000" longex=""></time>
 			<effectServer id0="20042" id1="20006" id2="20066" id3="20067"></effectServer>
@@ -34016,7 +34029,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3220" buffname="鱼姬大招（提前给队友加护盾）一级大招">
+	<buff buffid="3220" buffname="灵魂庇护">
 		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="5509" idex=""></flasheffect>
@@ -34029,7 +34042,7 @@
 			<endarose id="" le="" per=""></endarose>
 		</sub>
 	</buff>
-	<buff buffid="3221" buffname="鱼姬大招（提前给队友加护盾）二级大招">
+	<buff buffid="3221" buffname="灵魂庇护">
 		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
 		<sub level="1" desc="">
 			<flasheffect id="5509" idex=""></flasheffect>
@@ -34043,8 +34056,8 @@
 		</sub>
 	</buff>
 	<buff buffid="3222" buffname="鱼姬R技能（对自己）二级大招">
-		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
-		<sub level="1" desc="">
+		<base replacerule="1" pileqty="1" flag ="3" endflag0="0" iconid="308"></base>
+		<sub level="1" desc="当前状态依附队友移动，期间可释放技能但不可普攻">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="20000" longex=""></time>
 			<effectServer id0="21" id1="20010" id2="20059" id3="6595" id4="6721" id5="7045"></effectServer>
@@ -37049,7 +37062,7 @@
 		<sub level="1" desc="">
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="" longex=""></time>
-			<effectServer id0="5970" id1="5971" id2="6020"></effectServer>
+			<effectServer id0="5971" id1="6020"></effectServer>
 			<effectClient id=""></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>
@@ -37974,6 +37987,32 @@
 			<flasheffect id="" idex=""></flasheffect>
 			<time long="500" longex=""></time>
 			<effectServer id0="7018"></effectServer>
+			<effectClient id=""></effectClient>
+			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
+			<dispelbuff buffid="" per=""></dispelbuff>
+			<rand effectid="" per="" flasheffectid="" desc=""></rand>
+			<endarose id="" le="" per=""></endarose>
+		</sub>
+	</buff>
+	<buff buffid="3687" buffname="飞鞋加速减低体力">
+		<base replacerule="0" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
+		<sub level="1" desc="">
+			<flasheffect id="" idex=""></flasheffect>
+			<time long="" longex=""></time>
+			<effectServer id0="5970"></effectServer>
+			<effectClient id=""></effectClient>
+			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
+			<dispelbuff buffid="" per=""></dispelbuff>
+			<rand effectid="" per="" flasheffectid="" desc=""></rand>
+			<endarose id="" le="" per=""></endarose>
+		</sub>
+	</buff>
+	<buff buffid="3688" buffname="飞鞋加速减低体力">
+		<base replacerule="0" pileqty="1" flag ="3" endflag0="0" iconid=""></base>
+		<sub level="1" desc="">
+			<flasheffect id="" idex=""></flasheffect>
+			<time long="" longex=""></time>
+			<effectServer id0="19345"></effectServer>
 			<effectClient id=""></effectClient>
 			<startrule hascheck="" hasbuffid="" nobuffid="" nocheck=""></startrule>
 			<dispelbuff buffid="" per=""></dispelbuff>

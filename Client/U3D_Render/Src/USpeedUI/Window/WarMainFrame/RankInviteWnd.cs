@@ -741,6 +741,10 @@ namespace USpeedUI.WarMainFrame
             {
                 PlayerFrame.SetSelfData();
             }
+            else
+            {
+                ViewEventHelper.Instance.SendCommand(GameLogicDef.GVIEWCMD_TEAM_REQUEST_INFO);
+            }
 
             MiscFrame.SetData(nMatchType);
 

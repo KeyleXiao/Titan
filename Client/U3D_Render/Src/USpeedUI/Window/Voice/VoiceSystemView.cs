@@ -461,6 +461,8 @@ namespace USpeedUI.VoiceSystem
 
             if(speakModeLabel != null)
                 speakModeLabel.gameObject.SetActive(false);
+
+            HideModal();
         }
 
         //切换耳机状态
@@ -1283,6 +1285,13 @@ namespace USpeedUI.VoiceSystem
             cancelLabel.text = szCancel;
 
             return base.Init(wnd);
+        }
+
+        public override void Destroy()
+        {
+            QuitVoice();
+
+            base.Destroy();
         }
 
         public override void Update() 
